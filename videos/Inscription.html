@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="inscription.css">
+    <title>INSCRIPTION</title>
+</head>
+
+<body onload="themeSwap()">
+    <header>
+        <div class="pcTuneBaniere">
+            <div class="logo">
+
+            </div>
+            <div class="inscrTitre">
+                <p>Formulaire d'inscription</p>
+
+            </div>
+        </div>
+        <nav>
+            <!-- BOUTON THEME SOMBRE DEBUT (Nico) -->
+
+            <!-- BOUTON THEME SOMBRE FIN (Nico) -->
+            <p id="openBtnBurger">
+                <span class="burger-icon" id="burgerspan">
+                    <span class="burgerBar1"></span>
+                    <span class="burgerBar2"></span>
+                    <span class="burgerBar3"></span>
+                </span>
+            </p>
+
+            <div id="mySidenav" class="sidenav">
+                <div id="themeBox">
+                    <input id="themeCheck" type="checkbox" value="None" name="themeCheck" onchange="themeSwap()">
+                    <label id="themeLabel" for="themeCheck">
+                        <div class="moon"></div>
+                        <div class="sun"></div>
+                        <div class="curseur"></div>
+                    </label>
+                </div>
+                <ul class="sideLink">
+                    <li><a href="index.html" class="sideNavLienPrincipale">Accueil</a></li>
+                    <li><a href="categorie" class="sideNavLienPrincipale" id="categorieNavBar">Catégorie v</a>
+                        <ul id="categorieSideCat">
+                            <a href="animal.html">Animaux</a>
+                            <a href="dessin_anime.html">Déssin animé</a>
+                            <a href="horreur.html">Horreur</a>
+                            <a href="sport.html">sport</a>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html" class="sideNavLienPrincipale">Contact</a></li>
+                    <li><a href="Inscription.html" class="sideNavLienPrincipale">Inscription</a></li>
+                </ul>
+
+                <div class="openbtn">
+                    <div id="openbtn">
+                        <!-- DEBUT FLECHES ANIMEES (AJOUT NICOM)-->
+                        <div id="ouvrezMoi" class="boiteFleche">
+                            <div class="flecheNavbarA"></div>
+                            <div class="flecheNavbarB"></div>
+                            <div class="flecheNavbarC"></div>
+                        </div>
+                        <!-- FIN FLECHES ANIMEES -->
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <div id="container">
+        <span class="ligne1">
+            <legend>INSCRIPTION/ CONNEXION</legend>
+        </span>
+
+        <form id="formInscription" action="">
+
+            <div class="inscriptionCivilite">
+                <label for="liste">Civilité</label>
+                <select name="liste" id="liste">
+                    <option value="option1">Mme</option>
+                    <option value="option2">Mr</option>
+                </select>
+            </div>
+
+            <label for="nom" class="inscriptionNom">Nom</label>
+            <input class="inscriptionNomBox" type="text" name="nom" placeholder="Entrez votre nom" maxlength="20"
+                id="nom">
+
+            <label for="prenom" class="inscriptionPrenom">Votre prénom</label>
+            <input class="inscriptionPrenombox" type="text" name="prenom" placeholder="Entrez votre prénom"
+                maxlength="20" id="prenom">
+
+            <label for="naissance" class="inscriptionNaissance">Date de naissance</label>
+            <input class="inscriptionNaissancebox" type="text" name="naissance" placeholder="Votre date de naissance"
+                maxlenght="20" id="naissance">
+
+            <label for="email" class="inscriptionEmail">Votre email</label>
+            <input class="inscriptionEmailbox" type="email" name="email" placeholder="Entrez votre mail" maxlength="20"
+                id="email">
+
+            <label for="confiemail" class="inscriptionConfie">Confirmer votre email</label>
+            <input class="inscriptionConfiebox" type="email" name="confiemail" placeholder="Confirmer votre email"
+                maxlength="20" id="confiemail">
+
+            <label for="motdepasse" class="inscriptionMotdepasse">Mot de passe</label>
+            <input class="inscriptionMotdepassebox" type="password" placeholder="Mot de passe" maxlenght="20"
+                id="motdepasse" name="motdepasse">
+
+            <label for="confimotdepasse" class="inscriptionconfirmer">Confirmer votre mot de passe</label>
+            <input class="inscriptionconfirmerbox" type="password" placeholder="Confirmer votre mot de passe"
+                maxlenght="20" id="confimotdepasse" name="confimotdepasse">
+
+
+            <h2>VOS PREFERENCE(S)</h2>
+
+            <div class="inscriptionPref1 inscriptionPref">
+                <label for="horreur">Horreur</label>
+                <input type="checkbox" id="horreur" name="horreur">
+            </div>
+
+            <div class="inscriptionPref2 inscriptionPref">
+                <label for="animaux">Animaux</label>
+                <input type="checkbox" id="animaux" name="animaux">
+            </div>
+
+            <div class="inscriptionPref3 inscriptionPref">
+                <label for="dessinAnime">Dessin animé</label>
+                <input type="checkbox" id="dessinAnime" name="dessinanime">
+            </div>
+
+            <div class="inscriptionPref4 inscriptionPref">
+                <label for="sport">Sport</label>
+                <input type="checkbox" id="sport" name="sport">
+            </div>
+
+
+
+            <div class="inscriptionValidation">
+                <input type="submit" value="Valider">
+                <input type="submit" value="Login">
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1032 @@
+:root, :root.clair 
+{
+  --navBarGrad1:rgb(32, 33, 33);
+  --navBarGrad2: rgb(63, 63, 63);
+  --texteMax: rgb(20, 20, 20);
+  --texteMed:rgb(59, 63, 66);
+  --texteMin:rgb(84, 91, 99);
+  
+
+  /*-----------------nav & footer------------------*/
+  --logoImageBackground:url(../img/logo2.1.png);
+  --backgroundNavBarnumero01: #fff6d9;
+  --backgroundNavBarnumero02: rgb(200, 200, 200);
+  --backgroundNavBarnumero03:#fff6d9;
+  --textNavBar:#0f056b;
+  --navLinkBackGround01: #fff6d9;
+  --navLinkABackground:#fffbee;
+  /*-----------------nav & footer------------------*/
+
+  --texteMax: black;
+  --texteMin:lightslategrey;
+
+  --fondMax: #fffbee;
+  --fondMed: rgb(252, 246, 217);
+  --fondMin: rgb(223, 183, 130);
+  --texteBleu: rgb(24, 46, 216);
+  --bordureParagraphe: lightblue;
+
+    /*-----------------Connexion & formulaire de contact------------------*/
+
+  --connexionMain:#dcd9cb;
+  --connexionButton:#fff6d9;
+  --serpent:#0f056b;
+}
+
+/* SCHEME DARK */
+
+@media (prefers-color-scheme: dark) 
+{
+  :root 
+  {
+
+    --navBarGrad1:rgb(127, 128, 124);
+    --navBarGrad2: rgb(219, 221, 213);
+
+  /*-----------------nav & footer------------------*/
+    --logoImageBackground:url(../img/logo1.1.png);
+
+    --backgroundNavBarnumero01: black;
+    --backgroundNavBarnumero02: rgb(100, 100, 100);
+    --textNavBar: #fff6d9;
+    --navLinkBackGround01: rgb(95, 95, 95);
+    --navLinkABackground:rgb(100, 100, 100);
+  /*-----------------nav & footer------------------*/
+
+
+
+    --texteMax: #fefefe;
+
+    --texteMed: antiquewhite;
+    --texteMin:bisque;
+    --fondMax: rgb(20, 20, 20);
+    --fondMed:rgb(20, 53, 85);
+    --fondMin:rgb(23, 28, 32);
+    --texteBleu: rgb(69, 89, 181);
+    --bordureParagraphe: darkblue;
+
+      /*-----------------Connexion & formulaire de contact------------------*/
+
+    --connexionMain:#373266;
+    --connexionButton:#0f056b;
+    --serpent:#32f6e9;
+
+  }
+  
+
+
+}
+
+/* MODE SOMBRE */
+
+:root.sombre 
+{
+
+  --navBarGrad1:rgb(127, 128, 124);
+  --navBarGrad2: rgb(219, 221, 213);
+  --texteMax: #fefefe;
+  --texteMed:antiquewhite;
+  --texteMin:bisque;
+  --fondMax: rgb(20, 20, 20);
+
+  /*-----------------nav & footer------------------*/
+  --logoImageBackground:url(../img/logo1.1.png);
+  --backgroundNavBarnumero01: #0e0c22 ;
+  --backgroundNavBarnumero02: rgb(100, 100, 100);
+  --textNavBar: #fff6d9;
+  --navLinkBackGround01: rgb(95, 95, 95);
+  --navLinkABackground:rgb(100, 100, 100);
+  /*-----------------nav & footer------------------*/
+
+  --texteMax:#fefefe;
+  --texteMin:rgb(223, 183, 130);
+  --fondMax: #0e0c22;
+
+  --fondMed:rgb(27, 51, 108);
+  --fondMin:rgb(23, 28, 32);
+  --texteBleu: rgb(69, 89, 181);
+  --bordureParagraphe: darkblue;
+
+  /*-----------------Connexion & formulaire de contact------------------*/
+
+  --connexionMain:#373266;
+  --connexionButton:#0f056b;
+  --serpent:#32f6e9;
+
+
+}
+
+@media screen and (min-width: 800px){
+
+#container{
+    border:2px solid var(--textNavBar);
+    padding:10px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px aut1fro;
+}
+label{
+    justify-self:left;
+    align-self: left;
+    color:var(--textNavBar);
+}
+
+input{
+    height: 2vh;
+    justify-self: left;
+    align-self: left;
+}
+
+.ligne1{
+    grid-column: 1;
+    grid-row: 1;
+    text-align: center;
+    font-size: center;
+    color:var(--textNavBar);
+}
+
+#container form {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+
+#formInscription {
+    background-color:var(--backgroundNavBarnumero01) ;
+    border:2px solid var(--textNavBar);
+    padding:10px;
+    height:400px;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: repeat(10, 1fr);
+}
+
+.inscriptionCivilite {
+    grid-column:1 ;
+    grid-row: 1;
+    justify-self: left;
+    align-self: left;
+}
+
+.inscriptionNom {
+    grid-column:3 ;
+    grid-row: 1;
+}
+
+.inscriptionNomBox {
+    grid-column: 4;
+    grid-row: 1;
+}
+
+.inscriptionPrenom{
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.inscriptionPrenombox{
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.inscriptionNaissance{
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.inscriptionNaissancebox{
+    grid-column: 4;
+    grid-row: 2;
+}
+
+.inscriptionEmail{
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.inscriptionEmailbox{
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.inscriptionConfie{
+    grid-column: 3;
+    grid-row: 3;
+}
+
+.inscriptionConfiebox{
+    grid-column: 4;
+    grid-row: 3;
+}
+
+.inscriptionMotdepasse{
+    grid-column: 1;
+    grid-row: 4;
+}
+
+.inscriptionMotdepassebox{
+    grid-column: 2;
+    grid-row: 4;
+}
+
+.inscriptionconfirmer{
+    grid-column: 3;
+    grid-row: 4;
+}
+
+.inscriptionconfirmerbox{
+    grid-column: 4;
+    grid-row: 4;
+}
+
+h2{
+    grid-column: 2;
+    grid-row: 5;
+    grid-column: 1/span 4;
+    text-align: center;
+    font-size: large;
+    text-decoration: underline;
+    color: var(--textNavBar);
+}
+
+.inscriptionPref{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    
+}
+
+.inscriptionPref input{
+    margin-right: 20px;
+    transform: translateY(-5px);
+    border: 2px solid var(--textNavBar);
+    height: 20px;
+    width: 20px;
+    border-radius: 0%;
+    
+}
+
+.inscriptionPref input:checked{
+    border-radius: 50% var(--textNavBar);
+}
+
+.inscriptionPref1{
+    grid-column: 1;
+    grid-row: 6;
+}
+
+.inscriptionPref2{
+    grid-column: 1;
+    grid-row: 7;
+}
+
+.inscriptionPref3{
+    grid-column: 1;
+    grid-row: 8;
+}
+
+.inscriptionPref4{
+    grid-column: 1;
+    grid-row: 9;
+}
+
+.inscriptionValidation{
+    grid-column: 1;
+    grid-row: 10;
+}
+.inscriptionValidation input{
+    height: 25px;
+}
+.inscrTitre {
+    grid-row:1;
+    grid-column:2;
+    margin:0;
+    padding:0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--textNavBar);
+    font-size: xx-large;
+  }
+}
+
+@media all and (max-width: 800px){
+    #container{
+        width: 80%;
+        height: 100%;
+        display:block;
+        margin: auto;
+    }
+    label{
+        justify-self:left;
+        align-self: center;
+        font-size: 20px;
+        margin-bottom: 10px;
+        color:var(--textNavBar) ;
+    }
+    .inscrTitre{
+        display: none;
+    }
+    input{
+        height: 3vh;
+        width: 80%;
+        justify-self: center;
+        align-self: center;
+        margin-bottom: 15px;
+    }
+    
+    .ligne1{
+        background-color: rgb(255, 168, 127);
+        grid-column: 1 / span 2;
+        grid-row: 1;
+        text-align: center;
+        font-size: xx-large;
+        color:var(--textNavBar);
+    }
+    body{
+        margin: 0px;
+        width: 100%;
+    }
+    
+    #formInscription {
+        background-color: var(--backgroundNavBarnumero01);
+        border: 2px solid var(--textNavBar);
+        display: flex;
+        width:100%;
+        flex-direction: column;
+        padding-left:10px;
+    }
+    
+    .inscriptionCivilite {
+        justify-self: center;
+        align-self: center;
+        margin-bottom: 20px;
+        margin-top: 20px;
+
+    }
+
+    #liste {
+        top:0%;
+        left:0%;
+        height:27px;
+        transform:translate(25%, -15%);
+        margin-left: 20px;
+    }
+    
+    h2{
+        text-align: center;
+        font-size: larger;
+        text-decoration: underline;
+        color:var(--textNavBar);
+    }
+    
+    .inscriptionPref{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+    
+    .inscriptionPref input{
+        margin-right: 20px;
+        transform: translateY(-5px);
+        border: 2px solid var(--textNavBar) ;
+        height: 20px;
+        width: 20px;
+        border-radius: 0%;
+        background-color: white;
+    }
+    .inscriptionValidation{
+        margin: auto;
+    }
+}
+
+.pcTuneBaniere{
+  position:fixed;
+  margin: 0px;
+  width: 99.5%;
+  margin:auto;
+  height: 100px;
+  background-color: var(--backgroundNavBarnumero01);
+  top: 50px;
+  z-index: 5;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(2, minmax(1fr, 300px));
+}
+  
+  .logo{
+    background-image: var(--logoImageBackground);
+    background-position: center left 50px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    width:100%;
+    height: 100px;
+  }
+  
+  body{
+    background-color: var(--fondMax);
+    display: flex;
+    width:100%;
+    margin:0;
+    padding:0;
+    flex-direction: column;
+  }
+  
+  header {
+    width:100%;
+    background-color: var(--textNavBar);
+    display:flex;
+    justify-content: center;
+    height: 155px;
+  }
+  
+  .sidenav{
+    position: fixed;
+    z-index: 6;
+    height: 150px;
+    width:99.5%;
+    margin:auto;
+    background-image: linear-gradient(var(--backgroundNavBarnumero01), var(--backgroundNavBarnumero02));
+    top: 0px;
+    left:0.25%;
+    transition: 1s;
+    border-bottom: 5px solid var(--textNavBar);
+  
+  }
+  /* .sidenav.ok{ */
+    /* top: 0px; */
+  /* } */
+  
+  /* .openbtn{ */
+    /* width: 100%; */
+    /* height: 50px; */
+    /* position: absolute; */
+    /* z-index: -1; */
+    /* bottom: 0; */
+    /* text-align: center; */
+  /* } */
+  
+  /* #openbtn{
+    text-decoration: none;
+    color: var(--textNavBar);
+  }
+  
+  #openbtn:hover{
+    cursor: pointer;
+    color: lightgray;
+  } */
+  
+  /*BOUTON THEME SOMBRE DEBUT */
+  
+  /* CONFIGURATION DU BOUTON DE THEME (Nico) */
+  
+  #themeCheck
+  {
+    visibility: hidden;
+  }
+  
+  #themeBox 
+  {    
+    background-color: lightslategray;
+    border:black solid 2px;
+    position:absolute;
+    top:3px;
+    right:3px;
+    width: 100px;
+    height: 40px;
+    border-radius:55px;
+    z-index: 11;	
+  }
+  
+  #themeBox label
+  {
+    visibility: transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100px;
+    height: 40px;	
+    border-radius: 55px;
+    cursor: pointer;	
+  }
+  
+  #themeLabel .curseur 
+  {
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-83%, -50%);
+    z-index: 1;
+    width: 54px;
+    height: 32px;	
+    border-radius: 50px;
+    background-color:var(--fondMax);
+    border:solid var(--texteMed) 2px;
+    transition:0.5s;	
+  }
+  
+  #themeCheck:checked ~ #themeLabel .curseur 
+  {
+    transform: translate(-17%, -50%);
+  }
+  
+  #themeLabel .sun 
+  {
+    background-image:url('../img/soleil.png');
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-150%, -50%);
+    background-size:contain;
+    height: 30px;
+    width:30px;
+  }
+  
+  #themeLabel .moon 
+  {
+      background-image:url('../img/lune.png');
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(50%, -50%);
+      background-size:contain;
+      height: 30px;
+      width:30px;
+  }
+  
+  /*BOUTON THEME SOMBRE FIN */
+  
+  /*DEBUT ANIMATION FLECHE NICO */
+  
+  /* BOITE INVISIBLE QUI CONTIENT LES 3 FLECHES ANIMEES */
+  
+  #ouvrezMoi
+  {
+      display: hidden;
+      position:absolute;
+      top:25px;
+      left:50%;
+      transform:translate(-50%, -50%);
+      cursor:pointer;
+      width:40px;
+      height:40px;
+      border-radius: 50%;
+  }
+  
+  .boiteFleche.ok
+  {
+      top:175px;
+  }
+  
+  /* TROIS FLECHES */
+  
+  /* .boiteFleche .flecheNavbarA */
+  /* { */
+      /* position:absolute; */
+      /* top:50%; */
+      /* left:50%; */
+      /* width:10px; */
+      /* height:10px; */
+      /* border:solid var(--textNavBar); */
+      /* transform:translate(-50%, -100%) rotate(45deg); */
+      /* border-width:0px 3px 3px 0px; */
+      /* transition: 1s; */
+      /*  */
+  /* } */
+  /*  */
+  /* .boiteFleche.ok .flecheNavbarA */
+  /* { */
+    /* transition: 1s; */
+    /* transform:translate(-50%, 0%) rotate(225deg);  */
+  /* } */
+  /*  */
+  /* .boiteFleche .flecheNavbarB */
+  /* { */
+      /* position:absolute; */
+      /* top:50%; */
+      /* left:50%; */
+      /* width:10px; */
+      /* height:10px; */
+      /* border:solid var(--textNavBar); */
+      /* transform:translate(-50%, -50%) rotate(45deg); */
+      /* border-width:0px 3px 3px 0px; */
+      /* transition: 1s ease-in; */
+          /*  */
+  /* } */
+  /*  */
+  /* .boiteFleche.ok .flecheNavbarB */
+  /* {  */
+    /* transition: 1s ease-in; */
+    /* transform:translate(-50%, -50%) rotate(225deg); */
+  /* } */
+  /*  */
+  /* .boiteFleche .flecheNavbarC */
+  /* { */
+      /* position:absolute; */
+      /* top:50%; */
+      /* left:50%; */
+      /* width:10px; */
+      /* height:10px; */
+      /* border:solid var(--textNavBar); */
+      /* transform:translate(-50%, 0%) rotate(45deg); */
+      /* border-width:0px 3px 3px 0px; */
+      /* transition: 1s ease-in; */
+          /*  */
+  /* } */
+  /*  */
+  /* .boiteFleche.ok .flecheNavbarC */
+  /* { */
+    /* transition: 1s ease-in; */
+    /* transform:translate(-50%, -100%) rotate(225deg); */
+  /* } */
+  /*  */
+  /* .boiteFleche{ */
+    /* border: 5px solid var(--textNavBar); */
+  /* } */
+  
+  /* KEYFRAMES FLECHES */
+  
+  @keyframes navbarA {
+      0% {opacity:0;}
+      6.25% {opacity:0.33;}
+      12.5% {opacity:0.66;}
+      18.75% {opacity:0.66;}
+      25% {opacity:1;}
+      31.25% {opacity:1;}
+      37.5% {opacity:0.66;}
+      43.75% {opacity:0.66;}
+      50% {opacity:0.33;}
+      56.25% {opacity:0;}
+      62.5% {opacity:0;} 
+      68.75% {opacity:0;}
+      75% {opacity:0;}
+      81.25% {opacity:0;}
+      87.5% {opacity:0;}
+      93.75% {opacity:0;}
+      100% {opacity:0;}               
+  }
+  
+  @keyframes navbarB {
+      0% {opacity:0;}
+      6.25% {opacity:0;}
+      12.5% {opacity:0;}
+      18.75% {opacity:0;}
+      25% {opacity:0;}
+      31.25% {opacity:0.33;}
+      37.5% {opacity:0.66;}
+      43.75% {opacity:0.66;}
+      50% {opacity:1;}
+      56.25% {opacity:1;}
+      62.5% {opacity:0.66;} 
+      68.75% {opacity:0.66;}
+      75% {opacity:0.33;}
+      81.25% {opacity:0;}
+      87.5% {opacity:0;}
+      93.75% {opacity:0;}
+      100% {opacity:0;}       
+  }
+  
+  @keyframes navbarC {
+      0% {opacity:0;}
+      6.25% {opacity:0;}
+      12.5% {opacity:0;}
+      18.75% {opacity:0;}
+      25% {opacity:0;}
+      31.25% {opacity:0;}
+      37.5% {opacity:0;}
+      43.75% {opacity:0;}
+      50% {opacity:0;}
+      56.25% {opacity:0.33;}
+      62.5% {opacity:0.66;} 
+      68.75% {opacity:0.66;}
+      75% {opacity:1;}
+      81.25% {opacity:1;}
+      87.5% {opacity:0.66;}
+      93.75% {opacity:0.66;}
+      100% {opacity:0.33;}        
+  }
+  
+  .flecheNavbarA
+  {
+      animation: 3s linear infinite navbarA;               
+  }
+  
+  .flecheNavbarB
+  {
+      animation: 3s linear infinite navbarB;              
+  
+  }
+  
+  .flecheNavbarC
+  {
+      animation: 3s linear infinite navbarC;           
+  }
+  
+  /* FIN ANIMATION FLECHE NICO */
+  
+  .sideLink{
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    width: 70%;
+  }
+  .sideLink li{
+    flex: 1 1 auto;
+  }
+  .sideLink a {
+    text-align: start;
+    text-decoration: none;
+    font-size: 25px;
+  
+    color: var(--fondMed);
+  
+    color: var(--textNavBar);
+  
+    display: block;
+    transition: 0.3s;
+  }
+  .sideLink a:hover{
+    background-color: var(--navLinkBackGround01);
+  }
+  @media all and (min-width: 800px) {
+    #categorieSideCat{
+      display: none;
+      padding: 0%;
+      background-color: var(--navLinkBackGround01);
+      z-index: 1;
+    }
+    #categorieSideCat a:hover{
+      background-color: var(--navLinkABackground);
+    }
+    #categorieNavBar:hover ~ #categorieSideCat , #categorieSideCat:hover{
+      display: block;
+    }
+    
+  }
+    
+  @media all and (max-width:800px){
+    body{
+      margin-top: 0px;
+      background-color: var(--fondMax);
+    }
+    
+    body header{
+      background-color: var(--fondMax);
+      height: 105px;
+    }
+    .pcTuneBaniere{
+      display: none;
+      top: 0px;
+      border: 3px solid var(--textNavBar);
+    }
+    .boiteFleche{
+      border: none;
+    }
+    /*----------menu burger------------*/
+    /* .burger-icon{ */
+      /* position: fixed; */
+      /* z-index: 11; */
+      /* top: 40px; */
+      /* right: 100px; */
+    /* } */
+  /*  */
+    /* .burger-icon span { */
+      /* display: block; */
+      /* width: 35px; */
+      /* height: 5px; */
+      /* background-color: var(--textNavBar); */
+      /* margin: 6px 10px; */
+      /* cursor: pointer; */
+      /* transition: 0.3s linear; */
+    /* } */
+    /* .burgerBar1{ */
+      /* position: absolute; */
+      /* top: 50%; */
+      /* left: 50%; */
+      /* transform: translate(-20%, -10px); */
+      /* border-radius: 30% 30% 0px 0px; */
+    /* } */
+    /* .burgerBar2{ */
+      /* position: absolute; */
+      /* top: 50%; */
+      /* left: 50%; */
+      /* transform: translate(-20%, 0px); */
+      /* border-radius: 0%; */
+    /* } */
+    /* .burgerBar3{ */
+      /* position: absolute; */
+      /* top: 50%; */
+      /* left: 50%; */
+      /* transform: translate(-20%, 10px); */
+      /* border-radius: 0px 0px 30% 30%; */
+    /* } */
+  /*  */
+    /* .burger-icon.ok .burgerBar1{ */
+      /* transform:translate(-20%, -0px) rotate(45deg); */
+      /* border-radius: 40%; */
+  /*  */
+  /*  */
+    /* } */
+    /* .burger-icon.ok .burgerBar2{ */
+      /* width: 0px; */
+      /* border-radius: 100%; */
+    /* } */
+    /* .burger-icon.ok .burgerBar3{ */
+      /* transform: translate(-20%, 0px) rotate(-45deg); */
+      /* border-radius: 40%; */
+  /*  */
+    /* } */
+    /*----------menu burger------------*/
+    body.ok{
+      background-image: radial-gradient();
+    }
+    .sidenav{
+      left: 0.5%;
+      position: fixed;
+      z-index: 5;
+      height: 10%;
+      width: 98%;
+      background-color: var(--backgroundNavBarnumero01);
+      background-image: none;
+      top: -100%;
+      transition: 0.5s linear;
+      border: 3px solid var(--textNavBar);
+    }
+    
+    .sidenav.ok{
+      top: 100px;
+    }
+    .openbtn{
+      width: 100%;
+      height: 50px;
+      position: absolute;
+      z-index: -1;
+      bottom: 0;
+    }
+    
+    /* #openbtn{
+      text-decoration: none;
+      color: var(--textNavBar);
+    }
+    
+    #openbtn:hover{
+      cursor: pointer;
+      color: lightgray;
+    } */
+    
+    /*BOUTON THEME SOMBRE DEBUT */
+    
+    /* CONFIGURATION DU BOUTON DE THEME (Nico) */
+    
+    #themeCheck
+    {
+      visibility: hidden;
+    }
+    
+    #themeBox 
+    {    
+      background-color: lightslategray;
+      border:black solid 2px;
+      position:absolute;
+      top:3px;
+      right:3px;
+      width: 100px;
+      height: 40px;
+      border-radius:55px;
+      z-index: 11;	
+    }
+    
+    #themeBox label
+    {
+      visibility: transparent;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      width: 100px;
+      height: 40px;	
+      border-radius: 55px;
+      cursor: pointer;	
+    }
+    
+    #themeLabel .curseur 
+    {
+      position: absolute;
+      top: 50%;
+      left:50%;
+      transform: translate(-83%, -50%);
+      z-index: 1;
+      width: 54px;
+      height: 32px;	
+      border-radius: 50px;
+      background-color:var(--fondMax);
+      border:solid var(--texteMed) 2px;
+      transition:0.5s;	
+    }
+    
+    #themeCheck:checked ~ #themeLabel .curseur 
+    {
+      transform: translate(-17%, -50%);
+    }
+    
+    #themeLabel .sun 
+    {
+      background-image:url('../img/soleil.png');
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-150%, -50%);
+      background-size:contain;
+      height: 30px;
+      width:30px;
+    }
+    
+    #themeLabel .moon 
+    {
+        background-image:url('../img/lune.png');
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(50%, -50%);
+        background-size:contain;
+        height: 30px;
+        width:30px;
+    }
+    
+    /*BOUTON THEME SOMBRE FIN */
+    
+    /*DEBUT ANIMATION FLECHE NICO */
+    
+    /* BOITE INVISIBLE QUI CONTIENT LES 3 FLECHES ANIMEES */
+    
+    #ouvrezMoi
+    {
+        display: hidden;
+        position:absolute;
+        top:25px;
+        left:50%;
+        transform:translate(-50%, -50%);
+        cursor:pointer;
+        width:40px;
+        height:40px;
+        border-radius: 50%;
+    }
+    
+    .boiteFleche.ok
+    {
+        top:175px;
+    }
+    
+    /* TROIS FLECHES */
+    .flecheNavbarA, .flecheNavbarB, .flecheNavbarC
+    {
+      display: none;
+    }
+  
+    .sideLink{
+      display: flex;
+      list-style: none;
+      flex-direction: row;
+    }
+  
+    .sideLink li{
+      flex: 1 1 auto;
+      margin: 0% 0%;
+    }
+    .sideLink a{
+      text-decoration: none;
+      font-size: 10px;
+      color: var(--fondMed);
+    
+      color: var(--textNavBar);
+    
+      display: block;
+      transition: 0.3s;
+    }
+    .sideLink a:hover{
+      background:none;
+    }
+    
+    #categorieSideCat{
+      display: none;
+      padding: 0%;
+      background: none;
+      z-index: 1;
+    }
+    #categorieSideCat.opencat{
+      display: block;
+      background-color: var(--fondMax);
+      justify-self: center;
+    }
+    #categorieSideCat a{
+      font-size: 10px;
+    }
+    #categorieSideCat a:hover{
+      background: none;
+    }
+  }

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/visionnageDessinAnime.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body id="body" class="accueilBody" onload="themeSwap()">
+    <header id="headerAccueil">
+        <div class="pcTuneBaniere">
+            <div class="logo">
+
+            </div>
+        </div>
+        <nav class="navAccueil">
+            <!-- BOUTON THEME SOMBRE DEBUT (Nico) -->
+
+            <!-- BOUTON THEME SOMBRE FIN (Nico) -->
+            <p id="openBtnBurger">
+                <span class="burger-icon" id="burgerspan">
+                    <span class="burgerBar1"></span>
+                    <span class="burgerBar2"></span>
+                    <span class="burgerBar3"></span>
+                </span>
+            </p>
+
+            <div id="mySidenav" class="sidenav">
+                <div id="themeBox">
+                    <input id="themeCheck" type="checkbox" value="None" name="themeCheck" onchange="themeSwap()">
+                    <label id="themeLabel" for="themeCheck">
+                        <div class="moon"></div>
+                        <div class="sun"></div>
+                        <div class="curseur"></div>
+                    </label>
+                </div>
+                <ul class="sideLink">
+                    <li><a href="index.html" class="sideNavLienPrincipale">Accueil</a></li>
+                    <li><a class="sideNavLienPrincipale" id="categorieNavBar">Catégorie</a>
+                        <ul id="categorieSideCat">
+                            <a href="animaux.html">Animaux</a>
+                            <a href="dessin_anime.html">Déssin animé</a>
+                            <a href="horreur.html">Horreur</a>
+                            <a href="sport.html">sport</a>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html" class="sideNavLienPrincipale">Contact</a></li>
+                    <li><a href="Inscription.html" class="sideNavLienPrincipale">Inscription</a></li>
+                </ul>
+
+                <div class="openbtn">
+                    <div id="openbtn">
+                        <!-- DEBUT FLECHES ANIMEES (AJOUT NICOM)-->
+                        <div id="ouvrezMoi" class="boiteFleche">
+                            <div class="flecheNavbarA"></div>
+                            <div class="flecheNavbarB"></div>
+                            <div class="flecheNavbarC"></div>
+                        </div>
+                        <!-- FIN FLECHES ANIMEES -->
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <body>
+        <div id="mainVisionnage">
+            <div id="vMenubar"></div>
+            <div id="vLeftMenubar"></div>
+            <Section id="visionnage">
+                <!--Vidéo à visionner-->
+                <div id="videoVisionnage">
+                    <iframe id="frameDessinAnime" src="https://www.youtube.com/embed/TiRDYKiz8EM"
+                        title="Le cochon (documentaire)" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+
+
+                <div id="decriptVisionnage">
+                    <!--titre de la vidéo à visionner-->
+                    <h1>Peppa Pig</h1>
+                    <br>
+                    <!--description de la vidéo à visionner-->
+                    <h2>Description</h2>
+                    <div class="paragraphe">
+
+                        <p><a href="dessin_anime.html"><button class="buttonDessinAnimeVisionnage">Dessin
+                                    Anime</button></a>Bienvenue sur la chaîne officielle Peppa Pig. <br> Nous avons créé
+                            tout un univers autour de Peppa <br> avec des épisodes et des compilations pour ravir tous
+                            les fans. <br> Amuse-toi et n'oublie pas de t'abonner pour être le premier à découvrir les
+                            nouveaux épisodes, <br> compilations et extraits! <br> PEPPA PIG © ASTLEY BAKER DAVIES
+                            LTD/ENTERTAINMENT ONE UK LTD 2003. <br> Peppa Pig created by Mark Baker and Neville Astley.
+                        </p>
+
+                        <!--<div id="boutonSport">Sport</div>-->
+
+                    </div>
+                </div>
+
+                <!--caroussel de vidéos de meme catégorie-->
+                <div id="carouselVisionnageDessinAnime">
+                    <h3>Tu as aimé ? Tu aimeras aussi ceci </h3>
+                    <ul class="carouselItemsDessinAnime">
+                        <li class="carouselItemDessinAnime">
+                            <div class="cardDessinAnime">
+                                <a href="visionnageDessinAnime.html"><img src="./img/lienVideoDessinAnime.jpeg" /></a>
+                                <div class="card-content">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="carouselItemDessinAnime">
+                            <div class="cardDessinAnime">
+                                <a href="visionnageDessinAnime.html"><img src="./img/lienVideoDessinAnime.jpeg" /></a>
+                                <div class="card-content">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="carouselItemDessinAnime">
+                            <div class="cardDessinAnime">
+                                <a href="visionnageDessinAnime.html"><img src="./img/lienVideoDessinAnime.jpeg" /></a>
+                                <div class="card-content">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="carouselItemDessinAnime">
+                            <div class="cardDessinAnime">
+                                <a href="visionnageDessinAnime.html"><img src="./img/lienVideoDessinAnime.jpeg" /></a>
+                                <div class="card-content">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="carouselItemDessinAnime">
+                            <div class="cardDessinAnime">
+                                <a href="visionnageDessinAnime.html"><img src="./img/lienVideoDessinAnime.jpeg" /></a>
+                                <div class="card-content">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--commentaires de la vidéo à visionner-->
+                <div id=" commentaireVisionnage">
+                    <h2>commentaires</h2>
+                    <form method="post" action="ton_script_recup_data_form.php">
+                        <label for="pseudo">Pseudo:</label>
+                        <input type="text" name="pseudo" placeholder="Ton pseudo" maxlength="20" id="pseudo" />
+                        <br>
+                        <br>
+                        <label for="commentaire">Lache un com :</label>
+                        <br>
+                        <textarea name="commentaire" id="commentaire" placeholder="T'en à pensé quoi?" cols="70"
+                            rows="10"></textarea>
+                    </form>
+                </div>
+            </Section>
+            <div id="vFooter"></div>
+        </div>
+        <script src="js/script.js"></script>
+    </body>
+
+</html>

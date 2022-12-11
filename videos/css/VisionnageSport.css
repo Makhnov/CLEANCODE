@@ -1,0 +1,1022 @@
+/* MODE PAR DEFAUT ou SCHEME LIGHT ou MODE CLAIR */
+:root, :root.clair 
+{
+  --navBarGrad1:rgb(32, 33, 33);
+  --navBarGrad2: rgb(63, 63, 63);
+  --texteMax: rgb(20, 20, 20);
+  --texteMed:rgb(59, 63, 66);
+  --texteMin:rgb(84, 91, 99);
+  
+
+  /*-----------------nav & footer------------------*/
+  --logoImageBackground:url(../img/logo2.1.png);
+  --backgroundNavBarnumero01: #fff6d9;
+  --backgroundNavBarnumero02: rgb(200, 200, 200);
+  --backgroundNavBarnumero03:#fff6d9;
+  --textNavBar:#0f056b;
+  --navLinkBackGround01: #fff6d9;
+  --navLinkABackground:#fffbee;
+  /*-----------------nav & footer------------------*/
+
+  --texteMax: black;
+  --texteMin:lightslategrey;
+
+  --fondMax: #fffbee;
+  --fondMed: rgb(252, 246, 217);
+  --fondMin: rgb(223, 183, 130);
+  --texteBleu: rgb(24, 46, 216);
+  --bordureParagraphe: lightblue;
+
+    /*-----------------Connexion & formulaire de contact------------------*/
+
+  --connexionMain:#dcd9cb;
+  --connexionButton:#fff6d9;
+  --serpent:#0f056b;
+
+    /*-----------------Page d'accueil------------------*/
+  
+  --effetCarrousel:#0c2485;
+  --effetCarrouselRadius:#16235a;
+  --logoBackfaceAccueil:url(../img/logoCarrouselClair.png)
+
+  /*-----------------Visionnage------------------*/
+  --backHorreur:url(../img/backHorreur.jpg);
+  --boutonEtTitre:rgb(243, 145, 145);
+}
+
+/* POLICE */
+@font-face 
+{
+	font-family: 'Leoscar';
+	src: url('/fonts/Leoscar.woff') format('woff');
+}
+/* FIN POLICE */
+
+/* SCHEME DARK */
+
+@media (prefers-color-scheme: dark) 
+{
+  :root 
+  {
+
+    --navBarGrad1:rgb(127, 128, 124);
+    --navBarGrad2: rgb(219, 221, 213);
+
+  /*-----------------nav & footer------------------*/
+    --logoImageBackground:url(../img/logo1.1.png);
+
+    --backgroundNavBarnumero01: black;
+    --backgroundNavBarnumero02: rgb(100, 100, 100);
+    --textNavBar: #fff6d9;
+    --navLinkBackGround01: rgb(95, 95, 95);
+    --navLinkABackground:rgb(100, 100, 100);
+  /*-----------------nav & footer------------------*/
+
+
+
+    --texteMax: #fefefe;
+
+    --texteMed: antiquewhite;
+    --texteMin:bisque;
+    --fondMax: rgb(20, 20, 20);
+    --fondMed:rgb(20, 53, 85);
+    --fondMin:rgb(23, 28, 32);
+    --texteBleu: rgb(69, 89, 181);
+    --bordureParagraphe: darkblue;
+
+      /*-----------------Connexion & formulaire de contact------------------*/
+
+    --connexionMain:#373266;
+    --connexionButton:#0f056b;
+    --serpent:#32f6e9;
+    
+
+
+          /*-----------------Page d'accueil------------------*/
+
+    --effetCarrousel:#32f6e9;
+    --effetCarrouselRadius:#70f9f0;
+
+    --logoBackfaceAccueil:url(../img/logoCarrouselSombre.png)
+
+    /*-----------------Visionnage------------------*/
+    --backHorreur:url(../img/horreurSombre.jpg);
+    --boutonEtTitre:darkred;
+  }
+}
+
+/* MODE SOMBRE */
+
+:root.sombre 
+{
+
+  --navBarGrad1:rgb(127, 128, 124);
+  --navBarGrad2: rgb(219, 221, 213);
+  --texteMax: #fefefe;
+  --texteMed:antiquewhite;
+  --texteMin:bisque;
+  --fondMax: rgb(20, 20, 20);
+
+  /*-----------------nav & footer------------------*/
+  --logoImageBackground:url(../img/logo1.1.png);
+  --backgroundNavBarnumero01: #0e0c22 ;
+  --backgroundNavBarnumero02: rgb(100, 100, 100);
+  --textNavBar: #fff6d9;
+  --navLinkBackGround01: rgb(95, 95, 95);
+  --navLinkABackground:rgb(100, 100, 100);
+  /*-----------------nav & footer------------------*/
+
+  --texteMax:#fefefe;
+  --texteMin:rgb(223, 183, 130);
+  --fondMax: #0e0c22;
+
+  --fondMed:rgb(27, 51, 108);
+  --fondMin:rgb(23, 28, 32);
+  --texteBleu: rgb(69, 89, 181);
+  --bordureParagraphe: darkblue;
+
+  /*-----------------Connexion & formulaire de contact------------------*/
+
+  --connexionMain:#373266;
+  --connexionButton:#0f056b;
+  --serpent:#32f6e9;
+
+        /*-----------------Page d'accueil------------------*/
+
+  --effetCarrousel:#32f6e9;
+  --effetCarrouselRadius:#70f9f0;
+  --logoBackfaceAccueil:url(../img/logoCarrouselSombre.png)
+
+  /*-----------------Visionnage------------------*/
+  --backHorreur:url(../img/horreurSombre.jpg);
+  --boutonEtTitre:darkred;
+}
+
+/* COMMANDES GLOBALES */
+
+a, a:visited 
+{
+  color: var(--texteBleu);
+  font-size : 1.2em;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/*---------------------------------NavBar--------------------------------*/
+.pcTuneBaniere{
+  position:fixed;
+  margin: 0px;
+  width: 99.5%;
+  margin:auto;
+  height: 100px;
+  background-color: var(--backgroundNavBarnumero01);
+  top: 50px;
+  z-index: 5;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(2, minmax(1fr, 300px));
+}
+
+.logo{
+  background-image: var(--logoImageBackground);
+  background-position: center left 50px;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  width:100%;
+  height: 100px;
+}
+
+body{
+  font-family: 'Leoscar', sans-serif;
+  background-color: var(--fondMax);
+  display: flex;
+  width:100%;
+  margin:0;
+  padding:0;
+  flex-direction: column;
+}
+
+header {
+  width:100%;
+  background-color: var(--textNavBar);
+  display:flex;
+  justify-content: center;
+  height: 155px;
+}
+
+.sidenav{
+  position: fixed;
+  z-index: 6;
+  height: 150px;
+  width:99.5%;
+  margin:auto;
+  background-image: linear-gradient(var(--backgroundNavBarnumero01), var(--backgroundNavBarnumero02));
+  top: 0px;
+  left:0.25%;
+  transition: 1s;
+  border-bottom: 5px solid var(--textNavBar);
+}
+/* .sidenav.ok{ */
+  /* top: 0px; */
+/* } */
+
+/* .openbtn{ */
+  /* width: 100%; */
+  /* height: 50px; */
+  /* position: absolute; */
+  /* z-index: -1; */
+  /* bottom: 0; */
+  /* text-align: center; */
+/* } */
+
+/* #openbtn{
+  text-decoration: none;
+  color: var(--textNavBar);
+}
+
+#openbtn:hover{
+  cursor: pointer;
+  color: lightgray;
+} */
+
+/*BOUTON THEME SOMBRE DEBUT */
+
+/* CONFIGURATION DU BOUTON DE THEME (Nico) */
+
+#themeCheck
+{
+  visibility: hidden;
+}
+
+#themeBox 
+{    
+  background-color: lightslategray;
+  border:black solid 2px;
+  position:absolute;
+  top:3px;
+  right:3px;
+  width: 100px;
+  height: 40px;
+  border-radius:55px;
+  z-index: 11;	
+}
+
+#themeBox label
+{
+  visibility: transparent;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 100px;
+  height: 40px;	
+  border-radius: 55px;
+  cursor: pointer;	
+}
+
+#themeLabel .curseur 
+{
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-83%, -50%);
+  z-index: 1;
+  width: 54px;
+  height: 32px;	
+  border-radius: 50px;
+  background-color:var(--fondMax);
+  border:solid var(--texteMed) 2px;
+  transition:0.5s;	
+}
+
+#themeCheck:checked ~ #themeLabel .curseur 
+{
+  transform: translate(-17%, -50%);
+}
+
+#themeLabel .sun 
+{
+  background-image:url('../img/soleil.png');
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-150%, -50%);
+  background-size:contain;
+  height: 30px;
+  width:30px;
+}
+
+#themeLabel .moon 
+{
+	  background-image:url('../img/lune.png');
+	  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(50%, -50%);
+    background-size:contain;
+    height: 30px;
+    width:30px;
+}
+
+/*BOUTON THEME SOMBRE FIN */
+
+/*DEBUT ANIMATION FLECHE NICO */
+
+/* BOITE INVISIBLE QUI CONTIENT LES 3 FLECHES ANIMEES */
+
+#ouvrezMoi
+{
+    display: hidden;
+    position:absolute;
+    top:25px;
+    left:50%;
+    transform:translate(-50%, -50%);
+    cursor:pointer;
+    width:40px;
+    height:40px;
+    border-radius: 50%;
+}
+
+.boiteFleche.ok
+{
+    top:175px;
+}
+
+/* TROIS FLECHES */
+
+/* .boiteFleche .flecheNavbarA */
+/* { */
+    /* position:absolute; */
+    /* top:50%; */
+    /* left:50%; */
+    /* width:10px; */
+    /* height:10px; */
+    /* border:solid var(--textNavBar); */
+    /* transform:translate(-50%, -100%) rotate(45deg); */
+    /* border-width:0px 3px 3px 0px; */
+    /* transition: 1s; */
+    /*  */
+/* } */
+/*  */
+/* .boiteFleche.ok .flecheNavbarA */
+/* { */
+  /* transition: 1s; */
+  /* transform:translate(-50%, 0%) rotate(225deg);  */
+/* } */
+/*  */
+/* .boiteFleche .flecheNavbarB */
+/* { */
+    /* position:absolute; */
+    /* top:50%; */
+    /* left:50%; */
+    /* width:10px; */
+    /* height:10px; */
+    /* border:solid var(--textNavBar); */
+    /* transform:translate(-50%, -50%) rotate(45deg); */
+    /* border-width:0px 3px 3px 0px; */
+    /* transition: 1s ease-in; */
+        /*  */
+/* } */
+/*  */
+/* .boiteFleche.ok .flecheNavbarB */
+/* {  */
+  /* transition: 1s ease-in; */
+  /* transform:translate(-50%, -50%) rotate(225deg); */
+/* } */
+/*  */
+/* .boiteFleche .flecheNavbarC */
+/* { */
+    /* position:absolute; */
+    /* top:50%; */
+    /* left:50%; */
+    /* width:10px; */
+    /* height:10px; */
+    /* border:solid var(--textNavBar); */
+    /* transform:translate(-50%, 0%) rotate(45deg); */
+    /* border-width:0px 3px 3px 0px; */
+    /* transition: 1s ease-in; */
+        /*  */
+/* } */
+/*  */
+/* .boiteFleche.ok .flecheNavbarC */
+/* { */
+  /* transition: 1s ease-in; */
+  /* transform:translate(-50%, -100%) rotate(225deg); */
+/* } */
+/*  */
+/* .boiteFleche{ */
+  /* border: 5px solid var(--textNavBar); */
+/* } */
+
+/* KEYFRAMES FLECHES */
+
+@keyframes navbarA {
+    0% {opacity:0;}
+    6.25% {opacity:0.33;}
+    12.5% {opacity:0.66;}
+    18.75% {opacity:0.66;}
+    25% {opacity:1;}
+    31.25% {opacity:1;}
+    37.5% {opacity:0.66;}
+    43.75% {opacity:0.66;}
+    50% {opacity:0.33;}
+    56.25% {opacity:0;}
+    62.5% {opacity:0;} 
+    68.75% {opacity:0;}
+    75% {opacity:0;}
+    81.25% {opacity:0;}
+    87.5% {opacity:0;}
+    93.75% {opacity:0;}
+    100% {opacity:0;}               
+}
+
+@keyframes navbarB {
+    0% {opacity:0;}
+    6.25% {opacity:0;}
+    12.5% {opacity:0;}
+    18.75% {opacity:0;}
+    25% {opacity:0;}
+    31.25% {opacity:0.33;}
+    37.5% {opacity:0.66;}
+    43.75% {opacity:0.66;}
+    50% {opacity:1;}
+    56.25% {opacity:1;}
+    62.5% {opacity:0.66;} 
+    68.75% {opacity:0.66;}
+    75% {opacity:0.33;}
+    81.25% {opacity:0;}
+    87.5% {opacity:0;}
+    93.75% {opacity:0;}
+    100% {opacity:0;}       
+}
+
+@keyframes navbarC {
+    0% {opacity:0;}
+    6.25% {opacity:0;}
+    12.5% {opacity:0;}
+    18.75% {opacity:0;}
+    25% {opacity:0;}
+    31.25% {opacity:0;}
+    37.5% {opacity:0;}
+    43.75% {opacity:0;}
+    50% {opacity:0;}
+    56.25% {opacity:0.33;}
+    62.5% {opacity:0.66;} 
+    68.75% {opacity:0.66;}
+    75% {opacity:1;}
+    81.25% {opacity:1;}
+    87.5% {opacity:0.66;}
+    93.75% {opacity:0.66;}
+    100% {opacity:0.33;}        
+}
+
+.flecheNavbarA
+{
+    animation: 3s linear infinite navbarA;               
+}
+
+.flecheNavbarB
+{
+    animation: 3s linear infinite navbarB;              
+
+}
+
+.flecheNavbarC
+{
+    animation: 3s linear infinite navbarC;           
+}
+
+/* FIN ANIMATION FLECHE NICO */
+
+.sideLink{
+  display: flex;
+  list-style: none;
+  flex-direction: row;
+  width: 70%;
+}
+.sideLink li{
+  flex: 1 1 auto;
+}
+.sideLink a {
+  text-align: start;
+  text-decoration: none;
+  font-size: 25px;
+
+  color: var(--fondMed);
+
+  color: var(--textNavBar);
+
+  display: block;
+  transition: 0.3s;
+}
+.sideLink a:hover{
+  background-color: var(--navLinkBackGround01);
+}
+@media all and (min-width: 800px) {
+  #categorieSideCat{
+    display: none;
+    padding: 0%;
+    background-color: var(--navLinkBackGround01);
+    z-index: 1;
+  }
+  #categorieSideCat a:hover{
+    background-color: var(--navLinkABackground);
+  }
+  #categorieNavBar:hover ~ #categorieSideCat , #categorieSideCat:hover{
+    display: block;
+  }
+  
+}
+
+@media all and (max-width:800px){
+  body{
+    margin-top: 0px;
+    background-color: var(--fondMax);
+  }
+  body header{
+    background-color: var(--fondMax);
+    height: 105px;
+  }
+  .pcTuneBaniere{
+    display: none;
+    top: 0px;
+    border: 3px solid var(--textNavBar);
+  }
+  .boiteFleche{
+    border: none;
+  }
+  /*----------menu burger------------*/
+  .burger-icon{
+    position: fixed;
+    z-index: 11;
+    top: 40px;
+    right: 100px;
+  }
+
+  /* .burger-icon span {
+    display: block;
+    width: 35px;
+    height: 5px;
+    background-color: var(--textNavBar);
+    margin: 6px 10px;
+    cursor: pointer;
+    transition: 0.3s linear;
+  }
+  .burgerBar1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-20%, -10px);
+    border-radius: 30% 30% 0px 0px;
+  }
+  .burgerBar2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-20%, 0px);
+    border-radius: 0%;
+  }
+  .burgerBar3{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-20%, 10px);
+    border-radius: 0px 0px 30% 30%;
+  }
+
+  .burger-icon.ok .burgerBar1{
+    transform:translate(-20%, -0px) rotate(45deg);
+    border-radius: 40%;
+
+
+  }
+  .burger-icon.ok .burgerBar2{
+    width: 0px;
+    border-radius: 100%;
+  }
+  .burger-icon.ok .burgerBar3{
+    transform: translate(-20%, 0px) rotate(-45deg);
+    border-radius: 40%;
+
+  } */
+  /*----------menu burger------------*/
+  body.ok{
+    background-image: radial-gradient();
+  }
+  .sidenav{
+    left: 0.5%;
+    position: fixed;
+    z-index: 5;
+    height: 10%;
+    width: 98%;
+    background-color: var(--backgroundNavBarnumero01);
+    background-image: none;
+    top: -100%;
+    transition: 0.5s linear;
+    border: 3px solid var(--textNavBar);
+  }
+  
+  .sidenav.ok{
+    top: 100px;
+  }
+  .openbtn{
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+  }
+  
+  /* #openbtn{
+    text-decoration: none;
+    color: var(--textNavBar);
+  }
+  
+  #openbtn:hover{
+    cursor: pointer;
+    color: lightgray;
+  } */
+  
+  /*BOUTON THEME SOMBRE DEBUT */
+  
+  /* CONFIGURATION DU BOUTON DE THEME (Nico) */
+  
+  #themeCheck
+  {
+    visibility: hidden;
+  }
+  
+  #themeBox 
+  {    
+    background-color: lightslategray;
+    border:black solid 2px;
+    position:absolute;
+    top:3px;
+    right:3px;
+    width: 100px;
+    height: 40px;
+    border-radius:55px;
+    z-index: 11;	
+  }
+  
+  #themeBox label
+  {
+    visibility: transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100px;
+    height: 40px;	
+    border-radius: 55px;
+    cursor: pointer;	
+  }
+  
+  #themeLabel .curseur 
+  {
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-83%, -50%);
+    z-index: 1;
+    width: 54px;
+    height: 32px;	
+    border-radius: 50px;
+    background-color:var(--fondMax);
+    border:solid var(--texteMed) 2px;
+    transition:0.5s;	
+  }
+  
+  #themeCheck:checked ~ #themeLabel .curseur 
+  {
+    transform: translate(-17%, -50%);
+  }
+  
+  #themeLabel .sun 
+  {
+    background-image:url('../img/soleil.png');
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-150%, -50%);
+    background-size:contain;
+    height: 30px;
+    width:30px;
+  }
+  
+  #themeLabel .moon 
+  {
+      background-image:url('../img/lune.png');
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(50%, -50%);
+      background-size:contain;
+      height: 30px;
+      width:30px;
+  }
+  
+  /*BOUTON THEME SOMBRE FIN */
+  
+  /*DEBUT ANIMATION FLECHE NICO */
+  
+  /* BOITE INVISIBLE QUI CONTIENT LES 3 FLECHES ANIMEES */
+  
+  #ouvrezMoi
+  {
+      display: hidden;
+      position:absolute;
+      top:25px;
+      left:50%;
+      transform:translate(-50%, -50%);
+      cursor:pointer;
+      width:40px;
+      height:40px;
+      border-radius: 50%;
+  }
+  
+  .boiteFleche.ok
+  {
+      top:175px;
+  }
+  
+  /* TROIS FLECHES */
+  .flecheNavbarA, .flecheNavbarB, .flecheNavbarC
+  {
+    display: none;
+  }
+
+  .sideLink{
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+  }
+
+  .sideLink li{
+    flex: 1 1 auto;
+    margin: 0% 0%;
+  }
+  .sideLink a{
+    text-decoration: none;
+    font-size: 10px;
+    color: var(--fondMed);
+  
+    color: var(--textNavBar);
+  
+    display: block;
+    transition: 0.3s;
+  }
+  .sideLink a:hover{
+    background:none;
+  }
+  
+  #categorieSideCat{
+    display: none;
+    padding: 0%;
+    background: none;
+    z-index: 1;
+  }
+  #categorieSideCat.opencat{
+    display: block;
+    background-color: var(--fondMax);
+    justify-self: center;
+  }
+  #categorieSideCat a{
+    font-size: 10px;
+  }
+  #categorieSideCat a:hover{
+    background: none;
+  }
+}
+    /*-------------------------------footer---------------------------------*/
+footer{
+    width: 100%;
+    height: 200px;
+    background-image: linear-gradient(var(--backgroundNavBarnumero02), var(--backgroundNavBarnumero01));
+  }
+  footer a{
+    text-align: center;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+  
+  
+    color: var(--textNavBar);
+  
+    display: block;
+    transition: 0.3s;
+  
+  }
+  footer a:visited{
+    text-align: center;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+  
+  
+    color: var(--textNavBar);
+  
+    display: block;
+    transition: 0.3s;
+  
+  }
+    
+    /*Section principale police d'ecriture et background*/
+    #visionnage{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 15px;
+        background-image: url(../img/backFootball.webp);
+        font-family: Leoscar;
+        letter-spacing: 1px;
+        width: auto;
+    }
+    
+    /*Responsive de la vidéo principale*/
+    #videoVisionnage{
+        position: relative;
+        overflow: hidden;
+        padding-top: 56.25%;
+    }
+
+    #frameSport{
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        border: 0; 
+    }
+    
+    /*Description de la vidéo*/
+    #descriptVisionnage{
+        display: flex;
+        width: auto;
+    }
+    
+    h1{
+        font-size: 40px;
+    }
+    
+    h1, h2, h3{
+        display: inline;
+        background-color: red;
+        border-radius: 5px 10px 0 5px;
+        justify-content: flex-start;
+    }
+    
+    .paragraphe{
+        background-color: #fae4e6;
+        border-radius: 5px 10px 0 5px;
+        width: auto;
+    }
+    /*Bouton dans la description*/
+    .buttonSportVisionnage{
+        float: right;
+        background-color: red;
+        border-radius: 0 10px 0 0;
+        width:150px;
+        line-height:50px;
+        text-align:center;
+        vertical-align:middle;
+        font-family: Leoscar;
+        font-style: bold;
+        font-size: 30px;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition-duration: 1s;
+        }
+    
+    .buttonSportVisionnage:hover{
+        background-color: darkred;
+        font-style: none;
+        border-radius: 0 10px 0 0;
+        width:155px;
+        line-height:55px;
+        }
+
+        /*truc qui devait ressemblait à une sorte de carousel mais qui rend pas trop mal*/
+
+        .carouselVisionnageSport{
+            padding: 1rem 2rem;
+            }
+        
+        ul {
+            margin: 0 0 1.5rem;
+            padding: 0;
+        }
+        
+        li {
+            display: inline-block;
+        }
+    
+        img {
+            height: auto;
+            margin-bottom: .5rem;
+            max-width: calc(100% + 2rem);
+            position: relative;
+            left: -1rem;
+            right: -1rem;
+        }
+    
+        .cardSport {
+            border: 1px solid #bac6d3;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+    
+        .carouselItemsSport {
+            display: flex;
+            overflow-x: scroll;
+            padding: 1rem 0;
+            scroll-snap-type: x mandatory;
+        }
+        .carouselItemSport {
+            margin-left: 1rem;
+            scroll-snap-align: start;
+        }
+    
+        ::-webkit-scrollbar-track {
+            background-color: #F5F5F5;
+        }
+        
+        ::-webkit-scrollbar {
+            height: 6px;
+            background-color: #F5F5F5;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background-color: #3d4852;
+            border-radius: 3px;
+        }
+
+    /*Commentaires*/
+    label{
+        background-color: red;
+        border-radius: 5px 10px 0 5px;
+    }
+    input{
+        background-color:#fae4e6;
+    }
+
+    textarea{
+        background-color: #fae4e6;
+        border-radius: 5px 10px 0 5px;
+    }
+    
+    
+    
+    @media only screen and (max-width:375px){
+    
+    }
+    @media only screen and (max-width:780px){
+
+    }
+    /*Police d'écriture*/
+    @font-face {
+        font-family: Leoscar;
+        src: url(../fonts/Leoscar.ttf);
+    }
+    
+     /*#buttonSportVisionnage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    transition: all 1s;
+    right: 23px;
+    border-radius: 0 10px 0 0;
+    background-color:red ;
+    border: solid black 2px;
+    color:black;
+    width: 120px;
+    height: 60px;
+    font-size: 30px;
+    font-weight: bold;
+    }
+    
+    #buttonSportVisionnage::before{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 10px 0 0;
+    cursor:pointer;
+    background-color:#fae4e6;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 1s;
+    content:"Sport";
+    width: 0%;
+    height: 100%;
+    z-index: 1;
+    }
+    
+    #buttonSportVisionnage:hover::before {
+    width: 100%;
+    } */
+    

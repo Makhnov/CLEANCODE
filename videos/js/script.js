@@ -6,31 +6,55 @@
 
 function themeSwap() {
 
-  const bjbn = document.querySelector('.bjbn')
+  //const bjbn = document.querySelector('.bjbn')
 
   if (document.documentElement.classList.contains("clair")) { 
 
     document.documentElement.classList.add("sombre")
     document.documentElement.classList.remove("clair")    
-    bjbn.innerHTML = "Bonne nuit !"
+    //bjbn.innerHTML = "Bonne nuit !"
 
       } else if (document.documentElement.classList.contains("sombre")) {
-
-      bjbn.innerHTML = "Bonjour !"     
+         
       document.documentElement.classList.add("clair")
-      document.documentElement.classList.remove("sombre") 
+      document.documentElement.classList.remove("sombre")
+      //bjbn.innerHTML = "Bonjour !" 
 
           } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
 
             document.documentElement.classList.add("sombre")
             document.documentElement.classList.remove("clair")
-            bjbn.innerHTML = "Bonne nuit !"
+            //bjbn.innerHTML = "Bonne nuit !"
 
               } else { 
 
               document.documentElement.classList.add("clair")
               document.documentElement.classList.remove("sombre")
-              bjbn.innerHTML = "Bonjour !"
+              //bjbn.innerHTML = "Bonjour !"
+                           
+              }
+}         
+function themeSwapContact() {
+
+  if (document.documentElement.classList.contains("clair")) { 
+
+    document.documentElement.classList.add("sombre")
+    document.documentElement.classList.remove("clair")    
+
+      } else if (document.documentElement.classList.contains("sombre")) {
+
+      document.documentElement.classList.add("clair")
+      document.documentElement.classList.remove("sombre")
+
+          } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+
+            document.documentElement.classList.add("sombre")
+            document.documentElement.classList.remove("clair")
+
+              } else { 
+
+              document.documentElement.classList.add("clair")
+              document.documentElement.classList.remove("sombre")
                            
               }
 }         
@@ -66,19 +90,68 @@ function themeSwapDesk() {
               }
 }         
 
-//Micael
-var sidenav = document.getElementById("mySidenav")
-var opentest = document.getElementById("openbtn")
-var closetest = document.getElementById("closebtn")
+//Micael ajout flechenav (nico)
 
-opentest.onclick = openandclosenav;
+let sidenav = document.getElementById("mySidenav");
+let flechenav = document.getElementById("ouvrezMoi");
+let opentest = document.getElementById("openbtn");
+let closetest = document.getElementById("closebtn");
+let menuBurgerBouton = document.getElementById("openBtnBurger");
+let burgerspan = document.getElementById("burgerspan");
+let bodyColor = document.getElementById("body");
+let catTel = document.getElementById("categorieSideCat");
+let catbarTel = document.getElementById("categorieNavBar");
+var headerAccueil = document.getElementById("headerAccueil")
 
+catbarTel.onclick = function functionopenCate(){
+  if(catTel.classList.contains("opencat")){
+    catTel.classList.remove("opencat");
+  }else{
+    catTel.classList.add("opencat");
+  }
+};
 
 function openandclosenav(){
-    if(sidenav.classList.contains("ok")){
+    if(sidenav.classList.contains("ok"))
+    {
         sidenav.classList.remove("ok")
+        flechenav.classList.remove("ok")
+        burgerspan.classList.remove("ok")
+        bodyColor.classList.remove("ok")
+        headerAccueil.classList.remove("ok")
     }
-    else{
+    else
+    {
         sidenav.classList.add("ok")
+        flechenav.classList.add("ok")
+        burgerspan.classList.add("ok")
+        bodyColor.classList.add("ok")
+        headerAccueil.classList.add("ok")
     }
+}
+
+
+//Tornike// 
+/*var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("mySidenav").style.top = "0";
+  } else {
+    document.getElementById("mySidenav").style.top = "-150px";
+  }
+  prevScrollpos = currentScrollPos;
+}*/
+//Tornike 
+var prevScrollpos = window.pageYOffset;
+window.onscroll = scrollBar;
+function scrollBar() {
+  var currentScrollPos = window.pageYOffset;
+  document.getElementById("mySidenav").style.top =  "0";
+    if (prevScrollpos > currentScrollPos) {
+      document.getElementById("mySidenav").style.top =  "0";
+    } else {
+      document.getElementById("mySidenav").style.top =  "-100px";
+    }
+    prevScrollpos = currentScrollPos;
 }

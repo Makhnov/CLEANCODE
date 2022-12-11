@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <title>Exo Nico</title>
+
+    <meta name="author" content="Nico M">
+    <meta name="description" content="formulaire de contact">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+
+</head>
+
+<body onload="themeSwap()">
+
+    <header>
+        <div class="pcTuneBaniere">
+            <div class="logo" class="conctactLogo">
+            </div>
+            <div class="contactTitre">
+                <p>Formulaire de contact</p>
+            </div>
+        </div>
+        <nav>
+            <!-- BOUTON THEME SOMBRE DEBUT (Nico) -->
+
+            <!-- BOUTON THEME SOMBRE FIN (Nico) -->
+            <p id="openBtnBurger">
+                <span class="burger-icon" id="burgerspan">
+                    <span class="burgerBar1"></span>
+                    <span class="burgerBar2"></span>
+                    <span class="burgerBar3"></span>
+                </span>
+            </p>
+
+            <div id="mySidenav" class="sidenav">
+                <div id="themeBox">
+                    <input id="themeCheck" type="checkbox" value="None" name="themeCheck" onchange="themeSwap()">
+                    <label id="themeLabel" for="themeCheck">
+                        <div class="moon"></div>
+                        <div class="sun"></div>
+                        <div class="curseur"></div>
+                    </label>
+                </div>
+                <ul class="sideLink">
+                    <li><a href="index.html" class="sideNavLienPrincipale">Accueil</a></li>
+                    <li><a href="categorie" class="sideNavLienPrincipale" id="categorieNavBar">Catégorie v</a>
+                        <ul id="categorieSideCat">
+                            <a href="animal.html">Animaux</a>
+                            <a href="dessin_anime.html">Déssin animé</a>
+                            <a href="horreur.html">Horreur</a>
+                            <a href="sport.html">sport</a>
+                        </ul>
+                    </li>
+                    <li><a href="desk.html" class="sideNavLienPrincipale">Contact</a></li>
+                    <li><a href="Inscription.html" class="sideNavLienPrincipale">Inscription</a></li>
+                </ul>
+
+                <div class="openbtn">
+                    <div id="openbtn">
+                        <!-- DEBUT FLECHES ANIMEES (AJOUT NICOM)-->
+                        <div id="ouvrezMoi" class="boiteFleche">
+                            <div class="flecheNavbarA"></div>
+                            <div class="flecheNavbarB"></div>
+                            <div class="flecheNavbarC"></div>
+                        </div>
+                        <!-- FIN FLECHES ANIMEES -->
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="connnexionFormulaire">
+        <div class="connnexionEmpty"></div>
+        <div class="connnexionMain">
+            <h1 class="connnexionMain">Identifiants</h1>
+            <form action="post">
+                <div class="connnexionPseudoPass">
+                    <label for="pseudo">Pseudo:</label>
+                    <input type="text" name="pseudo" id="pseudo" placeholder="Mon pseudo">
+                </div>
+                <div class="connnexionPseudoPass">
+                    <label for="mdp">Mot de passe:</label>
+                    <input type="password" name="mdp" id="mdp" placeholder="Mon mot de passe">
+                </div>
+                <div class="connnexionCB">
+                    <label for="connnexionCheckbox">Se souvenir de moi</label>
+                    <input type="checkbox" name="checkbox" id="connnexionCheckbox">
+                </div>
+                <div class="connnexionButton">
+                    <a href="contactFormulaire.html"><input type="button" value="Connexion" id="connnexionBouton"></a>
+                    <a href="index.html"><input type="button" value="Retour" id="connnexionBouton"></a>
+                </div>
+            </form>
+        </div>
+        <div class="connnexionEmpty"></div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
