@@ -1,0 +1,25 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#scene {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 2899px;
+  width: 3840px;
+  transform: translate(-50%, -50%);
+}
+
+#carte {
+  position: absolute;
+  min-height: 2899px;
+  min-width: 3840px;
+  top: 0;
+  left: 0;
+  background-image: url("../../divers/img/feerune.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}/*# sourceMappingURL=style.css.map */

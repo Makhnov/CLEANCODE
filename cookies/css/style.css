@@ -1,0 +1,24 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-content: center;
+  background-color: antiquewhite;
+}
+body p {
+  display: grid;
+  place-content: center;
+  height: 50px;
+  width: 75px;
+  background-color: bisque;
+  border: 3px solid black;
+  border-radius: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+}/*# sourceMappingURL=style.css.map */

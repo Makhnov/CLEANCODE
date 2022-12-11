@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <title>Admin utilisateurs</title>
+
+    <meta name="author" content="Nico M">
+    <meta name="description" content="TPFIN_JAVASCRIPT">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/x-icon" href="../divers/img/favusers.ico">
+
+</head>
+
+<body>
+    <button id="supprimer" onclick="supprAll()"></button>
+    <button id="valider" onclick="add()"></button>
+    <input id="edition" type="text">
+
+
+
+    <div id="inputBar">
+        <input id="nom" type="text" placeholder="Nom" oninput="validerCheck()"><label for="nom">Nom</label>
+        <input id="prenom" type="text" placeholder="Prenom" oninput="validerCheck()"><label for="prenom">Prenom</label>
+        <input id="age" type="text" placeholder="Age" oninput="validerCheck()"><label for="age">Age</label>
+    </div>
+
+    <div id="users">
+        <div class="intitules">
+            <span>
+                <p onclick="triNom()">Nom</p>
+            </span><span>
+                <p onclick="triPrenom()">Prenom</p>
+            </span><span>
+                <p onclick="triAge()">Age</p>
+            </span>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+
+</body>
+
+</html>

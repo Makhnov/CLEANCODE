@@ -1,0 +1,895 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+body {
+  display: grid;
+  place-content: center;
+  background-color: black;
+}
+
+#defaite {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  height: 100vh;
+  width: 100vw;
+  background-image: url(../../divers/img/defaite.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: scale(0);
+}
+
+#defaite.animFin {
+  -webkit-animation: fin 2s ease-in 6s forwards;
+          animation: fin 2s ease-in 6s forwards;
+}
+
+#victoire {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  height: 100vh;
+  width: 100vw;
+  background-image: url(../../divers/img/victoire.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: scale(0);
+}
+
+#victoire.animFin {
+  -webkit-animation: fin 2s ease-in 6s forwards;
+          animation: fin 2s ease-in 6s forwards;
+}
+
+@-webkit-keyframes fin {
+  from {
+    transform: scale(20);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes fin {
+  from {
+    transform: scale(20);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+#rejouer {
+  position: fixed;
+  z-index: 25;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  transform: translate(-50%, -50%);
+  width: 20vw;
+  height: 20vh;
+  background-color: black;
+  border-radius: 50%;
+  color: whitesmoke;
+  box-shadow: none;
+  -webkit-clip-path: circle(0%);
+          clip-path: circle(0%);
+}
+
+#rejouer:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  color: greenyellow;
+  border-color: greenyellow;
+}
+
+#rejouer.animFin {
+  -webkit-clip-path: circle(0%);
+          clip-path: circle(0%);
+  -webkit-animation: rejouerFin 2s linear 8s forwards;
+          animation: rejouerFin 2s linear 8s forwards;
+}
+
+@-webkit-keyframes rejouerFin {
+  from {
+    -webkit-clip-path: circle(0%);
+            clip-path: circle(0%);
+  }
+  to {
+    -webkit-clip-path: circle(100%);
+            clip-path: circle(100%);
+  }
+}
+
+@keyframes rejouerFin {
+  from {
+    -webkit-clip-path: circle(0%);
+            clip-path: circle(0%);
+  }
+  to {
+    -webkit-clip-path: circle(100%);
+            clip-path: circle(100%);
+  }
+}
+#motA {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+  top: 7.5vh;
+  left: 5vw;
+  text-align: justify;
+  color: whitesmoke;
+  font-size: clamp(12px, 3vw, 36px);
+  opacity: 0;
+  transition: all 2s 1s;
+}
+
+#navBar {
+  position: absolute;
+  height: 45vh;
+  width: 45vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: rgb(42, 42, 42);
+  -webkit-clip-path: circle(100%);
+          clip-path: circle(100%);
+  transition: -webkit-clip-path 1s;
+  transition: clip-path 1s;
+  transition: clip-path 1s, -webkit-clip-path 1s;
+}
+#navBar #jouer {
+  width: 15vw;
+  height: 15vh;
+  overflow: hidden;
+}
+#navBar #regles {
+  width: 15vw;
+  height: 15vh;
+  overflow: hidden;
+}
+
+#reglesBar {
+  position: absolute;
+  height: 45vh;
+  width: 45vw;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: rgb(42, 42, 42);
+  -webkit-clip-path: circle(0%);
+          clip-path: circle(0%);
+  transition: -webkit-clip-path 1s 1s;
+  transition: clip-path 1s 1s;
+  transition: clip-path 1s 1s, -webkit-clip-path 1s 1s;
+  display: grid;
+  place-content: center;
+}
+#reglesBar p {
+  text-align: center;
+  font-size: clamp(8px, 1.2vw, 20px);
+  height: 35vh;
+  width: 40vw;
+  border-radius: 50%;
+  margin: auto;
+  color: white;
+  display: grid;
+  place-content: center;
+}
+#reglesBar #reglesOut {
+  position: fixed;
+  z-index: 10;
+  top: 10vh;
+  left: 48vw;
+  height: 20px;
+  width: 20px;
+  border: 2px solid whitesmoke;
+  border-radius: 50%;
+  -webkit-clip-path: circle(0%);
+          clip-path: circle(0%);
+  transition: all 1s 2s;
+  cursor: pointer;
+  z-index: 10;
+}
+#reglesBar #reglesOut div:nth-of-type(1) {
+  position: relative;
+  height: 10px;
+  width: 2px;
+  background-color: whitesmoke;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+#reglesBar #reglesOut div:nth-of-type(2) {
+  position: relative;
+  height: 10px;
+  width: 2px;
+  background-color: whitesmoke;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% - 10px)) rotate(-45deg);
+}
+
+#pendu {
+  min-width: 90vw;
+  min-height: 80vh;
+  background-color: black;
+  display: grid;
+  grid-template-columns: 45vw 45vw;
+  grid-template-rows: 45vh 45vh;
+  row-gap: 1vh;
+  -moz-column-gap: 1vw;
+       column-gap: 1vw;
+  margin: 4vh 4vw 4vh 4vw;
+}
+
+#mot {
+  grid-row: 1;
+  grid-column: 1;
+  border-radius: 50%;
+  background-color: rgb(42, 42, 42);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-clip-path: circle(0%);
+          clip-path: circle(0%);
+  transition: -webkit-clip-path 1s 1s;
+  transition: clip-path 1s 1s;
+  transition: clip-path 1s 1s, -webkit-clip-path 1s 1s;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 1vw;
+}
+#mot span {
+  flex: 1 1 auto;
+  color: black;
+  background-color: lightgray;
+  border: 1px solid whitesmoke;
+  height: 15vh;
+  width: 3vw;
+  border-radius: 10px;
+  display: grid;
+  place-content: center;
+  font-weight: bold;
+  font-size: 4vw;
+}
+
+@-webkit-keyframes victory {
+  0% {
+    transform: scale(0.75);
+    background-color: lightgray;
+    border: 1px solid whitesmoke;
+  }
+  10% {
+    transform: scale(1.2);
+  }
+  20% {
+    transform: scale(0.75);
+  }
+  30% {
+    transform: scale(1.2);
+  }
+  40% {
+    transform: scale(0.75);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  55% {
+    transform: scale(0.75);
+  }
+  60% {
+    transform: scale(1.2);
+    background-color: greenyellow;
+    border: 3px solid green;
+  }
+  65% {
+    transform: scale(0.75);
+  }
+  70% {
+    transform: scale(1.2);
+    background-color: rgba(172, 255, 47, 0.2);
+    border: 3px solid rgba(0, 128, 0, 0.2);
+  }
+  75% {
+    transform: scale(0.75);
+  }
+  80% {
+    transform: scale(1.2);
+    background-color: greenyellow;
+    border: 3px solid green;
+  }
+  85% {
+    transform: scale(0.75);
+  }
+  90% {
+    transform: scale(1.2);
+    background-color: rgba(172, 255, 47, 0.2);
+    border: 3px solid rgba(0, 128, 0, 0.2);
+  }
+  95% {
+    transform: scale(0.75);
+    background-color: rgba(172, 255, 47, 0.5);
+    border: 3px solid rgba(0, 128, 0, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    background-color: greenyellow;
+    border: 3px solid green;
+  }
+}
+
+@keyframes victory {
+  0% {
+    transform: scale(0.75);
+    background-color: lightgray;
+    border: 1px solid whitesmoke;
+  }
+  10% {
+    transform: scale(1.2);
+  }
+  20% {
+    transform: scale(0.75);
+  }
+  30% {
+    transform: scale(1.2);
+  }
+  40% {
+    transform: scale(0.75);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  55% {
+    transform: scale(0.75);
+  }
+  60% {
+    transform: scale(1.2);
+    background-color: greenyellow;
+    border: 3px solid green;
+  }
+  65% {
+    transform: scale(0.75);
+  }
+  70% {
+    transform: scale(1.2);
+    background-color: rgba(172, 255, 47, 0.2);
+    border: 3px solid rgba(0, 128, 0, 0.2);
+  }
+  75% {
+    transform: scale(0.75);
+  }
+  80% {
+    transform: scale(1.2);
+    background-color: greenyellow;
+    border: 3px solid green;
+  }
+  85% {
+    transform: scale(0.75);
+  }
+  90% {
+    transform: scale(1.2);
+    background-color: rgba(172, 255, 47, 0.2);
+    border: 3px solid rgba(0, 128, 0, 0.2);
+  }
+  95% {
+    transform: scale(0.75);
+    background-color: rgba(172, 255, 47, 0.5);
+    border: 3px solid rgba(0, 128, 0, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    background-color: greenyellow;
+    border: 3px solid green;
+  }
+}
+#penduCanva {
+  grid-row: 1;
+  grid-column: 2;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  background-color: rgb(42, 42, 42);
+  display: grid;
+  place-content: center;
+}
+#penduCanva .penduBox.animation {
+  border-bottom: 5px solid rgba(0, 0, 0, 0);
+  -webkit-animation: borders 2s linear 2s forwards;
+          animation: borders 2s linear 2s forwards;
+}
+#penduCanva .penduBox {
+  height: 35vh;
+  width: 12vw;
+  margin: 20px;
+  border-bottom: 5px solid black;
+}
+#penduCanva .penduBox .poteau {
+  position: relative;
+  height: 35vh;
+  width: 0;
+  border-right: 5px solid black;
+  transform: translate(10vw, 0vh);
+}
+#penduCanva .penduBox .poteau.animation {
+  opacity: 0;
+  border-color: red;
+  -webkit-animation: pendaison 2s linear 3s forwards;
+          animation: pendaison 2s linear 3s forwards;
+}
+#penduCanva .penduBox .barre {
+  position: relative;
+  height: 0;
+  width: 6vw;
+  border-top: 5px solid black;
+  transform: translate(4vw, -35vh);
+}
+#penduCanva .penduBox .barre.animation {
+  opacity: 0;
+  border-color: red;
+  -webkit-animation: pendaison 2s linear 4s forwards;
+          animation: pendaison 2s linear 4s forwards;
+}
+#penduCanva .penduBox .homme {
+  position: relative;
+  height: 20vh;
+  width: 5vw;
+  transform: translate(1.5vw, -35vh);
+  display: grid;
+  align-content: start;
+  justify-content: center;
+}
+#penduCanva .penduBox .homme .corde {
+  position: relative;
+  height: 2vh;
+  width: 0px;
+  border-left: 5px solid black;
+  margin: auto;
+}
+#penduCanva .penduBox .homme .corde.animation {
+  opacity: 0;
+  border-color: red;
+  -webkit-animation: pendaison 2s linear 5s forwards;
+          animation: pendaison 2s linear 5s forwards;
+}
+#penduCanva .penduBox .homme .tete {
+  position: relative;
+  height: 1.5vw;
+  width: 50%;
+  border-radius: 50%;
+  border: 5px solid black;
+  transform: translate(0, 0);
+  margin: auto;
+}
+#penduCanva .penduBox .homme .tete .oeilG1 {
+  opacity: 0;
+  position: relative;
+  height: 0.5vw;
+  width: 0.5vw;
+  border-left: 2px solid black;
+  top: 35%;
+  left: 40%;
+  transform-origin: center;
+  transform: translate(-0.25vw, -1vh) rotate(-45deg);
+}
+#penduCanva .penduBox .homme .tete .oeilG1.animation {
+  opacity: 0;
+  -webkit-animation: pendaisonTete 3s linear 10s forwards;
+          animation: pendaisonTete 3s linear 10s forwards;
+}
+#penduCanva .penduBox .homme .tete .oeilG1.animFin {
+  opacity: 0;
+  -webkit-animation: pendaisonFin 5s linear forwards;
+          animation: pendaisonFin 5s linear forwards;
+}
+#penduCanva .penduBox .homme .tete .oeilG2 {
+  opacity: 0;
+  position: relative;
+  height: 0.5vw;
+  width: 0.5vw;
+  border-bottom: 2px solid black;
+  top: 35%;
+  left: 40%;
+  transform-origin: center;
+  transform: translate(calc(-1px - 0.5vw), calc(-1vh - 0.5vw - 1px)) rotate(-45deg);
+}
+#penduCanva .penduBox .homme .tete .oeilG2.animation {
+  opacity: 0;
+  -webkit-animation: pendaisonTete 3s linear 10s forwards;
+          animation: pendaisonTete 3s linear 10s forwards;
+}
+#penduCanva .penduBox .homme .tete .oeilG2.animFin {
+  opacity: 0;
+  -webkit-animation: pendaisonFin 5s linear forwards;
+          animation: pendaisonFin 5s linear forwards;
+}
+#penduCanva .penduBox .homme .tete .oeilD1 {
+  opacity: 0;
+  position: relative;
+  height: 0.5vw;
+  width: 0.5vw;
+  border-left: 2px solid black;
+  top: 35%;
+  left: 80%;
+  transform-origin: center;
+  transform: translate(-0.25vw, calc(-1vh - 1.075vw)) rotate(-45deg);
+}
+#penduCanva .penduBox .homme .tete .oeilD1.animation {
+  opacity: 0;
+  -webkit-animation: pendaisonTete 3s linear 10s forwards;
+          animation: pendaisonTete 3s linear 10s forwards;
+}
+#penduCanva .penduBox .homme .tete .oeilD1.animFin {
+  opacity: 0;
+  -webkit-animation: pendaisonFin 5s linear forwards;
+          animation: pendaisonFin 5s linear forwards;
+}
+#penduCanva .penduBox .homme .tete .oeilD2 {
+  opacity: 0;
+  position: relative;
+  height: 0.5vw;
+  width: 0.5vw;
+  border-bottom: 2px solid black;
+  top: 35%;
+  left: 80%;
+  transform-origin: center;
+  transform: translate(calc(-1px - 0.5vw), calc(-1vh - 1.575vw - 1px)) rotate(-45deg);
+}
+#penduCanva .penduBox .homme .tete .oeilD2.animation {
+  opacity: 0;
+  -webkit-animation: pendaisonTete 3s linear 10s forwards;
+          animation: pendaisonTete 3s linear 10s forwards;
+}
+#penduCanva .penduBox .homme .tete .oeilD2.animFin {
+  opacity: 0;
+  -webkit-animation: pendaisonFin 5s linear forwards;
+          animation: pendaisonFin 5s linear forwards;
+}
+#penduCanva .penduBox .homme .tete .bouche {
+  position: relative;
+  opacity: 0;
+  height: 1vw;
+  width: 1vw;
+  border-bottom: 2px solid black;
+  left: 0%;
+  top: 0%;
+  transform: translate(0.35vw, -2.2vw);
+}
+#penduCanva .penduBox .homme .tete .bouche.animation {
+  opacity: 0;
+  -webkit-animation: pendaisonTete 3s linear 10s forwards;
+          animation: pendaisonTete 3s linear 10s forwards;
+}
+#penduCanva .penduBox .homme .tete .bouche.animFin {
+  opacity: 0;
+  -webkit-animation: pendaisonFin 5s linear forwards;
+          animation: pendaisonFin 5s linear forwards;
+}
+#penduCanva .penduBox .homme .tete.animation {
+  opacity: 0;
+  border-color: red;
+  -webkit-animation: pendaison 2s linear 6s forwards;
+          animation: pendaison 2s linear 6s forwards;
+}
+#penduCanva .penduBox .homme .bras {
+  flex: none;
+  position: relative;
+  height: 3vw;
+  width: 3vw;
+  border-left: 5px solid black;
+  border-bottom: 5px solid black;
+  transform-origin: center;
+  transform: translate(0, -1.5vw) rotate(-45deg);
+  margin: auto;
+}
+#penduCanva .penduBox .homme .bras.animation {
+  opacity: 0;
+  border-color: red;
+  -webkit-animation: pendaison 2s linear 8s forwards;
+          animation: pendaison 2s linear 8s forwards;
+}
+#penduCanva .penduBox .homme .tronc {
+  position: relative;
+  height: 12vh;
+  width: 0px;
+  border-left: 5px solid black;
+  transform: translate(0, -3vw);
+  margin: auto;
+}
+#penduCanva .penduBox .homme .tronc.animation {
+  opacity: 0;
+  border-color: red;
+  -webkit-animation: pendaison 2s linear 7s forwards;
+          animation: pendaison 2s linear 7s forwards;
+}
+#penduCanva .penduBox .homme .jambes {
+  flex: none;
+  position: relative;
+  height: 3vw;
+  width: 3vw;
+  border-top: 5px solid black;
+  border-right: 5px solid black;
+  transform-origin: center;
+  transform: translate(0, -3vw) rotate(-45deg);
+  margin: auto;
+}
+#penduCanva .penduBox .homme .jambes.animation {
+  opacity: 0;
+  border-color: red;
+  -webkit-animation: pendaison 2s linear 9s forwards;
+          animation: pendaison 2s linear 9s forwards;
+}
+
+@-webkit-keyframes pendaison {
+  0% {
+    opacity: 0;
+    border-color: red;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    border-color: black;
+    opacity: 1;
+  }
+}
+
+@keyframes pendaison {
+  0% {
+    opacity: 0;
+    border-color: red;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    border-color: black;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes pendaisonFin {
+  0% {
+    opacity: 1;
+    border-color: rgb(255, 0, 0);
+  }
+  10% {
+    border-color: rgba(255, 0, 0, 0);
+  }
+  20% {
+    border-color: rgb(255, 0, 0);
+  }
+  30% {
+    border-color: rgba(255, 0, 0, 0);
+  }
+  40% {
+    border-color: rgb(255, 0, 0);
+  }
+  50% {
+    border-color: rgba(255, 0, 0, 0);
+  }
+  60% {
+    border-color: rgb(255, 0, 0);
+  }
+  70% {
+    border-color: rgba(255, 0, 0, 0);
+  }
+  80% {
+    border-color: rgb(255, 0, 0);
+  }
+  90% {
+    border-color: rgba(255, 0, 0, 0);
+  }
+  100% {
+    border-color: rgb(255, 0, 0);
+  }
+}
+@keyframes pendaisonFin {
+  0% {
+    opacity: 1;
+    border-color: rgb(255, 0, 0);
+  }
+  10% {
+    border-color: rgba(255, 0, 0, 0);
+  }
+  20% {
+    border-color: rgb(255, 0, 0);
+  }
+  30% {
+    border-color: rgba(255, 0, 0, 0);
+  }
+  40% {
+    border-color: rgb(255, 0, 0);
+  }
+  50% {
+    border-color: rgba(255, 0, 0, 0);
+  }
+  60% {
+    border-color: rgb(255, 0, 0);
+  }
+  70% {
+    border-color: rgba(255, 0, 0, 0);
+  }
+  80% {
+    border-color: rgb(255, 0, 0);
+  }
+  90% {
+    border-color: rgba(255, 0, 0, 0);
+  }
+  100% {
+    border-color: rgb(255, 0, 0);
+  }
+}
+@-webkit-keyframes pendaisonTete {
+  0% {
+    opacity: 1;
+    border-color: rgb(255, 0, 0);
+  }
+  10% {
+    border-color: rgba(255, 0, 0, 0);
+  }
+  20% {
+    border-color: rgb(255, 0, 0);
+  }
+  30% {
+    border-color: rgba(255, 0, 0, 0);
+  }
+  40% {
+    border-color: rgb(255, 0, 0);
+  }
+  50% {
+    border-color: rgba(255, 0, 0, 0);
+  }
+  60% {
+    border-color: rgb(255, 0, 0);
+  }
+  70% {
+    border-color: rgba(255, 0, 0, 0);
+  }
+  80% {
+    border-color: rgb(255, 0, 0);
+  }
+  100% {
+    border-color: black;
+    opacity: 1;
+  }
+}
+@keyframes pendaisonTete {
+  0% {
+    opacity: 1;
+    border-color: rgb(255, 0, 0);
+  }
+  10% {
+    border-color: rgba(255, 0, 0, 0);
+  }
+  20% {
+    border-color: rgb(255, 0, 0);
+  }
+  30% {
+    border-color: rgba(255, 0, 0, 0);
+  }
+  40% {
+    border-color: rgb(255, 0, 0);
+  }
+  50% {
+    border-color: rgba(255, 0, 0, 0);
+  }
+  60% {
+    border-color: rgb(255, 0, 0);
+  }
+  70% {
+    border-color: rgba(255, 0, 0, 0);
+  }
+  80% {
+    border-color: rgb(255, 0, 0);
+  }
+  100% {
+    border-color: black;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes borders {
+  0% {
+    border-bottom: 5px solid rgba(255, 0, 0, 0);
+  }
+  50% {
+    border-color: red;
+  }
+  100% {
+    border-color: black;
+  }
+}
+@keyframes borders {
+  0% {
+    border-bottom: 5px solid rgba(255, 0, 0, 0);
+  }
+  50% {
+    border-color: red;
+  }
+  100% {
+    border-color: black;
+  }
+}
+#clavier {
+  grid-row: 2;
+  grid-column: 1/span 2;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-content: center;
+}
+
+.clavier {
+  height: 37vh;
+  width: 75vw;
+  border-radius: 50%;
+  background-color: rgb(42, 42, 42);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+}
+
+.ligne {
+  height: 10vh;
+  width: 70vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+}
+
+.ligne1 {
+  margin-left: 1vw;
+}
+
+.ligne2 {
+  margin-left: 2vw;
+}
+
+.ligne3 {
+  margin-left: 3vw;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  border: 1px solid black;
+  height: 8vh;
+  width: 6vw;
+  font-weight: bold;
+  font-size: clamp(12px, 5vw, 200%);
+  text-align: center;
+  vertical-align: center;
+  border-radius: 10px;
+  background-color: black;
+  color: whitesmoke;
+  box-shadow: 1px 1px rgb(160, 160, 160), 2px 1.5px rgb(150, 150, 150), 3px 2px rgb(140, 140, 140), 4px 2.5px rgb(130, 130, 130), 5px 3px rgb(120, 120, 120), 6px 3.5px rgb(110, 110, 110), 7px 4px rgb(100, 100, 100), 8px 4.5px rgb(90, 90, 90), 9px 5px rgb(80, 80, 80), 10px 5.5px rgb(70, 70, 70), 11px 6px rgb(60, 60, 60), 12px 6.5px rgb(50, 50, 50), 13px 7px rgb(40, 40, 40), 14px 7.5px rgb(30, 30, 30), 15px 8px rgb(20, 20, 20), 16px 8.5px rgb(10, 10, 10), 17px 9px rgb(0, 0, 0);
+}
+
+button:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px rgb(160, 160, 160), 2px 1.5px rgb(150, 150, 150), 3px 2px rgb(140, 140, 140), 4px 2.5px rgb(130, 130, 130), 5px 3px rgb(120, 120, 120), 6px 3.5px rgb(100, 100, 100), 7px 4px rgb(80, 80, 80), 8px 4.5px rgb(70, 70, 70), 9px 5px rgb(60, 60, 60), 10px 5.5px rgb(50, 50, 50), 11px 6px rgb(40, 40, 40), 12px 6.5px rgb(20, 20, 20), 13px 7px rgb(10, 10, 10), 14px 7.5px rgb(0, 0, 0);
+}
+
+button:active {
+  transform: translate(7px, 7px);
+  box-shadow: 1px 1px rgb(160, 160, 160), 2px 1.5px rgb(120, 120, 120), 3px 2px rgb(100, 100, 100), 4px 2.5px rgb(80, 80, 80), 5px 3px rgb(60, 60, 60), 6px 3.5px rgb(40, 40, 40), 7px 4px rgb(30, 30, 30), 8px 4.5px rgb(20, 20, 20), 9px 5px rgb(10, 10, 10), 10px 5.5px rgb(0, 0, 0);
+}/*# sourceMappingURL=style.css.map */

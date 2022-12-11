@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <title>Exo Nico</title>
+
+    <meta name="author" content="Nico M" />
+    <meta name="description" content="TP#_LANGAGE" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
+  </head>
+
+  <body>
+    <div id="defaite"></div>
+    <div id="victoire"></div>
+    <button id="rejouer" onclick="rejouer()">Rejouer</button>
+    <p id="motA">Mot à trouver:</p>
+
+    <div id="pendu">
+
+      <div id="reglesBar">
+        <div id="reglesOut" onclick="reglesOut()">
+          <div></div>
+          <div></div>
+        </div>
+        <p>
+          Vous devez trouver un mot du dictionnaire. Pour ce faire il vous
+          suffit de cliquer sur une des lettres du clavier, si cette lettre est
+          dans le mot elle apparaitra à sa place, sinon le dessin du "pendu" va
+          se compléter. Le jeu se termine quand le dessin est complet ou quand
+          vous avez trouvé le mot. La première et la dernière lettre sont
+          offerte, ces deux lettres peuvent être présentes dans le mot.
+        </p>
+      </div>
+
+      <div id="navBar">
+        <button id="jouer" onclick="jouer()">Jouer</button>
+        <button id="regles" onclick="regles()">Règles</button>
+      </div>
+
+      <div id="mot"></div>
+      
+      <div id="penduCanva">
+        <div class="penduBox">
+          <div class="poteau"></div>
+          <div class="barre"></div>
+          <div class="homme">
+            <div class="corde"></div>
+            <div class="tete">
+              <div class="oeilG1"></div>
+              <div class="oeilG2"></div>
+              <div class="oeilD1"></div>
+              <div class="oeilD2"></div>
+              <div class="bouche"></div>
+            </div>
+            <div class="bras"></div>
+            <div class="tronc"></div>
+            <div class="jambes"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="clavier">
+        <div class="clavier">
+          <div class="ligne ligne1">
+            <button onclick="pressKey(this)">A</button>
+            <button onclick="pressKey(this)">Z</button>
+            <button onclick="pressKey(this)">E</button>
+            <button onclick="pressKey(this)">R</button>
+            <button onclick="pressKey(this)">T</button>
+            <button onclick="pressKey(this)">Y</button>
+            <button onclick="pressKey(this)">U</button>
+            <button onclick="pressKey(this)">I</button>
+            <button onclick="pressKey(this)">O</button>
+            <button onclick="pressKey(this)">P</button>
+          </div>
+
+          <div class="ligne ligne2">
+            <button onclick="pressKey(this)">Q</button>
+            <button onclick="pressKey(this)">S</button>
+            <button onclick="pressKey(this)">D</button>
+            <button onclick="pressKey(this)">F</button>
+            <button onclick="pressKey(this)">G</button>
+            <button onclick="pressKey(this)">H</button>
+            <button onclick="pressKey(this)">J</button>
+            <button onclick="pressKey(this)">K</button>
+            <button onclick="pressKey(this)">L</button>
+            <button onclick="pressKey(this)">M</button>
+          </div>
+
+          <div class="ligne ligne3">
+            <button onclick="pressKey(this)">W</button>
+            <button onclick="pressKey(this)">X</button>
+            <button onclick="pressKey(this)">C</button>
+            <button onclick="pressKey(this)">V</button>
+            <button onclick="pressKey(this)">B</button>
+            <button onclick="pressKey(this)">N</button>
+            <button onclick="pressKey(this)">↓</button>
+            <button onclick="pressKey(this)">→</button>
+            <button onclick="pressKey(this)">←</button>
+            <button onclick="pressKey(this)">↑</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>

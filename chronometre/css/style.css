@@ -1,0 +1,213 @@
+@media all {
+  @font-face {
+    font-family: "amaranth";
+    src: url(../../divers/fonts/amaranthRegular.ttf) format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "amaranth";
+    src: url(../../divers/fonts/amaranthBold.ttf) format("truetype");
+    font-weight: bold;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "amaranth";
+    src: url(../../divers/fonts/amaranthItalic.ttf) format("truetype");
+    font-weight: normal;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: "amaranth";
+    src: url(../../divers/fonts/amaranthBoldItalic.ttf) format("truetype");
+    font-weight: bold;
+    font-style: italic;
+  }
+}
+@media all and (max-height: 300px) {
+  body {
+    grid-template-rows: 0.75fr 1fr !important;
+  }
+  body #navBar {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+  }
+  body #navBar #start {
+    min-height: 40px;
+    min-width: 40px;
+    align-self: start;
+  }
+  body #navBar #pause {
+    min-height: 40px;
+    min-width: 40px;
+    align-self: start;
+  }
+  body #navBar #reset {
+    min-height: 20px;
+    min-width: 20px;
+    transform: translate(25px, 20px);
+    align-self: start;
+  }
+  body #scene {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+  }
+}
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(to top left, rgb(75, 125, 255), rgb(125, 125, 255), rgb(125, 75, 255));
+  display: grid;
+  align-content: center;
+  row-gap: 5px;
+  grid-template-columns: 12.5vw 75vw 12.5vw;
+  grid-template-rows: 1fr 1fr 1.5fr 3fr;
+}
+
+#navBar, #scene {
+  min-height: 100%;
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+#navBar {
+  grid-column: 2;
+  grid-row: 3;
+  display: grid;
+  grid-template-columns: 6fr 3fr 6fr;
+  grid-template-rows: 100%;
+  place-content: center;
+}
+#navBar #switch {
+  display: none;
+}
+#navBar #switch:checked ~ #pause {
+  opacity: 1;
+}
+#navBar #switch:checked ~ #reset {
+  visibility: visible;
+}
+#navBar #switch:checked ~ #start {
+  opacity: 0;
+  z-index: 1;
+}
+#navBar #start {
+  all: initial;
+  position: relative;
+  opacity: 1;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  justify-self: center;
+  height: 14vh;
+  width: 14vh;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+  background-image: url("../../divers/img/play.png");
+  background-size: contain;
+  z-index: 3;
+}
+#navBar #start:hover {
+  filter: brightness(1.25);
+}
+#navBar #pause {
+  all: initial;
+  position: relative;
+  opacity: 0;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  justify-self: center;
+  height: 14vh;
+  width: 14vh;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+  background-image: url("../../divers/img/pause.png");
+  background-size: contain;
+  z-index: 2;
+}
+#navBar #pause:hover {
+  filter: brightness(1.25);
+}
+#navBar #reset {
+  all: initial;
+  position: relative;
+  visibility: hidden;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  justify-self: center;
+  height: 6vh;
+  width: 6vh;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+  transform: translate(8vh, 4vh);
+  z-index: 2;
+  background-image: url("../../divers/img/reset.png");
+  background-size: contain;
+  z-index: 2;
+}
+#navBar #reset:hover {
+  filter: brightness(1.25);
+}
+
+#scene {
+  grid-column: 2;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 3fr 2fr 3fr;
+  grid-template-rows: 100%;
+}
+#scene .chrono {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  justify-self: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+#scene .chrono p {
+  flex: 0 0 auto;
+  align-self: end;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0px;
+  margin: 0;
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: "amaranth";
+  box-sizing: border-box;
+  width: 15px;
+  display: grid;
+  place-content: center;
+}
+#scene .chrono P.time {
+  width: 55px;
+}
+#scene .chrono p:nth-of-type(6), #scene .chrono p.ms {
+  font-size: 1.5rem;
+  align-self: end;
+  transform: translate(0, -0.3333333333rem);
+  width: 45px;
+  overflow: visible;
+  max-width: inherit;
+  justify-content: flex-start;
+  padding-left: 2px;
+}
+#scene .chrono p:nth-of-type(6) {
+  width: 10px;
+}/*# sourceMappingURL=style.css.map */

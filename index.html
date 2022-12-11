@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <title>Bibli TP_Nico</title>
+
+    <meta name="author" content="Nico M">
+    <meta name="description" content="TP_JS">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./divers/img/favbibli.ico" />
+
+</head>
+
+<body>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: bisque;
+            overflow-x: hidden;
+
+        }
+
+        #scene {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: justify;
+            overflow-y: scroll;
+        }
+
+        a {
+            all: initial;
+            width: fit-content;
+            height: 60px;
+            margin-left: 5%;
+            padding: 3px;
+            cursor: pointer;
+            border: 2px solid black;
+            background-color: blanchedalmond;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            display: grid;
+            align-content: start;
+        }
+
+        a:hover {
+            background-color: antiquewhite;
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            left: 1%;
+            height: 30px;
+            width: 30px;
+            background-image: url('https://www.icone-png.com/png/54/54106.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        a:hover::after {
+            transform: scale(2);
+        }
+    </style>
+
+    <div id="scene">
+        <a href="./kasbrik/"><strong>Casse-brique </strong>
+            (En cours, position OK, rebonds, OK, calculs OK)</a>
+        <a href="./cookies/"><strong>Cookies </strong>
+            (Incrémentation à chaque visite)</a>
+        <a href="./pendu/"><strong>Pendu </strong>
+            (Quasi terminé, manque affichage du mot pour les perdants...)</a>
+        <a href="./rangebars/"><strong>Range Bars </strong>
+            (Modifications de style en JS)</a>
+        <a href="./todolist/"><strong>TO-DO-LISTE </strong>
+            Version finale. Options en cours (modifications, highlight...)</a>
+        <a href="./canard/"><strong>Anim Canard </strong>
+            (Canard qui saute ! Ma première Keyframe)</a>
+        <a href="./chronometre/"><strong>Chronometre </strong>
+            ne fonctionne pas sur Firefox (Chrome only)</a>
+        <a href="./utilisateurs/"><strong>Panneau administrateur </strong>
+            Ajouter, trier, enlever des utilisateurs (tp fin JS)</a>
+        <a href="./conseil/"><strong>Salle du conseil </strong>
+            Jeu de rôle, présentation de personnages (affichage dynamique)</a>
+        <a href="./faerub=n/"><strong>Carte des Royaumes Oubliés </strong>
+            Jeu de rôle, présentation de l'univers</a>
+
+        <!--<a href="./TPDivers/">TP Divers</a> -->
+    </div>
+</body>
+
+</html>
