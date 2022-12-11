@@ -1,0 +1,247 @@
+@font-face {
+  font-family: "libreBaskerville";
+  src: url("../fonts/LibreBaskerville-Regular.ttf") format("truetype"),
+    url("../fonts/LibreBaskerville-Bold.ttf") format("truetype"),
+    url("../fonts/LibreBaskerville-Italic.ttf") format("truetype");
+}
+
+body {
+  font-family: "libreBaskerville", sans-serif;
+
+  background-color: blanchedalmond;
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  top: -80px;
+  border-radius: 20px;
+}
+
+h2 {
+  bottom: -80px;
+  border-radius: 15px;
+}
+
+h1::after {
+  content: "Tél : 00 11 22 33 44";
+  border-radius: 20px;
+}
+
+h2::after {
+  content: "madame.michu@drh.societe.fr";
+  border-radius: 15px;
+}
+
+h1::after,
+h2::after {
+  transform-origin: left;
+  transform: rotateX(180deg);
+  left: 0px;
+  background-color: rgb(68, 111, 218);
+  border: 2px solid black;
+}
+
+h1,
+h2,
+h1::after,
+h2::after {
+  position: absolute;
+  text-align: center;
+  height: auto;
+  width: 400px;
+  border: 2px solid black;
+
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.circle:hover h1,
+.circle:hover h2::after {
+  transform: rotateX(180deg);
+  transition: 1s ease-in;
+}
+
+.circle:hover h2,
+.circle:hover h1::after {
+  transform: rotateX(180deg);
+  transition: 1s ease-in;
+}
+
+p {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.bottomLeft p {
+  font-size: 1.2em;
+  right: 0px;
+  top: 80px;
+}
+
+.bottomRight p {
+  font-size: 1.2em;
+  left: 0px;
+  top: 80px;
+}
+
+.face img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 200px;
+  width: 200px;
+  backface-visibility: hidden;
+}
+
+.pile {
+  background-color: rgb(68, 111, 218);
+}
+
+/* .pile a {
+  opacity: 0.5;
+}
+
+.pile a:hover {
+  opacity: 1;
+} */
+
+.pile img {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+}
+
+.pile.topLeft img {
+  top: 100px;
+  left: 100px;
+}
+
+.pile.topRight img {
+  top: 100px;
+  left: 0px;
+}
+
+.pile.bottomLeft img {
+  top: 0px;
+  left: 100px;
+}
+
+.pile.bottomright img {
+  top: 0px;
+  left: 0px;
+}
+
+.circle {
+  height: 400px;
+  width: 400px;
+  border-radius: 50%;
+  border: 5px solid black;
+
+  display: grid;
+  grid-template-rows: 200px 200px;
+  grid-template-columns: 200px 200px;
+
+  perspective: 2000px;
+  perspective-origin: top;
+
+  cursor: pointer;
+}
+
+.quart {
+  height: 200px;
+  width: 200px;
+  transition: 1s cubic-bezier(0.2, 0, 1, 1);
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.topLeft,
+.topLeft img {
+  border-radius: 100% 0 0 0;
+}
+
+.topRight,
+.topRight img {
+  border-radius: 0 100% 0 0;
+}
+
+.bottomRight,
+.bottomRight img {
+  border-radius: 0 0 100% 0;
+}
+
+.bottomLeft,
+.bottomLeft img {
+  border-radius: 0 0 0 100%;
+}
+
+.boite.topLeft {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.element.face {
+  position: absolute;
+}
+
+.circle:hover .face.topRight {
+  transform: rotate3d(1, 1, 0, 180deg);
+  background-color: none;
+}
+
+.element.pile.topRight {
+  transform: rotate3d(-1, -1, 0, 180deg);
+  position: absolute;
+}
+
+.circle:hover .pile.topRight {
+  transform: rotate3d(1, 1, 0, 0deg);
+}
+
+.circle:hover .face.topLeft {
+  transform: rotate3d(-1, 1, 0, -180deg);
+  background-color: none;
+}
+
+.element.pile.topLeft {
+  transform: rotate3d(1, -1, 0, 180deg);
+  position: absolute;
+}
+
+.circle:hover .pile.topLeft {
+  transform: rotate3d(-1, 1, 0, 0deg);
+}
+
+.circle:hover .face.bottomLeft {
+  transform: rotate3d(-1, -1, 0, -180deg);
+  background-color: none;
+}
+
+.element.pile.bottomLeft {
+  transform: rotate3d(1, 1, 0, 180deg);
+  position: absolute;
+}
+
+.circle:hover .pile.bottomLeft {
+  transform: rotate3d(-1, -1, 0, 0deg);
+}
+
+.circle:hover .face.bottomRight {
+  transform: rotate3d(1, -1, 0, 180deg);
+  background-color: none;
+}
+
+.element.pile.bottomRight {
+  transform: rotate3d(-1, 1, 0, 180deg);
+  position: absolute;
+}
+
+.circle:hover .pile.bottomRight {
+  transform: rotate3d(1, -1, 0, 0deg);
+}
