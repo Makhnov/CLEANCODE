@@ -1,0 +1,142 @@
+/* MODE PAR DEFAUT ou SCHEME LIGHT ou MODE CLAIR */
+:root, :root.clair 
+{
+  --backgroundNavBar:
+  --texteMax: black;
+  --texteMin:lightslategrey;
+  --fondMax: #fefefe;
+  --fondMed: rgb(178, 178, 178);
+  --fondMin: rgb(223, 183, 130);
+  --texteBleu: rgb(24, 46, 216);
+  --bordureParagraphe: lightblue;
+}
+
+/* SCHEME DARK */
+
+@media (prefers-color-scheme: dark) 
+{
+  :root 
+  {
+    --texteMax: #fefefe;
+    --texteMin:rgb(223, 183, 130);
+    --fondMax: black;
+    --fondMed:rgb(50, 54, 58);
+    --fondMin:rgb(23, 28, 32);
+    --texteBleu: rgb(69, 89, 181);
+    --bordureParagraphe: darkblue;
+  }
+}
+
+/* MODE SOMBRE */
+
+:root.sombre 
+{
+  --texteMax: #fefefe;
+  --texteMin:rgb(223, 183, 130);
+  --fondMax: black;
+  --fondMed: rgb(50, 54, 58);
+  --fondMin:rgb(23, 28, 32);
+  --texteBleu: rgb(69, 89, 181);
+  --bordureParagraphe: darkblue;
+  
+}
+
+/* COMMANDES GLOBALES */
+
+a, a:visited 
+{
+  color: var(--texteBleu);
+  font-size : 1.2em;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover 
+{
+  font-size: 1.3em;  
+}
+
+/* .bjbn, .abat */
+/* { */
+  /* text-align: center; */
+  /* height:50px; */
+  /* width: 300px; */
+  /* border-radius: 100px; */
+  /* padding-top: 10px; */
+  /* margin-top:20px ; */
+  /* background-color:var(--fondMed); */
+  /* border:solid var(--texteMax) 5px; */
+/* } */
+
+/*NavBar*/
+body{
+  margin: 0;
+}
+
+.sidenav{
+  position: fixed;
+  z-index: 10;
+  height: 200px;
+  width: 100%;
+  background-image: linear-gradient(black, rgb(100, 100, 100));
+  top: -150px;
+  transition: 1s;
+  
+}
+.sidenav.ok{
+  top: 0;
+}
+.openbtn{
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  text-align: center;
+}
+#openbtn{
+  text-decoration: none;
+  color: #fff6d9;
+}
+#openbtn:hover{
+  cursor: pointer;
+  color: lightgray;
+}
+
+.sideLink{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  list-style: none;
+}
+.sideLink a{
+  text-align: center;
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #fff6d9;
+  display: block;
+  transition: 0.3s;
+}
+.sideLink a:hover{
+  background-color: rgb(95, 95, 95);
+}
+
+#categorieSideCat{
+  display: none;
+  padding: 0%;
+  background-color: rgb(95, 95, 95);
+  z-index: 1;
+}
+#categorieSideCat a:hover{
+  background-color: rgb(150, 150, 150);
+}
+#categorieNavBar:hover ~ #categorieSideCat , #categorieSideCat:hover{
+  display: block;
+}
+
+#test{
+  height: 200px;
+  width: 200px;
+  margin-top: 75px;
+  background-color: aqua;
+}
