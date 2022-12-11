@@ -1251,62 +1251,62 @@ box-shadow: 0 0 25px 10px var(--fondMin);
 
 .carteUne.CarteAnimaux, .carteQuatre.CarteAnimaux
 {
-  background-image:url(/img/animaux1.jpg);
+  background-image:url('../img/animaux1.jpg');
 } 
 
 .carteDeux.CarteAnimaux, .carteCinq.CarteAnimaux
 {
-  background-image:url(/img/animaux2.jpg);
+  background-image:url('../img/animaux2.jpg');
 }
 
 .cartetrois.CarteAnimaux, .carteSix.CarteAnimaux
 {
-  background-image:url(/img/animaux3.jpg);
+  background-image:url('../img/animaux3.jpg');
 }
 
 .carteUne.CarteDessin, .carteQuatre.CarteDessin
 {
-  background-image:url(/img/dessinanime1.jpg);
+  background-image:url('../img/dessinanime1.jpg');
 } 
 
 .carteDeux.CarteDessin, .carteCinq.CarteDessin
 {
-  background-image:url(/img/dessinanime2.jpg);
+  background-image:url('../img/animaux2.jpg');
 }
 
 .cartetrois.CarteDessin, .carteSix.CarteDessin
 {
-  background-image:url(/img/dessinanime3.jpg);
+  background-image:url('../img/animaux3.jpg');
 }
 
 .carteUne.CarteHorreur, .carteQuatre.CarteHorreur
 {
-  background-image:url(/img/horreur1.jpg);
+  background-image:url('../img/horreur1.jpg');
 } 
 
 .carteDeux.CarteHorreur, .carteCinq.CarteHorreur
 {
-  background-image:url(/img/horreur2.jpg);
+  background-image:url('../img/horreur2.jpg');
 }
 
 .cartetrois.CarteHorreur, .carteSix.CarteHorreur
 {
-  background-image:url(/img/horreur3.jpg);
+  background-image:url('../img/horreur3.jpg');
 }
 
 .carteUne.CarteSport, .carteQuatre.CarteSport
 {
-  background-image:url(/img/sport1.jpg);
+  background-image:url('../img/sport1.jpg');
 } 
 
 .carteDeux.CarteSport, .carteCinq.CarteSport
 {
-  background-image:url(/img/sport2.jpg);
+  background-image:url('../img/sport2.jpg');
 }
 
 .cartetrois.CarteSport, .carteSix.CarteSport
 {
-  background-image:url(/img/sport3.jpg);
+  background-image:url('../img/sport3.jpg');
 }
 
 /* LES BOUTONS DE SELCTIONS DE VIDEOS */
