@@ -15,7 +15,7 @@ body {
   z-index: 10;
   top: 10px;
   left: 10px;
-  background-image: url("../../../divers/img/mouse.png");
+  background-image: url("../../divers/img/mouse.png");
   background-repeat: no-repeat;
   background-size: contain;
   height: 100px;
@@ -24,7 +24,7 @@ body {
 
 #loupe {
   position: relative;
-  background: url("../../../divers/img/ustou.jpg") 100% 100% no-repeat fixed;
+  background: url("../../divers/img/ustou.jpg") 100% 100% no-repeat fixed;
   background-size: cover;
   top: 50%;
   left: 50%;

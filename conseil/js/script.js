@@ -1,42 +1,63 @@
-// let zoom = 1;
+let space = " ";
+let br = "\n";
+let obj;
 
-// function zoomIn() {
-//   zoom += 0.1;
-//   document.getElementById("scene").style.transform =
-//     "translate(-50%, -50%) scale(" + zoom + ")";
-// }
+class MembresConseil {
+  constructor(id, nom, image, titre, role, description) {
+      this.id = id;
+      this.nom = nom;
+      this.image = image;
+      this.titre = titre; 
+      this.role = role;
+      this.description = description;
+  }
 
-// function zoomOut() {
-//   zoom -= 0.1;
-//   document.getElementById("scene").style.transform =
-//     "translate(-50%, -50%) scale(" + zoom + ")";
-// }
+  toString() {
+    return "Id :"+ space + this.id + space +"- Nom :" + space + this.nom + space + "- Titre :" + space + this.titre + space + "- Role :" + space + this.role + space + "- Description :" + space + this.description + space + "- url(image) :" + space + this.image;
+  }
 
-// function zoomInit() {
-//   if (innerWidth / innerHeight < 1.25) {
-//     let largeur = window.innerWidth / 2560;
-//     let hauteur = (window.innerWidth * (9 / 16)) / 1440;
-//     document.getElementById("scene").style.transform =
-//       "translate(-50%, -50%) scale(" + largeur + ", " + hauteur + ")";
-//     zoom = hauteur;
-//   } else if (innerWidth / innerHeight > 2.5) {
-//     let largeur = (window.innerHeight * (16 / 9)) / 2560;
-//     let hauteur = window.innerHeight / 1440;
-//     document.getElementById("scene").style.transform =
-//       "translate(-50%, -50%) scale(" + largeur + ", " + hauteur + ")";
-//     zoom = largeur;
-//   } else {
-//     let largeur = window.innerWidth / 2560;
-//     let hauteur = window.innerHeight / 1440;
-//     document.getElementById("scene").style.transform =
-//       "translate(-50%, -50%) scale(" + largeur + ", " + hauteur + ")";
-//     zoom = largeur;
-//   }
-// }
+  getNom() {
+      return this.nom;
+  }
 
-let ResizeTimer;
+  getTitre() {
+      return this.titre;
+  }
 
-function test() {
+  getRole() {
+      return this.role;
+  }
+
+  getDescription() {
+    return this.description;
+  }
+
+  getImage() {
+      return this.image;
+  }
+
+  setNom(info) {
+      this.nom = info;
+  }
+
+  setTitre(info) {
+      this.titre = info;
+  }
+
+  setRole(info) {
+      this.role = info;
+  }
+
+  setDescription(info) {
+    this.description = info;
+  }
+
+  setImage(info) {
+      this.image = info;
+  }
+}
+
+function resize() {
   if (innerWidth / innerHeight < 1.25) {
     let largeur = window.innerWidth / 2560;
     let hauteur = (window.innerWidth * (9 / 16)) / 1440;
@@ -56,62 +77,52 @@ function test() {
 }
 
 window.onresize = function () {
-  clearTimeout(ResizeTimer);
-  ResizeTimer = setTimeout(function () {
-    test();
-  }, 500);
+  const mp = document.getElementsByClassName('mainPage').length;
+  if (mp > 0) {
+    let resizeTimer; 
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      resize();
+    }, 500);
+  }
 };
 
-/*
-async function requete() {
-  return new Promise((resolve, reject) => {
-      let requete = new XMLHttpRequest();
-      requete.open("GET", '../test.php');
-      requete.responseType = "json";
-      requete.send();
-      requete.onload = function () {
-          if (requete.status != 200) {
-              reject(new Error("Error uploading file"));
-          } else {                
-              resolve(requete.response);
-          }
-      }
-  });
+async function getBdd(n) {
+  //récupéation du json
+  const list = await fetch('https://makh.fr/conseil/index2.php');
+  //convertion en tableau
+  const tabTemp = await list.json();
+  obj = tabTemp[n];
+
+  let membre = new MembresConseil(n, obj.nom, obj.img, obj.titre, obj.role, obj.description);
+
+  const h1 = document.getElementsByTagName('h1')[0];
+  const h2 = document.getElementsByTagName('h2')[0];
+  const h3 = document.getElementsByTagName('h3')[0];
+  const para = document.getElementsByTagName('p')[0];
+  const img = document.getElementById('imageConseil');
+
+  console.log(obj);
+
+  let nom = membre.getNom();
+  let titre = membre.getTitre();
+  let role = membre.getRole();
+  let description = membre.getDescription();
+  let url = membre.getImage();
+
+  console.log(membre);
+  h1.textContent =nom;
+  console.log(nom);
+  h2.textContent = titre;
+  console.log(titre);
+  h3.textContent = role;
+  console.log(role);
+  para.textContent = description;
+  console.log(description);
+  img.style.backgroundImage = "url(\'"+url+"\')";
+  console.log(url);
 }
 
-async function download () {
-  await requete().then(membres => {
-      tableau(membres);
-  }).catch(() =>{
-      console.log("Echecs");
-  });
-}
 
-function tableau(membres) {
 
-  for (i = 0; i < membres.length; i++) {
-      membresTemp = new MembresConseil(membresTemp[i].id, membresTemp[i].nom, membresTemp[i].image, membresTemp[i].titre, membresTemp[i].role, membresTemp[i].description);
-      tab.push(membresTemp);
-  }
-
-  return console.log(tableau(tab));
-}
-*/
-
-let tab = [];
-let membresTemp;
-
-class MembresConseil {
-    constructor(id, nom, image, titre, role, description) {
-        this.id = id;
-        this.nom = nom;
-        this.image = image;
-        this.titre = titre; 
-        this.role = role;
-        this.description = description;
-    }
-}
-
-let data = document.getElementById('data').textContent;
-console.Log(data);
 

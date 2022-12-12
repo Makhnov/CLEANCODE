@@ -11,35 +11,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="./js/script.js"></script>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" type="image/x-icon" href="./img/divers/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../../divers/img/favdnd.ico">
 
 </head>
 
-<body class="bodyConseil">
+<body onload="getBdd(0)" class="bodyConseil">
 
     <header>
+        <nav>
+            <a href="../index.html" class="retour"></a>
 
-        <nav> <a href="../index.html" class="retour"></a></nav>
-
+            <form method="GET" action="../index2.php">
+                <input type="text" name="description">
+                <input type="text" name="id">
+                <input type="submit" value="update">
+            </form>
+        </nav>
     </header>
 
     <div class="sceneConseil">
-        <div class="txtConseil">
-            <h1>ADHEMAR</h1>
-            <h3>Chef du renseignement. Responsable de la formation des roublards</h3>
-                <form method="GET" action="../index2.php">
-                    <input type="text" name="description"> 
-                    <input type="text" name="id">
-                    <input type="submit" value="update">
-                </form>
-           
+        <img id="imgNom" class="imgMembre" src="../../divers/img/dndNom.png" alt="Logo DnD">
+        <div id="zoneNom">
+            <h1></h1>
+            <h2></h2>
         </div>
-        <div class="imageConseil"><img src="/img/conseil/Adhémar.jpg" alt=""></div>
+        <img id="imgRole" class="imgMembre" src="../../divers/img/dndRole.png" alt="Logo DnD">
+        <img id="imgDescription" class="imgMembre" src="../../divers/img/dndDescription.png" alt="Logo DnD">
+        <h3></h3>
+        <p></p>
+        <div id="imageConseil"></div>
     </div>
 
-
+    <script src="../js/script.js"></script>
 </body>
 
 </html>
