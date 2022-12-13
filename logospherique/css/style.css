@@ -1,0 +1,356 @@
+/* -------------------------------------- MISE EN FORME GENERALE DE LA PAGE -------------------------------------- */
+html,
+body {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+header {
+  display: block;
+  min-height: 100px;
+  width: 100vw;
+  background: linear-gradient(to bottom, rgb(44, 86, 110), rgb(3, 192, 192));
+}
+
+/* ---------------------------------------------------------------------------- LOGO SPHERIQUE EN HAUT A DROITE ---------------------------------------------------------------------------- */
+/* -------------------------------------- LA SPHERE ET SON OMBRE -------------------------------------- */
+.sphere {
+  position: absolute;
+  cursor: pointer;
+  top: 50px;
+  right: 50px;
+  transform: translate(-50%, -50%);
+  background-color: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  z-index: 1000;
+  opacity: 1;
+}
+
+.sphereObjet {
+  position: absolute;
+  background: radial-gradient(circle at 20% 20%, rgba(200, 250, 250, 0.33), rgba(0, 200, 200, 0.33));
+  box-shadow: inset -5px -5px 10px rgb(0, 0, 0);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  margin: 0 auto;
+  z-index: 1000;
+}
+
+.ombreSphere {
+  position: absolute;
+  top: 95%;
+  left: 78%;
+  transform: translate(-50%, -50%);
+  width: 150%;
+  height: 20%;
+  background: radial-gradient(black, rgba(255, 255, 255, 0) 72%);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* -------------------------------------- L'OMBRE DE LA CROIX (ET SON ANIMATION) -------------------------------------- */
+.ombreCroix {
+  position: absolute;
+  top: 92.5%;
+  left: 110%;
+  width: 100%;
+  height: 15%;
+  background: radial-gradient(black, rgba(255, 255, 255, 0) 50%);
+  -webkit-animation: ombre 20s infinite linear;
+          animation: ombre 20s infinite linear;
+}
+
+@-webkit-keyframes ombre {
+  0% {
+    transform: translate(-50%, -50%) scale(0.75);
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(1.75);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.75);
+  }
+  75% {
+    transform: translate(-50%, -50%) scale(1.75);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.75);
+  }
+}
+
+@keyframes ombre {
+  0% {
+    transform: translate(-50%, -50%) scale(0.75);
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(1.75);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.75);
+  }
+  75% {
+    transform: translate(-50%, -50%) scale(1.75);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.75);
+  }
+}
+/* -------------------------------------- LES CONTENANTS (INVISIBLES) -------------------------------------- */
+.sphereBox {
+  position: absolute;
+  overflow: hidden;
+  top: 50px;
+  right: 50px;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  perspective: 2000px;
+}
+
+.croix {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transform-style: preserve-3d;
+  -webkit-animation: croix 20s infinite linear;
+          animation: croix 20s infinite linear;
+  transition: 2s;
+}
+
+/* -------------------------------------- LA CROIX -------------------------------------- */
+/* FACES GENERALITES ET ROTATIONS */
+.face {
+  position: absolute;
+  height: 33.3333333333%;
+  width: 33.3333333333%;
+  background: rgb(0, 150, 25);
+  box-shadow: 0 0 10px 2px rgba(50, 200, 50, 0.5);
+}
+
+.cubeCentre.face,
+.cubeBas.faceHaut,
+.cubeHaut.faceBas,
+.cubeGauche.faceDroite,
+.cubeDroite.faceGauche,
+.faceArriere,
+.faceAvant {
+  box-shadow: none;
+}
+
+.faceAvant {
+  transform: rotateY(0deg) translateZ(5px);
+}
+
+.faceArriere {
+  transform: rotateX(180deg) translateZ(5px);
+}
+
+.faceDroite {
+  transform: rotateY(90deg) translateZ(25px);
+}
+
+.faceGauche {
+  transform: rotateY(-90deg) translateZ(25px);
+}
+
+.faceHaut {
+  transform: rotateX(90deg) translateZ(25px);
+}
+
+.faceBas {
+  transform: rotateX(-90deg) translateZ(25px);
+}
+
+/* POSITIONNEMENT GENERAL DES FACES */
+.faceDroite,
+.faceGauche {
+  height: 33.3333333333%;
+  width: 20%;
+}
+
+.faceHaut,
+.faceBas {
+  height: 20%;
+  width: 33.3333333333%;
+}
+
+/* REPOSITIONNEMENT SPECIFIQUE DE CERTAINES FACES */
+.cubeHaut.face {
+  top: 0;
+  left: 33.3333333333%;
+  z-index: 3;
+}
+
+.cubeCentre.face {
+  top: 33.3333333333%;
+  left: 33.3333333333%;
+  z-index: 1;
+}
+
+.cubeGauche.face {
+  top: 33.3333333333%;
+  left: 0;
+  z-index: 2;
+}
+
+.cubeDroite.face {
+  top: 33.3333333333%;
+  left: 66.6666666667%;
+}
+
+.cubeBas.face {
+  top: 66.6666666667%;
+  left: 33.3333333333%;
+}
+
+.cubeHaut.faceHaut,
+.cubeBas.faceBas {
+  top: 40%;
+}
+
+.cubeGauche.faceGauche,
+.cubeDroite.faceDroite {
+  left: 40%;
+}
+
+.cubeHaut.faceGauche,
+.cubeBas.faceGauche {
+  left: 73.3333333333%;
+}
+
+.cubeHaut.faceDroite,
+.cubeBas.faceDroite {
+  left: 6.6666666667%;
+}
+
+.cubeGauche.faceHaut,
+.cubeDroite.faceHaut {
+  top: 73.3333333333%;
+}
+
+.cubeGauche.faceBas,
+.cubeDroite.faceBas {
+  top: 6.6666666667%;
+}
+
+/* -------------------------------------- ANIMATION DE LA CROIX -------------------------------------- */
+@-webkit-keyframes croix {
+  0% {
+    transform: scale(0.92) translateZ(0px) rotateY(360deg) rotateZ(0deg) rotateX(90deg);
+  }
+  50% {
+    transform: scale(0.92) translateZ(0px) rotateY(180deg) rotateZ(180deg) rotateX(90deg);
+  }
+  100% {
+    transform: scale(0.92) translateZ(0px) rotateY(0deg) rotateZ(360deg) rotateX(90deg);
+  }
+}
+@keyframes croix {
+  0% {
+    transform: scale(0.92) translateZ(0px) rotateY(360deg) rotateZ(0deg) rotateX(90deg);
+  }
+  50% {
+    transform: scale(0.92) translateZ(0px) rotateY(180deg) rotateZ(180deg) rotateX(90deg);
+  }
+  100% {
+    transform: scale(0.92) translateZ(0px) rotateY(0deg) rotateZ(360deg) rotateX(90deg);
+  }
+}
+/* -------------------------------------- HOVER DE LA SPHERE ET DE LA CROIX -------------------------------------- */
+.sphere:hover {
+  opacity: 0;
+  transition: 2s;
+}
+
+.sphere:hover ~ .sphereBox {
+  overflow: visible;
+}
+
+.sphere:hover ~ .sphereBox .croix {
+  -webkit-animation: hoverCroix 2s ease-out;
+          animation: hoverCroix 2s ease-out;
+  transform: scale(1.1) translateZ(0px) rotateY(-35deg) rotateZ(-5deg) rotateX(5deg);
+}
+
+.sphere:hover ~ .sphereBox .ombreHover1 {
+  position: absolute;
+  top: 95%;
+  left: -5%;
+  width: 150%;
+  height: 15%;
+  background: radial-gradient(black, rgba(255, 255, 255, 0) 35%);
+  z-index: 0;
+  -webkit-animation: hoverOmbre1 2s ease-out;
+          animation: hoverOmbre1 2s ease-out;
+  transform: scale(1.8) translate3d(11%, -65%, 0) rotateY(200deg) rotateZ(21deg) rotateX(0deg);
+}
+
+.sphere:hover ~ .sphereBox .ombreHover2 {
+  position: absolute;
+  top: 95%;
+  left: -5%;
+  width: 150%;
+  height: 15%;
+  background: radial-gradient(black, rgba(0, 0, 0, 0) 30%);
+  z-index: 0;
+  -webkit-animation: hoverOmbre2 2s ease-out;
+          animation: hoverOmbre2 2s ease-out;
+  transform: scale(1.8) translate3d(18%, -90%, 0) rotateY(20deg) rotateZ(-4deg) rotateX(0deg);
+}
+
+/* -------------------------------------- ANIMATIONS DU HOVER (LA CROIX ET SON OMBRE) -------------------------------------- */
+@-webkit-keyframes hoverCroix {
+  from {
+    transform: scale(0.92) translateZ(0px) rotateY(360deg) rotateZ(0deg) rotateX(90deg);
+  }
+  to {
+    transform: scale(1) translateZ(0px) rotateY(-35deg) rotateZ(-5deg) rotateX(5deg);
+  }
+}
+@keyframes hoverCroix {
+  from {
+    transform: scale(0.92) translateZ(0px) rotateY(360deg) rotateZ(0deg) rotateX(90deg);
+  }
+  to {
+    transform: scale(1) translateZ(0px) rotateY(-35deg) rotateZ(-5deg) rotateX(5deg);
+  }
+}
+@-webkit-keyframes hoverOmbre1 {
+  from {
+    transform: scale(1.7) translate3d(11%, -55%, -50px) rotateY(360deg) rotateZ(21deg) rotateX(45deg);
+  }
+  to {
+    transform: scale(1.8) translate3d(12%, -70%, 0) rotateY(200deg) rotateZ(21deg) rotateX(0deg);
+  }
+}
+@keyframes hoverOmbre1 {
+  from {
+    transform: scale(1.7) translate3d(11%, -55%, -50px) rotateY(360deg) rotateZ(21deg) rotateX(45deg);
+  }
+  to {
+    transform: scale(1.8) translate3d(12%, -70%, 0) rotateY(200deg) rotateZ(21deg) rotateX(0deg);
+  }
+}
+@-webkit-keyframes hoverOmbre2 {
+  from {
+    transform: scale(1.7) translate3d(16%, -80%, -50px) rotateY(180deg) rotateZ(0deg) rotateX(45deg);
+  }
+  to {
+    transform: scale(1.8) translate3d(18%, -90%, 0) rotateY(20deg) rotateZ(-4deg) rotateX(0deg);
+  }
+}
+@keyframes hoverOmbre2 {
+  from {
+    transform: scale(1.7) translate3d(16%, -80%, -50px) rotateY(180deg) rotateZ(0deg) rotateX(45deg);
+  }
+  to {
+    transform: scale(1.8) translate3d(18%, -90%, 0) rotateY(20deg) rotateZ(-4deg) rotateX(0deg);
+  }
+}
+/* ---------------------------------------------------------------------------- FIN LOGO SPHERIQUE ---------------------------------------------------------------------------- *//*# sourceMappingURL=style.css.map */
