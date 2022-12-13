@@ -1,0 +1,61 @@
+/* -------------------------------------- MISE EN FORME GENERALE DE LA PAGE -------------------------------------- */
+html,
+body {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  background: linear-gradient(to top left, rgb(75, 125, 255), rgb(125, 125, 255), rgb(125, 75, 255));
+  display: grid;
+  place-content: center;
+  overflow: hidden;
+}
+
+/* -------------------------------------- LA SPHERE ET SON OMBRE -------------------------------------- */
+body div {
+  height: 50vh;
+  width: 50vw;
+}
+
+.sphereObjet {
+  position: relative;
+  background: radial-gradient(circle at 20% 20%, rgba(200, 250, 250, 0.33), rgba(0, 200, 200, 0.55));
+  box-shadow: inset -5vh -5vh 10vh rgb(0, 0, 0);
+  width: 50vh;
+  height: 50vh;
+  border-radius: 50%;
+  margin: 0 auto;
+  -webkit-animation: rotation 10s linear alternate infinite;
+          animation: rotation 10s linear alternate infinite;
+  z-index: 2;
+}
+
+.ombreSphere {
+  position: relative;
+  top: 0%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  width: 50vh;
+  height: 10%;
+  background: radial-gradient(black, rgba(255, 255, 255, 0) 72%);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+@-webkit-keyframes rotation {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(80deg);
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(80deg);
+  }
+}/*# sourceMappingURL=style.css.map */
