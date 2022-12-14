@@ -145,7 +145,10 @@ function edition() {
     logo.style.clipPath = "inset(0 0 0 0)";
     form.style.clipPath = "inset(0 52vw 37vh 0)";
   }
+}
 
+function validation() {
+  document.getElementById('validationPhp').click();
 }
 
 
