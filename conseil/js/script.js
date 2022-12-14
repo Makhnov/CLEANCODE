@@ -155,6 +155,7 @@ function validation() {
   const form = document.getElementsByTagName('textarea')[0];
   let str = form.value;
   str = str.replace(/'/g, '’');
+  form.value = str;
   val.click();
 }
 
