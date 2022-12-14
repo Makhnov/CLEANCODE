@@ -130,8 +130,9 @@ function edition() {
   const form = document.getElementsByTagName('textarea')[0];
   const edit = document.getElementById('edition');
   const logo = document.getElementById('sceneConseil');
-  const para = document.getElementsByTagName('p')[0];
   const val = document.getElementById('validation');
+  const nav1 = document.getElementsByTagName('nav')[0];
+  const nav2 = document.getElementsByTagName('nav')[1];
 
   editActive = !editActive;
 
@@ -141,12 +142,17 @@ function edition() {
     form.style.clipPath = "inset(0 0 0 0)";
     logo.style.clipPath = "inset(50% 50% 50% 50%)";
     val.style.opacity = "1";
+    nav1.style.transform = "rotateX(180deg)";
+    nav2.style.transform = "rotateX(0deg)"
+
   } else {
     edit.textContent = "Editer";
     edit.style.backgroundColor = "rgba(0, 128, 0, 0.25)";
     logo.style.clipPath = "inset(0 0 0 0)";
     form.style.clipPath = "inset(50% 50% 50% 50%)";
     val.style.opacity = "0";
+    nav2.style.transform = "rotateX(180deg)";
+    nav1.style.transform = "rotateX(0deg)"
   }
 }
 

@@ -20,11 +20,11 @@
 
     <header>
         <nav>
-            <a href="../index.html" class="retour"></a>
-            <div>
+            <a href="../index.html" id="retour"></a>
+        </nav>
+        <nav>
                 <button id="validation" type="button" onclick="validation()">Valider</button>
                 <button id="edition" type="button" onclick="edition()">Editer</button>
-            </div>
         </nav>
     </header>
 
@@ -44,6 +44,8 @@
         <img id="imgDescription" class="imgMembre" src="../../divers/img/dndDescription.png" alt="Logo DnD">
         <h3></h3>
         <p></p>
+        <img id="infosModif" src="../../divers/img/info.png" alt="informations">
+        <button id="modifier" type="button" onclick="edition()">Modifier la description</button>
         <div id="imageConseil"></div>
     </div>
 

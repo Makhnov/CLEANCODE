@@ -290,35 +290,41 @@ header {
   width: 96vw;
   margin: auto;
   flex:none;
+  perspective: 1000px;
 }
 
-nav {
+nav:first-of-type {
+  position: relative;
+  top:0;
   margin: 0;
-  padding: 2px 10px 2px 10px;
+  padding: 5px 10px 5px 10px;
+  background-color: antiquewhite;
+  height: 8vh;
+  backface-visibility: hidden;
+  transform:rotateX(0deg);
+  transition: transform 1s;
+}
+
+nav:last-of-type {
+  position: relative;
+  margin: 0;
+  padding: 5px 10px 5px 10px;
   background-color: antiquewhite;
   height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  top:calc(-8vh - 10px);
+  backface-visibility: hidden;
+  transform:rotateX(180deg);
+  transition: transform 1s;
 }
 
-.retour {
+#retour {
   display: block;
   justify-self: flex-start;
   background-image: url('../../divers/img/logoDnd.png');
   background-repeat: no-repeat;
   background-size: contain;
-  height:90%;
+  height:100%;
   width: 300px;
-}
-
-nav div {
-  height: 90%;
-  width: clamp(175px, 33vw, 315px);
-  margin-top:auto;
-  margin-bottom:auto;
-  display:flex;
-  justify-content: space-evenly;
 }
 
 #edition {
@@ -409,6 +415,48 @@ nav div {
   width:48vw;
 }
 
+#infosModif{
+  position:relative;
+  cursor: pointer;
+  z-index: 5;
+  grid-row: 3;
+  grid-column: 1;
+  top:calc(1.25vh + 25px);
+  left:calc(46vw - 25px);
+  transform: translate(-100%, 0);
+  width: 50px;
+  height: 50px;
+}
+
+#modifier {
+  position:relative;
+  cursor: pointer;
+  z-index: 10;
+  grid-row: 3;
+  grid-column: 1;
+  top:calc(1.25vh + 15px);
+  left:calc(46vw);
+  width: clamp(150px, 15vw, 250px);
+  height: 70px;
+  transform: translate(-100%, 0);
+  border:none;
+  border-radius: 20px;
+  box-sizing:border-box;
+  box-shadow:3px 3px 4px 1px black;
+  display: grid;
+  align-content: center;
+  grid-template-columns: 1fr 75px;
+  font-size: clamp(0.75rem, 1vw, 1.5rem);
+  font-weight: bold;
+  background: radial-gradient(circle 250px at clamp(100px, calc(15vw - 50px), 200px) center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 25px, rgb(224, 203, 174) 25px,  rgb(224, 203, 174) 100%);
+  clip-path: circle(25px at clamp(100px, calc(15vw - 50px), 200px) center);
+  transition: clip-path .75s ease-in;
+}
+
+#modifier:hover {
+  clip-path: circle(250px at clamp(100px, calc(15vw - 50px), 200px) center);
+}
+
 h1, h2, h3 {
   margin: 0;
   padding: 0;
@@ -448,8 +496,10 @@ div h3 {
 div p {
   grid-row: 3;
   grid-column: 1;
+  margin:0;
+  padding: 0  ;
   display: grid;
-  width: 30vw;
+  width: calc(100% - 2vw);
   align-content: center;
   padding-left: 2vw;
   font-size: clamp(0.8rem, 1.75vw, 1.5rem);
