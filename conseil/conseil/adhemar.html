@@ -21,13 +21,7 @@
     <header>
         <nav>
             <a href="../index.html" class="retour"></a>
-
-            <form method="GET" action="../index2.php">
-                <textarea id="inputText" name="description"
-                rows="5" cols="33"></textarea>                
-                <input type="text" name="id">
-                <input type="submit" value="update">
-            </form>
+            <button id="edition" type="button" onclick="edition()">Editer</button>
         </nav>
     </header>
 
@@ -41,6 +35,13 @@
         <img id="imgDescription" class="imgMembre" src="../../divers/img/dndDescription.png" alt="Logo DnD">
         <h3></h3>
         <p></p>
+
+        <form method="GET" action="../index2.php">
+            <textarea id="inputText" name="description"></textarea>                
+            <input type="text" name="id" value="1">
+            <input type="submit" value="Valider">
+        </form>
+
         <div id="imageConseil"></div>
     </div>
 

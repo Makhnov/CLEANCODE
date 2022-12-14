@@ -1,31 +1,32 @@
 let space = " ";
 let br = "\n";
 let obj;
+let editActive = false;
 
 class MembresConseil {
   constructor(id, nom, image, titre, role, description) {
-      this.id = id;
-      this.nom = nom;
-      this.image = image;
-      this.titre = titre; 
-      this.role = role;
-      this.description = description;
+    this.id = id;
+    this.nom = nom;
+    this.image = image;
+    this.titre = titre;
+    this.role = role;
+    this.description = description;
   }
 
   toString() {
-    return "Id :"+ space + this.id + space +"- Nom :" + space + this.nom + space + "- Titre :" + space + this.titre + space + "- Role :" + space + this.role + space + "- Description :" + space + this.description + space + "- url(image) :" + space + this.image;
+    return "Id :" + space + this.id + space + "- Nom :" + space + this.nom + space + "- Titre :" + space + this.titre + space + "- Role :" + space + this.role + space + "- Description :" + space + this.description + space + "- url(image) :" + space + this.image;
   }
 
   getNom() {
-      return this.nom;
+    return this.nom;
   }
 
   getTitre() {
-      return this.titre;
+    return this.titre;
   }
 
   getRole() {
-      return this.role;
+    return this.role;
   }
 
   getDescription() {
@@ -33,19 +34,19 @@ class MembresConseil {
   }
 
   getImage() {
-      return this.image;
+    return this.image;
   }
 
   setNom(info) {
-      this.nom = info;
+    this.nom = info;
   }
 
   setTitre(info) {
-      this.titre = info;
+    this.titre = info;
   }
 
   setRole(info) {
-      this.role = info;
+    this.role = info;
   }
 
   setDescription(info) {
@@ -53,7 +54,7 @@ class MembresConseil {
   }
 
   setImage(info) {
-      this.image = info;
+    this.image = info;
   }
 }
 
@@ -79,7 +80,7 @@ function resize() {
 window.onresize = function () {
   const mp = document.getElementsByClassName('mainPage').length;
   if (mp > 0) {
-    let resizeTimer; 
+    let resizeTimer;
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(function () {
       resize();
@@ -101,6 +102,7 @@ async function getBdd(n) {
   const h3 = document.getElementsByTagName('h3')[0];
   const para = document.getElementsByTagName('p')[0];
   const img = document.getElementById('imageConseil');
+  const text = document.getElementById('inputText');
 
   console.log(obj);
 
@@ -111,7 +113,7 @@ async function getBdd(n) {
   let url = membre.getImage();
 
   console.log(membre);
-  h1.textContent =nom;
+  h1.textContent = nom;
   console.log(nom);
   h2.textContent = titre;
   console.log(titre);
@@ -119,10 +121,32 @@ async function getBdd(n) {
   console.log(role);
   para.textContent = description;
   console.log(description);
-  img.style.backgroundImage = "url(\'"+url+"\')";
+  text.value = description;
+  img.style.backgroundImage = "url(\'" + url + "\')";
   console.log(url);
 }
 
+function edition() {
+  const form = document.getElementsByTagName('form')[0];
+  const edit = document.getElementById('edition');
+  const logo = document.getElementById('imgDescription');
+  const para = document.getElementsByTagName('p')[0];
+
+  editActive = !editActive;
+
+  if (editActive) {
+    edit.textContent = "Annuler";
+    edit.style.backgroundColor = "rgba(175, 0, 0, 0.25)";
+    form.style.clipPath = "inset(0 -10px -10px 0)";
+    logo.style.clipPath = "inset(0 48vw 39vh 0)";
+  } else {
+    edit.textContent = "Editer";
+    edit.style.backgroundColor = "rgba(0, 128, 0, 0.25)";
+    logo.style.clipPath = "inset(0 0 0 0)";
+    form.style.clipPath = "inset(0 52vw 37vh 0)";
+  }
+
+}
 
 
 
