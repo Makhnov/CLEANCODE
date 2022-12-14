@@ -153,11 +153,8 @@ function edition() {
 function validation() {
   const val = document.getElementById('validationPhp');
   const form = document.getElementsByTagName('textarea')[0];
-
   let str = form.value;
-  console.log(str);
-
-  str = str.replace(/'/g, '\'');
+  str = str.replace(/'/g, '’');
   val.click();
 }
 
