@@ -139,6 +139,7 @@ function edition() {
   if (editActive) {
     edit.textContent = "Annuler";
     edit.style.backgroundColor = "rgba(175, 0, 0, 0.25)";
+    edit.style.visibility = "visible";
     form.style.clipPath = "inset(0 0 0 0)";
     logo.style.clipPath = "inset(50% 50% 50% 50%)";
     val.style.opacity = "1";
@@ -148,6 +149,7 @@ function edition() {
   } else {
     edit.textContent = "Editer";
     edit.style.backgroundColor = "rgba(0, 128, 0, 0.25)";
+    edit.style.visibility = "hidden";
     logo.style.clipPath = "inset(0 0 0 0)";
     form.style.clipPath = "inset(50% 50% 50% 50%)";
     val.style.opacity = "0";

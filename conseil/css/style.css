@@ -329,6 +329,7 @@ nav:last-of-type {
 
 #edition {
   all:initial;
+  visibility: hidden;
   height: 100%;
   width: clamp(70px, 15vw, 150px);
   border-radius: 5px;
