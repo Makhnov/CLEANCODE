@@ -127,28 +127,38 @@ async function getBdd(n) {
 }
 
 function edition() {
-  const form = document.getElementsByTagName('form')[0];
+  const form = document.getElementsByTagName('textarea')[0];
   const edit = document.getElementById('edition');
-  const logo = document.getElementById('imgDescription');
+  const logo = document.getElementById('sceneConseil');
   const para = document.getElementsByTagName('p')[0];
+  const val = document.getElementById('validation');
 
   editActive = !editActive;
 
   if (editActive) {
     edit.textContent = "Annuler";
     edit.style.backgroundColor = "rgba(175, 0, 0, 0.25)";
-    form.style.clipPath = "inset(0 -10px -10px 0)";
-    logo.style.clipPath = "inset(0 48vw 39vh 0)";
+    form.style.clipPath = "inset(0 0 0 0)";
+    logo.style.clipPath = "inset(50% 50% 50% 50%)";
+    val.style.opacity = "1";
   } else {
     edit.textContent = "Editer";
     edit.style.backgroundColor = "rgba(0, 128, 0, 0.25)";
     logo.style.clipPath = "inset(0 0 0 0)";
-    form.style.clipPath = "inset(0 52vw 37vh 0)";
+    form.style.clipPath = "inset(50% 50% 50% 50%)";
+    val.style.opacity = "0";
   }
 }
 
 function validation() {
-  document.getElementById('validationPhp').click();
+  const val = document.getElementById('validationPhp');
+  const form = document.getElementsByTagName('textarea')[0];
+
+  let str = form.value;
+  console.log(str);
+
+  str = str.replace(/'/g, '\'');
+  val.click();
 }
 
 

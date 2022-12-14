@@ -28,7 +28,13 @@
         </nav>
     </header>
 
-    <div class="sceneConseil">
+    <form method="GET" action="../index2.php">
+        <textarea id="inputText" name="description"></textarea>                
+        <input type="text" name="id" value="1">
+        <input id ="validationPhp" type="submit" value="Valider">
+    </form>
+
+    <div id="sceneConseil">
         <img id="imgNom" class="imgMembre" src="../../divers/img/dndNom.png" alt="Logo DnD">
         <div id="zoneNom">
             <h1></h1>
@@ -38,13 +44,6 @@
         <img id="imgDescription" class="imgMembre" src="../../divers/img/dndDescription.png" alt="Logo DnD">
         <h3></h3>
         <p></p>
-
-        <form method="GET" action="../index2.php">
-            <textarea id="inputText" name="description"></textarea>                
-            <input type="text" name="id" value="1">
-            <input id ="validationPhp" type="submit" value="Valider">
-        </form>
-
         <div id="imageConseil"></div>
     </div>
 

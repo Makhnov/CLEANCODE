@@ -340,6 +340,7 @@ nav div {
 
 #validation {
   all:initial;
+  opacity: 0;
   justify-self: end;
   height: 100%;
   width: clamp(70px, 15vw, 150px);
@@ -357,7 +358,7 @@ nav div {
 }
 
 
-.sceneConseil {
+#sceneConseil {
   margin: 0;
   padding: 0;
   margin-top:2vh;
@@ -368,6 +369,8 @@ nav div {
   grid-template-columns: 48vw 48vw;
   grid-template-rows: 30vh 20vh 40vh 9vh;
   overflow: hidden;
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1s;
 }
 
 #imgNom {
@@ -404,8 +407,6 @@ nav div {
   left:2vw;
   height: 39vh;
   width:48vw;
-  clip-path: inset(0 0 0 0);
-  transition: clip-path 1s;
 }
 
 h1, h2, h3 {
@@ -452,43 +453,23 @@ div p {
   align-content: center;
   padding-left: 2vw;
   font-size: clamp(0.8rem, 1.75vw, 1.5rem);
-  clip-path: inset(0 0 0 0);
-  transition: clip-path 1s;
 }
 
-form {
-  position: relative;
+#inputText {
+  position: absolute;
   z-index: 10;
-  grid-row: 3;
-  grid-column: 1;
-  height:37vh;
-  width: 52vw;
-  align-content: center;  
-  padding-left: 10px;
-  padding-top: 5px;
-  display: flex;
-  justify-content: space-evenly;
-  clip-path: inset(0 52vw 37vh 0);
+  margin:0;
+  padding:0;
+  top:14.5vh;
+  left:18vw;
+  height: 80vh;
+  width: 60vw;  
+  font-size: clamp(0.8rem, 1.75vw, 1.5rem);
+  clip-path: inset(50% 50% 50% 50%);
   transition: clip-path 1s;
 }
 
-form textarea {
-  height:100%;
-  width: 100%;
-  font-size: clamp(0.8rem, 1.75vw, 1.5rem);
-
-}
-
-form input:nth-of-type(2) {
-  flex:none;
-  cursor: pointer;
-  align-items: flex-start;
-  margin-left:1vw;
-  width:4vw;
-  height: 50px;
-}
-
-form input:nth-of-type(1) {
+form input {
   display: none;
 }
 
