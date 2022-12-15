@@ -16,7 +16,7 @@
 
 </head>
 
-<body onload="getBdd(0)" class="bodyConseil">
+<body onload="getBdd(0)" class="bodyProfil">
 
     <header>
         <nav>
@@ -34,19 +34,22 @@
         <input id ="validationPhp" type="submit" value="Valider">
     </form>
 
-    <div id="sceneConseil">
-        <img id="imgNom" class="imgMembre" src="../../divers/img/dndNom.png" alt="Logo DnD">
-        <div id="zoneNom">
-            <h1></h1>
-            <h2></h2>
-        </div>
-        <img id="imgRole" class="imgMembre" src="../../divers/img/dndRole.png" alt="Logo DnD">
-        <img id="imgDescription" class="imgMembre" src="../../divers/img/dndDescription.png" alt="Logo DnD">
-        <h3></h3>
+    <div id="sceneProfil">
+        
+        <h1></h1>
+
+		<div id="zoneFonctions">
+			<h2></h2>
+    	    <h3></h3>
+		</div>
+
         <p></p>
+
         <img id="infosModif" src="../../divers/img/info.png" alt="informations">
         <button id="modifier" type="button" onclick="edition()">Modifier la description</button>
-        <div id="imageConseil"></div>
+		<div id="bgConseil"></div>
+        <div id="imageConseil" onclick="fullscreenCharacter()"></div>
+
     </div>
 
     <script src="../js/script.js"></script>
