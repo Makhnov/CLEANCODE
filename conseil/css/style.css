@@ -20,7 +20,7 @@ body {
   width: 2560px;
   top: 0;
   left: 0;
-  background-image: url("../../divers/img/salleDuConseil.jpg");
+  background-image: url("../../divers/img/salleConseil.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -31,7 +31,7 @@ body {
   left: 60%;
   height: 672px;
   width: 420px;
-  background-image: url("../../divers/img/personnages/conseil/adhemar.png");
+  background-image: url("../../divers/img/personnages/conseil/adhemarMin.png");
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 1;
@@ -48,7 +48,7 @@ body {
   left: 23%;
   height: 403.2px;
   width: 252px;
-  background-image: url("../../divers/img/personnages/conseil/aleksia.png");
+  background-image: url("../../divers/img/personnages/conseil/aleksiaMin.png");
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 5;
@@ -64,7 +64,7 @@ body {
   left: 7%;
   height: 672px;
   width: 420px;
-  background-image: url("../../divers/img/personnages/conseil/dameAlexandra.png");
+  background-image: url("../../divers/img/personnages/conseil/dameAlexandraMin.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -79,7 +79,7 @@ body {
   left: 31%;
   height: 604.8px;
   width: 378px;
-  background-image: url("../../divers/img/personnages/conseil/pereAncelin.png");
+  background-image: url("../../divers/img/personnages/conseil/pereAncelinMin.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -94,7 +94,7 @@ body {
   left: 59.5%;
   height: 226.8px;
   width: 141.75px;
-  background-image: url("../../divers/img/personnages/conseil/jalana.png");
+  background-image: url("../../divers/img/personnages/conseil/jalanaMin.png");
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 5;
@@ -110,7 +110,7 @@ body {
   left: 46%;
   height: 226.8px;
   width: 141.75px;
-  background-image: url("../../divers/img/personnages/conseil/jimmy.png");
+  background-image: url("../../divers/img/personnages/conseil/jimmyMin.png");
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 5;
@@ -126,7 +126,7 @@ body {
   left: 0%;
   height: 756px;
   width: 472.5px;
-  background-image: url("../../divers/img/personnages/conseil/laurainSansreproche.png");
+  background-image: url("../../divers/img/personnages/conseil/laurainSansreprocheMin.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -134,7 +134,6 @@ body {
   background-image: url("../../divers/img/personnages/conseil/laurainSansreproche2.png");
   transform: scale(1.05);
   top: 46.1%;
-  left: 0.7%;
 }
 #salleDuConseil .precis {
   position: absolute;
@@ -143,7 +142,7 @@ body {
   left: 94%;
   height: 226.8px;
   width: 141.75px;
-  background-image: url("../../divers/img/personnages/conseil/precisSansreproche.png");
+  background-image: url("../../divers/img/personnages/conseil/precisSansreprocheMin.png");
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 5;
@@ -160,7 +159,7 @@ body {
   left: 51.2%;
   height: 193.2px;
   width: 120.75px;
-  background-image: url("../../divers/img/personnages/conseil/seleste.png");
+  background-image: url("../../divers/img/personnages/conseil/selesteMin.png");
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 5;
@@ -176,7 +175,7 @@ body {
   left: 88%;
   height: 210px;
   width: 131.25px;
-  background-image: url("../../divers/img/personnages/conseil/tenebresSansreproche.png");
+  background-image: url("../../divers/img/personnages/conseil/tenebresSansreprocheMin.png");
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 10;
@@ -192,7 +191,7 @@ body {
   left: 50%;
   height: 630px;
   width: 393.75px;
-  background-image: url("../../divers/img/personnages/conseil/tharion.png");
+  background-image: url("../../divers/img/personnages/conseil/tharionMin.png");
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 3;
@@ -208,7 +207,7 @@ body {
   left: 75%;
   height: 672px;
   width: 420px;
-  background-image: url("../../divers/img/personnages/conseil/vaillantSansreproche.png");
+  background-image: url("../../divers/img/personnages/conseil/vaillantSansreprocheMin.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
