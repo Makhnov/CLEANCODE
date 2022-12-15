@@ -217,7 +217,7 @@ body {
   transform: scale(1.23);
 }
 
-/* ---------------------------------------------------------------------------------------- PAGES DE PROFIL ---------------------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------- PAGE DE PROFIL ---------------------------------------------------------------------------------------- */
 .bodyProfil {
   background-color: black;
   overflow: hidden;
@@ -227,6 +227,57 @@ body {
   padding: 0;
 }
 
+/*@media all and (max-width: 460px) {
+	(min-width: 460px) and
+}*/
+@media all and (max-width: 1000px) {
+  .bodyProfil {
+    overflow-y: visible !important;
+  }
+  header {
+    padding: 0 !important;
+    height: 8vh !important;
+    width: 96vw !important;
+  }
+  #sceneProfil {
+    height: 190vh !important;
+    width: 96vw !important;
+    grid-template-columns: 96vw !important;
+    grid-template-rows: 14vh 19vh 54vh 100vh !important;
+  }
+  #sceneProfil #imageConseil {
+    grid-row: 4 !important;
+    grid-column: 1 !important;
+  }
+  #sceneProfil #bgConseil {
+    grid-row: 4 !important;
+    grid-column: 1 !important;
+    height: 100% !important;
+    width: 100% !important;
+  }
+  #sceneProfil #infosModif {
+    top: 25px !important;
+    left: calc(95vw - 15px) !important;
+    height: 35px !important;
+    width: 35px !important;
+  }
+  #sceneProfil #modifier {
+    top: 17.5px !important;
+    left: 95vw !important;
+    height: 50px !important;
+    width: 175px !important;
+    background: radial-gradient(circle 250px at 142.5px center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 17.5px, rgb(224, 203, 174) 17.5px, rgb(224, 203, 174) 100%) !important;
+    -webkit-clip-path: circle(250px at 150px center) !important;
+            clip-path: circle(250px at 150px center) !important;
+  }
+  #sceneProfil #modifier:hover {
+    filter: brightness(1.25);
+  }
+  #sceneProfil #imageConseil {
+    top: 38% !important;
+    left: 40% !important;
+  }
+}
 header {
   padding: 0;
   height: 8vh;
@@ -248,6 +299,7 @@ header nav {
   display: flex;
   -moz-column-gap: 10px;
        column-gap: 10px;
+  box-shadow: 0 0 5px 5px black inset;
 }
 header nav:first-child {
   top: 0;
@@ -306,56 +358,13 @@ header nav:last-child #validation:hover {
   text-shadow: 0.5px 0.25px 0px black;
 }
 
-@media all and (max-width: 1000px) {
-  .bodyProfil {
-    overflow-y: visible !important;
-  }
-  header {
-    padding: 0 !important;
-    height: 8vh !important;
-    width: 96vw !important;
-  }
-  #sceneProfil {
-    height: 190vh !important;
-    width: 96vw !important;
-    grid-template-columns: 96vw !important;
-    grid-template-rows: 29vh 19vh 39vh 100vh !important;
-  }
-  #sceneProfil #imageConseil {
-    grid-row: 4 !important;
-    grid-column: 1 !important;
-  }
-  #sceneProfil #bgConseil {
-    grid-row: 4 !important;
-    grid-column: 1 !important;
-    height: 100% !important;
-    width: 100% !important;
-  }
-  #infosModif {
-    left: calc(94vw - 25px) !important;
-  }
-  #modifier {
-    left: 94vw !important;
-    width: 200px !important;
-    background: radial-gradient(circle 250px at 150px center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 25px, rgb(224, 203, 174) 25px, rgb(224, 203, 174) 100%) !important;
-    -webkit-clip-path: circle(25px at 150px center) !important;
-            clip-path: circle(25px at 150px center) !important;
-  }
-  #modifier:hover {
-    -webkit-clip-path: circle(250px at 150px center) !important;
-            clip-path: circle(250px at 150px center) !important;
-  }
-  #inputText {
-    top: 0vh !important;
-  }
-}
 #sceneProfil {
   height: 88vh;
   width: 96vw;
   margin: auto;
   display: grid;
   grid-template-columns: 48vw 48vw;
-  grid-template-rows: 29vh 19vh 39vh;
+  grid-template-rows: 19vh 19vh 49vh;
   row-gap: 1vh;
   -moz-column-gap: 1vw;
        column-gap: 1vw;
@@ -375,6 +384,7 @@ header nav:last-child #validation:hover {
   place-content: center;
   background-color: antiquewhite;
   font-size: clamp(1.5rem, 4.5vw, 3.5rem);
+  box-shadow: 0 0 5px 5px black inset;
 }
 #sceneProfil #zoneFonctions {
   grid-row: 2;
@@ -386,48 +396,50 @@ header nav:last-child #validation:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  box-shadow: 0 0 5px 5px black inset;
 }
 #sceneProfil #zoneFonctions h2 {
+  padding-right: 10px;
   text-align: flex-start;
   font-size: clamp(1.75rem, 3.5vw, 2.25rem);
 }
 #sceneProfil #zoneFonctions h3 {
-  background-color: antiquewhite;
   font-size: clamp(1.5rem, 3vw, 2rem);
 }
 #sceneProfil p {
   grid-row: 3;
   grid-column: 1;
-  height: 100%;
+  height: calc(100% - 90px);
   width: calc(100% - 10px);
   padding-left: 10px;
+  padding-top: 90px;
   background-color: antiquewhite;
   display: grid;
-  align-content: center;
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  align-content: top;
+  font-size: clamp(1.25rem, 2vw, 2rem);
+  box-shadow: 0 0 5px 5px black inset;
+  overflow: hidden;
 }
-
-#infosModif {
+#sceneProfil #infosModif {
   position: relative;
   cursor: pointer;
   z-index: 5;
   grid-row: 3;
   grid-column: 1;
   top: calc(1.25vh + 10px);
-  left: calc(47.5vw - 25px);
+  left: calc(47vw - 25px);
   transform: translate(-100%, 0);
   width: 50px;
   height: 50px;
 }
-
-#modifier {
+#sceneProfil #modifier {
   position: relative;
   cursor: pointer;
   z-index: 10;
   grid-row: 3;
   grid-column: 1;
   top: 1.25vh;
-  left: 47.5vw;
+  left: 47vw;
   width: 225px;
   height: 70px;
   transform: translate(-100%, 0);
@@ -437,7 +449,7 @@ header nav:last-child #validation:hover {
   box-shadow: 3px 3px 4px 1px black;
   display: grid;
   align-content: center;
-  grid-template-columns: 1fr 75px;
+  grid-template-columns: 1fr 87.5px;
   font-size: clamp(0.9rem, 1.25vw, 1.3rem);
   font-weight: bold;
   background: radial-gradient(circle 250px at 175px center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 25px, rgb(224, 203, 174) 25px, rgb(224, 203, 174) 100%);
@@ -447,9 +459,39 @@ header nav:last-child #validation:hover {
   transition: clip-path 0.75s ease-in;
   transition: clip-path 0.75s ease-in, -webkit-clip-path 0.75s ease-in;
 }
-#modifier:hover {
+#sceneProfil #modifier:hover {
   -webkit-clip-path: circle(250px at 175px center);
           clip-path: circle(250px at 175px center);
+}
+#sceneProfil #imageConseil {
+  grid-row: 1/span 3;
+  grid-column: 2;
+  position: relative;
+  z-index: -1;
+  top: 38%;
+  left: 40%;
+  height: 60%;
+  width: 50%;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+#sceneProfil #imageConseil:hover {
+  filter: brightness(1.5);
+}
+#sceneProfil #bgConseil {
+  position: relative;
+  z-index: -2;
+  grid-row: 1/span 3;
+  grid-column: 2;
+  height: 88vh;
+  width: 47vw;
+  background-image: url("../../divers/img/valbalafreConseil.jpg");
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 0 10px 10px black inset;
 }
 
 form {
@@ -468,44 +510,12 @@ form {
 }
 form #inputText {
   position: relative;
-  top: -28vh;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   height: 50%;
-  margin-top: 25%;
   width: 50%;
-  margin-left: 25%;
 }
 form input {
   display: none;
-}
-
-#imageConseil {
-  grid-row: 1/span 3;
-  grid-column: 2;
-  position: relative;
-  z-index: -1;
-  top: 33%;
-  left: 50%;
-  height: 60%;
-  width: 50%;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size: contain;
-  cursor: pointer;
-}
-#imageConseil:hover {
-  filter: brightness(1.5);
-}
-
-#bgConseil {
-  position: relative;
-  z-index: -2;
-  grid-row: 1/span 3;
-  grid-column: 2;
-  height: 88vh;
-  width: 48vw;
-  background-image: url("../../divers/img/valbalafreConseil.jpg");
-  background-position: bottom right;
-  background-repeat: no-repeat;
-  background-size: cover;
 }/*# sourceMappingURL=style.css.map */

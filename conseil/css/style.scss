@@ -7,13 +7,13 @@ body {
 /* ---------------------------------------------------------------------------------------- SALLE DU CONSEIL ---------------------------------------------------------------------------------------- */
 
 #salleDuConseil {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 1440px;
-  width: 2560px;
-  transform: translate(-50%, -50%);
-  perspective: 700px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	height: 1440px;
+	width: 2560px;
+	transform: translate(-50%, -50%);
+	perspective: 700px;
 
   .conseil {
     position: absolute;
@@ -243,7 +243,7 @@ body {
   }
 }
 
-/* ---------------------------------------------------------------------------------------- PAGES DE PROFIL ---------------------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------- PAGE DE PROFIL ---------------------------------------------------------------------------------------- */
 
 .bodyProfil {
   	background-color:black;
@@ -255,94 +255,9 @@ body {
 	}
 }
 
-header {
-  padding:0;
-  height:8vh;
-  width: 96vw;
-  margin: auto;
-  margin-bottom: 2vh;
-  flex:none;
-  perspective: 1000px;
-
-  nav {
-	position: relative;
-	width:calc(100% - 10px);
-	padding-left: 10px!important;
-	background-color: antiquewhite;
-	height: 100%;
-	backface-visibility: hidden;
-	transition: transform 1.5s;
-	display: flex;
-	column-gap: 10px;
-  }
-
-  nav:first-child {
-	top:0;
-	transform:rotateX(0deg);
-
-	#retour {
-		display: block;
-		justify-self: flex-start;
-		align-self: center;
-		background-image: url('../../divers/img/logoDnd.png');
-		background-repeat: no-repeat;
-		background-position: 10px center;
-		background-size: contain;
-		overflow: visible;
-		min-height:80%;
-		width: 100%;
-	  }
-  }
-  
-  nav:last-child {
-	position: relative;
-	top:calc(-8vh);
-	transform:rotateX(180deg);
-
-	#edition {
-		all:initial;
-		align-self: center;
-		visibility: hidden;
-		height: 80%;
-		width: clamp(70px, 15vw, 150px);
-		border-radius: 5px;
-		text-align: center;
-		font-weight: bold;
-		font-size: clamp(.9rem, 2vw, 2rem);
-		cursor: pointer;
-		background:rgba(0, 128, 0, 0.25);
-	  }
-	  
-	  #edition:hover {
-		filter: brightness(1.5);
-		text-shadow: 0.5px 0.25px 0px black;
-	  }
-	  
-	  #validation {
-		all:initial;
-		align-self: center;
-		opacity: 0;
-		justify-self: end;
-		height: 80%;
-		width: clamp(70px, 15vw, 150px);
-		border-radius: 5px;
-		text-align: center;
-		font-weight: bold;
-		font-size: clamp(.9rem, 2vw, 2rem);
-		cursor: pointer;
-		background:rgba(0, 128, 0, 0.25);
-	  }
-	  
-	  #validation:hover {
-		filter: brightness(1.5);
-		text-shadow: 0.5px 0.25px 0px black;
-	  }
-  }
-}
-
-// @media all and (max-width: 460px) {
-// (min-width: 460px) and
-// }
+/*@media all and (max-width: 460px) {
+	(min-width: 460px) and
+}*/
 
 @media all and (max-width: 1000px) {
 
@@ -360,7 +275,7 @@ header {
 		height:190vh!important;
 		width: 96vw!important;
 		grid-template-columns: 96vw!important;
-		grid-template-rows: 29vh 19vh 39vh 100vh!important;
+		grid-template-rows: 14vh 19vh 54vh 100vh!important;
 
 		#imageConseil {
 			grid-row: 4!important;
@@ -374,40 +289,131 @@ header {
 			width: 100%!important;
 		}
 
-	}
-
-	#infosModif{
-		left:calc(94vw - 25px)!important;
-	}
-	  
-	#modifier {
-	left:94vw!important;
-	width:200px!important;
-	background: radial-gradient(circle 250px at 150px center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 25px, rgb(224, 203, 174) 25px,  rgb(224, 203, 174) 100%)!important;
-	clip-path: circle(25px at 150px center)!important;
-
-	&:hover {
-		clip-path: circle(250px at 150px center)!important;
+		#infosModif{
+			top:25px!important;
+			left:calc(95vw - 15px)!important;
+			height:35px!important;
+			width: 35px!important;
 		}
-	}
+		  
+		#modifier {
+			top:17.5px!important;
+			left:95vw!important;
+			height:50px!important;
+			width: 175px!important;
+			background: radial-gradient(circle 250px at 142.5px center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 17.5px, rgb(224, 203, 174) 17.5px,  rgb(224, 203, 174) 100%)!important;
+			clip-path: circle(250px at 150px center)!important;
+			
+			&:hover {
+				filter: brightness(1.25);
+			}
+		}
 
-	#inputText {
-		top:0vh!important;
+		#imageConseil {
+			top:38%!important;
+			left:40%!important;
+		}
 	}
 }
 
+header {
+	padding:0;
+	height:8vh;
+	width: 96vw;
+	margin: auto;
+	margin-bottom: 2vh;
+	flex:none;
+	perspective: 1000px;
+
+	nav {
+		position: relative;
+		width:calc(100% - 10px);
+		padding-left: 10px!important;
+		background-color: antiquewhite;
+		height: 100%;
+		backface-visibility: hidden;
+		transition: transform 1.5s;
+		display: flex;
+		column-gap: 10px;
+		box-shadow: 0 0 5px 5px black inset;
+	}
+
+	nav:first-child {
+		top:0;
+		transform:rotateX(0deg);
+
+	#retour {
+		display: block;
+		justify-self: flex-start;
+		align-self: center;
+		background-image: url('../../divers/img/logoDnd.png');
+		background-repeat: no-repeat;
+		background-position: 10px center;
+		background-size: contain;
+		overflow: visible;
+		min-height:80%;
+		width: 100%;
+	  }
+  }
+  
+	nav:last-child {
+		position: relative;
+		top:calc(-8vh);
+		transform:rotateX(180deg);
+
+		#edition {
+			all:initial;
+			align-self: center;
+			visibility: hidden;
+			height: 80%;
+			width: clamp(70px, 15vw, 150px);
+			border-radius: 5px;
+			text-align: center;
+			font-weight: bold;
+			font-size: clamp(.9rem, 2vw, 2rem);
+			cursor: pointer;
+			background:rgba(0, 128, 0, 0.25);
+		}
+
+		#edition:hover {
+			filter: brightness(1.5);
+			text-shadow: 0.5px 0.25px 0px black;
+		}
+
+		#validation {
+			all:initial;
+			align-self: center;
+			opacity: 0;
+			justify-self: end;
+			height: 80%;
+			width: clamp(70px, 15vw, 150px);
+			border-radius: 5px;
+			text-align: center;
+			font-weight: bold;
+			font-size: clamp(.9rem, 2vw, 2rem);
+			cursor: pointer;
+			background:rgba(0, 128, 0, 0.25);
+		}
+
+		#validation:hover {
+			filter: brightness(1.5);
+			text-shadow: 0.5px 0.25px 0px black;
+		}
+  	}
+}
+
 #sceneProfil {
-  height:88vh;
-  width: 96vw;
-  margin:auto;
-  display: grid;
-  grid-template-columns: 48vw 48vw;
-  grid-template-rows: 29vh 19vh 39vh;
-  row-gap: 1vh;
-  column-gap: 1vw;
-  clip-path: inset(0 0 0 0);
-  transition: clip-path 1s;
-  overflow: hidden;
+	height:88vh;
+	width: 96vw;
+	margin:auto;
+	display: grid;
+	grid-template-columns: 48vw 48vw;
+	grid-template-rows: 19vh 19vh 49vh;
+	row-gap: 1vh;
+	column-gap: 1vw;
+	clip-path: inset(0 0 0 0);
+	transition: clip-path 1s;
+	overflow: hidden;
 
   
 	h1 {
@@ -419,6 +425,8 @@ header {
 		place-content: center;
 		background-color: antiquewhite;
 		font-size: clamp(1.5rem, 4.5vw, 3.5rem);
+		box-shadow: 0 0 5px 5px black inset;
+
 	}
 	
 	#zoneFonctions {
@@ -431,127 +439,131 @@ header {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-evenly;
-	
+		box-shadow: 0 0 5px 5px black inset;
+
 		h2 {
+			padding-right: 10px;
 			text-align: flex-start;
 			font-size: clamp(1.75rem, 3.5vw, 2.25rem);
-		  }
+		}
 	
 		h3 {
-		background-color: antiquewhite;
-		font-size: clamp(1.5rem, 3vw, 2rem);
+			font-size: clamp(1.5rem, 3vw, 2rem);
 		}
 	}
 
 	p {
 		grid-row: 3;
 		grid-column: 1;
-		height: 100%;
+		height: calc(100% - 90px);
 		width: calc(100% - 10px);
 		padding-left: 10px;
+		padding-top: 90px;
 		background-color: antiquewhite;
 		display: grid;
+		align-content: top;
+		font-size: clamp(1.25rem, 2vw, 2rem);
+		box-shadow: 0 0 5px 5px black inset;
+		overflow: hidden;
+	}
+
+	#infosModif{
+		position:relative;
+		cursor: pointer;
+		z-index: 5;
+		grid-row: 3;
+		grid-column: 1;
+		top:calc(1.25vh + 10px);
+		left:calc(47vw - 25px);
+		transform: translate(-100%, 0);
+		width: 50px;
+		height: 50px;
+	}
+	
+	#modifier {
+		position:relative;
+		cursor: pointer;
+		z-index: 10;
+		grid-row: 3;
+		grid-column: 1;
+		top:1.25vh;
+		left:47vw;
+		width:225px;
+		height: 70px;
+		transform: translate(-100%, 0);
+		border:none;
+		border-radius: 20px;
+		box-sizing:border-box;
+		box-shadow:3px 3px 4px 1px black;
+		display: grid;
 		align-content: center;
-		font-size: clamp(1.5rem, 3vw, 2rem);
+		grid-template-columns: 1fr 87.5px;
+		font-size: clamp(0.9rem, 1.25vw, 1.3rem);
+		font-weight: bold;
+		background: radial-gradient(circle 250px at 175px center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 25px, rgb(224, 203, 174) 25px,  rgb(224, 203, 174) 100%);
+		clip-path: circle(25px at 175px center);
+		transition: clip-path .75s ease-in;
+	
+		&:hover {
+			clip-path: circle(250px at 175px center);
+		}
+	}
+
+	#imageConseil {
+		grid-row: 1 / span 3;
+		grid-column: 2;  
+		position: relative;
+		z-index: -1;
+		top:38%;
+		left:40%;
+		height:60%;
+		width:50%;
+		background-position: center bottom;
+		background-repeat: no-repeat;
+		background-size:contain;
+		cursor: pointer;
+	
+			&:hover {
+				filter: brightness(1.5);
+			}
+	}
+	
+	#bgConseil {
+		position: relative;
+		z-index: -2;
+		grid-row: 1 / span 3;
+		grid-column: 2;  
+		height: 88vh;
+		width: 47vw;
+		background-image: url('../../divers/img/valbalafreConseil.jpg');
+		background-position:bottom right;
+		background-repeat: no-repeat;
+		background-size:cover;
+		box-shadow: 0 0 10px 10px black inset;
 	}
 }
 
-#infosModif{
-  position:relative;
-  cursor: pointer;
-  z-index: 5;
-  grid-row: 3;
-  grid-column: 1;
-  top:calc(1.25vh + 10px);
-  left:calc(47.5vw - 25px);
-  transform: translate(-100%, 0);
-  width: 50px;
-  height: 50px;
-}
-
-#modifier {
-  position:relative;
-  cursor: pointer;
-  z-index: 10;
-  grid-row: 3;
-  grid-column: 1;
-  top:1.25vh;
-  left:47.5vw;
-  width:225px;
-  height: 70px;
-  transform: translate(-100%, 0);
-  border:none;
-  border-radius: 20px;
-  box-sizing:border-box;
-  box-shadow:3px 3px 4px 1px black;
-  display: grid;
-  align-content: center;
-  grid-template-columns: 1fr 75px;
-  font-size: clamp(0.9rem, 1.25vw, 1.3rem);
-  font-weight: bold;
-  background: radial-gradient(circle 250px at 175px center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 25px, rgb(224, 203, 174) 25px,  rgb(224, 203, 174) 100%);
-  clip-path: circle(25px at 175px center);
-  transition: clip-path .75s ease-in;
-
-  &:hover {
-	clip-path: circle(250px at 175px center);
-  }
-}
-
 form {
-  position: absolute;
-  z-index: 20;
-  top:10vh;
-  left:2vw;
-  height: 88vh;
-  width: 96vw;  
-  font-size: clamp(0.8rem, 1.75vw, 1.5rem);
-  clip-path: inset(50% 50% 50% 50%);
-  transition: clip-path 1s ease-in;
-
-  #inputText {
-	position: relative;
-	top:-28vh;
-	left:0;
-	height:50%;
-	margin-top: 25%;
-	width: 50%;
-	margin-left: 25%;
-  }
-
-  input {
-	display: none;
-  }
-}
-
-#imageConseil {
-  grid-row: 1 / span 3;
-  grid-column: 2;  
-  position: relative;
-  z-index: -1;
-  top:33%;
-  left:50%;
-  height:60%;
-  width:50%;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size:contain;
-  cursor: pointer;
-
-  &:hover {
-	filter: brightness(1.5);
-  }
-}
-
-#bgConseil {
-	position: relative;
-	z-index: -2;
-	grid-row: 1 / span 3;
-	grid-column: 2;  
+	position: absolute;
+	z-index: 20;
+	top:10vh;
+	left:2vw;
 	height: 88vh;
-	width: 48vw;
-	background-image: url('../../divers/img/valbalafreConseil.jpg');
-	background-position:bottom right;
-	background-repeat: no-repeat;
-	background-size:cover;
+	width: 96vw;  
+	font-size: clamp(0.8rem, 1.75vw, 1.5rem);
+	clip-path: inset(50% 50% 50% 50%);
+	transition: clip-path 1s ease-in;
+
+	#inputText {
+		position: relative;
+		top:50%;
+		left:50%;
+		transform: translate(-50%, -50%);
+		height:50%;
+		width: 50%;
+	}
+
+	input {
+		display: none;
+	}
 }

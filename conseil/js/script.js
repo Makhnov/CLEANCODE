@@ -173,19 +173,20 @@ function fullscreenCharacter() {
 	const chateau = document.getElementById('bgConseil');
 	const hover = document.getElementById('hoverChar');
 
+	console.log(innerWidth);
 	fullscreenActive = !fullscreenActive;
 
 	if (fullscreenActive) {
 		perso.style.height = "100%";
 		perso.style.width = "100%";
-		perso.style.top = "0";
-		perso.style.left = "0";
+		perso.style.setProperty('top', '0', 'important');
+		perso.style.setProperty('left', '0', 'important');
 		chateau.style.opacity = "1";
 		chateau.style.filter = "brightness(1.5) contrast(.5) blur(2px)";
 		chateau.style.backgroundSize = "cover";
 	} else {
-		perso.style.top = "33%";
-		perso.style.left = "50%";
+		perso.style.top = "38%";
+		perso.style.left = "40%";
 		perso.style.height = "60%";
 		perso.style.width = "50%";
 		chateau.style.opacity = "1";
