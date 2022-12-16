@@ -230,6 +230,9 @@ body {
 	(min-width: 460px) and
 }*/
 @media all and (max-width: 1000px) {
+  .bodyProfil {
+    overflow-y: visible !important;
+  }
   header {
     padding: 0 !important;
     height: 8vh !important;
