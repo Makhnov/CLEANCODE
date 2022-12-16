@@ -63,32 +63,21 @@ class MembresConseil {
 
 function resize() {
 
+	let innWidth = document.documentElement.clientWidth;
+	let innHeight = document.documentElement.clientHeight;
 
-	let ow = window.outerWidth;
-	let oh = window.outerHeight;
-	let vpw = window.visualViewport.width;
-	let vph = window.visualViewport.height;
-	let widthTest = document.documentElement.clientWidth;
-	let heightTest = document.documentElement.clientHeight;
+	let largeur = innWidth / 2560;
+	let hauteur = innHeight / 1440;
 
-	let largeur = widthTest / 2560;
-	let hauteur = heightTest / 1440;
-
-	if (widthTest / heightTest < 1.25) {
-		hauteur = (widthTest * (9 / 16)) / 1440;
-	} else if (widthTest / heightTest > 2.5) {
-		largeur = (heightTest * (16 / 9)) / 2560;
+	if (innWidth / innHeight < 1.25) {
+		hauteur = (innWidth * (9 / 16)) / 1440;
+	} else if (innWidth / innHeight > 2.5) {
+		largeur = (innHeight * (16 / 9)) / 2560;
 	}
 
 	console.log(
-		"visual height :" + space + vph + space + br +
-		"visual width :" + space + vpw + space + br +
-		"inner height :" + space + innerHeight + br +
-		"inner width :" + space + innerWidth + br +
-		"outer height :" + space + oh + br +
-		"outer width :" + space + ow + br +
-		"Test height :" + space + heightTest + br +
-		"Test width :" + space + widthTest + br +
+		"Test height :" + space + innHeight + br +
+		"Test width :" + space + innWidth + br +
 		"Largeur :" + space + largeur + br +
 		"Hauteur :" + space + hauteur
 	);
