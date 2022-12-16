@@ -2,6 +2,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 /* ---------------------------------------------------------------------------------------- SALLE DU CONSEIL ---------------------------------------------------------------------------------------- */
@@ -219,15 +220,14 @@ body {
 /* ---------------------------------------------------------------------------------------- PAGE DE PROFIL ---------------------------------------------------------------------------------------- */
 .bodyProfil {
   background-color: black;
-  overflow: hidden;
 }
 .bodyProfil nav, .bodyProfil input, .bodyProfil button, .bodyProfil textarea, .bodyProfil p, .bodyProfil h1, .bodyProfil h2, .bodyProfil h3 {
   margin: 0;
   padding: 0;
 }
 
-/*@media all and (max-width: 460px) {
-	(min-width: 460px) and
+/*@media all and (max-width: 500px) {
+	(min-width: 500px) and
 }*/
 @media all and (max-width: 1000px) {
   .bodyProfil {

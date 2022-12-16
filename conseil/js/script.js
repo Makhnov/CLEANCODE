@@ -63,25 +63,35 @@ class MembresConseil {
 
 function resize() {
 
+
+	let ow = window.outerWidth;
+	let oh = window.outerHeight;
 	let vpw = window.visualViewport.width;
 	let vph = window.visualViewport.height;
-	let largeur = vpw / 2560;
-	let hauteur = vph / 1440;
+	let widthTest = document.documentElement.clientWidth;
+	let heightTest = document.documentElement.clientHeight;
 
-	if (vpw / vph < 1.25) {
-		hauteur = (vpw * (9 / 16)) / 1440;
-	} else if (vpw / vph > 2.5) {
-		largeur = (vph * (16 / 9)) / 2560;
+	let largeur = widthTest / 2560;
+	let hauteur = heightTest / 1440;
+
+	if (widthTest / heightTest < 1.25) {
+		hauteur = (widthTest * (9 / 16)) / 1440;
+	} else if (widthTest / heightTest > 2.5) {
+		largeur = (heightTest * (16 / 9)) / 2560;
 	}
 
-	// console.log(
-	// 	"visual height :" + vph + space + br +
-	// 	"visual width :" + vpw + space + br +
-	// 	"height :" + space + vph + br +
-	// 	"Width :" + space + vpw + br +
-	// 	"Largeur :" + space + largeur + br +
-	// 	"Hauteur :" + space + hauteur
-	// ); 
+	console.log(
+		"visual height :" + space + vph + space + br +
+		"visual width :" + space + vpw + space + br +
+		"inner height :" + space + innerHeight + br +
+		"inner width :" + space + innerWidth + br +
+		"outer height :" + space + oh + br +
+		"outer width :" + space + ow + br +
+		"Test height :" + space + heightTest + br +
+		"Test width :" + space + widthTest + br +
+		"Largeur :" + space + largeur + br +
+		"Hauteur :" + space + hauteur
+	);
 
 	scene.style.transform = "translate(-50%, -50%) scale(" + largeur + ", " + hauteur + ")";
 }

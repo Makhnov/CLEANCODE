@@ -2,6 +2,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 /* ---------------------------------------------------------------------------------------- SALLE DU CONSEIL ---------------------------------------------------------------------------------------- */
@@ -246,7 +247,6 @@ body {
 
 .bodyProfil {
   	background-color:black;
-  	overflow: hidden;
 
 	nav, input, button, textarea, p, h1, h2, h3 {
 		margin: 0;
@@ -254,8 +254,8 @@ body {
 	}
 }
 
-/*@media all and (max-width: 460px) {
-	(min-width: 460px) and
+/*@media all and (max-width: 500px) {
+	(min-width: 500px) and
 }*/
 
 @media all and (max-width: 1000px) {
