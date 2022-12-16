@@ -2,7 +2,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden !important;
 }
 
 /* ---------------------------------------------------------------------------------------- SALLE DU CONSEIL ---------------------------------------------------------------------------------------- */
@@ -12,7 +11,6 @@ body {
   left: 50%;
   height: 1440px;
   width: 2560px;
-  transform: translate(-50%, -50%);
   perspective: 700px;
 }
 #salleDuConseil .conseil {
@@ -21,7 +19,7 @@ body {
   width: 2560px;
   top: 0;
   left: 0;
-  background-image: url("../../divers/img/salleConseil.jpg");
+  background-image: url("../../divers/img/salleDuConseil.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -231,7 +229,8 @@ body {
 }*/
 @media all and (max-width: 1000px) {
   .bodyProfil {
-    overflow-y: visible !important;
+    height: 200vh !important;
+    width: 100vw !important;
   }
   header {
     padding: 0 !important;

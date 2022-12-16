@@ -5,6 +5,7 @@ let obj;
 let editActive = false;
 let fullscreenActive = false;
 const scene = document.getElementById("salleDuConseil");
+const body = document.getElementsByTagName('body')[0];
 
 class MembresConseil {
 	constructor(id, nom, image, titre, role, description) {
@@ -63,11 +64,6 @@ class MembresConseil {
 
 function resize() {
 
-	window.setTimeout(ResizeTimeout, 5);
-}
-
-function ResizeTimeout() {
-
 	let innWidth = document.documentElement.clientWidth;
 	let innHeight = document.documentElement.clientHeight;
 
@@ -80,6 +76,7 @@ function ResizeTimeout() {
 		largeur = (innHeight * (16 / 9)) / 2560;
 	}
 
+	console.log(body);
 	console.log(
 		"Test height :" + space + innHeight + br +
 		"Test width :" + space + innWidth + br +
