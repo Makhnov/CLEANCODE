@@ -61,7 +61,6 @@ class MembresConseil {
 	}
 }
 
-
 function resize() {
 
 	let vpw = window.visualViewport.width;
@@ -114,7 +113,7 @@ async function getBdd(n) {
 	const img = document.getElementById('imageConseil');
 	const text = document.getElementById('inputText');
 
-	console.log(obj);
+	// console.log(obj);
 
 	let nom = membre.getNom();
 	let titre = membre.getTitre();
@@ -122,18 +121,18 @@ async function getBdd(n) {
 	let description = membre.getDescription();
 	let url = membre.getImage();
 
-	console.log(membre);
+	// console.log(membre);
 	h1.textContent = nom;
-	console.log(nom);
+	// console.log(nom);
 	h2.textContent = titre;
-	console.log(titre);
+	// console.log(titre);
 	h3.textContent = role;
-	console.log(role);
+	// console.log(role);
 	para.textContent = description;
-	console.log(description);
+	// console.log(description);
 	text.value = description;
 	img.style.backgroundImage = "url(\'" + url + "\')";
-	console.log(url);
+	// console.log(url);
 }
 
 function edition() {
@@ -183,9 +182,7 @@ function fullscreenCharacter() {
 
 	const perso = document.getElementById('imageConseil');
 	const chateau = document.getElementById('bgConseil');
-	const hover = document.getElementById('hoverChar');
 
-	console.log(vpw);
 	fullscreenActive = !fullscreenActive;
 
 	if (fullscreenActive) {
@@ -206,26 +203,3 @@ function fullscreenCharacter() {
 		chateau.style.backgroundSize = "cover";
 	}
 }
-
-// function oldVersion() {
-// 	if (editActive) {
-// 		edit.textContent = "Annuler";
-// 		edit.style.backgroundColor = "rgba(175, 0, 0, 0.25)";
-// 		edit.style.visibility = "visible";
-// 		form.style.clipPath = "inset(0 0 0 0)";
-// 		logo.style.clipPath = "inset(50% 50% 50% 50%)";
-// 		val.style.opacity = "1";
-// 		nav1.style.transform = "rotateX(180deg)";
-// 		nav2.style.transform = "rotateX(0deg)"
-
-// 	} else {
-// 		edit.textContent = "Editer";
-// 		edit.style.backgroundColor = "rgba(0, 128, 0, 0.25)";
-// 		edit.style.visibility = "hidden";
-// 		logo.style.clipPath = "inset(0 0 0 0)";
-// 		form.style.clipPath = "inset(50% 50% 50% 50%)";
-// 		val.style.opacity = "0";
-// 		nav2.style.transform = "rotateX(180deg)";
-// 		nav1.style.transform = "rotateX(0deg)"
-// 	}
-// }
