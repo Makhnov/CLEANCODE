@@ -63,6 +63,11 @@ class MembresConseil {
 
 function resize() {
 
+	window.setTimeout(ResizeTimeout, 5);
+}
+
+function ResizeTimeout() {
+
 	let innWidth = document.documentElement.clientWidth;
 	let innHeight = document.documentElement.clientHeight;
 
