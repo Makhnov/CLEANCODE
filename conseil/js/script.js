@@ -4,6 +4,7 @@ let resizePage = 0;
 let obj;
 let editActive = false;
 let fullscreenActive = false;
+const scene = document.getElementById("salleDuConseil");
 
 class MembresConseil {
 	constructor(id, nom, image, titre, role, description) {
@@ -62,15 +63,26 @@ class MembresConseil {
 
 
 function resize() {
-	const scene = document.getElementById("salleDuConseil");
-	let largeur = window.innerWidth / 2560;
-	let hauteur = window.innerHeight / 1440;
 
-	if (innerWidth / innerHeight < 1.25) {
-		hauteur = (window.innerWidth * (9 / 16)) / 1440;
-	} else if (innerWidth / innerHeight > 2.5) {
-		largeur = (window.innerHeight * (16 / 9)) / 2560;
+	let vpw = window.visualViewport.width;
+	let vph = window.visualViewport.height;
+	let largeur = vpw / 2560;
+	let hauteur = vph / 1440;
+
+	if (vpw / vph < 1.25) {
+		hauteur = (vpw * (9 / 16)) / 1440;
+	} else if (vpw / vph > 2.5) {
+		largeur = (vph * (16 / 9)) / 2560;
 	}
+
+	// console.log(
+	// 	"visual height :" + vph + space + br +
+	// 	"visual width :" + vpw + space + br +
+	// 	"height :" + space + vph + br +
+	// 	"Width :" + space + vpw + br +
+	// 	"Largeur :" + space + largeur + br +
+	// 	"Hauteur :" + space + hauteur
+	// ); 
 
 	scene.style.transform = "translate(-50%, -50%) scale(" + largeur + ", " + hauteur + ")";
 }
@@ -173,7 +185,7 @@ function fullscreenCharacter() {
 	const chateau = document.getElementById('bgConseil');
 	const hover = document.getElementById('hoverChar');
 
-	console.log(innerWidth);
+	console.log(vpw);
 	fullscreenActive = !fullscreenActive;
 
 	if (fullscreenActive) {
