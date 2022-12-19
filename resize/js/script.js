@@ -20,12 +20,12 @@ function resize() {
 
 	if (ratio > 1.25) {
 		heightBox = widthRatio * Math.sqrt(heightRatio);
-		widthBox = heightRatio;
+		widthBox = heightRatio * 0.975;
 	} else if (ratio > 0.75) {
-		heightBox = widthRatio;
-		widthBox = heightRatio;
+		heightBox = widthRatio * 0.975;
+		widthBox = heightRatio * 0.975;
 	} else {
-		heightBox = widthRatio;
+		heightBox = widthRatio * 0.975;
 		widthBox = (heightRatio * Math.sqrt(widthRatio));
 	}
 
