@@ -1,10 +1,16 @@
 let space = " ";
 let br = "\n";
-let resizePage = 0;
 let obj;
 let editActive = false;
 let fullscreenActive = false;
-const scene = document.getElementById("salleDuConseil");
+
+let resizePage = false;
+if (document.getElementsByClassName('resize').length > 0) {
+	resizePage = true;
+}
+
+const scene = document.getElementById("scene");
+const box = document.getElementById('salleDuConseil');
 const body = document.getElementsByTagName('body')[0];
 
 class MembresConseil {
@@ -64,39 +70,41 @@ class MembresConseil {
 
 function resize() {
 
-	let innWidth = document.documentElement.clientWidth;
-	let innHeight = document.documentElement.clientHeight;
+	let width = document.documentElement.clientWidth;
+	let height = document.documentElement.clientHeight;
+	let ratio = (width / height) / (16 / 9);
+	let widthRatio = (width / 1600) * 0.975;
+	let heightRatio = (height / 900) * 0.975;
 
-	let largeur = innWidth / 2560;
-	let hauteur = innHeight / 1440;
-
-	if (innWidth / innHeight < 1.25) {
-		hauteur = (innWidth * (9 / 16)) / 1440;
-	} else if (innWidth / innHeight > 2.5) {
-		largeur = (innHeight * (16 / 9)) / 2560;
+	if (ratio > 1.2) {
+		widthRatio = heightRatio;
+	} else if (ratio < 0.8) {
+		heightRatio = widthRatio;
 	}
 
-	console.log(body);
 	console.log(
-		"Test height :" + space + innHeight + br +
-		"Test width :" + space + innWidth + br +
-		"Largeur :" + space + largeur + br +
-		"Hauteur :" + space + hauteur
-	);
+		"ratio :" + space + Math.trunc(ratio * 100) / 100 + br +
+		"Width :" + space + width + br +
+		"height :" + space + height + br +
+		"widthRatio :" + space + Math.round(widthRatio * 100) / 100 + br +
+		"heightRatio :" + space + Math.round(heightRatio * 100) / 100 + br +
+		"BoxW :" + space + Math.round(widthRatio * 1600) + br +
+		"BoxHprev :" + space + Math.round(widthRatio * 900) + br +
+		"BoxH :" + space + Math.round(heightRatio * 900));
 
-	scene.style.transform = "translate(-50%, -50%) scale(" + largeur + ", " + hauteur + ")";
+	box.style.transform = "translate(-50%, -50%) scale(" + widthRatio + ", " + heightRatio + ")";
 }
 
-window.onresize = function () {
-	resizePage = document.getElementsByClassName('resize').length;
-	if (resizePage > 0) {
+if (resizePage) {
+	window.onresize = function () {
 		let resizeTimer;
 		clearTimeout(resizeTimer);
 		resizeTimer = setTimeout(function () {
 			resize();
 		}, 500);
-	}
-};
+
+	};
+}
 
 async function getBdd(n) {
 	//récupéation du json
