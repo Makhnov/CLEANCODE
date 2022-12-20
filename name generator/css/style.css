@@ -1,0 +1,134 @@
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(to top left, rgb(75, 125, 255), rgb(125, 125, 255), rgb(125, 75, 255));
+  overflow: hidden;
+}
+
+div {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 200px 200px 10fr;
+  grid-template-rows: 1fr 60px 60px 5fr;
+  row-gap: 5px;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+
+textarea {
+  grid-column: 1/span 2;
+  grid-row: 4;
+  height: 80%;
+  width: 345px;
+  margin-left: 75px;
+  align-self: start;
+  justify-self: start;
+  box-sizing: border-box;
+  -webkit-clip-path: inset(0 330px 100% 0);
+          clip-path: inset(0 330px 100% 0);
+  transition: -webkit-clip-path 1.5s;
+  transition: clip-path 1.5s;
+  transition: clip-path 1.5s, -webkit-clip-path 1.5s;
+}
+textarea:hover {
+  cursor: context-menu;
+}
+
+input {
+  grid-column: 2;
+  grid-row: 2;
+  height: 35px;
+  width: 200px;
+  justify-self: start;
+  border: 3px solid black;
+  box-sizing: border-box !important;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(124, 104, 238);
+}
+input:hover {
+  cursor: copy;
+  filter: brightness(1.1);
+}
+input:not(:-moz-placeholder-shown) ~ button:first-of-type {
+  background-color: green;
+  cursor: pointer;
+}
+input:not(:-ms-input-placeholder) ~ button:first-of-type {
+  background-color: green;
+  cursor: pointer;
+}
+input:not(:placeholder-shown) ~ button:first-of-type {
+  background-color: green;
+  cursor: pointer;
+}
+input:not(:-moz-placeholder-shown):hover {
+  cursor: pointer;
+}
+input:not(:-ms-input-placeholder):hover {
+  cursor: pointer;
+}
+input:not(:placeholder-shown):hover {
+  cursor: pointer;
+}
+
+button:first-of-type {
+  grid-column: 1;
+  grid-row: 2;
+  height: 40px;
+  width: 125px;
+  justify-self: end;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+button:first-of-type:hover {
+  cursor: not-allowed;
+  filter: brightness(1.2);
+}
+
+button:last-of-type {
+  grid-column: 1;
+  grid-row: 3;
+  height: 40px;
+  width: 125px;
+  justify-self: end;
+  background-color: green;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+button:last-of-type:hover {
+  cursor: pointer;
+  filter: brightness(1.2);
+}
+
+p {
+  grid-column: 2;
+  grid-row: 3;
+  height: 35px;
+  width: 100%;
+  justify-self: start;
+  border: 3px solid black;
+  box-sizing: border-box;
+  border-radius: 5px;
+  display: grid;
+  place-content: center;
+  background-color: rgb(124, 104, 238);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+p:hover {
+  cursor: no-drop;
+}/*# sourceMappingURL=style.css.map */
