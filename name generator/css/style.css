@@ -20,10 +20,17 @@ div {
        column-gap: 20px;
 }
 
+a {
+  grid-column: 1/span 2;
+  grid-row: 1;
+  align-self: center;
+  justify-self: end;
+}
+
 textarea {
   grid-column: 1/span 2;
   grid-row: 4;
-  height: 80%;
+  height: 90%;
   width: 345px;
   margin-left: 75px;
   align-self: start;

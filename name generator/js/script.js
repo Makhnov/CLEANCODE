@@ -10,8 +10,8 @@ const resultat = document.getElementsByTagName('textarea')[0];
 let ordre = true;
 let vide = true;
 
-texte.onkeyup = function () {
-    if (texte.value !== "") {
+function inputTexte() {
+        if (texte.value !== "") {
         vide = false;
         console.log(texte.value);
     } else {
@@ -20,15 +20,27 @@ texte.onkeyup = function () {
     }
 }
 
+texte.onkeyup = inputTexte();
+
 function format() {
-    if (vide) {
-        resultat.style.clipPath = "inset(0, 0, 0, 0)";
-        console.log(resultat);
-        console.log("false");
+    if (!vide && texte.value !== "") {
+        resultat.style.clipPath = "inset(0 0 0 0)";
+        let tab = texte.value.split(',');
+        let str = "values";
+
+        for (i = 0; i < tab.length; i++) {
+            if (ordre) {
+                str = str.concat(br + "(\'" + tab[i].split(' ')[0] + "," + space + "\'" + tab[i].slice(tab[i].indexOf(' ') + 1) + "\'),");
+            } else {
+                str = str.concat(br + "(\'" + tab[i].slice(tab[i].indexOf(' ') + 1) + "," + space + "\'" + tab[i].split(' ')[0] + "\'),");
+            }
+        }
+
+        str = str.slice(0, -1);
+        resultat.textContent = str;
     } else {
         resultat.style.clipPath = "inset(0 330px 100% 0)";
-        console.log(resultat);
-        console.log("true");
+        resultat.textContent = "";
     }
 }
 
