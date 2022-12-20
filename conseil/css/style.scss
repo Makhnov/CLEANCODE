@@ -1,0 +1,545 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------------------------------------------------------------------------------------- SALLE DU CONSEIL ---------------------------------------------------------------------------------------- */
+
+.resize {
+	background-color: #0e0e0e;
+}
+
+#scene {
+	height:100%;
+	width: 100%;
+	overflow: hidden;
+
+	#salleDuConseil {
+		position: absolute;
+		height: 900px;
+		width: 1600px;
+		top: 50%;
+		left: 50%;
+		background-image: url('../../divers/img/salleConseil.jpg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		box-sizing: border-box;
+		border: 5px solid #0e0e0e;
+		border-radius: 20%;	
+		box-shadow: 0 0 15px 15px #0e0e0e inset;
+	}
+
+	a div {
+		position: absolute;
+		cursor: pointer;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+		transform-origin: bottom center;
+
+		&:hover {
+			filter:brightness(2);
+		}
+	}
+	
+	.adhemar {
+		background-image: url("../../divers/img/personnages/conseil/adhemarMin.png");
+		top: 53%;
+		left: 60%;
+		width: calc(5 * 50px);
+		height: calc(5 * 80px);
+		z-index: 1;
+	
+		&:hover {
+			background-image: url("../../divers/img/personnages/conseil/adhemar2.png");
+			transform: scale(1.05);
+			top: 52%;
+		}
+	}
+
+	.aleksia {
+		background-image: url("../../divers/img/personnages/conseil/aleksiaMin.png");
+		top: 45%;
+		left: 20%;
+		height: calc(3.8 * 80px);
+		width: calc(3.8 * 50px);
+		z-index: 5;
+
+		&:hover {
+			background-image: url("../../divers/img/personnages/conseil/aleksia2.png");
+			transform: scale(1.15);
+		}
+	}
+
+	.alexandra {
+		top: 5%;
+		left: 7%;
+		height: calc(5.5 * 80px);
+		width: calc(5.5 * 50px);
+		background-image: url("../../divers/img/personnages/conseil/dameAlexandraMin.png");
+
+		&:hover {
+			background-image: url("../../divers/img/personnages/conseil/dameAlexandra2.png");
+			transform: scale(1.2);
+		}
+	}
+
+	.ancelin {
+		top: 45%;
+		left: 30%;
+		height: calc(5.3 * 80px);
+		width: calc(5.3 * 50px);
+		background-image: url("../../divers/img/personnages/conseil/pereAncelinMin.png");
+
+		&:hover {
+			background-image: url("../../divers/img/personnages/conseil/pereAncelin2.png");
+			transform: scale(1.15);
+		}
+	}
+
+	.jalana {
+		top: 48%;
+		left: 59.5%;
+		height: calc(1.8 * 80px);
+		width: calc(1.8 * 50px);
+		background-image: url("../../divers/img/personnages/conseil/jalanaMin.png");
+		z-index: 5;
+		
+		&:hover {
+			background-image: url("../../divers/img/personnages/conseil/jalana2.png");
+			transform: scale(1.2);
+		}
+	}
+
+	.jimmy {
+		top: 50%;
+		left: 46.25%;
+		height: calc(1.75 * 80px);
+		width: calc(1.75 * 50px);
+		background-image: url("../../divers/img/personnages/conseil/jimmyMin.png");
+		z-index: 5;
+		
+		&:hover {
+			background-image: url("../../divers/img/personnages/conseil/jimmy2.png");
+			transform: scale(1.25);
+		}
+	}
+
+	.laurain {
+		top: 45%;
+		left: 2%;
+		height: calc(6 * 80px);
+		width: calc(6 * 50px);
+		background-image: url("../../divers/img/personnages/conseil/laurainSansreprocheMin.png");
+
+		&:hover {
+			background-image: url("../../divers/img/personnages/conseil/laurainSansreproche2.png");
+			transform: scale(1.05);
+		}
+	}
+	
+	.precis {
+		top: 51.5%;
+		left: 92%;
+		height: calc(2 * 80px);
+		width: calc(2 * 50px);
+		background-image: url("../../divers/img/personnages/conseil/precisSansreprocheMin.png");
+		z-index: 5;
+		perspective-origin: bottom right;
+
+		&:hover {
+			background-image: url("../../divers/img/personnages/conseil/precisSansreproche2.png");
+			transform: scale(1.1);
+	}
+	}
+
+	.seleste {
+		position: absolute;
+		cursor: pointer;
+		top: 50%;
+		left: 51.25%;
+		height: calc(1.5 * 80px);
+		width: calc(1.5 * 50px);
+		background-image: url("../../divers/img/personnages/conseil/selesteMin.png");
+		background-repeat: no-repeat;
+		background-size: cover;
+		z-index: 5;
+
+		&:hover {
+			background-image: url("../../divers/img/personnages/conseil/seleste2.png");
+			transform: scale(1.2);
+			filter:brightness(2);
+		}
+	}
+	
+	.tenebres {
+		top: 48%;
+		left: 85%;
+		height: calc(2 * 80px);
+		width: calc(2 * 50px);
+		background-image: url("../../divers/img/personnages/conseil/tenebresSansreprocheMin.png");
+		z-index: 10;
+
+		&:hover {
+			background-image: url("../../divers/img/personnages/conseil/tenebresSansreproche2.png");
+			transform: scale(1.2);
+		}
+	}
+
+	.tharion {
+		top: 45%;
+		left: 49%;
+		height: calc(5.5 * 80px);
+		width: calc(5.5 * 50px);
+		background-image: url("../../divers/img/personnages/conseil/tharionMin.png");
+		z-index: 3;
+
+		&:hover {
+			background-image: url("../../divers/img/personnages/conseil/tharion2.png");
+			transform: scale(1.1);
+		}
+	}
+
+	.vaillant {
+		top: 48%;
+		left: 75%;
+		height: calc(5 * 80px);
+		width: calc(5 * 50px);
+		background-image: url("../../divers/img/personnages/conseil/vaillantSansreprocheMin.png");
+		
+		&:hover {
+			background-image: url("../../divers/img/personnages/conseil/vaillantSansreproche2.png");
+			transform: scale(1.1);
+		}
+	}
+}
+
+/* ---------------------------------------------------------------------------------------- PAGE DE PROFIL ---------------------------------------------------------------------------------------- */
+
+.bodyProfil {
+  	background-color:black;
+
+	nav, input, button, textarea, p, h1, h2, h3 {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+/*@media all and (max-width: 500px) {
+	(min-width: 500px) and
+}*/
+
+@media all and (max-width: 1000px) {
+
+	.bodyProfil {
+		// overflow-y: visible!important;
+		height:200vh!important;
+		width: 100vw!important;
+	}
+
+	header {
+		padding:0!important;
+		height:8vh!important;
+		width: 96vw!important;
+	}
+
+	#sceneProfil {
+		height:190vh!important;
+		width: 96vw!important;
+		grid-template-columns: 96vw!important;
+		grid-template-rows: 14vh 19vh 54vh 100vh!important;
+
+		#imageConseil {
+			grid-row: 4!important;
+			grid-column: 1!important;  
+		}
+			
+		#bgConseil {
+			grid-row: 4!important;
+			grid-column: 1!important;  
+			height:100%!important;
+			width: 100%!important;
+		}
+
+		#infosModif{
+			top:25px!important;
+			left:calc(95vw - 15px)!important;
+			height:35px!important;
+			width: 35px!important;
+		}
+		  
+		#modifier {
+			top:17.5px!important;
+			left:95vw!important;
+			height:50px!important;
+			width: 175px!important;
+			background: radial-gradient(circle 250px at 142.5px center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 17.5px, rgb(224, 203, 174) 17.5px,  rgb(224, 203, 174) 100%)!important;
+			clip-path: circle(250px at 150px center)!important;
+			
+			&:hover {
+				filter: brightness(1.25);
+			}
+		}
+
+		#imageConseil {
+			top:38%!important;
+			left:40%!important;
+		}
+	}
+}
+
+header {
+	padding:0;
+	height:8vh;
+	width: 96vw;
+	margin: auto;
+	margin-bottom: 2vh;
+	flex:none;
+
+	nav {
+		position: relative;
+		width:calc(100% - 10px);
+		padding-left: 10px!important;
+		background-color: antiquewhite;
+		height: 100%;
+		backface-visibility: hidden;
+		transition: transform 1.5s;
+		display: flex;
+		column-gap: 10px;
+		box-shadow: 0 0 5px 5px black inset;
+	}
+
+	nav:first-child {
+		top:0;
+		z-index: 2;
+		transform:rotateX(0deg);
+
+	#retour {
+		display: block;
+		justify-self: flex-start;
+		align-self: center;
+		background-image: url('../../divers/img/logoDnd.png');
+		background-repeat: no-repeat;
+		background-position: 10px center;
+		background-size: contain;
+		overflow: visible;
+		min-height:80%;
+		width: 100%;
+	  }
+  }
+  
+	nav:last-child {
+		position: relative;
+		top:calc(-8vh);
+		transform:rotateX(180deg);
+
+		#edition {
+			all:initial;
+			align-self: center;
+			visibility: hidden;
+			height: 80%;
+			width: clamp(70px, 15vw, 150px);
+			border-radius: 5px;
+			text-align: center;
+			font-weight: bold;
+			font-size: clamp(.9rem, 2vw, 2rem);
+			cursor: pointer;
+			background:rgba(0, 128, 0, 0.25);
+		}
+
+		#edition:hover {
+			filter: brightness(1.5);
+			text-shadow: 0.5px 0.25px 0px black;
+		}
+
+		#validation {
+			all:initial;
+			align-self: center;
+			opacity: 0;
+			justify-self: end;
+			height: 80%;
+			width: clamp(70px, 15vw, 150px);
+			border-radius: 5px;
+			text-align: center;
+			font-weight: bold;
+			font-size: clamp(.9rem, 2vw, 2rem);
+			cursor: pointer;
+			background:rgba(0, 128, 0, 0.25);
+		}
+
+		#validation:hover {
+			filter: brightness(1.5);
+			text-shadow: 0.5px 0.25px 0px black;
+		}
+  	}
+}
+
+#sceneProfil {
+	height:88vh;
+	width: 96vw;
+	margin:auto;
+	display: grid;
+	grid-template-columns: 48vw 48vw;
+	grid-template-rows: 19vh 19vh 49vh;
+	row-gap: 1vh;
+	column-gap: 1vw;
+	clip-path: inset(0 0 0 0);
+	transition: clip-path 1s;
+	overflow: hidden;
+
+  
+	h1 {
+		grid-row: 1;
+		grid-column: 1;
+		height:100%;
+		width:100%;
+		display: grid;
+		place-content: center;
+		background-color: antiquewhite;
+		font-size: clamp(1.5rem, 4.5vw, 3.5rem);
+		box-shadow: 0 0 5px 5px black inset;
+
+	}
+	
+	#zoneFonctions {
+		grid-row: 2;
+		grid-column: 1;
+		height: 100%;
+		width: calc(100% - 10px);
+		padding-left: 10px;
+		background-color: antiquewhite;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		box-shadow: 0 0 5px 5px black inset;
+
+		h2 {
+			padding-right: 10px;
+			text-align: flex-start;
+			font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+		}
+	
+		h3 {
+			font-size: clamp(1.5rem, 3vw, 2rem);
+		}
+	}
+
+	p {
+		grid-row: 3;
+		grid-column: 1;
+		height: calc(100% - 90px);
+		width: calc(100% - 10px);
+		padding-left: 10px;
+		padding-top: 90px;
+		background-color: antiquewhite;
+		display: grid;
+		align-content: top;
+		font-size: clamp(1.25rem, 2vw, 2rem);
+		box-shadow: 0 0 5px 5px black inset;
+		overflow: hidden;
+	}
+
+	#infosModif{
+		position:relative;
+		cursor: pointer;
+		z-index: 5;
+		grid-row: 3;
+		grid-column: 1;
+		top:calc(1.25vh + 10px);
+		left:calc(47vw - 25px);
+		transform: translate(-100%, 0);
+		width: 50px;
+		height: 50px;
+	}
+	
+	#modifier {
+		position:relative;
+		cursor: pointer;
+		z-index: 10;
+		grid-row: 3;
+		grid-column: 1;
+		top:1.25vh;
+		left:47vw;
+		width:225px;
+		height: 70px;
+		transform: translate(-100%, 0);
+		border:none;
+		border-radius: 20px;
+		box-sizing:border-box;
+		box-shadow:3px 3px 4px 1px black;
+		display: grid;
+		align-content: center;
+		grid-template-columns: 1fr 87.5px;
+		font-size: clamp(0.9rem, 1.25vw, 1.3rem);
+		font-weight: bold;
+		background: radial-gradient(circle 250px at 175px center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 25px, rgb(224, 203, 174) 25px,  rgb(224, 203, 174) 100%);
+		clip-path: circle(25px at 175px center);
+		transition: clip-path .75s ease-in;
+	
+		&:hover {
+			clip-path: circle(250px at 175px center);
+		}
+	}
+
+	#imageConseil {
+		grid-row: 1 / span 3;
+		grid-column: 2;  
+		position: relative;
+		z-index: -1;
+		top:38%;
+		left:40%;
+		height:60%;
+		width:50%;
+		background-position: center bottom;
+		background-repeat: no-repeat;
+		background-size:contain;
+		cursor: pointer;
+	
+			&:hover {
+				transform-origin: bottom;
+				transform: scale(1.02);
+				filter: brightness(1.75);
+			}
+	}
+	
+	#bgConseil {
+		position: relative;
+		z-index: -2;
+		grid-row: 1 / span 3;
+		grid-column: 2;  
+		height: 88vh;
+		width: 47vw;
+		background-image: url('../../divers/img/valbalafreConseil.jpg');
+		background-position:bottom right;
+		background-repeat: no-repeat;
+		background-size:cover;
+		box-shadow: 0 0 10px 10px black inset;
+	}
+}
+
+form {
+	position: absolute;
+	z-index: 20;
+	top:10vh;
+	left:2vw;
+	height: 88vh;
+	width: 96vw;  
+	font-size: clamp(0.8rem, 1.75vw, 1.5rem);
+	clip-path: inset(50% 50% 50% 50%);
+	transition: clip-path 1s ease-in;
+
+	#inputText {
+		position: relative;
+		top:50%;
+		left:50%;
+		transform: translate(-50%, -50%);
+		height:50%;
+		width: 50%;
+	}
+
+	input {
+		display: none;
+	}
+}
