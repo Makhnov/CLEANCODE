@@ -27,7 +27,6 @@ function format() {
         resultat.style.clipPath = "inset(0 0 0 0)";
         let tab = texte.value.split(',');
         let str = "values";
-
         for (i = 0; i < tab.length; i++) {
             if (ordre) {
                 str = str.concat(br + "(\'" + tab[i].split(' ')[0] + "," + space + "\'" + tab[i].slice(tab[i].indexOf(' ') + 1) + "\'),");
