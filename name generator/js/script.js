@@ -10,6 +10,7 @@ const resultat = document.getElementsByTagName('textarea')[0];
 let ordre = true;
 let vide = true;
 
+
 function inputTexte() {
         if (texte.value !== "") {
         vide = false;
@@ -23,6 +24,8 @@ function inputTexte() {
 texte.onkeyup = inputTexte();
 
 function format() {
+    inputTexte();
+
     if (!vide && texte.value !== "") {
         resultat.style.clipPath = "inset(0 0 0 0)";
         let tab = texte.value.split(',');
