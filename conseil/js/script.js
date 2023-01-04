@@ -144,15 +144,6 @@ async function getBdd(n) { // Fonction asynchrone qui récupère les information
 	// console.log(url);
 }
 
-function edition() {
-	const form = document.getElementsByTagName('form')[0];
-	const textArea = document.getElementById('inputText');
-	const edit = document.getElementById('edition');
-	const logo = document.getElementById('sceneProfil');
-	const val = document.getElementById('validation');
-	const nav1 = document.getElementsByTagName('nav')[0];
-	const nav2 = document.getElementsByTagName('nav')[1];
-
 function edition() { // Fonction qui permet de modifier le style de la page lors de l'édition
 	const form = document.getElementsByTagName('form')[0];
 	const textArea = document.getElementById('inputText');
