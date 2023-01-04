@@ -5,66 +5,12 @@ body {
   scrollbar-width: none;
 }
 
-/* ------------------------------------------------------------------------- POLICES ------------------------------------------------------------------------ */
-@media all {
-  @font-face {
-    font-family: "vecna";
-    src: url(../../divers/fonts/vecna.ttf) format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: "vecna";
-    src: url(../../divers/fonts/vecnaBold.ttf) format("truetype");
-    font-weight: bold;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: "vecna";
-    src: url(../../divers/fonts/vecnaItalic.ttf) format("truetype");
-    font-weight: normal;
-    font-style: italic;
-  }
-  @font-face {
-    font-family: "vecna";
-    src: url(../../divers/fonts/vecnaBoldItalic.ttf) format("truetype");
-    font-weight: bold;
-    font-style: italic;
-  }
-  @font-face {
-    font-family: "dalelands";
-    src: url(../../divers/fonts/dalelands.ttf) format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: "dalelands";
-    src: url(../../divers/fonts/dalelandsBold.ttf) format("truetype");
-    font-weight: bold;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: "dalelands";
-    src: url(../../divers/fonts/dalelandsItalic.ttf) format("truetype");
-    font-weight: normal;
-    font-style: italic;
-  }
-  @font-face {
-    font-family: "dalelands";
-    src: url(../../divers/fonts/dalelandsBoldItalic.ttf) format("truetype");
-    font-weight: bold;
-    font-style: italic;
-  }
-  @font-face {
-    font-family: "quentincaps";
-    src: url(../../divers/fonts/quentincaps.ttf) format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
-}
-/* -------------------------------------------------------------------- SALLE DU CONSEIL -------------------------------------------------------------------- */
-.resize {
-  background-color: #0e0e0e;
+body {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+  align-items: center;
 }
 
 #scene {
@@ -246,368 +192,144 @@ body {
   transform: scale(1.1);
 }
 
-/* --------------------------------------------------------------------- PAGE DE PROFIL --------------------------------------------------------------------- */
-.bodyProfil {
-  background-color: black;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  /* Occultation de la barre de scrolling verticale */
-  -ms-overflow-style: none;
-}
-.bodyProfil::-webkit-scrollbar {
-  display: none;
+/* ------------------------------ MEMBRES DU CONSEIL ------------------------------ */
+
+.bodyConseil {
+  background-color:black;
+  overflow: hidden;
 }
 .bodyProfil nav, .bodyProfil input, .bodyProfil button, .bodyProfil textarea, .bodyProfil p, .bodyProfil h1, .bodyProfil h2, .bodyProfil h3 {
+  margin: 0;
+  padding:0;
+  height:8vh;
+  width: 96vw;
+  margin: auto;
+  flex:none;
+}
+
+nav {
+  margin: 0;
+  padding: 2px 10px 2px 10px;
+  background-color: antiquewhite;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+form input {
+  height: 4vh;
+}
+
+.retour {
+  display: block;
+  background-image: url('../../divers/img/logoDnd.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height:90%;
+  width: 300px;
+}
+
+.sceneConseil {
+  margin: 0;
+  padding: 0;
+  margin-top:2vh;
+  height:89vh;
+  width: 96vw;
+  background-color: antiquewhite;
+  display: grid;
+  grid-template-columns: 48vw 48vw;
+  grid-template-rows: 30vh 20vh 40vh 9vh;
+  overflow: hidden;
+}
+
+#imgNom {
+  position:absolute;
+  opacity: .85;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+  top:9vh;
+  left:-.5vw;
+  height: 30vh;
+  width:52.5vw;
+}
+
+#imgRole {
+  position:absolute;
+  opacity: .85;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+  top:40vh;
+  left:2vw;
+  height: 20vh;
+  width:48vw;
+}
+
+#imgDescription {
+  position:absolute;
+  opacity: .85;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+  top:60vh;
+  left:2vw;
+  height: 39vh;
+  width:48vw;
+}
+
+h1, h2, h3 {
   margin: 0;
   padding: 0;
 }
 
-@media all and (max-width: 1000px) {
-  .bodyProfil {
-    height: 200vh !important;
-    width: 100vw !important;
-  }
-  header {
-    padding: 0 !important;
-    height: 8vh !important;
-    width: 96vw !important;
-  }
-  #sceneProfil {
-    height: 190vh !important;
-    width: 96vw !important;
-    grid-template-columns: 96vw !important;
-    grid-template-rows: 14vh 19vh 54vh 100vh !important;
-  }
-  #sceneProfil #imageConseil {
-    grid-row: 4 !important;
-    grid-column: 1 !important;
-  }
-  #sceneProfil #bgConseil {
-    grid-row: 4 !important;
-    grid-column: 1 !important;
-    height: 100% !important;
-    width: 100% !important;
-  }
-  #sceneProfil #infosModif {
-    top: 25px !important;
-    left: calc(95vw - 15px) !important;
-    height: 35px !important;
-    width: 35px !important;
-  }
-  #sceneProfil #modifier {
-    top: 17.5px !important;
-    left: 95vw !important;
-    height: 50px !important;
-    width: 175px !important;
-    background: radial-gradient(circle 250px at 142.5px center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 17.5px, rgba(224, 203, 174, 0.33) 17.5px, rgba(224, 203, 174, 0.33) 100%) !important;
-    -webkit-clip-path: circle(250px at 150px center) !important;
-            clip-path: circle(250px at 150px center) !important;
-  }
-  #sceneProfil #modifier:hover {
-    filter: brightness(1.25);
-  }
-  #sceneProfil #imageConseil {
-    top: 38% !important;
-    left: 40% !important;
-  }
+#zoneNom {
+  grid-row: 1;
+  grid-column: 1;
+  display: flex;
+  align-items: center;
 }
-@media all and (max-width: 1000px) and (orientation: landscape) {
-  .bodyProfil {
-    height: 200vh !important;
-    width: 100vw !important;
-  }
-  header {
-    padding: 0 !important;
-    height: 8vh !important;
-    width: 96vw !important;
-  }
-  #sceneProfil {
-    height: 190vh !important;
-    width: 96vw !important;
-    grid-template-columns: 30vw 66vw !important;
-    grid-template-rows: 14vh 19vh 54vh 100vh !important;
-  }
-  #sceneProfil h1 {
-    grid-row: 1 !important;
-    grid-column: 1/span 2 !important;
-  }
-  #sceneProfil #zoneFonctions {
-    grid-row: 2/span 2 !important;
-    grid-column: 1 !important;
-  }
-  #sceneProfil p {
-    grid-row: 2/span 2 !important;
-    grid-column: 2 !important;
-    padding: 75px 10px 20px 10px !important;
-    height: calc(100% - 95px) !important;
-    width: calc(100% - 20px) !important;
-    align-self: center !important;
-  }
-  #sceneProfil #imageConseil {
-    grid-column: 1/span 2 !important;
-  }
-  #sceneProfil #bgConseil {
-    grid-column: 1/span 2 !important;
-  }
-  #sceneProfil #infosModif {
-    top: calc(-19vh + 20px) !important;
-    left: calc(95vw - 15px) !important;
-  }
-  #sceneProfil #modifier {
-    top: calc(-19vh + 12.5px) !important;
-  }
+
+div div h1 {
+flex:1 1 40%;
+text-align: flex-start;
+padding-left: 2vw;
+font-size: clamp(1.2rem, 3.5vw, 3rem);
 }
-@media all {
-  header {
-    padding: 0;
-    height: 8vh;
-    width: 96vw;
-    margin: auto;
-    margin-bottom: 2vh;
-    flex: none;
-  }
-  header nav {
-    position: relative;
-    width: calc(100% - 20px);
-    padding: 0 10px !important;
-    background-color: antiquewhite;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-    transition: transform 1.5s;
-    display: flex;
-    -moz-column-gap: 10px;
-         column-gap: 10px;
-    box-shadow: 0 0 5px 5px black inset;
-  }
-  header nav:first-child {
-    top: 0;
-    z-index: 2;
-    transform: rotateX(0deg);
-  }
-  header nav:first-child #retour {
-    display: block;
-    justify-self: flex-start;
-    align-self: center;
-    background-image: url("../../divers/img/logoDnd.png");
-    background-repeat: no-repeat;
-    background-position: 10px center;
-    background-size: contain;
-    overflow: visible;
-    min-height: 80%;
-    width: 100%;
-  }
-  header nav:last-child {
-    position: relative;
-    top: -8vh;
-    transform: rotateX(180deg);
-  }
-  header nav:last-child #edition {
-    all: initial;
-    align-self: center;
-    visibility: hidden;
-    height: 80%;
-    width: clamp(70px, 15vw, 150px);
-    border-radius: 5px;
-    text-align: center;
-    font-weight: bold;
-    font-size: clamp(0.9rem, 2vw, 2rem);
-    cursor: pointer;
-    background: rgba(0, 128, 0, 0.25);
-  }
-  header nav:last-child #edition:hover {
-    filter: brightness(1.5);
-    text-shadow: 0.5px 0.25px 0px black;
-  }
-  header nav:last-child #validation {
-    all: initial;
-    align-self: center;
-    opacity: 0;
-    justify-self: end;
-    height: 80%;
-    width: clamp(70px, 15vw, 150px);
-    border-radius: 5px;
-    text-align: center;
-    font-weight: bold;
-    font-size: clamp(0.9rem, 2vw, 2rem);
-    cursor: pointer;
-    background: rgba(0, 128, 0, 0.25);
-  }
-  header nav:last-child #validation:hover {
-    filter: brightness(1.5);
-    text-shadow: 0.5px 0.25px 0px black;
-  }
-  #sceneProfil {
-    height: 88vh;
-    width: 96vw;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 48vw 48vw;
-    grid-template-rows: 19vh 19vh 49vh;
-    row-gap: 1vh;
-    -moz-column-gap: 1vw;
-         column-gap: 1vw;
-    -webkit-clip-path: inset(0 0 0 0);
-            clip-path: inset(0 0 0 0);
-    transition: -webkit-clip-path 1s;
-    transition: clip-path 1s;
-    transition: clip-path 1s, -webkit-clip-path 1s;
-    overflow: hidden;
-  }
-  #sceneProfil h1 {
-    grid-row: 1;
-    grid-column: 1;
-    height: 100%;
-    padding: 0 10px;
-    width: calc(100% - 20px);
-    display: grid;
-    place-content: center;
-    background-color: antiquewhite;
-    font-family: dalelands, Georgia, sans-serif;
-    font-weight: bold;
-    font-size: clamp(1.75rem, 3.5vw, 3rem);
-    box-shadow: 0 0 5px 5px black inset;
-  }
-  #sceneProfil #zoneFonctions {
-    grid-row: 2;
-    grid-column: 1;
-    height: 100%;
-    padding: 0 10px;
-    width: calc(100% - 20px);
-    background-color: antiquewhite;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    box-shadow: 0 0 5px 5px black inset;
-  }
-  #sceneProfil #zoneFonctions h2 {
-    text-align: flex-start;
-    font-family: dalelands, Georgia, sans-serif;
-    font-size: clamp(1.5rem, 3vw, 2rem);
-  }
-  #sceneProfil #zoneFonctions h3 {
-    font-family: dalelands, Georgia, sans-serif;
-    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-    overflow: hidden;
-  }
-  #sceneProfil p {
-    grid-row: 3;
-    grid-column: 1;
-    padding: 90px 10px 20px 10px;
-    height: calc(100% - 110px);
-    width: calc(100% - 20px);
-    background-color: antiquewhite;
-    display: grid;
-    align-content: top;
-    font-family: vecna, Georgia, sans-serif;
-    font-size: clamp(1rem, 1.7vw, 1.5rem);
-    box-shadow: 0 0 5px 5px black inset;
-    overflow-y: scroll;
-    /* Occultation de la barre de scrolling */
-    -ms-overflow-style: none; /* Edge et IE */
-    scrollbar-width: none; /* Firefox */
-  }
-  #sceneProfil p::-webkit-scrollbar {
-    display: none; /* Chrome, Safari et Opera */
-  }
-  #sceneProfil #infosModif {
-    position: relative;
-    cursor: pointer;
-    z-index: 5;
-    grid-row: 3;
-    grid-column: 1;
-    top: calc(1.25vh + 10px);
-    left: calc(47vw - 25px);
-    transform: translate(-100%, 0);
-    width: 50px;
-    height: 50px;
-  }
-  #sceneProfil #modifier {
-    position: relative;
-    cursor: pointer;
-    z-index: 10;
-    grid-row: 3;
-    grid-column: 1;
-    top: 1.25vh;
-    left: 47vw;
-    width: 225px;
-    height: 70px;
-    transform: translate(-100%, 0);
-    border: none;
-    border-radius: 20px;
-    box-sizing: border-box;
-    box-shadow: 3px 3px 4px 1px black;
-    display: grid;
-    align-content: center;
-    grid-template-columns: 1fr 87.5px;
-    font-size: clamp(0.9rem, 1.25vw, 1.3rem);
-    font-weight: bold;
-    background: radial-gradient(circle 250px at 175px center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 25px, rgb(224, 203, 174) 25px, rgb(224, 203, 174) 100%);
-    -webkit-clip-path: circle(25px at 175px center);
-            clip-path: circle(25px at 175px center);
-    transition: -webkit-clip-path 0.75s ease-in;
-    transition: clip-path 0.75s ease-in;
-    transition: clip-path 0.75s ease-in, -webkit-clip-path 0.75s ease-in;
-  }
-  #sceneProfil #modifier:hover {
-    -webkit-clip-path: circle(250px at 175px center);
-            clip-path: circle(250px at 175px center);
-  }
-  #sceneProfil #imageConseil {
-    grid-row: 1/span 3;
-    grid-column: 2;
-    position: relative;
-    z-index: -1;
-    top: 38%;
-    left: 40%;
-    height: 60%;
-    width: 50%;
-    background-position: center bottom;
-    background-repeat: no-repeat;
-    background-size: contain;
-    cursor: pointer;
-  }
-  #sceneProfil #imageConseil:hover {
-    transform-origin: bottom;
-    transform: scale(1.02);
-    filter: brightness(1.75);
-  }
-  #sceneProfil #bgConseil {
-    position: relative;
-    z-index: -2;
-    grid-row: 1/span 3;
-    grid-column: 2;
-    height: 88vh;
-    width: 47vw;
-    background-image: url("../../divers/img/valbalafreConseil.jpg");
-    background-position: bottom right;
-    background-repeat: no-repeat;
-    background-size: cover;
-    box-shadow: 0 0 10px 10px black inset;
-  }
-  form {
-    position: absolute;
-    z-index: 20;
-    top: 10vh;
-    left: 2vw;
-    height: 88vh;
-    width: 96vw;
-    font-size: clamp(0.8rem, 1.75vw, 1.5rem);
-    -webkit-clip-path: inset(50% 50% 50% 50%);
-            clip-path: inset(50% 50% 50% 50%);
-    transition: -webkit-clip-path 1s ease-in;
-    transition: clip-path 1s ease-in;
-    transition: clip-path 1s ease-in, -webkit-clip-path 1s ease-in;
-  }
-  form #inputText {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 50%;
-    width: 50%;
-  }
-  form input {
-    display: none;
-  }
-}/*# sourceMappingURL=style.css.map */
+
+div div h2 {
+  flex:1 1 60%;
+  text-align: flex-start;
+  padding-left: 2vw;
+  font-size: clamp(1rem, 2.5vw, 2rem);
+}
+
+div h3 {
+  grid-row: 2;
+  grid-column: 1;
+  display: grid;
+  max-width: 30vw;
+  align-content: center;
+  padding-left: 2vw;
+  font-size: clamp(0.9rem, 2vw, 1.75rem);
+}
+
+div p {
+  grid-row: 3;
+  grid-column: 1;
+  display: grid;
+  max-width: 30vw;
+  align-content: center;
+  padding-left: 2vw;
+  font-size: clamp(0.8rem, 1.75vw, 1.5rem);
+}
+
+#imageConseil {
+  grid-row: 1 / span 3;
+  grid-column: 2;  
+  height: 89vh;
+  background-position:top;
+  background-repeat: no-repeat;
+  background-size:contain ;
+}
