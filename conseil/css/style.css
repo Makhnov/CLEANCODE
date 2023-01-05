@@ -443,7 +443,7 @@ body {
     margin: auto;
     display: grid;
     grid-template-columns: 48vw 48vw;
-    grid-template-rows: 19vh 19vh 49vh;
+    grid-template-rows: 14vh 29vh 44vh;
     row-gap: 1vh;
     -moz-column-gap: 1vw;
          column-gap: 1vw;
@@ -484,11 +484,13 @@ body {
     text-align: flex-start;
     font-family: dalelands, Georgia, sans-serif;
     font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.5rem;
   }
   #sceneProfil #zoneFonctions h3 {
     font-family: dalelands, Georgia, sans-serif;
     font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-    overflow: hidden;
+    line-height: 1.5rem;
+    overflow: visible;
   }
   #sceneProfil p {
     grid-row: 3;
