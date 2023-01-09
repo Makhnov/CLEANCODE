@@ -32,14 +32,14 @@ function format() {
         let str = "values";
         for (i = 0; i < tab.length; i++) {
             if (ordre) {
-                str = str.concat(br + "(\'" + tab[i].split(' ')[0] + "," + space + "\'" + tab[i].slice(tab[i].indexOf(' ') + 1) + "\'),");
+                str = str.concat(br + "(\'" + tab[i].split(' ')[0] + "\'," + space + "\'" + tab[i].slice(tab[i].indexOf(' ') + 1) + "\'),");
             } else {
-                str = str.concat(br + "(\'" + tab[i].slice(tab[i].indexOf(' ') + 1) + "," + space + "\'" + tab[i].split(' ')[0] + "\'),");
+                str = str.concat(br + "(\'" + tab[i].slice(tab[i].indexOf(' ') + 1) + "\'," + space + "\'" + tab[i].split(' ')[0] + "\'),");
             }
         }
 
         str = str.slice(0, -1);
-        resultat.textContent = str;
+        resultat.textContent = str.concat(";");
     } else {
         resultat.style.clipPath = "inset(0 330px 100% 0)";
         resultat.textContent = "";
