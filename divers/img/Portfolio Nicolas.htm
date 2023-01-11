@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Portfolio Nicolas</title>
+
+    <meta name="author" content="Nico M">
+    <meta name="Portfolio" content="Portfolio de Nico">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    
+    
+
+<link rel="stylesheet" href="Portfolio%20Nicolas_fichiers/bootstrap.css" class="style"><link rel="stylesheet" href="Portfolio%20Nicolas_fichiers/portfolio.css"><link rel="icon" type="image/x-icon" href="http://127.0.0.1:5500/img/favicon.ico"></head>
+
+<body>
+
+    <!------------------ INTRODUCTION ------------------>
+
+    <input type="radio" id="introduction" name="balle" value="balle" unchecked="">
+    <label for="introduction" class="balle"></label>
+    <div class="cordeBalle"></div>
+    <div class="cadreBienvenue"></div>
+
+    <div class="cadreCache">
+        <div class="cadreHaut"></div>
+        <div class="cadreGauche"></div>
+        <div class="cadreDroite"></div>
+        <div class="cadreBasDroite"></div>
+        <div class="cadreBasGauche"></div>
+        <div class="cadreBas"></div>
+    </div>
+
+    <div class="bienvenue"></div>
+    <div class="pointSurLeI"></div>
+
+    <!-- <div class="stickyNote"></div> -->
+    <div class="cordeTemp"></div>
+
+    <!------------------ DEBUT SITE ------------------>
+
+    <section id="site" class="my-2">
+
+        <div class="container text-center ">
+            <div class="rowUn row border rounded border-4 border-dark my-2 ">
+                <div class="col-12 d-flex justify-content-center align-items-around">
+                    <h1 class="h1Main">Site de Makh</h1>
+                </div>
+            </div>
+
+            <div class="rowDeux row border rounded border-4 border-dark my-2 pt-2 ">
+                <div class="col-4 align-self-center d-flex justify-content-center align-items-center ">
+                    <h3 class="h3Main border rounded border-4 border-dark overflow-hidden">Lorem ipsum dolor sit amet,
+                        consectetur
+                        adipisicing elit. Officiis ex in error
+                        deleniti odit accusantium, ab inventore aliquam, nisi maxime soluta saepe! Asperiores voluptatum
+                        nihil repellat aliquam dolor distinctio? Fuga?</h3>
+                </div>
+
+                <div class="col-8 align-self-center d-flex flex-column">
+                    <div class="row">
+                        <h3 class="h3Main border rounded border-4 border-dark">Lorem ipsum dolor sit
+                            amet consectetur
+                            adipisicing elit. Cupiditate deleniti doloribus repudiandae inventore consectetur dolorum
+                            met nihil assumenda commodi distinctio?</h3>
+                    </div>
+                    <div class="row">
+                        <h3 class="h3Main border rounded border-4 border-dark">Lorem ipsum dolor sit amet consectetur
+                            adipisicing elit. Cupiditate deleniti doloribus repudiandae inventore consectetur dolorum
+                            met nihil assumenda commodi distinctio?</h3>
+                    </div>
+                    <div class="row">
+                        <h3 class="h3Main border rounded border-4 border-dark">Lorem ipsum dolor sit amet consectetur
+                            adipisicing elit. Cupiditate deleniti doloribus repudiandae inventore consectetur dolorum
+                            met nihil assumenda commodi distinctio?</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="Portfolio%20Nicolas_fichiers/bootstrap.bundle.js"></script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+</body></html>

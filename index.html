@@ -6,12 +6,11 @@
     <title>Bibli TP_Nico</title>
 
     <meta name="author" content="Nico M">
-    <meta name="description" content="TP_JS">
+    <meta name="description" content="Portfolio">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./divers/img/favbibli.ico" />
-
 </head>
 
 <body>
@@ -20,93 +19,214 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: bisque;
-            overflow-x: hidden;
-
+            background-color: rgb(191, 216, 214);
+			overflow-x: hidden;
         }
 
         #scene {
             margin: 0;
             padding: 0;
-            width: 100vw;
+			padding-top: 20px;
+			width: 100vw;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: justify;
-            overflow-y: scroll;
         }
 
         a {
             all: initial;
-            width: fit-content;
+			display: inline-block;
+            width: 250px;
             height: 60px;
-            margin-left: 5%;
+            margin-left: 75px;
             padding: 3px;
             cursor: pointer;
-            border: 2px solid black;
-            background-color: blanchedalmond;
+            border: 3px solid black;
+            background-color: rgb(204, 236, 236);
             border-radius: 10px;
-            font-size: 1.5rem;
+			font-size: 1.25rem;
             margin-bottom: 5px;
             display: grid;
-            align-content: start;
-        }
+			justify-items: justify;	
+			align-content: center;
+			flex:none;
+			user-select: none;
+			transition: .5s;
+		}
 
         a:hover {
-            background-color: antiquewhite;
+            background-color: rgb(139, 202, 202);
         }
 
-        a::after {
+        a::before {
             content: '';
             position: absolute;
-            left: 1%;
+            left: 20px;
             height: 30px;
             width: 30px;
             background-image: url('https://www.icone-png.com/png/54/54106.png');
             background-size: contain;
             background-repeat: no-repeat;
+			transition: .5s;
         }
 
-        a:hover::after {
+        a:hover::before {
             transform: scale(2);
         }
+
+		a:hover + span {
+			background: linear-gradient(to right, 
+				rgb(204, 236, 236) 0%, 
+				rgb(100, 180, 180) 100%)!important;			
+				font-size: 0.8rem;
+		}
+
+		#scene > div {
+			width: calc(100vw - 15px);
+			display: flex;
+			justify-content: start;
+			align-items: start;
+		}
+
+		span {
+			margin: 13.5px 15px;
+			height: 46px;
+			padding-left: 10px;
+			width:calc(100% - 10px);
+			flex:1 1 1;
+			box-sizing: border-box;
+			border:3px solid black;
+			border-radius: 20px;
+			display: grid;
+			align-content: center;
+			font-size: 0;
+			line-height: 0.8rem;
+			color:black;
+			transition: .75s;
+		}
+
     </style>
 
     <div id="scene">
-        <a href="./cofee/"><strong>Quelqu'un veut un café ? </strong>
-            En cours de création</a>
-        <a href="./kasbrik/"><strong>Casse-brique </strong>
-            (En cours, position OK, rebonds, OK, calculs OK)</a>
-        <a href="./logospherique/"><strong>Logo Sphérique </strong>
-            Terminé (manque favicon, description).</a>
-        <a href="./sphere/"><strong>Une sphere simple </strong>
-            Terminé (manque favicon, description).</a>
-        <a href="./ustou/"><strong>Bienvenue à Ustou ! </strong>
-            Petit test bg-image / hover</a>
-        <a href="./cookies/"><strong>Cookies </strong>
-            (Incrémentation à chaque visite)</a>
-        <a href="./pendu/"><strong>Pendu </strong>
-            (Pett bug : compte qd même un "échec pour lettre déjà proposée)</a>
-        <a href="./rangebars/"><strong>Range Bars </strong>
-            (Modifications de style en JS)</a>
-        <a href="./todolist/"><strong>TO-DO-LISTE </strong>
-            Version finale. Options en cours (modifications, highlight...)</a>
-        <a href="./canard/"><strong>Anim Canard </strong>
-            (Canard qui saute ! Ma première Keyframe)</a>
-        <a href="./chronometre/"><strong>Chronometre </strong>
-            ne fonctionne pas sur Firefox (Chrome only)</a>
-        <a href="./utilisateurs/"><strong>Panneau administrateur </strong>
-            Ajouter, trier, enlever des utilisateurs (tp fin JS)</a>
-        <a href="./conseil/"><strong>Salle du conseil </strong>
-            Jeu de rôle, présentation de personnages (affichage dynamique)</a>
-        <a href="./faerun/"><strong>Carte des Royaumes Oubliés </strong>
-            Jeu de rôle, présentation de l'univers</a>
-        <a href="./videos/"><strong>Site de présentation vidéos </strong>
-            Projet de groupe HTML CSS</a>
-
-        <!-- <a href="./tutos/"><strong>Divers Tutos </strong>
-            Pas encore mis en forme</a> -->
+		<div>
+			<a href="./conseil/"><strong>Salle du conseil</strong><br>
+				Projet fil rouge
+			</a>
+			<span class="45">Jeu de rôle, présentation de personnages (affichage dynamique)</span>
+		</div>
+		<div>
+			<a href="./ouverture/"><strong>Anim d'introduction</strong><br>
+				Full CSS !!!
+			</a>
+				<span class="95">V3.0 Terminée. Le site derrière n'est qu'un prétexte.</span>
+		</div>
+		<div>
+			<a href="./cofee/"><strong>Quelqu'un veut un café ?</strong><br>
+				Spécial stagiaire !
+			</a>
+			<span class="75">Tasse OK, Soucoupe OK, Animation OK || Manque : Anse, Liquide</span>
+		</div>
+		<div>
+			<a href="./pendu/"><strong>Pendu</strong><br>
+				Dictionnaire complet fr
+			</a>
+				<span class="90">Terminé (Petit bug à modifier : compte qd même un "échec" pour lettre déjà proposée)</span>
+		</div>
+		<div>
+			<a href="./utilisateurs/"><strong>Panneau administrateur</strong><br>
+				Placeholder en JS<br>
+				Pour formulaires
+			</a>
+			<span class="35">Terminé. TP Javascript (Customisé). Jolie anim sur les inputs pour un formulaire de contact, connexions, etc..</span>
+		</div>
+		<div>
+			<a href="./todolist/"><strong>TO-DO-LISTE</strong><br>
+				Pour faire les courses !
+			</a>
+				<span class="85">V1.0 Terminée. Options en cours : Modifications, highlight, BDD</span>
+		</div>
+		<div>
+			<a href="./kasbrik/"><strong>Casse-brique</strong><br>
+				Sans Canvas !
+			</a>
+			<span class="30">En cours : Position OK, rebonds, OK, calculs OK || Next : Collision</span>
+		</div>
+		<div>
+			<a href="./chronometre/"><strong>Chronometre</strong><br>
+				Petit Challenge pour les ms
+			</a>
+			<span class="90">Terminé. Micro latence sur firefox, parfait sur edge/chrome/Android</span>
+		</div>
+		<div>
+			<a href="./logospherique/"><strong>Logo Sphérique</strong><br>
+				Icone (Pharma) de menu
+			</a>
+			<span class="100">Terminé</span>
+		</div>
+		<div>
+			<a href="./Mixeur/"><strong>Mixeur de couleurs</strong><br>
+				Test sur les conditions <br>
+				multiples (CSS Only)
+			</a>
+				<span class="60">Calculs terminé. Visuels en cours.</span>
+		</div>
+		<div>
+	        <a href="./sphere/"><strong>Une sphere simple (CSS)</strong><br>
+				Petits tests et jeux de lumières
+			</a>
+				<span class="100">Terminé</span>
+		</div>
+		<div>
+			<a href="./ustou/"><strong>Bienvenue à Ustou !</strong><br>
+				Petits tests sur bg-image</a>
+				<span class="80">Terminé (PC Uniquement)</span>
+		</div>
+		<div>
+			<a href="./cookies/"><strong>Cookies</strong><br>
+				Incrémentation à chaque visite
+			</a>
+			<span class="100">Terminé</span>
+		</div>			
+		<div>
+			<a href="./rangebars/"><strong>Range Bars</strong><br>
+				Modifications de style en JS
+			</a>
+				<span class="100">Quasi terminé. Il faut que je rajoute la modif en temps réel.</span>
+		</div>
+		<div>
+			<a href="./canard/"><strong>Un canard pour Micael</strong><br>
+				Nostalgie
+			</a>
+				<span class="100">Terminé. Canard qui saute ! Ma première Keyframe</span>
+		</div>
+		<div>		
+			<a href="./faerun/"><strong>Carte des Royaumes Oubliés</strong><br>
+				Carte interractive</a>
+			<span class="05">Début. Projet titanesque (nottament au niveau des données).</span>
+		</div>
+		<div>
+			<a href="./videos/"><strong>Site de présentation vidéos</strong><br>
+				Projet de groupe HTML CSS
+			</a>
+			<span class="50">Abandonné / Terminé (Projet de groupe). Carrousels 3D en pur CSS.</span>
+		</div>
     </div>
+
+	<script> 
+		const spans = document.getElementsByTagName('span');
+
+		for (let i = 0; i < spans.length; i++) {
+			let scaling = spans[i].classList[0];
+
+			spans[i].style.background = 'radial-gradient(circle at left center, rgb(204, 236, 236) 0%, rgb(89, 150, 150)' + 
+				Math.trunc((scaling - 1) / 2) + '%, rgb(21, 80, 80) ' + 
+				(scaling -1) + '%, rgb(21, 78, 78)' + 
+				scaling + '%,	rgb(204, 236, 236)' + 
+				scaling + '%,	rgb(204, 236, 236) 100%)';
+		}
+	</script>
+
 </body>
 
 </html>

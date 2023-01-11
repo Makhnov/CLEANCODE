@@ -1,0 +1,131 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+#ajoutBar {
+  position: absolute;
+  top: 10vh;
+  left: 20vw;
+  width: 60vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+#ajoutBar #ajout {
+  all: initial;
+  padding: 5px;
+  flex: 0.33 1 auto;
+  height: 30px;
+  width: 10vw;
+  border-radius: 15px;
+  box-sizing: border-box;
+  border: 2px solid black;
+  background-color: rgb(200, 200, 255);
+  color: black;
+}
+#ajoutBar #add {
+  all: initial;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  flex: none;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 2px solid black;
+  display: grid;
+  place-content: center;
+  font-size: 1.75em;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: rgb(100, 100, 200);
+}
+#ajoutBar #add:hover {
+  background-color: rgb(200, 200, 255);
+}
+
+#scene {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(to top left, rgb(75, 125, 255), rgb(125, 125, 255), rgb(125, 75, 255));
+  display: grid;
+  place-content: center;
+}
+
+#task {
+  position: absolute;
+  height: calc(75vh - 30px);
+  width: 60vw;
+  top: calc(15vh + 30px);
+  left: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  background-color: blue;
+}
+#task div {
+  flex: 0 1 30px;
+  width: 75%;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow: hidden;
+}
+#task span {
+  flex: 0 1 auto;
+  height: 100%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  box-sizing: border-box;
+  border: 2px solid black;
+  background-color: rgb(200, 200, 255);
+  border-radius: 15px;
+  margin-bottom: 5px;
+  flex: 0.01 1 auto;
+  display: grid;
+  place-content: center;
+  font-size: 1em;
+}
+#task button {
+  all: initial;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  flex: 0 1 auto;
+  height: 100%;
+  width: 30px;
+  max-width: 30px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 2px solid black;
+  display: grid;
+  place-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  transform: rotate(45deg);
+  font-size: 2em;
+  background-color: rgb(100, 100, 200);
+}
+#task button:hover {
+  background-color: rgb(200, 200, 255);
+}/*# sourceMappingURL=style.css.map */
