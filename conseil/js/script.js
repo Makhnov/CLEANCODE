@@ -1,19 +1,19 @@
 let space = " ";
 let br = "\n";
 let obj;
-let editActive = false;
-let fullscreenActive = false;
-
-let resizePage = false;
-if (document.getElementsByClassName('resize').length > 0) {
-	resizePage = true;
-}
+let editActive = false; // Booléen qui permet de vérifier si l'utilisateur est en train d'éditer une description ou non. Fonction: edition()
+let fullscreenActive = false; // Booléen qui permet de vérifier si le personnage est en plein écran ou non. Fonction:  fullscreenCharacter()
+let resizePage = false; // cf ligne 12
 
 const scene = document.getElementById("scene");
 const box = document.getElementById('salleDuConseil');
 const body = document.getElementsByTagName('body')[0];
 
-class MembresConseil {
+if (document.getElementsByClassName('resize').length > 0) { // On vérifie si on a load une page qui nécessite un resize (salle du conseil, etc.)
+	resizePage = true;
+}
+
+class MembresConseil { // On déclare les objets personnages, ici les membres du conseil
 	constructor(id, nom, image, titre, role, description) {
 		this.id = id;
 		this.nom = nom;
@@ -68,34 +68,34 @@ class MembresConseil {
 	}
 }
 
-function resize() {
+function resize() { // Fonction qui permet de redimensionner un groupe de personnages en fonction de l'écran de l'utilisateur
 
-	let width = document.documentElement.clientWidth;
-	let height = document.documentElement.clientHeight;
-	let ratio = (width / height) / (16 / 9);
+	let width = document.documentElement.clientWidth; // On récupère la largeur de l'écran de l'utilisateur
+	let height = document.documentElement.clientHeight; // On récupère la hauteur de l'écran de l'utilisateur
+	let ratio = (width / height) / (16 / 9); // Le ratio de notre image de fond (la salle du conseil) est de 16/9e
+
+	console.log( // Affichage des trois données stockées ci-dessus
+	"ratio :" + space + Math.trunc(ratio * 100) / 100 + br +
+	"Width :" + space + width + br +
+	"height :" + space + height );
+
+	// On stocke les ratios hauteurs & largeur par rapport à la taille actuelle de l'écran de l'utilisateur minorés de 2,5% pour les marges
 	let widthRatio = (width / 1600) * 0.975;
 	let heightRatio = (height / 900) * 0.975;
 
+	/* On vérifie si l'écran est plus ou moins au bonnes dimensions (+/-20%) ou si il est beaucoup trop large ou beaucoup trop haut */
+	/* On utilisera le ratio le plus réducteur */
 	if (ratio > 1.2) {
 		widthRatio = heightRatio;
 	} else if (ratio < 0.8) {
 		heightRatio = widthRatio;
 	}
 
-	console.log(
-		"ratio :" + space + Math.trunc(ratio * 100) / 100 + br +
-		"Width :" + space + width + br +
-		"height :" + space + height + br +
-		"widthRatio :" + space + Math.round(widthRatio * 100) / 100 + br +
-		"heightRatio :" + space + Math.round(heightRatio * 100) / 100 + br +
-		"BoxW :" + space + Math.round(widthRatio * 1600) + br +
-		"BoxHprev :" + space + Math.round(widthRatio * 900) + br +
-		"BoxH :" + space + Math.round(heightRatio * 900));
-
+	/* on place la box (#scene) au centre de l'écran puis on scale ses dimensions en fonctions des ratios précédemment calculés */ 
 	box.style.transform = "translate(-50%, -50%) scale(" + widthRatio + ", " + heightRatio + ")";
 }
 
-if (resizePage) {
+if (resizePage) { // timer de 0.5s pour éviter les resize instantanés
 	window.onresize = function () {
 		let resizeTimer;
 		clearTimeout(resizeTimer);
@@ -106,10 +106,10 @@ if (resizePage) {
 	};
 }
 
-async function getBdd(n) {
+async function getBdd(n) { // Fonction asynchrone qui récupère les informations des personnages de manière dynamique dans la BDD
 	//récupéation du json
 	const list = await fetch('https://makh.fr/conseil/index2.php');
-	//convertion en tableau
+	//conversion en tableau
 	const tabTemp = await list.json();
 	obj = tabTemp[n];
 
@@ -144,7 +144,7 @@ async function getBdd(n) {
 	// console.log(url);
 }
 
-function edition() {
+function edition() { // Fonction qui permet de modifier le style de la page lors de l'édition
 	const form = document.getElementsByTagName('form')[0];
 	const textArea = document.getElementById('inputText');
 	const edit = document.getElementById('edition');
@@ -178,16 +178,16 @@ function edition() {
 	}
 }
 
-function validation() {
+function validation() {  // Fonction qui permet de valider le formulaire (Methode GET) et lance index2.php
 	const val = document.getElementById('validationPhp');
 	const form = document.getElementsByTagName('textarea')[0];
 	let str = form.value;
-	str = str.replace(/'/g, '’');
+	str = str.replace(/'/g, '’'); // Les ' interfèrent avec les commandes php, on utilise les expressions régulières (regex) les remplacer par des ’
 	form.value = str;
 	val.click();
 }
 
-function fullscreenCharacter() {
+function fullscreenCharacter() { // Fonction qui permet de lancer un zoom sur les personnages afin de les mettre en "plein écran"
 
 	const perso = document.getElementById('imageConseil');
 	const chateau = document.getElementById('bgConseil');
