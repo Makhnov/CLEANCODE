@@ -19,7 +19,9 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: rgb(191, 216, 214);
+			background: linear-gradient(to left, 
+			rgb(228, 243, 243) 0%, 
+			rgb(199, 227, 250) 100%);				
 			overflow-x: hidden;
         }
 
@@ -34,16 +36,53 @@
             align-items: justify;
         }
 
+		@media all and (max-width: 800px) and (min-width: 630px) {
+			a {
+				width: 175px!important;
+				font-size: 1rem!important;
+			}
+			span {
+				font-size: 0.8rem!important;
+				line-height: 0.9rem!important;
+			}
+		}
+
+		@media all and (max-width: 630px) and (min-width: 500px) {
+			a {
+				width: 150px!important;
+				font-size: 0.85rem!important;
+			}
+			span {
+				font-size: 0.75rem!important;
+				line-height: 0.75rem!important;
+				margin: 16.5px 10px!important;
+				height: 40px!important;
+			}
+		}
+
+		@media all and (max-width: 500px) {
+			a {
+				width: 125px!important;
+				font-size: 0.75rem!important;
+			}
+			span {
+				margin: 13.5px 10px!important;
+				height: 46px!important;
+				font-size: 0.66rem!important;
+				line-height: 0.75rem!important;
+			}
+		}
+
         a {
             all: initial;
 			display: inline-block;
-            width: 250px;
+            width: 275px;
             height: 60px;
             margin-left: 75px;
             padding: 3px;
             cursor: pointer;
             border: 3px solid black;
-            background-color: rgb(204, 236, 236);
+            background-color:rgb(187, 220, 247);
             border-radius: 10px;
 			font-size: 1.25rem;
             margin-bottom: 5px;
@@ -52,12 +91,15 @@
 			align-content: center;
 			flex:none;
 			user-select: none;
-			transition: .5s;
+			transform-origin: center;
+			transition: .25s;
 		}
 
         a:hover {
-            background-color: rgb(139, 202, 202);
-        }
+			background-color: rgb(114, 165, 206);
+			width:285px;
+			height:60px;
+		}
 
         a::before {
             content: '';
@@ -79,7 +121,7 @@
 			background: linear-gradient(to right, 
 				rgb(204, 236, 236) 0%, 
 				rgb(100, 180, 180) 100%)!important;			
-				font-size: 0.8rem;
+				font-size: 1rem;
 		}
 
 		#scene > div {
@@ -90,18 +132,19 @@
 		}
 
 		span {
-			margin: 13.5px 15px;
-			height: 46px;
+			margin: 18.5px 15px;
+			height: 36px;
 			padding-left: 10px;
 			width:calc(100% - 10px);
-			flex:1 1 1;
+			flex:2 1 1;
 			box-sizing: border-box;
-			border:3px solid black;
-			border-radius: 20px;
+			border:2px solid black;
+			border-radius: 12px;
 			display: grid;
 			align-content: center;
 			font-size: 0;
-			line-height: 0.8rem;
+			line-height: 1rem;
+			font-weight: bold;
 			color:black;
 			transition: .75s;
 		}
@@ -136,30 +179,30 @@
 		<div>
 			<a href="./utilisateurs/"><strong>Panneau administrateur</strong><br>
 				Placeholder en JS<br>
-				Pour formulaires
+				Spécial pour formulaires
 			</a>
 			<span class="35">Terminé. TP Javascript (Customisé). Jolie anim sur les inputs pour un formulaire de contact, connexions, etc..</span>
 		</div>
 		<div>
-			<a href="./todolist/"><strong>TO-DO-LISTE</strong><br>
+			<a href="./todolist/"><strong>TO-DO-LIST</strong><br>
 				Pour faire les courses !
 			</a>
 				<span class="85">V1.0 Terminée. Options en cours : Modifications, highlight, BDD</span>
 		</div>
 		<div>
-			<a href="./kasbrik/"><strong>Casse-brique</strong><br>
+			<a href="./kasbrik/"><strong>Casse-briques</strong><br>
 				Sans Canvas !
 			</a>
 			<span class="30">En cours : Position OK, rebonds, OK, calculs OK || Next : Collision</span>
 		</div>
 		<div>
-			<a href="./chronometre/"><strong>Chronometre</strong><br>
-				Petit Challenge pour les ms
+			<a href="./chronometre/"><strong>Chronomètre</strong><br>
+				Petit challenge pour les ms
 			</a>
 			<span class="90">Terminé. Micro latence sur firefox, parfait sur edge/chrome/Android</span>
 		</div>
 		<div>
-			<a href="./logospherique/"><strong>Logo Sphérique</strong><br>
+			<a href="./logospherique/"><strong>Logo sphérique</strong><br>
 				Icone (Pharma) de menu
 			</a>
 			<span class="100">Terminé</span>
@@ -172,7 +215,7 @@
 				<span class="60">Calculs terminé. Visuels en cours.</span>
 		</div>
 		<div>
-	        <a href="./sphere/"><strong>Une sphere simple (CSS)</strong><br>
+	        <a href="./sphere/"><strong>Une sphère simple (CSS)</strong><br>
 				Petits tests et jeux de lumières
 			</a>
 				<span class="100">Terminé</span>
@@ -189,7 +232,7 @@
 			<span class="100">Terminé</span>
 		</div>			
 		<div>
-			<a href="./rangebars/"><strong>Range Bars</strong><br>
+			<a href="./rangebars/"><strong>Range bars</strong><br>
 				Modifications de style en JS
 			</a>
 				<span class="100">Quasi terminé. Il faut que je rajoute la modif en temps réel.</span>
@@ -202,11 +245,11 @@
 		</div>
 		<div>		
 			<a href="./faerun/"><strong>Carte des Royaumes Oubliés</strong><br>
-				Carte interractive</a>
-			<span class="05">Début. Projet titanesque (nottament au niveau des données).</span>
+				Carte interactive</a>
+			<span class="15">Début. Projet titanesque (nottament au niveau des données).</span>
 		</div>
 		<div>
-			<a href="./videos/"><strong>Site de présentation vidéos</strong><br>
+			<a href="./videos/"><strong>Site de prés° vidéos</strong><br>
 				Projet de groupe HTML CSS
 			</a>
 			<span class="50">Abandonné / Terminé (Projet de groupe). Carrousels 3D en pur CSS.</span>
