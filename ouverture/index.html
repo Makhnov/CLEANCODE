@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <title>Portfolio Nicolas</title>
+
+    <meta name="author" content="Nico M" />
+    <meta name="Portfolio" content="Animation ouverture" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../divers/bootstrap/css/bootstrap.css" class="style" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" type="image/x-icon" href="../divers/img/favbrik.ico" />
+</head>
+
+<body>
+    <!------------------ INTRODUCTION ------------------>
+
+    <input type="radio" id="introduction" name="balle" value="balle" unchecked />
+    <label for="introduction" class="balle"></label>
+    <div class="cordeBalle"></div>
+    <div class="cadreBienvenue"></div>
+
+    <div class="cadreCache">
+        <div class="cadreHaut"></div>
+        <div class="cadreGauche"></div>
+        <div class="cadreDroite"></div>
+        <div class="cadreBasDroite"></div>
+        <div class="cadreBasGauche"></div>
+        <div class="cadreBas"></div>
+    </div>
+
+    <div class="bienvenue"></div>
+    <div class="pointSurLeI"></div>
+
+    <div class="stickyNote">
+        <div class="angleNote"></div>
+        <div class="rivetNote"></div>
+        <div class="baguetteNote"></div>
+        <div class="listeNote">
+            <p>To Do List</p>
+            <ul>
+                <li>Javascript</li>
+                <li>PHP</li>
+                <li>MySQL</li>
+                <li>...</li>
+            </ul>
+        </div>
+    </div>
+
+    <!------------------ DEBUT SITE ------------------>
+
+    <div id="mainContainer" class="container-fluid text-center">
+        <div id="menubar">
+            <a class="btn btn-primary m-2" href="#pageUne" role="button">ACCUEIL</a>
+            <a class="btn btn-primary m-2" href="#pageTrois" role="button">AFTER</a>
+            <a class="btn btn-primary m-2" href="#pageDeux" role="button">BEFORE</a>
+        </div>
+        <div id="pageUne" class="row justify-content-center page">
+            <div id="zoneMakh"
+                class="col-xl-4 col-sm-6 col-xs-12 d-flex flex-column justify-content-center align-items-center zone">
+                <div class="frontMakh">
+                    <p>MAKH</p>
+                    <div class="imgMakh"></div>
+                </div>
+                <div class="backMakh d-flex flex-column justify-content-around align-items-around h-25 w-25">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#infosMakh">INFOS</button>
+                    <a class="btn btn-primary" href="#pageDeux" role="button">::BEFORE</a>
+                    <a class="btn btn-primary" href="#pageTrois" role="button">::AFTER</a>
+                </div>
+            </div>
+            <div id="zonePop" class="col-xl-4 col-sm-6 col-xs-12 d-flex justify-content-center align-items-center zone">
+                <p>POP</p>
+            </div>
+            <div id="zoneVide" class="col-xl-4 d-xl-flex d-none justify-content-center align-items-center zone">
+                <p>VIDE</p>
+            </div>
+        </div>
+
+        <div id="pageDeux" class="row justify-content-evenly page">
+            <div id="zoneBioTexte"
+                class="col-xl-4 col-md-5 col-xs-12 d-flex justify-content-center align-items-center zone overflow-hidden">
+                <p class="text-start">
+                    <strong>BIO :</strong><br><br>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati neque cum quibusdam ipsum
+                    adipisci error ipsam delectus quod nihil ipsa, pariatur iure, magnam beatae! Omnis asperiores
+                    commodi amet nostrum accusamus?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit dolorem ad laborum at saepe, quam omnis
+                    veritatis! Similique, ex? Fugiat totam quidem corporis voluptate maiores quas ab voluptatum pariatur
+                    a?
+                </p>
+            </div>
+            <div id="zoneBioImage"
+                class="col-xl-8 col-md-7 col-xs-12 d-flex flex-column justify-content-evenly align-items-center zone">
+                <div class="imgBio imgBio1"></div>
+                <div class="imgBio imgBio2"></div>
+                <div class="imgBio imgBio3"></div>
+            </div>
+        </div>
+
+        <div id="pageTrois" class="row justify-content-center page">
+            <div id="zoneProjetsTexte"
+                class="col-xxl-8 col-xl-12 d-flex justify-content-center align-items-center zone  overflow-hidden">
+                <p class="text-start">
+                    <strong>PROJETS :</strong><br><br>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati neque cum quibusdam ipsum
+                    adipisci error ipsam delectus quod nihil ipsa, pariatur iure, magnam beatae! Omnis asperiores
+                    commodi amet nostrum accusamus?
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati neque cum quibusdam ipsum
+                    adipisci error ipsam delectus quod nihil ipsa, pariatur iure, magnam beatae! Omnis asperiores
+                    commodi amet nostrum accusamus?
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati neque cum quibusdam ipsum
+                    adipisci error ipsam delectus quod nihil ipsa, pariatur iure, magnam beatae! Omnis asperiores
+                    commodi amet nostrum accusamus?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit dolorem ad laborum at saepe, quam omnis
+                    veritatis! Similique, ex? Fugiat totam quidem corporis voluptate maiores quas ab voluptatum pariatur
+                    a?
+                </p>
+            </div>
+            <div id="zoneProjetsImage" class="col-xxl-4 col-xl-12 d-flex flex-column justify-content-evenly zone">
+                <div class="row justify-content-xxl-evenly justify-content-center align-items-evenly">
+                    <div class="col-12 projetsFace i1"></div>
+                    <div class="col-12 projetsFace i2 m-xxl-0 mx-4"></div>
+                    <div class="col-12 projetsFace i3"></div>
+                </div>
+                <div class="row justify-content-xxl-evenly justify-content-center align-items-center">
+                    <div class="col-xs-4 col-12 i4 projetsFace"></div>
+                    <div class="col-xs-4 col-12 i5 projetsFace m-xxl-0 mx-4"></div>
+                    <div class="col-xs-4 col-12 i6 projetsFace"></div>
+                </div>
+                <div class="row justify-content-xxl-evenly justify-content-center  align-items-center">
+                    <div class="col-xs-4 col-12 i7 projetsFace"></div>
+                    <div class="col-xs-4 col-12 i8 projetsFace m-xxl-0 mx-4"></div>
+                    <div class="col-xs-4 col-12 i9 projetsFace"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOUTONS DIVERS -->
+
+    <div class="modal fade" id="infosMakh" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="infosMakhLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="infosMakhLabel">Infos sup pour Makh</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Un pop-up CSS dans ma colonne centrale (pop)
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../divers/bootstrap/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

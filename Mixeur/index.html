@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/mixeur.css" />
+  <title>Mélangeur de couleurs</title>
+</head>
+
+<body>
+
+
+  <div id="scene">
+    <h1>Viens faire toi même le mélange des couleurs ...</h1>
+
+    <div class="couleur gauche">
+      <label for="p-r"></label>
+      <label for="p-v"></label>
+      <label for="p-b"></label>
+      <label for="p-bc"></label>
+      <label for="p-n"></label>
+      <label for="p-c"></label>
+    </div>
+
+    <div class="couleur droite">
+      <label for="s-r"></label>
+      <label for="s-v"></label>
+      <label for="s-b"></label>
+      <label for="s-bc"></label>
+      <label for="s-n"></label>
+      <label for="s-c"></label>
+    </div>
+
+    <div class="resultat">
+
+      <div class="fiole">
+        <input type="radio" id="p-r" name="commuPrimaire" value="p-rouge" />
+        <input type="radio" id="p-v" name="commuPrimaire" value="p-vert" />
+        <input type="radio" id="p-b" name="commuPrimaire" value="p-bleu" />
+        <input type="radio" id="p-bc" name="commuPrimaire" value="p-blanc" />
+        <input type="radio" id="p-n" name="commuPrimaire" value="p-noir" />
+
+        <input type="radio" id="s-r" name="commuSecondaire" value="s-rouge" />
+        <input type="radio" id="s-v" name="commuSecondaire" value="s-vert" />
+        <input type="radio" id="s-b" name="commuSecondaire" value="s-bleu" />
+        <input type="radio" id="s-bc" name="commuSecondaire" value="s-blanc" />
+        <input type="radio" id="s-n" name="commuSecondaire" value="s-noir" />
+
+        <div class="cacheFiole"></div>
+        <div class="tubeFiole"></div>
+        <div class="carreFiole"></div>
+      </div>
+
+      <div class="fiole gauche"></div>
+      <div class="fiole droite"></div>
+    </div>
+  </div>
+</body>
+
+</html>

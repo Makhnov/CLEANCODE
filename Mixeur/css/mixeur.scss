@@ -1,0 +1,262 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  overflow: hidden;
+}
+
+@for $j from 1 through 2 {  
+  @for $i from 1 through 5 {
+    input:nth-of-type(#{calc(5 * $j - 5 + $i)}) {
+      position: fixed;
+      top: ($j * 15px);
+      left: ($i - 1) * 15px + 25px;
+    }
+  }
+}
+
+#scene {
+  display: grid;
+  grid-template-rows: 10vh 55vh 35vh;
+  grid-template-columns: 10vw 40vw 40vw 10vw;
+}
+
+#scene h1 {
+  font-size: 1.5rem;
+  grid-row: 1;
+  grid-column: 2 / span 2;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  color: white;
+  background-color: black;
+  border: 5px solid white;
+  flex: none;
+}
+
+.couleur {
+  background-color: black;
+  color: white;
+  width: 45vw;
+  height: 50vh;
+  align-self: center;
+  justify-self: center;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  place-content: center;
+  overflow: hidden;
+}
+
+.couleur.gauche {
+  grid-row: 2;
+  grid-column: 1 / span 2;
+  margin-bottom: 1vw;
+  height:75%;
+  width:30%;
+  animation: melangeur 20s linear infinite;
+}
+
+.couleur.droite {
+  grid-row: 2;
+  grid-column: 3 / span 2;
+  margin-bottom: 1vw;
+  height:75%;
+  width:30%;
+  animation: melangeur 20s linear infinite;
+}
+
+@keyframes melangeur
+{
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.couleur.droite {
+  grid-row: 2;
+  grid-column: 3 / span 2;
+  margin-bottom: 1vw;
+}
+
+label { 
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  height:50px;
+  width: 50px;
+  top:50%;
+  left: 50%;
+  background-repeat: no-repeat;
+  background-size:contain;
+  background-position: center;
+  cursor: pointer;
+}
+
+@for $i from 1 through 6 { 
+  .gauche label:nth-of-type(#{$i}), .droite label:nth-of-type(#{$i}) {
+    transform-origin: center;
+    transform:  translate(-50%, -50%) rotate($i * 60deg) translate(75px);
+    background-image: url('../../divers/img/couleur#{$i}.png');
+  }
+}
+
+.resultat {
+  grid-row: 3;
+  grid-column: 2 / span 2;
+  background-color: black;
+  border: 5px solid white;
+  flex: none;
+}
+
+.fiole {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-content: center;
+  z-index: 2;
+}
+
+.tubeFiole {
+  position: absolute;
+  height: 5vw;
+  width: 1vw;
+  background-color: white;
+  border: 3px solid slategray;
+  border-bottom: none;
+  border-top: none;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.carreFiole {
+  position: absolute;
+  height: 7.5vw;
+  width: 7.5vw;
+  border-radius: 1vw;
+  border: 3px solid slategray;
+  background-color: white;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, 40%) rotate(45deg);
+}
+
+.cacheFiole {
+  position: absolute;
+  height: 7.5vw;
+  width: 20vw;
+  background-color: black;
+  border-radius: 1vw;
+  border: 2px solid black;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  z-index: 1;
+}
+
+.tubeFiole, .carreFiole {
+  --rouge: 0;
+  --vert: 0;
+  --bleu: 0;
+  --pblanc: 0;
+  --sblanc:0;
+  --noir: 1;
+}
+
+#p-r:checked ~ .tubeFiole, #p-r:checked ~ .carreFiole, #s-r:checked ~ .carreFiole, #s-r:checked ~ .tubeFiole {
+  --rouge: 255;  
+}
+
+#p-v:checked ~ .tubeFiole, #p-v:checked ~ .carreFiole, #s-v:checked ~ .carreFiole, #s-v:checked ~ .tubeFiole {
+  --vert: 255;
+}
+
+#p-b:checked ~ .tubeFiole, #p-b:checked ~ .carreFiole, #s-b:checked ~ .carreFiole, #s-b:checked ~ .tubeFiole {
+  --bleu: 255;
+}
+
+#p-bc:checked ~ .tubeFiole, #p-bc:checked ~ .carreFiole {
+  --pblanc:122.5;
+}
+#s-bc:checked ~ .carreFiole, #s-bc:checked ~ .tubeFiole {
+  --sblanc:122.5;
+}
+
+#p-n:checked ~ .tubeFiole, #p-n:checked ~ .carreFiole, #s-n:checked ~ .carreFiole, #s-n:checked ~ .tubeFiole {
+  --noir:.5;
+}
+
+@keyframes liquideCarre {
+  @for $i from 0 through 60 {
+    #{$i + "%"} {
+      background: linear-gradient(
+        to top left,
+        rgb(calc((var(--rouge) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--vert) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--bleu) + var(--pblanc) + var(--sblanc)) * var(--noir))) 40%,
+        rgb(calc((var(--rouge) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--vert) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--bleu) + var(--pblanc) + var(--sblanc)) * var(--noir))) (40% + (1% * $i)),
+        white (40% + (1% * $i)),
+        white 100%
+      );
+    }
+  }
+
+  100% {
+    background: linear-gradient(
+      to top left,
+      rgb(calc((var(--rouge) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--vert) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--bleu) + var(--pblanc) + var(--sblanc)) * var(--noir))) 40%,
+      rgb(calc((var(--rouge) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--vert) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--bleu) + var(--pblanc) + var(--sblanc)) * var(--noir))) 100%,
+      white 100%,
+      white 100%
+    );
+  }
+}
+
+@keyframes liquideTube {
+  0% {
+    background: linear-gradient(
+      to top,
+      rgb(calc((var(--rouge) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--vert) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--bleu) + var(--pblanc) + var(--sblanc)) * var(--noir))) -5%,
+      rgb(calc((var(--rouge) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--vert) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--bleu) + var(--pblanc) + var(--sblanc)) * var(--noir))) -5%,
+      white -5%,
+      white 100%
+    );
+  }
+
+  @for $i from 0 through 40 {
+    #{($i + 50) + "%"} {
+      background: linear-gradient(
+        to top,
+        rgb(calc((var(--rouge) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--vert) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--bleu) + var(--pblanc) + var(--sblanc)) * var(--noir))) -5%,
+        rgb(calc((var(--rouge) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--vert) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--bleu) + var(--pblanc) + var(--sblanc)) * var(--noir))) (-5% + (1% * $i)),
+        white (-5% + (1% * $i)),
+        white 100%
+      );
+    }
+  }
+
+  100% {
+    background: linear-gradient(
+      to top,
+      rgb(calc((var(--rouge) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--vert) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--bleu) + var(--pblanc) + var(--sblanc)) * var(--noir))) -5%,
+      rgb(calc((var(--rouge) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--vert) + var(--pblanc) + var(--sblanc)) * var(--noir)), calc((var(--bleu) + var(--pblanc) + var(--sblanc)) * var(--noir))) 35%,
+      white 35%,
+      white 100%
+    );
+  }
+}
+
+#s-r:checked ~ .carreFiole, #s-v:checked ~ .carreFiole, #s-b:checked ~ .carreFiole, #s-bc:checked ~ .carreFiole, #s-n:checked ~ .carreFiole {
+  animation: liquideCarre 3s linear infinite;
+}
+
+#s-r:checked ~ .tubeFiole, #s-v:checked ~ .tubeFiole, #s-b:checked ~ .tubeFiole, #s-bc:checked ~ .tubeFiole, #s-n:checked ~ .tubeFiole {
+  animation: liquideTube 3s linear infinite;
+}
