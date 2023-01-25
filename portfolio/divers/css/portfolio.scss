@@ -32,8 +32,8 @@ body {
         height: 78vh;
         width: 10vw;
         background-image: url('../img/wall2b.jpg');
-        background-position: contain;
-        background-size: 200vh;        
+        background-position: cover;
+        background-size: 80vh;        
         transform-origin: right;
         transform: skewY(-25deg);
     }
