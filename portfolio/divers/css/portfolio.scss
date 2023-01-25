@@ -19,7 +19,7 @@ body {
     grid-column: 2;
     overflow: hidden;
     
-    background-image: url('../img/wall1.jpg');
+    background-image: url('../img/wall1b.jpg');
     background-position: top right;
     background-size:80vw 78vh;
     background-repeat: no-repeat;
@@ -31,9 +31,9 @@ body {
         left: 0;
         height: 78vh;
         width: 10vw;
-        background-image: url('../img/wall2.jpg');
-        background-position: cover;
-        background-size: 15vw 50vh;        
+        background-image: url('../img/wall2b.jpg');
+        background-position: contain;
+        background-size: 200vh;        
         transform-origin: right;
         transform: skewY(-25deg);
     }
@@ -67,7 +67,6 @@ label.socket {
 }
 
 #socket {
-    z-index: 5;
     background-image: url("../img/switch0.png");
     background-size: contain;
     cursor: pointer;
@@ -84,12 +83,19 @@ label.socket {
 
     // }
 
+    &:checked ~ header, 
+    &:checked ~ header #drawer, 
+    &:checked ~ header #drawer .exemple {
+        z-index: 10;
+    }
+
     &:checked ~ #bulb {
         background-image: url("../img/lampe.png");
     }
 
     &:checked ~ #darkness {
         animation: main .5s linear .1s forwards;
+        
     }
 }
 
@@ -175,15 +181,12 @@ header {
     position: absolute;
     margin:0;
     padding:0;
-    top:0%;
+    top:78vh;
     left:10vw;
     z-index: 5;    
-    min-height: 78vh;
-    min-width: 80vw ;
 
     #drawer {
         position:absolute;
-        z-index: 5;
         bottom:-5vh;
         left:-5vh;
         background-image:url('../img/drawer.png');
@@ -192,6 +195,56 @@ header {
         height:32vh;
         width:20vh;
         transform-origin: bottom right;
+
+        .exemple {
+            position: relative;
+            display: block;
+            top:13vh;
+            left:8.7vh;
+            height:8vh;
+            width:9vh;
+            transform-origin: top left;
+            transform: skewY(-8deg);
+            cursor: pointer; 
+
+            &:hover {
+                backdrop-filter: contrast(2) brightness(1.5);
+            }
+        }
     }
 }
 
+#board {
+    position: absolute;
+    top:10vh;
+    left:75%;
+    height:60vh;
+    width:45vh;
+    transform: translateX(-50%);
+    background-image: url('../img/tableau.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: grid;
+    grid-template-columns: 2vh 41vh 2vh;
+    grid-template-rows:1.5vh 54vh 3vh;
+
+    #CV {
+        display: none;
+
+        &:checked ~ .exemple {
+            clip-path: inset(0 0 0 0);
+        }
+    }
+
+    .exemple {
+        grid-row: 2;
+        grid-column: 2;
+        height: 54vh;
+        width:41vh;
+        background-image: url('../img/fakeCV.jpg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        clip-path:inset(27vh 20.5vh 27vh 20.5vh round 20%);
+        transition: 1s;
+    }
+}

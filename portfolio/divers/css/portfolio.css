@@ -17,7 +17,7 @@ body {
   grid-row: 2;
   grid-column: 2;
   overflow: hidden;
-  background-image: url("../img/murPortfolio.jpg");
+  background-image: url("../img/wall1b.jpg");
   background-position: top right;
   background-size: 80vw 78vh;
   background-repeat: no-repeat;
@@ -29,9 +29,9 @@ body::before {
   left: 0;
   height: 78vh;
   width: 10vw;
-  background-image: url("../img/murPortfolio2.jpg");
-  background-position: cover;
-  background-size: 15vw 50vh;
+  background-image: url("../img/wall2b.jpg");
+  background-position: contain;
+  background-size: 200vh;
   transform-origin: right;
   transform: skewY(-25deg);
 }
@@ -63,7 +63,6 @@ label.socket {
 }
 
 #socket {
-  z-index: 5;
   background-image: url("../img/switch0.png");
   background-size: contain;
   cursor: pointer;
@@ -73,6 +72,9 @@ label.socket {
 }
 #socket:checked {
   background-image: url("../img/switch2.png");
+}
+#socket:checked ~ header, #socket:checked ~ header #drawer, #socket:checked ~ header #drawer .exemple {
+  z-index: 10;
 }
 #socket:checked ~ #bulb {
   background-image: url("../img/lampe.png");
@@ -267,15 +269,12 @@ header {
   position: absolute;
   margin: 0;
   padding: 0;
-  top: 0%;
+  top: 78vh;
   left: 10vw;
   z-index: 5;
-  min-height: 78vh;
-  min-width: 80vw;
 }
 header #drawer {
   position: absolute;
-  z-index: 5;
   bottom: -5vh;
   left: -5vh;
   background-image: url("../img/drawer.png");
@@ -284,4 +283,53 @@ header #drawer {
   height: 32vh;
   width: 20vh;
   transform-origin: bottom right;
+}
+header #drawer .exemple {
+  position: relative;
+  display: block;
+  top: 13vh;
+  left: 8.7vh;
+  height: 8vh;
+  width: 9vh;
+  transform-origin: top left;
+  transform: skewY(-8deg);
+  cursor: pointer;
+}
+header #drawer .exemple:hover {
+  -webkit-backdrop-filter: contrast(2) brightness(1.5);
+          backdrop-filter: contrast(2) brightness(1.5);
+}
+
+#board {
+  position: absolute;
+  top: 10vh;
+  left: 75%;
+  height: 60vh;
+  width: 45vh;
+  transform: translateX(-50%);
+  background-image: url("../img/tableau.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: grid;
+  grid-template-columns: 2vh 41vh 2vh;
+  grid-template-rows: 1.5vh 54vh 3vh;
+}
+#board #CV {
+  display: none;
+}
+#board #CV:checked ~ .exemple {
+  -webkit-clip-path: inset(0 0 0 0);
+          clip-path: inset(0 0 0 0);
+}
+#board .exemple {
+  grid-row: 2;
+  grid-column: 2;
+  height: 54vh;
+  width: 41vh;
+  background-image: url("../img/fakeCV.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  -webkit-clip-path: inset(27vh 20.5vh 27vh 20.5vh round 20%);
+          clip-path: inset(27vh 20.5vh 27vh 20.5vh round 20%);
+  transition: 1s;
 }/*# sourceMappingURL=portfolio.css.map */
