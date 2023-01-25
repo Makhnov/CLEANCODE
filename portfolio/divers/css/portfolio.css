@@ -1,0 +1,287 @@
+html {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 5vw 90vw 5vw;
+  grid-template-rows: 5vh 90vh 5vh;
+  background: black;
+  overflow: hidden;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  grid-row: 2;
+  grid-column: 2;
+  overflow: hidden;
+  background-image: url("../img/murPortfolio.jpg");
+  background-position: top right;
+  background-size: 80vw 78vh;
+  background-repeat: no-repeat;
+}
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 78vh;
+  width: 10vw;
+  background-image: url("../img/murPortfolio2.jpg");
+  background-position: cover;
+  background-size: 15vw 50vh;
+  transform-origin: right;
+  transform: skewY(-25deg);
+}
+body::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 12vh;
+  width: 80vw;
+  background-image: url("../img/floor.jpg");
+  background-position: cover;
+  transform-origin: top;
+  transform: skewX(-65deg);
+}
+
+#socket, label.socket {
+  all: initial;
+  position: absolute;
+  height: 175px;
+  width: 175px;
+  top: 0%;
+  left: 10vw;
+}
+
+label.socket {
+  z-index: 10;
+  cursor: pointer;
+}
+
+#socket {
+  z-index: 5;
+  background-image: url("../img/switch0.png");
+  background-size: contain;
+  cursor: pointer;
+}
+#socket:hover {
+  background-image: url("../img/switch1.png");
+}
+#socket:checked {
+  background-image: url("../img/switch2.png");
+}
+#socket:checked ~ #bulb {
+  background-image: url("../img/lampe.png");
+}
+#socket:checked ~ #darkness {
+  -webkit-animation: main 0.5s linear 0.1s forwards;
+          animation: main 0.5s linear 0.1s forwards;
+}
+
+#darkness {
+  position: relative;
+  z-index: 9;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.95);
+  -webkit-animation: intro 2s linear infinite;
+          animation: intro 2s linear infinite;
+}
+
+@-webkit-keyframes intro {
+  0% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.95) 7.5px, rgba(0, 0, 0, 0.95) 1%, rgba(0, 0, 0, 0.97) 16%, black 100%);
+  }
+  10% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.9) 7.5px, rgba(0, 0, 0, 0.92) 2.5%, rgba(0, 0, 0, 0.97) 18%, black 100%);
+  }
+  20% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.85) 7.5px, rgba(0, 0, 0, 0.89) 4%, rgba(0, 0, 0, 0.97) 20%, black 100%);
+  }
+  30% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 7.5px, rgba(0, 0, 0, 0.86) 5.5%, rgba(0, 0, 0, 0.97) 22%, black 100%);
+  }
+  40% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.75) 7.5px, rgba(0, 0, 0, 0.83) 7%, rgba(0, 0, 0, 0.97) 24%, black 100%);
+  }
+  50% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 7.5px, rgba(0, 0, 0, 0.8) 8.5%, rgba(0, 0, 0, 0.97) 26%, black 100%);
+  }
+  50% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 7.5px, rgba(0, 0, 0, 0.8) 16%, rgba(0, 0, 0, 0.97) 36%, black 100%);
+  }
+  60% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0.75) 7.5px, rgba(0, 0, 0, 0.83) 14.5%, rgba(0, 0, 0, 0.97) 34%, black 100%);
+  }
+  70% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.8) 7.5px, rgba(0, 0, 0, 0.86) 13%, rgba(0, 0, 0, 0.97) 32%, black 100%);
+  }
+  80% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0.85) 7.5px, rgba(0, 0, 0, 0.89) 11.5%, rgba(0, 0, 0, 0.97) 30%, black 100%);
+  }
+  90% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.9) 7.5px, rgba(0, 0, 0, 0.92) 10%, rgba(0, 0, 0, 0.97) 28%, black 100%);
+  }
+  100% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.95) 7.5px, rgba(0, 0, 0, 0.95) 8.5%, rgba(0, 0, 0, 0.97) 26%, black 100%);
+  }
+}
+
+@keyframes intro {
+  0% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.95) 7.5px, rgba(0, 0, 0, 0.95) 1%, rgba(0, 0, 0, 0.97) 16%, black 100%);
+  }
+  10% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.9) 7.5px, rgba(0, 0, 0, 0.92) 2.5%, rgba(0, 0, 0, 0.97) 18%, black 100%);
+  }
+  20% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.85) 7.5px, rgba(0, 0, 0, 0.89) 4%, rgba(0, 0, 0, 0.97) 20%, black 100%);
+  }
+  30% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 7.5px, rgba(0, 0, 0, 0.86) 5.5%, rgba(0, 0, 0, 0.97) 22%, black 100%);
+  }
+  40% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.75) 7.5px, rgba(0, 0, 0, 0.83) 7%, rgba(0, 0, 0, 0.97) 24%, black 100%);
+  }
+  50% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 7.5px, rgba(0, 0, 0, 0.8) 8.5%, rgba(0, 0, 0, 0.97) 26%, black 100%);
+  }
+  50% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 7.5px, rgba(0, 0, 0, 0.8) 16%, rgba(0, 0, 0, 0.97) 36%, black 100%);
+  }
+  60% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0.75) 7.5px, rgba(0, 0, 0, 0.83) 14.5%, rgba(0, 0, 0, 0.97) 34%, black 100%);
+  }
+  70% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.8) 7.5px, rgba(0, 0, 0, 0.86) 13%, rgba(0, 0, 0, 0.97) 32%, black 100%);
+  }
+  80% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0.85) 7.5px, rgba(0, 0, 0, 0.89) 11.5%, rgba(0, 0, 0, 0.97) 30%, black 100%);
+  }
+  90% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.9) 7.5px, rgba(0, 0, 0, 0.92) 10%, rgba(0, 0, 0, 0.97) 28%, black 100%);
+  }
+  100% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.95) 7.5px, rgba(0, 0, 0, 0.95) 8.5%, rgba(0, 0, 0, 0.97) 26%, black 100%);
+  }
+}
+@-webkit-keyframes main {
+  0% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.9) 0%, black 100%);
+  }
+  10% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.675) 0%, rgba(0, 0, 0, 0.7) 2%, rgba(0, 0, 0, 0.725) 4%, rgba(0, 0, 0, 0.75) 6%, rgba(0, 0, 0, 0.9) 8%, black 100%);
+  }
+  20% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.65) 4%, rgba(0, 0, 0, 0.7) 8%, rgba(0, 0, 0, 0.75) 12%, rgba(0, 0, 0, 0.9) 16%, black 100%);
+  }
+  30% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.525) 0%, rgba(0, 0, 0, 0.6) 6%, rgba(0, 0, 0, 0.675) 12%, rgba(0, 0, 0, 0.75) 18%, rgba(0, 0, 0, 0.9) 24%, black 100%);
+  }
+  40% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.55) 8%, rgba(0, 0, 0, 0.65) 16%, rgba(0, 0, 0, 0.75) 24%, rgba(0, 0, 0, 0.9) 32%, black 100%);
+  }
+  50% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.375) 0%, rgba(0, 0, 0, 0.5) 10%, rgba(0, 0, 0, 0.625) 20%, rgba(0, 0, 0, 0.75) 30%, rgba(0, 0, 0, 0.9) 40%, black 100%);
+  }
+  60% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.45) 12%, rgba(0, 0, 0, 0.6) 24%, rgba(0, 0, 0, 0.75) 36%, rgba(0, 0, 0, 0.9) 48%, black 100%);
+  }
+  70% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.225) 0%, rgba(0, 0, 0, 0.4) 14%, rgba(0, 0, 0, 0.575) 28%, rgba(0, 0, 0, 0.75) 42%, rgba(0, 0, 0, 0.9) 56%, black 100%);
+  }
+  80% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.35) 16%, rgba(0, 0, 0, 0.55) 32%, rgba(0, 0, 0, 0.75) 48%, rgba(0, 0, 0, 0.9) 64%, black 100%);
+  }
+  90% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.075) 0%, rgba(0, 0, 0, 0.3) 18%, rgba(0, 0, 0, 0.525) 36%, rgba(0, 0, 0, 0.75) 54%, rgba(0, 0, 0, 0.9) 72%, black 100%);
+  }
+  100% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 20%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.75) 60%, rgba(0, 0, 0, 0.9) 80%, black 100%);
+  }
+}
+@keyframes main {
+  0% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.9) 0%, black 100%);
+  }
+  10% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.675) 0%, rgba(0, 0, 0, 0.7) 2%, rgba(0, 0, 0, 0.725) 4%, rgba(0, 0, 0, 0.75) 6%, rgba(0, 0, 0, 0.9) 8%, black 100%);
+  }
+  20% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.65) 4%, rgba(0, 0, 0, 0.7) 8%, rgba(0, 0, 0, 0.75) 12%, rgba(0, 0, 0, 0.9) 16%, black 100%);
+  }
+  30% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.525) 0%, rgba(0, 0, 0, 0.6) 6%, rgba(0, 0, 0, 0.675) 12%, rgba(0, 0, 0, 0.75) 18%, rgba(0, 0, 0, 0.9) 24%, black 100%);
+  }
+  40% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.55) 8%, rgba(0, 0, 0, 0.65) 16%, rgba(0, 0, 0, 0.75) 24%, rgba(0, 0, 0, 0.9) 32%, black 100%);
+  }
+  50% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.375) 0%, rgba(0, 0, 0, 0.5) 10%, rgba(0, 0, 0, 0.625) 20%, rgba(0, 0, 0, 0.75) 30%, rgba(0, 0, 0, 0.9) 40%, black 100%);
+  }
+  60% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.45) 12%, rgba(0, 0, 0, 0.6) 24%, rgba(0, 0, 0, 0.75) 36%, rgba(0, 0, 0, 0.9) 48%, black 100%);
+  }
+  70% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.225) 0%, rgba(0, 0, 0, 0.4) 14%, rgba(0, 0, 0, 0.575) 28%, rgba(0, 0, 0, 0.75) 42%, rgba(0, 0, 0, 0.9) 56%, black 100%);
+  }
+  80% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.35) 16%, rgba(0, 0, 0, 0.55) 32%, rgba(0, 0, 0, 0.75) 48%, rgba(0, 0, 0, 0.9) 64%, black 100%);
+  }
+  90% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0.075) 0%, rgba(0, 0, 0, 0.3) 18%, rgba(0, 0, 0, 0.525) 36%, rgba(0, 0, 0, 0.75) 54%, rgba(0, 0, 0, 0.9) 72%, black 100%);
+  }
+  100% {
+    background: radial-gradient(circle at calc(10vw + 205px) 40px, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 20%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.75) 60%, rgba(0, 0, 0, 0.9) 80%, black 100%);
+  }
+}
+#bulb {
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  top: 0px;
+  left: calc(10vw + 175px);
+  background-image: url("../img/lampe.gif");
+  background-size: contain;
+  background-position: center;
+  transform: rotate(180deg);
+  border-radius: 50%;
+}
+#bulb::before {
+  position: absolute;
+  content: "";
+  height: 60px;
+  width: 60px;
+  top: 0;
+  background-image: url("../img/applique.png");
+  background-size: contain;
+  background-position: center;
+  filter: brightness(1.5);
+}
+
+header {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 0%;
+  left: 10vw;
+  z-index: 5;
+  min-height: 78vh;
+  min-width: 80vw;
+}
+header #drawer {
+  position: absolute;
+  z-index: 5;
+  bottom: -5vh;
+  left: -5vh;
+  background-image: url("../img/drawer.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 32vh;
+  width: 20vh;
+  transform-origin: bottom right;
+}/*# sourceMappingURL=portfolio.css.map */
