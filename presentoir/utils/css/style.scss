@@ -1,0 +1,480 @@
+:root {
+    --longueur:210px;
+    --largeur:120px;
+    --epaisseur:25px;
+    --hauteur:350px;
+    --faceColor:rgb(15, 15, 15);
+    --sideColorIn:#078b8b;
+    --sideColorOut1:#05e2e2;
+    --sideColorOut2:#0ef4f4;
+    --sideColorOut3:#26fafa;
+    --offset:3px;
+    --mainColor1:rgba(5, 226, 226, 0.05);
+    --mainColor2:rgba(5, 226, 226, 0.2);
+    --mainColor3:rgba(5, 226, 226, 0.75);
+    --mainColor4:rgb(38, 250, 250, 0.95);
+}
+
+html, body {
+    margin:0;
+    padding:0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+
+    label, input {
+        all:initial;
+    }
+}
+
+body {
+    perspective: 1000px;
+    perspective-origin: center 40%;
+}
+
+#background {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    margin:0;
+    padding:0;
+    background: url('../img/back.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+    opacity: .8;
+    //filter: blur(.5px);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 20px 15px rgba(15, 15, 15, 0.25) inset;   
+}
+
+#apparitionBox {
+    position: absolute;
+    z-index: 10;
+    width:calc(1.15 * var(--longueur));
+    height: calc(.5 * var(--longueur));
+    top:calc(200% / 3);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+#teleport {
+    position: absolute;
+    transform-style: preserve-3d;
+    width:calc(1.15 * var(--longueur));
+    height: calc(1.15 * var(--longueur));
+    background: url('../img/teleport.gif');
+    background-size:contain;
+    display:grid;
+    top:calc(200% / 3);
+    left: 50%;
+    transform: translate(-50%, -50%)  rotateX(85deg) rotateZ(0deg);
+    overflow: visible;
+}
+
+.bloc.bottom, 
+.bloc.top {
+    position: absolute;
+    justify-self: center;
+    transform-style: preserve-3d;
+    width:var(--longueur);
+    height: calc(1.15 * var(--longueur));
+    //background-color: var(--mainColor2);
+    display:grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+}
+
+.bloc.bottom, 
+.bloc.top { //FACES
+    .face {
+        position: absolute;
+        justify-self:center;
+        align-self: center;
+        background-color: var(--faceColor);
+
+        &::before {
+            position: absolute;
+            content:'';
+            transform: rotate(60deg);
+            background-color: var(--faceColor);
+        }
+
+        &::after {
+            position: absolute;
+            content:'';
+            transform: rotate(120deg);
+            background-color: var(--faceColor);
+        }
+    }
+
+    .face.bottom.up, .face.top.up {
+        transform: translateZ(var(--epaisseur));
+    }
+    .face.bottom.down, .face.top.down {
+        transform: translateZ(0);
+    }
+}
+
+.bloc.bottom, 
+.bloc.top { //SIDES
+    .side {
+        position: absolute;
+        transform-style: preserve-3d;
+        height: var(--largeur);
+        justify-self:center;
+        align-self: center;
+        background: radial-gradient(var(--sideColorIn), var(--sideColorOut1));
+        transition: width 1s;
+
+        &::before {
+            position: absolute;
+            content:'';
+            height: var(--largeur);
+            background: radial-gradient(var(--sideColorIn), var(--sideColorOut1));
+            transform-origin: left;
+            transform: translateY(120px) rotateX(0deg);
+        }
+
+        &::after {
+            position: absolute;
+            content:'';
+            height: var(--largeur);
+            background: radial-gradient(var(--sideColorIn), var(--sideColorOut1));
+            transform-origin: left;           
+            transform: translateY(-120px) rotateX(-0deg);
+        }
+    }
+
+    .side.left {
+        transform-origin: left;           
+        transform:rotate(0deg) translate(116.5px)rotate3d(0,-1,0, 90deg);
+    }
+    .side.right {
+        transform-origin: right;           
+        transform:rotate(180deg) translate(116.5px)rotate3d(0,1,0, 90deg);;
+    }
+
+    .side.left::before {
+        transform-origin: bottom;
+        transform: translate3d(0, calc(-1 * var(--largeur)),0) rotate3d(-1,0,0, 60deg);    
+    }
+    .side.left::after {
+        transform-origin: top;
+        transform: translate3d(0, var(--largeur), 0) rotate3d(1,0,0, 60deg);      
+    }
+    .side.right::before {
+        transform-origin: bottom;
+        transform: translate3d(0, calc(-1 * var(--largeur)),0) rotate3d(1,0,0, 60deg);    
+    }
+    .side.right::after {
+        transform-origin: top;
+        transform: translate3d(0, var(--largeur), 0) rotate3d(-1,0,0, 60deg);      
+    }
+}
+
+#doc {
+    visibility: hidden;
+    position: absolute;
+    max-height:calc(0.8 * var(--hauteur));
+    width:calc(0.5656 * var(--hauteur));
+    background-image:url('../img/fakeCV.jpg');
+    background-position:center ;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform-origin:bottom;
+    cursor: pointer;
+    transform: rotateX(-90deg) translate3d(calc(0.0707 * var(--hauteur)), calc(-0.15 * var(--hauteur)) , calc(-0.35 * var(--hauteur)));
+    opacity: .75;
+    filter: blur(.25px);
+}
+
+#docBox {
+    visibility: hidden;
+    position: absolute;
+    max-height:calc(.85 * var(--hauteur));
+    width:calc(0.5656 * var(--hauteur));
+    background-image:url('../img/1.gif');
+    background-position:center ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform-origin:bottom;
+    cursor: pointer;
+    transform: rotateX(-90deg) translate3d(calc(0.0707 * var(--hauteur)), calc(-0.15 * var(--hauteur)) , calc(-0.35 * var(--hauteur)));
+    opacity: .2;
+    filter:blur(.5px) contrast(10);
+
+    &:hover {
+        opacity: 0;
+    }
+    &:hover ~ #doc {
+        filter:blur(0) brightness(1.2);
+        opacity: 1;
+    }
+
+    transition: opacity 1s;
+}
+
+@keyframes faceBottomDown {// 0% => 15%
+    0% {
+        height: 0px;
+        width: 0px;
+    }
+
+    15% {
+        height: var(--largeur);
+        width: var(--longueur);
+    }
+    100% {
+        height: var(--largeur);
+        width: var(--longueur);
+    }
+}
+
+@keyframes sideBottom { // 15% => 30%
+    0% {
+        width:0px;    
+    }
+    15% {
+        width:0px;      
+    }
+    30% {
+        width: var(--epaisseur); 
+    }
+    100% {
+        width: var(--epaisseur); 
+    }
+}
+
+@keyframes faceBottomUp {// 30% => 40%
+    0% {
+        height: 0px;
+        width: 0px;
+    }
+    
+    30% {
+        height: 0px;
+        width: 0px;
+    }
+
+    40% {
+        height: var(--largeur);
+        width: var(--longueur);
+    }
+    100% {
+        height: var(--largeur);
+        width: var(--longueur);
+    }
+}
+
+@keyframes blocTopSide {// 45% => 55%
+    0% {
+        width:0px;    
+    }
+    45% {
+        width:0px;      
+    }
+    55% {
+        width: var(--epaisseur); 
+    }
+    100% {
+        width: var(--epaisseur); 
+    }
+}
+
+@keyframes blocTopFace {// 45% => 55%
+    0% {
+        height: 0px;
+        width: 0px;
+    }
+
+    45% {
+        height: 0px;
+        width: 0px;
+    }
+
+    55% {
+        height: var(--largeur);
+        width: var(--longueur);
+    }
+    100% {
+        height: var(--largeur);
+        width: var(--longueur);
+    }
+}
+
+@keyframes blocTop {// 60% => 100%
+    0% {
+        transform: 0;
+    }
+
+    60% {
+        transform: 0;
+        transform: translateZ(var(--epaisseur)) rotate(0deg); // 0
+    }
+    62% {
+        transform: 0;
+        transform: translateZ(var(--epaisseur)) rotate(30deg); // 1 30
+    }
+    64% {
+        transform: 0;
+        transform: translateZ(var(--epaisseur)) rotate(110deg); // 2 80
+    }
+    66% {
+        transform: 0;
+        transform: translateZ(var(--epaisseur)) rotate(240deg); // 3 130
+    }
+    68% {
+        transform: 0;
+        transform: translateZ(var(--epaisseur)) rotate(480deg); // mid 240
+    }
+    70% {
+        transform: 0;
+        transform: translateZ(var(--epaisseur)) rotate(720deg); // 3 240
+    }
+    72% {
+        transform: 0;
+        transform: translateZ(var(--epaisseur)) rotate(850deg); // 2 130
+    }
+    74% {
+        transform: 0;
+        transform: translateZ(var(--epaisseur)) rotate(930deg); // 1 80 
+    }
+    76% {
+        transform: translateZ(var(--epaisseur)) rotate(960deg); // 0 30
+    }
+    98% {
+        transform: translateZ(var(--hauteur)) rotate(960deg);
+    }
+    100% {
+        transform: translateZ(var(--hauteur)) rotate(960deg);
+    }
+}
+
+@keyframes document {// 82% => 100%
+    0% {
+        height: 0px;
+    }
+    80% {
+        visibility: visible;
+        height: 0px;
+
+    }
+    100% {
+        visibility: visible;
+        height:var(--hauteur);
+    }
+}
+
+@keyframes rotation {
+    from {
+        transform: translate(-50%, -50%)  rotateX(75deg) rotateZ(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%)  rotateX(75deg) rotateZ(360deg);
+    }
+}
+
+@keyframes turn {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+body {// CHECKBOXES
+    input {
+        all:initial;
+        position: absolute;
+        cursor: pointer;
+        z-index: 10;
+        height:50px;
+        width:50px;
+    }
+
+    #apparition {
+        visibility: hidden;
+        top:10px;
+        left:75px;
+        background-image: url('../img/cv.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        &:checked {
+            visibility: visible;
+        }
+
+        &:checked ~ #apparitionBox {
+            width:0!important;
+            height:0!important;
+        }
+
+        &:checked ~ #teleport {
+            background: rgba(0, 0, 0, 0)!important;
+            transform: translate(-50%, -50%)  rotateX(85deg) rotateZ(0deg);
+        }
+
+        &:checked ~ #teleport .bloc.bottom .down::before,
+        &:checked ~ #teleport .bloc.bottom .down::after,
+        &:checked ~ #teleport .bloc.bottom .down {
+            animation: faceBottomDown linear 2s forwards;
+        }
+
+        &:checked ~ #teleport .bloc.bottom .side::before,
+        &:checked ~ #teleport .bloc.bottom .side::after,
+        &:checked ~ #teleport .bloc.bottom .side {
+            animation: sideBottom linear 2s forwards;
+        }
+
+        &:checked ~ #teleport .bloc.bottom .up::before,
+        &:checked ~ #teleport .bloc.bottom .up::after,
+        &:checked ~ #teleport .bloc.bottom .up {
+            animation: faceBottomUp linear 2s forwards;
+        }
+
+        &:checked ~ #teleport .bloc.top .side::before,
+        &:checked ~ #teleport .bloc.top .side::after,
+        &:checked ~ #teleport .bloc.top .side {
+            animation: blocTopSide linear 2s forwards;
+        }
+
+        &:checked ~ #teleport .bloc.top .face::before,
+        &:checked ~ #teleport .bloc.top .face::after,
+        &:checked ~ #teleport .bloc.top .face {
+            animation: blocTopFace linear 2s forwards;
+        }
+
+        &:checked ~ #teleport .bloc.top {
+            animation: blocTop linear 2s forwards;
+        }
+
+        &:checked ~ #teleport #docBox,
+        &:checked ~ #teleport #doc  {
+            animation: document linear 2s forwards;
+        }
+
+        &:checked ~ #rotation {
+            top:10px;
+            left:10px;
+            background-image: url('../img/rotation.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+    
+            &:hover {
+                animation: turn 10s linear infinite;
+            }
+    
+            &:checked {
+                animation: turn 5s linear infinite;
+            }
+    
+            &:checked ~ #teleport {
+                animation: rotation linear 25s infinite;
+            }
+        }
+    }
+}

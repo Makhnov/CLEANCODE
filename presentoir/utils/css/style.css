@@ -1,0 +1,596 @@
+:root {
+  --longueur:210px;
+  --largeur:120px;
+  --epaisseur:25px;
+  --hauteur:350px;
+  --faceColor:rgb(15, 15, 15);
+  --sideColorIn:#078b8b;
+  --sideColorOut1:#05e2e2;
+  --sideColorOut2:#0ef4f4;
+  --sideColorOut3:#26fafa;
+  --offset:3px;
+  --mainColor1:rgba(5, 226, 226, 0.05);
+  --mainColor2:rgba(5, 226, 226, 0.2);
+  --mainColor3:rgba(5, 226, 226, 0.75);
+  --mainColor4:rgb(38, 250, 250, 0.95);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+html label, html input, body label, body input {
+  all: initial;
+}
+
+body {
+  perspective: 1000px;
+  perspective-origin: center 40%;
+}
+
+#background {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background: url("../img/back.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 20px 15px rgba(15, 15, 15, 0.25) inset;
+}
+
+#apparitionBox {
+  position: absolute;
+  z-index: 10;
+  width: calc(1.15 * var(--longueur));
+  height: calc(0.5 * var(--longueur));
+  top: 66.6666666667%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+#teleport {
+  position: absolute;
+  transform-style: preserve-3d;
+  width: calc(1.15 * var(--longueur));
+  height: calc(1.15 * var(--longueur));
+  background: url("../img/teleport.gif");
+  background-size: contain;
+  display: grid;
+  top: 66.6666666667%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateX(85deg) rotateZ(0deg);
+  overflow: visible;
+}
+
+.bloc.bottom,
+.bloc.top {
+  position: absolute;
+  justify-self: center;
+  transform-style: preserve-3d;
+  width: var(--longueur);
+  height: calc(1.15 * var(--longueur));
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+}
+
+.bloc.bottom .face,
+.bloc.top .face {
+  position: absolute;
+  justify-self: center;
+  align-self: center;
+  background-color: var(--faceColor);
+}
+.bloc.bottom .face::before,
+.bloc.top .face::before {
+  position: absolute;
+  content: "";
+  transform: rotate(60deg);
+  background-color: var(--faceColor);
+}
+.bloc.bottom .face::after,
+.bloc.top .face::after {
+  position: absolute;
+  content: "";
+  transform: rotate(120deg);
+  background-color: var(--faceColor);
+}
+.bloc.bottom .face.bottom.up, .bloc.bottom .face.top.up,
+.bloc.top .face.bottom.up,
+.bloc.top .face.top.up {
+  transform: translateZ(var(--epaisseur));
+}
+.bloc.bottom .face.bottom.down, .bloc.bottom .face.top.down,
+.bloc.top .face.bottom.down,
+.bloc.top .face.top.down {
+  transform: translateZ(0);
+}
+
+.bloc.bottom .side,
+.bloc.top .side {
+  position: absolute;
+  transform-style: preserve-3d;
+  height: var(--largeur);
+  justify-self: center;
+  align-self: center;
+  background: radial-gradient(var(--sideColorIn), var(--sideColorOut1));
+  transition: width 1s;
+}
+.bloc.bottom .side::before,
+.bloc.top .side::before {
+  position: absolute;
+  content: "";
+  height: var(--largeur);
+  background: radial-gradient(var(--sideColorIn), var(--sideColorOut1));
+  transform-origin: left;
+  transform: translateY(120px) rotateX(0deg);
+}
+.bloc.bottom .side::after,
+.bloc.top .side::after {
+  position: absolute;
+  content: "";
+  height: var(--largeur);
+  background: radial-gradient(var(--sideColorIn), var(--sideColorOut1));
+  transform-origin: left;
+  transform: translateY(-120px) rotateX(0deg);
+}
+.bloc.bottom .side.left,
+.bloc.top .side.left {
+  transform-origin: left;
+  transform: rotate(0deg) translate(116.5px) rotate3d(0, -1, 0, 90deg);
+}
+.bloc.bottom .side.right,
+.bloc.top .side.right {
+  transform-origin: right;
+  transform: rotate(180deg) translate(116.5px) rotate3d(0, 1, 0, 90deg);
+}
+.bloc.bottom .side.left::before,
+.bloc.top .side.left::before {
+  transform-origin: bottom;
+  transform: translate3d(0, calc(-1 * var(--largeur)), 0) rotate3d(-1, 0, 0, 60deg);
+}
+.bloc.bottom .side.left::after,
+.bloc.top .side.left::after {
+  transform-origin: top;
+  transform: translate3d(0, var(--largeur), 0) rotate3d(1, 0, 0, 60deg);
+}
+.bloc.bottom .side.right::before,
+.bloc.top .side.right::before {
+  transform-origin: bottom;
+  transform: translate3d(0, calc(-1 * var(--largeur)), 0) rotate3d(1, 0, 0, 60deg);
+}
+.bloc.bottom .side.right::after,
+.bloc.top .side.right::after {
+  transform-origin: top;
+  transform: translate3d(0, var(--largeur), 0) rotate3d(-1, 0, 0, 60deg);
+}
+
+#doc {
+  visibility: hidden;
+  position: absolute;
+  max-height: calc(0.8 * var(--hauteur));
+  width: calc(0.5656 * var(--hauteur));
+  background-image: url("../img/fakeCV.jpg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform-origin: bottom;
+  cursor: pointer;
+  transform: rotateX(-90deg) translate3d(calc(0.0707 * var(--hauteur)), calc(-0.15 * var(--hauteur)), calc(-0.35 * var(--hauteur)));
+  opacity: 0.75;
+  filter: blur(0.25px);
+}
+
+#docBox {
+  visibility: hidden;
+  position: absolute;
+  max-height: calc(0.85 * var(--hauteur));
+  width: calc(0.5656 * var(--hauteur));
+  background-image: url("../img/1.gif");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform-origin: bottom;
+  cursor: pointer;
+  transform: rotateX(-90deg) translate3d(calc(0.0707 * var(--hauteur)), calc(-0.15 * var(--hauteur)), calc(-0.35 * var(--hauteur)));
+  opacity: 0.2;
+  filter: blur(0.5px) contrast(10);
+  transition: opacity 1s;
+}
+#docBox:hover {
+  opacity: 0;
+}
+#docBox:hover ~ #doc {
+  filter: blur(0) brightness(1.2);
+  opacity: 1;
+}
+
+@-webkit-keyframes faceBottomDown {
+  0% {
+    height: 0px;
+    width: 0px;
+  }
+  15% {
+    height: var(--largeur);
+    width: var(--longueur);
+  }
+  100% {
+    height: var(--largeur);
+    width: var(--longueur);
+  }
+}
+
+@keyframes faceBottomDown {
+  0% {
+    height: 0px;
+    width: 0px;
+  }
+  15% {
+    height: var(--largeur);
+    width: var(--longueur);
+  }
+  100% {
+    height: var(--largeur);
+    width: var(--longueur);
+  }
+}
+@-webkit-keyframes sideBottom {
+  0% {
+    width: 0px;
+  }
+  15% {
+    width: 0px;
+  }
+  30% {
+    width: var(--epaisseur);
+  }
+  100% {
+    width: var(--epaisseur);
+  }
+}
+@keyframes sideBottom {
+  0% {
+    width: 0px;
+  }
+  15% {
+    width: 0px;
+  }
+  30% {
+    width: var(--epaisseur);
+  }
+  100% {
+    width: var(--epaisseur);
+  }
+}
+@-webkit-keyframes faceBottomUp {
+  0% {
+    height: 0px;
+    width: 0px;
+  }
+  30% {
+    height: 0px;
+    width: 0px;
+  }
+  40% {
+    height: var(--largeur);
+    width: var(--longueur);
+  }
+  100% {
+    height: var(--largeur);
+    width: var(--longueur);
+  }
+}
+@keyframes faceBottomUp {
+  0% {
+    height: 0px;
+    width: 0px;
+  }
+  30% {
+    height: 0px;
+    width: 0px;
+  }
+  40% {
+    height: var(--largeur);
+    width: var(--longueur);
+  }
+  100% {
+    height: var(--largeur);
+    width: var(--longueur);
+  }
+}
+@-webkit-keyframes blocTopSide {
+  0% {
+    width: 0px;
+  }
+  45% {
+    width: 0px;
+  }
+  55% {
+    width: var(--epaisseur);
+  }
+  100% {
+    width: var(--epaisseur);
+  }
+}
+@keyframes blocTopSide {
+  0% {
+    width: 0px;
+  }
+  45% {
+    width: 0px;
+  }
+  55% {
+    width: var(--epaisseur);
+  }
+  100% {
+    width: var(--epaisseur);
+  }
+}
+@-webkit-keyframes blocTopFace {
+  0% {
+    height: 0px;
+    width: 0px;
+  }
+  45% {
+    height: 0px;
+    width: 0px;
+  }
+  55% {
+    height: var(--largeur);
+    width: var(--longueur);
+  }
+  100% {
+    height: var(--largeur);
+    width: var(--longueur);
+  }
+}
+@keyframes blocTopFace {
+  0% {
+    height: 0px;
+    width: 0px;
+  }
+  45% {
+    height: 0px;
+    width: 0px;
+  }
+  55% {
+    height: var(--largeur);
+    width: var(--longueur);
+  }
+  100% {
+    height: var(--largeur);
+    width: var(--longueur);
+  }
+}
+@-webkit-keyframes blocTop {
+  0% {
+    transform: 0;
+  }
+  60% {
+    transform: 0;
+    transform: translateZ(var(--epaisseur)) rotate(0deg);
+  }
+  62% {
+    transform: 0;
+    transform: translateZ(var(--epaisseur)) rotate(30deg);
+  }
+  64% {
+    transform: 0;
+    transform: translateZ(var(--epaisseur)) rotate(110deg);
+  }
+  66% {
+    transform: 0;
+    transform: translateZ(var(--epaisseur)) rotate(240deg);
+  }
+  68% {
+    transform: 0;
+    transform: translateZ(var(--epaisseur)) rotate(480deg);
+  }
+  70% {
+    transform: 0;
+    transform: translateZ(var(--epaisseur)) rotate(720deg);
+  }
+  72% {
+    transform: 0;
+    transform: translateZ(var(--epaisseur)) rotate(850deg);
+  }
+  74% {
+    transform: 0;
+    transform: translateZ(var(--epaisseur)) rotate(930deg);
+  }
+  76% {
+    transform: translateZ(var(--epaisseur)) rotate(960deg);
+  }
+  98% {
+    transform: translateZ(var(--hauteur)) rotate(960deg);
+  }
+  100% {
+    transform: translateZ(var(--hauteur)) rotate(960deg);
+  }
+}
+@keyframes blocTop {
+  0% {
+    transform: 0;
+  }
+  60% {
+    transform: 0;
+    transform: translateZ(var(--epaisseur)) rotate(0deg);
+  }
+  62% {
+    transform: 0;
+    transform: translateZ(var(--epaisseur)) rotate(30deg);
+  }
+  64% {
+    transform: 0;
+    transform: translateZ(var(--epaisseur)) rotate(110deg);
+  }
+  66% {
+    transform: 0;
+    transform: translateZ(var(--epaisseur)) rotate(240deg);
+  }
+  68% {
+    transform: 0;
+    transform: translateZ(var(--epaisseur)) rotate(480deg);
+  }
+  70% {
+    transform: 0;
+    transform: translateZ(var(--epaisseur)) rotate(720deg);
+  }
+  72% {
+    transform: 0;
+    transform: translateZ(var(--epaisseur)) rotate(850deg);
+  }
+  74% {
+    transform: 0;
+    transform: translateZ(var(--epaisseur)) rotate(930deg);
+  }
+  76% {
+    transform: translateZ(var(--epaisseur)) rotate(960deg);
+  }
+  98% {
+    transform: translateZ(var(--hauteur)) rotate(960deg);
+  }
+  100% {
+    transform: translateZ(var(--hauteur)) rotate(960deg);
+  }
+}
+@-webkit-keyframes document {
+  0% {
+    height: 0px;
+  }
+  80% {
+    visibility: visible;
+    height: 0px;
+  }
+  100% {
+    visibility: visible;
+    height: var(--hauteur);
+  }
+}
+@keyframes document {
+  0% {
+    height: 0px;
+  }
+  80% {
+    visibility: visible;
+    height: 0px;
+  }
+  100% {
+    visibility: visible;
+    height: var(--hauteur);
+  }
+}
+@-webkit-keyframes rotation {
+  from {
+    transform: translate(-50%, -50%) rotateX(75deg) rotateZ(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateX(75deg) rotateZ(360deg);
+  }
+}
+@keyframes rotation {
+  from {
+    transform: translate(-50%, -50%) rotateX(75deg) rotateZ(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateX(75deg) rotateZ(360deg);
+  }
+}
+@-webkit-keyframes turn {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes turn {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+body input {
+  all: initial;
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+  height: 50px;
+  width: 50px;
+}
+body #apparition {
+  visibility: hidden;
+  top: 10px;
+  left: 75px;
+  background-image: url("../img/cv.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+body #apparition:checked {
+  visibility: visible;
+}
+body #apparition:checked ~ #apparitionBox {
+  width: 0 !important;
+  height: 0 !important;
+}
+body #apparition:checked ~ #teleport {
+  background: rgba(0, 0, 0, 0) !important;
+  transform: translate(-50%, -50%) rotateX(85deg) rotateZ(0deg);
+}
+body #apparition:checked ~ #teleport .bloc.bottom .down::before, body #apparition:checked ~ #teleport .bloc.bottom .down::after, body #apparition:checked ~ #teleport .bloc.bottom .down {
+  -webkit-animation: faceBottomDown linear 2s forwards;
+          animation: faceBottomDown linear 2s forwards;
+}
+body #apparition:checked ~ #teleport .bloc.bottom .side::before, body #apparition:checked ~ #teleport .bloc.bottom .side::after, body #apparition:checked ~ #teleport .bloc.bottom .side {
+  -webkit-animation: sideBottom linear 2s forwards;
+          animation: sideBottom linear 2s forwards;
+}
+body #apparition:checked ~ #teleport .bloc.bottom .up::before, body #apparition:checked ~ #teleport .bloc.bottom .up::after, body #apparition:checked ~ #teleport .bloc.bottom .up {
+  -webkit-animation: faceBottomUp linear 2s forwards;
+          animation: faceBottomUp linear 2s forwards;
+}
+body #apparition:checked ~ #teleport .bloc.top .side::before, body #apparition:checked ~ #teleport .bloc.top .side::after, body #apparition:checked ~ #teleport .bloc.top .side {
+  -webkit-animation: blocTopSide linear 2s forwards;
+          animation: blocTopSide linear 2s forwards;
+}
+body #apparition:checked ~ #teleport .bloc.top .face::before, body #apparition:checked ~ #teleport .bloc.top .face::after, body #apparition:checked ~ #teleport .bloc.top .face {
+  -webkit-animation: blocTopFace linear 2s forwards;
+          animation: blocTopFace linear 2s forwards;
+}
+body #apparition:checked ~ #teleport .bloc.top {
+  -webkit-animation: blocTop linear 2s forwards;
+          animation: blocTop linear 2s forwards;
+}
+body #apparition:checked ~ #teleport #docBox, body #apparition:checked ~ #teleport #doc {
+  -webkit-animation: document linear 2s forwards;
+          animation: document linear 2s forwards;
+}
+body #apparition:checked ~ #rotation {
+  top: 10px;
+  left: 10px;
+  background-image: url("../img/rotation.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+body #apparition:checked ~ #rotation:hover {
+  -webkit-animation: turn 10s linear infinite;
+          animation: turn 10s linear infinite;
+}
+body #apparition:checked ~ #rotation:checked {
+  -webkit-animation: turn 5s linear infinite;
+          animation: turn 5s linear infinite;
+}
+body #apparition:checked ~ #rotation:checked ~ #teleport {
+  -webkit-animation: rotation linear 25s infinite;
+          animation: rotation linear 25s infinite;
+}/*# sourceMappingURL=style.css.map */
