@@ -49,11 +49,15 @@ body {
   position: absolute;
   z-index: 10;
   width: calc(1.15 * var(--longueur));
-  height: calc(0.5 * var(--longueur));
-  top: 66.6666666667%;
+  height: calc(1.15 * var(--longueur));
+  top: calc(66.6666666667% + 30px);
   left: 50%;
   transform: translate(-50%, -50%);
   cursor: pointer;
+  box-sizing: border-box;
+  border-left: 15px solid var(--faceColor);
+  border-right: 15px solid var(--faceColor);
+  border-radius: 10px 10px 0 0;
 }
 
 #teleport {
@@ -61,12 +65,13 @@ body {
   transform-style: preserve-3d;
   width: calc(1.15 * var(--longueur));
   height: calc(1.15 * var(--longueur));
-  background: url("../img/teleport.gif");
+  background: url("../img/giphy.gif");
+  filter: hue-rotate(310deg) brightness(2.5);
   background-size: contain;
   display: grid;
   top: 66.6666666667%;
   left: 50%;
-  transform: translate(-50%, -50%) rotateX(85deg) rotateZ(0deg);
+  transform: translate(-50%, -50%) rotate(90deg);
   overflow: visible;
 }
 
@@ -546,34 +551,35 @@ body #apparition:checked ~ #apparitionBox {
 body #apparition:checked ~ #teleport {
   background: rgba(0, 0, 0, 0) !important;
   transform: translate(-50%, -50%) rotateX(85deg) rotateZ(0deg);
+  filter: none;
 }
 body #apparition:checked ~ #teleport .bloc.bottom .down::before, body #apparition:checked ~ #teleport .bloc.bottom .down::after, body #apparition:checked ~ #teleport .bloc.bottom .down {
-  -webkit-animation: faceBottomDown linear 2s forwards;
-          animation: faceBottomDown linear 2s forwards;
+  -webkit-animation: faceBottomDown linear 11s forwards;
+          animation: faceBottomDown linear 11s forwards;
 }
 body #apparition:checked ~ #teleport .bloc.bottom .side::before, body #apparition:checked ~ #teleport .bloc.bottom .side::after, body #apparition:checked ~ #teleport .bloc.bottom .side {
-  -webkit-animation: sideBottom linear 2s forwards;
-          animation: sideBottom linear 2s forwards;
+  -webkit-animation: sideBottom linear 11s forwards;
+          animation: sideBottom linear 11s forwards;
 }
 body #apparition:checked ~ #teleport .bloc.bottom .up::before, body #apparition:checked ~ #teleport .bloc.bottom .up::after, body #apparition:checked ~ #teleport .bloc.bottom .up {
-  -webkit-animation: faceBottomUp linear 2s forwards;
-          animation: faceBottomUp linear 2s forwards;
+  -webkit-animation: faceBottomUp linear 11s forwards;
+          animation: faceBottomUp linear 11s forwards;
 }
 body #apparition:checked ~ #teleport .bloc.top .side::before, body #apparition:checked ~ #teleport .bloc.top .side::after, body #apparition:checked ~ #teleport .bloc.top .side {
-  -webkit-animation: blocTopSide linear 2s forwards;
-          animation: blocTopSide linear 2s forwards;
+  -webkit-animation: blocTopSide linear 11s forwards;
+          animation: blocTopSide linear 11s forwards;
 }
 body #apparition:checked ~ #teleport .bloc.top .face::before, body #apparition:checked ~ #teleport .bloc.top .face::after, body #apparition:checked ~ #teleport .bloc.top .face {
-  -webkit-animation: blocTopFace linear 2s forwards;
-          animation: blocTopFace linear 2s forwards;
+  -webkit-animation: blocTopFace linear 11s forwards;
+          animation: blocTopFace linear 11s forwards;
 }
 body #apparition:checked ~ #teleport .bloc.top {
-  -webkit-animation: blocTop linear 2s forwards;
-          animation: blocTop linear 2s forwards;
+  -webkit-animation: blocTop linear 11s forwards;
+          animation: blocTop linear 11s forwards;
 }
 body #apparition:checked ~ #teleport #docBox, body #apparition:checked ~ #teleport #doc {
-  -webkit-animation: document linear 2s forwards;
-          animation: document linear 2s forwards;
+  -webkit-animation: document linear 11s forwards;
+          animation: document linear 11s forwards;
 }
 body #apparition:checked ~ #rotation {
   top: 10px;

@@ -51,11 +51,15 @@ body {
     position: absolute;
     z-index: 10;
     width:calc(1.15 * var(--longueur));
-    height: calc(.5 * var(--longueur));
-    top:calc(200% / 3);
+    height: calc(1.15 * var(--longueur));
+    top:calc(200% / 3 + 30px);
     left: 50%;
     transform: translate(-50%, -50%);
     cursor: pointer;
+    box-sizing: border-box;
+    border-left: 15px solid var(--faceColor);
+    border-right: 15px solid var(--faceColor);
+    border-radius: 10px 10px 0 0;
 }
 
 #teleport {
@@ -63,12 +67,13 @@ body {
     transform-style: preserve-3d;
     width:calc(1.15 * var(--longueur));
     height: calc(1.15 * var(--longueur));
-    background: url('../img/teleport.gif');
+    background: url('../img/giphy.gif');
+    filter:hue-rotate(310deg) brightness(2.5);
     background-size:contain;
     display:grid;
     top:calc(200% / 3);
     left: 50%;
-    transform: translate(-50%, -50%)  rotateX(85deg) rotateZ(0deg);
+    transform: translate(-50%, -50%)  rotate(90deg);
     overflow: visible;
 }
 
@@ -416,45 +421,46 @@ body {// CHECKBOXES
         &:checked ~ #teleport {
             background: rgba(0, 0, 0, 0)!important;
             transform: translate(-50%, -50%)  rotateX(85deg) rotateZ(0deg);
+            filter: none;
         }
 
         &:checked ~ #teleport .bloc.bottom .down::before,
         &:checked ~ #teleport .bloc.bottom .down::after,
         &:checked ~ #teleport .bloc.bottom .down {
-            animation: faceBottomDown linear 2s forwards;
+            animation: faceBottomDown linear 11s forwards;
         }
 
         &:checked ~ #teleport .bloc.bottom .side::before,
         &:checked ~ #teleport .bloc.bottom .side::after,
         &:checked ~ #teleport .bloc.bottom .side {
-            animation: sideBottom linear 2s forwards;
+            animation: sideBottom linear 11s forwards;
         }
 
         &:checked ~ #teleport .bloc.bottom .up::before,
         &:checked ~ #teleport .bloc.bottom .up::after,
         &:checked ~ #teleport .bloc.bottom .up {
-            animation: faceBottomUp linear 2s forwards;
+            animation: faceBottomUp linear 11s forwards;
         }
 
         &:checked ~ #teleport .bloc.top .side::before,
         &:checked ~ #teleport .bloc.top .side::after,
         &:checked ~ #teleport .bloc.top .side {
-            animation: blocTopSide linear 2s forwards;
+            animation: blocTopSide linear 11s forwards;
         }
 
         &:checked ~ #teleport .bloc.top .face::before,
         &:checked ~ #teleport .bloc.top .face::after,
         &:checked ~ #teleport .bloc.top .face {
-            animation: blocTopFace linear 2s forwards;
+            animation: blocTopFace linear 11s forwards;
         }
 
         &:checked ~ #teleport .bloc.top {
-            animation: blocTop linear 2s forwards;
+            animation: blocTop linear 11s forwards;
         }
 
         &:checked ~ #teleport #docBox,
         &:checked ~ #teleport #doc  {
-            animation: document linear 2s forwards;
+            animation: document linear 11s forwards;
         }
 
         &:checked ~ #rotation {
