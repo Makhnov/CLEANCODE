@@ -17,7 +17,7 @@ html, body {
   cursor: pointer;
   top: 0;
   left: 0;
-  background-image: url("../img/inputBook1.png");
+  background-image: url("../../divers/img/inputBook1.png");
   background-size: contain;
   background-repeat: no-repeat;
   height: 100px;
@@ -27,7 +27,7 @@ html, body {
   transform: scale(1.1);
 }
 #readBook:checked {
-  background-image: url("../img/inputBook2.png");
+  background-image: url("../../divers/img/inputBook2.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -152,57 +152,57 @@ html, body {
 
 .fpage:nth-of-type(6)::after {
   top: 0;
-  background: url("../img/imgLwait1.jpg");
+  background: url("../../divers/img/imgLwait1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 @-webkit-keyframes waitingLeft {
   0% {
-    background: url("../img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLwait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   20% {
-    background: url("../img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLwait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(0px);
     opacity: 1;
   }
   29% {
-    background: url("../img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLwait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(4px);
     opacity: 0.9;
   }
   31% {
-    background: url("../img/imgLwait2.jpg");
+    background: url("../../divers/img/imgLwait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(4px);
     opacity: 0.9;
   }
   40% {
-    background: url("../img/imgLwait2.jpg");
+    background: url("../../divers/img/imgLwait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(0px);
     opacity: 1;
   }
   97% {
-    background: url("../img/imgLwait2.jpg");
+    background: url("../../divers/img/imgLwait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   98% {
-    background: url("../img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLwait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   100% {
-    background: url("../img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLwait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -210,50 +210,50 @@ html, body {
 
 @keyframes waitingLeft {
   0% {
-    background: url("../img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLwait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   20% {
-    background: url("../img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLwait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(0px);
     opacity: 1;
   }
   29% {
-    background: url("../img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLwait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(4px);
     opacity: 0.9;
   }
   31% {
-    background: url("../img/imgLwait2.jpg");
+    background: url("../../divers/img/imgLwait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(4px);
     opacity: 0.9;
   }
   40% {
-    background: url("../img/imgLwait2.jpg");
+    background: url("../../divers/img/imgLwait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(0px);
     opacity: 1;
   }
   97% {
-    background: url("../img/imgLwait2.jpg");
+    background: url("../../divers/img/imgLwait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   98% {
-    background: url("../img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLwait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   100% {
-    background: url("../img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLwait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -265,45 +265,45 @@ html, body {
 
 @-webkit-keyframes waitingRight {
   0% {
-    background: url("../img/imgRwait2.jpg");
+    background: url("../../divers/img/imgRwait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   2% {
-    background: url("../img/imgRwait1.jpg");
+    background: url("../../divers/img/imgRwait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   70% {
-    background: url("../img/imgRwait1.jpg");
+    background: url("../../divers/img/imgRwait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(0px);
     opacity: 1;
   }
   79% {
-    background: url("../img/imgRwait1.jpg");
+    background: url("../../divers/img/imgRwait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(4px);
     opacity: 0.9;
   }
   81% {
-    background: url("../img/imgRwait2.jpg");
+    background: url("../../divers/img/imgRwait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(4px);
     opacity: 0.9;
   }
   90% {
-    background: url("../img/imgRwait2.jpg");
+    background: url("../../divers/img/imgRwait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(0px);
     opacity: 1;
   }
   100% {
-    background: url("../img/imgRwait2.jpg");
+    background: url("../../divers/img/imgRwait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -311,45 +311,45 @@ html, body {
 
 @keyframes waitingRight {
   0% {
-    background: url("../img/imgRwait2.jpg");
+    background: url("../../divers/img/imgRwait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   2% {
-    background: url("../img/imgRwait1.jpg");
+    background: url("../../divers/img/imgRwait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   70% {
-    background: url("../img/imgRwait1.jpg");
+    background: url("../../divers/img/imgRwait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(0px);
     opacity: 1;
   }
   79% {
-    background: url("../img/imgRwait1.jpg");
+    background: url("../../divers/img/imgRwait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(4px);
     opacity: 0.9;
   }
   81% {
-    background: url("../img/imgRwait2.jpg");
+    background: url("../../divers/img/imgRwait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(4px);
     opacity: 0.9;
   }
   90% {
-    background: url("../img/imgRwait2.jpg");
+    background: url("../../divers/img/imgRwait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(0px);
     opacity: 1;
   }
   100% {
-    background: url("../img/imgRwait2.jpg");
+    background: url("../../divers/img/imgRwait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -413,7 +413,7 @@ html, body {
 }
 
 .sliceL {
-  background: url("../img/imgL.jpg");
+  background: url("../../divers/img/imgL.jpg");
   background-position: calc(0.8080808081 * var(--bookSize)) center;
   background-size: calc(0.7070707071 * var(--bookSize)) 60vh;
   right: -0.5px;
@@ -532,7 +532,7 @@ html, body {
   }
 }
 .sliceR {
-  background: url("../img/imgLwait1.jpg");
+  background: url("../../divers/img/imgLwait1.jpg");
   background-size: calc(0.7070707071 * var(--bookSize)) 60vh;
   right: 0px;
   background-position: calc(0.101010101 * var(--bookSize)) center;
@@ -547,7 +547,7 @@ html, body {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   transform-origin: center;
-  background: url("../img/imgRFront.jpg");
+  background: url("../../divers/img/imgRFront.jpg");
   background-size: calc(0.7070707071 * var(--bookSize)) 60vh;
   background-position: calc(0.7070707071 * var(--bookSize)) center;
 }
