@@ -1,9 +1,14 @@
 :root {
-  --bookSize:60vh;
+  --bookSize:clamp(200px, 60vh, 600px);
   --bookBorder:rgb(50, 50, 50);
   --bookPage:whitesmoke;
 }
 
+@media screen and (max-width: 800px) {
+  :root {
+    --bookSize:200px!important;
+  }
+}
 html, body {
   margin: 0;
   padding: 0;
@@ -60,7 +65,7 @@ html, body {
 #livre {
   position: relative;
   transform-style: preserve-3d;
-  height: 60vh;
+  height: var(--bookSize);
   width: calc(1.4141414141 * var(--bookSize) + 5px);
   transform: rotateX(50deg) rotate(-8deg);
   cursor: pointer;
@@ -152,57 +157,57 @@ html, body {
 
 .fpage:nth-of-type(6)::after {
   top: 0;
-  background: url("../../divers/img/imgLwait1.jpg");
+  background: url("../../divers/img/imgLWait1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 @-webkit-keyframes waitingLeft {
   0% {
-    background: url("../../divers/img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLWait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   20% {
-    background: url("../../divers/img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLWait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(0px);
     opacity: 1;
   }
   29% {
-    background: url("../../divers/img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLWait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(4px);
     opacity: 0.9;
   }
   31% {
-    background: url("../../divers/img/imgLwait2.jpg");
+    background: url("../../divers/img/imgLWait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(4px);
     opacity: 0.9;
   }
   40% {
-    background: url("../../divers/img/imgLwait2.jpg");
+    background: url("../../divers/img/imgLWait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(0px);
     opacity: 1;
   }
   97% {
-    background: url("../../divers/img/imgLwait2.jpg");
+    background: url("../../divers/img/imgLWait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   98% {
-    background: url("../../divers/img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLWait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   100% {
-    background: url("../../divers/img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLWait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -210,50 +215,50 @@ html, body {
 
 @keyframes waitingLeft {
   0% {
-    background: url("../../divers/img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLWait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   20% {
-    background: url("../../divers/img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLWait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(0px);
     opacity: 1;
   }
   29% {
-    background: url("../../divers/img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLWait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(4px);
     opacity: 0.9;
   }
   31% {
-    background: url("../../divers/img/imgLwait2.jpg");
+    background: url("../../divers/img/imgLWait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(4px);
     opacity: 0.9;
   }
   40% {
-    background: url("../../divers/img/imgLwait2.jpg");
+    background: url("../../divers/img/imgLWait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(0px);
     opacity: 1;
   }
   97% {
-    background: url("../../divers/img/imgLwait2.jpg");
+    background: url("../../divers/img/imgLWait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   98% {
-    background: url("../../divers/img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLWait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   100% {
-    background: url("../../divers/img/imgLwait1.jpg");
+    background: url("../../divers/img/imgLWait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -265,45 +270,45 @@ html, body {
 
 @-webkit-keyframes waitingRight {
   0% {
-    background: url("../../divers/img/imgRwait2.jpg");
+    background: url("../../divers/img/imgRWait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   2% {
-    background: url("../../divers/img/imgRwait1.jpg");
+    background: url("../../divers/img/imgRWait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   70% {
-    background: url("../../divers/img/imgRwait1.jpg");
+    background: url("../../divers/img/imgRWait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(0px);
     opacity: 1;
   }
   79% {
-    background: url("../../divers/img/imgRwait1.jpg");
+    background: url("../../divers/img/imgRWait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(4px);
     opacity: 0.9;
   }
   81% {
-    background: url("../../divers/img/imgRwait2.jpg");
+    background: url("../../divers/img/imgRWait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(4px);
     opacity: 0.9;
   }
   90% {
-    background: url("../../divers/img/imgRwait2.jpg");
+    background: url("../../divers/img/imgRWait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(0px);
     opacity: 1;
   }
   100% {
-    background: url("../../divers/img/imgRwait2.jpg");
+    background: url("../../divers/img/imgRWait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -311,45 +316,45 @@ html, body {
 
 @keyframes waitingRight {
   0% {
-    background: url("../../divers/img/imgRwait2.jpg");
+    background: url("../../divers/img/imgRWait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   2% {
-    background: url("../../divers/img/imgRwait1.jpg");
+    background: url("../../divers/img/imgRWait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   70% {
-    background: url("../../divers/img/imgRwait1.jpg");
+    background: url("../../divers/img/imgRWait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(0px);
     opacity: 1;
   }
   79% {
-    background: url("../../divers/img/imgRwait1.jpg");
+    background: url("../../divers/img/imgRWait1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(4px);
     opacity: 0.9;
   }
   81% {
-    background: url("../../divers/img/imgRwait2.jpg");
+    background: url("../../divers/img/imgRWait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(4px);
     opacity: 0.9;
   }
   90% {
-    background: url("../../divers/img/imgRwait2.jpg");
+    background: url("../../divers/img/imgRWait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(0px);
     opacity: 1;
   }
   100% {
-    background: url("../../divers/img/imgRwait2.jpg");
+    background: url("../../divers/img/imgRWait2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -357,7 +362,7 @@ html, body {
 .fpage {
   position: absolute;
   transform-style: preserve-3d;
-  height: 60vh;
+  height: var(--bookSize);
   width: calc(0.7070707071 * var(--bookSize) - 3px);
   background-color: var(--bookPage);
   box-sizing: border-box;
@@ -367,7 +372,7 @@ html, body {
 .fpage::before {
   content: "";
   position: absolute;
-  height: 60vh;
+  height: var(--bookSize);
   width: calc(0.7070707071 * var(--bookSize) - 3px);
   box-sizing: border-box;
   border: 1px solid var(--bookBorder);
@@ -377,7 +382,7 @@ html, body {
 .fpage::after {
   content: "";
   position: absolute;
-  height: 60vh;
+  height: var(--bookSize);
   width: calc(0.7070707071 * var(--bookSize) - 3px);
   box-sizing: border-box;
   border: 1px solid var(--bookBorder);
@@ -390,7 +395,7 @@ html, body {
   position: absolute;
   top: 0;
   left: 0;
-  height: 60vh;
+  height: var(--bookSize);
   width: calc(0.7070707071 * var(--bookSize) - 3px);
   transform-style: preserve-3d;
 }
@@ -400,10 +405,10 @@ html, body {
   transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  height: 60vh;
+  height: var(--bookSize);
   width: calc(0.101010101 * var(--bookSize));
   top: 0;
-  background-size: calc(0.7070707071 * var(--bookSize)) 60vh;
+  background-size: calc(0.7070707071 * var(--bookSize)) var(--bookSize);
 }
 
 .page.gauche {
@@ -415,7 +420,7 @@ html, body {
 .sliceL {
   background: url("../../divers/img/imgL.jpg");
   background-position: calc(0.8080808081 * var(--bookSize)) center;
-  background-size: calc(0.7070707071 * var(--bookSize)) 60vh;
+  background-size: calc(0.7070707071 * var(--bookSize)) var(--bookSize);
   right: -0.5px;
 }
 .sliceL .sliceL {
@@ -532,8 +537,8 @@ html, body {
   }
 }
 .sliceR {
-  background: url("../../divers/img/imgLwait1.jpg");
-  background-size: calc(0.7070707071 * var(--bookSize)) 60vh;
+  background: url("../../divers/img/imgLWait1.jpg");
+  background-size: calc(0.7070707071 * var(--bookSize)) var(--bookSize);
   right: 0px;
   background-position: calc(0.101010101 * var(--bookSize)) center;
 }
@@ -542,13 +547,13 @@ html, body {
   content: "";
   top: 0;
   left: 0;
-  height: 60vh;
+  height: var(--bookSize);
   width: calc(0.101010101 * var(--bookSize));
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   transform-origin: center;
   background: url("../../divers/img/imgRFront.jpg");
-  background-size: calc(0.7070707071 * var(--bookSize)) 60vh;
+  background-size: calc(0.7070707071 * var(--bookSize)) var(--bookSize);
   background-position: calc(0.7070707071 * var(--bookSize)) center;
 }
 .sliceR .sliceR {

@@ -1,7 +1,13 @@
 :root {
-    --bookSize:60vh;
+    --bookSize:clamp(200px, 60vh, 600px);
     --bookBorder:rgb(50, 50, 50);
     --bookPage:whitesmoke;
+}
+
+@media screen and (max-width: 800px) {
+    :root {
+        --bookSize:200px!important;
+    }
 }
 
 html, body {
@@ -64,7 +70,7 @@ html, body {
 #livre {
     position: relative;
     transform-style: preserve-3d;
-    height:60vh;
+    height:var(--bookSize);
     width:calc(140 / 99 * var(--bookSize) + 5px);
     transform: rotateX(50deg) rotate(-8deg);
     cursor: pointer;
@@ -219,7 +225,7 @@ html, body {
     //visibility: hidden;
     position: absolute;
     transform-style:preserve-3d;
-    height: 60vh;
+    height: var(--bookSize);
     width:calc(70 / 99 * var(--bookSize) - 3px);
     background-color: var(--bookPage);
     box-sizing: border-box;
@@ -229,7 +235,7 @@ html, body {
     &::before {
         content:'';
         position: absolute;
-        height: 60vh;
+        height: var(--bookSize);
         width:calc(70 / 99 * var(--bookSize) - 3px);
         box-sizing: border-box;
         border: 1px solid var(--bookBorder);
@@ -240,7 +246,7 @@ html, body {
     &::after {
         content:'';
         position: absolute;
-        height: 60vh;
+        height: var(--bookSize);
         width:calc(70 / 99 * var(--bookSize) - 3px);
         box-sizing: border-box;
         border: 1px solid var(--bookBorder);
@@ -254,7 +260,7 @@ html, body {
     position: absolute;
     top:0;
     left:0;
-    height: 60vh;
+    height: var(--bookSize);
     width:calc(70 / 99 * var(--bookSize) - 3px);
     transform-style: preserve-3d;
 }
@@ -264,10 +270,10 @@ html, body {
     position: absolute;
     transform-style: preserve-3d;
     backface-visibility: hidden;
-    height: 60vh;
+    height: var(--bookSize);
     width: calc(10 / 99 * var(--bookSize));
     top:0;
-    background-size:calc(70 / 99 * var(--bookSize)) 60vh;
+    background-size:calc(70 / 99 * var(--bookSize)) var(--bookSize);
 }
 
 .page.gauche {
@@ -279,7 +285,7 @@ html, body {
 .sliceL {
     background:url('../../divers/img/imgL.jpg');
     background-position: calc(80 / 99 * var(--bookSize)) center;
-    background-size:calc(70 / 99 * var(--bookSize)) 60vh;
+    background-size:calc(70 / 99 * var(--bookSize)) var(--bookSize);
     right:-0.5px;
 
     .sliceL {
@@ -385,7 +391,7 @@ html, body {
 
 .sliceR {
     background:url('../../divers/img/imgLWait1.jpg');
-    background-size:calc(70 / 99 * var(--bookSize)) 60vh;
+    background-size:calc(70 / 99 * var(--bookSize)) var(--bookSize);
 
     right:0px;
     background-position: calc(10 / 99 * var(--bookSize)) center;
@@ -395,12 +401,12 @@ html, body {
         content:'';
         top:0;
         left:0;
-        height: 60vh;
+        height: var(--bookSize);
         width: calc(10 / 99 * var(--bookSize));
         backface-visibility: hidden;
         transform-origin: center;
         background:url('../../divers/img/imgRFront.jpg');
-        background-size:calc(70 / 99 * var(--bookSize)) 60vh;
+        background-size:calc(70 / 99 * var(--bookSize)) var(--bookSize);
         background-position:calc(70 / 99 * var(--bookSize)) center;
     }
     
