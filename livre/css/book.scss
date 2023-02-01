@@ -104,57 +104,57 @@ html, body {
 .fpage:nth-of-type(6) {
     &::after {
         top:0;
-        background:url('../../divers/img/imgLwait1.jpg');
+        background:url('../../divers/img/imgLWait1.jpg');
         background-size:cover;
         background-repeat: no-repeat;    }
 }
 
 @keyframes waitingLeft {
     0% {
-        background:url('../../divers/img/imgLwait1.jpg');
+        background:url('../../divers/img/imgLWait1.jpg');
         background-size:cover;
         background-repeat: no-repeat;
     }
     20% {
-        background:url('../../divers/img/imgLwait1.jpg');
+        background:url('../../divers/img/imgLWait1.jpg');
         background-size:cover;
         background-repeat: no-repeat;
         filter:blur(0px);
         opacity: 1;
     }
     29% {
-        background:url('../../divers/img/imgLwait1.jpg');
+        background:url('../../divers/img/imgLWait1.jpg');
         background-size:cover;
         background-repeat: no-repeat;
         filter:blur(4px);
         opacity: .9;
     }
     31% {
-        background:url('../../divers/img/imgLwait2.jpg');
+        background:url('../../divers/img/imgLWait2.jpg');
         background-size:cover;
         background-repeat: no-repeat;
         filter:blur(4px);
         opacity: .9;
     }
     40% {
-        background:url('../../divers/img/imgLwait2.jpg');
+        background:url('../../divers/img/imgLWait2.jpg');
         background-size:cover;
         background-repeat: no-repeat;
         filter:blur(0px);
         opacity: 1;
     }
     97% {
-        background:url('../../divers/img/imgLwait2.jpg');
+        background:url('../../divers/img/imgLWait2.jpg');
         background-size:cover;
         background-repeat: no-repeat;
     }
     98% {
-        background:url('../../divers/img/imgLwait1.jpg');
+        background:url('../../divers/img/imgLWait1.jpg');
         background-size:cover;
         background-repeat: no-repeat;
     }
     100% {
-        background:url('../../divers/img/imgLwait1.jpg');
+        background:url('../../divers/img/imgLWait1.jpg');
         background-size:cover;
         background-repeat: no-repeat;
     }
@@ -169,47 +169,47 @@ html, body {
 
 @keyframes waitingRight {
     0% {
-        background:url('../../divers/img/imgRwait2.jpg');
+        background:url('../../divers/img/imgRWait2.jpg');
         background-size:cover;
         background-repeat: no-repeat;
     }
 
     2% {
-        background:url('../../divers/img/imgRwait1.jpg');
+        background:url('../../divers/img/imgRWait1.jpg');
         background-size:cover;
         background-repeat: no-repeat;
     }
 
     70% {
-        background:url('../../divers/img/imgRwait1.jpg');
+        background:url('../../divers/img/imgRWait1.jpg');
         background-size:cover;
         background-repeat: no-repeat;
         filter:blur(0px);
         opacity:1;
     }
     79% {
-        background:url('../../divers/img/imgRwait1.jpg');
+        background:url('../../divers/img/imgRWait1.jpg');
         background-size:cover;
         background-repeat: no-repeat;
         filter:blur(4px);
         opacity:.9;
     }
     81% {
-        background:url('../../divers/img/imgRwait2.jpg');
+        background:url('../../divers/img/imgRWait2.jpg');
         background-size:cover;
         background-repeat: no-repeat;
         filter:blur(4px);
         opacity:.9;
     }
     90% {
-        background:url('../../divers/img/imgRwait2.jpg');
+        background:url('../../divers/img/imgRWait2.jpg');
         background-size:cover;
         background-repeat: no-repeat;
         filter:blur(0px);
         opacity:1;
     }
     100% {
-        background:url('../../divers/img/imgRwait2.jpg');
+        background:url('../../divers/img/imgRWait2.jpg');
         background-size:cover;
         background-repeat: no-repeat;
     }
@@ -384,7 +384,7 @@ html, body {
 }
 
 .sliceR {
-    background:url('../../divers/img/imgLwait1.jpg');
+    background:url('../../divers/img/imgLWait1.jpg');
     background-size:calc(70 / 99 * var(--bookSize)) 60vh;
 
     right:0px;
