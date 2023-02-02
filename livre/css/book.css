@@ -37,20 +37,20 @@ html, body {
   background-repeat: no-repeat;
 }
 #readBook:checked ~ #livre .page.droite {
-  -webkit-animation: pageDroite 5s linear infinite forwards;
-          animation: pageDroite 5s linear infinite forwards;
+  -webkit-animation: pageDroite 2s linear infinite forwards;
+          animation: pageDroite 2s linear infinite forwards;
 }
 #readBook:checked ~ #livre .fpage:nth-of-type(6)::after {
-  -webkit-animation: waitingLeft 5s linear infinite forwards;
-          animation: waitingLeft 5s linear infinite forwards;
+  -webkit-animation: waitingLeft 2s linear infinite forwards;
+          animation: waitingLeft 2s linear infinite forwards;
 }
 #readBook:checked ~ #livre .fpage:nth-of-type(10)::before {
-  -webkit-animation: waitingRight 5s linear infinite forwards;
-          animation: waitingRight 5s linear infinite forwards;
+  -webkit-animation: waitingRight 2s linear infinite forwards;
+          animation: waitingRight 2s linear infinite forwards;
 }
 #readBook:checked ~ #livre .sliceR .sliceR {
-  -webkit-animation: sliceR 5s linear infinite forwards;
-          animation: sliceR 5s linear infinite forwards;
+  -webkit-animation: sliceR 2s linear infinite forwards;
+          animation: sliceR 2s linear infinite forwards;
 }
 
 #container {
@@ -67,7 +67,7 @@ html, body {
   transform-style: preserve-3d;
   height: var(--bookSize);
   width: calc(1.4141414141 * var(--bookSize) + 5px);
-  transform: rotateX(50deg) rotate(-8deg);
+  transform: rotateX(50deg) rotate(-13deg);
   cursor: pointer;
 }
 #livre:hover .page.droite, #livre:hover .fpage:nth-of-type(6)::after, #livre:hover .fpage:nth-of-type(10)::before, #livre:hover .sliceR .sliceR {
@@ -426,15 +426,15 @@ html, body {
 .sliceL .sliceL {
   right: calc(0.101010101 * var(--bookSize) - 0.5px);
   background-position: calc(0.202020202 * var(--bookSize)) center;
-  -webkit-animation: waitingLeftSlice1 5s linear infinite forwards;
-          animation: waitingLeftSlice1 5s linear infinite forwards;
+  -webkit-animation: waitingLeftSlice1 2s linear infinite forwards;
+          animation: waitingLeftSlice1 2s linear infinite forwards;
   transform-style: preserve-3d;
 }
 .sliceL .sliceL .sliceL {
   right: calc(0.101010101 * var(--bookSize) - 0.5px);
   background-position: calc(0.303030303 * var(--bookSize)) center;
-  -webkit-animation: waitingLeftSlice2 5s linear infinite forwards;
-          animation: waitingLeftSlice2 5s linear infinite forwards;
+  -webkit-animation: waitingLeftSlice2 2s linear infinite forwards;
+          animation: waitingLeftSlice2 2s linear infinite forwards;
   transform-style: preserve-3d;
 }
 .sliceL .sliceL .sliceL .sliceL {
@@ -639,7 +639,7 @@ html, body {
     transform: rotateY(10deg);
   }
   80% {
-    transform: rotateY(17deg);
+    transform: rotateY(14deg);
   }
   90% {
     transform: rotateY(13deg);
@@ -663,7 +663,7 @@ html, body {
     transform: rotateY(10deg);
   }
   80% {
-    transform: rotateY(17deg);
+    transform: rotateY(14deg);
   }
   90% {
     transform: rotateY(13deg);
