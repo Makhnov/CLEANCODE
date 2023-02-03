@@ -1,15 +1,16 @@
 :root {
-    --longueur:210px;
-    --largeur:120px;
-    --epaisseur:25px;
-    --hauteur:350px;
-    --faceColor:rgb(15, 15, 15);
-    --sideColorIn:#078b8b;
+    --longueur:45vh; // Entre 10vh et 80vh
+    --largeur:calc(12/21 * (var(--longueur)));
+    --epaisseur:calc(2/21 * (var(--longueur)));
+    --hauteur:calc(24/21 * (var(--longueur)));
+
+    --faceColor:rgba(15, 15, 15, 1);
+    --sideColorIn:#148989;
     --sideColorOut1:#05e2e2;
     --sideColorOut2:#0ef4f4;
     --sideColorOut3:#26fafa;
     --offset:3px;
-    --mainColor1:rgba(5, 226, 226, 0.05);
+    --mainColor1:rgba(5, 226, 226, 0.5);
     --mainColor2:rgba(5, 226, 226, 0.2);
     --mainColor3:rgba(5, 226, 226, 0.75);
     --mainColor4:rgb(38, 250, 250, 0.95);
@@ -29,7 +30,7 @@ html, body {
 
 body {
     perspective: 1000px;
-    perspective-origin: center 40%;
+    perspective-origin: center 66%;
 }
 
 #background {
@@ -38,11 +39,11 @@ body {
     width: 100vw;
     margin:0;
     padding:0;
-    background: url('../img/back.jpg');
+    background: url('../../../divers/img/back.jpg');
     background-size:cover;
     background-repeat: no-repeat;
     opacity: .8;
-    //filter: blur(.5px);
+    filter: blur(.5px);
     box-sizing: border-box;
     box-shadow: 0px 0px 20px 15px rgba(15, 15, 15, 0.25) inset;   
 }
@@ -66,15 +67,15 @@ body {
     position: absolute;
     transform-style: preserve-3d;
     width:calc(1.15 * var(--longueur));
+    overflow: visible;
     height: calc(1.15 * var(--longueur));
-    background: url('../img/giphy.gif');
+    background: url('../../../divers/img/giphy.gif');
     filter:hue-rotate(310deg) brightness(2.5);
     background-size:contain;
     display:grid;
-    top:calc(200% / 3);
+    top:calc(70vh + (var(--longueur) - 10vh) * 3 / 7);
     left: 50%;
-    transform: translate(-50%, -50%)  rotate(90deg);
-    overflow: visible;
+    transform: translate(-50%, -50%)  rotate(90deg) rotateZ(0deg);
 }
 
 .bloc.bottom, 
@@ -94,6 +95,7 @@ body {
 .bloc.top { //FACES
     .face {
         position: absolute;
+        transform-style: preserve-3d;
         justify-self:center;
         align-self: center;
         background-color: var(--faceColor);
@@ -118,6 +120,14 @@ body {
     }
     .face.bottom.down, .face.top.down {
         transform: translateZ(0);
+        display: grid;
+    }
+
+    .face.top.down::before {  
+        z-index: 2;  
+        background-image: url('../../../divers/img/bzzt.gif');
+        background-position: center;
+        background-size:cover;
     }
 }
 
@@ -126,9 +136,10 @@ body {
     .side {
         position: absolute;
         transform-style: preserve-3d;
-        height: var(--largeur);
-        justify-self:center;
         align-self: center;
+        justify-self: center;
+        z-index: 2;
+        height: var(--largeur);
         background: radial-gradient(var(--sideColorIn), var(--sideColorOut1));
         transition: width 1s;
 
@@ -137,8 +148,6 @@ body {
             content:'';
             height: var(--largeur);
             background: radial-gradient(var(--sideColorIn), var(--sideColorOut1));
-            transform-origin: left;
-            transform: translateY(120px) rotateX(0deg);
         }
 
         &::after {
@@ -146,87 +155,78 @@ body {
             content:'';
             height: var(--largeur);
             background: radial-gradient(var(--sideColorIn), var(--sideColorOut1));
-            transform-origin: left;           
-            transform: translateY(-120px) rotateX(-0deg);
         }
     }
 
     .side.left {
-        transform-origin: left;           
-        transform:rotate(0deg) translate(116.5px)rotate3d(0,-1,0, 90deg);
+        transform-origin: right;           
+        transform:rotate(0deg) translateX(calc(-.5 * var(--longueur) - .5 * var(--epaisseur) + 1px)) rotateY(90deg); //
     }
     .side.right {
-        transform-origin: right;           
-        transform:rotate(180deg) translate(116.5px)rotate3d(0,1,0, 90deg);;
+        transform-origin: left;           
+        transform:rotate(0deg) translateX(calc(.5 * var(--longueur) + .5 * var(--epaisseur) - 1px)) rotateY(-90deg); //
     }
 
     .side.left::before {
         transform-origin: bottom;
-        transform: translate3d(0, calc(-1 * var(--largeur)),0) rotate3d(-1,0,0, 60deg);    
+        transform: translateY(-100%) rotateX(-60deg);
     }
     .side.left::after {
         transform-origin: top;
-        transform: translate3d(0, var(--largeur), 0) rotate3d(1,0,0, 60deg);      
+        transform: translateY(100%) rotateX(60deg);      
     }
     .side.right::before {
         transform-origin: bottom;
-        transform: translate3d(0, calc(-1 * var(--largeur)),0) rotate3d(1,0,0, 60deg);    
+        transform: translateY(-100%) rotateX(-60deg);    
     }
     .side.right::after {
         transform-origin: top;
-        transform: translate3d(0, var(--largeur), 0) rotate3d(-1,0,0, 60deg);      
+        transform:  translateY(100%) rotateX(60deg);
     }
 }
 
 #doc {
     visibility: hidden;
     position: absolute;
-    max-height:calc(0.8 * var(--hauteur));
+    align-self: center;
+    justify-self: center;
     width:calc(0.5656 * var(--hauteur));
-    background-image:url('../img/fakeCV.jpg');
+    background-image:url('../../../divers/img/docFront.jpg');
     background-position:center ;
     background-size: contain;
     background-repeat: no-repeat;
-    transform-origin:bottom;
     cursor: pointer;
-    transform: rotateX(-90deg) translate3d(calc(0.0707 * var(--hauteur)), calc(-0.15 * var(--hauteur)) , calc(-0.35 * var(--hauteur)));
-    opacity: .75;
-    filter: blur(.25px);
+    
+    opacity: .4;
+    transition: opacity 1.5s;
+    filter: blur(.5px);
+
+    &:hover {
+        opacity: 1;
+        filter: blur(0px);
+    }
 }
 
 #docBox {
     visibility: hidden;
     position: absolute;
-    max-height:calc(.85 * var(--hauteur));
+    align-self: center;
+    justify-self: center;
     width:calc(0.5656 * var(--hauteur));
-    background-image:url('../img/1.gif');
+    background-image:url('../../../divers/img/docBack.gif');
     background-position:center ;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
-    transform-origin:bottom;
     cursor: pointer;
-    transform: rotateX(-90deg) translate3d(calc(0.0707 * var(--hauteur)), calc(-0.15 * var(--hauteur)) , calc(-0.35 * var(--hauteur)));
-    opacity: .2;
-    filter:blur(.5px) contrast(10);
-
-    &:hover {
-        opacity: 0;
-    }
-    &:hover ~ #doc {
-        filter:blur(0) brightness(1.2);
-        opacity: 1;
-    }
-
-    transition: opacity 1s;
 }
 
-@keyframes faceBottomDown {// 0% => 15%
+@keyframes faceBottomDown {// 0% => 8%
     0% {
         height: 0px;
         width: 0px;
     }
 
-    15% {
+    8% {
         height: var(--largeur);
         width: var(--longueur);
     }
@@ -236,14 +236,14 @@ body {
     }
 }
 
-@keyframes sideBottom { // 15% => 30%
+@keyframes sideBottom { // 12% => 20%
     0% {
         width:0px;    
     }
-    15% {
+    12% {
         width:0px;      
     }
-    30% {
+    20% {
         width: var(--epaisseur); 
     }
     100% {
@@ -251,18 +251,18 @@ body {
     }
 }
 
-@keyframes faceBottomUp {// 30% => 40%
+@keyframes faceBottomUp {// 24% => 32%
     0% {
         height: 0px;
         width: 0px;
     }
     
-    30% {
+    24% {
         height: 0px;
         width: 0px;
     }
 
-    40% {
+    32% {
         height: var(--largeur);
         width: var(--longueur);
     }
@@ -272,14 +272,49 @@ body {
     }
 }
 
-@keyframes blocTopSide {// 45% => 55%
+@keyframes faceBottomUpAfter {//32% => 36% & 84% => 85%
+    0% {
+        height: 0px;
+        width: 0px;
+        background-image: none;
+    } 
+    24% {
+        height: 0px;
+        width: 0px;
+        background-image: none;
+    }
+    32% {
+        height: var(--largeur);
+        width: var(--longueur);
+        background-image:none;
+    }
+    84% {
+        height: var(--largeur);
+        width: var(--longueur);
+        background-image:none;
+    }
+    85% {    
+        background-image: url('../../../divers/img/bzzt.gif');
+        background-position: top;
+        background-size: cover;
+    }
+    100% {    
+        background-image: url('../../../divers/img/bzzt.gif');
+        background-position: top;
+        background-size: cover;
+        height: var(--largeur);
+        width: var(--longueur);
+    }
+}
+
+@keyframes blocTopSide {// 36% => 42%
     0% {
         width:0px;    
     }
-    45% {
+    36% {
         width:0px;      
     }
-    55% {
+    42% {
         width: var(--epaisseur); 
     }
     100% {
@@ -287,18 +322,18 @@ body {
     }
 }
 
-@keyframes blocTopFace {// 45% => 55%
+@keyframes blocTopFace {// 36% => 42%
     0% {
         height: 0px;
         width: 0px;
     }
 
-    45% {
+    36% {
         height: 0px;
         width: 0px;
     }
 
-    55% {
+    42% {
         height: var(--largeur);
         width: var(--longueur);
     }
@@ -308,80 +343,99 @@ body {
     }
 }
 
-@keyframes blocTop {// 60% => 100%
+@keyframes blocTop {// 50% => 77% ; 84% => 100%
     0% {
         transform: 0;
     }
 
-    60% {
+    50% {
         transform: 0;
         transform: translateZ(var(--epaisseur)) rotate(0deg); // 0
     }
+    53% {
+        transform: 0;
+        transform: translateZ(var(--epaisseur)) rotate(20deg); // 20
+    }
+    56% {
+        transform: 0;
+        transform: translateZ(var(--epaisseur)) rotate(120deg); // 2 100
+    }
+    59% {
+        transform: 0;
+        transform: translateZ(var(--epaisseur)) rotate(260deg); // 140
+    }
     62% {
         transform: 0;
-        transform: translateZ(var(--epaisseur)) rotate(30deg); // 1 30
+        transform: translateZ(var(--epaisseur)) rotate(540deg); // mid 280
     }
-    64% {
+    65% {
         transform: 0;
-        transform: translateZ(var(--epaisseur)) rotate(110deg); // 2 80
-    }
-    66% {
-        transform: 0;
-        transform: translateZ(var(--epaisseur)) rotate(240deg); // 3 130
+        transform: translateZ(var(--epaisseur)) rotate(820deg); // 280
     }
     68% {
         transform: 0;
-        transform: translateZ(var(--epaisseur)) rotate(480deg); // mid 240
+        transform: translateZ(var(--epaisseur)) rotate(960deg); // 2 140
     }
-    70% {
+    71% {
         transform: 0;
-        transform: translateZ(var(--epaisseur)) rotate(720deg); // 3 240
-    }
-    72% {
-        transform: 0;
-        transform: translateZ(var(--epaisseur)) rotate(850deg); // 2 130
+        transform: translateZ(var(--epaisseur)) rotate(1060deg); // 100
     }
     74% {
-        transform: 0;
-        transform: translateZ(var(--epaisseur)) rotate(930deg); // 1 80 
+        transform: translateZ(var(--epaisseur)) rotate(1083deg); // 0 20(+3)
+    }
+    75% {
+        transform: translateZ(var(--epaisseur)) rotate(1079deg); // -4
     }
     76% {
-        transform: translateZ(var(--epaisseur)) rotate(960deg); // 0 30
+        transform: translateZ(var(--epaisseur)) rotate(1081deg); // +2
+    }
+    77% {
+        transform: translateZ(var(--epaisseur)) rotate(1080deg); // -1
+    }
+    84% {
+        transform: translateZ(var(--epaisseur)) rotate(1080deg); // 
     }
     98% {
-        transform: translateZ(var(--hauteur)) rotate(960deg);
+        transform: translateZ(var(--hauteur)) rotate(1080deg);
     }
     100% {
-        transform: translateZ(var(--hauteur)) rotate(960deg);
+        transform: translateZ(var(--hauteur)) rotate(1080deg);
     }
 }
 
-@keyframes document {// 82% => 100%
+@keyframes document {// 80% => 100%
     0% {
+        transform: rotateX(-90deg) translate3d(0,calc(-50% - 1.5 * var(--epaisseur)),0);
         height: 0px;
     }
-    80% {
+    84% {
         visibility: visible;
+        transform: rotateX(-90deg) translate3d(0,calc(-50% - 1.5 * var(--epaisseur)),0);
         height: 0px;
-
+    }
+    98% {
+        visibility: visible;
+        transform: rotateX(-90deg) translate3d(0,calc(-50% - 1.5 * var(--epaisseur)),0);
+        height:calc(0.8 * var(--hauteur));
     }
     100% {
         visibility: visible;
-        height:var(--hauteur);
+        transform: rotateX(-90deg) translate3d(0,calc(-50% - 1.5 * var(--epaisseur)),0);
+        height:calc(0.8 * var(--hauteur));
     }
 }
 
 @keyframes rotation {
     from {
-        transform: translate(-50%, -50%)  rotateX(75deg) rotateZ(0deg);
+        transform: translate(-50%, -50%)  rotateX(78deg) rotateZ(0deg);
     }
 
     to {
-        transform: translate(-50%, -50%)  rotateX(75deg) rotateZ(360deg);
+        transform: translate(-50%, -50%)  rotateX(78deg) rotateZ(360deg);
     }
 }
 
-@keyframes turn {
+@keyframes iconTurn {
     from {
         transform: rotate(0deg);
     }
@@ -405,7 +459,7 @@ body {// CHECKBOXES
         visibility: hidden;
         top:10px;
         left:75px;
-        background-image: url('../img/cv.png');
+        background-image: url('../../../divers/img/cv.png');
         background-size: contain;
         background-repeat: no-repeat;
 
@@ -427,59 +481,62 @@ body {// CHECKBOXES
         &:checked ~ #teleport .bloc.bottom .down::before,
         &:checked ~ #teleport .bloc.bottom .down::after,
         &:checked ~ #teleport .bloc.bottom .down {
-            animation: faceBottomDown linear 11s forwards;
+            animation: faceBottomDown linear 1.1s forwards;
         }
 
         &:checked ~ #teleport .bloc.bottom .side::before,
         &:checked ~ #teleport .bloc.bottom .side::after,
         &:checked ~ #teleport .bloc.bottom .side {
-            animation: sideBottom linear 11s forwards;
+            animation: sideBottom linear 1.1s forwards;
         }
 
         &:checked ~ #teleport .bloc.bottom .up::before,
-        &:checked ~ #teleport .bloc.bottom .up::after,
         &:checked ~ #teleport .bloc.bottom .up {
-            animation: faceBottomUp linear 11s forwards;
+            animation: faceBottomUp linear 1.1s forwards;
         }
 
+        &:checked ~ #teleport .bloc.bottom .up::after {
+            animation: faceBottomUpAfter linear 1.1s forwards;
+        }
+        
         &:checked ~ #teleport .bloc.top .side::before,
         &:checked ~ #teleport .bloc.top .side::after,
         &:checked ~ #teleport .bloc.top .side {
-            animation: blocTopSide linear 11s forwards;
+            animation: blocTopSide linear 1.1s forwards;
         }
 
         &:checked ~ #teleport .bloc.top .face::before,
         &:checked ~ #teleport .bloc.top .face::after,
         &:checked ~ #teleport .bloc.top .face {
-            animation: blocTopFace linear 11s forwards;
+            animation: blocTopFace linear 1.1s forwards;
         }
 
         &:checked ~ #teleport .bloc.top {
-            animation: blocTop linear 11s forwards;
+            animation: blocTop linear 1.1s forwards;
         }
 
         &:checked ~ #teleport #docBox,
         &:checked ~ #teleport #doc  {
-            animation: document linear 11s forwards;
+            animation: document linear 1.1s forwards;
         }
 
         &:checked ~ #rotation {
             top:10px;
             left:10px;
-            background-image: url('../img/rotation.png');
+            background-image: url('../../../divers/img/rotation.png');
             background-size: contain;
             background-repeat: no-repeat;
     
             &:hover {
-                animation: turn 10s linear infinite;
+                animation: iconTurn 10s linear infinite;
             }
     
             &:checked {
-                animation: turn 5s linear infinite;
+                animation: iconTurn 5s linear infinite;
             }
     
             &:checked ~ #teleport {
-                animation: rotation linear 25s infinite;
+                animation: rotation linear 20s infinite;
             }
         }
     }
