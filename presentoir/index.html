@@ -11,43 +11,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="./utils/js/script.js"></script>
-    <link rel="stylesheet" href="./utils/css/style.css">
-    <link rel="icon" type="image/x-icon" href="./utils/img/favcmeptb.ico">
+    <link rel="stylesheet" href="./utils/css/portfolio.css">
+    <link rel="icon" type="image/x-icon" href="../divers/img/favcmeptb.ico">
 
 </head>
 
 <body>
+    <section id="containerCV">
+        <input type="checkbox" id="CVin">
+        <input type="checkbox" id="CVout">
+        <input type="checkbox" id="rotation">
+        <div id="background"></div>
 
-    <input type="checkbox" id="apparition">
-    <input type="checkbox" id="rotation">
-    <div id="background"></div>
-
-    <label for="apparition" id="apparitionBox"></label>
-    <div id="teleport">
-
-        <input id="doc" type="checkbox">
-        <label for="doc" id="docBox"></label>
-
-        <div class="bloc top">
-            <div class="face top up"></div>
-            <div class="face top down">
-                <div class="side top left"></div>
-                <div class="side top right"></div>
+        <div id="teleport">
+            <label for="zoneCV" id="filtreCV"></label>
+            <input type="button" id="zoneCV">
+            <div class="bloc top">
+                <div class="face top up"></div>
+                <div class="face top down">
+                    <div class="side top left"></div>
+                    <div class="side top right"></div>
+                </div>
             </div>
-
-        </div>
-
-        <div class="bloc bottom">
-            <div class="face bottom up"></div>
-            <div class="face bottom down">
-                <div class="side bottom left"></div>
-                <div class="side bottom right"></div>
+            <div class="bloc bottom">
+                <div class="face bottom up"></div>
+                <div class="face bottom down">
+                    <div class="side bottom left"></div>
+                    <div class="side bottom right"></div>
+                </div>
             </div>
         </div>
+    </section>
 
-    </div>
-
+    <script src="./utils/js/portfolio.js"></script>
 </body>
 
 </html>
