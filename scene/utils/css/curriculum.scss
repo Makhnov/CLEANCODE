@@ -8,8 +8,8 @@
     --hauteur:calc(24/21 * (var(--longueur)));
 
     --faceColor:rgba(39, 48, 52, 1);
-    --sideColorIn:rgba(31, 162, 227, 0.8);
-    --sideColorOut1:rgba(17, 126, 181, 0.9);
+    --sideColorIn:rgba(31, 162, 227, 1);
+    --sideColorOut1:rgba(17, 126, 181, 1);
     --sideColorOut2:#0ef4f4;
     --sideColorOut3:#26fafa;
     --offset:3px;
@@ -466,7 +466,7 @@ input {
 }
 
 #CURRICULUM.anim #teleport {
-    transform: translate3d(-50%, -50%, -100px)  rotateX(83deg) rotateZ(0deg);
+    transform: translate3d(-50%, -50%, -100px)  rotateX(77deg) rotateZ(0deg);
 
     .bloc.bottom .down::before,
     .bloc.bottom .down::after,

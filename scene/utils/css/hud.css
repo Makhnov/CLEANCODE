@@ -28,7 +28,7 @@ nav, ul, li {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background-image: url("../../../divers/img/backgroundHUD.png"), linear-gradient(to right, rgba(15, 23, 42, 0.6) 20%, rgb(15, 23, 42) 78%, rgba(15, 23, 42, 0.8) 100%);
+  background-image: url("../../../divers/img/backgroundHUD.png"), linear-gradient(to right, rgba(15, 23, 42, 0.8) 20%, rgb(15, 23, 42) 78%, rgba(15, 23, 42, 0.9) 100%);
   background-position: center;
   background-size: cover;
   display: grid;
