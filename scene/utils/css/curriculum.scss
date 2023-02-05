@@ -1,0 +1,575 @@
+:root {
+    --longueur:20vw; // Entre 10vh et 80vh
+    --vitesseIn:5s;
+    --vitesseOut:3s;
+
+    --largeur:calc(12/21 * (var(--longueur)));
+    --epaisseur:calc(2/21 * (var(--longueur)));
+    --hauteur:calc(24/21 * (var(--longueur)));
+
+    --faceColor:rgba(39, 48, 52, 1);
+    --sideColorIn:#148989;
+    --sideColorOut1:rgba(17, 126, 181, 0.5);
+    --sideColorOut2:#0ef4f4;
+    --sideColorOut3:#26fafa;
+    --offset:3px;
+    --mainColor1:rgba(5, 226, 226, 0.5);
+    --mainColor2:rgba(5, 226, 226, 0.2);
+    --mainColor3:rgba(5, 226, 226, 0.75);
+    --mainColor4:rgb(38, 250, 250, 0.95);
+}
+
+input {
+    all:initial;
+    position: absolute;
+    cursor: pointer;
+    z-index: 10;
+    height:50px;
+    width:50px;
+}
+
+#CVin {
+    top:10px;
+    left:10px;
+    background-image: url('../../../divers/img/cv.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: red;
+}
+
+#rotation.anim {
+    top:10px;
+    left:75px;
+    width:100px;
+    height: 100px;
+    background-image: url('../../../divers/img/rotation.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: var(--sideColorOut1);
+    border-radius: 50%;
+    border:5px solid whitesmoke;
+
+    &:hover {
+        animation: iconTurn 10s linear infinite;
+    }
+
+    &:checked {
+        animation: iconTurn 5s linear infinite;
+    }
+
+    &:checked ~ #teleport.anim {
+        animation: rotation linear 20s infinite;
+    }
+}
+
+#CVout {
+    display: none;
+    top:10px;
+    left:10px;
+    background-image: url('../../../divers/img/cvClose.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+#teleport {
+    position: relative;
+    transform-style: preserve-3d;
+    display:grid;
+    width:calc(1.15 * var(--longueur));
+    height: calc(1.15 * var(--longueur));
+    left:50%;
+    top:110%;
+}
+
+.bloc.bottom, 
+.bloc.top {
+    position: absolute;
+    justify-self: center;
+    transform-style: preserve-3d;
+    width:var(--longueur);
+    height: calc(1.15 * var(--longueur));
+    display:grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+}
+
+.bloc.bottom, 
+.bloc.top { //FACES
+    .face {
+        position: absolute;
+        transform-style: preserve-3d;
+        justify-self:center;
+        align-self: center;
+        background-color:var(--faceColor);
+
+        &::before {
+            position: absolute;
+            content:'';
+            top:0!important;
+            left:0!important;
+            transform: rotate(60deg);
+            background-color:var(--faceColor);
+        }
+
+        &::after {
+            position: absolute;
+            content:'';
+            top:0!important;
+            left:0!important;
+            transform: rotate(120deg);
+            background-color:var(--faceColor);
+        }
+    }
+
+    .face.bottom.up, .face.top.up {
+        transform: translateZ(var(--epaisseur));
+    }
+    .face.bottom.down, .face.top.down {
+        transform: translateZ(0);
+        display: grid;
+    }
+
+    .face.top.down::before {  
+        z-index: 2;  
+        background-image: url('../../../divers/img/bzzt.gif');
+        background-position: center;
+        background-size:cover;
+    }
+}
+
+.bloc.bottom, 
+.bloc.top { //SIDES
+    .side {
+        position: absolute;
+        transform-style: preserve-3d;
+        align-self: center;
+        justify-self: center;
+        z-index: 2;
+        height: var(--largeur);
+        background: radial-gradient(var(--sideColorIn), var(--sideColorOut1));
+        transition: width 1s;
+
+        &::before {
+            position: absolute;
+            content:'';
+            top:0!important;
+            left:0!important;
+            height: var(--largeur);
+            background: radial-gradient(var(--sideColorIn), var(--sideColorOut1));
+        }
+
+        &::after {
+            position: absolute;
+            content:'';
+            top:0!important;
+            left:0!important;
+            height: var(--largeur);
+            background: radial-gradient(var(--sideColorIn), var(--sideColorOut1));
+        }
+    }
+
+    .side.left {
+        transform-origin: right;           
+        transform:rotate(0deg) translateX(calc(-.5 * var(--longueur) - .5 * var(--epaisseur) + 1px)) rotateY(90deg); //
+    }
+    .side.right {
+        transform-origin: left;           
+        transform:rotate(0deg) translateX(calc(.5 * var(--longueur) + .5 * var(--epaisseur) - 1px)) rotateY(-90deg); //
+    }
+
+    .side.left::before {
+        transform-origin: bottom;
+        transform: translateY(-100%) rotateX(-60deg);
+    }
+    .side.left::after {
+        transform-origin: top;
+        transform: translateY(100%) rotateX(60deg);      
+    }
+    .side.right::before {
+        transform-origin: bottom;
+        transform: translateY(-100%) rotateX(-60deg);    
+    }
+    .side.right::after {
+        transform-origin: top;
+        transform:  translateY(100%) rotateX(60deg);
+    }
+}
+
+#zoneCV {
+    visibility: hidden;
+    position: absolute;
+    align-self: center;
+    justify-self: center;
+    width:calc(0.5656 * var(--hauteur));
+    background-image:url('../../../divers/img/docFront.jpg');
+    background-position:center ;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    
+    opacity: .4;
+    transition: opacity 1.5s;
+    filter: blur(.5px);
+
+    &:hover {
+        opacity: 1;
+        filter: blur(0px);
+    }
+}
+
+#filtreCV {
+    visibility: hidden;
+    position: absolute;
+    align-self: center;
+    justify-self: center;
+    width:calc(0.5656 * var(--hauteur));
+    background-image:url('../../../divers/img/docBack.gif');
+    background-position:center ;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+@keyframes faceBottomDown {// 0% => 8%
+    0% {
+        height: 0px;
+        width: 0px;
+    }
+
+    8% {
+        height: var(--largeur);
+        width: var(--longueur);
+    }
+    100% {
+        height: var(--largeur);
+        width: var(--longueur);
+    }
+}
+
+@keyframes sideBottom { // 12% => 20%
+    0% {
+        width:0px;    
+    }
+    12% {
+        width:0px;      
+    }
+    20% {
+        width: var(--epaisseur); 
+    }
+    100% {
+        width: var(--epaisseur); 
+    }
+}
+
+@keyframes faceBottomUp {// 24% => 32%
+    0% {
+        height: 0px;
+        width: 0px;
+    }
+    
+    24% {
+        height: 0px;
+        width: 0px;
+    }
+
+    32% {
+        height: var(--largeur);
+        width: var(--longueur);
+    }
+    100% {
+        height: var(--largeur);
+        width: var(--longueur);
+    }
+}
+
+@keyframes faceBottomUpAfter {//32% => 36% & 84% => 85%
+    0% {
+        height: 0px;
+        width: 0px;
+        background-image: none;
+    } 
+    24% {
+        height: 0px;
+        width: 0px;
+        background-image: none;
+    }
+    32% {
+        height: var(--largeur);
+        width: var(--longueur);
+        background-image:none;
+    }
+    84% {
+        height: var(--largeur);
+        width: var(--longueur);
+        background-image:none;
+    }
+    85% {    
+        background-image: url('../../../divers/img/bzzt.gif');
+        background-position: top;
+        background-size: cover;
+    }
+    100% {    
+        background-image: url('../../../divers/img/bzzt.gif');
+        background-position: top;
+        background-size: cover;
+        height: var(--largeur);
+        width: var(--longueur);
+    }
+}
+
+@keyframes blocTopSide {// 36% => 42%
+    0% {
+        width:0px;    
+    }
+    36% {
+        width:0px;      
+    }
+    42% {
+        width: var(--epaisseur); 
+    }
+    100% {
+        width: var(--epaisseur); 
+    }
+}
+
+@keyframes blocTopFace {// 36% => 42%
+    0% {
+        height: 0px;
+        width: 0px;
+    }
+
+    36% {
+        height: 0px;
+        width: 0px;
+    }
+
+    42% {
+        height: var(--largeur);
+        width: var(--longueur);
+    }
+    100% {
+        height: var(--largeur);
+        width: var(--longueur);
+    }
+}
+
+@keyframes blocTop {// 50% => 77% ; 84% => 100%
+    0% {
+    }
+
+    50% {
+        transform: translateZ(var(--epaisseur)) rotate(0deg); // 0
+    }
+    53% {
+        transform: translateZ(var(--epaisseur)) rotate(20deg); // 20
+    }
+    56% {
+        transform: translateZ(var(--epaisseur)) rotate(120deg); // 2 100
+    }
+    59% {
+        transform: translateZ(var(--epaisseur)) rotate(260deg); // 140
+    }
+    62% {
+        transform: translateZ(var(--epaisseur)) rotate(540deg); // mid 280
+    }
+    65% {
+        transform: translateZ(var(--epaisseur)) rotate(820deg); // 280
+    }
+    68% {
+        transform: translateZ(var(--epaisseur)) rotate(960deg); // 2 140
+    }
+    71% {
+        transform: translateZ(var(--epaisseur)) rotate(1060deg); // 100
+    }
+    74% {
+        transform: translateZ(var(--epaisseur)) rotate(1083deg); // 0 20(+3)
+    }
+    75% {
+        transform: translateZ(var(--epaisseur)) rotate(1079deg); // -4
+    }
+    76% {
+        transform: translateZ(var(--epaisseur)) rotate(1081deg); // +2
+    }
+    77% {
+        transform: translateZ(var(--epaisseur)) rotate(1080deg); // -1
+    }
+    84% {
+        transform: translateZ(var(--epaisseur)) rotate(1080deg); // 
+    }
+    98% {
+        transform: translateZ(var(--hauteur)) rotate(1080deg);
+    }
+    100% {
+        transform: translateZ(var(--hauteur)) rotate(1080deg);
+    }
+}
+
+@keyframes document {// 80% => 100%
+    0% {
+        transform: rotateX(-90deg) translate3d(0,calc(-50% - 1.5 * var(--epaisseur)),0);
+        height: 0px;
+    }
+    84% {
+        visibility: visible;
+        transform: rotateX(-90deg) translate3d(0,calc(-50% - 1.5 * var(--epaisseur)),0);
+        height: 0px;
+    }
+    98% {
+        visibility: visible;
+        transform: rotateX(-90deg) translate3d(0,calc(-50% - 1.5 * var(--epaisseur)),0);
+        height:calc(0.8 * var(--hauteur));
+    }
+    100% {
+        visibility: visible;
+        transform: rotateX(-90deg) translate3d(0,calc(-50% - 1.5 * var(--epaisseur)),0);
+        height:calc(0.8 * var(--hauteur));
+    }
+}
+
+@keyframes rotation {
+    from {
+        transform: translate(-50%, -50%)  rotateX(78deg) rotateZ(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%)  rotateX(78deg) rotateZ(360deg);
+    }
+}
+
+@keyframes iconTurn {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+#teleport.anim {
+    transform: translate3d(-50%, -50%, -100px)  rotateX(83deg) rotateZ(0deg);
+
+    .bloc.bottom .down::before,
+    .bloc.bottom .down::after,
+    .bloc.bottom .down {
+        animation: faceBottomDown linear var(--vitesseIn)forwards;
+    }
+
+    .bloc.bottom .side::before,
+    .bloc.bottom .side::after,
+    .bloc.bottom .side {
+        animation: sideBottom linear var(--vitesseIn) forwards;
+    }
+
+    .bloc.bottom .up::before,
+    .bloc.bottom .up {
+        animation: faceBottomUp linear var(--vitesseIn) forwards;
+    }
+
+    .bloc.bottom .up::after {
+        animation: faceBottomUpAfter linear var(--vitesseIn) forwards;
+    }
+    
+    .bloc.top .side::before,
+    .bloc.top .side::after,
+    .bloc.top .side {
+        animation: blocTopSide linear var(--vitesseIn) forwards;
+    }
+
+    .bloc.top .face::before,
+    .bloc.top .face::after,
+    .bloc.top .face {
+        animation: blocTopFace linear var(--vitesseIn) forwards;
+    }
+
+    .bloc.top {
+        animation: blocTop linear var(--vitesseIn) forwards;
+    }
+
+    #filtreCV,
+    #zoneCV  {
+        animation: document linear var(--vitesseIn) forwards;
+    }
+}
+
+@keyframes blocTopOut {
+    0% {
+        transform: translateZ(var(--hauteur)) rotate(1080deg);
+    }
+
+    45% {
+        transform: translateZ(var(--epaisseur)) rotate(1080deg);
+    }
+
+    50% {
+        transform: translateZ(var(--epaisseur)) rotate(1080deg);
+    }
+
+    70% {
+        transform: translateZ(0) rotate(1080deg) scale(0);
+    }
+
+    100% {
+        transform: translateZ(0) rotate(0) scale(0);
+    }
+}
+
+@keyframes blocBottomOut {
+    0% {
+        transform:scale(1);
+    }
+    75% {
+        transform:scale(1);
+    }
+    100% {
+        transform:scale(0);
+    }
+}
+
+@keyframes docOut {
+    0% {
+        visibility: visible;
+        transform: rotateX(-90deg) translate3d(0,calc(-50% - 1.5 * var(--epaisseur)),0);
+        height:calc(0.8 * var(--hauteur));
+    }
+
+    48% {
+        visibility: visible;
+        transform: rotateX(-90deg) translate3d(0,calc(-50% - 1.5 * var(--epaisseur)),0);
+        height: 0px;
+    }
+
+    49% {
+        visibility: hidden;
+        transform: rotateX(-90deg) translate3d(0,calc(-50% - 1.5 * var(--epaisseur)),0);
+        height: 0px;
+    }
+
+    50% {
+        visibility: hidden;
+        transform: rotateX(0deg) translate3d(0,0,0);
+        height: 0px;
+    }
+
+    100% {
+        visibility: hidden;
+        transform: rotateX(0deg) translate3d(0,0,0);
+        height: 0px;
+    }
+}
+
+#teleport.denim {
+    .bloc.top {
+        animation: blocTopOut var(--vitesseOut) linear forwards!important;
+    }
+
+    .bloc.bottom {
+        animation: blocBottomOut var(--vitesseOut) linear forwards!important;
+    }
+
+    #filtreCV,
+    #zoneCV {
+        animation: docOut var(--vitesseOut) linear forwards!important;
+    }
+}

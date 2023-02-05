@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <title>Portfolio</title>
+
+    <meta name="author" content="Makh">
+    <meta name="description" content="Portofilo Nico">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./utils/css/hud.css">
+    <link rel="stylesheet" href="./utils/css/curriculum.css">
+    <link rel="icon" type="image/x-icon" href="../divers/img/favfolio.ico">
+
+</head>
+
+<body onload="resize()">
+
+    <section id="containerHUD">
+
+        <nav>
+            <ul>
+                <li>
+                    A propos
+                    <div class="back"></div>
+                </li>
+                <li>
+                    Portfolio
+                    <div class="back"></div>
+                </li>
+                <li>
+                    Curriculum vitae
+                    <div class="back"></div>
+                </li>
+                <li>
+                    Compétences
+                    <div class="back"></div>
+                </li>
+                <li>
+                    Contact
+                    <div class="back"></div>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="blurBackground">
+            <div class="blurs"></div>
+            <div class="blurs"></div>
+            <div class="blurs"></div>
+            <div class="blurs"></div>
+        </div>
+
+        <div id="containerView">
+            <div id="containerApropos" class="hidden main">A PROPOS</div>
+            <div id="containerPortfolio" class="hidden main">PORTFOLIO</div>
+
+            <div id="containerCV" class="hidden main">
+                <input type="checkbox" id="rotation">
+                <div id="teleport">
+                    <label for="zoneCV" id="filtreCV"></label>
+                    <input type="button" id="zoneCV">
+                    <div class="bloc top">
+                        <div class="face top up"></div>
+                        <div class="face top down">
+                            <div class="side top left"></div>
+                            <div class="side top right"></div>
+                        </div>
+                    </div>
+                    <div class="bloc bottom">
+                        <div class="face bottom up"></div>
+                        <div class="face bottom down">
+                            <div class="side bottom left"></div>
+                            <div class="side bottom right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="containerSkills" class="hidden main">COMPETENCES</div>
+            <form action="GET" id="containerContact" class="hidden main">FORMULAIRE DE CONTACT</form>
+        </div>
+
+    </section>
+
+    <script src="./utils/js/hud.js"></script>
+    <script src="./utils/js/curriculum.js"></script>
+</body>
+
+</html>
