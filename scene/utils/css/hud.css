@@ -3,10 +3,11 @@
   --heightBar:calc(var(--widthBar) / 3);
   --depthBar:50px;
   --colorBarSide: rgba(39, 48, 52, 0.8);
-  --colorBarMain:rgba(17, 126, 181, 0.5);
-  --blurColor3:rgba(15,15,15, 0.6);
-  --blurColor2:rgba(10,10,10, 0.4);
-  --blurColor1:rgba(1,1,1, 0.2);
+  --colorBarMain:rgba(17, 126, 181, 0.6);
+  --blurColor3:rgba(15,15,15, 0.5);
+  --blurColor2:rgba(10,10,10, 0.25);
+  --blurColor1:rgba(1,1,1, 0.1);
+  --ignitionDegree: 20deg;
 }
 
 html, body {
@@ -27,33 +28,88 @@ nav, ul, li {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background-image: url("../../../divers/img/backgroundHUD.jpg");
+  background-image: url("../../../divers/img/backgroundHUD.png"), linear-gradient(to right, rgba(15, 23, 42, 0.6) 20%, rgb(15, 23, 42) 78%, rgba(15, 23, 42, 0.8) 100%);
   background-position: center;
   background-size: cover;
-  filter: brightness(1.3);
   display: grid;
-  grid-template-columns: 1vw 25vw 1vw 46vw 1vw 25vw 1vw;
+  grid-template-columns: 1vw 20vw 1vw 56vw 1vw 20vw 1vw;
   grid-template-rows: 10vh 80vh 10vh;
   perspective: 1000px;
   perspective-origin: center;
 }
 
-nav {
+#blurBackground {
+  position: relative;
+  z-index: -1;
+  grid-row: 1/span 3;
+  grid-column: 1/span 7;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 22vw repeat(7, 1fr) 22vw;
+  grid-template-rows: 10vh repeat(7, 1fr) 10vh;
+  opacity: 0.5;
+}
+#blurBackground .blurs:nth-child(1) {
+  grid-row: 2/span 7;
+  grid-column: 2/span 7;
+  -webkit-backdrop-filter: blur(0.5px);
+          backdrop-filter: blur(0.5px);
+}
+#blurBackground .blurs:nth-child(2) {
+  grid-row: 3/span 5;
+  grid-column: 3/span 5;
+  -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px);
+}
+#blurBackground .blurs:nth-child(3) {
+  grid-row: 4/span 3;
+  grid-column: 4/span 3;
+  -webkit-backdrop-filter: blur(1.5px);
+          backdrop-filter: blur(1.5px);
+}
+#blurBackground .blurs:nth-child(4) {
+  grid-row: 5/span 1;
+  grid-column: 5/span 1;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+}
+#blurBackground .vortex {
+  background-image: url("../../../divers/img/7.gif");
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  box-shadow: inset 10px 10px 5px rgba(15, 17, 20, 0.25), inset -10px 10px 5px rgba(15, 17, 20, 0.25), inset 10px -10px 5px rgba(15, 17, 20, 0.25), inset -10px -10px 5px rgba(15, 17, 20, 0.25), inset 5px 5px 6px rgba(15, 19, 25, 0.75), inset -5px 5px 6px rgba(15, 19, 25, 0.75), inset 5px -5px 6px rgba(15, 19, 25, 0.75), inset -5px -5px 6px rgba(15, 19, 25, 0.75), 5px 5px 6px 6px rgba(15, 21, 30, 0.5), -5px 5px 6px 6px rgba(15, 21, 30, 0.5), 5px -5px 6px 6px rgba(15, 21, 30, 0.5), -5px -5px 6px 6px rgba(15, 21, 30, 0.5), 10px 10px 8px 10px rgba(15, 23, 35, 0.25), -10px 10px 8px 10px rgba(15, 23, 35, 0.25), 10px -10px 8px 10px rgba(15, 23, 35, 0.25), -10px -10px 8px 10px rgba(15, 23, 35, 0.25);
+}
+
+#waitingMenu {
+  position: absolute;
+  grid-row: 2;
+  grid-column: 2;
+  height: calc(var(--widthBar) / 3 * 5 + 3vh);
+  align-self: center;
+  justify-self: center;
+  transform-origin: left;
+  background-repeat: no-repeat;
+  filter: hue-rotate(10deg);
+}
+
+nav.gauche {
   position: absolute;
   transform-style: preserve-3d;
   grid-row: 2;
   grid-column: 2;
   height: 80vh;
-  width: 25vw;
+  width: 20vw;
   display: grid;
   transform-origin: left;
   transform: rotateY(45deg) translate3d(100px, 0, 0);
 }
 
-nav ul {
+nav.gauche ul {
   position: absolute;
   transform-style: preserve-3d;
-  height: calc(var(--widthBar) / 3 * 5 + 4vh);
+  height: calc(var(--widthBar) / 3 * 5 + 3vh);
   width: var(--widthBar);
   align-self: center;
   justify-self: start;
@@ -62,7 +118,7 @@ nav ul {
   row-gap: 5px;
 }
 
-nav ul li {
+nav.gauche ul li {
   position: relative;
   transform-style: preserve-3d;
   height: var(--heightBar);
@@ -78,13 +134,13 @@ nav ul li {
   cursor: pointer;
   transition: transform 2s;
 }
-nav ul li:hover {
-  transform: translateX(20px);
+nav.gauche ul li:hover {
+  transform: translateX(50px);
 }
-nav ul li.clicked {
-  transform: translate3d(0, 0, 0) rotateY(10deg) translateX(10000px) scale(0);
+nav.gauche ul li.clicked {
+  transform: translate3d(0, 0, 0) rotateY(var(--ignitionDegree)) translateX(10000px) scale(0);
 }
-nav ul li::before {
+nav.gauche ul li::before {
   position: absolute;
   content: "";
   height: var(--heightBar);
@@ -93,7 +149,7 @@ nav ul li::before {
   transform-origin: left;
   transform: rotateY(90deg);
 }
-nav ul li::after {
+nav.gauche ul li::after {
   position: absolute;
   content: "";
   height: var(--depthBar);
@@ -103,7 +159,7 @@ nav ul li::after {
   transform: rotateX(-90deg);
 }
 
-nav ul li .back {
+nav.gauche ul li .back {
   position: absolute;
   transform-style: preserve-3d;
   height: var(--heightBar);
@@ -112,7 +168,7 @@ nav ul li .back {
   transform-origin: left;
   transform: translate3d(0, 0, calc(-1 * var(--depthBar)));
 }
-nav ul li .back::before {
+nav.gauche ul li .back::before {
   position: absolute;
   content: "";
   height: var(--heightBar);
@@ -121,7 +177,7 @@ nav ul li .back::before {
   transform-origin: left;
   transform: translateX(var(--widthBar)) rotateY(-90deg);
 }
-nav ul li .back::after {
+nav.gauche ul li .back::after {
   position: absolute;
   content: "";
   height: var(--depthBar);
@@ -131,46 +187,11 @@ nav ul li .back::after {
   transform: translateY(var(--heightBar)) rotateX(90deg);
 }
 
-#blurBackground {
-  grid-row: 1/span 2;
-  grid-column: 3/span 3;
-  height: 100vh;
-  width: 48vw;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(7, 1fr);
-  background: linear-gradient(to right, var(--blurColor1) 0%, var(--blurColor2) 25%, var(--blurColor3) 50%, var(--blurColor2) 75%, var(--blurColor1) 100%);
-}
-#blurBackground .blurs:nth-child(1) {
-  grid-row: 1/span 7;
-  grid-column: 1/span 7;
-  -webkit-backdrop-filter: blur(0.1px);
-          backdrop-filter: blur(0.1px);
-}
-#blurBackground .blurs:nth-child(2) {
-  grid-row: 2/span 5;
-  grid-column: 2/span 5;
-  -webkit-backdrop-filter: blur(0.6px);
-          backdrop-filter: blur(0.6px);
-}
-#blurBackground .blurs:nth-child(3) {
-  grid-row: 3/span 3;
-  grid-column: 3/span 3;
-  -webkit-backdrop-filter: blur(1.1px);
-          backdrop-filter: blur(1.1px);
-}
-#blurBackground .blurs:nth-child(4) {
-  grid-row: 4/span 1;
-  grid-column: 4/span 1;
-  -webkit-backdrop-filter: blur(1.6px);
-          backdrop-filter: blur(1.6px);
-}
-
 #containerView {
   grid-row: 2;
   grid-column: 4;
   height: 80vh;
-  width: 46vw;
+  width: 56vw;
   background: radial-gradient(ellipse farthest-corner, var(--blurColorIn), var(--blurColorMid) 50%, var(--blurColorOut) 100%);
 }
 
@@ -179,39 +200,36 @@ nav ul li .back::after {
 }
 
 #containerView .main {
-  visibility: hidden;
   position: relative;
   z-index: 10;
   grid-row: 2;
   grid-column: 4;
   height: 80vh;
-  width: 46vw;
+  width: 56vw;
   display: grid;
   align-content: center;
   text-align: center;
   font-size: 5rem;
 }
 
-#containerCV {
+#CURRICULUM {
   visibility: visible !important;
   perspective: 1000px;
   perspective-origin: center 66%;
 }
 
-/*
-#containerApropos {
-    background-color:rgba(0, 0, 255, 0.1);
+#APROPOS {
+  background-color: rgba(0, 0, 255, 0.3);
 }
 
-#containerPortfolio {
-    background-color:rgba(255, 0, 0, 0.1);
+#PORTFOLIO {
+  background-color: rgba(255, 0, 0, 0.3);
 }
 
-#containerSkills {
-    background-color:rgba(128, 0, 128, 0.1);
+#COMPETENCES {
+  background-color: rgba(128, 0, 128, 0.3);
 }
 
-#containerContact {
-    background-color:rgba(255, 228, 196, 0.1);
-}
-*//*# sourceMappingURL=hud.css.map */
+#CONTACT {
+  background-color: rgba(255, 228, 196, 0.3);
+}/*# sourceMappingURL=hud.css.map */

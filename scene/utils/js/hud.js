@@ -1,7 +1,21 @@
 const li = document.getElementsByTagName('li');
 const nav = document.getElementsByTagName('nav')[0];
 const scene = document.getElementById('containerView').children;
-let itemp = 0;
+const waitingMenu = document.getElementById('waitingMenu');
+const vortex = document.getElementsByClassName('vortex')[0];
+const blurBG = document.getElementById('blurBackground');
+
+const urlGIF = "../../../divers/img/loading3s.gif?time=";
+function loadingGIF() {
+    waitingMenu.style.backgroundImage = `url(${urlGIF + new Date().getTime()})`;
+}
+
+let angle = 0;
+let decal = 0;
+let depth = 50;
+let iDeg = 20;
+let iTemp = 0;
+
 tabNav = [false, false, false, false, false];
 
 window.onresize = function () {
@@ -24,123 +38,119 @@ function resize() {
     console.log('width :' + width);
 
     if (width < 800) {
-        console.log('1');
         angle = 65;
         decal = 60;
-        depth = '50px';
+        depth = 50;
+        iDeg = 40;
     } else if (width < 1200) {
-        console.log('2');
+        angle = 70;
+        decal = 125;
+        depth = 60;
+        iDeg = 25;
+    } else if ( width < 1600) {
         angle = 75;
         decal = 150;
-        depth = '60px';
-    } else if ( width < 1600) {
-        console.log('3');
-        angle = 80;
-        decal = 250;
-        depth = '80px';
+        depth = 80;
+        iDeg = 15;
     } else {
-        console.log('4');
-        angle = 85;
-        decal = 350;
-        depth = '100px';
+        angle = 80;
+        decal = 200;
+        depth = 100;
+        iDeg = 5;
     }
 
-
-    document.documentElement.style.setProperty('--depthBar', depth);
+    document.documentElement.style.setProperty('--ignitionDegree', iDeg +'deg');
+    document.documentElement.style.setProperty('--depthBar', depth +'px');
     nav.style.transform = "rotateY("+angle+"deg) translate3d("+decal+"px, 0, 0)";
-    let depz = getComputedStyle(document.documentElement).getPropertyValue('--depthBar');
-    console.log(depz);
-}
+    waitingMenu.style.width = depth+"px";
+    waitingMenu.style.transform = "translate3d(0, 0, -"+depth+"px) rotateY("+-angle+"deg)";
+    let iDegree = getComputedStyle(document.documentElement).getPropertyValue('--ignitionDegree');
+    console.log(iDegree);
+    }
 
 for (let i = 0; i < li.length; i++) {
-    let itemp = i;
+    let iTemp = i;
     li[i].addEventListener('click', function () {
-        menuAsync(itemp);
+        menuAsync(iTemp);
     });
 }
 
-async function menuAsync(int){
+async function menuAsync(iTemp){
     // BEFORE
-    console.log(li[int].innerText);
-    li[int].classList.add("clicked"); 
-    tabNav[int] = true;
-    console.log(int);
-    open(int);
-    scene[int].classList.remove("hidden"); 
+    li[iTemp].classList.add("clicked");
+    tabNav[iTemp] = true;
 
+    for (let l of li) {
+        if (l.classList.contains('clicked')) {
+            console.log(l);
+            l.style.transform    //transform:translate3d(0, 0, 0) rotateY(10deg) translateX(10000px) scale(0);
+
+        }
+    }
+
+    let menuHeight = waitingMenu.clientWidth;
+    let loadingPosY = (25 * iTemp) + (2 - iTemp) * 1.25;
+    waitingMenu.style.backgroundPositionX = "center";
+    waitingMenu.style.backgroundPositionY = loadingPosY+"%";
+    waitingMenu.style.backgroundSize = menuHeight+"px "+menuHeight+"px";
+    loadingGIF();
+
+    //let waitingZone = scene[iTemp]
     for (j = 0; j < li.length; j++) {
-        if (li[j].classList.contains("clicked") && j !== int) {
+        if (li[j].classList.contains("clicked") && j !== iTemp) {
             li[j].classList.remove("clicked"); 
             tabNav[j] = false;
+            document.getElementById("exit"+j).checked = true;
+            console.log(document.getElementById("exit"+j));
         }
     }
     console.log("BEFORE")
 
     //IN-BETWEEN
-    await delay(int);
+    await delay(iTemp);
     
     // AFTER
     console.log(tabNav);
     console.log("AFTER")
 }
 
-function delay(int){
+function delay(){
     return new Promise((resolve,reject)=>{
         //here our function should be implemented 
         setTimeout(()=>{
                 for (j = 0; j < tabNav.length; j++) {
                     if (!tabNav[j]) {
-                        scene[j].classList.add("hidden"); 
-                        console.log(scene[j]);
+                        scene[j].classList.add("hidden");
+                    } else {
+                        document.getElementById("exit"+j).checked = false;
+                        scene[j].classList.remove("hidden");
+                        scene[j].classList.add("anim"); 
                     }
                 }
+                waitingMenu.style.backgroundImage = "none";
+                blurBG.style.display = "none";
                 resolve();
             ;} , speed2
         );
     });
 }
 
-function open(int) {
-    switch (int) {
+function open(iTemp) {
+    switch (iTemp) {
         case 0:
-            if (teleport.classList.contains('anim')) {
-                teleport.classList.add('denim');
-                teleport.classList.remove('anim');
-            } 
-            rotation.classList.remove('anim');
-            console.log('case :'+int);
+
             break;
         case 1:
-            if (teleport.classList.contains('anim')) {
-                teleport.classList.add('denim');
-                teleport.classList.remove('anim');
-            } 
-            rotation.classList.remove('anim');
-            console.log('case :'+int);
+
             break;
         case 2:
-            if (teleport.classList.contains('denim')) {
-                teleport.classList.remove('denim');
-            } 
-            teleport.classList.add('anim');
-            rotation.classList.add('anim');
-            console.log('case :'+int);
+
             break;
         case 3:
-            if (teleport.classList.contains('anim')) {
-                teleport.classList.add('denim');
-                teleport.classList.remove('anim');
-            } 
-            rotation.classList.remove('anim');
-            console.log('case :'+int);
+
             break;
         case 4:
-            if (teleport.classList.contains('anim')) {
-                teleport.classList.add('denim');
-                teleport.classList.remove('anim');
-            } 
-            rotation.classList.remove('anim');
-            console.log('case :'+int);
+
             break;
     }
 }

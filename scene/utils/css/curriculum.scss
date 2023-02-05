@@ -1,5 +1,5 @@
 :root {
-    --longueur:20vw; // Entre 10vh et 80vh
+    --longueur:clamp(15vw, 50vh, 35vw); // Entre 10vh et 80vh
     --vitesseIn:5s;
     --vitesseOut:3s;
 
@@ -8,8 +8,8 @@
     --hauteur:calc(24/21 * (var(--longueur)));
 
     --faceColor:rgba(39, 48, 52, 1);
-    --sideColorIn:#148989;
-    --sideColorOut1:rgba(17, 126, 181, 0.5);
+    --sideColorIn:rgba(31, 162, 227, 0.8);
+    --sideColorOut1:rgba(17, 126, 181, 0.9);
     --sideColorOut2:#0ef4f4;
     --sideColorOut3:#26fafa;
     --offset:3px;
@@ -37,11 +37,29 @@ input {
     background-color: red;
 }
 
-#rotation.anim {
+#CURRICULUM.anim #exit2 {
+    top:10px;
+    left:10px;
+    width: 50px;
+    height: 50px;
+    background-image: url('../../../divers/img/play.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    border:5px solid whitesmoke;
+
+    &:checked {
+        background-image: url('../../../divers/img/pause.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
+
+#CURRICULUM.anim #rotation {
     top:10px;
     left:75px;
-    width:100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     background-image: url('../../../divers/img/rotation.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -57,7 +75,7 @@ input {
         animation: iconTurn 5s linear infinite;
     }
 
-    &:checked ~ #teleport.anim {
+    &:checked ~ #teleport {
         animation: rotation linear 20s infinite;
     }
 }
@@ -79,7 +97,7 @@ input {
     width:calc(1.15 * var(--longueur));
     height: calc(1.15 * var(--longueur));
     left:50%;
-    top:110%;
+    top:100%;
 }
 
 .bloc.bottom, 
@@ -447,7 +465,7 @@ input {
     }
 }
 
-#teleport.anim {
+#CURRICULUM.anim #teleport {
     transform: translate3d(-50%, -50%, -100px)  rotateX(83deg) rotateZ(0deg);
 
     .bloc.bottom .down::before,
@@ -559,7 +577,7 @@ input {
     }
 }
 
-#teleport.denim {
+#CURRICULUM.anim #exit2:checked ~ #teleport {
     .bloc.top {
         animation: blocTopOut var(--vitesseOut) linear forwards!important;
     }

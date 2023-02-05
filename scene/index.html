@@ -21,7 +21,7 @@
 
     <section id="containerHUD">
 
-        <nav>
+        <nav class="gauche">
             <ul>
                 <li>
                     A propos
@@ -44,20 +44,27 @@
                     <div class="back"></div>
                 </li>
             </ul>
+            <div id="waitingMenu"></div>
         </nav>
 
         <div id="blurBackground">
             <div class="blurs"></div>
             <div class="blurs"></div>
             <div class="blurs"></div>
-            <div class="blurs"></div>
+            <div class="blurs vortex"></div>
         </div>
 
         <div id="containerView">
-            <div id="containerApropos" class="hidden main">A PROPOS</div>
-            <div id="containerPortfolio" class="hidden main">PORTFOLIO</div>
-
-            <div id="containerCV" class="hidden main">
+            <div id="APROPOS" class="hidden main">
+                <p>A PROPOS</p>
+                <input type="checkbox" id="exit0">
+            </div>
+            <div id="PORTFOLIO" class="hidden main">
+                <p>PORTFOLIO</p>
+                <input type="checkbox" id="exit1">
+            </div>
+            <div id="CURRICULUM" class="hidden main">
+                <input type="checkbox" id="exit2">
                 <input type="checkbox" id="rotation">
                 <div id="teleport">
                     <label for="zoneCV" id="filtreCV"></label>
@@ -78,10 +85,41 @@
                     </div>
                 </div>
             </div>
-
-            <div id="containerSkills" class="hidden main">COMPETENCES</div>
-            <form action="GET" id="containerContact" class="hidden main">FORMULAIRE DE CONTACT</form>
+            <div id="COMPETENCES" class="hidden main">
+                <p>COMPETENCES</p>
+                <input type="checkbox" id="exit3">
+            </div>
+            <form action="GET" id="containerContact" class="hidden main">
+                <p>FORMULAIRE DE CONTACT</p>
+                <input type="checkbox" id="exit4">
+            </form>
         </div>
+
+        <nav class="droite">
+            <ul>
+                <li>
+                    A propos
+                    <div class="back"></div>
+                </li>
+                <li>
+                    Portfolio
+                    <div class="back"></div>
+                </li>
+                <li>
+                    Curriculum vitae
+                    <div class="back"></div>
+                </li>
+                <li>
+                    Compétences
+                    <div class="back"></div>
+                </li>
+                <li>
+                    Contact
+                    <div class="back"></div>
+                </li>
+            </ul>
+            <div id="waitingMenu"></div>
+        </nav>
 
     </section>
 

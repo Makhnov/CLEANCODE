@@ -1,13 +1,13 @@
 :root {
-  --longueur:20vw;
+  --longueur:clamp(15vw, 50vh, 35vw);
   --vitesseIn:5s;
   --vitesseOut:3s;
   --largeur:calc(12/21 * (var(--longueur)));
   --epaisseur:calc(2/21 * (var(--longueur)));
   --hauteur:calc(24/21 * (var(--longueur)));
   --faceColor:rgba(39, 48, 52, 1);
-  --sideColorIn:#148989;
-  --sideColorOut1:rgba(17, 126, 181, 0.5);
+  --sideColorIn:rgba(31, 162, 227, 0.8);
+  --sideColorOut1:rgba(17, 126, 181, 0.9);
   --sideColorOut2:#0ef4f4;
   --sideColorOut3:#26fafa;
   --offset:3px;
@@ -35,11 +35,28 @@ input {
   background-color: red;
 }
 
-#rotation.anim {
+#CURRICULUM.anim #exit2 {
+  top: 10px;
+  left: 10px;
+  width: 50px;
+  height: 50px;
+  background-image: url("../../../divers/img/play.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  border: 5px solid whitesmoke;
+}
+#CURRICULUM.anim #exit2:checked {
+  background-image: url("../../../divers/img/pause.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#CURRICULUM.anim #rotation {
   top: 10px;
   left: 75px;
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   background-image: url("../../../divers/img/rotation.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -47,15 +64,15 @@ input {
   border-radius: 50%;
   border: 5px solid whitesmoke;
 }
-#rotation.anim:hover {
+#CURRICULUM.anim #rotation:hover {
   -webkit-animation: iconTurn 10s linear infinite;
           animation: iconTurn 10s linear infinite;
 }
-#rotation.anim:checked {
+#CURRICULUM.anim #rotation:checked {
   -webkit-animation: iconTurn 5s linear infinite;
           animation: iconTurn 5s linear infinite;
 }
-#rotation.anim:checked ~ #teleport.anim {
+#CURRICULUM.anim #rotation:checked ~ #teleport {
   -webkit-animation: rotation linear 20s infinite;
           animation: rotation linear 20s infinite;
 }
@@ -76,7 +93,7 @@ input {
   width: calc(1.15 * var(--longueur));
   height: calc(1.15 * var(--longueur));
   left: 50%;
-  top: 110%;
+  top: 100%;
 }
 
 .bloc.bottom,
@@ -622,48 +639,48 @@ input {
     transform: rotate(-360deg);
   }
 }
-#teleport.anim {
+#CURRICULUM.anim #teleport {
   transform: translate3d(-50%, -50%, -100px) rotateX(83deg) rotateZ(0deg);
 }
-#teleport.anim .bloc.bottom .down::before,
-#teleport.anim .bloc.bottom .down::after,
-#teleport.anim .bloc.bottom .down {
+#CURRICULUM.anim #teleport .bloc.bottom .down::before,
+#CURRICULUM.anim #teleport .bloc.bottom .down::after,
+#CURRICULUM.anim #teleport .bloc.bottom .down {
   -webkit-animation: faceBottomDown linear var(--vitesseIn) forwards;
           animation: faceBottomDown linear var(--vitesseIn) forwards;
 }
-#teleport.anim .bloc.bottom .side::before,
-#teleport.anim .bloc.bottom .side::after,
-#teleport.anim .bloc.bottom .side {
+#CURRICULUM.anim #teleport .bloc.bottom .side::before,
+#CURRICULUM.anim #teleport .bloc.bottom .side::after,
+#CURRICULUM.anim #teleport .bloc.bottom .side {
   -webkit-animation: sideBottom linear var(--vitesseIn) forwards;
           animation: sideBottom linear var(--vitesseIn) forwards;
 }
-#teleport.anim .bloc.bottom .up::before,
-#teleport.anim .bloc.bottom .up {
+#CURRICULUM.anim #teleport .bloc.bottom .up::before,
+#CURRICULUM.anim #teleport .bloc.bottom .up {
   -webkit-animation: faceBottomUp linear var(--vitesseIn) forwards;
           animation: faceBottomUp linear var(--vitesseIn) forwards;
 }
-#teleport.anim .bloc.bottom .up::after {
+#CURRICULUM.anim #teleport .bloc.bottom .up::after {
   -webkit-animation: faceBottomUpAfter linear var(--vitesseIn) forwards;
           animation: faceBottomUpAfter linear var(--vitesseIn) forwards;
 }
-#teleport.anim .bloc.top .side::before,
-#teleport.anim .bloc.top .side::after,
-#teleport.anim .bloc.top .side {
+#CURRICULUM.anim #teleport .bloc.top .side::before,
+#CURRICULUM.anim #teleport .bloc.top .side::after,
+#CURRICULUM.anim #teleport .bloc.top .side {
   -webkit-animation: blocTopSide linear var(--vitesseIn) forwards;
           animation: blocTopSide linear var(--vitesseIn) forwards;
 }
-#teleport.anim .bloc.top .face::before,
-#teleport.anim .bloc.top .face::after,
-#teleport.anim .bloc.top .face {
+#CURRICULUM.anim #teleport .bloc.top .face::before,
+#CURRICULUM.anim #teleport .bloc.top .face::after,
+#CURRICULUM.anim #teleport .bloc.top .face {
   -webkit-animation: blocTopFace linear var(--vitesseIn) forwards;
           animation: blocTopFace linear var(--vitesseIn) forwards;
 }
-#teleport.anim .bloc.top {
+#CURRICULUM.anim #teleport .bloc.top {
   -webkit-animation: blocTop linear var(--vitesseIn) forwards;
           animation: blocTop linear var(--vitesseIn) forwards;
 }
-#teleport.anim #filtreCV,
-#teleport.anim #zoneCV {
+#CURRICULUM.anim #teleport #filtreCV,
+#CURRICULUM.anim #teleport #zoneCV {
   -webkit-animation: document linear var(--vitesseIn) forwards;
           animation: document linear var(--vitesseIn) forwards;
 }
@@ -779,16 +796,16 @@ input {
     height: 0px;
   }
 }
-#teleport.denim .bloc.top {
+#CURRICULUM.anim #exit2:checked ~ #teleport .bloc.top {
   -webkit-animation: blocTopOut var(--vitesseOut) linear forwards !important;
           animation: blocTopOut var(--vitesseOut) linear forwards !important;
 }
-#teleport.denim .bloc.bottom {
+#CURRICULUM.anim #exit2:checked ~ #teleport .bloc.bottom {
   -webkit-animation: blocBottomOut var(--vitesseOut) linear forwards !important;
           animation: blocBottomOut var(--vitesseOut) linear forwards !important;
 }
-#teleport.denim #filtreCV,
-#teleport.denim #zoneCV {
+#CURRICULUM.anim #exit2:checked ~ #teleport #filtreCV,
+#CURRICULUM.anim #exit2:checked ~ #teleport #zoneCV {
   -webkit-animation: docOut var(--vitesseOut) linear forwards !important;
           animation: docOut var(--vitesseOut) linear forwards !important;
 }/*# sourceMappingURL=curriculum.css.map */
