@@ -1,5 +1,6 @@
 const li = document.getElementsByTagName('li');
-const nav = document.getElementsByTagName('nav')[0];
+const navGauche = document.getElementsByTagName('nav')[0];
+const navDroite = document.getElementsByTagName('nav')[1];
 const scene = document.getElementById('containerView').children;
 const waitingMenu = document.getElementById('waitingMenu');
 const vortex = document.getElementsByClassName('vortex')[0];
@@ -61,12 +62,12 @@ function resize() {
 
     document.documentElement.style.setProperty('--ignitionDegree', iDeg +'deg');
     document.documentElement.style.setProperty('--depthBar', depth +'px');
-    nav.style.transform = "rotateY("+angle+"deg) translate3d("+decal+"px, 0, 0)";
+    navGauche.style.transform = "rotateY("+angle+"deg) translate3d("+decal+"px, 0, 0)";
     waitingMenu.style.width = depth+"px";
     waitingMenu.style.transform = "translate3d(0, 0, -"+depth+"px) rotateY("+-angle+"deg)";
     let iDegree = getComputedStyle(document.documentElement).getPropertyValue('--ignitionDegree');
     console.log(iDegree);
-    }
+}
 
 for (let i = 0; i < li.length; i++) {
     let iTemp = i;
@@ -84,7 +85,6 @@ async function menuAsync(iTemp){
         if (l.classList.contains('clicked')) {
             console.log(l);
             l.style.transform    //transform:translate3d(0, 0, 0) rotateY(10deg) translateX(10000px) scale(0);
-
         }
     }
 
@@ -129,6 +129,7 @@ function delay(){
                 }
                 waitingMenu.style.backgroundImage = "none";
                 blurBG.style.display = "none";
+                navDroite.style.display = "grid";
                 resolve();
             ;} , speed2
         );

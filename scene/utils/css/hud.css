@@ -32,7 +32,7 @@ nav, ul, li {
   background-position: center;
   background-size: cover;
   display: grid;
-  grid-template-columns: 1vw 20vw 1vw 56vw 1vw 20vw 1vw;
+  grid-template-columns: 1vw 20vw 1vw 56vw 1vw 12vw 1vw 7vw 1vw;
   grid-template-rows: 10vh 80vh 10vh;
   perspective: 1000px;
   perspective-origin: center;
@@ -129,7 +129,7 @@ nav.gauche ul li {
   display: grid;
   align-content: center;
   padding-left: 20px;
-  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  font-size: clamp(1.25rem, 2.6vw, 2.6rem);
   text-shadow: -0.06rem 0rem 0 rgb(148, 163, 184), -0.06rem 0.05rem 0 #0f172a, -0.12rem 0.025rem 0 #94a3b8, -0.12rem 0.075rem 0 #0f172a, -0.18rem 0.05rem 0 #94a3b8, -0.18rem 0.1rem 0 #0f172a, -0.24rem 0.075rem 0 #94a3b8, -0.24rem 0.125rem 0 #0f172a, -0.3rem 0.1rem 0 #94a3b8, -0.3rem 0.15rem 0 #0f172a;
   cursor: pointer;
   transition: transform 2s;
@@ -232,4 +232,55 @@ nav.gauche ul li .back::after {
 
 #CONTACT {
   background-color: rgba(255, 228, 196, 0.3);
+}
+
+nav.droite {
+  grid-row: 2;
+  grid-column: 6;
+  height: 80vh;
+  width: 12vw;
+  display: none;
+  grid-template-rows: repeat(5, 10vh) 30vh;
+  grid-template-columns: 1fr;
+  background: linear-gradient(to bottom, red 0vh, red 10vh, green 10vh, green 20vh, blue 20vh, blue 30vh, yellow 30vh, yellow 40vh, purple 40vh, purple 50vh, black 50vh);
+}
+
+nav.droite ul {
+  height: 80vh;
+  width: 12vw;
+  display: grid;
+  grid-template-rows: repeat(5, 10vh) 30vh;
+  grid-template-columns: 1fr;
+}
+
+nav.droite ul li {
+  display: grid;
+  place-content: center;
+}
+
+nav.droite ul li button {
+  height: 7vh;
+  width: 7vh;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+button.droite:nth-of-type(1) {
+  grid-column: 1;
+  grid-row: 0;
+}
+
+button.droite:nth-of-type(2) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+button.droite:nth-of-type(3) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+button.droite:nth-of-type(4) {
+  grid-column: 1;
+  grid-row: 3;
 }/*# sourceMappingURL=hud.css.map */

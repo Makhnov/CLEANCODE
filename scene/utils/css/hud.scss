@@ -39,7 +39,7 @@ nav, ul, li {
     background-size: cover;
 
     display:grid;
-    grid-template-columns: 1vw 20vw 1vw 56vw 1vw 20vw 1vw;
+    grid-template-columns: 1vw 20vw 1vw 56vw 1vw 12vw 1vw 7vw 1vw;
     grid-template-rows: 10vh 80vh 10vh;
 
     perspective: 1000px;
@@ -147,7 +147,7 @@ nav.gauche ul li {
     display: grid;
     align-content: center;
     padding-left: 20px;
-    font-size:clamp(1.25rem, 2.5vw, 2rem);
+    font-size:clamp(1.25rem, 2.6vw, 2.6rem);
 
     text-shadow: 
         -0.06rem 0rem 0 rgb(148, 163, 184), 
@@ -280,4 +280,57 @@ nav.gauche ul li .back {
 
 #CONTACT {
     background-color: rgba(255, 228, 196, 0.3);
+}
+
+nav.droite {
+    grid-row:2;
+    grid-column: 6;
+    height: 80vh;
+    width:12vw;
+
+    display: none;
+    grid-template-rows: repeat(5, 10vh) 30vh;
+    grid-template-columns: 1fr;
+    background: linear-gradient(to bottom,
+        red 0vh,
+        red 10vh,
+        green 10vh,
+        green 20vh,
+        blue 20vh,
+        blue 30vh,
+        yellow 30vh,
+        yellow 40vh,
+        purple 40vh,
+        purple 50vh,
+        black 50vh
+    );
+
+}
+
+nav.droite ul {
+    height: 80vh;
+    width:12vw;
+
+    display: grid;
+    grid-template-rows: repeat(5, 10vh) 30vh;
+    grid-template-columns: 1fr;
+}
+
+nav.droite ul li {
+    display: grid;
+    place-content: center;
+}
+
+nav.droite ul li button {
+    height: 7vh;
+    width: 7vh;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+@for $i from 0 to 4 {
+    button.droite:nth-of-type(#{($i + 1)}) {
+        grid-column: 1;
+        grid-row: 0 + $i;
+    }
 }
