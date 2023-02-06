@@ -132,7 +132,7 @@ nav.gauche ul li {
   font-size: clamp(1.25rem, 2.6vw, 2.6rem);
   text-shadow: -0.06rem 0rem 0 rgb(148, 163, 184), -0.06rem 0.05rem 0 #0f172a, -0.12rem 0.025rem 0 #94a3b8, -0.12rem 0.075rem 0 #0f172a, -0.18rem 0.05rem 0 #94a3b8, -0.18rem 0.1rem 0 #0f172a, -0.24rem 0.075rem 0 #94a3b8, -0.24rem 0.125rem 0 #0f172a, -0.3rem 0.1rem 0 #94a3b8, -0.3rem 0.15rem 0 #0f172a;
   cursor: pointer;
-  transition: transform 2s;
+  transition: transform 3s;
 }
 nav.gauche ul li:hover {
   transform: translateX(50px);

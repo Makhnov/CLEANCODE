@@ -16,6 +16,8 @@ let decal = 0;
 let depth = 50;
 let iDeg = 20;
 let iTemp = 0;
+let timer123;
+
 
 tabNav = [false, false, false, false, false];
 
@@ -25,7 +27,6 @@ window.onresize = function () {
     resizeTimer = setTimeout(function () {
         resize();
     }, 500);
-
 };
 
 function resize() {
@@ -72,6 +73,7 @@ function resize() {
 for (let i = 0; i < li.length; i++) {
     let iTemp = i;
     li[i].addEventListener('click', function () {
+        clearTimeout(timer123);
         menuAsync(iTemp);
     });
 }
@@ -81,12 +83,6 @@ async function menuAsync(iTemp){
     li[iTemp].classList.add("clicked");
     tabNav[iTemp] = true;
 
-    for (let l of li) {
-        if (l.classList.contains('clicked')) {
-            console.log(l);
-            l.style.transform    //transform:translate3d(0, 0, 0) rotateY(10deg) translateX(10000px) scale(0);
-        }
-    }
 
     let menuHeight = waitingMenu.clientWidth;
     let loadingPosY = (25 * iTemp) + (2 - iTemp) * 1.25;
@@ -107,17 +103,16 @@ async function menuAsync(iTemp){
     console.log("BEFORE")
 
     //IN-BETWEEN
-    await delay(iTemp);
+    await delayLi(iTemp);
     
     // AFTER
-    console.log(tabNav);
     console.log("AFTER")
 }
 
-function delay(){
+function delayLi(){
     return new Promise((resolve,reject)=>{
         //here our function should be implemented 
-        setTimeout(()=>{
+        timer123 = setTimeout(()=>{
                 for (j = 0; j < tabNav.length; j++) {
                     if (!tabNav[j]) {
                         scene[j].classList.add("hidden");
