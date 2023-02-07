@@ -8,6 +8,7 @@
     --blurColor2:rgba(10,10,10, 0.25);
     --blurColor1:rgba(1,1,1, 0.1);
     --ignitionDegree: 20deg;
+    
 }
 
 html, body {
@@ -231,6 +232,8 @@ nav.gauche ul li .back {
 }
 
 #containerView {
+    visibility: hidden;
+    transform-style: preserve-3d;
     grid-row:2;
     grid-column: 4;
     height: 80vh;
@@ -240,6 +243,7 @@ nav.gauche ul li .back {
         var(--blurColorMid) 50%,
         var(--blurColorOut) 100%
     );
+
 }
 
 #containerView .hidden {
@@ -247,6 +251,7 @@ nav.gauche ul li .back {
 }
 
 #containerView .main {
+    transform-style:preserve-3d ;
     position: relative;
     z-index: 10;
     grid-row:2;
@@ -262,23 +267,24 @@ nav.gauche ul li .back {
 
 #CURRICULUM {
     visibility: visible!important;
-    perspective: 1000px;
-    perspective-origin: center 66%;
 }
 
 #APROPOS {
+    visibility: visible!important;
     background-color:rgba(0, 0, 255, 0.3);
 }
 
 #PORTFOLIO {
-    background-color:rgba(255, 0, 0, 0.3);
+    visibility: visible!important;
 }
 
 #COMPETENCES {
+    visibility: visible!important;
     background-color:rgba(128, 0, 128, 0.3);
 }
 
 #CONTACT {
+    visibility: visible!important;
     background-color: rgba(255, 228, 196, 0.3);
 }
 

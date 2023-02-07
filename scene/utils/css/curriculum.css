@@ -1,5 +1,5 @@
 :root {
-  --longueur:clamp(15vw, 50vh, 35vw);
+  --longueur:clamp(15vw, 70vh, 40vw);
   --vitesseIn:5s;
   --vitesseOut:3s;
   --largeur:calc(12/21 * (var(--longueur)));
@@ -33,6 +33,10 @@ input {
   background-size: contain;
   background-repeat: no-repeat;
   background-color: red;
+}
+
+#CURRICULUM.anim {
+  transform: translateZ(-500px);
 }
 
 #CURRICULUM.anim #exit2 {
@@ -609,18 +613,18 @@ input {
 }
 @-webkit-keyframes rotation {
   from {
-    transform: translate(-50%, -50%) rotateX(78deg) rotateZ(0deg);
+    transform: translate(-50%, -50%) rotateX(85deg) rotateZ(0deg);
   }
   to {
-    transform: translate(-50%, -50%) rotateX(78deg) rotateZ(360deg);
+    transform: translate(-50%, -50%) rotateX(85deg) rotateZ(360deg);
   }
 }
 @keyframes rotation {
   from {
-    transform: translate(-50%, -50%) rotateX(78deg) rotateZ(0deg);
+    transform: translate(-50%, -50%) rotateX(85deg) rotateZ(0deg);
   }
   to {
-    transform: translate(-50%, -50%) rotateX(78deg) rotateZ(360deg);
+    transform: translate(-50%, -50%) rotateX(85deg) rotateZ(360deg);
   }
 }
 @-webkit-keyframes iconTurn {
@@ -640,7 +644,7 @@ input {
   }
 }
 #CURRICULUM.anim #teleport {
-  transform: translate3d(-50%, -50%, -100px) rotateX(77deg) rotateZ(0deg);
+  transform: translate3d(-50%, -50%, 0) rotateX(90deg) rotateZ(0deg);
 }
 #CURRICULUM.anim #teleport .bloc.bottom .down::before,
 #CURRICULUM.anim #teleport .bloc.bottom .down::after,

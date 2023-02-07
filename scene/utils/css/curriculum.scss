@@ -1,5 +1,5 @@
 :root {
-    --longueur:clamp(15vw, 50vh, 35vw); // Entre 10vh et 80vh
+    --longueur:clamp(15vw, 70vh, 40vw); // Entre 10vh et 80vh
     --vitesseIn:5s;
     --vitesseOut:3s;
 
@@ -35,6 +35,10 @@ input {
     background-size: contain;
     background-repeat: no-repeat;
     background-color: red;
+}
+
+#CURRICULUM.anim {
+    transform:translateZ(-500px);
 }
 
 #CURRICULUM.anim #exit2 {
@@ -447,11 +451,11 @@ input {
 
 @keyframes rotation {
     from {
-        transform: translate(-50%, -50%)  rotateX(78deg) rotateZ(0deg);
+        transform: translate(-50%, -50%)  rotateX(85deg) rotateZ(0deg);
     }
 
     to {
-        transform: translate(-50%, -50%)  rotateX(78deg) rotateZ(360deg);
+        transform: translate(-50%, -50%)  rotateX(85deg) rotateZ(360deg);
     }
 }
 
@@ -466,7 +470,7 @@ input {
 }
 
 #CURRICULUM.anim #teleport {
-    transform: translate3d(-50%, -50%, -100px)  rotateX(77deg) rotateZ(0deg);
+    transform: translate3d(-50%, -50%, 0)  rotateX(90deg) rotateZ(0deg);
 
     .bloc.bottom .down::before,
     .bloc.bottom .down::after,
