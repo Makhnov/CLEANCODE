@@ -1,20 +1,26 @@
 :root {
-  --longueur:clamp(15vw, 70vh, 40vw);
-  --vitesseIn:5s;
-  --vitesseOut:3s;
-  --largeur:calc(12/21 * (var(--longueur)));
-  --epaisseur:calc(2/21 * (var(--longueur)));
-  --hauteur:calc(24/21 * (var(--longueur)));
-  --faceColor:rgba(39, 48, 52, 1);
-  --sideColorIn:rgba(31, 162, 227, 1);
-  --sideColorOut1:rgba(17, 126, 181, 1);
-  --sideColorOut2:#0ef4f4;
-  --sideColorOut3:#26fafa;
-  --offset:3px;
-  --mainColor1:rgba(5, 226, 226, 0.5);
-  --mainColor2:rgba(5, 226, 226, 0.2);
-  --mainColor3:rgba(5, 226, 226, 0.75);
-  --mainColor4:rgb(38, 250, 250, 0.95);
+  --menuLargeur:clamp(200px, 40vh, 500px);
+  --menuHauteur:calc(var(--menuLargeur) / 3);
+  --menuProfondeur:50px;
+  --ignitionDegree: 20deg;
+  --vitesseEntree:5s;
+  --vitesseSortie:3s;
+  --bookBorder:rgb(50, 50, 50);
+  --bookPage:whitesmoke;
+  --mainColor1:rgb(17, 126, 181);
+  --mainColor2:rgb(31, 162, 227);
+  --mainColor3:rgb(20, 172, 249);
+  --subColor1:rgb(39, 48, 52);
+  --blurColor1:rgba(1,1,1, 0.1);
+  --blurColor2:rgba(10,10,10, 0.25);
+  --blurColor3:rgba(15,15,15, 0.5);
+  --subColorLight: rgba(39, 48, 52, 0.8);
+  --mainColorLight:rgba(17, 126, 181, 0.6);
+  --standLargeur:clamp(15vw, 70vh, 40vw);
+  --standLargeurInt:calc(12/21 * (var(--standLargeur)));
+  --standEpaisseur:calc(2/21 * (var(--standLargeur)));
+  --standHauteur:calc(24/21 * (var(--standLargeur)));
+  --livreLargeur:clamp(200px, 75vh, 1000px);
 }
 
 input {
@@ -64,7 +70,7 @@ input {
   background-image: url("../../../divers/img/rotation.png");
   background-size: contain;
   background-repeat: no-repeat;
-  background-color: var(--sideColorOut1);
+  background-color: var(--mainColor1);
   border-radius: 50%;
   border: 5px solid whitesmoke;
 }
@@ -91,8 +97,8 @@ input {
   position: relative;
   transform-style: preserve-3d;
   display: grid;
-  width: calc(1.15 * var(--longueur));
-  height: calc(1.15 * var(--longueur));
+  width: calc(1.15 * var(--standLargeur));
+  height: calc(1.15 * var(--standLargeur));
   left: 50%;
   top: 100%;
 }
@@ -102,8 +108,8 @@ input {
   position: absolute;
   justify-self: center;
   transform-style: preserve-3d;
-  width: var(--longueur);
-  height: calc(1.15 * var(--longueur));
+  width: var(--standLargeur);
+  height: calc(1.15 * var(--standLargeur));
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 100%;
@@ -115,7 +121,7 @@ input {
   transform-style: preserve-3d;
   justify-self: center;
   align-self: center;
-  background-color: var(--faceColor);
+  background-color: var(--subColor1);
 }
 .bloc.bottom .face::before,
 .bloc.top .face::before {
@@ -124,7 +130,7 @@ input {
   top: 0 !important;
   left: 0 !important;
   transform: rotate(60deg);
-  background-color: var(--faceColor);
+  background-color: var(--subColor1);
 }
 .bloc.bottom .face::after,
 .bloc.top .face::after {
@@ -133,12 +139,12 @@ input {
   top: 0 !important;
   left: 0 !important;
   transform: rotate(120deg);
-  background-color: var(--faceColor);
+  background-color: var(--subColor1);
 }
 .bloc.bottom .face.bottom.up, .bloc.bottom .face.top.up,
 .bloc.top .face.bottom.up,
 .bloc.top .face.top.up {
-  transform: translateZ(var(--epaisseur));
+  transform: translateZ(var(--standEpaisseur));
 }
 .bloc.bottom .face.bottom.down, .bloc.bottom .face.top.down,
 .bloc.top .face.bottom.down,
@@ -161,8 +167,8 @@ input {
   align-self: center;
   justify-self: center;
   z-index: 2;
-  height: var(--largeur);
-  background: radial-gradient(var(--sideColorIn), var(--sideColorOut1));
+  height: var(--standLargeurInt);
+  background: radial-gradient(var(--mainColor2), var(--mainColor1));
   transition: width 1s;
 }
 .bloc.bottom .side::before,
@@ -171,8 +177,8 @@ input {
   content: "";
   top: 0 !important;
   left: 0 !important;
-  height: var(--largeur);
-  background: radial-gradient(var(--sideColorIn), var(--sideColorOut1));
+  height: var(--standLargeurInt);
+  background: radial-gradient(var(--mainColor2), var(--mainColor1));
 }
 .bloc.bottom .side::after,
 .bloc.top .side::after {
@@ -180,18 +186,18 @@ input {
   content: "";
   top: 0 !important;
   left: 0 !important;
-  height: var(--largeur);
-  background: radial-gradient(var(--sideColorIn), var(--sideColorOut1));
+  height: var(--standLargeurInt);
+  background: radial-gradient(var(--mainColor2), var(--mainColor1));
 }
 .bloc.bottom .side.left,
 .bloc.top .side.left {
   transform-origin: right;
-  transform: rotate(0deg) translateX(calc(-0.5 * var(--longueur) - 0.5 * var(--epaisseur) + 1px)) rotateY(90deg);
+  transform: rotate(0deg) translateX(calc(-0.5 * var(--standLargeur) - 0.5 * var(--standEpaisseur) + 1px)) rotateY(90deg);
 }
 .bloc.bottom .side.right,
 .bloc.top .side.right {
   transform-origin: left;
-  transform: rotate(0deg) translateX(calc(0.5 * var(--longueur) + 0.5 * var(--epaisseur) - 1px)) rotateY(-90deg);
+  transform: rotate(0deg) translateX(calc(0.5 * var(--standLargeur) + 0.5 * var(--standEpaisseur) - 1px)) rotateY(-90deg);
 }
 .bloc.bottom .side.left::before,
 .bloc.top .side.left::before {
@@ -219,7 +225,7 @@ input {
   position: absolute;
   align-self: center;
   justify-self: center;
-  width: calc(0.5656 * var(--hauteur));
+  width: calc(0.5656 * var(--standHauteur));
   background-image: url("../../../divers/img/docFront.jpg");
   background-position: center;
   background-size: contain;
@@ -239,7 +245,7 @@ input {
   position: absolute;
   align-self: center;
   justify-self: center;
-  width: calc(0.5656 * var(--hauteur));
+  width: calc(0.5656 * var(--standHauteur));
   background-image: url("../../../divers/img/docBack.gif");
   background-position: center;
   background-size: contain;
@@ -253,12 +259,12 @@ input {
     width: 0px;
   }
   8% {
-    height: var(--largeur);
-    width: var(--longueur);
+    height: var(--standLargeurInt);
+    width: var(--standLargeur);
   }
   100% {
-    height: var(--largeur);
-    width: var(--longueur);
+    height: var(--standLargeurInt);
+    width: var(--standLargeur);
   }
 }
 @keyframes sideBottom {
@@ -269,10 +275,10 @@ input {
     width: 0px;
   }
   20% {
-    width: var(--epaisseur);
+    width: var(--standEpaisseur);
   }
   100% {
-    width: var(--epaisseur);
+    width: var(--standEpaisseur);
   }
 }
 @keyframes faceBottomUp {
@@ -285,12 +291,12 @@ input {
     width: 0px;
   }
   32% {
-    height: var(--largeur);
-    width: var(--longueur);
+    height: var(--standLargeurInt);
+    width: var(--standLargeur);
   }
   100% {
-    height: var(--largeur);
-    width: var(--longueur);
+    height: var(--standLargeurInt);
+    width: var(--standLargeur);
   }
 }
 @keyframes faceBottomUpAfter {
@@ -305,13 +311,13 @@ input {
     background-image: none;
   }
   32% {
-    height: var(--largeur);
-    width: var(--longueur);
+    height: var(--standLargeurInt);
+    width: var(--standLargeur);
     background-image: none;
   }
   84% {
-    height: var(--largeur);
-    width: var(--longueur);
+    height: var(--standLargeurInt);
+    width: var(--standLargeur);
     background-image: none;
   }
   85% {
@@ -323,8 +329,8 @@ input {
     background-image: url("../../../divers/img/bzzt.gif");
     background-position: top;
     background-size: cover;
-    height: var(--largeur);
-    width: var(--longueur);
+    height: var(--standLargeurInt);
+    width: var(--standLargeur);
   }
 }
 @keyframes blocTopSide {
@@ -335,10 +341,10 @@ input {
     width: 0px;
   }
   42% {
-    width: var(--epaisseur);
+    width: var(--standEpaisseur);
   }
   100% {
-    width: var(--epaisseur);
+    width: var(--standEpaisseur);
   }
 }
 @keyframes blocTopFace {
@@ -351,80 +357,80 @@ input {
     width: 0px;
   }
   42% {
-    height: var(--largeur);
-    width: var(--longueur);
+    height: var(--standLargeurInt);
+    width: var(--standLargeur);
   }
   100% {
-    height: var(--largeur);
-    width: var(--longueur);
+    height: var(--standLargeurInt);
+    width: var(--standLargeur);
   }
 }
 @keyframes blocTop {
   50% {
-    transform: translateZ(var(--epaisseur)) rotate(0deg);
+    transform: translateZ(var(--standEpaisseur)) rotate(0deg);
   }
   53% {
-    transform: translateZ(var(--epaisseur)) rotate(20deg);
+    transform: translateZ(var(--standEpaisseur)) rotate(20deg);
   }
   56% {
-    transform: translateZ(var(--epaisseur)) rotate(120deg);
+    transform: translateZ(var(--standEpaisseur)) rotate(120deg);
   }
   59% {
-    transform: translateZ(var(--epaisseur)) rotate(260deg);
+    transform: translateZ(var(--standEpaisseur)) rotate(260deg);
   }
   62% {
-    transform: translateZ(var(--epaisseur)) rotate(540deg);
+    transform: translateZ(var(--standEpaisseur)) rotate(540deg);
   }
   65% {
-    transform: translateZ(var(--epaisseur)) rotate(820deg);
+    transform: translateZ(var(--standEpaisseur)) rotate(820deg);
   }
   68% {
-    transform: translateZ(var(--epaisseur)) rotate(960deg);
+    transform: translateZ(var(--standEpaisseur)) rotate(960deg);
   }
   71% {
-    transform: translateZ(var(--epaisseur)) rotate(1060deg);
+    transform: translateZ(var(--standEpaisseur)) rotate(1060deg);
   }
   74% {
-    transform: translateZ(var(--epaisseur)) rotate(1083deg);
+    transform: translateZ(var(--standEpaisseur)) rotate(1083deg);
   }
   75% {
-    transform: translateZ(var(--epaisseur)) rotate(1079deg);
+    transform: translateZ(var(--standEpaisseur)) rotate(1079deg);
   }
   76% {
-    transform: translateZ(var(--epaisseur)) rotate(1081deg);
+    transform: translateZ(var(--standEpaisseur)) rotate(1081deg);
   }
   77% {
-    transform: translateZ(var(--epaisseur)) rotate(1080deg);
+    transform: translateZ(var(--standEpaisseur)) rotate(1080deg);
   }
   84% {
-    transform: translateZ(var(--epaisseur)) rotate(1080deg);
+    transform: translateZ(var(--standEpaisseur)) rotate(1080deg);
   }
   98% {
-    transform: translateZ(var(--hauteur)) rotate(1080deg);
+    transform: translateZ(var(--standHauteur)) rotate(1080deg);
   }
   100% {
-    transform: translateZ(var(--hauteur)) rotate(1080deg);
+    transform: translateZ(var(--standHauteur)) rotate(1080deg);
   }
 }
 @keyframes document {
   0% {
-    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.5 * var(--epaisseur)), 0);
+    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.5 * var(--standEpaisseur)), 0);
     height: 0px;
   }
   84% {
     visibility: visible;
-    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.5 * var(--epaisseur)), 0);
+    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.5 * var(--standEpaisseur)), 0);
     height: 0px;
   }
   98% {
     visibility: visible;
-    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.5 * var(--epaisseur)), 0);
-    height: calc(0.8 * var(--hauteur));
+    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.5 * var(--standEpaisseur)), 0);
+    height: calc(0.8 * var(--standHauteur));
   }
   100% {
     visibility: visible;
-    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.5 * var(--epaisseur)), 0);
-    height: calc(0.8 * var(--hauteur));
+    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.5 * var(--standEpaisseur)), 0);
+    height: calc(0.8 * var(--standHauteur));
   }
 }
 @keyframes rotation {
@@ -449,47 +455,47 @@ input {
 #CURRICULUM.anim #teleport .bloc.bottom .down::before,
 #CURRICULUM.anim #teleport .bloc.bottom .down::after,
 #CURRICULUM.anim #teleport .bloc.bottom .down {
-  animation: faceBottomDown linear var(--vitesseIn) forwards;
+  animation: faceBottomDown linear var(--vitesseEntree) forwards;
 }
 #CURRICULUM.anim #teleport .bloc.bottom .side::before,
 #CURRICULUM.anim #teleport .bloc.bottom .side::after,
 #CURRICULUM.anim #teleport .bloc.bottom .side {
-  animation: sideBottom linear var(--vitesseIn) forwards;
+  animation: sideBottom linear var(--vitesseEntree) forwards;
 }
 #CURRICULUM.anim #teleport .bloc.bottom .up::before,
 #CURRICULUM.anim #teleport .bloc.bottom .up {
-  animation: faceBottomUp linear var(--vitesseIn) forwards;
+  animation: faceBottomUp linear var(--vitesseEntree) forwards;
 }
 #CURRICULUM.anim #teleport .bloc.bottom .up::after {
-  animation: faceBottomUpAfter linear var(--vitesseIn) forwards;
+  animation: faceBottomUpAfter linear var(--vitesseEntree) forwards;
 }
 #CURRICULUM.anim #teleport .bloc.top .side::before,
 #CURRICULUM.anim #teleport .bloc.top .side::after,
 #CURRICULUM.anim #teleport .bloc.top .side {
-  animation: blocTopSide linear var(--vitesseIn) forwards;
+  animation: blocTopSide linear var(--vitesseEntree) forwards;
 }
 #CURRICULUM.anim #teleport .bloc.top .face::before,
 #CURRICULUM.anim #teleport .bloc.top .face::after,
 #CURRICULUM.anim #teleport .bloc.top .face {
-  animation: blocTopFace linear var(--vitesseIn) forwards;
+  animation: blocTopFace linear var(--vitesseEntree) forwards;
 }
 #CURRICULUM.anim #teleport .bloc.top {
-  animation: blocTop linear var(--vitesseIn) forwards;
+  animation: blocTop linear var(--vitesseEntree) forwards;
 }
 #CURRICULUM.anim #teleport #filtreCV,
 #CURRICULUM.anim #teleport #zoneCV {
-  animation: document linear var(--vitesseIn) forwards;
+  animation: document linear var(--vitesseEntree) forwards;
 }
 
 @keyframes blocTopOut {
   0% {
-    transform: translateZ(var(--hauteur)) rotate(1080deg);
+    transform: translateZ(var(--standHauteur)) rotate(1080deg);
   }
   45% {
-    transform: translateZ(var(--epaisseur)) rotate(1080deg);
+    transform: translateZ(var(--standEpaisseur)) rotate(1080deg);
   }
   50% {
-    transform: translateZ(var(--epaisseur)) rotate(1080deg);
+    transform: translateZ(var(--standEpaisseur)) rotate(1080deg);
   }
   70% {
     transform: translateZ(0) rotate(1080deg) scale(0);
@@ -512,17 +518,17 @@ input {
 @keyframes docOut {
   0% {
     visibility: visible;
-    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.5 * var(--epaisseur)), 0);
-    height: calc(0.8 * var(--hauteur));
+    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.5 * var(--standEpaisseur)), 0);
+    height: calc(0.8 * var(--standHauteur));
   }
   48% {
     visibility: visible;
-    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.5 * var(--epaisseur)), 0);
+    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.5 * var(--standEpaisseur)), 0);
     height: 0px;
   }
   49% {
     visibility: hidden;
-    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.5 * var(--epaisseur)), 0);
+    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.5 * var(--standEpaisseur)), 0);
     height: 0px;
   }
   50% {
@@ -537,12 +543,12 @@ input {
   }
 }
 #CURRICULUM.anim #exit2:checked ~ #teleport .bloc.top {
-  animation: blocTopOut var(--vitesseOut) linear forwards !important;
+  animation: blocTopOut var(--vitesseSortie) linear forwards !important;
 }
 #CURRICULUM.anim #exit2:checked ~ #teleport .bloc.bottom {
-  animation: blocBottomOut var(--vitesseOut) linear forwards !important;
+  animation: blocBottomOut var(--vitesseSortie) linear forwards !important;
 }
 #CURRICULUM.anim #exit2:checked ~ #teleport #filtreCV,
 #CURRICULUM.anim #exit2:checked ~ #teleport #zoneCV {
-  animation: docOut var(--vitesseOut) linear forwards !important;
+  animation: docOut var(--vitesseSortie) linear forwards !important;
 }/*# sourceMappingURL=curriculum.css.map */

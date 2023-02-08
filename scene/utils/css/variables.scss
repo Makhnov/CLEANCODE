@@ -1,0 +1,32 @@
+:root {
+    // HUD//
+    --menuLargeur:clamp(200px, 40vh, 500px);
+    --menuHauteur:calc(var(--menuLargeur) / 3);
+    --menuProfondeur:50px;
+    --ignitionDegree: 20deg;
+    --vitesseEntree:5s;
+    --vitesseSortie:3s;
+
+    // COLORS //
+    --bookBorder:rgb(50, 50, 50);
+    --bookPage:whitesmoke;    
+    --mainColor1:rgb(17, 126, 181);
+    --mainColor2:rgb(31, 162, 227);
+    --mainColor3:rgb(20, 172, 249);
+    --subColor1:rgb(39, 48, 52);
+    --blurColor1:rgba(1,1,1, 0.1);
+    --blurColor2:rgba(10,10,10, 0.25);
+    --blurColor3:rgba(15,15,15, 0.5);
+    --subColorLight: rgba(39, 48, 52, 0.8);
+    --mainColorLight:rgba(17, 126, 181, 0.6);
+
+    // DISPLAY CV //
+    --standLargeur:clamp(15vw, 70vh, 40vw); // Variable unique. ~ entre 10vh et 80vh
+    --standLargeurInt:calc(12/21 * (var(--standLargeur)));
+    --standEpaisseur:calc(2/21 * (var(--standLargeur)));
+    --standHauteur:calc(24/21 * (var(--standLargeur)));
+
+    // LIVRE PORTFOLIO //
+    --livreLargeur:clamp(200px, 75vh, 1000px);
+
+}

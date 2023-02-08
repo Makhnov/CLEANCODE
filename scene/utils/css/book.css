@@ -1,11 +1,3 @@
-:root {
-  --bookSize:clamp(200px, 75vh, 1000px);
-  --bookBorder:rgb(50, 50, 50);
-  --bookPage:whitesmoke;
-  --colorMain1:rgb(17, 126, 181);
-  --colorMain2:rgb(20, 172, 249);
-}
-
 #PORTFOLIO.anim {
   transform: translateZ(-500px);
 }
@@ -25,16 +17,17 @@
 #readBook {
   display: none;
 }
-#readBook:checked {
-  background-image: url("../../../divers/img/inputBook2.png");
-  background-size: contain;
-  background-repeat: no-repeat;
+
+#PORTFOLIO.anim #book #readBook:not(:checked) ~ #livre {
+  animation: openBook 5s linear forwards;
 }
-#readBook:checked ~ #livre .blocLivre.droite {
-  animation: openBookRight 2s linear forwards;
+
+#PORTFOLIO.anim #book #readBook:not(:checked) ~ #livre .blocLivre.droite {
+  animation: openBookRight 5s linear forwards;
 }
-#readBook:checked ~ #livre .blocLivre.gauche {
-  animation: openBookLeft 2s linear forwards;
+
+#PORTFOLIO.anim #book #readBook:not(:checked) ~ #livre .blocLivre.gauche {
+  animation: openBookLeft 5s linear forwards;
 }
 
 #livre {
@@ -42,11 +35,11 @@
   transform-style: preserve-3d;
   align-self: center;
   justify-self: center;
+  height: var(--livreLargeur);
+  width: calc(1.4141414141 * var(--livreLargeur) + 30px);
+  transform: translateX(calc(-0.3535353535 * var(--livreLargeur))) rotateY(90deg) rotateX(0deg) rotate(0deg);
   display: grid;
-  grid-template-columns: calc(0.7070707071 * var(--bookSize)) 30px calc(0.7070707071 * var(--bookSize));
-  height: var(--bookSize);
-  width: calc(1.4141414141 * var(--bookSize) + 30px);
-  transform: rotateX(38deg) rotate(-6deg);
+  grid-template-columns: calc(0.7070707071 * var(--livreLargeur)) 30px calc(0.7070707071 * var(--livreLargeur));
   cursor: pointer;
 }
 #livre:hover .page.droite, #livre:hover .fpage:nth-of-type(6)::after, #livre:hover .fpage:nth-of-type(10)::before, #livre:hover .sliceR .sliceR {
@@ -56,17 +49,17 @@
 .blocLivre {
   position: absolute;
   transform-style: preserve-3d;
-  height: var(--bookSize);
-  width: calc(0.7070707071 * var(--bookSize));
-  height: var(--bookSize);
-  box-shadow: 0 0 30px 10px #fff, 0 0 50px 20px var(--colorMain2), 0 0 70px 30px var(--colorMain1);
+  height: var(--livreLargeur);
+  width: calc(0.7070707071 * var(--livreLargeur));
+  height: var(--livreLargeur);
+  box-shadow: 0 0 30px 10px #fff, 0 0 50px 20px var(--mainColor3), 0 0 70px 30px var(--mainColor1);
 }
 .blocLivre .fpage {
   position: absolute;
   transform-style: preserve-3d;
   transform-origin: inherit;
-  height: var(--bookSize);
-  width: calc(0.7070707071 * var(--bookSize));
+  height: var(--livreLargeur);
+  width: calc(0.7070707071 * var(--livreLargeur));
   background-color: var(--bookPage);
   box-sizing: border-box;
   border: 1px solid var(--bookBorder);
@@ -77,8 +70,8 @@
   transform-origin: inherit;
   top: 0;
   left: 0;
-  height: var(--bookSize);
-  width: calc(0.7070707071 * var(--bookSize));
+  height: var(--livreLargeur);
+  width: calc(0.7070707071 * var(--livreLargeur));
   box-sizing: border-box;
   border: 1px solid var(--bookBorder);
   background-color: var(--bookPage);
@@ -89,8 +82,8 @@
   transform-origin: inherit;
   top: 0;
   left: 0;
-  height: var(--bookSize);
-  width: calc(0.7070707071 * var(--bookSize));
+  height: var(--livreLargeur);
+  width: calc(0.7070707071 * var(--livreLargeur));
   box-sizing: border-box;
   border: 1px solid var(--bookBorder);
   background-color: var(--bookPage);
@@ -192,6 +185,17 @@
   background-size: cover;
 }
 
+@keyframes openBook {
+  0% {
+    transform: translateX(calc(-0.3535353535 * var(--livreLargeur))) rotateY(90deg);
+  }
+  50% {
+    transform: translateX(0) rotateY(10deg) rotateX(10deg) rotate(0deg);
+  }
+  100% {
+    transform: translateX(0) rotateY(0deg) rotateX(30deg) rotate(-4deg);
+  }
+}
 @keyframes openBookLeft {
   from {
     transform: rotateY(88deg);
@@ -213,8 +217,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: var(--bookSize);
-  width: calc(0.7070707071 * var(--bookSize) - 3px);
+  height: var(--livreLargeur);
+  width: calc(0.7070707071 * var(--livreLargeur) - 3px);
   transform-style: preserve-3d;
 }
 
@@ -223,10 +227,10 @@
   transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  height: var(--bookSize);
-  width: calc(0.101010101 * var(--bookSize));
+  height: var(--livreLargeur);
+  width: calc(0.101010101 * var(--livreLargeur));
   top: 0;
-  background-size: calc(0.7070707071 * var(--bookSize)) var(--bookSize);
+  background-size: calc(0.7070707071 * var(--livreLargeur)) var(--livreLargeur);
 }
 
 .page.gauche {
@@ -237,40 +241,40 @@
 
 .sliceL {
   background: url("../../../divers/img/imgL.jpg");
-  background-position: calc(0.8080808081 * var(--bookSize)) center;
-  background-size: calc(0.7070707071 * var(--bookSize)) var(--bookSize);
+  background-position: calc(0.8080808081 * var(--livreLargeur)) center;
+  background-size: calc(0.7070707071 * var(--livreLargeur)) var(--livreLargeur);
   right: -0.5px;
 }
 .sliceL .sliceL {
-  right: calc(0.101010101 * var(--bookSize) - 0.5px);
-  background-position: calc(0.202020202 * var(--bookSize)) center;
+  right: calc(0.101010101 * var(--livreLargeur) - 0.5px);
+  background-position: calc(0.202020202 * var(--livreLargeur)) center;
   animation: waitingLeftSlice1 2s linear infinite forwards;
   transform-style: preserve-3d;
 }
 .sliceL .sliceL .sliceL {
-  right: calc(0.101010101 * var(--bookSize) - 0.5px);
-  background-position: calc(0.303030303 * var(--bookSize)) center;
+  right: calc(0.101010101 * var(--livreLargeur) - 0.5px);
+  background-position: calc(0.303030303 * var(--livreLargeur)) center;
   animation: waitingLeftSlice2 2s linear infinite forwards;
   transform-style: preserve-3d;
 }
 .sliceL .sliceL .sliceL .sliceL {
-  right: calc(0.101010101 * var(--bookSize) - 0.5px);
-  background-position: calc(0.404040404 * var(--bookSize)) center;
+  right: calc(0.101010101 * var(--livreLargeur) - 0.5px);
+  background-position: calc(0.404040404 * var(--livreLargeur)) center;
   transform-style: preserve-3d;
 }
 .sliceL .sliceL .sliceL .sliceL .sliceL {
-  right: calc(0.101010101 * var(--bookSize) - 0.5px);
-  background-position: calc(0.5050505051 * var(--bookSize)) center;
+  right: calc(0.101010101 * var(--livreLargeur) - 0.5px);
+  background-position: calc(0.5050505051 * var(--livreLargeur)) center;
   transform-style: preserve-3d;
 }
 .sliceL .sliceL .sliceL .sliceL .sliceL .sliceL {
-  right: calc(0.101010101 * var(--bookSize) - 0.5px);
-  background-position: calc(0.6060606061 * var(--bookSize)) center;
+  right: calc(0.101010101 * var(--livreLargeur) - 0.5px);
+  background-position: calc(0.6060606061 * var(--livreLargeur)) center;
   transform-style: preserve-3d;
 }
 .sliceL .sliceL .sliceL .sliceL .sliceL .sliceL .sliceL {
-  right: calc(0.101010101 * var(--bookSize) - 0.5px);
-  background-position: calc(0.7070707071 * var(--bookSize)) center;
+  right: calc(0.101010101 * var(--livreLargeur) - 0.5px);
+  background-position: calc(0.7070707071 * var(--livreLargeur)) center;
   transform-style: preserve-3d;
 }
 
@@ -299,40 +303,42 @@
 .page.droite {
   visibility: visible;
   transform-origin: left;
-  transform: translateX(-10px) translateZ(6px) rotateY(-179deg);
   cursor: pointer;
+  transform: translateX(0px) translateZ(14px) rotateY(-3deg);
 }
 .page.droite:hover, .page.droite:hover ~ .fpage:nth-of-type(6)::after, .page.droite:hover ~ .fpage:nth-of-type(10)::before, .page.droite:hover .sliceR .sliceR {
   animation-play-state: paused !important;
 }
+.page.droite.anim {
+  animation: pageDroite 2.2s linear forwards;
+}
+.page.droite.anim .sliceR {
+  animation: sliceR 2.2s linear forwards;
+}
 
 @keyframes pageDroite {
   0% {
-    transform: translateX(5px) translateZ(6px) rotateY(179deg);
-    visibility: hidden;
-  }
-  1% {
-    transform: translateX(5px) translateZ(6px) rotateY(179deg);
+    transform: translateX(0px) translateZ(14px) rotateY(-3deg);
     visibility: visible;
   }
   98% {
-    transform: translateX(0px) translateZ(5.5px) rotateY(1deg);
+    transform: translateX(-30px) translateZ(14px) rotateY(-180deg);
     visibility: visible;
   }
   99% {
-    transform: translateX(0px) translateZ(6px) rotateY(1deg);
+    transform: translateX(-30px) translateZ(14px) rotateY(-180deg);
     visibility: hidden;
   }
   100% {
-    transform: translateX(5px) translateZ(6px) rotateY(179deg);
+    transform: translateX(0px) translateZ(14px) rotateY(-2deg);
     visibility: hidden;
   }
 }
 .sliceR {
   background: url("../../../divers/img/imgLWait1.jpg");
-  background-size: calc(0.7070707071 * var(--bookSize)) var(--bookSize);
-  right: 0px;
-  background-position: calc(0.101010101 * var(--bookSize)) center;
+  background-size: calc(0.7070707071 * var(--livreLargeur)) var(--livreLargeur);
+  left: 0px;
+  background-position: calc(0.7070707071 * var(--livreLargeur)) center;
 }
 .sliceR::after {
   position: absolute;
@@ -341,77 +347,77 @@
   content: "";
   top: 0;
   left: 0;
-  height: var(--bookSize);
-  width: calc(0.101010101 * var(--bookSize));
+  height: var(--livreLargeur);
+  width: calc(0.101010101 * var(--livreLargeur));
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   transform-origin: center;
   background: url("../../../divers/img/imgRFront.jpg");
-  background-size: calc(0.7070707071 * var(--bookSize)) var(--bookSize);
-  background-position: calc(0.7070707071 * var(--bookSize)) center;
+  background-size: calc(0.7070707071 * var(--livreLargeur)) var(--livreLargeur);
+  background-position: calc(0.101010101 * var(--livreLargeur)) center;
 }
 .sliceR .sliceR {
-  right: calc(0.101010101 * var(--bookSize) - 0.5px);
-  background-position: calc(0.202020202 * var(--bookSize)) center;
+  left: calc(0.101010101 * var(--livreLargeur) - 0.5px);
+  background-position: calc(0.6060606061 * var(--livreLargeur)) center;
   transform-style: preserve-3d;
 }
 .sliceR .sliceR::after {
-  background-position: calc(0.6060606061 * var(--bookSize)) center;
+  background-position: calc(0.202020202 * var(--livreLargeur)) center;
 }
 .sliceR .sliceR .sliceR {
-  right: calc(0.101010101 * var(--bookSize) - 0.5px);
-  background-position: calc(0.303030303 * var(--bookSize)) center;
+  left: calc(0.101010101 * var(--livreLargeur) - 0.5px);
+  background-position: calc(0.5050505051 * var(--livreLargeur)) center;
   transform-style: preserve-3d;
 }
 .sliceR .sliceR .sliceR::after {
   top: 0;
   left: 0;
-  background-position: calc(0.5050505051 * var(--bookSize)) center;
+  background-position: calc(0.303030303 * var(--livreLargeur)) center;
 }
 .sliceR .sliceR .sliceR .sliceR {
-  right: calc(0.101010101 * var(--bookSize) - 0.5px);
-  background-position: calc(0.404040404 * var(--bookSize)) center;
+  left: calc(0.101010101 * var(--livreLargeur) - 0.5px);
+  background-position: calc(0.404040404 * var(--livreLargeur)) center;
   transform-style: preserve-3d;
 }
 .sliceR .sliceR .sliceR .sliceR::after {
   top: 0;
   left: 0;
-  background-position: calc(0.404040404 * var(--bookSize)) center;
+  background-position: calc(0.404040404 * var(--livreLargeur)) center;
 }
 .sliceR .sliceR .sliceR .sliceR .sliceR {
-  right: calc(0.101010101 * var(--bookSize) - 0.5px);
-  background-position: calc(0.5050505051 * var(--bookSize)) center;
+  left: calc(0.101010101 * var(--livreLargeur) - 0.5px);
+  background-position: calc(0.303030303 * var(--livreLargeur)) center;
   transform-style: preserve-3d;
 }
 .sliceR .sliceR .sliceR .sliceR .sliceR::after {
   top: 0;
   left: 0;
-  background-position: calc(0.303030303 * var(--bookSize)) center;
+  background-position: calc(0.5050505051 * var(--livreLargeur)) center;
 }
 .sliceR .sliceR .sliceR .sliceR .sliceR .sliceR {
-  right: calc(0.101010101 * var(--bookSize) - 0.5px);
-  background-position: calc(0.6060606061 * var(--bookSize)) center;
+  left: calc(0.101010101 * var(--livreLargeur) - 0.5px);
+  background-position: calc(0.202020202 * var(--livreLargeur)) center;
   transform-style: preserve-3d;
 }
 .sliceR .sliceR .sliceR .sliceR .sliceR .sliceR::after {
   top: 0;
   left: 0;
-  background-position: calc(0.202020202 * var(--bookSize)) center;
+  background-position: calc(0.6060606061 * var(--livreLargeur)) center;
 }
 .sliceR .sliceR .sliceR .sliceR .sliceR .sliceR .sliceR {
-  right: calc(0.101010101 * var(--bookSize) - 0.5px);
-  background-position: calc(0.7070707071 * var(--bookSize)) center;
+  left: calc(0.101010101 * var(--livreLargeur) - 0.5px);
+  background-position: calc(0.101010101 * var(--livreLargeur)) center;
   transform-style: preserve-3d;
 }
 .sliceR .sliceR .sliceR .sliceR .sliceR .sliceR .sliceR::after {
   top: 0;
   left: 0;
-  background-position: calc(0.101010101 * var(--bookSize)) center;
+  background-position: calc(0.7070707071 * var(--livreLargeur)) center;
 }
 
 .sliceR {
   transform-style: preserve-3d;
-  transform-origin: right;
+  transform-origin: left;
 }
 .sliceR::after {
   top: 0;
@@ -454,7 +460,7 @@
     transform: rotateY(0deg);
   }
   99% {
-    transform: rotateY(-1deg);
+    transform: rotateY(1deg);
   }
   100% {
     transform: rotateY(-1deg);

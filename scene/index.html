@@ -62,15 +62,15 @@
                 </li>
                 <li class="droite">
                     <button class="droite" type="button">
-                        <p class="nextPage">
-                            <i class="fas fa-share"></i>
+                        <p class="previousPage">
+                            <i onclick="pageSuivante(this)" id="previousPage" class="fas fa-share"></i>
                         </p>
                     </button>
                 </li>
                 <li class="droite">
                     <button class="droite" type="button">
-                        <p class="previousPage">
-                            <i class="fas fa-share"></i>
+                        <p class="nextPage">
+                            <i onclick="pagePrecedente(this)" id="nextPage" class="fas fa-share"></i>
                         </p>
                     </button>
                 </li>
@@ -109,7 +109,7 @@
                             <div class="fpage gauche"></div>
                             <div class="fpage gauche"></div>
                             <div class="fpage gauche"></div>
-                            <!-- <div class="page gauche">
+                            <!-- <div id="pageG" class="page gauche">
                                 <div class="slice sliceL">
                                     <div class="slice sliceL">
                                         <div class="slice sliceL">
@@ -130,10 +130,10 @@
                             <div class="fpage droite"></div>
                             <div class="fpage droite"></div>
                             <div class="fpage droite"></div>
-                            <!-- <div class="page droite">
+                            <div id="pageD" class="page droite">
                                 <div class="slice sliceR">
                                     <div class="slice sliceR">
-                                        <div class="slice sliceR">
+                                        <div class="slice two sliceR">
                                             <div class="slice sliceR">
                                                 <div class="slice sliceR">
                                                     <div class="slice sliceR">
@@ -145,8 +145,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
                         </div>
+                    </div>
                 </section>
                 <input type="checkbox" id="exit1">
             </div>
@@ -185,6 +185,7 @@
 
     <script src="./utils/js/hud.js"></script>
     <script src="./utils/js/curriculum.js"></script>
+    <script src="./utils/js/portfolio.js"></script>
 </body>
 
 </html>

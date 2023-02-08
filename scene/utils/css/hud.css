@@ -1,15 +1,26 @@
 :root {
-  --widthBar:clamp(200px, 40vh, 20vw);
-  --heightBar:calc(var(--widthBar) / 3);
-  --depthBar:50px;
-  --colorBarSide: rgba(39, 48, 52, 0.8);
-  --colorBarMain:rgba(17, 126, 181, 0.6);
-  --colorMain1:rgb(17, 126, 181);
-  --colorMain2:rgb(20, 172, 249);
-  --blurColor3:rgba(15,15,15, 0.5);
-  --blurColor2:rgba(10,10,10, 0.25);
-  --blurColor1:rgba(1,1,1, 0.1);
+  --menuLargeur:clamp(200px, 40vh, 500px);
+  --menuHauteur:calc(var(--menuLargeur) / 3);
+  --menuProfondeur:50px;
   --ignitionDegree: 20deg;
+  --vitesseEntree:5s;
+  --vitesseSortie:3s;
+  --bookBorder:rgb(50, 50, 50);
+  --bookPage:whitesmoke;
+  --mainColor1:rgb(17, 126, 181);
+  --mainColor2:rgb(31, 162, 227);
+  --mainColor3:rgb(20, 172, 249);
+  --subColor1:rgb(39, 48, 52);
+  --blurColor1:rgba(1,1,1, 0.1);
+  --blurColor2:rgba(10,10,10, 0.25);
+  --blurColor3:rgba(15,15,15, 0.5);
+  --subColorLight: rgba(39, 48, 52, 0.8);
+  --mainColorLight:rgba(17, 126, 181, 0.6);
+  --standLargeur:clamp(15vw, 70vh, 40vw);
+  --standLargeurInt:calc(12/21 * (var(--standLargeur)));
+  --standEpaisseur:calc(2/21 * (var(--standLargeur)));
+  --standHauteur:calc(24/21 * (var(--standLargeur)));
+  --livreLargeur:clamp(200px, 75vh, 1000px);
 }
 
 html, body {
@@ -44,7 +55,7 @@ nav, ul, li {
   position: absolute;
   grid-row: 2;
   grid-column: 2;
-  height: calc(var(--widthBar) / 3 * 5 + 3vh);
+  height: calc(var(--menuLargeur) / 3 * 5 + 3vh);
   align-self: center;
   justify-self: center;
   transform-origin: left;
@@ -67,8 +78,8 @@ nav.gauche {
 nav.gauche ul {
   position: absolute;
   transform-style: preserve-3d;
-  height: calc(var(--widthBar) / 3 * 5 + 3vh);
-  width: var(--widthBar);
+  min-height: calc(var(--menuHauteur) * 5 + 3vh);
+  width: var(--menuLargeur);
   align-self: center;
   justify-self: start;
   transform-origin: right;
@@ -79,11 +90,11 @@ nav.gauche ul {
 nav.gauche ul li {
   position: relative;
   transform-style: preserve-3d;
-  height: var(--heightBar);
-  width: calc(var(--widthBar) - 20px);
+  min-height: var(--menuHauteur);
+  width: calc(var(--menuLargeur) - 20px);
   text-transform: uppercase;
   color: whitesmoke;
-  background-color: var(--colorBarMain);
+  background-color: var(--mainColorLight);
   display: grid;
   align-content: center;
   padding-left: 20px;
@@ -96,23 +107,27 @@ nav.gauche ul li:hover {
   transform: translateX(50px);
 }
 nav.gauche ul li.clicked {
-  transform: translate3d(0, 0, 0) rotateY(var(--ignitionDegree)) translateX(10000px) scale(0);
+  transform: translate3d(0, 0, 0) rotateY(var(--menuAngle)) translateX(10000px) scale(0);
 }
 nav.gauche ul li::before {
   position: absolute;
   content: "";
-  height: var(--heightBar);
-  width: var(--depthBar);
-  background-color: var(--colorBarSide);
+  top: 0;
+  bottom: 0;
+  height: var(--menuHauteur);
+  width: var(--menuProfondeur);
+  background-color: var(--subColorLight);
   transform-origin: left;
   transform: rotateY(90deg);
 }
 nav.gauche ul li::after {
   position: absolute;
   content: "";
-  height: var(--depthBar);
-  width: var(--widthBar);
-  background-color: var(--colorBarSide);
+  top: 0;
+  bottom: 0;
+  height: var(--menuProfondeur);
+  width: var(--menuLargeur);
+  background-color: var(--subColorLight);
   transform-origin: top;
   transform: rotateX(-90deg);
 }
@@ -120,29 +135,33 @@ nav.gauche ul li::after {
 nav.gauche ul li .back {
   position: absolute;
   transform-style: preserve-3d;
-  height: var(--heightBar);
-  width: var(--widthBar);
-  background-color: var(--colorBarSide);
+  height: var(--menuHauteur);
+  width: var(--menuLargeur);
+  background-color: var(--subColorLight);
   transform-origin: left;
-  transform: translate3d(0, 0, calc(-1 * var(--depthBar)));
+  transform: translate3d(0, 0, calc(-1 * var(--menuProfondeur)));
 }
 nav.gauche ul li .back::before {
   position: absolute;
   content: "";
-  height: var(--heightBar);
-  width: var(--depthBar);
-  background-color: var(--colorBarSide);
+  top: 0;
+  bottom: 0;
+  height: var(--menuHauteur);
+  width: var(--menuProfondeur);
+  background-color: var(--subColorLight);
   transform-origin: left;
-  transform: translateX(var(--widthBar)) rotateY(-90deg);
+  transform: translateX(var(--menuLargeur)) rotateY(-90deg);
 }
 nav.gauche ul li .back::after {
   position: absolute;
   content: "";
-  height: var(--depthBar);
-  width: var(--widthBar);
-  background-color: var(--colorBarSide);
+  top: 0;
+  bottom: 0;
+  height: var(--menuProfondeur);
+  width: var(--menuLargeur);
+  background-color: var(--subColorLight);
   transform-origin: top;
-  transform: translateY(var(--heightBar)) rotateX(90deg);
+  transform: translateY(var(--menuHauteur)) rotateX(90deg);
 }
 
 #containerView {
@@ -157,10 +176,6 @@ nav.gauche ul li .back::after {
 
 #containerView .hidden {
   display: none !important;
-}
-
-#containerView .main:nth-of-type(2).hidden {
-  display: block !important;
 }
 
 #containerView .main {
@@ -205,6 +220,7 @@ nav.droite {
   grid-column: 6;
   height: 80vh;
   width: 12vw;
+  display: none;
   grid-template-rows: repeat(5, 10vh) 30vh;
   grid-template-columns: 1fr;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0vh, rgba(0, 0, 0, 0) 10vh, rgba(0, 0, 0, 0) 10vh, rgba(0, 0, 0, 0) 20vh, rgba(0, 0, 0, 0) 20vh, rgba(0, 0, 0, 0) 30vh, yellow 30vh, yellow 40vh, purple 40vh, purple 50vh, black 50vh);
@@ -266,7 +282,7 @@ nav.droite ul li button {
   justify-self: center;
   position: absolute;
   cursor: pointer;
-  background-image: url("../../../divers/img/inputBook1.png");
+  background-image: url("../../../divers/img/inputBook2.png");
   background-size: contain;
   background-repeat: no-repeat;
   height: 100px;
@@ -285,7 +301,7 @@ p.previousPage, p.nextPage {
   width: 50px;
   font-size: 3rem;
   text-align: center;
-  color: var(--colorMain2);
+  color: var(--mainColor3);
   text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.4px 0.3px rgb(31, 162, 227), 0.8px 0.6px rgb(30.1578947368, 154.6842105263, 217.2631578947), 1.2px 0.9px rgb(29.3157894737, 147.3684210526, 207.5263157895), 1.6px 1.2px rgb(28.4736842105, 140.0526315789, 197.7894736842), 2px 1.5px rgb(27.6315789474, 132.7368421053, 188.0526315789), 2.4px 1.8px rgb(26.7894736842, 125.4210526316, 178.3157894737), 2.8px 2.1px rgb(25.9473684211, 118.1052631579, 168.5789473684), 3.2px 2.4px rgb(25.1052631579, 110.7894736842, 158.8421052632), 3.6px 2.7px rgb(24.2631578947, 103.4736842105, 149.1052631579), 4px 3px rgb(23.4210526316, 96.1578947368, 139.3684210526), 4.4px 3.3px rgb(22.5789473684, 88.8421052632, 129.6315789474), 4.8px 3.6px rgb(21.7368421053, 81.5263157895, 119.8947368421), 5.2px 3.9px rgb(20.8947368421, 74.2105263158, 110.1578947368), 5.6px 4.2px rgb(20.0526315789, 66.8947368421, 100.4210526316), 6px 4.5px rgb(19.2105263158, 59.5789473684, 90.6842105263), 6.4px 4.8px rgb(18.3684210526, 52.2631578947, 80.9473684211), 6.8px 5.1px rgb(17.5263157895, 44.9473684211, 71.2105263158), 7.2px 5.4px rgb(16.6842105263, 37.6315789474, 61.4736842105), 7.6px 5.7px rgb(15.8421052632, 30.3157894737, 51.7368421053), 8px 6px rgb(15, 23, 42);
 }
 p.previousPage i:hover, p.nextPage i:hover {

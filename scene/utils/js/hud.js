@@ -11,7 +11,12 @@ function loadingGIF() {
     waitingMenu.style.backgroundImage = `url(${urlGIF + new Date().getTime()})`;
 }
 
-let antiSpamm;
+let vitesse1 = getComputedStyle(document.documentElement).getPropertyValue('--vitesseEntree');
+let vitesse2 = getComputedStyle(document.documentElement).getPropertyValue('--vitesseSortie');
+let speed1 = parseInt(vitesse1.replace('s', '')) * 1000;
+let speed2 = parseInt(vitesse2.replace('s', '')) * 1000;
+
+let menuSpamm;
 let resizeSpamm;
 
 let angle = 0;
@@ -61,11 +66,11 @@ function resize() {
         iDeg = 5;
     }
 
-    document.documentElement.style.setProperty('--ignitionDegree', iDeg +'deg');
-    //let iDegree = getComputedStyle(document.documentElement).getPropertyValue('--ignitionDegree');
+    document.documentElement.style.setProperty('--menuAngle', iDeg +'deg');
+    //let iDegree = getComputedStyle(document.documentElement).getPropertyValue('--menuAngle');
     //console.log(iDegree);
-    document.documentElement.style.setProperty('--depthBar', depth +'px');
-    //let depthBar = getComputedStyle(document.documentElement).getPropertyValue('--depthBar');
+    document.documentElement.style.setProperty('--menuProfondeur', depth +'px');
+    //let depthBar = getComputedStyle(document.documentElement).getPropertyValue('--menuPronfondeur');
     //console.log(depthBar);
 
     navGauche.style.transform = "rotateY("+angle+"deg) translate3d("+decal+"px, 0, 0)";
@@ -76,7 +81,7 @@ function resize() {
 for (let i = 0; i < li.length; i++) {
     let iTemp = i;
     li[i].addEventListener('click', function () {
-        clearTimeout(antiSpamm);
+        clearTimeout(menuSpamm);
         menuAsync(iTemp);
     });
 }
@@ -91,7 +96,6 @@ async function menuAsync(iTemp) {
     waitingMenu.style.backgroundPositionX = "center";
     waitingMenu.style.backgroundPositionY = loadingPosY+"%";
     waitingMenu.style.backgroundSize = menuHeight+"px "+menuHeight+"px";
-
     loadingGIF();
 
     for (j = 0; j < li.length; j++) {
@@ -113,10 +117,11 @@ async function menuAsync(iTemp) {
 function delayLi() {
     return new Promise((resolve,reject)=>{
         //here our function should be implemented 
-        antiSpamm = setTimeout(()=>{
+        menuSpamm = setTimeout(()=>{
                 for (j = 0; j < tabNav.length; j++) {
                     if (!tabNav[j]) {
                         scene[j].classList.add("hidden");
+                        scene[j].classList.remove("anim"); 
                     } else {
                         document.getElementById("exit"+j).checked = false;
                         scene[j].classList.remove("hidden");
