@@ -4,11 +4,12 @@
     --depthBar:50px;
     --colorBarSide: rgba(39, 48, 52, 0.8);
     --colorBarMain:rgba(17, 126, 181, 0.6);
+    --colorMain1:rgb(17, 126, 181);
+    --colorMain2:rgb(20, 172, 249);
     --blurColor3:rgba(15,15,15, 0.5);
     --blurColor2:rgba(10,10,10, 0.25);
     --blurColor1:rgba(1,1,1, 0.1);
     --ignitionDegree: 20deg;
-    
 }
 
 html, body {
@@ -47,52 +48,54 @@ nav, ul, li {
     perspective-origin: center;
 }
 
-#blurBackground {
-    position: relative;
-    z-index: -1;
-    grid-row:1 / span 3;
-    grid-column: 1 / span 7;
-    height: 100vh;
-    width: 100vw;
 
-    display: grid;
-    grid-template-columns: 22vw repeat(7, 1fr) 22vw;
-    grid-template-rows: 10vh repeat(7, 1fr) 10vh;
-    opacity: .5;
+// #blurBackground {
+//     position: relative;
+//     z-index: -1;
+//     grid-row:1 / span 3;
+//     grid-column: 1 / span 7;
+//     height: 100vh;
+//     width: 100vw;
 
-    @for $i from 0 through 3 {
-        .blurs:nth-child(#{($i + 1)}) {
-            grid-row:($i + 2) / span (7 - 2 * $i);
-            grid-column:($i + 2) / span (7 - 2 * $i);
-            backdrop-filter:blur(.5px + ($i * .5px));
-        }
-    }
+//     display: grid;
+//     grid-template-columns: 22vw repeat(7, 1fr) 22vw;
+//     grid-template-rows: 10vh repeat(7, 1fr) 10vh;
+//     opacity: .5;
+
+//     @for $i from 0 through 3 {
+//         .blurs:nth-child(#{($i + 1)}) {
+//             grid-row:($i + 2) / span (7 - 2 * $i);
+//             grid-column:($i + 2) / span (7 - 2 * $i);
+//             backdrop-filter:blur(.5px + ($i * .5px));
+//         }
+//     }
     
-    .vortex {
-        background-image: url('../../../divers/img/7.gif');
-        background-size:cover;
-        background-position: center;
-        border-radius: 50%;
-        box-shadow:
-            inset 10px 10px 5px rgba(15, 17, 20, 0.25),
-            inset -10px 10px 5px rgba(15, 17, 20, 0.25),
-            inset 10px -10px 5px rgba(15, 17, 20, 0.25),
-            inset -10px -10px 5px rgba(15, 17, 20, 0.25),
-            inset 5px 5px 6px rgba(15, 19, 25, 0.75),
-            inset -5px 5px 6px rgba(15, 19, 25, 0.75),
-            inset 5px -5px 6px rgba(15, 19, 25, 0.75),
-            inset -5px -5px 6px rgba(15, 19, 25, 0.75),
-            5px 5px 6px 6px rgba(15, 21, 30, 0.5),
-            -5px 5px 6px 6px rgba(15, 21, 30, 0.5),
-            5px -5px 6px 6px rgba(15, 21, 30, 0.5),
-            -5px -5px 6px 6px rgba(15, 21, 30, 0.5),
-            10px 10px 8px 10px rgba(15, 23, 35, 0.25),
-            -10px 10px 8px 10px rgba(15, 23, 35, 0.25),
-            10px -10px 8px 10px rgba(15, 23, 35, 0.25),
-            -10px -10px 8px 10px rgba(15, 23, 35, 0.25)
-        ;
-    }
-}
+//     .vortex {
+//         background-image: url('../../../divers/img/7.gif');
+//         background-size:cover;
+//         background-position: center;
+//         border-radius: 50%;
+//         box-shadow:
+//             inset 10px 10px 5px rgba(15, 17, 20, 0.25),
+//             inset -10px 10px 5px rgba(15, 17, 20, 0.25),
+//             inset 10px -10px 5px rgba(15, 17, 20, 0.25),
+//             inset -10px -10px 5px rgba(15, 17, 20, 0.25),
+//             inset 5px 5px 6px rgba(15, 19, 25, 0.75),
+//             inset -5px 5px 6px rgba(15, 19, 25, 0.75),
+//             inset 5px -5px 6px rgba(15, 19, 25, 0.75),
+//             inset -5px -5px 6px rgba(15, 19, 25, 0.75),
+//             5px 5px 6px 6px rgba(15, 21, 30, 0.5),
+//             -5px 5px 6px 6px rgba(15, 21, 30, 0.5),
+//             5px -5px 6px 6px rgba(15, 21, 30, 0.5),
+//             -5px -5px 6px 6px rgba(15, 21, 30, 0.5),
+//             10px 10px 8px 10px rgba(15, 23, 35, 0.25),
+//             -10px 10px 8px 10px rgba(15, 23, 35, 0.25),
+//             10px -10px 8px 10px rgba(15, 23, 35, 0.25),
+//             -10px -10px 8px 10px rgba(15, 23, 35, 0.25)
+//         ;
+//     }
+// }
+
 
 #waitingMenu {
     position: absolute;
@@ -250,6 +253,10 @@ nav.gauche ul li .back {
     display:none!important;
 }
 
+#containerView .main:nth-of-type(2).hidden {
+    display: block!important;
+}
+
 #containerView .main {
     transform-style:preserve-3d ;
     position: relative;
@@ -265,24 +272,20 @@ nav.gauche ul li .back {
     font-size: 5rem;
 }
 
-#CURRICULUM {
-    visibility: visible!important;
-}
-
 #APROPOS {
     visibility: visible!important;
     background-color:rgba(0, 0, 255, 0.3);
 }
-
 #PORTFOLIO {
     visibility: visible!important;
 }
-
+#CURRICULUM {
+    visibility: visible!important;
+}
 #COMPETENCES {
     visibility: visible!important;
     background-color:rgba(128, 0, 128, 0.3);
 }
-
 #CONTACT {
     visibility: visible!important;
     background-color: rgba(255, 228, 196, 0.3);
@@ -294,16 +297,16 @@ nav.droite {
     height: 80vh;
     width:12vw;
 
-    display: none;
+    //display: none;
     grid-template-rows: repeat(5, 10vh) 30vh;
     grid-template-columns: 1fr;
     background: linear-gradient(to bottom,
-        red 0vh,
-        red 10vh,
-        green 10vh,
-        green 20vh,
-        blue 20vh,
-        blue 30vh,
+        rgba(0, 0, 0, 0) 0vh,
+        rgba(0, 0, 0, 0) 10vh,
+        rgba(0, 0, 0, 0) 10vh,
+        rgba(0, 0, 0, 0) 20vh,
+        rgba(0, 0, 0, 0) 20vh,
+        rgba(0, 0, 0, 0) 30vh,
         yellow 30vh,
         yellow 40vh,
         purple 40vh,
@@ -322,21 +325,136 @@ nav.droite ul {
     grid-template-columns: 1fr;
 }
 
+
 nav.droite ul li {
-    display: grid;
-    place-content: center;
+    all:initial;
+    min-height: 10vh;
+    min-width: 12vw;
+
+}
+
+@for $i from 0 to 5 {
+    nav.droite ul li:nth-of-type(#{($i + 1)}) {
+        grid-column: 1;
+        grid-row: 1 + $i;
+    }
 }
 
 nav.droite ul li button {
-    height: 7vh;
-    width: 7vh;
-    border-radius: 50%;
-    cursor: pointer;
+
+    all:initial;
+    visibility: hidden;
+    display: grid;
+    place-content: center;
+    min-height: 10vh;
+    min-width: 12vw;
+    box-sizing: border-box;
+    border:1px solid black;
 }
 
-@for $i from 0 to 4 {
-    button.droite:nth-of-type(#{($i + 1)}) {
-        grid-column: 1;
-        grid-row: 0 + $i;
+#openBook {
+    all:initial;
+    align-self: center;
+    justify-self: center;
+    position: absolute;
+    cursor: pointer;
+
+    background-image:url('../../../divers/img/inputBook1.png');
+    background-size:contain;
+    background-repeat: no-repeat;
+    height:100px;
+    width: 100px;
+
+    &:hover {
+        transform:scale(1.1);
     }
+}
+
+p.previousPage, p.nextPage {
+    all:initial;
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    height: 50px;
+    width: 50px;
+    
+    font-size: 3rem;
+    text-align: center;
+    color: var(--colorMain2);
+
+    $iter-base: 20;
+    $iter-hover: 15;
+    $iter-active: 10;
+
+    $step: .4px;
+
+    $r-start:31;
+    $r-end: 15;
+    $g-start:162;
+    $g-end: 23;
+    $b-start:227;
+    $b-end: 42;
+
+    $shadow-base: "";
+    $shadow-hover: "";
+    $shadow-active: "";
+    
+    @for $i from 1 through $iter-base {
+      $x: $i * $step;
+      $y: $i * $step * 0.75;
+      $rouge: $r-end + ($r-start - $r-end) * (1 - (calc(($i - 1) / ($iter-base - 1))));
+      $green: $g-end + ($g-start - $g-end) * (1 - (calc(($i - 1) / ($iter-base - 1))));
+      $blue: $b-end + ($b-start - $b-end) * (1 - (calc(($i - 1) / ($iter-base - 1))));
+
+      @if $i != 1 {
+        $shadow-base: $shadow-base + ", " + inspect($x) + " " + inspect($y) + " " + "rgb(" + inspect($rouge) + ", " + inspect($green) + ", " + inspect($blue) + ")";
+      } @else {
+        $shadow-base: inspect(0px 0px rgb(185, 232, 255)) + ", " + inspect(-1px -1px rgb(185, 232, 255)) + ", " + inspect(1px 1px rgb(185, 232, 255)) + ", " + inspect($x) + " " + inspect($y) + " " + "rgb(" + inspect($rouge) + ", " + inspect($green) + ", " + inspect($blue) + ")";
+      }
+    }
+    
+    @for $i from 1 through $iter-hover {
+        $x: $i * $step;
+        $y: $i * $step * 0.75;
+        $rouge: $r-end + ($r-start - $r-end) * (1 - (calc(($i - 1) / ($iter-hover - 1))));
+        $green: $g-end + ($g-start - $g-end) * (1 - (calc(($i - 1) / ($iter-hover - 1))));
+        $blue: $b-end + ($b-start - $b-end) * (1 - (calc(($i - 1) / ($iter-hover - 1))));
+
+        @if $i != 1 {
+          $shadow-hover: $shadow-hover + ", " + inspect($x) + " " + inspect($y) + " " + "rgb(" + inspect($rouge) + ", " + inspect($green) + ", " + inspect($blue) + ")";
+        } @else {
+          $shadow-hover: inspect(0px 0px rgb(185, 232, 255)) + ", " + inspect(-1px -1px rgb(185, 232, 255)) + ", " + inspect(1px 1px rgb(185, 232, 255)) + ", " + inspect($x) + " " + inspect($y) + " " + "rgb(" + inspect($rouge) + ", " + inspect($green) + ", " + inspect($blue) + ")";
+        }
+    }
+
+    @for $i from 1 through $iter-active {
+        $x: $i * $step;
+        $y: $i * $step * 0.75;
+        $rouge: $r-end + ($r-start - $r-end) * (1 - (calc(($i - 1) / ($iter-active - 1))));
+        $green: $g-end + ($g-start - $g-end) * (1 - (calc(($i - 1) / ($iter-active - 1))));
+        $blue: $b-end + ($b-start - $b-end) * (1 - (calc(($i - 1) / ($iter-active - 1))));
+
+        @if $i != 1 {
+          $shadow-active: $shadow-active + ", " + inspect($x) + " " + inspect($y) + " " + "rgb(" + inspect($rouge) + ", " + inspect($green) + ", " + inspect($blue) + ")";
+        } @else {
+          $shadow-active: inspect(0px 0px rgb(185, 232, 255)) + ", " + inspect(-1px -1px rgb(185, 232, 255)) + ", " + inspect(1px 1px rgb(185, 232, 255)) + ", " + inspect($x) + " " + inspect($y) + " " + "rgb(" + inspect($rouge) + ", " + inspect($green) + ", " + inspect($blue) + ")";
+        }
+    }
+    
+    text-shadow: $shadow-base;
+    
+    & i:hover {
+        text-shadow: $shadow-hover;
+        transform: translate(3px, 1.5px);
+    }
+
+    & i:active {
+        text-shadow: $shadow-active;
+        transform: translate(6px, 3px);
+
+    }
+}
+
+p.nextPage {
+    transform: rotate(180deg);
 }

@@ -28,8 +28,7 @@ body {
 }
 
 #defaite.animFin {
-  -webkit-animation: fin 2s ease-in 6s forwards;
-          animation: fin 2s ease-in 6s forwards;
+  animation: fin 2s ease-in 6s forwards;
 }
 
 #victoire {
@@ -47,17 +46,7 @@ body {
 }
 
 #victoire.animFin {
-  -webkit-animation: fin 2s ease-in 6s forwards;
-          animation: fin 2s ease-in 6s forwards;
-}
-
-@-webkit-keyframes fin {
-  from {
-    transform: scale(20);
-  }
-  to {
-    transform: scale(1);
-  }
+  animation: fin 2s ease-in 6s forwards;
 }
 
 @keyframes fin {
@@ -94,19 +83,7 @@ body {
 #rejouer.animFin {
   -webkit-clip-path: circle(0%);
           clip-path: circle(0%);
-  -webkit-animation: rejouerFin 2s linear 8s forwards;
-          animation: rejouerFin 2s linear 8s forwards;
-}
-
-@-webkit-keyframes rejouerFin {
-  from {
-    -webkit-clip-path: circle(0%);
-            clip-path: circle(0%);
-  }
-  to {
-    -webkit-clip-path: circle(100%);
-            clip-path: circle(100%);
-  }
+  animation: rejouerFin 2s linear 8s forwards;
 }
 
 @keyframes rejouerFin {
@@ -268,71 +245,6 @@ body {
   font-size: 4vw;
 }
 
-@-webkit-keyframes victory {
-  0% {
-    transform: scale(0.75);
-    background-color: lightgray;
-    border: 1px solid whitesmoke;
-  }
-  10% {
-    transform: scale(1.2);
-  }
-  20% {
-    transform: scale(0.75);
-  }
-  30% {
-    transform: scale(1.2);
-  }
-  40% {
-    transform: scale(0.75);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  55% {
-    transform: scale(0.75);
-  }
-  60% {
-    transform: scale(1.2);
-    background-color: greenyellow;
-    border: 3px solid green;
-  }
-  65% {
-    transform: scale(0.75);
-  }
-  70% {
-    transform: scale(1.2);
-    background-color: rgba(172, 255, 47, 0.2);
-    border: 3px solid rgba(0, 128, 0, 0.2);
-  }
-  75% {
-    transform: scale(0.75);
-  }
-  80% {
-    transform: scale(1.2);
-    background-color: greenyellow;
-    border: 3px solid green;
-  }
-  85% {
-    transform: scale(0.75);
-  }
-  90% {
-    transform: scale(1.2);
-    background-color: rgba(172, 255, 47, 0.2);
-    border: 3px solid rgba(0, 128, 0, 0.2);
-  }
-  95% {
-    transform: scale(0.75);
-    background-color: rgba(172, 255, 47, 0.5);
-    border: 3px solid rgba(0, 128, 0, 0.5);
-  }
-  100% {
-    transform: scale(1);
-    background-color: greenyellow;
-    border: 3px solid green;
-  }
-}
-
 @keyframes victory {
   0% {
     transform: scale(0.75);
@@ -409,8 +321,7 @@ body {
 }
 #penduCanva .penduBox.animation {
   border-bottom: 5px solid rgba(0, 0, 0, 0);
-  -webkit-animation: borders 2s linear 2s forwards;
-          animation: borders 2s linear 2s forwards;
+  animation: borders 2s linear 2s forwards;
 }
 #penduCanva .penduBox {
   height: 35vh;
@@ -428,8 +339,7 @@ body {
 #penduCanva .penduBox .poteau.animation {
   opacity: 0;
   border-color: red;
-  -webkit-animation: pendaison 2s linear 3s forwards;
-          animation: pendaison 2s linear 3s forwards;
+  animation: pendaison 2s linear 3s forwards;
 }
 #penduCanva .penduBox .barre {
   position: relative;
@@ -441,8 +351,7 @@ body {
 #penduCanva .penduBox .barre.animation {
   opacity: 0;
   border-color: red;
-  -webkit-animation: pendaison 2s linear 4s forwards;
-          animation: pendaison 2s linear 4s forwards;
+  animation: pendaison 2s linear 4s forwards;
 }
 #penduCanva .penduBox .homme {
   position: relative;
@@ -463,8 +372,7 @@ body {
 #penduCanva .penduBox .homme .corde.animation {
   opacity: 0;
   border-color: red;
-  -webkit-animation: pendaison 2s linear 5s forwards;
-          animation: pendaison 2s linear 5s forwards;
+  animation: pendaison 2s linear 5s forwards;
 }
 #penduCanva .penduBox .homme .tete {
   position: relative;
@@ -488,13 +396,11 @@ body {
 }
 #penduCanva .penduBox .homme .tete .oeilG1.animation {
   opacity: 0;
-  -webkit-animation: pendaisonTete 3s linear 10s forwards;
-          animation: pendaisonTete 3s linear 10s forwards;
+  animation: pendaisonTete 3s linear 10s forwards;
 }
 #penduCanva .penduBox .homme .tete .oeilG1.animFin {
   opacity: 0;
-  -webkit-animation: pendaisonFin 5s linear forwards;
-          animation: pendaisonFin 5s linear forwards;
+  animation: pendaisonFin 5s linear forwards;
 }
 #penduCanva .penduBox .homme .tete .oeilG2 {
   opacity: 0;
@@ -509,13 +415,11 @@ body {
 }
 #penduCanva .penduBox .homme .tete .oeilG2.animation {
   opacity: 0;
-  -webkit-animation: pendaisonTete 3s linear 10s forwards;
-          animation: pendaisonTete 3s linear 10s forwards;
+  animation: pendaisonTete 3s linear 10s forwards;
 }
 #penduCanva .penduBox .homme .tete .oeilG2.animFin {
   opacity: 0;
-  -webkit-animation: pendaisonFin 5s linear forwards;
-          animation: pendaisonFin 5s linear forwards;
+  animation: pendaisonFin 5s linear forwards;
 }
 #penduCanva .penduBox .homme .tete .oeilD1 {
   opacity: 0;
@@ -530,13 +434,11 @@ body {
 }
 #penduCanva .penduBox .homme .tete .oeilD1.animation {
   opacity: 0;
-  -webkit-animation: pendaisonTete 3s linear 10s forwards;
-          animation: pendaisonTete 3s linear 10s forwards;
+  animation: pendaisonTete 3s linear 10s forwards;
 }
 #penduCanva .penduBox .homme .tete .oeilD1.animFin {
   opacity: 0;
-  -webkit-animation: pendaisonFin 5s linear forwards;
-          animation: pendaisonFin 5s linear forwards;
+  animation: pendaisonFin 5s linear forwards;
 }
 #penduCanva .penduBox .homme .tete .oeilD2 {
   opacity: 0;
@@ -551,13 +453,11 @@ body {
 }
 #penduCanva .penduBox .homme .tete .oeilD2.animation {
   opacity: 0;
-  -webkit-animation: pendaisonTete 3s linear 10s forwards;
-          animation: pendaisonTete 3s linear 10s forwards;
+  animation: pendaisonTete 3s linear 10s forwards;
 }
 #penduCanva .penduBox .homme .tete .oeilD2.animFin {
   opacity: 0;
-  -webkit-animation: pendaisonFin 5s linear forwards;
-          animation: pendaisonFin 5s linear forwards;
+  animation: pendaisonFin 5s linear forwards;
 }
 #penduCanva .penduBox .homme .tete .bouche {
   position: relative;
@@ -571,19 +471,16 @@ body {
 }
 #penduCanva .penduBox .homme .tete .bouche.animation {
   opacity: 0;
-  -webkit-animation: pendaisonTete 3s linear 10s forwards;
-          animation: pendaisonTete 3s linear 10s forwards;
+  animation: pendaisonTete 3s linear 10s forwards;
 }
 #penduCanva .penduBox .homme .tete .bouche.animFin {
   opacity: 0;
-  -webkit-animation: pendaisonFin 5s linear forwards;
-          animation: pendaisonFin 5s linear forwards;
+  animation: pendaisonFin 5s linear forwards;
 }
 #penduCanva .penduBox .homme .tete.animation {
   opacity: 0;
   border-color: red;
-  -webkit-animation: pendaison 2s linear 6s forwards;
-          animation: pendaison 2s linear 6s forwards;
+  animation: pendaison 2s linear 6s forwards;
 }
 #penduCanva .penduBox .homme .bras {
   flex: none;
@@ -599,8 +496,7 @@ body {
 #penduCanva .penduBox .homme .bras.animation {
   opacity: 0;
   border-color: red;
-  -webkit-animation: pendaison 2s linear 8s forwards;
-          animation: pendaison 2s linear 8s forwards;
+  animation: pendaison 2s linear 8s forwards;
 }
 #penduCanva .penduBox .homme .tronc {
   position: relative;
@@ -613,8 +509,7 @@ body {
 #penduCanva .penduBox .homme .tronc.animation {
   opacity: 0;
   border-color: red;
-  -webkit-animation: pendaison 2s linear 7s forwards;
-          animation: pendaison 2s linear 7s forwards;
+  animation: pendaison 2s linear 7s forwards;
 }
 #penduCanva .penduBox .homme .jambes {
   flex: none;
@@ -630,22 +525,7 @@ body {
 #penduCanva .penduBox .homme .jambes.animation {
   opacity: 0;
   border-color: red;
-  -webkit-animation: pendaison 2s linear 9s forwards;
-          animation: pendaison 2s linear 9s forwards;
-}
-
-@-webkit-keyframes pendaison {
-  0% {
-    opacity: 0;
-    border-color: red;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    border-color: black;
-    opacity: 1;
-  }
+  animation: pendaison 2s linear 9s forwards;
 }
 
 @keyframes pendaison {
@@ -659,42 +539,6 @@ body {
   100% {
     border-color: black;
     opacity: 1;
-  }
-}
-@-webkit-keyframes pendaisonFin {
-  0% {
-    opacity: 1;
-    border-color: rgb(255, 0, 0);
-  }
-  10% {
-    border-color: rgba(255, 0, 0, 0);
-  }
-  20% {
-    border-color: rgb(255, 0, 0);
-  }
-  30% {
-    border-color: rgba(255, 0, 0, 0);
-  }
-  40% {
-    border-color: rgb(255, 0, 0);
-  }
-  50% {
-    border-color: rgba(255, 0, 0, 0);
-  }
-  60% {
-    border-color: rgb(255, 0, 0);
-  }
-  70% {
-    border-color: rgba(255, 0, 0, 0);
-  }
-  80% {
-    border-color: rgb(255, 0, 0);
-  }
-  90% {
-    border-color: rgba(255, 0, 0, 0);
-  }
-  100% {
-    border-color: rgb(255, 0, 0);
   }
 }
 @keyframes pendaisonFin {
@@ -733,40 +577,6 @@ body {
     border-color: rgb(255, 0, 0);
   }
 }
-@-webkit-keyframes pendaisonTete {
-  0% {
-    opacity: 1;
-    border-color: rgb(255, 0, 0);
-  }
-  10% {
-    border-color: rgba(255, 0, 0, 0);
-  }
-  20% {
-    border-color: rgb(255, 0, 0);
-  }
-  30% {
-    border-color: rgba(255, 0, 0, 0);
-  }
-  40% {
-    border-color: rgb(255, 0, 0);
-  }
-  50% {
-    border-color: rgba(255, 0, 0, 0);
-  }
-  60% {
-    border-color: rgb(255, 0, 0);
-  }
-  70% {
-    border-color: rgba(255, 0, 0, 0);
-  }
-  80% {
-    border-color: rgb(255, 0, 0);
-  }
-  100% {
-    border-color: black;
-    opacity: 1;
-  }
-}
 @keyframes pendaisonTete {
   0% {
     opacity: 1;
@@ -799,17 +609,6 @@ body {
   100% {
     border-color: black;
     opacity: 1;
-  }
-}
-@-webkit-keyframes borders {
-  0% {
-    border-bottom: 5px solid rgba(255, 0, 0, 0);
-  }
-  50% {
-    border-color: red;
-  }
-  100% {
-    border-color: black;
   }
 }
 @keyframes borders {

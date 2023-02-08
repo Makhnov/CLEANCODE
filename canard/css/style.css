@@ -109,30 +109,6 @@ p {
   transform: scale(1.2, 0.55);
 }
 
-@-webkit-keyframes bounce {
-  0% {
-    transform: translateY(-15px) scale(1.2, 0.55);
-  }
-  10% {
-    transform: translateY(10px) scale(1, 1);
-  }
-  40% {
-    transform: translateY(130px) scale(1, 1);
-  }
-  50% {
-    transform: translateY(150px) scale(1.2, 0.55);
-  }
-  60% {
-    transform: translateY(130px) scale(1, 1);
-  }
-  90% {
-    transform: translateY(10px) scale(1, 1);
-  }
-  100% {
-    transform: translateY(-15px) scale(1.2, 0.55);
-  }
-}
-
 @keyframes bounce {
   0% {
     transform: translateY(-15px) scale(1.2, 0.55);
@@ -154,32 +130,6 @@ p {
   }
   100% {
     transform: translateY(-15px) scale(1.2, 0.55);
-  }
-}
-@-webkit-keyframes aouch {
-  0% {
-    transform: translateY(0) scale(1, 1) rotate(0);
-  }
-  25% {
-    transform: translateY(calc(-40vh + 100px)) scale(1, 1) rotate(65deg);
-  }
-  70% {
-    transform: translateY(0) scale(1, 1) rotate(0);
-  }
-  80% {
-    transform: translateY(-6px) scale(1, 1) rotate(-8deg);
-  }
-  87.5% {
-    transform: translateY(0) scale(1, 1) rotate(0);
-  }
-  92.5% {
-    transform: translateY(-4px) scale(1, 1) rotate(4deg);
-  }
-  97.5% {
-    transform: translateY(0) scale(1, 1) rotate(0);
-  }
-  100% {
-    transform: translateY() scale(1, 1) rotate(0);
   }
 }
 @keyframes aouch {
@@ -208,20 +158,6 @@ p {
     transform: translateY() scale(1, 1) rotate(0);
   }
 }
-@-webkit-keyframes boink {
-  0% {
-    transform: translate(-10px, -20px) scale(2, 2) rotate(-30deg);
-  }
-  40% {
-    transform: translateY(0) scale(0, 1) rotate(0);
-  }
-  80% {
-    transform: translateY(0) scale(0, 1) rotate(0);
-  }
-  100% {
-    transform: translateY(0) scale(0, 1) rotate(0);
-  }
-}
 @keyframes boink {
   0% {
     transform: translate(-10px, -20px) scale(2, 2) rotate(-30deg);
@@ -231,20 +167,6 @@ p {
   }
   80% {
     transform: translateY(0) scale(0, 1) rotate(0);
-  }
-  100% {
-    transform: translateY(0) scale(0, 1) rotate(0);
-  }
-}
-@-webkit-keyframes bing {
-  0% {
-    transform: translateY(0) scale(0, 1) rotate(0);
-  }
-  27% {
-    transform: translateY(0) scale(0, 1) rotate(0);
-  }
-  50% {
-    transform: translateY(-20px) scale(2, 2) rotate(30deg);
   }
   100% {
     transform: translateY(0) scale(0, 1) rotate(0);
@@ -265,21 +187,17 @@ p {
   }
 }
 .anim1 {
-  -webkit-animation: 2s linear 1s infinite bounce;
-          animation: 2s linear 1s infinite bounce;
+  animation: 2s linear 1s infinite bounce;
 }
 
 .canard {
-  -webkit-animation: 2s linear 1s infinite aouch;
-          animation: 2s linear 1s infinite aouch;
+  animation: 2s linear 1s infinite aouch;
 }
 
 .boink {
-  -webkit-animation: 2s linear 1s infinite boink;
-          animation: 2s linear 1s infinite boink;
+  animation: 2s linear 1s infinite boink;
 }
 
 .bing {
-  -webkit-animation: 2s linear 1s infinite bing;
-          animation: 2s linear 1s infinite bing;
+  animation: 2s linear 1s infinite bing;
 }/*# sourceMappingURL=style.css.map */

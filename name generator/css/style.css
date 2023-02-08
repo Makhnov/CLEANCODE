@@ -66,18 +66,11 @@ input:not(:-moz-placeholder-shown) ~ button:first-of-type {
   background-color: green;
   cursor: pointer;
 }
-input:not(:-ms-input-placeholder) ~ button:first-of-type {
-  background-color: green;
-  cursor: pointer;
-}
 input:not(:placeholder-shown) ~ button:first-of-type {
   background-color: green;
   cursor: pointer;
 }
 input:not(:-moz-placeholder-shown):hover {
-  cursor: pointer;
-}
-input:not(:-ms-input-placeholder):hover {
   cursor: pointer;
 }
 input:not(:placeholder-shown):hover {
@@ -131,7 +124,6 @@ p {
   background-color: rgb(124, 104, 238);
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   font-size: 1.25rem;
   font-weight: bold;

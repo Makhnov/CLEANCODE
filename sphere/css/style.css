@@ -25,8 +25,7 @@ body div {
   height: 50vh;
   border-radius: 50%;
   margin: 0 auto;
-  -webkit-animation: rotation 10s linear alternate infinite;
-          animation: rotation 10s linear alternate infinite;
+  animation: rotation 10s linear alternate infinite;
   z-index: 2;
 }
 
@@ -40,15 +39,6 @@ body div {
   background: radial-gradient(black, rgba(255, 255, 255, 0) 72%);
   border-radius: 50%;
   z-index: 1;
-}
-
-@-webkit-keyframes rotation {
-  from {
-    transform: rotateZ(0deg);
-  }
-  to {
-    transform: rotateZ(80deg);
-  }
 }
 
 @keyframes rotation {

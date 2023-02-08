@@ -1,16 +1,21 @@
 :root {
-    --bookSize:clamp(200px, 60vh, 600px);
+    --bookSize:clamp(200px, 75vh, 1000px);
     --bookBorder:rgb(50, 50, 50);
     --bookPage:whitesmoke;    
+    --colorMain1:rgb(17, 126, 181);
+    --colorMain2:rgb(20, 172, 249);
 }
 
-@media screen and (max-width: 800px) {
-    :root {
-        --bookSize:200px!important;
-    }
-}
+// @media screen and (max-width: 800px) {
+//     :root {
+//         --bookSize:200px!important;
+//     }
+// }
 
 #PORTFOLIO.anim {
+    transform:translateZ(-500px);
+}
+#PORTFOLIO {
     transform:translateZ(-500px);
 }
 
@@ -23,41 +28,20 @@
 }
 
 #readBook {
-    all:initial;
-    position: absolute;
-    cursor: pointer;
+    display: none;
 
-    background-image:url('../../../divers/img/inputBook1.png');
-    background-size:contain;
-    background-repeat: no-repeat;
-    left:calc(56vw - 100px);
-    height:100px;
-    width: 100px;
-
-    &:hover {
-        transform:scale(1.1);
-    }
-    
     &:checked {
         background-image:url('../../../divers/img/inputBook2.png');
         background-size:contain;
         background-repeat: no-repeat;
     }
 
-    &:checked ~ #livre .page.droite {
-        animation: pageDroite 2s linear infinite forwards;
+    &:checked ~ #livre .blocLivre.droite {
+        animation: openBookRight 2s linear forwards;
     }
 
-    &:checked ~ #livre .fpage:nth-of-type(6)::after {
-        animation: waitingLeft 2s linear infinite forwards;
-    }
-
-    &:checked ~ #livre .fpage:nth-of-type(10)::before {
-        animation: waitingRight 2s linear infinite forwards;
-    }
-
-    &:checked ~ #livre .sliceR .sliceR {
-        animation: sliceR 2s linear infinite forwards;
+    &:checked ~ #livre .blocLivre.gauche {
+        animation: openBookLeft 2s linear forwards;
     }
 }
 
@@ -66,9 +50,10 @@
     transform-style: preserve-3d;
     align-self: center;
     justify-self: center;
-    
+    display:grid;
+    grid-template-columns:calc(70 / 99 * var(--bookSize)) 30px calc(70 / 99 * var(--bookSize));
     height:var(--bookSize);
-    width:calc(140 / 99 * var(--bookSize) + 5px);
+    width:calc(140 / 99 * var(--bookSize) + 30px);
     transform: rotateX(38deg) rotate(-6deg);
     cursor: pointer;
 
@@ -80,186 +65,138 @@
     }
 }
 
-@for $i from 0 to 4 {
-    .fpage:nth-of-type(#{$i + 3}) {
-        transform: translateZ(calc(1.5px * $i + .5px)) rotateY(0deg);
-        &::before {
-            top:0;
-            left:0;
-            transform: translateZ(-.5px) rotateY(-1deg);
-        }
-        &::after {
-            top:0;
-            left:0;
-            transform: translateZ(.5px) rotateY(1deg);
-        }
-    }
-}
-
-@for $i from 0 to 4 {
-    .fpage:nth-of-type(#{$i + 7}) {
-        transform: translateZ(calc(1.5px * $i + .5px)) rotateY(180deg) translateX(-5px);
-        &::before {
-            top:0;
-            left:0;
-            transform: translateZ(-.5px) rotateY(-1deg);
-        }
-        &::after {
-            top:0;
-            left:0;
-            transform: translateZ(.5px) rotateY(1deg);
-        }
-    }
-}
-
-.fpage:nth-of-type(6) {
-    &::after {
-        top:0;
-        left:0;
-        background:url('../../../divers/img/imgLWait1.jpg');
-        background-size:cover;
-        background-repeat: no-repeat;    }
-}
-
-@keyframes waitingLeft {
-    0% {
-        background:url('../../../../../divers/img/imgLWait1.jpg');
-        background-size:cover;
-        background-repeat: no-repeat;
-    }
-    20% {
-        background:url('../../../divers/img/imgLWait1.jpg');
-        background-size:cover;
-        background-repeat: no-repeat;
-        filter:blur(0px);
-        opacity: 1;
-    }
-    29% {
-        background:url('../../../divers/img/imgLWait1.jpg');
-        background-size:cover;
-        background-repeat: no-repeat;
-        filter:blur(4px);
-        opacity: .9;
-    }
-    31% {
-        background:url('../../../divers/img/imgLWait2.jpg');
-        background-size:cover;
-        background-repeat: no-repeat;
-        filter:blur(4px);
-        opacity: .9;
-    }
-    40% {
-        background:url('../../../divers/img/imgLWait2.jpg');
-        background-size:cover;
-        background-repeat: no-repeat;
-        filter:blur(0px);
-        opacity: 1;
-    }
-    97% {
-        background:url('../../../divers/img/imgLWait2.jpg');
-        background-size:cover;
-        background-repeat: no-repeat;
-    }
-    98% {
-        background:url('../../../divers/img/imgLWait1.jpg');
-        background-size:cover;
-        background-repeat: no-repeat;
-    }
-    100% {
-        background:url('../../../divers/img/imgLWait1.jpg');
-        background-size:cover;
-        background-repeat: no-repeat;
-    }
-}
-
-.fpage:nth-of-type(10) {
-    &::before {
-        top:0;
-        width:calc(70 / 99 * var(--bookSize) - 3px)!important;
-    }
-}
-
-@keyframes waitingRight {
-    0% {
-        background:url('../../../divers/img/imgRWait2.jpg');
-        background-size:cover;
-        background-repeat: no-repeat;
-    }
-
-    2% {
-        background:url('../../../divers/img/imgRWait1.jpg');
-        background-size:cover;
-        background-repeat: no-repeat;
-    }
-
-    70% {
-        background:url('../../../divers/img/imgRWait1.jpg');
-        background-size:cover;
-        background-repeat: no-repeat;
-        filter:blur(0px);
-        opacity:1;
-    }
-    79% {
-        background:url('../../../divers/img/imgRWait1.jpg');
-        background-size:cover;
-        background-repeat: no-repeat;
-        filter:blur(4px);
-        opacity:.9;
-    }
-    81% {
-        background:url('../../../divers/img/imgRWait2.jpg');
-        background-size:cover;
-        background-repeat: no-repeat;
-        filter:blur(4px);
-        opacity:.9;
-    }
-    90% {
-        background:url('../../../divers/img/imgRWait2.jpg');
-        background-size:cover;
-        background-repeat: no-repeat;
-        filter:blur(0px);
-        opacity:1;
-    }
-    100% {
-        background:url('../../../divers/img/imgRWait2.jpg');
-        background-size:cover;
-        background-repeat: no-repeat;
-    }
-}
-
-.fpage {
-    //visibility: hidden;
+.blocLivre {
     position: absolute;
-    transform-style:preserve-3d;
-    height: var(--bookSize);
-    width:calc(70 / 99 * var(--bookSize) - 3px);
-    background-color: var(--bookPage);
-    box-sizing: border-box;
-    border: 1px solid var(--bookBorder);
-    transform-origin: right;
+    transform-style: preserve-3d;
+    
+    height:var(--bookSize);
+    width:calc(70 / 99 * var(--bookSize));
+    height:var(--bookSize);
 
-    &::before {
-        content:'';
+    box-shadow:
+    0 0 30px 10px #fff,
+    0 0 50px 20px var(--colorMain2),
+    0 0 70px 30px var(--colorMain1);
+
+    .fpage {
         position: absolute;
+        transform-style:preserve-3d;
+        transform-origin:inherit ;
         height: var(--bookSize);
-        width:calc(70 / 99 * var(--bookSize) - 3px);
+        width:calc(70 / 99 * var(--bookSize));
+        background-color: var(--bookPage);
         box-sizing: border-box;
         border: 1px solid var(--bookBorder);
-        background-color: var(--bookPage);
-        transform-origin: right;
+
+        &::before {
+            content:'';
+            position: absolute;
+            transform-origin: inherit;
+
+            top:0;
+            left:0;
+            height: var(--bookSize);
+            width:calc(70 / 99 * var(--bookSize));
+            box-sizing: border-box;
+            border: 1px solid var(--bookBorder);
+            background-color: var(--bookPage);
+        }
+
+        &::after {
+            content:'';
+            position: absolute;
+            transform-origin: inherit;
+
+            top:0;
+            left:0;
+            height: var(--bookSize);
+            width:calc(70 / 99 * var(--bookSize));
+            box-sizing: border-box;
+            border: 1px solid var(--bookBorder);
+            background-color: var(--bookPage);
+        }
     }
 
-    &::after {
-        top:0;
-        left:0;
-        content:'';
-        position: absolute;
-        height: var(--bookSize);
-        width:calc(70 / 99 * var(--bookSize) - 3px);
-        box-sizing: border-box;
-        border: 1px solid var(--bookBorder);
-        background-color: var(--bookPage);
+    &.gauche {
+        grid-column: 1;
         transform-origin: right;
+        transform: rotateY(88deg);
+
+        @for $i from 0 to 4 {
+            .fpage.gauche:nth-of-type(#{$i + 1}) {
+                transform: translateZ(calc(3px * $i + 2px)) rotateY(calc(.4deg + (.6deg * $i)));
+                &::before {
+                    transform: translateZ(-2px) rotateY(-.4deg);
+                }
+                &::after {
+                    transform: translateZ(2px) rotateY(.4deg);
+                }
+            }
+        }
+
+        .fpage.gauche:nth-of-type(1)::before {
+            background-color: var(--bookBorder);
+        }
+
+        .fpage.gauche:nth-of-type(4)::after {
+            background-image: url('../../../divers/img/2.jpg');
+            background-size: cover;
+        }
+
+        // .fpage.gauche:nth-of-type(4) {
+        //     &::after {
+        //         background:url('../../../divers/img/imgLWait1.jpg');
+        //         background-size:cover;
+        //         background-repeat: no-repeat;    
+        //     }
+        // }
+    }
+
+    &.droite {
+        grid-column: 3;
+        transform-origin: left;
+        transform: rotateY(-88deg);
+
+        @for $i from 0 to 4 {
+            .fpage.droite:nth-of-type(#{$i + 1}) {
+                transform: translateZ(calc(3px * $i + 2px)) rotateY(calc(-.4deg - (.6deg * $i)));
+                &::before {
+                    transform: translateZ(-2px) rotateY(.4deg);
+                }
+                &::after {
+                    transform: translateZ(2px) rotateY(-.4deg);
+                }
+            }
+        }
+
+        .fpage.droite:nth-of-type(1)::before {
+            background-color: var(--bookBorder);
+        }
+
+        .fpage.droite:nth-of-type(4)::after {
+            background-image: url('../../../divers/img/1.jpg');
+            background-size: cover;
+        }
+    }
+}
+
+@keyframes openBookLeft {
+    from {
+        transform: rotateY(88deg);
+    }
+
+    to {
+        transform: rotateY(0deg);
+    }
+}
+
+@keyframes openBookRight {
+    from {
+        transform: rotateY(-88deg);
+    }
+
+    to {
+        transform: rotateY(-0deg);
     }
 }
 
@@ -361,8 +298,8 @@
 
 .page.droite {
     visibility: visible;
-    transform-origin: right;
-    transform: translateX(6px) translateZ(6px) rotateY(179deg);
+    transform-origin: left;
+    transform: translateX(-10px) translateZ(6px) rotateY(-179deg);
     cursor: pointer;
 
     &:hover,
@@ -550,3 +487,101 @@
     }
 }
 
+@keyframes waitingLeft {
+    0% {
+        background:url('../../../../../divers/img/imgLWait1.jpg');
+        background-size:cover;
+        background-repeat: no-repeat;
+    }
+    20% {
+        background:url('../../../divers/img/imgLWait1.jpg');
+        background-size:cover;
+        background-repeat: no-repeat;
+        filter:blur(0px);
+        opacity: 1;
+    }
+    29% {
+        background:url('../../../divers/img/imgLWait1.jpg');
+        background-size:cover;
+        background-repeat: no-repeat;
+        filter:blur(4px);
+        opacity: .9;
+    }
+    31% {
+        background:url('../../../divers/img/imgLWait2.jpg');
+        background-size:cover;
+        background-repeat: no-repeat;
+        filter:blur(4px);
+        opacity: .9;
+    }
+    40% {
+        background:url('../../../divers/img/imgLWait2.jpg');
+        background-size:cover;
+        background-repeat: no-repeat;
+        filter:blur(0px);
+        opacity: 1;
+    }
+    97% {
+        background:url('../../../divers/img/imgLWait2.jpg');
+        background-size:cover;
+        background-repeat: no-repeat;
+    }
+    98% {
+        background:url('../../../divers/img/imgLWait1.jpg');
+        background-size:cover;
+        background-repeat: no-repeat;
+    }
+    100% {
+        background:url('../../../divers/img/imgLWait1.jpg');
+        background-size:cover;
+        background-repeat: no-repeat;
+    }
+}
+
+@keyframes waitingRight {
+    0% {
+        background:url('../../../divers/img/imgRWait2.jpg');
+        background-size:cover;
+        background-repeat: no-repeat;
+    }
+
+    2% {
+        background:url('../../../divers/img/imgRWait1.jpg');
+        background-size:cover;
+        background-repeat: no-repeat;
+    }
+
+    70% {
+        background:url('../../../divers/img/imgRWait1.jpg');
+        background-size:cover;
+        background-repeat: no-repeat;
+        filter:blur(0px);
+        opacity:1;
+    }
+    79% {
+        background:url('../../../divers/img/imgRWait1.jpg');
+        background-size:cover;
+        background-repeat: no-repeat;
+        filter:blur(4px);
+        opacity:.9;
+    }
+    81% {
+        background:url('../../../divers/img/imgRWait2.jpg');
+        background-size:cover;
+        background-repeat: no-repeat;
+        filter:blur(4px);
+        opacity:.9;
+    }
+    90% {
+        background:url('../../../divers/img/imgRWait2.jpg');
+        background-size:cover;
+        background-repeat: no-repeat;
+        filter:blur(0px);
+        opacity:1;
+    }
+    100% {
+        background:url('../../../divers/img/imgRWait2.jpg');
+        background-size:cover;
+        background-repeat: no-repeat;
+    }
+}

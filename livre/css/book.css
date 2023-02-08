@@ -37,20 +37,16 @@ html, body {
   background-repeat: no-repeat;
 }
 #readBook:checked ~ #livre .page.droite {
-  -webkit-animation: pageDroite 2s linear infinite forwards;
-          animation: pageDroite 2s linear infinite forwards;
+  animation: pageDroite 2s linear infinite forwards;
 }
 #readBook:checked ~ #livre .fpage:nth-of-type(6)::after {
-  -webkit-animation: waitingLeft 2s linear infinite forwards;
-          animation: waitingLeft 2s linear infinite forwards;
+  animation: waitingLeft 2s linear infinite forwards;
 }
 #readBook:checked ~ #livre .fpage:nth-of-type(10)::before {
-  -webkit-animation: waitingRight 2s linear infinite forwards;
-          animation: waitingRight 2s linear infinite forwards;
+  animation: waitingRight 2s linear infinite forwards;
 }
 #readBook:checked ~ #livre .sliceR .sliceR {
-  -webkit-animation: sliceR 2s linear infinite forwards;
-          animation: sliceR 2s linear infinite forwards;
+  animation: sliceR 2s linear infinite forwards;
 }
 
 #container {
@@ -71,8 +67,7 @@ html, body {
   cursor: pointer;
 }
 #livre:hover .page.droite, #livre:hover .fpage:nth-of-type(6)::after, #livre:hover .fpage:nth-of-type(10)::before, #livre:hover .sliceR .sliceR {
-  -webkit-animation-play-state: paused !important;
-          animation-play-state: paused !important;
+  animation-play-state: paused !important;
 }
 
 .fpage:nth-of-type(3) {
@@ -162,57 +157,6 @@ html, body {
   background-repeat: no-repeat;
 }
 
-@-webkit-keyframes waitingLeft {
-  0% {
-    background: url("../../divers/img/imgLWait1.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-  20% {
-    background: url("../../divers/img/imgLWait1.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    filter: blur(0px);
-    opacity: 1;
-  }
-  29% {
-    background: url("../../divers/img/imgLWait1.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    filter: blur(4px);
-    opacity: 0.9;
-  }
-  31% {
-    background: url("../../divers/img/imgLWait2.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    filter: blur(4px);
-    opacity: 0.9;
-  }
-  40% {
-    background: url("../../divers/img/imgLWait2.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    filter: blur(0px);
-    opacity: 1;
-  }
-  97% {
-    background: url("../../divers/img/imgLWait2.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-  98% {
-    background: url("../../divers/img/imgLWait1.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-  100% {
-    background: url("../../divers/img/imgLWait1.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-}
-
 @keyframes waitingLeft {
   0% {
     background: url("../../divers/img/imgLWait1.jpg");
@@ -266,52 +210,6 @@ html, body {
 .fpage:nth-of-type(10)::before {
   top: 0;
   width: calc(0.7070707071 * var(--bookSize) - 3px) !important;
-}
-
-@-webkit-keyframes waitingRight {
-  0% {
-    background: url("../../divers/img/imgRWait2.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-  2% {
-    background: url("../../divers/img/imgRWait1.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-  70% {
-    background: url("../../divers/img/imgRWait1.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    filter: blur(0px);
-    opacity: 1;
-  }
-  79% {
-    background: url("../../divers/img/imgRWait1.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    filter: blur(4px);
-    opacity: 0.9;
-  }
-  81% {
-    background: url("../../divers/img/imgRWait2.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    filter: blur(4px);
-    opacity: 0.9;
-  }
-  90% {
-    background: url("../../divers/img/imgRWait2.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    filter: blur(0px);
-    opacity: 1;
-  }
-  100% {
-    background: url("../../divers/img/imgRWait2.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
 }
 
 @keyframes waitingRight {
@@ -426,15 +324,13 @@ html, body {
 .sliceL .sliceL {
   right: calc(0.101010101 * var(--bookSize) - 0.5px);
   background-position: calc(0.202020202 * var(--bookSize)) center;
-  -webkit-animation: waitingLeftSlice1 2s linear infinite forwards;
-          animation: waitingLeftSlice1 2s linear infinite forwards;
+  animation: waitingLeftSlice1 2s linear infinite forwards;
   transform-style: preserve-3d;
 }
 .sliceL .sliceL .sliceL {
   right: calc(0.101010101 * var(--bookSize) - 0.5px);
   background-position: calc(0.303030303 * var(--bookSize)) center;
-  -webkit-animation: waitingLeftSlice2 2s linear infinite forwards;
-          animation: waitingLeftSlice2 2s linear infinite forwards;
+  animation: waitingLeftSlice2 2s linear infinite forwards;
   transform-style: preserve-3d;
 }
 .sliceL .sliceL .sliceL .sliceL {
@@ -487,31 +383,7 @@ html, body {
   cursor: pointer;
 }
 .page.droite:hover, .page.droite:hover ~ .fpage:nth-of-type(6)::after, .page.droite:hover ~ .fpage:nth-of-type(10)::before, .page.droite:hover .sliceR .sliceR {
-  -webkit-animation-play-state: paused !important;
-          animation-play-state: paused !important;
-}
-
-@-webkit-keyframes pageDroite {
-  0% {
-    transform: translateX(5px) translateZ(6px) rotateY(179deg);
-    visibility: hidden;
-  }
-  1% {
-    transform: translateX(5px) translateZ(6px) rotateY(179deg);
-    visibility: visible;
-  }
-  98% {
-    transform: translateX(0px) translateZ(5.5px) rotateY(1deg);
-    visibility: visible;
-  }
-  99% {
-    transform: translateX(0px) translateZ(6px) rotateY(1deg);
-    visibility: hidden;
-  }
-  100% {
-    transform: translateX(5px) translateZ(6px) rotateY(179deg);
-    visibility: hidden;
-  }
+  animation-play-state: paused !important;
 }
 
 @keyframes pageDroite {
@@ -629,30 +501,6 @@ html, body {
 }
 .sliceR .sliceR .sliceR .sliceR .sliceR .sliceR .sliceR {
   transform-style: preserve-3d;
-}
-
-@-webkit-keyframes sliceR {
-  0% {
-    transform: rotateY(-1deg);
-  }
-  60% {
-    transform: rotateY(10deg);
-  }
-  80% {
-    transform: rotateY(14deg);
-  }
-  90% {
-    transform: rotateY(13deg);
-  }
-  98% {
-    transform: rotateY(0deg);
-  }
-  99% {
-    transform: rotateY(-1deg);
-  }
-  100% {
-    transform: rotateY(-1deg);
-  }
 }
 
 @keyframes sliceR {

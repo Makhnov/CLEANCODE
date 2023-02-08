@@ -4,6 +4,8 @@
   --depthBar:50px;
   --colorBarSide: rgba(39, 48, 52, 0.8);
   --colorBarMain:rgba(17, 126, 181, 0.6);
+  --colorMain1:rgb(17, 126, 181);
+  --colorMain2:rgb(20, 172, 249);
   --blurColor3:rgba(15,15,15, 0.5);
   --blurColor2:rgba(10,10,10, 0.25);
   --blurColor1:rgba(1,1,1, 0.1);
@@ -36,50 +38,6 @@ nav, ul, li {
   grid-template-rows: 10vh 80vh 10vh;
   perspective: 1000px;
   perspective-origin: center;
-}
-
-#blurBackground {
-  position: relative;
-  z-index: -1;
-  grid-row: 1/span 3;
-  grid-column: 1/span 7;
-  height: 100vh;
-  width: 100vw;
-  display: grid;
-  grid-template-columns: 22vw repeat(7, 1fr) 22vw;
-  grid-template-rows: 10vh repeat(7, 1fr) 10vh;
-  opacity: 0.5;
-}
-#blurBackground .blurs:nth-child(1) {
-  grid-row: 2/span 7;
-  grid-column: 2/span 7;
-  -webkit-backdrop-filter: blur(0.5px);
-          backdrop-filter: blur(0.5px);
-}
-#blurBackground .blurs:nth-child(2) {
-  grid-row: 3/span 5;
-  grid-column: 3/span 5;
-  -webkit-backdrop-filter: blur(1px);
-          backdrop-filter: blur(1px);
-}
-#blurBackground .blurs:nth-child(3) {
-  grid-row: 4/span 3;
-  grid-column: 4/span 3;
-  -webkit-backdrop-filter: blur(1.5px);
-          backdrop-filter: blur(1.5px);
-}
-#blurBackground .blurs:nth-child(4) {
-  grid-row: 5/span 1;
-  grid-column: 5/span 1;
-  -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
-}
-#blurBackground .vortex {
-  background-image: url("../../../divers/img/7.gif");
-  background-size: cover;
-  background-position: center;
-  border-radius: 50%;
-  box-shadow: inset 10px 10px 5px rgba(15, 17, 20, 0.25), inset -10px 10px 5px rgba(15, 17, 20, 0.25), inset 10px -10px 5px rgba(15, 17, 20, 0.25), inset -10px -10px 5px rgba(15, 17, 20, 0.25), inset 5px 5px 6px rgba(15, 19, 25, 0.75), inset -5px 5px 6px rgba(15, 19, 25, 0.75), inset 5px -5px 6px rgba(15, 19, 25, 0.75), inset -5px -5px 6px rgba(15, 19, 25, 0.75), 5px 5px 6px 6px rgba(15, 21, 30, 0.5), -5px 5px 6px 6px rgba(15, 21, 30, 0.5), 5px -5px 6px 6px rgba(15, 21, 30, 0.5), -5px -5px 6px 6px rgba(15, 21, 30, 0.5), 10px 10px 8px 10px rgba(15, 23, 35, 0.25), -10px 10px 8px 10px rgba(15, 23, 35, 0.25), 10px -10px 8px 10px rgba(15, 23, 35, 0.25), -10px -10px 8px 10px rgba(15, 23, 35, 0.25);
 }
 
 #waitingMenu {
@@ -201,6 +159,10 @@ nav.gauche ul li .back::after {
   display: none !important;
 }
 
+#containerView .main:nth-of-type(2).hidden {
+  display: block !important;
+}
+
 #containerView .main {
   transform-style: preserve-3d;
   position: relative;
@@ -215,16 +177,16 @@ nav.gauche ul li .back::after {
   font-size: 5rem;
 }
 
-#CURRICULUM {
-  visibility: visible !important;
-}
-
 #APROPOS {
   visibility: visible !important;
   background-color: rgba(0, 0, 255, 0.3);
 }
 
 #PORTFOLIO {
+  visibility: visible !important;
+}
+
+#CURRICULUM {
   visibility: visible !important;
 }
 
@@ -243,10 +205,9 @@ nav.droite {
   grid-column: 6;
   height: 80vh;
   width: 12vw;
-  display: none;
   grid-template-rows: repeat(5, 10vh) 30vh;
   grid-template-columns: 1fr;
-  background: linear-gradient(to bottom, red 0vh, red 10vh, green 10vh, green 20vh, blue 20vh, blue 30vh, yellow 30vh, yellow 40vh, purple 40vh, purple 50vh, black 50vh);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0vh, rgba(0, 0, 0, 0) 10vh, rgba(0, 0, 0, 0) 10vh, rgba(0, 0, 0, 0) 20vh, rgba(0, 0, 0, 0) 20vh, rgba(0, 0, 0, 0) 30vh, yellow 30vh, yellow 40vh, purple 40vh, purple 50vh, black 50vh);
 }
 
 nav.droite ul {
@@ -258,33 +219,84 @@ nav.droite ul {
 }
 
 nav.droite ul li {
-  display: grid;
-  place-content: center;
+  all: initial;
+  min-height: 10vh;
+  min-width: 12vw;
 }
 
-nav.droite ul li button {
-  height: 7vh;
-  width: 7vh;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-button.droite:nth-of-type(1) {
-  grid-column: 1;
-  grid-row: 0;
-}
-
-button.droite:nth-of-type(2) {
+nav.droite ul li:nth-of-type(1) {
   grid-column: 1;
   grid-row: 1;
 }
 
-button.droite:nth-of-type(3) {
+nav.droite ul li:nth-of-type(2) {
   grid-column: 1;
   grid-row: 2;
 }
 
-button.droite:nth-of-type(4) {
+nav.droite ul li:nth-of-type(3) {
   grid-column: 1;
   grid-row: 3;
+}
+
+nav.droite ul li:nth-of-type(4) {
+  grid-column: 1;
+  grid-row: 4;
+}
+
+nav.droite ul li:nth-of-type(5) {
+  grid-column: 1;
+  grid-row: 5;
+}
+
+nav.droite ul li button {
+  all: initial;
+  visibility: hidden;
+  display: grid;
+  place-content: center;
+  min-height: 10vh;
+  min-width: 12vw;
+  box-sizing: border-box;
+  border: 1px solid black;
+}
+
+#openBook {
+  all: initial;
+  align-self: center;
+  justify-self: center;
+  position: absolute;
+  cursor: pointer;
+  background-image: url("../../../divers/img/inputBook1.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100px;
+  width: 100px;
+}
+#openBook:hover {
+  transform: scale(1.1);
+}
+
+p.previousPage, p.nextPage {
+  all: initial;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  height: 50px;
+  width: 50px;
+  font-size: 3rem;
+  text-align: center;
+  color: var(--colorMain2);
+  text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.4px 0.3px rgb(31, 162, 227), 0.8px 0.6px rgb(30.1578947368, 154.6842105263, 217.2631578947), 1.2px 0.9px rgb(29.3157894737, 147.3684210526, 207.5263157895), 1.6px 1.2px rgb(28.4736842105, 140.0526315789, 197.7894736842), 2px 1.5px rgb(27.6315789474, 132.7368421053, 188.0526315789), 2.4px 1.8px rgb(26.7894736842, 125.4210526316, 178.3157894737), 2.8px 2.1px rgb(25.9473684211, 118.1052631579, 168.5789473684), 3.2px 2.4px rgb(25.1052631579, 110.7894736842, 158.8421052632), 3.6px 2.7px rgb(24.2631578947, 103.4736842105, 149.1052631579), 4px 3px rgb(23.4210526316, 96.1578947368, 139.3684210526), 4.4px 3.3px rgb(22.5789473684, 88.8421052632, 129.6315789474), 4.8px 3.6px rgb(21.7368421053, 81.5263157895, 119.8947368421), 5.2px 3.9px rgb(20.8947368421, 74.2105263158, 110.1578947368), 5.6px 4.2px rgb(20.0526315789, 66.8947368421, 100.4210526316), 6px 4.5px rgb(19.2105263158, 59.5789473684, 90.6842105263), 6.4px 4.8px rgb(18.3684210526, 52.2631578947, 80.9473684211), 6.8px 5.1px rgb(17.5263157895, 44.9473684211, 71.2105263158), 7.2px 5.4px rgb(16.6842105263, 37.6315789474, 61.4736842105), 7.6px 5.7px rgb(15.8421052632, 30.3157894737, 51.7368421053), 8px 6px rgb(15, 23, 42);
+}
+p.previousPage i:hover, p.nextPage i:hover {
+  text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.4px 0.3px rgb(31, 162, 227), 0.8px 0.6px rgb(29.8571428571, 152.0714285714, 213.7857142857), 1.2px 0.9px rgb(28.7142857143, 142.1428571429, 200.5714285714), 1.6px 1.2px rgb(27.5714285714, 132.2142857143, 187.3571428571), 2px 1.5px rgb(26.4285714286, 122.2857142857, 174.1428571429), 2.4px 1.8px rgb(25.2857142857, 112.3571428571, 160.9285714286), 2.8px 2.1px rgb(24.1428571429, 102.4285714286, 147.7142857143), 3.2px 2.4px rgb(23, 92.5, 134.5), 3.6px 2.7px rgb(21.8571428571, 82.5714285714, 121.2857142857), 4px 3px rgb(20.7142857143, 72.6428571429, 108.0714285714), 4.4px 3.3px rgb(19.5714285714, 62.7142857143, 94.8571428571), 4.8px 3.6px rgb(18.4285714286, 52.7857142857, 81.6428571429), 5.2px 3.9px rgb(17.2857142857, 42.8571428571, 68.4285714286), 5.6px 4.2px rgb(16.1428571429, 32.9285714286, 55.2142857143), 6px 4.5px rgb(15, 23, 42);
+  transform: translate(3px, 1.5px);
+}
+p.previousPage i:active, p.nextPage i:active {
+  text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.4px 0.3px rgb(31, 162, 227), 0.8px 0.6px rgb(29.2222222222, 146.5555555556, 206.4444444444), 1.2px 0.9px rgb(27.4444444444, 131.1111111111, 185.8888888889), 1.6px 1.2px rgb(25.6666666667, 115.6666666667, 165.3333333333), 2px 1.5px rgb(23.8888888889, 100.2222222222, 144.7777777778), 2.4px 1.8px rgb(22.1111111111, 84.7777777778, 124.2222222222), 2.8px 2.1px rgb(20.3333333333, 69.3333333333, 103.6666666667), 3.2px 2.4px rgb(18.5555555556, 53.8888888889, 83.1111111111), 3.6px 2.7px rgb(16.7777777778, 38.4444444444, 62.5555555556), 4px 3px rgb(15, 23, 42);
+  transform: translate(6px, 3px);
+}
+
+p.nextPage {
+  transform: rotate(180deg);
 }/*# sourceMappingURL=hud.css.map */
