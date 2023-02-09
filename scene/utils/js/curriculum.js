@@ -1,18 +1,13 @@
 const CV = document.getElementById('CVin');
-const rotation = document.getElementById('rotation');
+const rotation = document.getElementById('rotationStand');
 const teleport = document.getElementById('teleport');
+const rotationIcon = document.getElementById('rotationStandIcon');
 
-/*
-CV.addEventListener('change', function() {
+rotation.addEventListener('change', function() {
         if (this.checked) {
-                setTimeout(() => {
-                        rotation.style.display = "block";
-                }, speed1)
+                rotationIcon.classList.add('anim');
         } else {
-                rotation.style.display = "none";
-                setTimeout(() => {
-                        rotation.checked = false;
-                }, speed2)
+                rotationIcon.classList.remove('anim');
         }
-});*/
+});
 

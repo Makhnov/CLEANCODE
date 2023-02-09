@@ -291,20 +291,6 @@ nav.droite {
     display: none;
     grid-template-rows: repeat(5, 10vh) 30vh;
     grid-template-columns: 1fr;
-    background: linear-gradient(to bottom,
-        rgba(0, 0, 0, 0) 0vh,
-        rgba(0, 0, 0, 0) 10vh,
-        rgba(0, 0, 0, 0) 10vh,
-        rgba(0, 0, 0, 0) 20vh,
-        rgba(0, 0, 0, 0) 20vh,
-        rgba(0, 0, 0, 0) 30vh,
-        yellow 30vh,
-        yellow 40vh,
-        purple 40vh,
-        purple 50vh,
-        black 50vh
-    );
-
 }
 
 nav.droite ul {
@@ -316,9 +302,10 @@ nav.droite ul {
     grid-template-columns: 1fr;
 }
 
-
 nav.droite ul li {
     all:initial;
+    display: grid;
+    place-content: center;
     min-height: 10vh;
     min-width: 12vw;
 
@@ -328,19 +315,8 @@ nav.droite ul li {
     nav.droite ul li:nth-of-type(#{($i + 1)}) {
         grid-column: 1;
         grid-row: 1 + $i;
+        background-color: hsl(($i * 50), 100%, 50%);
     }
-}
-
-nav.droite ul li button {
-
-    all:initial;
-    visibility: hidden;
-    display: grid;
-    place-content: center;
-    min-height: 10vh;
-    min-width: 12vw;
-    box-sizing: border-box;
-    border:1px solid black;
 }
 
 #openBook {
@@ -353,8 +329,9 @@ nav.droite ul li button {
     background-image:url('../../../divers/img/inputBook2.png');
     background-size:contain;
     background-repeat: no-repeat;
-    height:100px;
-    width: 100px;
+    min-height:10vh;
+    min-width: 10vh;
+    border-radius: 50%;
 
     &:hover {
         transform:scale(1.1);
@@ -362,11 +339,12 @@ nav.droite ul li button {
 }
 
 p.previousPage, p.nextPage {
-    all:initial;
+    margin:0;
+    padding:0;
     cursor: pointer;
     display: grid;
     place-content: center;
-    height: 50px;
+    min-height: 10vh;
     width: 50px;
     
     font-size: 3rem;
@@ -448,4 +426,54 @@ p.previousPage, p.nextPage {
 
 p.nextPage {
     transform: rotate(180deg);
+}
+
+#openStandIcon {
+    display: block;
+    cursor: pointer;
+    width: 7vh;
+    height: 7vh;
+    background-image: url('../../../divers/img/play.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    border:5px solid whitesmoke;
+
+    &:checked {
+        background-image: url('../../../divers/img/pause.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
+
+#rotationStandIcon {
+    display: block;
+    cursor: pointer;
+    width: 7vh;
+    height: 7vh;
+    background-image: url('../../../divers/img/rotation.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    //background-color: var(--mainColor1);
+    border-radius: 50%;
+    border:5px solid whitesmoke;
+
+    &:hover {
+        animation: iconTurn 10s linear infinite;
+    }
+    
+    &.anim {
+        animation: iconTurn 5s linear infinite;
+    }
+}
+
+// A LA FIN //
+html body #containerHUD nav.droite ul li {
+    > * {
+        position: absolute;
+        align-self: center;
+        justify-self: center;
+        //z-index: 10;
+        visibility: hidden;
+    }
 }

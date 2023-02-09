@@ -223,7 +223,6 @@ nav.droite {
   display: none;
   grid-template-rows: repeat(5, 10vh) 30vh;
   grid-template-columns: 1fr;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0vh, rgba(0, 0, 0, 0) 10vh, rgba(0, 0, 0, 0) 10vh, rgba(0, 0, 0, 0) 20vh, rgba(0, 0, 0, 0) 20vh, rgba(0, 0, 0, 0) 30vh, yellow 30vh, yellow 40vh, purple 40vh, purple 50vh, black 50vh);
 }
 
 nav.droite ul {
@@ -236,6 +235,8 @@ nav.droite ul {
 
 nav.droite ul li {
   all: initial;
+  display: grid;
+  place-content: center;
   min-height: 10vh;
   min-width: 12vw;
 }
@@ -243,37 +244,31 @@ nav.droite ul li {
 nav.droite ul li:nth-of-type(1) {
   grid-column: 1;
   grid-row: 1;
+  background-color: hsl(0deg, 100%, 50%);
 }
 
 nav.droite ul li:nth-of-type(2) {
   grid-column: 1;
   grid-row: 2;
+  background-color: hsl(50deg, 100%, 50%);
 }
 
 nav.droite ul li:nth-of-type(3) {
   grid-column: 1;
   grid-row: 3;
+  background-color: hsl(100deg, 100%, 50%);
 }
 
 nav.droite ul li:nth-of-type(4) {
   grid-column: 1;
   grid-row: 4;
+  background-color: hsl(150deg, 100%, 50%);
 }
 
 nav.droite ul li:nth-of-type(5) {
   grid-column: 1;
   grid-row: 5;
-}
-
-nav.droite ul li button {
-  all: initial;
-  visibility: hidden;
-  display: grid;
-  place-content: center;
-  min-height: 10vh;
-  min-width: 12vw;
-  box-sizing: border-box;
-  border: 1px solid black;
+  background-color: hsl(200deg, 100%, 50%);
 }
 
 #openBook {
@@ -285,19 +280,21 @@ nav.droite ul li button {
   background-image: url("../../../divers/img/inputBook2.png");
   background-size: contain;
   background-repeat: no-repeat;
-  height: 100px;
-  width: 100px;
+  min-height: 10vh;
+  min-width: 10vh;
+  border-radius: 50%;
 }
 #openBook:hover {
   transform: scale(1.1);
 }
 
 p.previousPage, p.nextPage {
-  all: initial;
+  margin: 0;
+  padding: 0;
   cursor: pointer;
   display: grid;
   place-content: center;
-  height: 50px;
+  min-height: 10vh;
   width: 50px;
   font-size: 3rem;
   text-align: center;
@@ -315,4 +312,46 @@ p.previousPage i:active, p.nextPage i:active {
 
 p.nextPage {
   transform: rotate(180deg);
+}
+
+#openStandIcon {
+  display: block;
+  cursor: pointer;
+  width: 7vh;
+  height: 7vh;
+  background-image: url("../../../divers/img/play.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  border: 5px solid whitesmoke;
+}
+#openStandIcon:checked {
+  background-image: url("../../../divers/img/pause.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#rotationStandIcon {
+  display: block;
+  cursor: pointer;
+  width: 7vh;
+  height: 7vh;
+  background-image: url("../../../divers/img/rotation.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  border: 5px solid whitesmoke;
+}
+#rotationStandIcon:hover {
+  animation: iconTurn 10s linear infinite;
+}
+#rotationStandIcon.anim {
+  animation: iconTurn 5s linear infinite;
+}
+
+html body #containerHUD nav.droite ul li > * {
+  position: absolute;
+  align-self: center;
+  justify-self: center;
+  visibility: hidden;
 }/*# sourceMappingURL=hud.css.map */

@@ -22,48 +22,18 @@ input {
     transform:translateZ(-500px);
 }
 
-#CURRICULUM.anim #exit2 {
-    top:10px;
-    left:10px;
-    width: 50px;
-    height: 50px;
-    background-image: url('../../../divers/img/play.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    border-radius: 50%;
-    border:5px solid whitesmoke;
-
-    &:checked {
-        background-image: url('../../../divers/img/pause.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
+#CURRICULUM.anim #openStand {
+    display: none!important;
 }
 
-#CURRICULUM.anim #rotation {
-    top:10px;
-    left:75px;
-    width: 50px;
-    height: 50px;
-    background-image: url('../../../divers/img/rotation.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: var(--mainColor1);
-    border-radius: 50%;
-    border:5px solid whitesmoke;
-
-    &:hover {
-        animation: iconTurn 10s linear infinite;
-    }
-
-    &:checked {
-        animation: iconTurn 5s linear infinite;
-    }
+#CURRICULUM.anim #rotationStand {
+    display: none!important;
 
     &:checked ~ #teleport {
-        animation: rotation linear 20s infinite;
+        animation: rotationStand linear 20s infinite;
     }
 }
+
 
 #CVout {
     display: none;
@@ -430,7 +400,7 @@ input {
     }
 }
 
-@keyframes rotation {
+@keyframes rotationStand {
     from {
         transform: translate(-50%, -50%)  rotateX(85deg) rotateZ(0deg);
     }
@@ -562,7 +532,7 @@ input {
     }
 }
 
-#CURRICULUM.anim #exit2:checked ~ #teleport {
+#CURRICULUM.anim #openStand:checked ~ #teleport {
     .bloc.top {
         animation: blocTopOut var(--vitesseSortie) linear forwards!important;
     }

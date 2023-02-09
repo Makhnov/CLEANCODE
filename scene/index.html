@@ -56,36 +56,46 @@
         <nav class="droite">
             <ul>
                 <li class="droite">
-                    <button class="droite" type="button">
-                        <label from="readBook" onclick="openBook(this)" id="openBook"></label>
-                    </button>
+                    <div></div>
+                    <label from="readBook" onclick="openBook(this)" id="openBook"></label>
+                    <label for="openStand" id="openStandIcon"></label>
+                    <div></div>
+                    <div></div>
                 </li>
                 <li class="droite">
-                    <button class="droite" type="button">
-                        <p class="previousPage">
-                            <i onclick="pageSuivante(this)" id="previousPage" class="fas fa-share"></i>
-                        </p>
-                    </button>
+                    <div></div>
+                    <p class="previousPage">
+                        <i onclick="pageSuivante(this)" id="previousPage" class="fas fa-share"></i>
+                    </p>
+                    <label for="rotationStand" id="rotationStandIcon"></label>
+                    <div></div>
+                    <div></div>
+
                 </li>
                 <li class="droite">
-                    <button class="droite" type="button">
-                        <p class="nextPage">
-                            <i onclick="pagePrecedente(this)" id="nextPage" class="fas fa-share"></i>
-                        </p>
-                    </button>
+                    <div></div>
+                    <p class="nextPage">
+                        <i onclick="pagePrecedente(this)" id="nextPage" class="fas fa-share"></i>
+                    </p>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </li>
                 <li class="droite">
-                    <button class="droite" type="button">
-                        <p class="download"></p>
-                    </button>
+                    <div></div>
+                    <p class="download"></p>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </li>
                 <li class="droite">
-                    <button class="droite" type="button">
-                        <p class="infos"></p>
-                    </button>
+                    <div></div>
+                    <p class="infos"></p>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </li>
             </ul>
-            <div id="waitingMenu"></div>
         </nav>
 
         <div id="blurBackground">
@@ -151,8 +161,8 @@
                 <input type="checkbox" id="exit1">
             </div>
             <div id="CURRICULUM" class="hidden main">
-                <input type="checkbox" id="exit2">
-                <input type="checkbox" id="rotation">
+                <input type="checkbox" id="openStand">
+                <input type="checkbox" id="rotationStand">
                 <div id="teleport">
                     <label for="zoneCV" id="filtreCV"></label>
                     <input type="button" id="zoneCV">

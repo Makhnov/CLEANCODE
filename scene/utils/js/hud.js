@@ -5,7 +5,6 @@ const scene = document.getElementById('containerView').children;
 const waitingMenu = document.getElementById('waitingMenu');
 const vortex = document.getElementsByClassName('vortex')[0];
 const blurBG = document.getElementById('blurBackground');
-
 const urlGIF = "../../../divers/img/loading3s.gif?time=";
 function loadingGIF() {
     waitingMenu.style.backgroundImage = `url(${urlGIF + new Date().getTime()})`;
@@ -121,11 +120,18 @@ function delayLi() {
                 for (j = 0; j < tabNav.length; j++) {
                     if (!tabNav[j]) {
                         scene[j].classList.add("hidden");
-                        scene[j].classList.remove("anim"); 
+                        scene[j].classList.remove("anim");
                     } else {
-                        document.getElementById("exit"+j).checked = false;
                         scene[j].classList.remove("hidden");
                         scene[j].classList.add("anim"); 
+                    }
+                
+                    for (k = 0; k < tabNav.length; k++) {
+                        if (!tabNav[k]) {
+                            navDroite.children[0].children[j].children[k].style.visibility = "hidden";
+                        } else {
+                            navDroite.children[0].children[j].children[k].style.visibility = "visible";
+                        }
                     }
                 }
                 waitingMenu.style.backgroundImage = "none";
