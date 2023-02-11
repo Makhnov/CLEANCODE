@@ -27,6 +27,10 @@
     --standHauteur:calc(24/21 * (var(--standLargeur)));
 
     // LIVRE PORTFOLIO //
-    --livreLargeur:clamp(200px, 75vh, 1000px);
-
+    --livreLargeur:clamp(200px, 75vh, 37vw);
+    --imageGauche:url('../../../divers/img/imgL.jpg');
+    --imageGaucheDos:url('../../../divers/img/2.jpg');
+    --imageDroite:url('../../../divers/img/imgLWait1.jpg');
+    --imageDroiteDos:url('../../../divers/img/imgRFront.jpg');
+    --zoomLivre:200px;
 }

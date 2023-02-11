@@ -20,7 +20,12 @@
   --standLargeurInt:calc(12/21 * (var(--standLargeur)));
   --standEpaisseur:calc(2/21 * (var(--standLargeur)));
   --standHauteur:calc(24/21 * (var(--standLargeur)));
-  --livreLargeur:clamp(200px, 75vh, 1000px);
+  --livreLargeur:clamp(200px, 75vh, 37vw);
+  --imageGauche:url("../../../divers/img/imgL.jpg");
+  --imageGaucheDos:url("../../../divers/img/2.jpg");
+  --imageDroite:url("../../../divers/img/imgLWait1.jpg");
+  --imageDroiteDos:url("../../../divers/img/imgRFront.jpg");
+  --zoomLivre:200px;
 }
 
 html, body {
@@ -45,7 +50,7 @@ nav, ul, li {
   background-position: center;
   background-size: cover;
   display: grid;
-  grid-template-columns: 1vw 20vw 1vw 56vw 1vw 12vw 1vw 7vw 1vw;
+  grid-template-columns: 1vw 20vw 1vw 56vw 1vw 4vw 1vw 15vw 1vw;
   grid-template-rows: 10vh 80vh 10vh;
   perspective: 1000px;
   perspective-origin: center;
@@ -217,9 +222,11 @@ nav.gauche ul li .back::after {
 
 nav.droite {
   grid-row: 2;
-  grid-column: 6;
+  grid-column: 8;
+  position: relative;
+  z-index: 100;
   height: 80vh;
-  width: 12vw;
+  width: 15vw;
   display: none;
   grid-template-rows: repeat(5, 10vh) 30vh;
   grid-template-columns: 1fr;
@@ -227,91 +234,110 @@ nav.droite {
 
 nav.droite ul {
   height: 80vh;
-  width: 12vw;
+  width: 15vw;
   display: grid;
-  grid-template-rows: repeat(5, 10vh) 30vh;
+  align-content: center;
+  grid-template-rows: 10vh repeat(5, 12vh) 10vh;
   grid-template-columns: 1fr;
 }
 
 nav.droite ul li {
   all: initial;
   display: grid;
-  place-content: center;
-  min-height: 10vh;
-  min-width: 12vw;
+  align-content: center;
+  min-height: 12vh;
+  min-width: 15vw;
 }
 
 nav.droite ul li:nth-of-type(1) {
   grid-column: 1;
-  grid-row: 1;
-  background-color: hsl(0deg, 100%, 50%);
+  grid-row: 2;
 }
 
 nav.droite ul li:nth-of-type(2) {
   grid-column: 1;
-  grid-row: 2;
-  background-color: hsl(50deg, 100%, 50%);
+  grid-row: 3;
 }
 
 nav.droite ul li:nth-of-type(3) {
   grid-column: 1;
-  grid-row: 3;
-  background-color: hsl(100deg, 100%, 50%);
+  grid-row: 4;
 }
 
 nav.droite ul li:nth-of-type(4) {
   grid-column: 1;
-  grid-row: 4;
-  background-color: hsl(150deg, 100%, 50%);
+  grid-row: 5;
 }
 
 nav.droite ul li:nth-of-type(5) {
   grid-column: 1;
-  grid-row: 5;
-  background-color: hsl(200deg, 100%, 50%);
+  grid-row: 6;
 }
 
-#openBook {
-  all: initial;
+nav.droite ul li .bouton-texte:not(.changementPage, .zoom),
+nav.droite ul li .bouton-texte .container-button-texte {
+  align-self: center;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  min-height: 10vh;
+  min-width: 12vh;
+  display: grid;
+  place-content: center;
+  font-size: 3rem;
+  color: var(--mainColor3);
+}
+nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i,
+nav.droite ul li .bouton-texte .container-button-texte i {
+  text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.5px 0.375px rgb(31, 162, 227), 1px 0.75px rgb(30.36, 156.44, 219.6), 1.5px 1.125px rgb(29.72, 150.88, 212.2), 2px 1.5px rgb(29.08, 145.32, 204.8), 2.5px 1.875px rgb(28.44, 139.76, 197.4), 3px 2.25px rgb(27.8, 134.2, 190), 3.5px 2.625px rgb(27.16, 128.64, 182.6), 4px 3px rgb(26.52, 123.08, 175.2), 4.5px 3.375px rgb(25.88, 117.52, 167.8), 5px 3.75px rgb(25.24, 111.96, 160.4), 5.5px 4.125px rgb(24.6, 106.4, 153), 6px 4.5px rgb(23.96, 100.84, 145.6), 6.5px 4.875px rgb(23.32, 95.28, 138.2), 7px 5.25px rgb(22.68, 89.72, 130.8), 7.5px 5.625px rgb(22.04, 84.16, 123.4), 8px 6px rgb(21.4, 78.6, 116), 8.5px 6.375px rgb(20.76, 73.04, 108.6), 9px 6.75px rgb(20.12, 67.48, 101.2), 9.5px 7.125px rgb(19.48, 61.92, 93.8), 10px 7.5px rgb(18.84, 56.36, 86.4), 10.5px 7.875px rgb(18.2, 50.8, 79), 11px 8.25px rgb(17.56, 45.24, 71.6), 11.5px 8.625px rgb(16.92, 39.68, 64.2), 12px 9px rgb(16.28, 34.12, 56.8), 12.5px 9.375px rgb(15.64, 28.56, 49.4), 13px 9.75px rgb(15, 23, 42);
+  transform: translate(0, 0);
+  transition: opacity 0.5s;
+}
+nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i:hover,
+nav.droite ul li .bouton-texte .container-button-texte i:hover {
+  text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.5px 0.375px rgb(31, 162, 227), 1px 0.75px rgb(30.2380952381, 155.380952381, 218.1904761905), 1.5px 1.125px rgb(29.4761904762, 148.7619047619, 209.380952381), 2px 1.5px rgb(28.7142857143, 142.1428571429, 200.5714285714), 2.5px 1.875px rgb(27.9523809524, 135.5238095238, 191.7619047619), 3px 2.25px rgb(27.1904761905, 128.9047619048, 182.9523809524), 3.5px 2.625px rgb(26.4285714286, 122.2857142857, 174.1428571429), 4px 3px rgb(25.6666666667, 115.6666666667, 165.3333333333), 4.5px 3.375px rgb(24.9047619048, 109.0476190476, 156.5238095238), 5px 3.75px rgb(24.1428571429, 102.4285714286, 147.7142857143), 5.5px 4.125px rgb(23.380952381, 95.8095238095, 138.9047619048), 6px 4.5px rgb(22.619047619, 89.1904761905, 130.0952380952), 6.5px 4.875px rgb(21.8571428571, 82.5714285714, 121.2857142857), 7px 5.25px rgb(21.0952380952, 75.9523809524, 112.4761904762), 7.5px 5.625px rgb(20.3333333333, 69.3333333333, 103.6666666667), 8px 6px rgb(19.5714285714, 62.7142857143, 94.8571428571), 8.5px 6.375px rgb(18.8095238095, 56.0952380952, 86.0476190476), 9px 6.75px rgb(18.0476190476, 49.4761904762, 77.2380952381), 9.5px 7.125px rgb(17.2857142857, 42.8571428571, 68.4285714286), 10px 7.5px rgb(16.5238095238, 36.2380952381, 59.619047619), 10.5px 7.875px rgb(15.7619047619, 29.619047619, 50.8095238095), 11px 8.25px rgb(15, 23, 42);
+  transform: translate(2px, 1.5px);
+}
+nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i:active,
+nav.droite ul li .bouton-texte .container-button-texte i:active {
+  text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.5px 0.375px rgb(31, 162, 227), 1px 0.75px rgb(30.0588235294, 153.8235294118, 216.1176470588), 1.5px 1.125px rgb(29.1176470588, 145.6470588235, 205.2352941176), 2px 1.5px rgb(28.1764705882, 137.4705882353, 194.3529411765), 2.5px 1.875px rgb(27.2352941176, 129.2941176471, 183.4705882353), 3px 2.25px rgb(26.2941176471, 121.1176470588, 172.5882352941), 3.5px 2.625px rgb(25.3529411765, 112.9411764706, 161.7058823529), 4px 3px rgb(24.4117647059, 104.7647058824, 150.8235294118), 4.5px 3.375px rgb(23.4705882353, 96.5882352941, 139.9411764706), 5px 3.75px rgb(22.5294117647, 88.4117647059, 129.0588235294), 5.5px 4.125px rgb(21.5882352941, 80.2352941176, 118.1764705882), 6px 4.5px rgb(20.6470588235, 72.0588235294, 107.2941176471), 6.5px 4.875px rgb(19.7058823529, 63.8823529412, 96.4117647059), 7px 5.25px rgb(18.7647058824, 55.7058823529, 85.5294117647), 7.5px 5.625px rgb(17.8235294118, 47.5294117647, 74.6470588235), 8px 6px rgb(16.8823529412, 39.3529411765, 63.7647058824), 8.5px 6.375px rgb(15.9411764706, 31.1764705882, 52.8823529412), 9px 6.75px rgb(15, 23, 42);
+  transform: translate(4px, 3px);
+}
+
+.bouton-texte.changementPage,
+.bouton-texte.zoom {
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+.bouton-texte.changementPage .container-button-texte,
+.bouton-texte.zoom .container-button-texte {
+  min-width: 6rem !important;
+}
+.bouton-texte.changementPage .container-button-texte.pagePrecedente,
+.bouton-texte.zoom .container-button-texte.pagePrecedente {
+  transform: rotateY(-180deg);
+}
+
+#openBook i {
   align-self: center;
   justify-self: center;
   position: absolute;
-  cursor: pointer;
-  background-image: url("../../../divers/img/inputBook2.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  min-height: 10vh;
-  min-width: 10vh;
-  border-radius: 50%;
 }
-#openBook:hover {
-  transform: scale(1.1);
+#openBook .fa-book {
+  z-index: 110;
 }
-
-p.previousPage, p.nextPage {
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
-  display: grid;
-  place-content: center;
-  min-height: 10vh;
-  width: 50px;
-  font-size: 3rem;
-  text-align: center;
-  color: var(--mainColor3);
-  text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.4px 0.3px rgb(31, 162, 227), 0.8px 0.6px rgb(30.1578947368, 154.6842105263, 217.2631578947), 1.2px 0.9px rgb(29.3157894737, 147.3684210526, 207.5263157895), 1.6px 1.2px rgb(28.4736842105, 140.0526315789, 197.7894736842), 2px 1.5px rgb(27.6315789474, 132.7368421053, 188.0526315789), 2.4px 1.8px rgb(26.7894736842, 125.4210526316, 178.3157894737), 2.8px 2.1px rgb(25.9473684211, 118.1052631579, 168.5789473684), 3.2px 2.4px rgb(25.1052631579, 110.7894736842, 158.8421052632), 3.6px 2.7px rgb(24.2631578947, 103.4736842105, 149.1052631579), 4px 3px rgb(23.4210526316, 96.1578947368, 139.3684210526), 4.4px 3.3px rgb(22.5789473684, 88.8421052632, 129.6315789474), 4.8px 3.6px rgb(21.7368421053, 81.5263157895, 119.8947368421), 5.2px 3.9px rgb(20.8947368421, 74.2105263158, 110.1578947368), 5.6px 4.2px rgb(20.0526315789, 66.8947368421, 100.4210526316), 6px 4.5px rgb(19.2105263158, 59.5789473684, 90.6842105263), 6.4px 4.8px rgb(18.3684210526, 52.2631578947, 80.9473684211), 6.8px 5.1px rgb(17.5263157895, 44.9473684211, 71.2105263158), 7.2px 5.4px rgb(16.6842105263, 37.6315789474, 61.4736842105), 7.6px 5.7px rgb(15.8421052632, 30.3157894737, 51.7368421053), 8px 6px rgb(15, 23, 42);
+#openBook .fa-book-open {
+  opacity: 0;
+  z-index: 100;
 }
-p.previousPage i:hover, p.nextPage i:hover {
-  text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.4px 0.3px rgb(31, 162, 227), 0.8px 0.6px rgb(29.8571428571, 152.0714285714, 213.7857142857), 1.2px 0.9px rgb(28.7142857143, 142.1428571429, 200.5714285714), 1.6px 1.2px rgb(27.5714285714, 132.2142857143, 187.3571428571), 2px 1.5px rgb(26.4285714286, 122.2857142857, 174.1428571429), 2.4px 1.8px rgb(25.2857142857, 112.3571428571, 160.9285714286), 2.8px 2.1px rgb(24.1428571429, 102.4285714286, 147.7142857143), 3.2px 2.4px rgb(23, 92.5, 134.5), 3.6px 2.7px rgb(21.8571428571, 82.5714285714, 121.2857142857), 4px 3px rgb(20.7142857143, 72.6428571429, 108.0714285714), 4.4px 3.3px rgb(19.5714285714, 62.7142857143, 94.8571428571), 4.8px 3.6px rgb(18.4285714286, 52.7857142857, 81.6428571429), 5.2px 3.9px rgb(17.2857142857, 42.8571428571, 68.4285714286), 5.6px 4.2px rgb(16.1428571429, 32.9285714286, 55.2142857143), 6px 4.5px rgb(15, 23, 42);
-  transform: translate(3px, 1.5px);
+#openBook.closed .fa-book {
+  opacity: 0;
 }
-p.previousPage i:active, p.nextPage i:active {
-  text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.4px 0.3px rgb(31, 162, 227), 0.8px 0.6px rgb(29.2222222222, 146.5555555556, 206.4444444444), 1.2px 0.9px rgb(27.4444444444, 131.1111111111, 185.8888888889), 1.6px 1.2px rgb(25.6666666667, 115.6666666667, 165.3333333333), 2px 1.5px rgb(23.8888888889, 100.2222222222, 144.7777777778), 2.4px 1.8px rgb(22.1111111111, 84.7777777778, 124.2222222222), 2.8px 2.1px rgb(20.3333333333, 69.3333333333, 103.6666666667), 3.2px 2.4px rgb(18.5555555556, 53.8888888889, 83.1111111111), 3.6px 2.7px rgb(16.7777777778, 38.4444444444, 62.5555555556), 4px 3px rgb(15, 23, 42);
-  transform: translate(6px, 3px);
-}
-
-p.nextPage {
-  transform: rotate(180deg);
+#openBook.closed .fa-book-open {
+  opacity: 1;
 }
 
 #openStandIcon {
@@ -354,4 +380,35 @@ html body #containerHUD nav.droite ul li > * {
   align-self: center;
   justify-self: center;
   visibility: hidden;
+}
+
+#modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 100vh;
+  width: 100vw;
+}
+
+#backgroundModal {
+  position: absolute;
+  z-index: 500;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--subColorLight);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  cursor: crosshair;
+}
+
+#containerModal {
+  position: absolute;
+  z-index: 600;
+  top: 15vh;
+  left: 15vw;
+  height: 70vh;
+  width: 70vw;
+  background-color: var(--mainColor3);
 }/*# sourceMappingURL=hud.css.map */

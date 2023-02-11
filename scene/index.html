@@ -57,16 +57,24 @@
             <ul>
                 <li class="droite">
                     <div></div>
-                    <label from="readBook" onclick="openBook(this)" id="openBook"></label>
+                    <label from="readBook" onclick="openBook(this)" id="openBook" class="open bouton-texte">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-book-open"></i>
+                    </label>
                     <label for="openStand" id="openStandIcon"></label>
                     <div></div>
                     <div></div>
                 </li>
                 <li class="droite">
                     <div></div>
-                    <p class="previousPage">
-                        <i onclick="pageSuivante(this)" id="previousPage" class="fas fa-share"></i>
-                    </p>
+                    <div class="changementPage bouton-texte">
+                        <span class="container-button-texte pageSuivante">
+                            <i onclick="pageSuivante(this)" id="pageSuivante" class="fas fa-share"></i>
+                        </span>
+                        <span class="container-button-texte pagePrecedente">
+                            <i onclick="pagePrecedente(this)" id="pagePrecedente" class="fas fa-share"></i>
+                        </span>
+                    </div>
                     <label for="rotationStand" id="rotationStandIcon"></label>
                     <div></div>
                     <div></div>
@@ -74,8 +82,13 @@
                 </li>
                 <li class="droite">
                     <div></div>
-                    <p class="nextPage">
-                        <i onclick="pagePrecedente(this)" id="nextPage" class="fas fa-share"></i>
+                    <p class="zoom bouton-texte">
+                        <span class="container-button-texte zoom-moins">
+                            <i onclick="dezoomLivre()" class="fas fa-search-minus"></i>
+                        </span>
+                        <span class="container-button-texte zoom-plus">
+                            <i onclick="zoomLivre()" class="fas fa-search-plus"></i>
+                        </span>
                     </p>
                     <div></div>
                     <div></div>
@@ -83,14 +96,18 @@
                 </li>
                 <li class="droite">
                     <div></div>
-                    <p class="download"></p>
+                    <p class="informations bouton-texte">
+                        <i onclick="portfolioInfos()" id="infosSup" class="fas fa-info"></i>
+                    </p>
                     <div></div>
                     <div></div>
                     <div></div>
                 </li>
                 <li class="droite">
                     <div></div>
-                    <p class="infos"></p>
+                    <p class="voirPlus bouton-texte">
+                        <i onclick="portfolioPlus()" id="portfolioPlus" class="fas fa-plus"></i>
+                    </p>
                     <div></div>
                     <div></div>
                     <div></div>
@@ -98,12 +115,14 @@
             </ul>
         </nav>
 
+        <!-- 
         <div id="blurBackground">
             <div class="blurs"></div>
             <div class="blurs"></div>
             <div class="blurs"></div>
             <div class="blurs vortex"></div>
-        </div>
+        </div> 
+        -->
 
         <div id="containerView">
             <div id="APROPOS" class="hidden main">
@@ -119,35 +138,35 @@
                             <div class="fpage gauche"></div>
                             <div class="fpage gauche"></div>
                             <div class="fpage gauche"></div>
-                            <!-- <div id="pageG" class="page gauche">
-                                <div class="slice sliceL">
-                                    <div class="slice sliceL">
-                                        <div class="slice sliceL">
-                                            <div class="slice sliceL">
-                                                <div class="slice sliceL">
-                                                    <div class="slice sliceL">
-                                                        <div class="slice sliceL"></div>
+                            <div id="pageG" class="pages gauche">
+                                <div class="bandes bandeGauche">
+                                    <div class="bandes bandeGauche">
+                                        <div class="bandes bandeGauche">
+                                            <div class="bandes bandeGauche">
+                                                <div class="bandes bandeGauche">
+                                                    <div class="bandes bandeGauche">
+                                                        <div class="bandes bandeGauche"></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                         <div class="blocLivre droite">
                             <div class="fpage droite"></div>
                             <div class="fpage droite"></div>
                             <div class="fpage droite"></div>
                             <div class="fpage droite"></div>
-                            <div id="pageD" class="page droite">
-                                <div class="slice sliceR">
-                                    <div class="slice sliceR">
-                                        <div class="slice two sliceR">
-                                            <div class="slice sliceR">
-                                                <div class="slice sliceR">
-                                                    <div class="slice sliceR">
-                                                        <div class="slice sliceR"></div>
+                            <div id="pageD" class="pages droite">
+                                <div class="bandes bandeDroite">
+                                    <div class="bandes bandeDroite">
+                                        <div class="bandes two bandeDroite">
+                                            <div class="bandes bandeDroite">
+                                                <div class="bandes bandeDroite">
+                                                    <div class="bandes bandeDroite">
+                                                        <div class="bandes bandeDroite"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -192,7 +211,24 @@
             </form>
         </div>
     </section>
-
+    <section id="modal">
+        <div id="backgroundModal" onclick="portfolioInfosOut()"></div>
+        <div id="containerModal">
+            <h3>Titre</h3>
+            <h6>Résumé du titre</h6>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam atque inventore rem fugiat doloremque.
+                Neque eveniet voluptate sequi incidunt cupiditate fugit autem nihil, blanditiis optio veritatis
+                praesentium quam dolorem officiis!
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque impedit quibusdam vero veritatis
+                distinctio dignissimos cupiditate nisi doloremque eum provident error atque porro, pariatur corporis.
+                Numquam, unde expedita? Eius, laboriosam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores amet cumque minima, ipsum aut atque
+                soluta harum facere nisi dicta odio eius doloribus quo obcaecati officia quia, voluptas exercitationem
+                sequi!
+            </p>
+        </div>
+    </section>
     <script src="./utils/js/hud.js"></script>
     <script src="./utils/js/curriculum.js"></script>
     <script src="./utils/js/portfolio.js"></script>

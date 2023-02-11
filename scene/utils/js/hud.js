@@ -2,6 +2,8 @@ const li = document.querySelectorAll('li.gauche');
 const navGauche = document.getElementsByTagName('nav')[0];
 const navDroite = document.getElementsByTagName('nav')[1];
 const scene = document.getElementById('containerView').children;
+const modal = document.getElementById('modal');
+
 const waitingMenu = document.getElementById('waitingMenu');
 const vortex = document.getElementsByClassName('vortex')[0];
 const blurBG = document.getElementById('blurBackground');
@@ -87,6 +89,8 @@ for (let i = 0; i < li.length; i++) {
 
 async function menuAsync(iTemp) {
     // BEFORE
+    //console.log("BEFORE :" + iTemp);
+
     li[iTemp].classList.add("clicked");
     tabNav[iTemp] = true;
 
@@ -104,13 +108,11 @@ async function menuAsync(iTemp) {
         }
     }
 
-    console.log("BEFORE :" + iTemp);
-
     //IN-BETWEEN
     await delayLi(iTemp);
     
     // AFTER
-    console.log("AFTER :" + tabNav);
+    //console.log("AFTER :" + tabNav);
 }
 
 function delayLi() {
@@ -135,7 +137,7 @@ function delayLi() {
                     }
                 }
                 waitingMenu.style.backgroundImage = "none";
-                blurBG.style.display = "none";
+                //blurBG.style.display = "none";
                 navDroite.style.display = "grid";
                 menuDroite();
                 resolve();
@@ -167,4 +169,3 @@ function menuDroite() {
             break;
     }
 }
-

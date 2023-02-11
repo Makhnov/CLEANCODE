@@ -5,40 +5,52 @@ const pageG = document.getElementById('pageG');
 const livre = document.getElementById('livre');
 const readBook = document.getElementById('readBook');
 const iconBook = document.getElementById('openBook');
-const speedPage = 2600;
+
+const speedPage = 2300;
 
 let pageSpamm = true;
 
 function openBook(e) {
-    readBook.checked = !readBook.checked;
-    let str = window.getComputedStyle(e).getPropertyValue('background');
-    let url1 = str.slice(0 ,str.search(/\)/)+1);
-    let url2 = (url1 === 'url("../../../divers/img/inputBook2.png")' ? 'url("../../../divers/img/inputBook1.png")' : 'url("../../../divers/img/inputBook2.png")'); 
-    e.style.backgroundImage = url2;
+    if (pageSpamm) {
+        readBook.checked = !readBook.checked;
+        iconBook.classList.toggle('closed');
+        iconBook.classList.toggle('open');
+        if (e.checked) {
+            iconBook.children[0].style.zIndex = "110";
+        } else {
+            iconBook.children[0].style.zIndex = "90";
+        }
+    }
 }
 
 function pageSuivante(e) {
-    if (pageSpamm) {
+    let zInd = window.getComputedStyle(livre).getPropertyValue("z-index");
+    if (pageSpamm && zInd > 20) {
         pageSpamm = false;
         pageD.classList.add('anim');
         pageAsync(e)
     }
-;
 }
 
 function pagePrecedente(e) {
-    console.log(e);
+    let zInd = window.getComputedStyle(livre).getPropertyValue("z-index");
+    if (pageSpamm && zInd > 20) {
+        pageSpamm = false;
+        pageG.classList.add('anim');
+        pageAsync(e)
+    }
 }
 
 async function pageAsync(e) {
     // BEFORE
-    console.log("BEFORE :");
+    //console.log("BEFORE :");
 
     //IN-BETWEEN
     await delayPage(e);
     
     // AFTER
     pageD.classList.remove('anim');
+    pageG.classList.remove('anim');
     pageSpamm = true;
 }
 
@@ -50,3 +62,37 @@ function delayPage(e) {
         );
     });
 }
+
+function zoomLivre() {
+    let zoom = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--zoomLivre').replace('px',''));
+    console.log(zoom);
+    if (zoom <= 700) {
+        zoom += 50;
+        document.documentElement.style.setProperty('--zoomLivre', zoom +'px');
+    } else {
+        window.alert("Zoom maximal atteint !");
+    }
+}
+
+function dezoomLivre() {
+    let zoom = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--zoomLivre').replace('px',''));
+    console.log(zoom);
+    if (zoom >= -500) {
+        zoom -= 50;
+        document.documentElement.style.setProperty('--zoomLivre', zoom +'px');
+    } else {
+        window.alert("Zoom minimal atteint !");
+    }
+}
+
+function portfolioInfos() {
+    modal.style.display = "block";
+}
+
+function portfolioInfosOut() {
+    modal.style.display = "none";
+}
+
+function portfolioPlus() {
+    window.open("https://makh.fr/", "_blank");
+}   
