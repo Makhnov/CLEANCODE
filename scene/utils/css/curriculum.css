@@ -1,10 +1,10 @@
 :root {
-  --menuLargeur:clamp(200px, 40vh, 500px);
+  --menuLargeur:clamp(300px, 40vh, 15vw);
   --menuHauteur:calc(var(--menuLargeur) / 3);
   --menuProfondeur:50px;
   --ignitionDegree: 20deg;
-  --vitesseEntree:5s;
-  --vitesseSortie:3s;
+  --vitesseEntree:3s;
+  --vitesseSortie:1.75s;
   --bookBorder:rgb(50, 50, 50);
   --bookPage:whitesmoke;
   --mainColor1:rgb(17, 126, 181);
@@ -25,7 +25,7 @@
   --imageGaucheDos:url("../../../divers/img/2.jpg");
   --imageDroite:url("../../../divers/img/imgLWait1.jpg");
   --imageDroiteDos:url("../../../divers/img/imgRFront.jpg");
-  --zoomLivre:200px;
+  --zoomLivre:-200px;
 }
 
 input {
@@ -426,44 +426,6 @@ input {
     transform: rotate(-360deg);
   }
 }
-#CURRICULUM.anim #teleport {
-  transform: translate3d(-50%, -50%, 0) rotateX(90deg) rotateZ(0deg);
-}
-#CURRICULUM.anim #teleport .bloc.bottom .down::before,
-#CURRICULUM.anim #teleport .bloc.bottom .down::after,
-#CURRICULUM.anim #teleport .bloc.bottom .down {
-  animation: faceBottomDown linear var(--vitesseEntree) forwards;
-}
-#CURRICULUM.anim #teleport .bloc.bottom .side::before,
-#CURRICULUM.anim #teleport .bloc.bottom .side::after,
-#CURRICULUM.anim #teleport .bloc.bottom .side {
-  animation: sideBottom linear var(--vitesseEntree) forwards;
-}
-#CURRICULUM.anim #teleport .bloc.bottom .up::before,
-#CURRICULUM.anim #teleport .bloc.bottom .up {
-  animation: faceBottomUp linear var(--vitesseEntree) forwards;
-}
-#CURRICULUM.anim #teleport .bloc.bottom .up::after {
-  animation: faceBottomUpAfter linear var(--vitesseEntree) forwards;
-}
-#CURRICULUM.anim #teleport .bloc.top .side::before,
-#CURRICULUM.anim #teleport .bloc.top .side::after,
-#CURRICULUM.anim #teleport .bloc.top .side {
-  animation: blocTopSide linear var(--vitesseEntree) forwards;
-}
-#CURRICULUM.anim #teleport .bloc.top .face::before,
-#CURRICULUM.anim #teleport .bloc.top .face::after,
-#CURRICULUM.anim #teleport .bloc.top .face {
-  animation: blocTopFace linear var(--vitesseEntree) forwards;
-}
-#CURRICULUM.anim #teleport .bloc.top {
-  animation: blocTop linear var(--vitesseEntree) forwards;
-}
-#CURRICULUM.anim #teleport #filtreCV,
-#CURRICULUM.anim #teleport #zoneCV {
-  animation: document linear var(--vitesseEntree) forwards;
-}
-
 @keyframes blocTopOut {
   0% {
     transform: translateZ(var(--standHauteur)) rotate(1080deg);
@@ -519,6 +481,56 @@ input {
     height: 0px;
   }
 }
+#CURRICULUM.anim #teleport {
+  transform: translate3d(-50%, -50%, 0) rotateX(90deg) rotateZ(0deg);
+}
+
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport .bloc.bottom .down::before,
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport .bloc.bottom .down::after,
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport .bloc.bottom .down {
+  animation: faceBottomDown linear var(--vitesseEntree) forwards;
+}
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport .bloc.bottom .side::before,
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport .bloc.bottom .side::after,
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport .bloc.bottom .side {
+  animation: sideBottom linear var(--vitesseEntree) forwards;
+}
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport .bloc.bottom .up::before,
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport .bloc.bottom .up {
+  animation: faceBottomUp linear var(--vitesseEntree) forwards;
+}
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport .bloc.bottom .up::after {
+  animation: faceBottomUpAfter linear var(--vitesseEntree) forwards;
+}
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport .bloc.top .side::before,
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport .bloc.top .side::after,
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport .bloc.top .side {
+  animation: blocTopSide linear var(--vitesseEntree) forwards;
+}
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport .bloc.top .face::before,
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport .bloc.top .face::after,
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport .bloc.top .face {
+  animation: blocTopFace linear var(--vitesseEntree) forwards;
+}
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport .bloc.top {
+  animation: blocTop linear var(--vitesseEntree) forwards;
+}
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport #filtreCV,
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport #zoneCV {
+  animation: document linear var(--vitesseEntree) forwards;
+}
+
+#CURRICULUM.anim #openStand:checked ~ #teleport .bloc .face,
+#CURRICULUM.anim #openStand:checked ~ #teleport .bloc .face::before,
+#CURRICULUM.anim #openStand:checked ~ #teleport .bloc .face::after {
+  height: var(--standLargeurInt);
+  width: var(--standLargeur);
+}
+#CURRICULUM.anim #openStand:checked ~ #teleport .bloc .side,
+#CURRICULUM.anim #openStand:checked ~ #teleport .bloc .side::before,
+#CURRICULUM.anim #openStand:checked ~ #teleport .bloc .side::after {
+  width: var(--standEpaisseur);
+}
 #CURRICULUM.anim #openStand:checked ~ #teleport .bloc.top {
   animation: blocTopOut var(--vitesseSortie) linear forwards !important;
 }
@@ -527,5 +539,5 @@ input {
 }
 #CURRICULUM.anim #openStand:checked ~ #teleport #filtreCV,
 #CURRICULUM.anim #openStand:checked ~ #teleport #zoneCV {
-  animation: docOut var(--vitesseSortie) linear forwards !important;
+  animation: docOut var(--vitesseSortie) linear forwards;
 }/*# sourceMappingURL=curriculum.css.map */

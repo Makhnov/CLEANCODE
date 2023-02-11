@@ -34,7 +34,6 @@ input {
     }
 }
 
-
 #CVout {
     display: none;
     top:10px;
@@ -43,7 +42,6 @@ input {
     background-size: contain;
     background-repeat: no-repeat;
 }
-
 
 #teleport {
     position: relative;
@@ -57,6 +55,7 @@ input {
 
 .bloc.bottom, 
 .bloc.top {
+
     position: absolute;
     justify-self: center;
     transform-style: preserve-3d;
@@ -113,6 +112,7 @@ input {
 
 .bloc.bottom, 
 .bloc.top { //SIDES
+
     .side {
         position: absolute;
         transform-style: preserve-3d;
@@ -420,52 +420,6 @@ input {
     }
 }
 
-#CURRICULUM.anim #teleport {
-    transform: translate3d(-50%, -50%, 0)  rotateX(90deg) rotateZ(0deg);
-
-    .bloc.bottom .down::before,
-    .bloc.bottom .down::after,
-    .bloc.bottom .down {
-        animation: faceBottomDown linear var(--vitesseEntree)forwards;
-    }
-
-    .bloc.bottom .side::before,
-    .bloc.bottom .side::after,
-    .bloc.bottom .side {
-        animation: sideBottom linear var(--vitesseEntree) forwards;
-    }
-
-    .bloc.bottom .up::before,
-    .bloc.bottom .up {
-        animation: faceBottomUp linear var(--vitesseEntree) forwards;
-    }
-
-    .bloc.bottom .up::after {
-        animation: faceBottomUpAfter linear var(--vitesseEntree) forwards;
-    }
-    
-    .bloc.top .side::before,
-    .bloc.top .side::after,
-    .bloc.top .side {
-        animation: blocTopSide linear var(--vitesseEntree) forwards;
-    }
-
-    .bloc.top .face::before,
-    .bloc.top .face::after,
-    .bloc.top .face {
-        animation: blocTopFace linear var(--vitesseEntree) forwards;
-    }
-
-    .bloc.top {
-        animation: blocTop linear var(--vitesseEntree) forwards;
-    }
-
-    #filtreCV,
-    #zoneCV  {
-        animation: document linear var(--vitesseEntree) forwards;
-    }
-}
-
 @keyframes blocTopOut {
     0% {
         transform: translateZ(var(--standHauteur)) rotate(1080deg);
@@ -532,17 +486,74 @@ input {
     }
 }
 
-#CURRICULUM.anim #openStand:checked ~ #teleport {
-    .bloc.top {
-        animation: blocTopOut var(--vitesseSortie) linear forwards!important;
+#CURRICULUM.anim #teleport {
+    transform: translate3d(-50%, -50%, 0)  rotateX(90deg) rotateZ(0deg);
+}
+
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport {
+    .bloc.bottom .down::before,
+    .bloc.bottom .down::after,
+    .bloc.bottom .down {
+        animation: faceBottomDown linear var(--vitesseEntree)forwards;
     }
 
-    .bloc.bottom {
-        animation: blocBottomOut var(--vitesseSortie) linear forwards!important;
+    .bloc.bottom .side::before,
+    .bloc.bottom .side::after,
+    .bloc.bottom .side {
+        animation: sideBottom linear var(--vitesseEntree) forwards;
+    }
+
+    .bloc.bottom .up::before,
+    .bloc.bottom .up {
+        animation: faceBottomUp linear var(--vitesseEntree) forwards;
+    }
+
+    .bloc.bottom .up::after {
+        animation: faceBottomUpAfter linear var(--vitesseEntree) forwards;
+    }
+    
+    .bloc.top .side::before,
+    .bloc.top .side::after,
+    .bloc.top .side {
+        animation: blocTopSide linear var(--vitesseEntree) forwards;
+    }
+
+    .bloc.top .face::before,
+    .bloc.top .face::after,
+    .bloc.top .face {
+        animation: blocTopFace linear var(--vitesseEntree) forwards;
+    }
+
+    .bloc.top {
+        animation: blocTop linear var(--vitesseEntree) forwards;
     }
 
     #filtreCV,
+    #zoneCV  {
+        animation: document linear var(--vitesseEntree) forwards;
+    }
+}
+
+#CURRICULUM.anim #openStand:checked ~ #teleport {
+    .bloc .face,
+    .bloc .face::before,
+    .bloc .face::after {
+        height: var(--standLargeurInt);
+        width: var(--standLargeur);
+    }
+    .bloc .side,
+    .bloc .side::before,
+    .bloc .side::after {
+        width: var(--standEpaisseur); 
+    }
+    .bloc.top {
+        animation: blocTopOut var(--vitesseSortie) linear forwards!important;
+    }
+    .bloc.bottom {
+        animation: blocBottomOut var(--vitesseSortie) linear forwards!important;
+    }
+    #filtreCV,
     #zoneCV {
-        animation: docOut var(--vitesseSortie) linear forwards!important;
+        animation: docOut var(--vitesseSortie) linear forwards;
     }
 }

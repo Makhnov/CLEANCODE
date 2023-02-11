@@ -6,19 +6,26 @@ const livre = document.getElementById('livre');
 const readBook = document.getElementById('readBook');
 const iconBook = document.getElementById('openBook');
 
-const speedPage = 2300;
+const speedPage = 1700;
 
 let pageSpamm = true;
 
-function openBook(e) {
+function openBook(bool) {
     if (pageSpamm) {
         readBook.checked = !readBook.checked;
         iconBook.classList.toggle('closed');
-        iconBook.classList.toggle('open');
-        if (e.checked) {
+        if (readBook.checked) {
             iconBook.children[0].style.zIndex = "110";
+            if (bool) {// CLIC
+                tempo = false;
+            } else {//FROM HUD
+                document.documentElement.style.setProperty('--zoomLivre', '-200px');
+            }
         } else {
             iconBook.children[0].style.zIndex = "90";
+            if (bool) {// CLIC
+                tempo = true;
+            }
         }
     }
 }
@@ -47,7 +54,7 @@ async function pageAsync(e) {
 
     //IN-BETWEEN
     await delayPage(e);
-    
+
     // AFTER
     pageD.classList.remove('anim');
     pageG.classList.remove('anim');
@@ -55,31 +62,32 @@ async function pageAsync(e) {
 }
 
 function delayPage(e) {
-    return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
             resolve(e);
-            ;} , speedPage
+            ;
+        }, speedPage
         );
     });
 }
 
 function zoomLivre() {
-    let zoom = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--zoomLivre').replace('px',''));
+    let zoom = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--zoomLivre').replace('px', ''));
     console.log(zoom);
-    if (zoom <= 700) {
+    if (zoom <= 250) {
         zoom += 50;
-        document.documentElement.style.setProperty('--zoomLivre', zoom +'px');
+        document.documentElement.style.setProperty('--zoomLivre', zoom + 'px');
     } else {
         window.alert("Zoom maximal atteint !");
     }
 }
 
 function dezoomLivre() {
-    let zoom = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--zoomLivre').replace('px',''));
+    let zoom = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--zoomLivre').replace('px', ''));
     console.log(zoom);
-    if (zoom >= -500) {
+    if (zoom >= -800) {
         zoom -= 50;
-        document.documentElement.style.setProperty('--zoomLivre', zoom +'px');
+        document.documentElement.style.setProperty('--zoomLivre', zoom + 'px');
     } else {
         window.alert("Zoom minimal atteint !");
     }

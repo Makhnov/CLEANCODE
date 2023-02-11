@@ -57,11 +57,14 @@
             <ul>
                 <li class="droite">
                     <div></div>
-                    <label from="readBook" onclick="openBook(this)" id="openBook" class="open bouton-texte">
+                    <p from="readBook" onclick="openBook(true)" id="openBook" class="open bouton-texte">
                         <i class="fas fa-book"></i>
                         <i class="fas fa-book-open"></i>
-                    </label>
-                    <label for="openStand" id="openStandIcon"></label>
+                    </p>
+                    <p for="openStand" onclick="openCV(true)" id="openStandIcon" class="open bouton-texte">
+                        <i class="fas fa-download"></i>
+                        <i class="fas fa-upload"></i>
+                    </p>
                     <div></div>
                     <div></div>
                 </li>
@@ -127,7 +130,6 @@
         <div id="containerView">
             <div id="APROPOS" class="hidden main">
                 <p>A PROPOS</p>
-                <input type="checkbox" id="exit0">
             </div>
             <div id="PORTFOLIO" class="hidden main">
                 <section id="book">
@@ -177,7 +179,6 @@
                         </div>
                     </div>
                 </section>
-                <input type="checkbox" id="exit1">
             </div>
             <div id="CURRICULUM" class="hidden main">
                 <input type="checkbox" id="openStand">
@@ -203,11 +204,9 @@
             </div>
             <div id="COMPETENCES" class="hidden main">
                 <p>COMPETENCES</p>
-                <input type="checkbox" id="exit3">
             </div>
             <form action="GET" id="containerContact" class="hidden main">
                 <p>FORMULAIRE DE CONTACT</p>
-                <input type="checkbox" id="exit4">
             </form>
         </div>
     </section>

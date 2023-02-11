@@ -4,13 +4,6 @@
 //     }
 // }
 
-#PORTFOLIO.anim {
-    transform:translateZ(-500px);
-}
-#PORTFOLIO {
-    transform:translateZ(-500px);
-}
-
 #book {
     transform-style:preserve-3d ;
     height: 80vh;
@@ -24,22 +17,22 @@
 }
 
 #PORTFOLIO.anim #book #readBook:not(:checked) ~ #livre {
-    animation: openBook 2.22s linear forwards;
+    animation: openBook var(--vitesseEntree) linear forwards;
 }
 #PORTFOLIO.anim #book #readBook:checked ~ #livre {
-    animation: closeBook 2.22s linear forwards;
+    animation: closeBook var(--vitesseSortie) linear forwards;
 }
 #PORTFOLIO.anim #book #readBook:not(:checked) ~ #livre .blocLivre.droite {
-        animation: openBookRight 2.22s linear forwards;
+        animation: openBookRight var(--vitesseEntree) linear forwards;
 }
 #PORTFOLIO.anim #book #readBook:checked ~ #livre .blocLivre.droite {
-    animation: closeBookRight 2.22s linear forwards;
+    animation: closeBookRight var(--vitesseSortie) linear forwards;
 }
 #PORTFOLIO.anim #book #readBook:not(:checked) ~ #livre .blocLivre.gauche {
-    animation: openBookLeft 2.22s linear forwards;
+    animation: openBookLeft var(--vitesseEntree) linear forwards;
 }
 #PORTFOLIO.anim #book #readBook:checked ~ #livre .blocLivre.gauche {
-    animation: closeBookLeft 2.22s linear forwards;
+    animation: closeBookLeft var(--vitesseSortie) linear forwards;
 }
 
 #livre {
@@ -184,7 +177,7 @@
     }
 
     100% {
-        transform: translate3d(0, 1vh, var(--zoomLivre)) rotateY(0deg) rotateX(15deg) rotate(-3deg);
+        transform: translate3d(0, -5vh, var(--zoomLivre)) rotateY(0deg) rotateX(15deg) rotate(-3deg);
         z-index: 25;
     }
 }
@@ -260,11 +253,11 @@
     transform: translateX(0px) translateZ(14px) rotateY(3deg);
 
     &.anim {
-        animation: pageGauche 2.2s linear forwards;
+        animation: pageGauche 1.6s linear forwards;
     }
 
     &.anim .bandeGauche {
-        animation: bandeGauche 2.2s linear forwards;
+        animation: bandeGauche 1.6s linear forwards;
     }
 }
 
@@ -273,11 +266,11 @@
     transform: translateX(0px) translateZ(14px) rotateY(-3deg);
 
     &.anim {
-        animation: pageDroite 2.2s linear forwards;
+        animation: pageDroite 1.6s linear forwards;
     }
 
     &.anim .bandeDroite {
-        animation: bandeDroite 2.2s linear forwards;
+        animation: bandeDroite 1.6s linear forwards;
     }
 }
 

@@ -1,10 +1,10 @@
 :root {
-  --menuLargeur:clamp(200px, 40vh, 500px);
+  --menuLargeur:clamp(300px, 40vh, 15vw);
   --menuHauteur:calc(var(--menuLargeur) / 3);
   --menuProfondeur:50px;
   --ignitionDegree: 20deg;
-  --vitesseEntree:5s;
-  --vitesseSortie:3s;
+  --vitesseEntree:3s;
+  --vitesseSortie:1.75s;
   --bookBorder:rgb(50, 50, 50);
   --bookPage:whitesmoke;
   --mainColor1:rgb(17, 126, 181);
@@ -25,7 +25,7 @@
   --imageGaucheDos:url("../../../divers/img/2.jpg");
   --imageDroite:url("../../../divers/img/imgLWait1.jpg");
   --imageDroiteDos:url("../../../divers/img/imgRFront.jpg");
-  --zoomLivre:200px;
+  --zoomLivre:-200px;
 }
 
 html, body {
@@ -65,7 +65,7 @@ nav, ul, li {
   justify-self: center;
   transform-origin: left;
   background-repeat: no-repeat;
-  filter: hue-rotate(10deg);
+  filter: hue-rotate(35deg) contrast(2);
 }
 
 nav.gauche {
@@ -96,6 +96,7 @@ nav.gauche ul li {
   position: relative;
   transform-style: preserve-3d;
   min-height: var(--menuHauteur);
+  max-height: var(--menuHauteur);
   width: calc(var(--menuLargeur) - 20px);
   text-transform: uppercase;
   color: whitesmoke;
@@ -103,7 +104,7 @@ nav.gauche ul li {
   display: grid;
   align-content: center;
   padding-left: 20px;
-  font-size: clamp(1.25rem, 2.6vw, 2.6rem);
+  font-size: clamp(2rem, 2.5vw, 2.3rem);
   text-shadow: -0.06rem 0rem 0 rgb(148, 163, 184), -0.06rem 0.05rem 0 #0f172a, -0.12rem 0.025rem 0 #94a3b8, -0.12rem 0.075rem 0 #0f172a, -0.18rem 0.05rem 0 #94a3b8, -0.18rem 0.1rem 0 #0f172a, -0.24rem 0.075rem 0 #94a3b8, -0.24rem 0.125rem 0 #0f172a, -0.3rem 0.1rem 0 #94a3b8, -0.3rem 0.15rem 0 #0f172a;
   cursor: pointer;
   transition: transform 3s;
@@ -340,21 +341,23 @@ nav.droite ul li .bouton-texte .container-button-texte i:active {
   opacity: 1;
 }
 
-#openStandIcon {
-  display: block;
-  cursor: pointer;
-  width: 7vh;
-  height: 7vh;
-  background-image: url("../../../divers/img/play.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  border-radius: 50%;
-  border: 5px solid whitesmoke;
+#openStandIcon i {
+  align-self: center;
+  justify-self: center;
+  position: absolute;
 }
-#openStandIcon:checked {
-  background-image: url("../../../divers/img/pause.png");
-  background-size: contain;
-  background-repeat: no-repeat;
+#openStandIcon .fa-download {
+  z-index: 110;
+}
+#openStandIcon .fa-upload {
+  opacity: 0;
+  z-index: 100;
+}
+#openStandIcon.closed .fa-download {
+  opacity: 0;
+}
+#openStandIcon.closed .fa-upload {
+  opacity: 1;
 }
 
 #rotationStandIcon {

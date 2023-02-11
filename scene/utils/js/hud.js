@@ -5,17 +5,19 @@ const scene = document.getElementById('containerView').children;
 const modal = document.getElementById('modal');
 
 const waitingMenu = document.getElementById('waitingMenu');
+let vitesse1 = getComputedStyle(document.documentElement).getPropertyValue('--vitesseEntree');
+let vitesse2 = getComputedStyle(document.documentElement).getPropertyValue('--vitesseSortie');
+let speedIn = parseFloat(vitesse1.replace('s', '')) * 1000;
+let speedOut = parseFloat(vitesse2.replace('s', '')) * 1000;
+let tempo = false;
+
 const vortex = document.getElementsByClassName('vortex')[0];
 const blurBG = document.getElementById('blurBackground');
-const urlGIF = "../../../divers/img/loading3s.gif?time=";
+const urlGIF = "../../../divers/img/loading175s.gif?time=";
+
 function loadingGIF() {
     waitingMenu.style.backgroundImage = `url(${urlGIF + new Date().getTime()})`;
 }
-
-let vitesse1 = getComputedStyle(document.documentElement).getPropertyValue('--vitesseEntree');
-let vitesse2 = getComputedStyle(document.documentElement).getPropertyValue('--vitesseSortie');
-let speed1 = parseInt(vitesse1.replace('s', '')) * 1000;
-let speed2 = parseInt(vitesse2.replace('s', '')) * 1000;
 
 let menuSpamm;
 let resizeSpamm;
@@ -46,25 +48,25 @@ function resize() {
     console.log('width :' + width);
 
     if (width < 800) {
-        angle = 65;
-        decal = 60;
-        depth = 50;
-        iDeg = 40;
-    } else if (width < 1200) {
         angle = 70;
-        decal = 125;
-        depth = 60;
-        iDeg = 25;
-    } else if ( width < 1600) {
+        decal = 80;
+        depth = 70;
+        iDeg = 20;
+    } else if (width < 1200) {
         angle = 75;
-        decal = 150;
+        decal = 100;
         depth = 80;
         iDeg = 15;
+    } else if ( width < 1600) {
+        angle = 78;
+        decal = 125;
+        depth = 90;
+        iDeg = 10;
     } else {
         angle = 80;
-        decal = 200;
-        depth = 100;
-        iDeg = 5;
+        decal = 150;
+        depth = 110;
+        iDeg = 8;
     }
 
     document.documentElement.style.setProperty('--menuAngle', iDeg +'deg');
@@ -99,23 +101,31 @@ async function menuAsync(iTemp) {
     waitingMenu.style.backgroundPositionX = "center";
     waitingMenu.style.backgroundPositionY = loadingPosY+"%";
     waitingMenu.style.backgroundSize = menuHeight+"px "+menuHeight+"px";
-    loadingGIF();
 
     for (j = 0; j < li.length; j++) {
         if (li[j].classList.contains("clicked") && j !== iTemp) {
             li[j].classList.remove("clicked"); 
             tabNav[j] = false;
+            closingScene(j);
         }
     }
 
-    //IN-BETWEEN
-    await delayLi(iTemp);
+    // TEMPO
+    if (tempo) {
+        loadingGIF();
+        console.log('temporisé')
+        await delayLi(speedOut);
+    } else {
+        console.log('non temporisé')
+        await delayLi(0);
+    }// FIN TEMPO
+    
     
     // AFTER
     //console.log("AFTER :" + tabNav);
 }
 
-function delayLi() {
+function delayLi(int) {
     return new Promise((resolve,reject)=>{
         //here our function should be implemented 
         menuSpamm = setTimeout(()=>{
@@ -123,9 +133,11 @@ function delayLi() {
                     if (!tabNav[j]) {
                         scene[j].classList.add("hidden");
                         scene[j].classList.remove("anim");
+                        clearScene(j);
                     } else {
                         scene[j].classList.remove("hidden");
-                        scene[j].classList.add("anim"); 
+                        scene[j].classList.add("anim");
+                        tempo = true;
                     }
                 
                     for (k = 0; k < tabNav.length; k++) {
@@ -139,11 +151,34 @@ function delayLi() {
                 waitingMenu.style.backgroundImage = "none";
                 //blurBG.style.display = "none";
                 navDroite.style.display = "grid";
-                menuDroite();
                 resolve();
-            ;} , speed2
+            ;} , int
         );
     });
+}
+
+function closingScene(int) {
+    switch (int) {
+        case 0://A PROPOS
+            break;
+        case 1://PORTFOLIO
+            openBook(false);
+            break;
+        case 2:
+            openCV(false);
+            break;
+        case 3://COMPETENCES
+            break;
+        case 4://CONTACT
+            break;
+    }
+}
+
+function clearScene(int) {
+    const boxes = scene[int].querySelectorAll("input[type=checkbox]");
+    for (let box of boxes) {
+        box.checked = false;
+    }
 }
 
 function checkTabNav() {
@@ -151,21 +186,5 @@ function checkTabNav() {
         if (tabNav[i]) {
             return i;
         }
-    }
-}
-
-function menuDroite() {
-    let num = checkTabNav();
-    switch (num) {
-        case 0:
-            break;
-        case 1:
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        case 4:
-            break;
     }
 }

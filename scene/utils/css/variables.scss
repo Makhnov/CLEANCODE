@@ -1,11 +1,11 @@
 :root {
     // HUD//
-    --menuLargeur:clamp(200px, 40vh, 500px);
+    --menuLargeur:clamp(300px, 40vh, 15vw);
     --menuHauteur:calc(var(--menuLargeur) / 3);
     --menuProfondeur:50px;
     --ignitionDegree: 20deg;
-    --vitesseEntree:5s;
-    --vitesseSortie:3s;
+    --vitesseEntree:3s;
+    --vitesseSortie:1.75s;
 
     // COLORS //
     --bookBorder:rgb(50, 50, 50);
@@ -32,5 +32,5 @@
     --imageGaucheDos:url('../../../divers/img/2.jpg');
     --imageDroite:url('../../../divers/img/imgLWait1.jpg');
     --imageDroiteDos:url('../../../divers/img/imgRFront.jpg');
-    --zoomLivre:200px;
+    --zoomLivre:-200px;
 }
