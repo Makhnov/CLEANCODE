@@ -14,8 +14,9 @@
     <link rel="stylesheet" href="./utils/css/hud.css">
     <link rel="stylesheet" href="./utils/css/book.css">
     <link rel="stylesheet" href="./utils/css/curriculum.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
-        integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/x-icon" href="../divers/img/favfolio.ico">
 
 
@@ -23,7 +24,7 @@
 
 </head>
 
-<body onload="resize()">
+<body onload="refresh()">
 
     <section id="containerHUD">
 
@@ -57,13 +58,13 @@
             <ul>
                 <li class="droite">
                     <div></div>
-                    <p from="readBook" onclick="openBook(true)" id="openBook" class="open bouton-texte">
+                    <p for="readBook" onclick="openBook(true)" id="openBook" class="bouton-texte">
                         <i class="fas fa-book"></i>
                         <i class="fas fa-book-open"></i>
                     </p>
-                    <p for="openStand" onclick="openCV(true)" id="openStandIcon" class="open bouton-texte">
-                        <i class="fas fa-download"></i>
-                        <i class="fas fa-upload"></i>
+                    <p for="openStand" onclick="openCV(true)" id="openStandIcon" class="bouton-texte">
+                        <i class="fas fa-down-left-and-up-right-to-center"></i>
+                        <i class="fas fa-up-right-and-down-left-from-center"></i>
                     </p>
                     <div></div>
                     <div></div>
@@ -78,7 +79,9 @@
                             <i onclick="pagePrecedente(this)" id="pagePrecedente" class="fas fa-share"></i>
                         </span>
                     </div>
-                    <label for="rotationStand" id="rotationStandIcon"></label>
+                    <label for="rotationStand" id="rotationStandIcon" class="rotation bouton-texte">
+                        <i class="fa-solid fa-arrow-rotate-right"></i>
+                    </label>
                     <div></div>
                     <div></div>
 
@@ -87,13 +90,18 @@
                     <div></div>
                     <p class="zoom bouton-texte">
                         <span class="container-button-texte zoom-moins">
-                            <i onclick="dezoomLivre()" class="fas fa-search-minus"></i>
+                            <i onclick="dezoomLivre()" class="fas fa-compress"></i>
                         </span>
                         <span class="container-button-texte zoom-plus">
-                            <i onclick="zoomLivre()" class="fas fa-search-plus"></i>
+                            <i onclick="zoomLivre()" class="fas fa-expand"></i>
                         </span>
                     </p>
-                    <div></div>
+                    <div>
+                        <a id="downloadCVLink" class="download bouton-texte" href="https://makh.fr/files/cv.pdf"
+                            download>
+                            <i class="fas fa-file-arrow-down"></i>
+                        </a>
+                    </div>
                     <div></div>
                     <div></div>
                 </li>
@@ -109,7 +117,7 @@
                 <li class="droite">
                     <div></div>
                     <p class="voirPlus bouton-texte">
-                        <i onclick="portfolioPlus()" id="portfolioPlus" class="fas fa-plus"></i>
+                        <i onclick="portfolioPlus()" id="portfolioPlus" class="fas fa-folder-plus"></i>
                     </p>
                     <div></div>
                     <div></div>
@@ -185,7 +193,7 @@
                 <input type="checkbox" id="rotationStand">
                 <div id="teleport">
                     <label for="zoneCV" id="filtreCV"></label>
-                    <input type="button" id="zoneCV">
+                    <input type="button" onclick="clicCV()" id="zoneCV">
                     <div class="bloc top">
                         <div class="face top up"></div>
                         <div class="face top down">
@@ -211,21 +219,11 @@
         </div>
     </section>
     <section id="modal">
-        <div id="backgroundModal" onclick="portfolioInfosOut()"></div>
+        <div id="backgroundModal" onclick="closeModal(this)"></div>
         <div id="containerModal">
-            <h3>Titre</h3>
-            <h6>Résumé du titre</h6>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam atque inventore rem fugiat doloremque.
-                Neque eveniet voluptate sequi incidunt cupiditate fugit autem nihil, blanditiis optio veritatis
-                praesentium quam dolorem officiis!
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque impedit quibusdam vero veritatis
-                distinctio dignissimos cupiditate nisi doloremque eum provident error atque porro, pariatur corporis.
-                Numquam, unde expedita? Eius, laboriosam.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores amet cumque minima, ipsum aut atque
-                soluta harum facere nisi dicta odio eius doloribus quo obcaecati officia quia, voluptas exercitationem
-                sequi!
-            </p>
+            <h2>Titre</h2>
+            <h3>Résumé du titre</h3>
+            <p></p>
         </div>
     </section>
     <script src="./utils/js/hud.js"></script>

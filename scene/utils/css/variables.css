@@ -5,6 +5,7 @@
   --ignitionDegree: 20deg;
   --vitesseEntree:3s;
   --vitesseSortie:1.75s;
+  --rightNavFontSize:clamp(2rem, 3vw, 3.25rem);
   --bookBorder:rgb(50, 50, 50);
   --bookPage:whitesmoke;
   --mainColor1:rgb(17, 126, 181);
@@ -25,5 +26,11 @@
   --imageGaucheDos:url("../../../divers/img/2.jpg");
   --imageDroite:url("../../../divers/img/imgLWait1.jpg");
   --imageDroiteDos:url("../../../divers/img/imgRFront.jpg");
-  --zoomLivre:-200px;
+  --zoomLivre:-300px;
+  --inclinaisonLivre:-8deg;
+  --rotationLivre:35deg;
+  --justifyLivre:0vw;
+  --alignLivre:-7.5vh;
+  --gapLivre:20px;
+  --vitessePage:1.6s;
 }/*# sourceMappingURL=variables.css.map */

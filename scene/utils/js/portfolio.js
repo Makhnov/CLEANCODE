@@ -6,7 +6,8 @@ const livre = document.getElementById('livre');
 const readBook = document.getElementById('readBook');
 const iconBook = document.getElementById('openBook');
 
-const speedPage = 1700;
+const vitessePage = getComputedStyle(document.documentElement).getPropertyValue('--vitessePage');
+const speedPage = parseFloat(vitessePage.replace('s', '')) * 1000;
 
 let pageSpamm = true;
 
@@ -16,14 +17,14 @@ function openBook(bool) {
         iconBook.classList.toggle('closed');
         if (readBook.checked) {
             iconBook.children[0].style.zIndex = "110";
-            if (bool) {// CLIC
+            if (bool) {// CLIC FERMETURE
                 tempo = false;
             } else {//FROM HUD
                 document.documentElement.style.setProperty('--zoomLivre', '-200px');
             }
         } else {
             iconBook.children[0].style.zIndex = "90";
-            if (bool) {// CLIC
+            if (bool) {// CLIC OUVERTURE
                 tempo = true;
             }
         }
@@ -72,33 +73,33 @@ function delayPage(e) {
 }
 
 function zoomLivre() {
-    let zoom = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--zoomLivre').replace('px', ''));
-    console.log(zoom);
-    if (zoom <= 250) {
-        zoom += 50;
-        document.documentElement.style.setProperty('--zoomLivre', zoom + 'px');
-    } else {
-        window.alert("Zoom maximal atteint !");
-    }
+    document.documentElement.style.setProperty('--zoomLivre', '200px');
+    document.documentElement.style.setProperty('--inclinaisonLivre', '0deg');
+    document.documentElement.style.setProperty('--justifyLivre', '-5vw');
+    document.documentElement.style.setProperty('--alignLivre', '0vh');
+    document.documentElement.style.setProperty('--rotationLivre', '0deg');
 }
 
 function dezoomLivre() {
-    let zoom = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--zoomLivre').replace('px', ''));
-    console.log(zoom);
-    if (zoom >= -800) {
-        zoom -= 50;
-        document.documentElement.style.setProperty('--zoomLivre', zoom + 'px');
-    } else {
-        window.alert("Zoom minimal atteint !");
-    }
+    document.documentElement.style.setProperty('--zoomLivre', '-300px');
+    document.documentElement.style.setProperty('--inclinaisonLivre', '-8deg');
+    document.documentElement.style.setProperty('--justifyLivre', '0vw');
+    document.documentElement.style.setProperty('--alignLivre', '-7.5vh');
+    document.documentElement.style.setProperty('--rotationLivre', '35deg');
+}
+
+function variables() {
+    let zoom = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--zoomLivre').replace('px', ''));
+    let angle = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--inclinaisonLivre').replace('deg', ''));
+    let posX = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--positionLivre').replace('vw', ''));
+
+    console.log('zoom : ' + zoom);
+    console.log('angle : ' + angle);
+    console.log('posX : ' + posX);
 }
 
 function portfolioInfos() {
-    modal.style.display = "block";
-}
-
-function portfolioInfosOut() {
-    modal.style.display = "none";
+    openModal(1);
 }
 
 function portfolioPlus() {

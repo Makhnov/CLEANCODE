@@ -5,6 +5,7 @@
   --ignitionDegree: 20deg;
   --vitesseEntree:3s;
   --vitesseSortie:1.75s;
+  --rightNavFontSize:clamp(2rem, 3vw, 3.25rem);
   --bookBorder:rgb(50, 50, 50);
   --bookPage:whitesmoke;
   --mainColor1:rgb(17, 126, 181);
@@ -25,7 +26,13 @@
   --imageGaucheDos:url("../../../divers/img/2.jpg");
   --imageDroite:url("../../../divers/img/imgLWait1.jpg");
   --imageDroiteDos:url("../../../divers/img/imgRFront.jpg");
-  --zoomLivre:-200px;
+  --zoomLivre:-300px;
+  --inclinaisonLivre:-8deg;
+  --rotationLivre:35deg;
+  --justifyLivre:0vw;
+  --alignLivre:-7.5vh;
+  --gapLivre:20px;
+  --vitessePage:1.6s;
 }
 
 html, body {
@@ -50,7 +57,7 @@ nav, ul, li {
   background-position: center;
   background-size: cover;
   display: grid;
-  grid-template-columns: 1vw 20vw 1vw 56vw 1vw 4vw 1vw 15vw 1vw;
+  grid-template-columns: 1vw 20vw 1vw 56vw 1vw 15vw 1vw 4vw 1vw;
   grid-template-rows: 10vh 80vh 10vh;
   perspective: 1000px;
   perspective-origin: center;
@@ -104,7 +111,7 @@ nav.gauche ul li {
   display: grid;
   align-content: center;
   padding-left: 20px;
-  font-size: clamp(2rem, 2.5vw, 2.3rem);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   text-shadow: -0.06rem 0rem 0 rgb(148, 163, 184), -0.06rem 0.05rem 0 #0f172a, -0.12rem 0.025rem 0 #94a3b8, -0.12rem 0.075rem 0 #0f172a, -0.18rem 0.05rem 0 #94a3b8, -0.18rem 0.1rem 0 #0f172a, -0.24rem 0.075rem 0 #94a3b8, -0.24rem 0.125rem 0 #0f172a, -0.3rem 0.1rem 0 #94a3b8, -0.3rem 0.15rem 0 #0f172a;
   cursor: pointer;
   transition: transform 3s;
@@ -223,7 +230,7 @@ nav.gauche ul li .back::after {
 
 nav.droite {
   grid-row: 2;
-  grid-column: 8;
+  grid-column: 6;
   position: relative;
   z-index: 100;
   height: 80vh;
@@ -285,7 +292,7 @@ nav.droite ul li .bouton-texte .container-button-texte {
   min-width: 12vh;
   display: grid;
   place-content: center;
-  font-size: 3rem;
+  font-size: var(--rightNavFontSize);
   color: var(--mainColor3);
 }
 nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i,
@@ -294,15 +301,37 @@ nav.droite ul li .bouton-texte .container-button-texte i {
   transform: translate(0, 0);
   transition: opacity 0.5s;
 }
-nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i:hover,
-nav.droite ul li .bouton-texte .container-button-texte i:hover {
+nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i:not(.fa-arrow-rotate-right):hover,
+nav.droite ul li .bouton-texte .container-button-texte i:not(.fa-arrow-rotate-right):hover {
   text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.5px 0.375px rgb(31, 162, 227), 1px 0.75px rgb(30.2380952381, 155.380952381, 218.1904761905), 1.5px 1.125px rgb(29.4761904762, 148.7619047619, 209.380952381), 2px 1.5px rgb(28.7142857143, 142.1428571429, 200.5714285714), 2.5px 1.875px rgb(27.9523809524, 135.5238095238, 191.7619047619), 3px 2.25px rgb(27.1904761905, 128.9047619048, 182.9523809524), 3.5px 2.625px rgb(26.4285714286, 122.2857142857, 174.1428571429), 4px 3px rgb(25.6666666667, 115.6666666667, 165.3333333333), 4.5px 3.375px rgb(24.9047619048, 109.0476190476, 156.5238095238), 5px 3.75px rgb(24.1428571429, 102.4285714286, 147.7142857143), 5.5px 4.125px rgb(23.380952381, 95.8095238095, 138.9047619048), 6px 4.5px rgb(22.619047619, 89.1904761905, 130.0952380952), 6.5px 4.875px rgb(21.8571428571, 82.5714285714, 121.2857142857), 7px 5.25px rgb(21.0952380952, 75.9523809524, 112.4761904762), 7.5px 5.625px rgb(20.3333333333, 69.3333333333, 103.6666666667), 8px 6px rgb(19.5714285714, 62.7142857143, 94.8571428571), 8.5px 6.375px rgb(18.8095238095, 56.0952380952, 86.0476190476), 9px 6.75px rgb(18.0476190476, 49.4761904762, 77.2380952381), 9.5px 7.125px rgb(17.2857142857, 42.8571428571, 68.4285714286), 10px 7.5px rgb(16.5238095238, 36.2380952381, 59.619047619), 10.5px 7.875px rgb(15.7619047619, 29.619047619, 50.8095238095), 11px 8.25px rgb(15, 23, 42);
   transform: translate(2px, 1.5px);
 }
-nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i:active,
-nav.droite ul li .bouton-texte .container-button-texte i:active {
+nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i:not(.fa-arrow-rotate-right):active,
+nav.droite ul li .bouton-texte .container-button-texte i:not(.fa-arrow-rotate-right):active {
   text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.5px 0.375px rgb(31, 162, 227), 1px 0.75px rgb(30.0588235294, 153.8235294118, 216.1176470588), 1.5px 1.125px rgb(29.1176470588, 145.6470588235, 205.2352941176), 2px 1.5px rgb(28.1764705882, 137.4705882353, 194.3529411765), 2.5px 1.875px rgb(27.2352941176, 129.2941176471, 183.4705882353), 3px 2.25px rgb(26.2941176471, 121.1176470588, 172.5882352941), 3.5px 2.625px rgb(25.3529411765, 112.9411764706, 161.7058823529), 4px 3px rgb(24.4117647059, 104.7647058824, 150.8235294118), 4.5px 3.375px rgb(23.4705882353, 96.5882352941, 139.9411764706), 5px 3.75px rgb(22.5294117647, 88.4117647059, 129.0588235294), 5.5px 4.125px rgb(21.5882352941, 80.2352941176, 118.1764705882), 6px 4.5px rgb(20.6470588235, 72.0588235294, 107.2941176471), 6.5px 4.875px rgb(19.7058823529, 63.8823529412, 96.4117647059), 7px 5.25px rgb(18.7647058824, 55.7058823529, 85.5294117647), 7.5px 5.625px rgb(17.8235294118, 47.5294117647, 74.6470588235), 8px 6px rgb(16.8823529412, 39.3529411765, 63.7647058824), 8.5px 6.375px rgb(15.9411764706, 31.1764705882, 52.8823529412), 9px 6.75px rgb(15, 23, 42);
   transform: translate(4px, 3px);
+}
+nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i:hover:not(.fa-arrow-rotate-right),
+nav.droite ul li .bouton-texte .container-button-texte i:hover:not(.fa-arrow-rotate-right) {
+  text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.5px 0.375px rgb(31, 162, 227), 1px 0.75px rgb(30.2380952381, 155.380952381, 218.1904761905), 1.5px 1.125px rgb(29.4761904762, 148.7619047619, 209.380952381), 2px 1.5px rgb(28.7142857143, 142.1428571429, 200.5714285714), 2.5px 1.875px rgb(27.9523809524, 135.5238095238, 191.7619047619), 3px 2.25px rgb(27.1904761905, 128.9047619048, 182.9523809524), 3.5px 2.625px rgb(26.4285714286, 122.2857142857, 174.1428571429), 4px 3px rgb(25.6666666667, 115.6666666667, 165.3333333333), 4.5px 3.375px rgb(24.9047619048, 109.0476190476, 156.5238095238), 5px 3.75px rgb(24.1428571429, 102.4285714286, 147.7142857143), 5.5px 4.125px rgb(23.380952381, 95.8095238095, 138.9047619048), 6px 4.5px rgb(22.619047619, 89.1904761905, 130.0952380952), 6.5px 4.875px rgb(21.8571428571, 82.5714285714, 121.2857142857), 7px 5.25px rgb(21.0952380952, 75.9523809524, 112.4761904762), 7.5px 5.625px rgb(20.3333333333, 69.3333333333, 103.6666666667), 8px 6px rgb(19.5714285714, 62.7142857143, 94.8571428571), 8.5px 6.375px rgb(18.8095238095, 56.0952380952, 86.0476190476), 9px 6.75px rgb(18.0476190476, 49.4761904762, 77.2380952381), 9.5px 7.125px rgb(17.2857142857, 42.8571428571, 68.4285714286), 10px 7.5px rgb(16.5238095238, 36.2380952381, 59.619047619), 10.5px 7.875px rgb(15.7619047619, 29.619047619, 50.8095238095), 11px 8.25px rgb(15, 23, 42);
+  transform: translate(2px, 1.5px);
+}
+nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i:active:not(.fa-arrow-rotate-right),
+nav.droite ul li .bouton-texte .container-button-texte i:active:not(.fa-arrow-rotate-right) {
+  text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.5px 0.375px rgb(31, 162, 227), 1px 0.75px rgb(30.0588235294, 153.8235294118, 216.1176470588), 1.5px 1.125px rgb(29.1176470588, 145.6470588235, 205.2352941176), 2px 1.5px rgb(28.1764705882, 137.4705882353, 194.3529411765), 2.5px 1.875px rgb(27.2352941176, 129.2941176471, 183.4705882353), 3px 2.25px rgb(26.2941176471, 121.1176470588, 172.5882352941), 3.5px 2.625px rgb(25.3529411765, 112.9411764706, 161.7058823529), 4px 3px rgb(24.4117647059, 104.7647058824, 150.8235294118), 4.5px 3.375px rgb(23.4705882353, 96.5882352941, 139.9411764706), 5px 3.75px rgb(22.5294117647, 88.4117647059, 129.0588235294), 5.5px 4.125px rgb(21.5882352941, 80.2352941176, 118.1764705882), 6px 4.5px rgb(20.6470588235, 72.0588235294, 107.2941176471), 6.5px 4.875px rgb(19.7058823529, 63.8823529412, 96.4117647059), 7px 5.25px rgb(18.7647058824, 55.7058823529, 85.5294117647), 7.5px 5.625px rgb(17.8235294118, 47.5294117647, 74.6470588235), 8px 6px rgb(16.8823529412, 39.3529411765, 63.7647058824), 8.5px 6.375px rgb(15.9411764706, 31.1764705882, 52.8823529412), 9px 6.75px rgb(15, 23, 42);
+  transform: translate(4px, 3px);
+}
+nav.droite ul li .bouton-texte:not(.changementPage, .zoom):not(.anim, .closed) .fa-arrow-rotate-right:hover,
+nav.droite ul li .bouton-texte .container-button-texte:not(.anim, .closed) .fa-arrow-rotate-right:hover {
+  transform: rotate(15deg);
+}
+nav.droite ul li .bouton-texte:not(.changementPage, .zoom).anim .fa-arrow-rotate-right:hover,
+nav.droite ul li .bouton-texte .container-button-texte.anim .fa-arrow-rotate-right:hover {
+  cursor: not-allowed;
+}
+
+#rotationStandIcon.open.anim {
+  animation: iconTurn 5s linear infinite;
 }
 
 .bouton-texte.changementPage,
@@ -315,7 +344,7 @@ nav.droite ul li .bouton-texte .container-button-texte i:active {
 }
 .bouton-texte.changementPage .container-button-texte,
 .bouton-texte.zoom .container-button-texte {
-  min-width: 6rem !important;
+  min-width: calc(2 * var(--rightNavFontSize)) !important;
 }
 .bouton-texte.changementPage .container-button-texte.pagePrecedente,
 .bouton-texte.zoom .container-button-texte.pagePrecedente {
@@ -341,41 +370,26 @@ nav.droite ul li .bouton-texte .container-button-texte i:active {
   opacity: 1;
 }
 
+#openStandIcon {
+  transform: rotate(-45deg);
+}
 #openStandIcon i {
   align-self: center;
   justify-self: center;
   position: absolute;
 }
-#openStandIcon .fa-download {
+#openStandIcon .fa-down-left-and-up-right-to-center {
   z-index: 110;
 }
-#openStandIcon .fa-upload {
+#openStandIcon .fa-up-right-and-down-left-from-center {
   opacity: 0;
   z-index: 100;
 }
-#openStandIcon.closed .fa-download {
+#openStandIcon.closed .fa-down-left-and-up-right-to-center {
   opacity: 0;
 }
-#openStandIcon.closed .fa-upload {
+#openStandIcon.closed .fa-up-right-and-down-left-from-center {
   opacity: 1;
-}
-
-#rotationStandIcon {
-  display: block;
-  cursor: pointer;
-  width: 7vh;
-  height: 7vh;
-  background-image: url("../../../divers/img/rotation.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  border-radius: 50%;
-  border: 5px solid whitesmoke;
-}
-#rotationStandIcon:hover {
-  animation: iconTurn 10s linear infinite;
-}
-#rotationStandIcon.anim {
-  animation: iconTurn 5s linear infinite;
 }
 
 html body #containerHUD nav.droite ul li > * {
@@ -411,7 +425,8 @@ html body #containerHUD nav.droite ul li > * {
   z-index: 600;
   top: 15vh;
   left: 15vw;
+  padding: 20px;
   height: 70vh;
-  width: 70vw;
+  width: calc(70vw - 20px);
   background-color: var(--mainColor3);
 }/*# sourceMappingURL=hud.css.map */
