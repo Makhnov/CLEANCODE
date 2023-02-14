@@ -374,10 +374,10 @@
 }
 
 #pageD > .bandeDroite {
-    background-position: calc(70 / 99 * var(--livreLargeur)) center;
+    background-position: calc(var(--livreLargeur)) center;
 
     .bandeDroite {
-        left:calc(10 / 99 * var(--livreLargeur) - .5px);
+        left:calc(1/5 * var(--livreLargeur) - .5px);
     }
 
     &::after {

@@ -365,10 +365,10 @@
 }
 
 #pageD > .bandeDroite {
-  background-position: calc(0.7070707071 * var(--livreLargeur)) center;
+  background-position: calc(var(--livreLargeur)) center;
 }
 #pageD > .bandeDroite .bandeDroite {
-  left: calc(0.101010101 * var(--livreLargeur) - 0.5px);
+  left: calc(0.2 * var(--livreLargeur) - 0.5px);
 }
 #pageD > .bandeDroite::after {
   background-position: calc(0.101010101 * var(--livreLargeur)) center;
