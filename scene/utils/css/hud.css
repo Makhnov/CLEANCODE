@@ -22,10 +22,13 @@
   --standEpaisseur:calc(2/21 * (var(--standLargeur)));
   --standHauteur:calc(24/21 * (var(--standLargeur)));
   --livreLargeur:clamp(200px, 75vh, 37vw);
-  --imageGauche:url("../../../divers/img/portfolio-rando.jpg");
-  --imageGaucheDos:url("../../../divers/img/2.jpg");
-  --imageDroite:url("../../../divers/img/portfolio-add.jpg");
-  --imageDroiteDos:url("../../../divers/img/imgRFront.jpg");
+  --imageG1:url("../../../divers/img/pf-videos.jpg");
+  --imageG2:url("../../../divers/img/pf-videos-specs.jpg");
+  --imageM1:url("../../../divers/img/pf-fuzzy.jpg");
+  --imageM2:url("../../../divers/img/pf-fuzzy-specs.jpg");
+  --imageD1:url("../../../divers/img/pf-conseil.jpg");
+  --imageD2:url("../../../divers/img/pf-conseil-specs.jpg");
+  --bookFront:var(--bookBorder);
   --zoomLivre:-300px;
   --inclinaisonLivre:-8deg;
   --rotationLivre:35deg;
@@ -53,7 +56,7 @@ nav, ul, li {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background-image: url("../../../divers/img/backgroundHUD.png"), linear-gradient(to right, rgba(15, 23, 42, 0.8) 20%, rgb(15, 23, 42) 78%, rgba(15, 23, 42, 0.9) 100%);
+  background-image: url("../../../divers/img/backgroundHUD.jpg");
   background-position: center;
   background-size: cover;
   display: grid;
@@ -195,8 +198,6 @@ nav.gauche ul li .back::after {
   transform-style: preserve-3d;
   position: relative;
   z-index: 10;
-  grid-row: 2;
-  grid-column: 4;
   height: 80vh;
   width: 56vw;
   display: grid;
@@ -220,7 +221,6 @@ nav.gauche ul li .back::after {
 
 #COMPETENCES {
   visibility: visible !important;
-  background-color: rgba(128, 0, 128, 0.3);
 }
 
 #CONTACT {
@@ -429,4 +429,14 @@ html body #containerHUD nav.droite ul li > * {
   height: 70vh;
   width: calc(70vw - 20px);
   background-color: var(--mainColor3);
+  overflow: scroll;
+}
+#containerModal h1 {
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+#containerModal h3 {
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+#containerModal p {
+  font-size: clamp(1rem, 2.2vw, 2rem);
 }/*# sourceMappingURL=hud.css.map */

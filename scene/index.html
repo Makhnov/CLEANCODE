@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./utils/css/hud.css">
     <link rel="stylesheet" href="./utils/css/book.css">
     <link rel="stylesheet" href="./utils/css/curriculum.css">
+    <link rel="stylesheet" href="./utils/css/skills.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -73,10 +74,10 @@
                     <div></div>
                     <div class="changementPage bouton-texte">
                         <span class="container-button-texte pageSuivante">
-                            <i onclick="pageSuivante(this)" id="pageSuivante" class="fas fa-share"></i>
+                            <i onclick="pageSuivante(this)" id="pageSuivante" class="fas fa-share 1"></i>
                         </span>
                         <span class="container-button-texte pagePrecedente">
-                            <i onclick="pagePrecedente(this)" id="pagePrecedente" class="fas fa-share"></i>
+                            <i onclick="pagePrecedente(this)" id="pagePrecedente" class="fas fa-share 7"></i>
                         </span>
                     </div>
                     <label for="rotationStand" id="rotationStandIcon" class="rotation bouton-texte">
@@ -211,7 +212,78 @@
                 </div>
             </div>
             <div id="COMPETENCES" class="hidden main">
-                <p>COMPETENCES</p>
+                <div class="titre skills">
+                    <article class="principal">
+                        <h1>MES</h1>
+                        <h1>COMPETENCES:</h1>
+                    </article>
+                </div>
+                <div class="progress html">
+                    <article>
+                        <h1>HTML</h1>
+                        <h3>Bootstrap</h3>
+                    </article>
+                    <div class="progress bordure">
+                        <p>80%</p>
+                    </div>
+                    <div class="progress barreD"></div>
+                    <div class="progress barreG"></div>
+                    <div class="progress cacheD"></div>
+                    <div class="progress cacheG"></div>
+                </div>
+                <div class="progress css">
+                    <article>
+                        <h1>CSS</h1>
+                        <h3>Sass</h3>
+                    </article>
+                    <div class="progress bordure">
+                        <p>90%</p>
+                    </div>
+                    <div class="progress barreD"></div>
+                    <div class="progress barreG"></div>
+                    <div class="progress cacheD"></div>
+                    <div class="progress cacheG"></div>
+                </div>
+                <div class="progress js">
+                    <article>
+                        <h1>Javascript</h1>
+                        <h3>VueJS</h3>
+                    </article>
+                    <div class="progress bordure">
+                        <p>70%</p>
+                    </div>
+                    <div class="progress barreD"></div>
+                    <div class="progress barreG"></div>
+                    <div class="progress cacheD"></div>
+                    <div class="progress cacheG"></div>
+                </div>
+                <div class="progress php">
+                    <article>
+                        <h1>PHP</h1>
+                        <h3>Laravel</h3><br>
+                        <h3>Symfony</h3>
+                    </article>
+                    <div class="progress bordure">
+                        <p>45%</p>
+                    </div>
+                    <div class="progress barreD"></div>
+                    <div class="progress barreG"></div>
+                    <div class="progress cacheD"></div>
+                    <div class="progress cacheG"></div>
+                </div>
+                <div class="progress sql">
+                    <article>
+                        <h1>SQL</h1>
+                        <h3>MySQL</h3>
+                    </article>
+                    <div class="progress bordure">
+                        <p>80%</p>
+                    </div>
+                    <div class="progress barreD"></div>
+                    <div class="progress barreG"></div>
+                    <div class="progress cacheD"></div>
+                    <div class="progress cacheG"></div>
+                </div>
             </div>
             <form action="GET" id="containerContact" class="hidden main">
                 <p>FORMULAIRE DE CONTACT</p>
@@ -221,9 +293,9 @@
     <section id="modal">
         <div id="backgroundModal" onclick="closeModal(this)"></div>
         <div id="containerModal">
-            <h2>Titre</h2>
-            <h3>Résumé du titre</h3>
-            <p></p>
+            <h1>Titre</h2>
+                <h3>Résumé du titre</h3>
+                <p></p>
         </div>
     </section>
     <script src="./utils/js/hud.js"></script>

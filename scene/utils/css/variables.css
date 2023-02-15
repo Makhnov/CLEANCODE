@@ -4,7 +4,7 @@
   --menuProfondeur:50px;
   --ignitionDegree: 20deg;
   --vitesseEntree:3s;
-  --vitesseSortie:1.75s;
+  --vitesseSortie:2s;
   --rightNavFontSize:clamp(2rem, 3vw, 3.25rem);
   --bookBorder:rgb(50, 50, 50);
   --bookPage:whitesmoke;
@@ -22,10 +22,13 @@
   --standEpaisseur:calc(2/21 * (var(--standLargeur)));
   --standHauteur:calc(24/21 * (var(--standLargeur)));
   --livreLargeur:clamp(200px, 75vh, 37vw);
-  --imageGauche:url("../../../divers/img/portfolio-rando.jpg");
-  --imageGaucheDos:url("../../../divers/img/2.jpg");
-  --imageDroite:url("../../../divers/img/portfolio-add.jpg");
-  --imageDroiteDos:url("../../../divers/img/imgRFront.jpg");
+  --imageG1:url("../../../divers/img/pf-videos.jpg");
+  --imageG2:url("../../../divers/img/pf-videos-specs.jpg");
+  --imageM1:url("../../../divers/img/pf-fuzzy.jpg");
+  --imageM2:url("../../../divers/img/pf-fuzzy-specs.jpg");
+  --imageD1:url("../../../divers/img/pf-conseil.jpg");
+  --imageD2:url("../../../divers/img/pf-conseil-specs.jpg");
+  --bookFront:var(--bookBorder);
   --zoomLivre:-300px;
   --inclinaisonLivre:-8deg;
   --rotationLivre:35deg;

@@ -50,7 +50,6 @@
 .blocLivre {
   position: absolute;
   transform-style: preserve-3d;
-  cursor: pointer;
   height: var(--livreLargeur);
   width: calc(0.7070707071 * var(--livreLargeur));
   height: var(--livreLargeur);
@@ -61,10 +60,10 @@
   transform-style: preserve-3d;
   transform-origin: inherit;
   height: var(--livreLargeur);
-  width: calc(0.7070707071 * var(--livreLargeur));
+  width: calc(0.7070707071 * var(--livreLargeur) - 3px);
   background-color: var(--bookPage);
   box-sizing: border-box;
-  border: 1px solid var(--bookBorder);
+  border: 1px dotted var(--bookBorder);
 }
 .blocLivre .fpage::before {
   content: "";
@@ -73,9 +72,9 @@
   top: 0;
   left: 0;
   height: var(--livreLargeur);
-  width: calc(0.7070707071 * var(--livreLargeur));
+  width: calc(0.7070707071 * var(--livreLargeur) - 3px);
   box-sizing: border-box;
-  border: 1px solid var(--bookBorder);
+  border: 1px dotted var(--bookBorder);
   background-color: var(--bookPage);
 }
 .blocLivre .fpage::after {
@@ -85,9 +84,9 @@
   top: 0;
   left: 0;
   height: var(--livreLargeur);
-  width: calc(0.7070707071 * var(--livreLargeur));
+  width: calc(0.7070707071 * var(--livreLargeur) - 3px);
   box-sizing: border-box;
-  border: 1px solid var(--bookBorder);
+  border: 1px dotted var(--bookBorder);
   background-color: var(--bookPage);
 }
 .blocLivre.gauche {
@@ -132,11 +131,12 @@
   transform: translateZ(2px) rotateY(0.4deg);
 }
 .blocLivre.gauche .fpage.gauche:nth-of-type(1)::before {
-  background-color: var(--bookBorder);
+  background: var(--bookFront);
 }
 .blocLivre.gauche .fpage.gauche:nth-of-type(4)::after {
-  background-image: var(--imageGauche);
-  background-size: cover;
+  background: var(--imageG1);
+  background-size: 100% 100%;
+  background-position: right;
 }
 .blocLivre.droite {
   grid-column: 3;
@@ -180,11 +180,11 @@
   transform: translateZ(2px) rotateY(-0.4deg);
 }
 .blocLivre.droite .fpage.droite:nth-of-type(1)::before {
-  background-color: var(--bookBorder);
+  background: var(--bookBorder);
 }
 .blocLivre.droite .fpage.droite:nth-of-type(4)::after {
-  background-image: url("../../../divers/img/1.jpg");
-  background-size: cover;
+  background: var(--imageD2);
+  background-size: 100% 100%;
 }
 
 @keyframes openBook {
@@ -257,24 +257,24 @@
 
 #pageG {
   transform-origin: right;
-  transform: translateX(0px) translateZ(14px) rotateY(3deg);
+  transform: translateX(-3px) translateZ(13.2px) rotateY(2.6deg);
 }
 #pageG.anim {
-  animation: pageGauche var(--vitessePage) linear forwards;
+  animation: pageGauche var(--vitessePage) linear;
 }
 #pageG.anim .bandeGauche {
-  animation: bandeGauche var(--vitessePage) linear forwards;
+  animation: bandeGauche var(--vitessePage) linear;
 }
 
 #pageD {
   transform-origin: left;
-  transform: translateX(0px) translateZ(14px) rotateY(-3deg);
+  transform: translateX(2.5px) translateZ(13.2px) rotateY(-2.6deg);
 }
 #pageD.anim {
-  animation: pageDroite var(--vitessePage) linear forwards;
+  animation: pageDroite var(--vitessePage) linear;
 }
 #pageD.anim .bandeDroite {
-  animation: bandeDroite var(--vitessePage) linear forwards;
+  animation: bandeDroite var(--vitessePage) linear;
 }
 
 .bandes {
@@ -297,26 +297,31 @@
   height: var(--livreLargeur);
   width: calc(0.101010101 * var(--livreLargeur));
   transform: rotateY(180deg);
-  background: var(--imageDroiteDos);
   background-size: calc(0.7070707071 * var(--livreLargeur)) var(--livreLargeur);
 }
 
 .bandeGauche {
   transform-origin: right;
-  background: var(--imageGauche);
+  background: var(--imageM1);
   right: 0;
 }
 .bandeGauche::after {
-  background: var(--imageGaucheDos);
+  background: var(--imageG2);
 }
 
 #pageG > .bandeGauche {
-  background-position: calc(0.101010101 * var(--livreLargeur)) center;
+  background-size: 700% 100%;
+  background-position: calc(0.101010101 * var(--livreLargeur)) top;
 }
 #pageG > .bandeGauche .bandeGauche {
+  background-size: 700% 100%;
   right: calc(0.101010101 * var(--livreLargeur) - 0.5px);
 }
+#pageG > .bandeGauche .bandeGauche::after {
+  background-size: 700% 100%;
+}
 #pageG > .bandeGauche::after {
+  background-size: 700% 100%;
   background-position: calc(0.7070707071 * var(--livreLargeur)) center;
 }
 #pageG > .bandeGauche > .bandeGauche {
@@ -358,53 +363,59 @@
 
 .bandeDroite {
   transform-origin: left;
-  background: var(--imageDroite);
+  background: var(--imageM2);
 }
 .bandeDroite::after {
-  background: var(--imageDroiteDos);
+  background: var(--imageD1);
 }
 
 #pageD > .bandeDroite {
-  background-position: calc(var(--livreLargeur)) center;
+  background-position: 0% top;
+  background-size: 700% 100%;
 }
 #pageD > .bandeDroite .bandeDroite {
-  left: calc(0.2 * var(--livreLargeur) - 0.5px);
+  background-size: 700% 100%;
+  left: calc(0.101010101 * var(--livreLargeur) - 0.5px);
+}
+#pageD > .bandeDroite .bandeDroite::after {
+  background-size: 700% 100%;
 }
 #pageD > .bandeDroite::after {
+  background-size: 700% 100%;
   background-position: calc(0.101010101 * var(--livreLargeur)) center;
 }
 #pageD > .bandeDroite > .bandeDroite {
-  background-position: calc(0.6060606061 * var(--livreLargeur)) center;
+  background-position: calc(-0.101010101 * var(--livreLargeur)) top;
 }
 #pageD > .bandeDroite > .bandeDroite::after {
   background-position: calc(0.202020202 * var(--livreLargeur)) center;
 }
 #pageD > .bandeDroite > .bandeDroite > .bandeDroite {
-  background-position: calc(0.5050505051 * var(--livreLargeur)) center;
+  background-position: calc(-0.202020202 * var(--livreLargeur)) top;
 }
 #pageD > .bandeDroite > .bandeDroite > .bandeDroite::after {
   background-position: calc(0.303030303 * var(--livreLargeur)) center;
 }
 #pageD > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite {
-  background-position: calc(0.404040404 * var(--livreLargeur)) center;
+  background-position: calc(-0.303030303 * var(--livreLargeur)) top;
 }
 #pageD > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite::after {
   background-position: calc(0.404040404 * var(--livreLargeur)) center;
 }
 #pageD > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite {
-  background-position: calc(0.303030303 * var(--livreLargeur)) center;
+  background-position: calc(-0.404040404 * var(--livreLargeur)) top;
 }
 #pageD > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite::after {
   background-position: calc(0.5050505051 * var(--livreLargeur)) center;
 }
 #pageD > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite {
-  background-position: calc(0.202020202 * var(--livreLargeur)) center;
+  background-position: calc(-0.5050505051 * var(--livreLargeur)) top;
 }
 #pageD > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite::after {
   background-position: calc(0.6060606061 * var(--livreLargeur)) center;
 }
 #pageD > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite {
-  background-position: calc(0.101010101 * var(--livreLargeur)) center;
+  background-position: calc(-0.6060606061 * var(--livreLargeur)) top;
 }
 #pageD > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite > .bandeDroite::after {
   background-position: calc(0.7070707071 * var(--livreLargeur)) center;
@@ -412,38 +423,30 @@
 
 @keyframes pageGauche {
   0% {
-    transform: translateX(0px) translateZ(14px) rotateY(3deg);
+    transform: translateX(0px) translateZ(13.2px) rotateY(2.6deg);
     visibility: visible;
   }
   75% {
-    transform: translateX(var(--gapLivre)) translateZ(14px) rotateY(177deg);
+    transform: translateX(var(--gapLivre)) translateZ(13.2px) rotateY(177.4deg);
     visibility: visible;
   }
-  99% {
-    transform: translateX(var(--gapLivre)) translateZ(14px) rotateY(177deg);
-    visibility: hidden;
-  }
   100% {
-    transform: translateX(0px) translateZ(14px) rotateY(2deg);
-    visibility: hidden;
+    transform: translateX(var(--gapLivre)) translateZ(13.2px) rotateY(177.4deg);
+    visibility: visible;
   }
 }
 @keyframes pageDroite {
   0% {
-    transform: translateX(0px) translateZ(14px) rotateY(-3deg);
+    transform: translateX(0px) translateZ(13.2px) rotateY(-2.6deg);
     visibility: visible;
   }
   75% {
-    transform: translateX(calc(-1 * var(--gapLivre))) translateZ(14px) rotateY(-177deg);
+    transform: translateX(calc(-1 * var(--gapLivre))) translateZ(13.2px) rotateY(-177.4deg);
     visibility: visible;
   }
-  99% {
-    transform: translateX(calc(-1 * var(--gapLivre))) translateZ(14px) rotateY(-177deg);
-    visibility: hidden;
-  }
   100% {
-    transform: translateX(0px) translateZ(14px) rotateY(-2deg);
-    visibility: hidden;
+    transform: translateX(calc(-1 * var(--gapLivre))) translateZ(13.2px) rotateY(-177.4deg);
+    visibility: visible;
   }
 }
 @keyframes bandeGauche {

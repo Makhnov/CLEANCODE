@@ -19,12 +19,12 @@ nav, ul, li {
     width: 100vw;
     overflow: hidden;
 
-    background-image: url('../../../divers/img/backgroundHUD.png'),
-    linear-gradient(to right,
-        rgba(15, 23, 42, 0.8) 20%,
-        rgb(15, 23, 42) 78%,
-        rgba(15, 23, 42, 0.9) 100%
-    );
+    background-image: url('../../../divers/img/backgroundHUD.jpg');
+    // linear-gradient(to right,
+    //     rgba(15, 23, 42, 0.8) 20%,
+    //     rgb(15, 23, 42) 78%,
+    //     rgba(15, 23, 42, 0.9) 100%
+    // );
     background-position: center;
     background-size: cover;
 
@@ -249,11 +249,8 @@ nav.gauche ul li .back {
     transform-style:preserve-3d ;
     position: relative;
     z-index: 10;
-    grid-row:2;
-    grid-column: 4;
     height:80vh;
     width: 56vw;
-
     display: grid;
     align-content: center;
     text-align: center;
@@ -272,7 +269,6 @@ nav.gauche ul li .back {
 }
 #COMPETENCES {
     visibility: visible!important;
-    background-color:rgba(128, 0, 128, 0.3);
 }
 #CONTACT {
     visibility: visible!important;
@@ -550,4 +546,17 @@ html body #containerHUD nav.droite ul li {
     height:70vh;
     width:calc(70vw - 20px);
     background-color:var(--mainColor3);
-}
+    overflow: scroll;
+
+    h1 {
+        font-size:clamp(2rem, 3vw, 3rem);
+
+    }
+    h3 {
+        font-size:clamp(1.5rem, 2.5vw, 2.5rem);
+
+    }
+    p {
+        font-size:clamp(1rem, 2.2vw, 2rem);
+    }
+}   

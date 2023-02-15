@@ -1,7 +1,7 @@
 const br = '\n';
 const space = ' ';
 const lorem = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam atque inventore rem fugiat doloremque. Neque eveniet voluptate sequi incidunt cupiditate fugit autem nihil, blanditiis optio veritatispraesentium quam dolorem officiis! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque impedit quibusdam vero veritatis distinctio dignissimos cupiditate nisi doloremque eum provident error atque porro, pariatur corporis. Numquam, unde expedita? Eius, laboriosam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores amet cumque minima, ipsum aut atque soluta harum facere nisi dicta odio eius doloribus quo obcaecati officia quia, voluptas exercitationem sequi!'
-
+const textInfosPortfolio = "Bienvenue sur mon portfolio, j'ai commencé la programmation web en septembre 2022 en rejoignant une formation de développeur web avec l'ADRAR de Lourdes.<br>Tous mes sites, quel que soit le(s) langage(s), sont 100% originaux, il m'arrive de chercher l'inspiration à droite à gauche bien évidemment mais je ne copie jamais la moindre ligne de code. En cliquant sur l'icone du bas dans la navigation de droite vous pouvez aller visiter les sites présentés ici et bien d'autres que j'ai pu faire tout au long de ma formation.<br>Je travaille principalement en HTML, SASS, Javascript, PHP et SQL, j'ai aussi commencé la pratique de divers frameworks (Vue, React, Laravel, Symfony, etc.).<br><br>Mon gitHub : <a href='https://github.com/Makhnov/' target='_blank'>Makhnov</a>"
 const li = document.querySelectorAll('li.gauche');
 const navGauche = document.getElementsByTagName('nav')[0];
 const navDroite = document.getElementsByTagName('nav')[1];
@@ -24,6 +24,8 @@ const modalBox = document.getElementById('containerModal');
 const modalTitre = document.getElementById('containerModal').children[0];
 const modalResume = document.getElementById('containerModal').children[1];
 const modalTexte = document.getElementById('containerModal').children[2];
+
+const skills = document.getElementById('COMPETENCES').children;
 
 function loadingGIF() {
     waitingMenu.style.backgroundImage = `url(${urlGIF + new Date().getTime()})`;
@@ -184,10 +186,27 @@ function closingScene(int) {
             openCV(false);
             break;
         case 3://COMPETENCES
+            openSkills(false);
             break;
         case 4://CONTACT
             break;
     }
+}
+
+function openSkills(bool) {
+    let i = 0;
+    let animSpeed = (speedOut / 6000).toFixed(1);
+
+    for (let skill of skills) {
+        skill.style.animation = "leaveSkills" + space + animSpeed + "s" + space + "linear" + space + animSpeed * i + "s forwards";
+        i++;
+    }
+
+    setTimeout(function () {
+        for (let skill of skills) {
+            skill.style.removeProperty("animation");
+        }
+    }, speedOut);
 }
 
 function clearScene(int) {
@@ -228,7 +247,7 @@ function openModal(int) {
             modal.style.display = "block";
             modalTitre.textContent = "PORTFOLIO";
             modalResume.textContent = "Mes créations depuis septembre 2022";
-            modalTexte.textContent = lorem;
+            modalTexte.innerHTML = textInfosPortfolio;
             break;
         case 2:
             modal.style.display = "block";
