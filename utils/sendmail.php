@@ -1,7 +1,7 @@
 <?php
 // sendmail.php
 use PHPMailer\PHPMailer\PHPMailer;
-require_once('config.php');
+//require_once('config.php');
 require 'vendor/autoload.php';
 
 // Vérifie si le formulaire a été soumis
@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail->Port = 587;
     $mail->SMTPAuth = true;
     $mail->Username = 'nico@makh.fr';
-    $mail->Password = $passwordMail;
+    $mail->Password = "YD4LsThNGNqAVR6//*";
     $mail->setFrom($email, $nom);
     $mail->addReplyTo($email, $nom);
     $mail->addAddress('montauriol@tutanota.com', 'Nicolas');
