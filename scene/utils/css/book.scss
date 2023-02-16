@@ -4,7 +4,21 @@
 //     }
 // }
 
+#containerHUD, 
+#containerView, 
+#PORTFOLIO, 
+#book,
+#livre {
+    pointer-events: none;
+
+    nav.gauche, 
+    nav.droite {
+        pointer-events: auto;
+    }
+}
+
 #book {
+    position: absolute;
     transform-style:preserve-3d ;
     height: 80vh;
     width: 56vw;
@@ -43,7 +57,6 @@
     justify-self: center;
     height:var(--livreLargeur);
     width:calc(140 / 99 * var(--livreLargeur) + var(--gapLivre));
-
     transform: translate3d(calc(-35 / 99 * var(--livreLargeur)), 0, 0) rotateY(90deg) rotateX(0deg) rotate(0deg);
 
     display:grid;
@@ -243,6 +256,10 @@
 #pageG {
     transform-origin: right;
     transform: translateX(-3px) translateZ(13.2px) rotateY(2.6deg);
+    pointer-events :auto;
+    cursor:url('../../../divers/img/arrow-previous.png'), auto;
+
+    //cursor:pointer;
 
     &.anim {
         animation: pageGauche var(--vitessePage) linear;
@@ -256,6 +273,8 @@
 #pageD {
     transform-origin: left;
     transform: translateX(2.5px) translateZ(13.2px) rotateY(-2.6deg);
+    pointer-events :auto;
+    cursor:url('../../../divers/img/arrow-next.png'), auto;
 
     &.anim {
         animation: pageDroite var(--vitessePage) linear;

@@ -1,4 +1,25 @@
+#containerHUD,
+#containerView,
+#PORTFOLIO,
+#book,
+#livre {
+  pointer-events: none;
+}
+#containerHUD nav.gauche,
+#containerHUD nav.droite,
+#containerView nav.gauche,
+#containerView nav.droite,
+#PORTFOLIO nav.gauche,
+#PORTFOLIO nav.droite,
+#book nav.gauche,
+#book nav.droite,
+#livre nav.gauche,
+#livre nav.droite {
+  pointer-events: auto;
+}
+
 #book {
+  position: absolute;
   transform-style: preserve-3d;
   height: 80vh;
   width: 56vw;
@@ -258,6 +279,8 @@
 #pageG {
   transform-origin: right;
   transform: translateX(-3px) translateZ(13.2px) rotateY(2.6deg);
+  pointer-events: auto;
+  cursor: url("../../../divers/img/arrow-previous.png"), auto;
 }
 #pageG.anim {
   animation: pageGauche var(--vitessePage) linear;
@@ -269,6 +292,8 @@
 #pageD {
   transform-origin: left;
   transform: translateX(2.5px) translateZ(13.2px) rotateY(-2.6deg);
+  pointer-events: auto;
+  cursor: url("../../../divers/img/arrow-next.png"), auto;
 }
 #pageD.anim {
   animation: pageDroite var(--vitessePage) linear;

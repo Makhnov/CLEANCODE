@@ -510,4 +510,4 @@ input {
 #CURRICULUM.anim #openStand:checked ~ #teleport #filtreCV,
 #CURRICULUM.anim #openStand:checked ~ #teleport #zoneCV {
   animation: docOut var(--vitesseSortie) linear forwards;
-}/*# sourceMappingURL=curriculum.css.map */
+}/*# sourceMappingURL=cv.css.map */

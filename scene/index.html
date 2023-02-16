@@ -13,8 +13,9 @@
 
     <link rel="stylesheet" href="./utils/css/hud.css">
     <link rel="stylesheet" href="./utils/css/book.css">
-    <link rel="stylesheet" href="./utils/css/curriculum.css">
+    <link rel="stylesheet" href="./utils/css/cv.css">
     <link rel="stylesheet" href="./utils/css/skills.css">
+    <link rel="stylesheet" href="./utils/css/contact.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -26,8 +27,8 @@
 </head>
 
 <body onload="refresh()">
-
     <section id="containerHUD">
+        <div id="waitingMenu"></div>
 
         <nav class="gauche">
             <ul>
@@ -52,7 +53,7 @@
                     <div class="back"></div>
                 </li>
             </ul>
-            <div id="waitingMenu"></div>
+            <!-- <div id="waitingMenu"></div> -->
         </nav>
 
         <nav class="droite">
@@ -149,7 +150,7 @@
                             <div class="fpage gauche"></div>
                             <div class="fpage gauche"></div>
                             <div class="fpage gauche"></div>
-                            <div id="pageG" class="pages gauche">
+                            <div id="pageG" class="pages gauche 7" onclick="pagePrecedente(this)">
                                 <div class="bandes bandeGauche">
                                     <div class="bandes bandeGauche">
                                         <div class="bandes bandeGauche">
@@ -170,7 +171,7 @@
                             <div class="fpage droite"></div>
                             <div class="fpage droite"></div>
                             <div class="fpage droite"></div>
-                            <div id="pageD" class="pages droite">
+                            <div id="pageD" class="pages droite 1" onclick="pageSuivante(this)">
                                 <div class="bandes bandeDroite">
                                     <div class="bandes bandeDroite">
                                         <div class="bandes two bandeDroite">
@@ -285,11 +286,37 @@
                     <div class="progress cacheG"></div>
                 </div>
             </div>
-            <form action="GET" id="containerContact" class="hidden main">
-                <p>FORMULAIRE DE CONTACT</p>
+            <form id="CONTACT" action="POST" class="hidden main">
+                <h2>Se connecter</h2>
+
+                <div class="ligneForm">
+                    <label for="name">Nom :</label>
+                    <input type="text" id="nom" name="nom" placeholder="Entrez votre nom" />
+                    <span></span>
+                </div>
+                <div class="ligneForm">
+                    <label for="name">Prenom:</label>
+                    <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom" />
+                    <span></span>
+                </div>
+                <div class="ligneForm">
+                    <label for="name">Age:</label>
+                    <input type="text" id="age" name="age" placeholder="Entrez votre âge" />
+                    <span></span>
+                </div>
+                <div class="ligneForm">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" placeholder="Entez votre e-mail" />
+                    <span></span>
+                </div>
+                <div class="boutons">
+                    <button onclick="annuler()" class="annuler">Annuler</button>
+                    <button type="submit" class="valider">Valider</button>
+                </div>
             </form>
         </div>
     </section>
+
     <section id="modal">
         <div id="backgroundModal" onclick="closeModal(this)"></div>
         <div id="containerModal">
@@ -298,9 +325,11 @@
                 <p></p>
         </div>
     </section>
+
     <script src="./utils/js/hud.js"></script>
     <script src="./utils/js/curriculum.js"></script>
     <script src="./utils/js/portfolio.js"></script>
+    <script src="./utils/js/form.js"></script>
 </body>
 
 </html>

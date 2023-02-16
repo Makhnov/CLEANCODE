@@ -84,14 +84,18 @@ nav, ul, li {
 // }
 
 #waitingMenu {
-    position: absolute;
-    grid-row:2;
-    grid-column: 2;
-    height: calc(var(--menuLargeur) / 3 * 5 + 3vh);
+    position: relative;
+    grid-row:1;//1
+    grid-column: 2;//1
+    //height: calc(var(--menuLargeur) / 3 * 5 + 3vh);
+    height: 60px;
+    width: 60px;
+
     align-self: center;
     justify-self: center;
     transform-origin: left;
     background-repeat: no-repeat;
+    background-size: contain;
     filter:hue-rotate(35deg) contrast(2);
 }
 
@@ -227,18 +231,17 @@ nav.gauche ul li .back {
 }
 
 #containerView {
-    visibility: hidden;
+    visibility: visible;
     transform-style: preserve-3d;
     grid-row:2;
     grid-column: 4;
     height: 80vh;
     width: 56vw;
-    background:radial-gradient(ellipse farthest-corner,
-        var(--blurColorIn),
-        var(--blurColorMid) 50%,
-        var(--blurColorOut) 100%
-    );
-
+    // background:radial-gradient(ellipse farthest-corner,
+    //     var(--blurColorIn),
+    //     var(--blurColorMid) 50%,
+    //     var(--blurColorOut) 100%
+    // );
 }
 
 #containerView .hidden {
@@ -254,25 +257,27 @@ nav.gauche ul li .back {
     display: grid;
     align-content: center;
     text-align: center;
-    font-size: 5rem;
 }
 
 #APROPOS {
     visibility: visible!important;
     background-color:rgba(0, 0, 255, 0.3);
 }
+
 #PORTFOLIO {
     visibility: visible!important;
 }
+
 #CURRICULUM {
     visibility: visible!important;
 }
+
 #COMPETENCES {
     visibility: visible!important;
 }
+
 #CONTACT {
     visibility: visible!important;
-    background-color: rgba(255, 228, 196, 0.3);
 }
 
 nav.droite {
@@ -452,6 +457,10 @@ nav.droite ul li .bouton-texte .container-button-texte {
     }
 }
 
+#infosSup {
+    cursor:help!important;
+}
+
 #openBook {
     i {
         align-self: center;
@@ -514,9 +523,7 @@ html body #containerHUD nav.droite ul li {
     }
 }
 
-
 // MODAL //
-
 #modal {
     display:none;
     position: absolute;

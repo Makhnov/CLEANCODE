@@ -90,7 +90,7 @@ function setImage(pos, url) {
 
 async function pageAsync(e) {
     // BEFORE
-    console.log(e);
+    //console.log(e);
 
     //IN-BETWEEN
     await delayPage(e);
@@ -148,4 +148,3 @@ function portfolioInfos() {
 function portfolioPlus() {
     window.open("https://makh.fr/", "_blank");
 }
-

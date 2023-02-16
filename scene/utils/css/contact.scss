@@ -1,0 +1,97 @@
+#CONTACT  {
+    border:3px solid black;
+    border-radius: 10px;
+    height:70vh;
+    width:40vw;
+    display: grid;
+    place-content: center;
+    grid-template-columns: 2vw 36vw 2vw;
+    grid-template-rows: 14vh 12vh 12vh 12vh 12vh 8vh;
+    background-color:whitesmoke;
+    
+    h2 {
+        grid-column:2;
+        grid-row:1;
+        display: grid;
+        place-content: center;
+    }
+
+    .boutons {
+        grid-column:2;
+        grid-row:6;
+        align-self: center;
+        justify-self: center;
+        display:flex;
+        justify-content: space-evenly;
+        width: 100%;
+
+        button {
+            border-radius: 8px;
+            height:5vh;
+            min-height: 25px;
+            width: 40%;
+            min-width:75px;
+            max-width:150px;
+            cursor: pointer;
+
+            &.annuler {
+                background-color: rgb(125, 0, 0);
+            }
+            &.valider {
+                background-color: green;
+            }
+            &:hover{
+                filter: brightness(1.5);
+            }
+        }
+
+    
+    }
+
+    .ligneForm {
+        grid-column: 2;
+        width:30vw;
+        height:10vh;
+        display: grid;
+        grid-template-columns:10vw 26vw;
+        grid-template-rows: 6vh 4vh 2vh;
+
+        &:nth-of-type(1) {
+            grid-row:2;
+        }
+        &:nth-of-type(2) {
+            grid-row:3;
+        }
+        &:nth-of-type(3) {
+            grid-row:4;
+        }
+        &:nth-of-type(4) {
+            grid-row:5;
+        }
+
+        label {
+            grid-column:1;
+            grid-row:1;
+            display: grid;
+            align-content: center;
+            height:100%;
+        }
+        
+        input {
+            box-sizing: border-box;
+            grid-column:2;
+            grid-row:1;
+            height:6vh;
+        }
+
+        span {
+            grid-column:2;
+            grid-row:2;
+            height:100%;
+            display: grid;
+            align-items:center;
+            color:red;
+            font-size: 0.75rem;
+        }
+    }
+}

@@ -52,7 +52,7 @@ window.onresize = function () {
     resizeSpamm = setTimeout(function () {
         resize();
     }, 500);
-};
+}
 
 function resize() {
 
@@ -94,8 +94,9 @@ function resize() {
     //console.log(depthBar);
 
     navGauche.style.transform = "rotateY(" + angle + "deg) translate3d(" + decal + "px, 0, 0)";
-    waitingMenu.style.width = depth + "px";
-    waitingMenu.style.transform = "translate3d(0, 0, -" + depth + "px) rotateY(" + -angle + "deg)";
+    //waitingMenu.style.width = depth + "px";
+    //waitingMenu.style.height = depth + "px";//En +
+    //waitingMenu.style.transform = "translate3d(0, 0, -" + depth + "px) rotateY(" + -angle + "deg)";
 }
 
 for (let i = 0; i < li.length; i++) {
@@ -113,11 +114,11 @@ async function menuAsync(iTemp) {
     li[iTemp].classList.add("clicked");
     tabNav[iTemp] = true;
 
-    let menuHeight = waitingMenu.clientWidth;
-    let loadingPosY = (25 * iTemp) + (2 - iTemp) * 1.25;
-    waitingMenu.style.backgroundPositionX = "center";
-    waitingMenu.style.backgroundPositionY = loadingPosY + "%";
-    waitingMenu.style.backgroundSize = menuHeight + "px " + menuHeight + "px";
+    //let menuHeight = waitingMenu.clientWidth;
+    //let loadingPosY = (25 * iTemp) + (2 - iTemp) * 1.25;
+    //waitingMenu.style.backgroundPositionX = "center";
+    //waitingMenu.style.backgroundPositionY = loadingPosY + "%";
+    //waitingMenu.style.backgroundSize = menuHeight + "px " + menuHeight + "px";
 
     for (j = 0; j < li.length; j++) {
         if (li[j].classList.contains("clicked") && j !== iTemp) {
@@ -308,5 +309,3 @@ function closeModal(e) {
     }
     modal.style.display = "none";
 }
-
-
