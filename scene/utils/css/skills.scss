@@ -116,7 +116,7 @@
         p {
             font-size: 1.5vw;
             font-weight: bold;
-            animation: progressText 12s linear forwards;
+            animation: progressText var(--vitesseEntree) linear forwards;
         }
     }
     
@@ -192,54 +192,54 @@
 #COMPETENCES {//ANIMATIONS
     .html {
         .cacheD {
-            animation:progressHTML1 12s linear forwards;
+            animation:progressHTML1 var(--vitesseEntree) linear forwards;
         }
         .cacheG {
-            animation:progressHTML2 12s linear forwards;
+            animation:progressHTML2 var(--vitesseEntree) linear forwards;
         }
         article {
-            animation: progressTitre .5s linear forwards;
+            animation: progressTitre .6s linear .2s forwards;
         }
     }
     .css {
         .cacheD {
-            animation:progressCSS1 12s linear forwards;
+            animation:progressCSS1 var(--vitesseEntree) linear forwards;
         }
         .cacheG {
-            animation:progressCSS2 12s linear forwards;
+            animation:progressCSS2 var(--vitesseEntree) linear forwards;
         }
         article {
-            animation: progressTitre .5s linear .6s forwards;
+            animation: progressTitre .6s linear .8s forwards;
         }
     }
     .js {
         .cacheD {
-            animation:progressJS1 12s linear forwards;
+            animation:progressJS1 var(--vitesseEntree) linear forwards;
         }
         .cacheG {
-            animation:progressJS2 12s linear forwards;
+            animation:progressJS2 var(--vitesseEntree) linear forwards;
         }
         article {
-            animation: progressTitre .5s linear 1.2s forwards;
+            animation: progressTitre .6s linear 1.4s forwards;
         }
     }
     .php {
         .cacheD {
-            animation:progressPHP1 12s linear forwards;
+            animation:progressPHP1 var(--vitesseEntree) linear forwards;
         }
         article {
-            animation: progressTitre .5s linear 1.8s forwards;
+            animation: progressTitre .6s linear 2s forwards;
         }
     }
     .sql {
         .cacheD {
-            animation:progressSQL1 12s linear forwards;
+            animation:progressSQL1 var(--vitesseEntree) linear forwards;
         }
         .cacheG {
-            animation:progressSQL2 12s linear forwards;
+            animation:progressSQL2 var(--vitesseEntree) linear forwards;
         }
         article {
-            animation: progressTitre .5s linear 2.5s forwards;
+            animation: progressTitre .6s linear 2.6s forwards;
         }
     }
 }
