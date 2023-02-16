@@ -14,10 +14,13 @@
     --mainColor1:rgb(17, 126, 181);
     --mainColor2:rgb(31, 162, 227);
     --mainColor3:rgb(20, 172, 249);
+    --mainColor4:rgb(108, 221, 255);
     --subColor1:rgb(39, 48, 52);
     --blurColor1:rgba(1,1,1, 0.1);
     --blurColor2:rgba(10,10,10, 0.25);
     --blurColor3:rgba(15,15,15, 0.5);
+    --blackLight:rgba(0,0,0, 0.75);
+    --blackLight2:rgba(10,10,10, 0.5);
     --subColorLight: rgba(39, 48, 52, 0.8);
     --mainColorLight:rgba(17, 126, 181, 0.6);
 
@@ -44,4 +47,26 @@
     --alignLivre:-7.5vh;
     --gapLivre:20px;
     --vitessePage:1.6s;
+}
+
+/* ---- POLICES ---- */
+@media all {
+    @font-face {
+        font-family: "baskerville";
+        src: url(../../divers/fonts/baskervilleRegular.ttf) format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "baskerville";
+        src: url(../../divers/fonts/baskervilleBold.ttf) format("truetype");
+        font-weight: bold;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'baskerville';
+        src: url(../../divers/fonts/baskervilleItalic.ttf) format("truetype");
+        font-weight: normal;
+        font-style: italic;
+    }
 }

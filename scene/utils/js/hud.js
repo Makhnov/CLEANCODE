@@ -190,6 +190,7 @@ function closingScene(int) {
             openSkills(false);
             break;
         case 4://CONTACT
+            openForm(false);
             break;
     }
 }
@@ -207,6 +208,14 @@ function openSkills(bool) {
         for (let skill of skills) {
             skill.style.removeProperty("animation");
         }
+    }, speedOut);
+}
+
+function openForm(bool) {
+    form.style.animation = "leaveContact" + space + (speedOut / 1000) + "s linear" + space + "forwards";
+
+    setTimeout(function () {
+        form.style.removeProperty("animation");
     }, speedOut);
 }
 

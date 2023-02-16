@@ -1,6 +1,36 @@
 const form = document.getElementById('CONTACT'); // On récupère le formulaire dans le DOM
 const spans = document.getElementsByTagName('span'); // On récupère tous les spans (collection) dans le DOM
 const inputs = document.getElementsByTagName('input'); // On récupère tous les inputs (collection) dans le DOM
+const valider = document.getElementById('valider');
+
+/* --------------------------------- FONCTION QUI CACHE LE BOUTON VALIDER TANT QUE NECESSAIRE --------------------------------- */
+
+/* ---- Bouton "Valider" ---- */
+function validerCheck() {
+    let nom = document.getElementById('nom').value;
+    let email = document.getElementById('email').value;
+    let message = document.getElementById('message').value;
+
+    console.log(nom);
+    console.log(email);
+    console.log(message);
+
+    if (nom !== "" && email !== "" && message !== "") {
+        valider.children[0].style.visibility = "visible";
+    } else {
+        valider.children[0].style.visibility = "hidden";
+    }
+}
+
+/* ---- on crée un listener pour valider l'input quand l'admin clique sur "Entrée" depuis le dernier input (Age) ---- */
+document.getElementById('message').addEventListener("keypress", function (press) {
+    if (press.key === "Enter") {
+        add();
+    }
+});
+
+// FONCTION ADD MISSING //
+
 
 // Fonctions qui remettent le formulaire à zéro (avec un délai)
 function annuler() {
@@ -44,9 +74,9 @@ if (form !== null) {
 // Fonction qui lance le formulaire
 function formulaireOK(event) {
     let nom = event.target[0].value; // On récupère la valeur du premier target (input : Nom)
-    let prenom = event.target[1].value; // On récupère la valeur du premier target (input : Prénom)
+    let email = event.target[1].value; // On récupère la valeur du premier target (input : Prénom)
 
-    if (confirm("Bienvenue " + prenom + space + nom + ", souhaitez-vous envoyer ce formulaire ?")) {
+    if (confirm("Bienvenue " + email + space + nom + ", souhaitez-vous envoyer ce formulaire ?")) {
     } else {
         event.preventDefault();
     }
@@ -84,13 +114,13 @@ function verification(event) {
     let tab = [];
 
     let nom = event.target[0].value; // On récupère la valeur du premier target (input : nom)
-    let prenom = event.target[1].value; // Etc.
-    let age = event.target[2].value;
+    let email = event.target[1].value; // Etc.
+    let message = event.target[2].value;
     let mail = event.target[3].value;
 
     let tabNom = verifNom(nom);
-    let tabPrenom = verifPrenom(prenom);
-    let tabAge = verifAge(age);
+    let tabPrenom = verifPrenom(email);
+    let tabAge = verifAge(message);
     let tabMail = verifMail(mail);
 
     if (tabNom[1]) { // On rentre dans un tableau le résultat des vérifications pour le Nom (et, le cas échéant, le code d'erreur : tabX[2])
@@ -141,10 +171,10 @@ function verifNom(str) {
 function verifPrenom(str) {
 
     if (str !== "") {
-        const prenomRegex = /^[a-zA-ZÀ-ÿ\-]+$/;
+        const emailRegex = /^[a-zA-ZÀ-ÿ\-]+$/;
 
         // On compare les caractères autorisés à l'input utilisateur
-        if (prenomRegex.test(str)) { // On renvoie un tableau avec l'input utilisateur & le résultat de la vérification
+        if (emailRegex.test(str)) { // On renvoie un tableau avec l'input utilisateur & le résultat de la vérification
             spans[1].innerText = "";
             spans[1].style.opacity = 0;
             return [str, true]; // Le prénom entré par l'utilisateur est valide
@@ -160,13 +190,13 @@ function verifPrenom(str) {
 function verifAge(str) {
 
     if (str !== "") {
-        let age = 0;
+        let message = 0;
         if (str.length > 0 && str.length < 4) { // On vérifie que l'input est composé de 1 a 3 caractères 
             for (i = (str.length - 1); i >= 0; i--) { // On fait une boucle avec autant d'itérations que de caractères
                 if (str[i].charCodeAt() >= 48 && str[i].charCodeAt() <= 57) { // On vérifie que chacun des caractères est bien un chiffre (entre 0 et 9)
 
                     let rang = parseInt("100".slice(0, str.length - i)); // On note le rang du chiffre actuel (Unités, dizaines ou centaines)
-                    age += parseInt(str[i] * rang); // On multiplie le chiffre par le rang, on ajoute ça à l'age
+                    message += parseInt(str[i] * rang); // On multiplie le chiffre par le rang, on ajoute ça à l'message
                 } else {
                     return [str, false, 1]; // Un des caractères n'est pas un chiffre
                 }
@@ -175,12 +205,12 @@ function verifAge(str) {
             return [str, false, 1]; // Il n'y a pas entre 1 et 3 caractères
         }
 
-        if (age >= 0 && age <= 125) {
+        if (message >= 0 && message <= 125) {
             spans[2].innerText = "";
             spans[2].style.opacity = 0;
-            return [age, true]; // L'age entré par l'utilisateur est valide
+            return [message, true]; // L'message entré par l'utilisateur est valide
         } else {
-            return [str, false, 1]; // L'age n'est pas compris entre 0 et 125 ans
+            return [str, false, 1]; // L'message n'est pas compris entre 0 et 125 ans
         }
     } else {
         return [str, false, 2];

@@ -287,31 +287,28 @@
                 </div>
             </div>
             <form id="CONTACT" action="POST" class="hidden main">
-                <h2>Se connecter</h2>
+                <h2>Me contacter</h2>
 
-                <div class="ligneForm">
-                    <label for="name">Nom :</label>
-                    <input type="text" id="nom" name="nom" placeholder="Entrez votre nom" />
+                <div class="inputs">
+                    <input id="nom" type="text" placeholder="Nom" oninput="validerCheck()">
+                    <label for="nom">Nom</label>
                     <span></span>
                 </div>
-                <div class="ligneForm">
-                    <label for="name">Prenom:</label>
-                    <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom" />
+                <div class="inputs">
+                    <input id="email" type="text" placeholder="E-Mail" oninput="validerCheck()">
+                    <label for="email">E-Mail</label>
                     <span></span>
                 </div>
-                <div class="ligneForm">
-                    <label for="name">Age:</label>
-                    <input type="text" id="age" name="age" placeholder="Entrez votre âge" />
+                <div class="inputs">
+                    <input id="message" type="text" placeholder="Message" oninput="validerCheck()">
+                    <label for="message">Message</label>
                     <span></span>
                 </div>
-                <div class="ligneForm">
-                    <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" placeholder="Entez votre e-mail" />
-                    <span></span>
-                </div>
+
                 <div class="boutons">
-                    <button onclick="annuler()" class="annuler">Annuler</button>
-                    <button type="submit" class="valider">Valider</button>
+                    <button id="supprimer"><i class="fas fa-ban"></i></button>
+                    <button id="valider" type="submit"><i class="fas fa-check"></i></button>
+                    <span></span>
                 </div>
             </form>
         </div>
@@ -329,7 +326,7 @@
     <script src="./utils/js/hud.js"></script>
     <script src="./utils/js/curriculum.js"></script>
     <script src="./utils/js/portfolio.js"></script>
-    <script src="./utils/js/form.js"></script>
+    <script src="./utils/js/contact.js"></script>
 </body>
 
 </html>

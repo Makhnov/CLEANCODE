@@ -20,12 +20,7 @@ nav, ul, li {
     overflow: hidden;
 
     background-image: url('../../../divers/img/backgroundHUD.jpg');
-    // linear-gradient(to right,
-    //     rgba(15, 23, 42, 0.8) 20%,
-    //     rgb(15, 23, 42) 78%,
-    //     rgba(15, 23, 42, 0.9) 100%
-    // );
-    background-position: center;
+    background-position: center;    
     background-size: cover;
 
     display:grid;
@@ -34,6 +29,8 @@ nav, ul, li {
 
     perspective: 1000px;
     perspective-origin: center;
+
+    backdrop-filter: opacity(.2);
 }
 
 // #blurBackground {
@@ -254,30 +251,20 @@ nav.gauche ul li .back {
     z-index: 10;
     height:80vh;
     width: 56vw;
-    display: grid;
-    align-content: center;
-    text-align: center;
 }
 
 #APROPOS {
-    visibility: visible!important;
     background-color:rgba(0, 0, 255, 0.3);
 }
 
-#PORTFOLIO {
-    visibility: visible!important;
-}
-
-#CURRICULUM {
-    visibility: visible!important;
-}
-
+#APROPOS,
+#PORTFOLIO,
+#CURRICULUM,
 #COMPETENCES {
     visibility: visible!important;
-}
-
-#CONTACT {
-    visibility: visible!important;
+    display: grid;
+    align-content: center;
+    text-align: center;
 }
 
 nav.droite {
@@ -309,7 +296,6 @@ nav.droite ul li {
     align-content: center;
     min-height: 12vh;
     min-width: 15vw;
-
 }
 
 @for $i from 0 to 5 {
