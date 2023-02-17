@@ -61,26 +61,7 @@ header {
   width: 100%;
   height: 15%;
   background: radial-gradient(black, rgba(255, 255, 255, 0) 50%);
-  -webkit-animation: ombre 20s infinite linear;
-          animation: ombre 20s infinite linear;
-}
-
-@-webkit-keyframes ombre {
-  0% {
-    transform: translate(-50%, -50%) scale(0.75);
-  }
-  25% {
-    transform: translate(-50%, -50%) scale(1.75);
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(0.75);
-  }
-  75% {
-    transform: translate(-50%, -50%) scale(1.75);
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(0.75);
-  }
+  animation: ombre 20s infinite linear;
 }
 
 @keyframes ombre {
@@ -118,8 +99,7 @@ header {
   height: 100%;
   width: 100%;
   transform-style: preserve-3d;
-  -webkit-animation: croix 20s infinite linear;
-          animation: croix 20s infinite linear;
+  animation: croix 20s infinite linear;
   transition: 2s;
 }
 
@@ -240,17 +220,6 @@ header {
 }
 
 /* -------------------------------------- ANIMATION DE LA CROIX -------------------------------------- */
-@-webkit-keyframes croix {
-  0% {
-    transform: scale(0.92) translateZ(0px) rotateY(360deg) rotateZ(0deg) rotateX(90deg);
-  }
-  50% {
-    transform: scale(0.92) translateZ(0px) rotateY(180deg) rotateZ(180deg) rotateX(90deg);
-  }
-  100% {
-    transform: scale(0.92) translateZ(0px) rotateY(0deg) rotateZ(360deg) rotateX(90deg);
-  }
-}
 @keyframes croix {
   0% {
     transform: scale(0.92) translateZ(0px) rotateY(360deg) rotateZ(0deg) rotateX(90deg);
@@ -273,8 +242,7 @@ header {
 }
 
 .sphere:hover ~ .sphereBox .croix {
-  -webkit-animation: hoverCroix 2s ease-out;
-          animation: hoverCroix 2s ease-out;
+  animation: hoverCroix 2s ease-out;
   transform: scale(1.1) translateZ(0px) rotateY(-35deg) rotateZ(-5deg) rotateX(5deg);
 }
 
@@ -286,8 +254,7 @@ header {
   height: 15%;
   background: radial-gradient(black, rgba(255, 255, 255, 0) 35%);
   z-index: 0;
-  -webkit-animation: hoverOmbre1 2s ease-out;
-          animation: hoverOmbre1 2s ease-out;
+  animation: hoverOmbre1 2s ease-out;
   transform: scale(1.8) translate3d(11%, -65%, 0) rotateY(200deg) rotateZ(21deg) rotateX(0deg);
 }
 
@@ -299,20 +266,11 @@ header {
   height: 15%;
   background: radial-gradient(black, rgba(0, 0, 0, 0) 30%);
   z-index: 0;
-  -webkit-animation: hoverOmbre2 2s ease-out;
-          animation: hoverOmbre2 2s ease-out;
+  animation: hoverOmbre2 2s ease-out;
   transform: scale(1.8) translate3d(18%, -90%, 0) rotateY(20deg) rotateZ(-4deg) rotateX(0deg);
 }
 
 /* -------------------------------------- ANIMATIONS DU HOVER (LA CROIX ET SON OMBRE) -------------------------------------- */
-@-webkit-keyframes hoverCroix {
-  from {
-    transform: scale(0.92) translateZ(0px) rotateY(360deg) rotateZ(0deg) rotateX(90deg);
-  }
-  to {
-    transform: scale(1) translateZ(0px) rotateY(-35deg) rotateZ(-5deg) rotateX(5deg);
-  }
-}
 @keyframes hoverCroix {
   from {
     transform: scale(0.92) translateZ(0px) rotateY(360deg) rotateZ(0deg) rotateX(90deg);
@@ -321,28 +279,12 @@ header {
     transform: scale(1) translateZ(0px) rotateY(-35deg) rotateZ(-5deg) rotateX(5deg);
   }
 }
-@-webkit-keyframes hoverOmbre1 {
-  from {
-    transform: scale(1.7) translate3d(11%, -55%, -50px) rotateY(360deg) rotateZ(21deg) rotateX(45deg);
-  }
-  to {
-    transform: scale(1.8) translate3d(12%, -70%, 0) rotateY(200deg) rotateZ(21deg) rotateX(0deg);
-  }
-}
 @keyframes hoverOmbre1 {
   from {
     transform: scale(1.7) translate3d(11%, -55%, -50px) rotateY(360deg) rotateZ(21deg) rotateX(45deg);
   }
   to {
     transform: scale(1.8) translate3d(12%, -70%, 0) rotateY(200deg) rotateZ(21deg) rotateX(0deg);
-  }
-}
-@-webkit-keyframes hoverOmbre2 {
-  from {
-    transform: scale(1.7) translate3d(16%, -80%, -50px) rotateY(180deg) rotateZ(0deg) rotateX(45deg);
-  }
-  to {
-    transform: scale(1.8) translate3d(18%, -90%, 0) rotateY(20deg) rotateZ(-4deg) rotateX(0deg);
   }
 }
 @keyframes hoverOmbre2 {

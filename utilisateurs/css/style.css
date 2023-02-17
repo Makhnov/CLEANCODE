@@ -90,7 +90,6 @@ body {
 button, .intitules span p {
   -webkit-user-select: none !important;
      -moz-user-select: none !important;
-      -ms-user-select: none !important;
           user-select: none !important;
 }
 
@@ -115,7 +114,6 @@ button, .intitules span p {
   width: 0;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   transition: 0.33s;
 }
@@ -131,9 +129,6 @@ button, .intitules span p {
   transition: 0.33s;
 }
 #inputBar input::-moz-placeholder {
-  opacity: 0;
-}
-#inputBar input:-ms-input-placeholder {
   opacity: 0;
 }
 #inputBar input::placeholder {
@@ -166,11 +161,6 @@ button, .intitules span p {
   top: -25px;
   color: rgba(0, 0, 0, 0.5);
 }
-#inputBar input:nth-of-type(1):not(:-ms-input-placeholder) ~ label:nth-of-type(1) {
-  left: -32%;
-  top: -25px;
-  color: rgba(0, 0, 0, 0.5);
-}
 #inputBar input:nth-of-type(1):not(:placeholder-shown) ~ label:nth-of-type(1) {
   left: -32%;
   top: -25px;
@@ -181,11 +171,6 @@ button, .intitules span p {
   top: -25px;
 }
 #inputBar input:nth-of-type(2):not(:-moz-placeholder-shown) ~ label:nth-of-type(2) {
-  left: -32%;
-  top: -25px;
-  color: rgba(0, 0, 0, 0.5);
-}
-#inputBar input:nth-of-type(2):not(:-ms-input-placeholder) ~ label:nth-of-type(2) {
   left: -32%;
   top: -25px;
   color: rgba(0, 0, 0, 0.5);
@@ -204,21 +189,12 @@ button, .intitules span p {
   top: -25px;
   color: rgba(0, 0, 0, 0.5);
 }
-#inputBar input:nth-of-type(3):not(:-ms-input-placeholder) ~ label:nth-of-type(3) {
-  left: -32%;
-  top: -25px;
-  color: rgba(0, 0, 0, 0.5);
-}
 #inputBar input:nth-of-type(3):not(:placeholder-shown) ~ label:nth-of-type(3) {
   left: -32%;
   top: -25px;
   color: rgba(0, 0, 0, 0.5);
 }
 #inputBar input input:not(:-moz-placeholder-shown) + input:not(:-moz-placeholder-shown) + input:not(:-moz-placeholder-shown) ~ label:nth-of-type(3) {
-  color: red !important;
-  opacity: 1 !important;
-}
-#inputBar input input:not(:-ms-input-placeholder) + input:not(:-ms-input-placeholder) + input:not(:-ms-input-placeholder) ~ label:nth-of-type(3) {
   color: red !important;
   opacity: 1 !important;
 }
@@ -288,7 +264,6 @@ button, .intitules span p {
 }
 #users div span p {
   cursor: pointer;
-  max-width: -webkit-fit-content;
   max-width: -moz-fit-content;
   max-width: fit-content;
   font-weight: bold;
@@ -297,7 +272,6 @@ button, .intitules span p {
 #users div p {
   font-size: 0.8em;
   width: 100%;
-  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   cursor: pointer;

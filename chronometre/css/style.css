@@ -176,13 +176,11 @@ body {
   justify-self: center;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
 }
 #scene .chrono p {
   flex: 0 0 auto;
   align-self: end;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding: 0px;

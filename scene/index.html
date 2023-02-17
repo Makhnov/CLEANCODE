@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <title>Portfolio</title>
+
+    <meta name="author" content="Makh">
+    <meta name="description" content="Portofilo Nico">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./utils/css/hud.css">
+    <link rel="stylesheet" href="./utils/css/book.css">
+    <link rel="stylesheet" href="./utils/css/cv.css">
+    <link rel="stylesheet" href="./utils/css/skills.css">
+    <link rel="stylesheet" href="./utils/css/contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/x-icon" href="../divers/img/favfolio.ico">
+
+
+
+
+</head>
+
+<body onload="refresh()">
+    <section id="containerHUD">
+        <div id="waitingMenu"></div>
+
+        <nav class="gauche">
+            <ul>
+                <li class="gauche">
+                    A propos
+                    <div class="back"></div>
+                </li>
+                <li class="gauche">
+                    Portfolio
+                    <div class="back"></div>
+                </li>
+                <li class="gauche">
+                    Curriculum vitae
+                    <div class="back"></div>
+                </li>
+                <li class="gauche">
+                    Compétences
+                    <div class="back"></div>
+                </li>
+                <li class="gauche">
+                    Contact
+                    <div class="back"></div>
+                </li>
+            </ul>
+            <!-- <div id="waitingMenu"></div> -->
+        </nav>
+
+        <nav class="droite">
+            <ul>
+                <li class="droite">
+                    <div></div>
+                    <p for="readBook" onclick="openBook(true)" id="openBook" class="bouton-texte">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-book-open"></i>
+                    </p>
+                    <p for="openStand" onclick="openCV(true)" id="openStandIcon" class="bouton-texte">
+                        <i class="fas fa-down-left-and-up-right-to-center"></i>
+                        <i class="fas fa-up-right-and-down-left-from-center"></i>
+                    </p>
+                    <div></div>
+                    <div></div>
+                </li>
+                <li class="droite">
+                    <div></div>
+                    <div class="changementPage bouton-texte">
+                        <span class="container-button-texte pageSuivante">
+                            <i onclick="pageSuivante(this)" id="pageSuivante" class="fas fa-share 1"></i>
+                        </span>
+                        <span class="container-button-texte pagePrecedente">
+                            <i onclick="pagePrecedente(this)" id="pagePrecedente" class="fas fa-share 7"></i>
+                        </span>
+                    </div>
+                    <label for="rotationStand" id="rotationStandIcon" class="rotation bouton-texte">
+                        <i class="fa-solid fa-arrow-rotate-right"></i>
+                    </label>
+                    <div></div>
+                    <div></div>
+
+                </li>
+                <li class="droite">
+                    <div></div>
+                    <p class="zoom bouton-texte">
+                        <span class="container-button-texte zoom-moins">
+                            <i onclick="dezoomLivre()" class="fas fa-compress"></i>
+                        </span>
+                        <span class="container-button-texte zoom-plus">
+                            <i onclick="zoomLivre()" class="fas fa-expand"></i>
+                        </span>
+                    </p>
+                    <div>
+                        <a id="downloadCVLink" class="download bouton-texte" href="https://makh.fr/files/cv.pdf"
+                            download>
+                            <i class="fas fa-file-arrow-down"></i>
+                        </a>
+                    </div>
+                    <div></div>
+                    <div></div>
+                </li>
+                <li class="droite">
+                    <div></div>
+                    <p class="informations bouton-texte">
+                        <i onclick="portfolioInfos()" id="infosSup" class="fas fa-info"></i>
+                    </p>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </li>
+                <li class="droite">
+                    <div></div>
+                    <p class="voirPlus bouton-texte">
+                        <i onclick="portfolioPlus()" id="portfolioPlus" class="fas fa-folder-plus"></i>
+                    </p>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 
+        <div id="blurBackground">
+            <div class="blurs"></div>
+            <div class="blurs"></div>
+            <div class="blurs"></div>
+            <div class="blurs vortex"></div>
+        </div> 
+        -->
+
+        <div id="containerView">
+            <div id="APROPOS" class="hidden main">
+                <p>A PROPOS</p>
+            </div>
+            <div id="PORTFOLIO" class="hidden main">
+                <section id="book">
+                    <input type="checkbox" id="readBook">
+                    <div id="livre">
+                        <div class="blocLivre gauche">
+                            <div class="fpage gauche"></div>
+                            <div class="fpage gauche"></div>
+                            <div class="fpage gauche"></div>
+                            <div class="fpage gauche"></div>
+                            <div id="pageG" class="pages gauche 7" onclick="pagePrecedente(this)">
+                                <div class="bandes bandeGauche">
+                                    <div class="bandes bandeGauche">
+                                        <div class="bandes bandeGauche">
+                                            <div class="bandes bandeGauche">
+                                                <div class="bandes bandeGauche">
+                                                    <div class="bandes bandeGauche">
+                                                        <div class="bandes bandeGauche"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="blocLivre droite">
+                            <div class="fpage droite"></div>
+                            <div class="fpage droite"></div>
+                            <div class="fpage droite"></div>
+                            <div class="fpage droite"></div>
+                            <div id="pageD" class="pages droite 1" onclick="pageSuivante(this)">
+                                <div class="bandes bandeDroite">
+                                    <div class="bandes bandeDroite">
+                                        <div class="bandes two bandeDroite">
+                                            <div class="bandes bandeDroite">
+                                                <div class="bandes bandeDroite">
+                                                    <div class="bandes bandeDroite">
+                                                        <div class="bandes bandeDroite"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div id="CURRICULUM" class="hidden main">
+                <input type="checkbox" id="openStand">
+                <input type="checkbox" id="rotationStand">
+                <div id="teleport">
+                    <label for="zoneCV" id="filtreCV"></label>
+                    <input type="button" onclick="clicCV()" id="zoneCV">
+                    <div class="bloc top">
+                        <div class="face top up"></div>
+                        <div class="face top down">
+                            <div class="side top left"></div>
+                            <div class="side top right"></div>
+                        </div>
+                    </div>
+                    <div class="bloc bottom">
+                        <div class="face bottom up"></div>
+                        <div class="face bottom down">
+                            <div class="side bottom left"></div>
+                            <div class="side bottom right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="COMPETENCES" class="hidden main">
+                <div class="titre skills">
+                    <article class="principal">
+                        <h1>MES</h1>
+                        <h1>COMPETENCES:</h1>
+                    </article>
+                </div>
+                <div class="progress html">
+                    <article>
+                        <h1>HTML</h1>
+                        <h3>Bootstrap</h3>
+                    </article>
+                    <div class="progress bordure">
+                        <p>80%</p>
+                    </div>
+                    <div class="progress barreD"></div>
+                    <div class="progress barreG"></div>
+                    <div class="progress cacheD"></div>
+                    <div class="progress cacheG"></div>
+                </div>
+                <div class="progress css">
+                    <article>
+                        <h1>CSS</h1>
+                        <h3>Sass</h3>
+                    </article>
+                    <div class="progress bordure">
+                        <p>90%</p>
+                    </div>
+                    <div class="progress barreD"></div>
+                    <div class="progress barreG"></div>
+                    <div class="progress cacheD"></div>
+                    <div class="progress cacheG"></div>
+                </div>
+                <div class="progress js">
+                    <article>
+                        <h1>Javascript</h1>
+                        <h3>VueJS</h3>
+                    </article>
+                    <div class="progress bordure">
+                        <p>70%</p>
+                    </div>
+                    <div class="progress barreD"></div>
+                    <div class="progress barreG"></div>
+                    <div class="progress cacheD"></div>
+                    <div class="progress cacheG"></div>
+                </div>
+                <div class="progress php">
+                    <article>
+                        <h1>PHP</h1>
+                        <h3>Laravel</h3><br>
+                        <h3>Symfony</h3>
+                    </article>
+                    <div class="progress bordure">
+                        <p>45%</p>
+                    </div>
+                    <div class="progress barreD"></div>
+                    <div class="progress barreG"></div>
+                    <div class="progress cacheD"></div>
+                    <div class="progress cacheG"></div>
+                </div>
+                <div class="progress sql">
+                    <article>
+                        <h1>SQL</h1>
+                        <h3>MySQL</h3>
+                    </article>
+                    <div class="progress bordure">
+                        <p>80%</p>
+                    </div>
+                    <div class="progress barreD"></div>
+                    <div class="progress barreG"></div>
+                    <div class="progress cacheD"></div>
+                    <div class="progress cacheG"></div>
+                </div>
+            </div>
+            <form id="CONTACT" action="POST" class="hidden main">
+                <h2>Me contacter</h2>
+
+                <div class="inputs">
+                    <input id="nom" type="text" placeholder="Nom" oninput="validerCheck()">
+                    <label for="nom">Nom</label>
+                    <span></span>
+                </div>
+                <div class="inputs">
+                    <input id="email" type="text" placeholder="E-Mail" oninput="validerCheck()">
+                    <label for="email">E-Mail</label>
+                    <span></span>
+                </div>
+                <div class="inputs">
+                    <input id="message" type="text" placeholder="Message" oninput="validerCheck()">
+                    <label for="message">Message</label>
+                    <span></span>
+                </div>
+
+                <div class="boutons">
+                    <button id="supprimer"><i class="fas fa-ban"></i></button>
+                    <button id="valider" type="submit"><i class="fas fa-check"></i></button>
+                    <span></span>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section id="modal">
+        <div id="backgroundModal" onclick="closeModal(this)"></div>
+        <div id="containerModal">
+            <h1>Titre</h2>
+                <h3>Résumé du titre</h3>
+                <p></p>
+        </div>
+    </section>
+
+    <script src="./utils/js/hud.js"></script>
+    <script src="./utils/js/curriculum.js"></script>
+    <script src="./utils/js/portfolio.js"></script>
+    <script src="./utils/js/contact.js"></script>
+</body>
+
+</html>

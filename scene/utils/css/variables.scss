@@ -1,0 +1,72 @@
+:root {
+    // HUD//
+    --menuLargeur:clamp(300px, 40vh, 15vw);
+    --menuHauteur:calc(var(--menuLargeur) / 3);
+    --menuProfondeur:50px;
+    --ignitionDegree: 20deg;
+    --vitesseEntree:4s;
+    --vitesseSortie:2s;
+    --rightNavFontSize:clamp(2rem, 3vw, 3.25rem);
+
+    // COLORS //
+    --bookBorder:rgb(50, 50, 50);
+    --bookPage:whitesmoke;    
+    --mainColor1:rgb(17, 126, 181);
+    --mainColor2:rgb(31, 162, 227);
+    --mainColor3:rgb(20, 172, 249);
+    --mainColor4:rgb(108, 221, 255);
+    --subColor1:rgb(39, 48, 52);
+    --blurColor1:rgba(1,1,1, 0.1);
+    --blurColor2:rgba(10,10,10, 0.25);
+    --blurColor3:rgba(15,15,15, 0.5);
+    --blackLight:rgba(0,0,0, 0.75);
+    --blackLight2:rgba(10,10,10, 0.5);
+    --subColorLight: rgba(39, 48, 52, 0.8);
+    --mainColorLight:rgba(17, 126, 181, 0.6);
+
+    // DISPLAY CV //
+    --standLargeur:clamp(15vw, 70vh, 40vw); // Variable unique. ~ entre 10vh et 80vh
+    --standLargeurInt:calc(12/21 * (var(--standLargeur)));
+    --standEpaisseur:calc(2/21 * (var(--standLargeur)));
+    --standHauteur:calc(24/21 * (var(--standLargeur)));
+
+    // LIVRE PORTFOLIO //
+    --livreLargeur:clamp(200px, 75vh, 37vw);
+    --imageG1:url('../../../divers/img/pf-videos.jpg');
+    --imageG2:url('../../../divers/img/pf-videos-specs.jpg');
+    --imageM1:url('../../../divers/img/pf-rando.jpg');
+    --imageM2:url('../../../divers/img/pf-rando-specs.jpg');
+    --imageD1:url('../../../divers/img/pf-conseil.jpg');
+    --imageD2:url('../../../divers/img/pf-conseil-specs.jpg');
+    --bookFront:var(--bookBorder);
+
+    --zoomLivre:-300px;
+    --inclinaisonLivre:-8deg;
+    --rotationLivre:35deg;
+    --justifyLivre:0vw;
+    --alignLivre:-7.5vh;
+    --gapLivre:20px;
+    --vitessePage:1.6s;
+}
+
+/* ---- POLICES ---- */
+@media all {
+    @font-face {
+        font-family: "baskerville";
+        src: url(../../divers/fonts/baskervilleRegular.ttf) format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "baskerville";
+        src: url(../../divers/fonts/baskervilleBold.ttf) format("truetype");
+        font-weight: bold;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'baskerville';
+        src: url(../../divers/fonts/baskervilleItalic.ttf) format("truetype");
+        font-weight: normal;
+        font-style: italic;
+    }
+}

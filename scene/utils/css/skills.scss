@@ -1,0 +1,503 @@
+#COMPETENCES {// GRID
+    display: grid!important;
+    min-height:80vh;
+    min-width: 56vw;
+    grid-template-rows:25vh 2.5vh 25vh 2.5vh 25vh;
+    grid-template-columns: 27vw 2vw 27vw;
+    
+    > .skills {
+        grid-row:1;
+        grid-column:1;
+    }
+    > .html {
+        grid-row:1;
+        grid-column:3;
+    }
+    > .css {
+        grid-row:3;
+        grid-column:1;
+    }
+    > .js {
+        grid-row:3;
+        grid-column:3;
+    }
+    > .php {
+        grid-row:5;
+        grid-column:1;
+    }
+    > .sql {
+        grid-row:5;
+        grid-column:3;
+    }
+}
+
+#COMPETENCES {//DIVS
+    & > div {
+        transform-style:preserve-3d;
+        height: 25vh;
+        width: 27vw;
+        background-color:rgba(17, 126, 181, 0.6);
+        box-sizing: border-box;
+        border: 2px solid whitesmoke;
+        display: flex;
+        align-items: center;
+        justify-content:flex-end;
+    }
+}
+
+#COMPETENCES div {//TITRES
+    
+    article.principal {
+        justify-content: flex-start!important;
+    }
+
+    article {
+        position: absolute;
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: flex-start;
+        top:2vh;
+        left:1vw;
+        height: 21vh;
+        width:20vw;
+        color: whitesmoke;
+
+        h1 {
+            margin:0 0 10px 0;
+            padding:0;
+            font-size: 3vw;
+            text-shadow: 1px 1px 1px #919191,
+            1px 2px 1px #919191,
+            1px 3px 1.5px #919191,
+            1px 4px 2px #919191,
+            1px 18px 5px var(--blurColor3),
+            1px 21px 10px var(--blurColor2),
+            1px 24px 30px var(--blurColor2),
+            1px 27px 60px var(--blurColor3);
+            text-align: start;
+        }
+
+        h3 {
+            margin:0;
+            padding:0;
+            font-size: 1.8vw;
+        }
+    }
+
+    article:not(.principal) {//TITRES SECONDAIRES
+        transform: translateZ(-3000px);
+    }
+}
+
+#COMPETENCES .progress {//PROGRESS BARS
+    .bordure {
+        position: absolute;
+        z-index: 10;
+        height: 10vw;
+        width: 10vw;
+        border-radius: 50%;
+    
+        background:radial-gradient(circle at center,
+            rgb(17, 126, 181),
+            rgb(17, 126, 181) 2vw,
+            black 2vw,
+            black 2.5vw,
+            #ffffff00 2.5vw,
+            #ffffff00 3.5vw,
+            black 3.5vw,
+            black 4vw,
+            #ffffff00 4vw
+        );
+    
+        display: grid;
+        place-content: center;
+    
+        p {
+            font-size: 1.5vw;
+            font-weight: bold;
+            animation: progressText var(--vitesseEntree) linear forwards;
+        }
+    }
+    
+    .barreD {
+        position: absolute;
+        z-index: 8;
+        height: 8vw;
+        width: 4vw;
+        right:1vw;
+    
+        background:radial-gradient(circle at left center,
+            #ffffff00 2.5vw,
+            #40E0D0 2.5vw,
+            #40E0D0 3.5vw,
+            #ffffff00 3.5vw
+        );
+    }
+    
+    .barreG {
+        position: absolute;
+        z-index: 5;
+        height: 8vw;
+        width: 4vw;
+        right: 5vw;
+    
+        background:radial-gradient(circle at right center,
+            #ffffff00 2.5vw,
+            #40E0D0 2.5vw,
+            #40E0D0 3.5vw,
+            #ffffff00 3.5vw
+        );
+    
+        &::after {
+            position: absolute;
+            z-index: 5;
+            content:'';
+            top:1vw;
+            left:1vw;
+            height: 6vw;
+            width: 6vw;
+            border-radius: 50%;
+            box-shadow: 0 0 2rem #40E0D0, 0 0 2.4rem #40E0D0, 0 0 2.8rem #40E0D0, inset 0 0 1.3rem #40E0D0;
+    
+        }
+    }
+
+    .cacheD {
+        position: absolute;
+        z-index: 9;
+        height: 8vw;
+        width: 4vw;
+        right:1vw;
+        border-radius: 0 4vw 4vw 0;
+        background:rgb(17, 126, 181);
+        border-left:1px solid rgb(17, 126, 181);       
+        transform-origin: left center;
+    }
+
+    .cacheG {
+        position: absolute;
+        z-index: 7;
+        height: 8vw;
+        width: 4vw;
+        right:1vw;
+
+        border-radius: 0 4vw 4vw 0;
+        background:rgb(17, 126, 181); 
+        transform-origin: left center;
+        transform: rotate(180deg);
+    }
+}
+
+#COMPETENCES {//ANIMATIONS
+    .html {
+        .cacheD {
+            animation:progressHTML1 var(--vitesseEntree) linear forwards;
+        }
+        .cacheG {
+            animation:progressHTML2 var(--vitesseEntree) linear forwards;
+        }
+        article {
+            animation: progressTitre .6s linear .2s forwards;
+        }
+    }
+    .css {
+        .cacheD {
+            animation:progressCSS1 var(--vitesseEntree) linear forwards;
+        }
+        .cacheG {
+            animation:progressCSS2 var(--vitesseEntree) linear forwards;
+        }
+        article {
+            animation: progressTitre .6s linear .8s forwards;
+        }
+    }
+    .js {
+        .cacheD {
+            animation:progressJS1 var(--vitesseEntree) linear forwards;
+        }
+        .cacheG {
+            animation:progressJS2 var(--vitesseEntree) linear forwards;
+        }
+        article {
+            animation: progressTitre .6s linear 1.4s forwards;
+        }
+    }
+    .php {
+        .cacheD {
+            animation:progressPHP1 var(--vitesseEntree) linear forwards;
+        }
+        article {
+            animation: progressTitre .6s linear 2s forwards;
+        }
+    }
+    .sql {
+        .cacheD {
+            animation:progressSQL1 var(--vitesseEntree) linear forwards;
+        }
+        .cacheG {
+            animation:progressSQL2 var(--vitesseEntree) linear forwards;
+        }
+        article {
+            animation: progressTitre .6s linear 2.6s forwards;
+        }
+    }
+}
+
+@keyframes progressTitre {//de 0 à 20%
+    from {
+        transform: translateZ(-3000px);
+    }
+    to {
+        transform: translateZ(0px);
+    }
+}
+
+@keyframes progressHTML1 {//HTML : de 20 à 36% 
+    0% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    20% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    30% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    30% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+
+    100% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+}
+
+@keyframes progressHTML2 {
+    0% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    30% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    36% {
+        transform: rotate(288deg);
+        visibility: visible;
+    }
+
+    100% {
+        transform: rotate(288deg);
+        visibility: visible;
+    }
+}
+
+@keyframes progressCSS1 {//CSS : de 36 à 54%
+    0% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    36% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    46% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    46% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+
+    100% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+}
+
+@keyframes progressCSS2 {
+    0% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    46% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    54% {
+        transform: rotate(342deg);
+        visibility: visible;
+    }
+
+    100% {
+        transform: rotate(342deg);
+        visibility: visible;
+    }
+}
+
+@keyframes progressJS1 {//JS : de 54 à 68%
+    0% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    54% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    64% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    64% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+
+    100% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+}
+
+@keyframes progressJS2 {
+    0% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    64% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    68% {
+        transform: rotate(252deg);
+        visibility: visible;
+    }
+
+    100% {
+        transform: rotate(252deg);
+        visibility: visible;
+    }
+}
+
+@keyframes progressPHP1 {//PHP : de 68 à 77%
+    0% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    68% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    77% {
+        transform: rotate(162deg);
+        visibility: visible;
+    }
+
+    77% {
+        transform: rotate(162deg);
+        visibility: visible;
+    }
+
+    100% {
+        transform: rotate(162deg);
+        visibility: visible;
+    }
+}
+
+@keyframes progressSQL1 {//SQL : de 77 à 94%
+    0% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    77% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    87% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    87% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+
+    100% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+}
+
+@keyframes progressSQL2 {
+    0% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    87% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    94% {
+        transform: rotate(288deg);
+        visibility: visible;
+    }
+
+    100% {
+        transform: rotate(288deg);
+        visibility: visible;
+    }
+}
+
+@keyframes progressText {// Textes : de 94 à 100%
+    0% {
+        color:rgba(245, 245, 245, 0);
+    }
+    94% {
+        color:rgba(245, 245, 245, 0);
+    }
+    100% {
+        color:whitesmoke;
+    }
+}
+
+@keyframes leaveSkills {
+    0% {
+        transform: translateZ(0) scale(1);
+    }
+
+    50% {
+        transform: translateZ(-100px) scale(1);
+    }
+
+    100% {
+        transform: translateZ(-3000px) scale(0);
+    }
+}
