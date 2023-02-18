@@ -28,7 +28,7 @@
   visibility: visible !important;
   pointer-events: auto;
   border-radius: 10px;
-  background-image: radial-gradient(ellipse farthest-side at center, var(--mainColorLight) 75%, rgba(245, 245, 245, 0));
+  background-image: radial-gradient(ellipse farthest-side at center, var(--mainColor4Light), rgba(245, 245, 245, 0));
   background-clip: padding-box;
   display: flex;
   justify-content: space-around;

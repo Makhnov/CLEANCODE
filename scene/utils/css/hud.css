@@ -1,5 +1,5 @@
 :root {
-  --menuLargeur:clamp(300px, 40vh, 15vw);
+  --menuLargeur:clamp(200px, 30vh, 10vw);
   --menuHauteur:calc(var(--menuLargeur) / 3);
   --menuProfondeur:50px;
   --ignitionDegree: 20deg;
@@ -8,11 +8,12 @@
   --rightNavFontSize:clamp(2rem, 3vw, 3.25rem);
   --bookBorder:rgb(50, 50, 50);
   --bookPage:whitesmoke;
+  --mainColor:rgb(23, 80, 109);
   --mainColor1:rgb(17, 126, 181);
   --mainColor2:rgb(31, 162, 227);
   --mainColor3:rgb(20, 172, 249);
   --mainColor4:rgb(108, 221, 255);
-  --subColor1:rgb(39, 48, 52);
+  --subColor:rgb(39, 48, 52);
   --blurColor1:rgba(1,1,1, 0.1);
   --blurColor2:rgba(10,10,10, 0.25);
   --blurColor3:rgba(15,15,15, 0.5);
@@ -20,11 +21,14 @@
   --blackLight2:rgba(10,10,10, 0.5);
   --subColorLight: rgba(39, 48, 52, 0.8);
   --mainColorLight:rgba(17, 126, 181, 0.6);
-  --standLargeur:clamp(15vw, 70vh, 40vw);
+  --mainColor4Light:rgba(108, 221, 255, 0.6);
+  --standLargeur:30vw;
   --standLargeurInt:calc(12/21 * (var(--standLargeur)));
   --standEpaisseur:calc(2/21 * (var(--standLargeur)));
-  --standHauteur:calc(24/21 * (var(--standLargeur)));
-  --livreLargeur:clamp(200px, 75vh, 37vw);
+  --hMult:8 / 7;
+  --standHauteur:calc(var(--hMult) * (var(--standLargeur)));
+  --inclinaisonCV:90deg;
+  --livreLargeur:clamp(200px, 60vh, 30vw);
   --imageG1:url("../../../divers/img/pf-videos.jpg");
   --imageG2:url("../../../divers/img/pf-videos-specs.jpg");
   --imageM1:url("../../../divers/img/pf-rando.jpg");
@@ -32,13 +36,14 @@
   --imageD1:url("../../../divers/img/pf-conseil.jpg");
   --imageD2:url("../../../divers/img/pf-conseil-specs.jpg");
   --bookFront:var(--bookBorder);
-  --zoomLivre:-300px;
-  --inclinaisonLivre:-8deg;
-  --rotationLivre:35deg;
+  --zoomLivre:0vw;
+  --inclinaisonLivre:-6deg;
+  --rotationLivre:40deg;
   --justifyLivre:0vw;
-  --alignLivre:-7.5vh;
-  --gapLivre:20px;
+  --alignLivre:-6vh;
+  --gapLivre:15px;
   --vitessePage:1.6s;
+  --progressSize:clamp(75px, 10vw, 15vh);
 }
 
 /* ---- POLICES ---- */
@@ -62,6 +67,59 @@
     font-style: italic;
   }
 }
+@media screen and (max-width: 1200px) and (min-width: 1000px) {
+  :root {
+    --standLargeur:40vw!important;
+  }
+}
+@media screen and (max-width: 1000px) and (min-width: 800px) {
+  :root {
+    --standLargeur:50vw!important;
+  }
+  #CURRICULUM #teleport {
+    align-self: center !important;
+  }
+  #COMPETENCES > div:not(.skills) {
+    flex-direction: column !important;
+    justify-content: space-between !important;
+  }
+  #COMPETENCES > div:not(.skills) article {
+    background-color: red;
+    margin: 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  #COMPETENCES > div:not(.skills).php article div {
+    display: flex;
+  }
+  #COMPETENCES > div:not(.skills).php article div > h3 {
+    margin-right: 10px;
+  }
+}
+@media screen and (max-width: 800px) {
+  :root {
+    --standLargeur:60vw!important;
+  }
+  #CURRICULUM #teleport {
+    align-self: center !important;
+  }
+  #COMPETENCES > div:not(.skills) {
+    flex-direction: column !important;
+    justify-content: space-between !important;
+  }
+  #COMPETENCES > div:not(.skills) article {
+    background-color: red;
+    margin: 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  #COMPETENCES > div:not(.skills).php article div {
+    display: flex;
+  }
+  #COMPETENCES > div:not(.skills).php article div > h3 {
+    margin-right: 10px;
+  }
+}
 html, body {
   margin: 0;
   padding: 0;
@@ -70,26 +128,87 @@ html, body {
   overflow: hidden;
 }
 
+#preHUD, #containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre {
+  pointer-events: none;
+}
+#preHUD #preInput,
+#preHUD #teleport,
+#preHUD nav.gauche,
+#preHUD nav.droite, #containerHUD #preInput,
+#containerHUD #teleport,
+#containerHUD nav.gauche,
+#containerHUD nav.droite, #containerView #preInput,
+#containerView #teleport,
+#containerView nav.gauche,
+#containerView nav.droite, #PORTFOLIO #preInput,
+#PORTFOLIO #teleport,
+#PORTFOLIO nav.gauche,
+#PORTFOLIO nav.droite, #CURRICULUM #preInput,
+#CURRICULUM #teleport,
+#CURRICULUM nav.gauche,
+#CURRICULUM nav.droite, #book #preInput,
+#book #teleport,
+#book nav.gauche,
+#book nav.droite, #livre #preInput,
+#livre #teleport,
+#livre nav.gauche,
+#livre nav.droite {
+  pointer-events: auto;
+}
+
 nav, ul, li {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+#preHUD {
+  position: absolute;
+  z-index: 1000;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-image: radial-gradient(ellipse closest-side at 49% 21.5%, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.05) 20%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.3) 30%, rgba(0, 0, 0, 0.8) 80%), radial-gradient(ellipse closest-side at 51% 75%, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.05) 20%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.3) 10%, rgba(0, 0, 0, 0.8) 80%), url("../../../divers/img/hudDark.jpg");
+  background-position: center;
+  background-size: 100% 130%;
+  display: grid;
+  place-content: center;
+}
+#preHUD input {
+  height: 20px;
+  width: 200px;
+}
+#preHUD.anim {
+  animation: depart 1s linear forwards;
+}
+
+@keyframes depart {
+  0% {
+    opacity: 1;
+    display: grid;
+  }
+  99% {
+    opacity: 0;
+    display: grid;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1;
+    display: none;
+  }
+}
 #containerHUD {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background-image: url("../../../divers/img/backgroundHUD.jpg");
+  background-image: url("../../../divers/img/hudLight.jpg");
   background-position: center;
-  background-size: cover;
+  background-size: 100% 130%;
   display: grid;
-  grid-template-columns: 1vw 20vw 1vw 56vw 1vw 15vw 1vw 4vw 1vw;
-  grid-template-rows: 10vh 80vh 10vh;
+  grid-template-columns: 1vw 18vw 1vw 60vw 1vw 18vw 1vw;
+  grid-template-rows: 14vh 78vh 8vh;
   perspective: 1000px;
   perspective-origin: center;
-  -webkit-backdrop-filter: opacity(0.2);
-          backdrop-filter: opacity(0.2);
 }
 
 #waitingMenu {
@@ -106,19 +225,18 @@ nav, ul, li {
   filter: hue-rotate(35deg) contrast(2);
 }
 
-nav.gauche {
+#containerHUD nav.gauche {
   position: absolute;
   transform-style: preserve-3d;
   grid-row: 2;
   grid-column: 2;
-  height: 80vh;
-  width: 20vw;
+  height: 78vh;
+  width: 18vw;
   display: grid;
   transform-origin: left;
   transform: rotateY(45deg) translate3d(100px, 0, 0);
 }
-
-nav.gauche ul {
+#containerHUD nav.gauche ul {
   position: absolute;
   transform-style: preserve-3d;
   min-height: calc(var(--menuHauteur) * 5 + 3vh);
@@ -129,8 +247,7 @@ nav.gauche ul {
   display: grid;
   row-gap: 5px;
 }
-
-nav.gauche ul li {
+#containerHUD nav.gauche ul li {
   position: relative;
   transform-style: preserve-3d;
   min-height: var(--menuHauteur);
@@ -138,33 +255,33 @@ nav.gauche ul li {
   width: calc(var(--menuLargeur) - 20px);
   text-transform: uppercase;
   color: whitesmoke;
-  background-color: var(--mainColorLight);
+  background-color: var(--mainColor);
   display: grid;
   align-content: center;
   padding-left: 20px;
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-size: clamp(1.5rem, 3vw, 2rem);
   text-shadow: -0.06rem 0rem 0 rgb(148, 163, 184), -0.06rem 0.05rem 0 #0f172a, -0.12rem 0.025rem 0 #94a3b8, -0.12rem 0.075rem 0 #0f172a, -0.18rem 0.05rem 0 #94a3b8, -0.18rem 0.1rem 0 #0f172a, -0.24rem 0.075rem 0 #94a3b8, -0.24rem 0.125rem 0 #0f172a, -0.3rem 0.1rem 0 #94a3b8, -0.3rem 0.15rem 0 #0f172a;
   cursor: pointer;
   transition: transform 3s;
 }
-nav.gauche ul li:hover {
-  transform: translateX(50px);
+#containerHUD nav.gauche ul li:hover {
+  transform: translateX(30px);
 }
-nav.gauche ul li.clicked {
+#containerHUD nav.gauche ul li.clicked {
   transform: translate3d(0, 0, 0) rotateY(var(--menuAngle)) translateX(10000px) scale(0);
 }
-nav.gauche ul li::before {
+#containerHUD nav.gauche ul li::before {
   position: absolute;
   content: "";
   top: 0;
   bottom: 0;
   height: var(--menuHauteur);
   width: var(--menuProfondeur);
-  background-color: var(--subColorLight);
+  background-color: var(--subColor);
   transform-origin: left;
   transform: rotateY(90deg);
 }
-nav.gauche ul li::after {
+#containerHUD nav.gauche ul li::after {
   position: absolute;
   content: "";
   top: 0;
@@ -175,8 +292,7 @@ nav.gauche ul li::after {
   transform-origin: top;
   transform: rotateX(-90deg);
 }
-
-nav.gauche ul li .back {
+#containerHUD nav.gauche ul li .back {
   position: absolute;
   transform-style: preserve-3d;
   height: var(--menuHauteur);
@@ -185,7 +301,7 @@ nav.gauche ul li .back {
   transform-origin: left;
   transform: translate3d(0, 0, calc(-1 * var(--menuProfondeur)));
 }
-nav.gauche ul li .back::before {
+#containerHUD nav.gauche ul li .back::before {
   position: absolute;
   content: "";
   top: 0;
@@ -196,7 +312,7 @@ nav.gauche ul li .back::before {
   transform-origin: left;
   transform: translateX(var(--menuLargeur)) rotateY(-90deg);
 }
-nav.gauche ul li .back::after {
+#containerHUD nav.gauche ul li .back::after {
   position: absolute;
   content: "";
   top: 0;
@@ -208,97 +324,54 @@ nav.gauche ul li .back::after {
   transform: translateY(var(--menuHauteur)) rotateX(90deg);
 }
 
-#containerView {
-  visibility: visible;
-  transform-style: preserve-3d;
-  grid-row: 2;
-  grid-column: 4;
-  height: 80vh;
-  width: 56vw;
-}
-
-#containerView .hidden {
-  display: none !important;
-}
-
-#containerView .main {
-  transform-style: preserve-3d;
-  position: relative;
-  z-index: 10;
-  height: 80vh;
-  width: 56vw;
-}
-
-#APROPOS {
-  background-color: rgba(0, 0, 255, 0.3);
-}
-
-#APROPOS,
-#PORTFOLIO,
-#CURRICULUM,
-#COMPETENCES {
-  visibility: visible !important;
-  display: grid;
-  align-content: center;
-  text-align: center;
-}
-
-nav.droite {
+#containerHUD nav.droite {
   grid-row: 2;
   grid-column: 6;
   position: relative;
   z-index: 100;
-  height: 80vh;
+  height: 78vh;
   width: 15vw;
   display: none;
   grid-template-rows: repeat(5, 10vh) 30vh;
   grid-template-columns: 1fr;
 }
-
-nav.droite ul {
-  height: 80vh;
+#containerHUD nav.droite ul {
+  height: 78vh;
   width: 15vw;
   display: grid;
   align-content: center;
   grid-template-rows: 10vh repeat(5, 12vh) 10vh;
   grid-template-columns: 1fr;
 }
-
-nav.droite ul li {
+#containerHUD nav.droite ul li {
   all: initial;
   display: grid;
   align-content: center;
   min-height: 12vh;
   min-width: 15vw;
 }
-
-nav.droite ul li:nth-of-type(1) {
+#containerHUD nav.droite ul li:nth-of-type(1) {
   grid-column: 1;
   grid-row: 2;
 }
-
-nav.droite ul li:nth-of-type(2) {
+#containerHUD nav.droite ul li:nth-of-type(2) {
   grid-column: 1;
   grid-row: 3;
 }
-
-nav.droite ul li:nth-of-type(3) {
+#containerHUD nav.droite ul li:nth-of-type(3) {
   grid-column: 1;
   grid-row: 4;
 }
-
-nav.droite ul li:nth-of-type(4) {
+#containerHUD nav.droite ul li:nth-of-type(4) {
   grid-column: 1;
   grid-row: 5;
 }
-
-nav.droite ul li:nth-of-type(5) {
+#containerHUD nav.droite ul li:nth-of-type(5) {
   grid-column: 1;
   grid-row: 6;
 }
-
-nav.droite ul li .bouton-texte:not(.changementPage, .zoom),
-nav.droite ul li .bouton-texte .container-button-texte {
+#containerHUD nav.droite ul li .bouton-texte:not(.changementPage, .zoom),
+#containerHUD nav.droite ul li .bouton-texte .container-button-texte {
   align-self: center;
   cursor: pointer;
   margin: 0;
@@ -310,104 +383,99 @@ nav.droite ul li .bouton-texte .container-button-texte {
   font-size: var(--rightNavFontSize);
   color: var(--mainColor3);
 }
-nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i,
-nav.droite ul li .bouton-texte .container-button-texte i {
+#containerHUD nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i,
+#containerHUD nav.droite ul li .bouton-texte .container-button-texte i {
   text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.5px 0.375px rgb(31, 162, 227), 1px 0.75px rgb(30.36, 156.44, 219.6), 1.5px 1.125px rgb(29.72, 150.88, 212.2), 2px 1.5px rgb(29.08, 145.32, 204.8), 2.5px 1.875px rgb(28.44, 139.76, 197.4), 3px 2.25px rgb(27.8, 134.2, 190), 3.5px 2.625px rgb(27.16, 128.64, 182.6), 4px 3px rgb(26.52, 123.08, 175.2), 4.5px 3.375px rgb(25.88, 117.52, 167.8), 5px 3.75px rgb(25.24, 111.96, 160.4), 5.5px 4.125px rgb(24.6, 106.4, 153), 6px 4.5px rgb(23.96, 100.84, 145.6), 6.5px 4.875px rgb(23.32, 95.28, 138.2), 7px 5.25px rgb(22.68, 89.72, 130.8), 7.5px 5.625px rgb(22.04, 84.16, 123.4), 8px 6px rgb(21.4, 78.6, 116), 8.5px 6.375px rgb(20.76, 73.04, 108.6), 9px 6.75px rgb(20.12, 67.48, 101.2), 9.5px 7.125px rgb(19.48, 61.92, 93.8), 10px 7.5px rgb(18.84, 56.36, 86.4), 10.5px 7.875px rgb(18.2, 50.8, 79), 11px 8.25px rgb(17.56, 45.24, 71.6), 11.5px 8.625px rgb(16.92, 39.68, 64.2), 12px 9px rgb(16.28, 34.12, 56.8), 12.5px 9.375px rgb(15.64, 28.56, 49.4), 13px 9.75px rgb(15, 23, 42);
   transform: translate(0, 0);
   transition: opacity 0.5s;
 }
-nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i:not(.fa-arrow-rotate-right):hover,
-nav.droite ul li .bouton-texte .container-button-texte i:not(.fa-arrow-rotate-right):hover {
+#containerHUD nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i:not(.fa-arrow-rotate-right):hover,
+#containerHUD nav.droite ul li .bouton-texte .container-button-texte i:not(.fa-arrow-rotate-right):hover {
   text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.5px 0.375px rgb(31, 162, 227), 1px 0.75px rgb(30.2380952381, 155.380952381, 218.1904761905), 1.5px 1.125px rgb(29.4761904762, 148.7619047619, 209.380952381), 2px 1.5px rgb(28.7142857143, 142.1428571429, 200.5714285714), 2.5px 1.875px rgb(27.9523809524, 135.5238095238, 191.7619047619), 3px 2.25px rgb(27.1904761905, 128.9047619048, 182.9523809524), 3.5px 2.625px rgb(26.4285714286, 122.2857142857, 174.1428571429), 4px 3px rgb(25.6666666667, 115.6666666667, 165.3333333333), 4.5px 3.375px rgb(24.9047619048, 109.0476190476, 156.5238095238), 5px 3.75px rgb(24.1428571429, 102.4285714286, 147.7142857143), 5.5px 4.125px rgb(23.380952381, 95.8095238095, 138.9047619048), 6px 4.5px rgb(22.619047619, 89.1904761905, 130.0952380952), 6.5px 4.875px rgb(21.8571428571, 82.5714285714, 121.2857142857), 7px 5.25px rgb(21.0952380952, 75.9523809524, 112.4761904762), 7.5px 5.625px rgb(20.3333333333, 69.3333333333, 103.6666666667), 8px 6px rgb(19.5714285714, 62.7142857143, 94.8571428571), 8.5px 6.375px rgb(18.8095238095, 56.0952380952, 86.0476190476), 9px 6.75px rgb(18.0476190476, 49.4761904762, 77.2380952381), 9.5px 7.125px rgb(17.2857142857, 42.8571428571, 68.4285714286), 10px 7.5px rgb(16.5238095238, 36.2380952381, 59.619047619), 10.5px 7.875px rgb(15.7619047619, 29.619047619, 50.8095238095), 11px 8.25px rgb(15, 23, 42);
   transform: translate(2px, 1.5px);
 }
-nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i:not(.fa-arrow-rotate-right):active,
-nav.droite ul li .bouton-texte .container-button-texte i:not(.fa-arrow-rotate-right):active {
+#containerHUD nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i:not(.fa-arrow-rotate-right):active,
+#containerHUD nav.droite ul li .bouton-texte .container-button-texte i:not(.fa-arrow-rotate-right):active {
   text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.5px 0.375px rgb(31, 162, 227), 1px 0.75px rgb(30.0588235294, 153.8235294118, 216.1176470588), 1.5px 1.125px rgb(29.1176470588, 145.6470588235, 205.2352941176), 2px 1.5px rgb(28.1764705882, 137.4705882353, 194.3529411765), 2.5px 1.875px rgb(27.2352941176, 129.2941176471, 183.4705882353), 3px 2.25px rgb(26.2941176471, 121.1176470588, 172.5882352941), 3.5px 2.625px rgb(25.3529411765, 112.9411764706, 161.7058823529), 4px 3px rgb(24.4117647059, 104.7647058824, 150.8235294118), 4.5px 3.375px rgb(23.4705882353, 96.5882352941, 139.9411764706), 5px 3.75px rgb(22.5294117647, 88.4117647059, 129.0588235294), 5.5px 4.125px rgb(21.5882352941, 80.2352941176, 118.1764705882), 6px 4.5px rgb(20.6470588235, 72.0588235294, 107.2941176471), 6.5px 4.875px rgb(19.7058823529, 63.8823529412, 96.4117647059), 7px 5.25px rgb(18.7647058824, 55.7058823529, 85.5294117647), 7.5px 5.625px rgb(17.8235294118, 47.5294117647, 74.6470588235), 8px 6px rgb(16.8823529412, 39.3529411765, 63.7647058824), 8.5px 6.375px rgb(15.9411764706, 31.1764705882, 52.8823529412), 9px 6.75px rgb(15, 23, 42);
   transform: translate(4px, 3px);
 }
-nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i:hover:not(.fa-arrow-rotate-right),
-nav.droite ul li .bouton-texte .container-button-texte i:hover:not(.fa-arrow-rotate-right) {
+#containerHUD nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i:hover:not(.fa-arrow-rotate-right),
+#containerHUD nav.droite ul li .bouton-texte .container-button-texte i:hover:not(.fa-arrow-rotate-right) {
   text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.5px 0.375px rgb(31, 162, 227), 1px 0.75px rgb(30.2380952381, 155.380952381, 218.1904761905), 1.5px 1.125px rgb(29.4761904762, 148.7619047619, 209.380952381), 2px 1.5px rgb(28.7142857143, 142.1428571429, 200.5714285714), 2.5px 1.875px rgb(27.9523809524, 135.5238095238, 191.7619047619), 3px 2.25px rgb(27.1904761905, 128.9047619048, 182.9523809524), 3.5px 2.625px rgb(26.4285714286, 122.2857142857, 174.1428571429), 4px 3px rgb(25.6666666667, 115.6666666667, 165.3333333333), 4.5px 3.375px rgb(24.9047619048, 109.0476190476, 156.5238095238), 5px 3.75px rgb(24.1428571429, 102.4285714286, 147.7142857143), 5.5px 4.125px rgb(23.380952381, 95.8095238095, 138.9047619048), 6px 4.5px rgb(22.619047619, 89.1904761905, 130.0952380952), 6.5px 4.875px rgb(21.8571428571, 82.5714285714, 121.2857142857), 7px 5.25px rgb(21.0952380952, 75.9523809524, 112.4761904762), 7.5px 5.625px rgb(20.3333333333, 69.3333333333, 103.6666666667), 8px 6px rgb(19.5714285714, 62.7142857143, 94.8571428571), 8.5px 6.375px rgb(18.8095238095, 56.0952380952, 86.0476190476), 9px 6.75px rgb(18.0476190476, 49.4761904762, 77.2380952381), 9.5px 7.125px rgb(17.2857142857, 42.8571428571, 68.4285714286), 10px 7.5px rgb(16.5238095238, 36.2380952381, 59.619047619), 10.5px 7.875px rgb(15.7619047619, 29.619047619, 50.8095238095), 11px 8.25px rgb(15, 23, 42);
   transform: translate(2px, 1.5px);
 }
-nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i:active:not(.fa-arrow-rotate-right),
-nav.droite ul li .bouton-texte .container-button-texte i:active:not(.fa-arrow-rotate-right) {
+#containerHUD nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i:active:not(.fa-arrow-rotate-right),
+#containerHUD nav.droite ul li .bouton-texte .container-button-texte i:active:not(.fa-arrow-rotate-right) {
   text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.5px 0.375px rgb(31, 162, 227), 1px 0.75px rgb(30.0588235294, 153.8235294118, 216.1176470588), 1.5px 1.125px rgb(29.1176470588, 145.6470588235, 205.2352941176), 2px 1.5px rgb(28.1764705882, 137.4705882353, 194.3529411765), 2.5px 1.875px rgb(27.2352941176, 129.2941176471, 183.4705882353), 3px 2.25px rgb(26.2941176471, 121.1176470588, 172.5882352941), 3.5px 2.625px rgb(25.3529411765, 112.9411764706, 161.7058823529), 4px 3px rgb(24.4117647059, 104.7647058824, 150.8235294118), 4.5px 3.375px rgb(23.4705882353, 96.5882352941, 139.9411764706), 5px 3.75px rgb(22.5294117647, 88.4117647059, 129.0588235294), 5.5px 4.125px rgb(21.5882352941, 80.2352941176, 118.1764705882), 6px 4.5px rgb(20.6470588235, 72.0588235294, 107.2941176471), 6.5px 4.875px rgb(19.7058823529, 63.8823529412, 96.4117647059), 7px 5.25px rgb(18.7647058824, 55.7058823529, 85.5294117647), 7.5px 5.625px rgb(17.8235294118, 47.5294117647, 74.6470588235), 8px 6px rgb(16.8823529412, 39.3529411765, 63.7647058824), 8.5px 6.375px rgb(15.9411764706, 31.1764705882, 52.8823529412), 9px 6.75px rgb(15, 23, 42);
   transform: translate(4px, 3px);
 }
-nav.droite ul li .bouton-texte:not(.changementPage, .zoom):not(.anim, .closed) .fa-arrow-rotate-right:hover,
-nav.droite ul li .bouton-texte .container-button-texte:not(.anim, .closed) .fa-arrow-rotate-right:hover {
+#containerHUD nav.droite ul li .bouton-texte:not(.changementPage, .zoom):not(.anim, .closed) .fa-arrow-rotate-right:hover,
+#containerHUD nav.droite ul li .bouton-texte .container-button-texte:not(.anim, .closed) .fa-arrow-rotate-right:hover {
   transform: rotate(15deg);
 }
-nav.droite ul li .bouton-texte:not(.changementPage, .zoom).anim .fa-arrow-rotate-right:hover,
-nav.droite ul li .bouton-texte .container-button-texte.anim .fa-arrow-rotate-right:hover {
+#containerHUD nav.droite ul li .bouton-texte:not(.changementPage, .zoom).anim .fa-arrow-rotate-right:hover,
+#containerHUD nav.droite ul li .bouton-texte .container-button-texte.anim .fa-arrow-rotate-right:hover {
   cursor: not-allowed;
 }
-
-#rotationStandIcon.open.anim {
+#containerHUD nav.droite ul #rotationStandIcon.open.anim {
   animation: iconTurn 5s linear infinite;
 }
-
-.bouton-texte.changementPage,
-.bouton-texte.zoom {
+#containerHUD nav.droite ul .bouton-texte.changementPage,
+#containerHUD nav.droite ul .bouton-texte.zoom {
   display: flex !important;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
 }
-.bouton-texte.changementPage .container-button-texte,
-.bouton-texte.zoom .container-button-texte {
+#containerHUD nav.droite ul .bouton-texte.changementPage .container-button-texte,
+#containerHUD nav.droite ul .bouton-texte.zoom .container-button-texte {
   min-width: calc(2 * var(--rightNavFontSize)) !important;
 }
-.bouton-texte.changementPage .container-button-texte.pagePrecedente,
-.bouton-texte.zoom .container-button-texte.pagePrecedente {
+#containerHUD nav.droite ul .bouton-texte.changementPage .container-button-texte.pagePrecedente,
+#containerHUD nav.droite ul .bouton-texte.zoom .container-button-texte.pagePrecedente {
   transform: rotateY(-180deg);
 }
-
-#infosSup {
+#containerHUD nav.droite ul #infosSup {
   cursor: help !important;
 }
-
-#openBook i {
+#containerHUD nav.droite ul #openBook i {
   align-self: center;
   justify-self: center;
   position: absolute;
 }
-#openBook .fa-book {
+#containerHUD nav.droite ul #openBook .fa-book {
   z-index: 110;
 }
-#openBook .fa-book-open {
+#containerHUD nav.droite ul #openBook .fa-book-open {
   opacity: 0;
   z-index: 100;
 }
-#openBook.closed .fa-book {
+#containerHUD nav.droite ul #openBook.closed .fa-book {
   opacity: 0;
 }
-#openBook.closed .fa-book-open {
+#containerHUD nav.droite ul #openBook.closed .fa-book-open {
   opacity: 1;
 }
-
-#openStandIcon {
+#containerHUD nav.droite ul #openStandIcon {
   transform: rotate(-45deg);
 }
-#openStandIcon i {
+#containerHUD nav.droite ul #openStandIcon i {
   align-self: center;
   justify-self: center;
   position: absolute;
 }
-#openStandIcon .fa-down-left-and-up-right-to-center {
+#containerHUD nav.droite ul #openStandIcon .fa-down-left-and-up-right-to-center {
   z-index: 110;
 }
-#openStandIcon .fa-up-right-and-down-left-from-center {
+#containerHUD nav.droite ul #openStandIcon .fa-up-right-and-down-left-from-center {
   opacity: 0;
   z-index: 100;
 }
-#openStandIcon.closed .fa-down-left-and-up-right-to-center {
+#containerHUD nav.droite ul #openStandIcon.closed .fa-down-left-and-up-right-to-center {
   opacity: 0;
 }
-#openStandIcon.closed .fa-up-right-and-down-left-from-center {
+#containerHUD nav.droite ul #openStandIcon.closed .fa-up-right-and-down-left-from-center {
   opacity: 1;
 }
 
@@ -416,6 +484,34 @@ html body #containerHUD nav.droite ul li > * {
   align-self: center;
   justify-self: center;
   visibility: hidden;
+}
+
+#containerView {
+  visibility: visible;
+  transform-style: preserve-3d;
+  grid-row: 2;
+  grid-column: 4;
+  height: 78vh;
+  width: 60vw;
+}
+#containerView .hidden {
+  display: none !important;
+}
+#containerView .main {
+  transform-style: preserve-3d;
+  position: relative;
+  z-index: 10;
+  height: 78vh;
+  width: 60vw;
+}
+#containerView #APROPOS,
+#containerView #PORTFOLIO,
+#containerView #CURRICULUM,
+#containerView #COMPETENCES {
+  visibility: visible !important;
+  display: grid;
+  align-content: center;
+  text-align: center;
 }
 
 #modal {
@@ -427,8 +523,22 @@ html body #containerHUD nav.droite ul li > * {
   height: 100vh;
   width: 100vw;
 }
-
-#backgroundModal {
+#modal #exitModal {
+  all: initial;
+  display: none;
+  place-content: center;
+  font-size: 2rem;
+  position: fixed;
+  z-index: 700;
+  top: 10px;
+  right: 50px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 0.3rem solid black;
+  cursor: pointer;
+}
+#modal #backgroundModal {
   position: absolute;
   z-index: 500;
   height: 100vh;
@@ -438,8 +548,7 @@ html body #containerHUD nav.droite ul li > * {
           backdrop-filter: blur(2px);
   cursor: crosshair;
 }
-
-#containerModal {
+#modal #containerModal {
   position: absolute;
   z-index: 600;
   top: 15vh;
@@ -450,12 +559,12 @@ html body #containerHUD nav.droite ul li > * {
   background-color: var(--mainColor3);
   overflow: scroll;
 }
-#containerModal h1 {
+#modal #containerModal h1 {
   font-size: clamp(2rem, 3vw, 3rem);
 }
-#containerModal h3 {
+#modal #containerModal h3 {
   font-size: clamp(1.5rem, 2.5vw, 2.5rem);
 }
-#containerModal p {
+#modal #containerModal p {
   font-size: clamp(1rem, 2.2vw, 2rem);
 }/*# sourceMappingURL=hud.css.map */

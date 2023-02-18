@@ -1,6 +1,6 @@
 :root {
     // HUD//
-    --menuLargeur:clamp(300px, 40vh, 15vw);
+    --menuLargeur:clamp(200px, 30vh, 10vw);
     --menuHauteur:calc(var(--menuLargeur) / 3);
     --menuProfondeur:50px;
     --ignitionDegree: 20deg;
@@ -11,11 +11,12 @@
     // COLORS //
     --bookBorder:rgb(50, 50, 50);
     --bookPage:whitesmoke;    
+	--mainColor:rgb(23, 80, 109);
     --mainColor1:rgb(17, 126, 181);
     --mainColor2:rgb(31, 162, 227);
     --mainColor3:rgb(20, 172, 249);
     --mainColor4:rgb(108, 221, 255);
-    --subColor1:rgb(39, 48, 52);
+    --subColor:rgb(39, 48, 52);
     --blurColor1:rgba(1,1,1, 0.1);
     --blurColor2:rgba(10,10,10, 0.25);
     --blurColor3:rgba(15,15,15, 0.5);
@@ -23,15 +24,18 @@
     --blackLight2:rgba(10,10,10, 0.5);
     --subColorLight: rgba(39, 48, 52, 0.8);
     --mainColorLight:rgba(17, 126, 181, 0.6);
+    --mainColor4Light:rgba(108, 221, 255, 0.6);
 
     // DISPLAY CV //
-    --standLargeur:clamp(15vw, 70vh, 40vw); // Variable unique. ~ entre 10vh et 80vh
+    --standLargeur:30vw; // Variable unique.
     --standLargeurInt:calc(12/21 * (var(--standLargeur)));
     --standEpaisseur:calc(2/21 * (var(--standLargeur)));
-    --standHauteur:calc(24/21 * (var(--standLargeur)));
+	--hMult:8 / 7; 
+    --standHauteur:calc(var(--hMult) * (var(--standLargeur)));
+	--inclinaisonCV:90deg;
 
     // LIVRE PORTFOLIO //
-    --livreLargeur:clamp(200px, 75vh, 37vw);
+    --livreLargeur:clamp(200px, 60vh, 30vw);
     --imageG1:url('../../../divers/img/pf-videos.jpg');
     --imageG2:url('../../../divers/img/pf-videos-specs.jpg');
     --imageM1:url('../../../divers/img/pf-rando.jpg');
@@ -40,13 +44,16 @@
     --imageD2:url('../../../divers/img/pf-conseil-specs.jpg');
     --bookFront:var(--bookBorder);
 
-    --zoomLivre:-300px;
-    --inclinaisonLivre:-8deg;
-    --rotationLivre:35deg;
+    --zoomLivre:0vw;
+    --inclinaisonLivre:-6deg;
+    --rotationLivre:40deg;
     --justifyLivre:0vw;
-    --alignLivre:-7.5vh;
-    --gapLivre:20px;
+    --alignLivre:-6vh;
+    --gapLivre:15px;
     --vitessePage:1.6s;
+
+	// COMPETENCES //
+	--progressSize:clamp(75px, 10vw, 15vh);
 }
 
 /* ---- POLICES ---- */

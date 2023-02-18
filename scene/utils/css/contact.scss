@@ -22,7 +22,6 @@
     animation: enterContact calc(var(--vitesseEntree) / 4 * 3) linear forwards;
 }
 
-
 #CONTACT  {
     position: absolute;
     z-index: 100;
@@ -31,10 +30,10 @@
     border-radius: 10px;
 
     background-image: radial-gradient(ellipse farthest-side at center,
-    var(--mainColorLight) 75%,
+    var(--mainColor4Light),
     rgba(245, 245, 245, 0));
     background-clip: padding-box;
-
+	
     display: flex;
     justify-content:space-around;
     flex-direction: column;

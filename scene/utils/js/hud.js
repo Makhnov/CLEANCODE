@@ -1,15 +1,20 @@
 const br = '\n';
 const space = ' ';
+const racine = document.documentElement;
 const lorem = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam atque inventore rem fugiat doloremque. Neque eveniet voluptate sequi incidunt cupiditate fugit autem nihil, blanditiis optio veritatispraesentium quam dolorem officiis! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque impedit quibusdam vero veritatis distinctio dignissimos cupiditate nisi doloremque eum provident error atque porro, pariatur corporis. Numquam, unde expedita? Eius, laboriosam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores amet cumque minima, ipsum aut atque soluta harum facere nisi dicta odio eius doloribus quo obcaecati officia quia, voluptas exercitationem sequi!'
 const textInfosPortfolio = "Bienvenue sur mon portfolio, j'ai commencé la programmation web en septembre 2022 en rejoignant une formation de développeur web avec l'ADRAR de Lourdes.<br>Tous mes sites, quel que soit le(s) langage(s), sont 100% originaux, il m'arrive de chercher l'inspiration à droite à gauche bien évidemment mais je ne copie jamais la moindre ligne de code. En cliquant sur l'icone du bas dans la navigation de droite vous pouvez aller visiter les sites présentés ici et bien d'autres que j'ai pu faire tout au long de ma formation.<br>Je travaille principalement en HTML, SASS, Javascript, PHP et SQL, j'ai aussi commencé la pratique de divers frameworks (Vue, React, Laravel, Symfony, etc.).<br><br>Mon gitHub : <a href='https://github.com/Makhnov/' target='_blank'>Makhnov</a>"
+
+const startInput = document.getElementById('preInput');
+const startBG = document.getElementById('preHUD');
+
 const li = document.querySelectorAll('li.gauche');
 const navGauche = document.getElementsByTagName('nav')[0];
 const navDroite = document.getElementsByTagName('nav')[1];
 const scene = document.getElementById('containerView').children;
 
 const waitingMenu = document.getElementById('waitingMenu');
-let vitesse1 = getComputedStyle(document.documentElement).getPropertyValue('--vitesseEntree');
-let vitesse2 = getComputedStyle(document.documentElement).getPropertyValue('--vitesseSortie');
+let vitesse1 = getComputedStyle(racine).getPropertyValue('--vitesseEntree');
+let vitesse2 = getComputedStyle(racine).getPropertyValue('--vitesseSortie');
 let speedIn = parseFloat(vitesse1.replace('s', '')) * 1000;
 let speedOut = parseFloat(vitesse2.replace('s', '')) * 1000;
 let tempo = false;
@@ -20,6 +25,7 @@ const urlGIF = "../../../divers/img/loading175s.gif?time=";
 
 const modal = document.getElementById('modal');
 const modalBackground = document.getElementById('backgroundModal');
+const modalExit = document.getElementById('exitModal');
 const modalBox = document.getElementById('containerModal');
 const modalTitre = document.getElementById('containerModal').children[0];
 const modalResume = document.getElementById('containerModal').children[1];
@@ -45,6 +51,8 @@ let tabNav = [false, false, false, false, false];
 function refresh() {
 	clearScene('all');
 	resize();
+	startInput.value = "";
+	startInput.focus();
 }
 
 window.onresize = function () {
@@ -56,41 +64,53 @@ window.onresize = function () {
 
 function resize() {
 
-	let width = document.documentElement.clientWidth; // On récupère la largeur de l'écran de l'utilisateur
-	// let height = document.documentElement.clientHeight; // On récupère la hauteur de l'écran de l'utilisateur
+	checkWidth();
+
+	let width = racine.clientWidth; // On récupère la largeur de l'écran de l'utilisateur
+	let height = racine.clientHeight; // On récupère la hauteur de l'écran de l'utilisateur
+
 	let angle = 0;
 	let decal = 0;
 	let depth = 50;
+	let tpY = width * 0.3 * 8 / 7;
 
 	console.log('width :' + width);
+	console.log('height :' + height);
+
+	if ((height / tpY) < 1.44) {
+		let hMult = (8 * height / (width * 3)).toFixed(2);
+		racine.style.setProperty('--hMult', hMult);
+	} else {
+		racine.style.removeProperty("--hMult");
+	}
 
 	if (width < 800) {
-		angle = 70;
-		decal = 80;
-		depth = 70;
+		angle = 80;
+		decal = 60;
+		depth = 50;
 		iDeg = 20;
 	} else if (width < 1200) {
-		angle = 75;
-		decal = 100;
-		depth = 80;
+		angle = 85;
+		decal = 60;
+		depth = 50;
 		iDeg = 15;
 	} else if (width < 1600) {
-		angle = 78;
-		decal = 125;
-		depth = 90;
+		angle = 90;
+		decal = 60;
+		depth = 50;
 		iDeg = 10;
 	} else {
-		angle = 80;
-		decal = 150;
-		depth = 110;
+		angle = 90;
+		decal = 60;
+		depth = 50;
 		iDeg = 8;
 	}
 
-	document.documentElement.style.setProperty('--menuAngle', iDeg + 'deg');
-	//let iDegree = getComputedStyle(document.documentElement).getPropertyValue('--menuAngle');
+	racine.style.setProperty('--menuAngle', iDeg + 'deg');
+	//let iDegree = getComputedStyle(racine).getPropertyValue('--menuAngle');
 	//console.log(iDegree);
-	document.documentElement.style.setProperty('--menuProfondeur', depth + 'px');
-	//let depthBar = getComputedStyle(document.documentElement).getPropertyValue('--menuPronfondeur');
+	racine.style.setProperty('--menuProfondeur', depth + 'px');
+	//let depthBar = getComputedStyle(racine).getPropertyValue('--menuPronfondeur');
 	//console.log(depthBar);
 
 	navGauche.style.transform = "rotateY(" + angle + "deg) translate3d(" + decal + "px, 0, 0)";
@@ -98,6 +118,14 @@ function resize() {
 	//waitingMenu.style.height = depth + "px";//En +
 	//waitingMenu.style.transform = "translate3d(0, 0, -" + depth + "px) rotateY(" + -angle + "deg)";
 }
+
+startInput.addEventListener('keypress', function (key) {
+	if (key.key === "Enter") {
+		console.log(startInput.value);
+		startInput.style.display = "none";
+		startBG.classList.add('anim');
+	}
+});
 
 for (let i = 0; i < li.length; i++) {
 	let iTemp = i;
@@ -249,6 +277,16 @@ function checkTabNav() {
 	}
 }
 
+function checkWidth() {
+	const windowWidth = window.innerWidth;
+	const textWidth = modalTexte.offsetWidth;
+	if (textWidth + 100 > windowWidth) {
+		modalExit.style.display = 'grid';
+	} else {
+		modalExit.style.display = 'none';
+	}
+}
+
 function openModal(int) {
 	switch (int) {
 		case 0://A PROPOS
@@ -276,6 +314,7 @@ function openModal(int) {
 			modalTexte.style.height = "100vh";
 			modalTexte.style.background = "url('../../../divers/img/docFront.jpg')";
 			modalTexte.style.backgroundSize = "contain";
+			checkWidth();
 			break;
 		case 3://COMPETENCES
 			break;
@@ -283,6 +322,7 @@ function openModal(int) {
 			break;
 	}
 	modalBackground.value = int;
+	modalExit.value = int;
 }
 
 function closeModal(e) {

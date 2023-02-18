@@ -21,13 +21,15 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/x-icon" href="../divers/img/favfolio.ico">
 
-
-
-
 </head>
 
 <body onload="refresh()">
+	<div id="preHUD">
+		<label for="preInput" id="preLabel"></label>
+		<input type="text" id="preInput">
+	</div>
     <section id="containerHUD">
+
         <div id="waitingMenu"></div>
 
         <nav class="gauche">
@@ -127,15 +129,6 @@
             </ul>
         </nav>
 
-        <!-- 
-        <div id="blurBackground">
-            <div class="blurs"></div>
-            <div class="blurs"></div>
-            <div class="blurs"></div>
-            <div class="blurs vortex"></div>
-        </div> 
-        -->
-
         <div id="containerView">
             <div id="APROPOS" class="hidden main">
                 <p>A PROPOS</p>
@@ -144,12 +137,12 @@
                 <section id="book">
                     <input type="checkbox" id="readBook">
                     <div id="livre">
-                        <div class="blocLivre gauche">
+                        <div class="blocLivre gauche 7" onclick="pagePrecedente(this)">
                             <div class="fpage gauche"></div>
                             <div class="fpage gauche"></div>
                             <div class="fpage gauche"></div>
                             <div class="fpage gauche"></div>
-                            <div id="pageG" class="pages gauche 7" onclick="pagePrecedente(this)">
+                            <div id="pageG" class="pages gauche">
                                 <div class="bandes bandeGauche">
                                     <div class="bandes bandeGauche">
                                         <div class="bandes bandeGauche">
@@ -165,12 +158,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="blocLivre droite">
+                        <div class="blocLivre droite 1" onclick="pageSuivante(this)">
                             <div class="fpage droite"></div>
                             <div class="fpage droite"></div>
                             <div class="fpage droite"></div>
                             <div class="fpage droite"></div>
-                            <div id="pageD" class="pages droite 1" onclick="pageSuivante(this)">
+                            <div id="pageD" class="pages droite">
                                 <div class="bandes bandeDroite">
                                     <div class="bandes bandeDroite">
                                         <div class="bandes two bandeDroite">
@@ -214,8 +207,9 @@
             <div id="COMPETENCES" class="hidden main">
                 <div class="titre skills">
                     <article class="principal">
-                        <h1>MES</h1>
-                        <h1>COMPETENCES:</h1>
+                        <h1>LANGAGES</h1>
+						<br>
+						<h1>Maîtrisés</h1>
                     </article>
                 </div>
                 <div class="progress html">
@@ -223,66 +217,78 @@
                         <h1>HTML</h1>
                         <h3>Bootstrap</h3>
                     </article>
-                    <div class="progress bordure">
-                        <p>80%</p>
-                    </div>
-                    <div class="progress barreD"></div>
-                    <div class="progress barreG"></div>
-                    <div class="progress cacheD"></div>
-                    <div class="progress cacheG"></div>
+					<div class="progress box">
+						<div class="progress bordure">
+							<p>80%</p>
+						</div>
+						<div class="progress barreD"></div>
+						<div class="progress barreG"></div>
+						<div class="progress cacheD"></div>
+						<div class="progress cacheG"></div>
+					</div>
                 </div>
                 <div class="progress css">
                     <article>
                         <h1>CSS</h1>
                         <h3>Sass</h3>
                     </article>
-                    <div class="progress bordure">
-                        <p>90%</p>
-                    </div>
-                    <div class="progress barreD"></div>
-                    <div class="progress barreG"></div>
-                    <div class="progress cacheD"></div>
-                    <div class="progress cacheG"></div>
-                </div>
+					<div class="progress box">
+						<div class="progress bordure">
+							<p>90%</p>
+						</div>
+						<div class="progress barreD"></div>
+						<div class="progress barreG"></div>
+						<div class="progress cacheD"></div>
+						<div class="progress cacheG"></div>
+					</div>
+				</div>
                 <div class="progress js">
                     <article>
                         <h1>Javascript</h1>
                         <h3>VueJS</h3>
                     </article>
-                    <div class="progress bordure">
-                        <p>70%</p>
-                    </div>
-                    <div class="progress barreD"></div>
-                    <div class="progress barreG"></div>
-                    <div class="progress cacheD"></div>
-                    <div class="progress cacheG"></div>
+					<div class="progress box">
+						<div class="progress bordure">
+							<p>70%</p>
+						</div>
+						<div class="progress barreD"></div>
+						<div class="progress barreG"></div>
+						<div class="progress cacheD"></div>
+						<div class="progress cacheG"></div>
+					</div>
                 </div>
                 <div class="progress php">
                     <article>
                         <h1>PHP</h1>
-                        <h3>Laravel</h3><br>
-                        <h3>Symfony</h3>
+						<div>
+							<h3>Laravel</h3>
+                        	<h3>Symfony</h3>
+						</div>
                     </article>
-                    <div class="progress bordure">
-                        <p>45%</p>
-                    </div>
-                    <div class="progress barreD"></div>
-                    <div class="progress barreG"></div>
-                    <div class="progress cacheD"></div>
-                    <div class="progress cacheG"></div>
+					<div class="progress box">
+						<div class="progress bordure">
+							<p>45%</p>
+						</div>
+						<div class="progress barreD"></div>
+						<div class="progress barreG"></div>
+						<div class="progress cacheD"></div>
+						<div class="progress cacheG"></div>
+					</div>
                 </div>
                 <div class="progress sql">
                     <article>
                         <h1>SQL</h1>
                         <h3>MySQL</h3>
                     </article>
-                    <div class="progress bordure">
-                        <p>80%</p>
-                    </div>
-                    <div class="progress barreD"></div>
-                    <div class="progress barreG"></div>
-                    <div class="progress cacheD"></div>
-                    <div class="progress cacheG"></div>
+					<div class="progress box">
+						<div class="progress bordure">
+							<p>80%</p>
+						</div>
+						<div class="progress barreD"></div>
+						<div class="progress barreG"></div>
+						<div class="progress cacheD"></div>
+						<div class="progress cacheG"></div>
+					</div>
                 </div>
             </div>
             <form id="CONTACT" action="POST" class="hidden main">
@@ -307,7 +313,6 @@
                 <div class="boutons">
                     <button id="supprimer"><i class="fas fa-ban"></i></button>
                     <button id="valider" type="submit"><i class="fas fa-check"></i></button>
-                    <span></span>
                 </div>
             </form>
         </div>
@@ -315,10 +320,13 @@
 
     <section id="modal">
         <div id="backgroundModal" onclick="closeModal(this)"></div>
+		<button id="exitModal" onclick="closeModal(this)">
+			<i class="fa-solid fa-xmark"></i>
+		</button>
         <div id="containerModal">
             <h1>Titre</h2>
-                <h3>Résumé du titre</h3>
-                <p></p>
+			<h3>Résumé du titre</h3>
+			<p></p>
         </div>
     </section>
 

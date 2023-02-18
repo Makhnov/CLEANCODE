@@ -1,72 +1,91 @@
 #COMPETENCES {// GRID
-    display: grid!important;
-    min-height:80vh;
-    min-width: 56vw;
-    grid-template-rows:25vh 2.5vh 25vh 2.5vh 25vh;
-    grid-template-columns: 27vw 2vw 27vw;
-    
+	position:absolute;
+	display: grid;
+	top:-2vh;
+	min-height:78vh;
+    min-width: 60vw;
+    grid-template-rows:4vh 20vh 2vh 20vh 2vh 20vh 10vh;
+    grid-template-columns: 1.5vw 28vw 1vw 28vw 1.5vw;
+
     > .skills {
-        grid-row:1;
-        grid-column:1;
+        grid-row:2;
+        grid-column:2;
     }
     > .html {
-        grid-row:1;
-        grid-column:3;
+        grid-row:2;
+        grid-column:4;
     }
     > .css {
-        grid-row:3;
-        grid-column:1;
+        grid-row:4;
+        grid-column:2;
     }
     > .js {
-        grid-row:3;
-        grid-column:3;
+        grid-row:4;
+        grid-column:4;
     }
     > .php {
-        grid-row:5;
-        grid-column:1;
+        grid-row:6;
+        grid-column:2;
     }
     > .sql {
-        grid-row:5;
-        grid-column:3;
+        grid-row:6;
+        grid-column:4;
     }
 }
 
 #COMPETENCES {//DIVS
     & > div {
         transform-style:preserve-3d;
-        height: 25vh;
-        width: 27vw;
+        height: 20vh;
+        width: 28vw;
         background-color:rgba(17, 126, 181, 0.6);
         box-sizing: border-box;
         border: 2px solid whitesmoke;
+		user-select:none;
         display: flex;
         align-items: center;
-        justify-content:flex-end;
-    }
+
+	}
+
+	& > div:not(.skills) {
+		justify-content:space-between;
+	}
+
+	& .skills {
+		.principal {
+			align-self: center!important;
+			margin:0!important;
+			visibility:visible!important;
+			text-transform: uppercase!important;
+
+			h1 {
+				width: 100%!important;
+				text-align: center!important;
+			}
+		}
+	}
 }
 
 #COMPETENCES div {//TITRES
     
-    article.principal {
-        justify-content: flex-start!important;
-    }
-
     article {
-        position: absolute;
+        position: relative;
+		align-self: flex-start;
+		flex: 1 1 auto;
         display: flex;
         flex-direction:column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: flex-start;
-        top:2vh;
-        left:1vw;
-        height: 21vh;
-        width:20vw;
+        height: fit-content;
+        width: 100%;
+		margin:calc(var(--progressSize) * 3 / 20) 0 0 calc(var(--progressSize) * 2 / 20);
         color: whitesmoke;
+		visibility: hidden;
 
         h1 {
-            margin:0 0 10px 0;
-            padding:0;
-            font-size: 3vw;
+            margin: 0;
+            padding: 0;
+            font-size: clamp(1.5rem, calc(var(--progressSize) * 6 / 20), 3rem);
             text-shadow: 1px 1px 1px #919191,
             1px 2px 1px #919191,
             1px 3px 1.5px #919191,
@@ -81,7 +100,8 @@
         h3 {
             margin:0;
             padding:0;
-            font-size: 1.8vw;
+            font-size: clamp(1rem, calc(var(--progressSize) * 4 / 20), 2rem);
+			text-align: start!important;
         }
     }
 
@@ -91,102 +111,118 @@
 }
 
 #COMPETENCES .progress {//PROGRESS BARS
-    .bordure {
-        position: absolute;
-        z-index: 10;
-        height: 10vw;
-        width: 10vw;
-        border-radius: 50%;
-    
-        background:radial-gradient(circle at center,
-            rgb(17, 126, 181),
-            rgb(17, 126, 181) 2vw,
-            black 2vw,
-            black 2.5vw,
-            #ffffff00 2.5vw,
-            #ffffff00 3.5vw,
-            black 3.5vw,
-            black 4vw,
-            #ffffff00 4vw
-        );
-    
-        display: grid;
-        place-content: center;
-    
-        p {
-            font-size: 1.5vw;
-            font-weight: bold;
-            animation: progressText var(--vitesseEntree) linear forwards;
-        }
-    }
-    
-    .barreD {
-        position: absolute;
-        z-index: 8;
-        height: 8vw;
-        width: 4vw;
-        right:1vw;
-    
-        background:radial-gradient(circle at left center,
-            #ffffff00 2.5vw,
-            #40E0D0 2.5vw,
-            #40E0D0 3.5vw,
-            #ffffff00 3.5vw
-        );
-    }
-    
-    .barreG {
-        position: absolute;
-        z-index: 5;
-        height: 8vw;
-        width: 4vw;
-        right: 5vw;
-    
-        background:radial-gradient(circle at right center,
-            #ffffff00 2.5vw,
-            #40E0D0 2.5vw,
-            #40E0D0 3.5vw,
-            #ffffff00 3.5vw
-        );
-    
-        &::after {
-            position: absolute;
-            z-index: 5;
-            content:'';
-            top:1vw;
-            left:1vw;
-            height: 6vw;
-            width: 6vw;
-            border-radius: 50%;
-            box-shadow: 0 0 2rem #40E0D0, 0 0 2.4rem #40E0D0, 0 0 2.8rem #40E0D0, inset 0 0 1.3rem #40E0D0;
-    
-        }
-    }
+	.progress.box {
+		position: relative;
+		flex:none;
+		height: var(--progressSize);
+		width: var(--progressSize);
+		display: grid;
+		place-content: center;
 
-    .cacheD {
-        position: absolute;
-        z-index: 9;
-        height: 8vw;
-        width: 4vw;
-        right:1vw;
-        border-radius: 0 4vw 4vw 0;
-        background:rgb(17, 126, 181);
-        border-left:1px solid rgb(17, 126, 181);       
-        transform-origin: left center;
-    }
+		.bordure {
+			position: absolute;
+			top:0;
+			left:0;
+			z-index: 10;
+			height: var(--progressSize);
+			width: var(--progressSize);
+			border-radius: 50%;
+		
+			background:radial-gradient(circle at center,
+				rgb(17, 126, 181),
+				rgb(17, 126, 181) calc(var(--progressSize) * 4 / 20),
+				black calc(var(--progressSize) * 4 / 20),
+				black calc(var(--progressSize) * 5 / 20),
+				#ffffff00 calc(var(--progressSize) * 5 / 20),
+				#ffffff00 calc(var(--progressSize) * 7 / 20),
+				black calc(var(--progressSize) * 7 / 20),
+				black calc(var(--progressSize) * 8 / 20),
+				#ffffff00 calc(var(--progressSize) * 8 / 20)
+			);
+		
+			display: grid;
+			place-content: center;
+		
+			p {
+				font-size: calc(var(--progressSize) * 3 / 20);
+				font-weight: bold;
+				animation: progressText var(--vitesseEntree) linear forwards;
+			}
+		}
+		
+		.barreD {
+			position: absolute;
+			align-self: center;
+			left:calc(var(--progressSize) * 10 / 20);
+			z-index: 8;
+			height: calc(var(--progressSize) * 16 / 20);
+			width: calc(var(--progressSize) * 8 / 20);
+		
+			background:radial-gradient(circle at left center,
+				#ffffff00 calc(var(--progressSize) * 5 / 20),
+				#40E0D0 calc(var(--progressSize) * 5 / 20),
+				#40E0D0 calc(var(--progressSize) * 7 / 20),
+				#ffffff00 calc(var(--progressSize) * 7 / 20)
+			);					
+		}
+		
+		.barreG {
+			position: absolute;
+			align-self: center;
+			left:calc(var(--progressSize) * 2 / 20);
 
-    .cacheG {
-        position: absolute;
-        z-index: 7;
-        height: 8vw;
-        width: 4vw;
-        right:1vw;
+			z-index: 5;
+			height: calc(var(--progressSize) * 16 / 20);
+			width: calc(var(--progressSize) * 8 / 20);
+			background:radial-gradient(circle at right center,
+				#ffffff00 calc(var(--progressSize) * 5 / 20),
+				#40E0D0 calc(var(--progressSize) * 5 / 20),
+				#40E0D0 calc(var(--progressSize) * 7 / 20),
+				#ffffff00 calc(var(--progressSize) * 7 / 20)
+			);
 
-        border-radius: 0 4vw 4vw 0;
-        background:rgb(17, 126, 181); 
-        transform-origin: left center;
-        transform: rotate(180deg);
-    }
+			&::after {
+				position: absolute;
+				top: calc(var(--progressSize) * 2 / 20);
+				left: calc(var(--progressSize) * 2 / 20);
+				z-index: 5;
+				content:'';
+				height: calc(var(--progressSize) * 12 / 20);
+				width: calc(var(--progressSize) * 12 / 20);
+				border-radius: 50%;
+				box-shadow: 0 0 2rem #40E0D0, 0 0 2.4rem #40E0D0, 0 0 2.8rem #40E0D0, inset 0 0 1.3rem #40E0D0;
+		
+			}
+		}
+	
+		.cacheD {
+			position: absolute;
+			align-self: center;
+			left:calc(var(--progressSize) * 10 / 20);
+			z-index: 9;
+			height: calc(var(--progressSize) * 16 / 20);
+			width: calc(var(--progressSize) * 7 / 20);
+
+			border-radius: 0 calc(var(--progressSize) * 8 / 20) calc(var(--progressSize) * 8 / 20) 0;
+			background:rgb(17, 126, 181);
+			border-left:1px solid rgb(17, 126, 181);       
+			transform-origin: left center;
+		}
+	
+		.cacheG {
+			position: absolute;
+			align-self: center;
+			left:calc(var(--progressSize) * 10 / 20);
+			z-index: 7;
+			height: calc(var(--progressSize) * 16 / 20);
+			width: calc(var(--progressSize) * 7 / 20);
+	
+			border-radius: 0 calc(var(--progressSize) * 8 / 20) calc(var(--progressSize) * 8 / 20) 0;
+			background:rgb(17, 126, 181); 
+			transform-origin: left center;
+			transform: rotate(180deg);
+		}
+	}
 }
 
 #COMPETENCES {//ANIMATIONS
@@ -245,10 +281,20 @@
 }
 
 @keyframes progressTitre {//de 0 à 20%
-    from {
-        transform: translateZ(-3000px);
+    0% {
+        transform: translateZ(-10000px);
+		visibility: hidden;
     }
-    to {
+    1% {
+		visibility: visible;
+        transform: translateZ(-10000px);
+    }
+    50% {
+		visibility: visible;
+        transform: translateZ(-100px);
+    }
+    100% {
+		visibility: visible;
         transform: translateZ(0px);
     }
 }
@@ -480,7 +526,7 @@
     0% {
         color:rgba(245, 245, 245, 0);
     }
-    94% {
+    92% {
         color:rgba(245, 245, 245, 0);
     }
     100% {

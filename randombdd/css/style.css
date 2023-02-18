@@ -69,7 +69,6 @@ body > .popup label {
   color: lightgray;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   cursor: url("../../divers/img/curseur_1.ico"), auto;
 }
@@ -93,9 +92,6 @@ body > .popup input {
 body > .popup input::-moz-placeholder {
   opacity: 0;
 }
-body > .popup input:-ms-input-placeholder {
-  opacity: 0;
-}
 body > .popup input::placeholder {
   opacity: 0;
 }
@@ -107,10 +103,6 @@ body > .popup input:not(:-moz-placeholder-shown) {
   transform: scaleX(1.05);
   border-bottom: 2px solid rgb(50, 50, 50);
 }
-body > .popup input:not(:-ms-input-placeholder) {
-  transform: scaleX(1.05);
-  border-bottom: 2px solid rgb(50, 50, 50);
-}
 body > .popup input:focus, body > .popup input:not(:placeholder-shown) {
   transform: scaleX(1.05);
   border-bottom: 2px solid rgb(50, 50, 50);
@@ -119,9 +111,6 @@ body > .popup input:focus ~ label {
   z-index: -1;
 }
 body > .popup input:not(:-moz-placeholder-shown) ~ label {
-  z-index: -1;
-}
-body > .popup input:not(:-ms-input-placeholder) ~ label {
   z-index: -1;
 }
 body > .popup input:not(:placeholder-shown) ~ label {
