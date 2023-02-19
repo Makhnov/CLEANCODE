@@ -160,14 +160,14 @@
 
 @keyframes openBook {
     0% {
-        transform: translate3d(calc(-35 / 99 * var(--livreLargeur)), 0, var(--zoomLivre)) rotateY(90deg) scale(0.02);
+        transform: translate3d(calc(-35 / 99 * var(--livreLargeur)), 0, var(--zoomLivre)) rotateY(90deg) scale(0);
 	}
 
-	7% {
+	10% {
         transform: translate3d(calc(-35 / 99 * var(--livreLargeur)), 0, var(--zoomLivre)) rotateY(90deg) scale(1);
 	}
 
-    55% {
+    50% {
         transform: translate3d(0, 0, var(--zoomLivre)) rotateY(10deg) rotateX(calc(var(--rotationLivre) / 2)) rotate(0deg);
 		z-index: 20;
 	}
@@ -184,18 +184,18 @@
         z-index: 20;
     }
 
-    55% {
+    40% {
         transform: translate3d(0, 0, 0) rotateY(10deg) rotateX(10deg) rotate(0deg);
         z-index: 20;
     }
 
-    93% {
-        transform: translate3d(calc(-35 / 99 * var(--livreLargeur)), 0, var(--zoomLivre)) rotateY(90deg);
+    90% {
+        transform: translate3d(calc(-35 / 99 * var(--livreLargeur)), 0, var(--zoomLivre)) rotateY(90deg) scale(1);
         z-index: 20;
     }
 
 	100% {
-		transform: translate3d(calc(-35 / 99 * var(--livreLargeur)), 0, var(--zoomLivre)) rotateY(90deg) scale(0.02);
+		transform: translate3d(calc(-35 / 99 * var(--livreLargeur)), 0, var(--zoomLivre)) rotateY(90deg) scale(0);
         z-index: 20;
     }
 

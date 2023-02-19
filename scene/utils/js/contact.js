@@ -1,18 +1,14 @@
 const form = document.getElementById('CONTACT'); // On récupère le formulaire dans le DOM
 const spans = document.querySelectorAll('#CONTACT div span'); // On récupère tous les spans (collection) dans le DOM
-const inputs = document.getElementsByTagName('input'); // On récupère tous les inputs (collection) dans le DOM
+const inputs = document.querySelectorAll('#CONTACT input'); // On récupère tous les inputs (collection) dans le DOM
 const valider = document.getElementById('valider');
 /* --------------------------------- FONCTION QUI CACHE LE BOUTON VALIDER TANT QUE NECESSAIRE --------------------------------- */
 
 /* ---- Bouton "Valider" ---- */
 function validerCheck() {
-	let nom = document.getElementById('nom').value;
-	let email = document.getElementById('email').value;
-	let message = document.getElementById('message').value;
-
-	console.log(nom);
-	console.log(email);
-	console.log(message);
+	let nom = inputs[0].value;
+	let email = inputs[1].value;
+	let message = inputs[2].value;
 
 	if (nom !== "" && email !== "" && message !== "") {
 		valider.children[0].style.visibility = "visible";
@@ -28,73 +24,60 @@ document.getElementById('message').addEventListener("keypress", function (press)
 	}
 });
 
-// FONCTION ADD MISSING //
-
-
-// Fonctions qui remettent le formulaire à zéro (avec un délai)
-function annuler() {
-	setTimeout(() => {
-		effacer()
-	}, "10")
-}
-function effacer() {
-	for (let i = 0; i < 4; i++) {
-		inputs[i].value = "";
-		spans[i].innerText = "";
-		spans[i].style.opacity = 0;
-	}
-}
-
 // Si un formulaire existe, on "intercepte" la validation du formulaire lors du submit
 if (form !== null) {
 	form.addEventListener('submit', (event) => {
-		// event.preventDefault();
+		event.preventDefault();
+		const action = event.submitter.id;
+		if (action === 'supprimer') {
+			effacer();
+		} else if (action === 'valider') {
 
-		let tab = verification(event); // On lance la fonction qui va vérifier le formulaire
-		let msgErreur = false;
+			let tab = verification(event); // On lance la fonction qui va vérifier le formulaire
+			let msgErreur = false;
 
-		for (let i = 0; i < 4; i++) {
-			if (typeof (tab[i]) !== "boolean") { // On vérifie les quatre inputs un par un
-				msgErreur = true;
-			} else { // Si tous les inputs sont valides on ne lance pas la fonction affichage() et le formulaire est validé
-				tab[i] = 0;
+			for (let i = 0; i < 3; i++) {
+				if (typeof (tab[i]) !== "boolean") { // On vérifie les quatre inputs un par un
+					msgErreur = true;
+				} else { // Si tous les inputs sont valides on ne lance pas la fonction affichage() et le formulaire est validé
+					tab[i] = 0;
+				}
 			}
-		}
 
-		if (msgErreur) {
-			event.preventDefault(); // On annule la validation du formulaire
-			affichage(tab); // On lance la fonction qui va afficher les erreurs de saisies de l'utilisateur
-		} else {
-			formulaireOK(event);
+			if (msgErreur) {
+				affichage(tab); // On lance la fonction qui va afficher les erreurs de saisies de l'utilisateur
+			} else {
+				formOK(event);
+			}
 		}
 	});
 }
 
-// Fonction qui lance le formulaire
-function formulaireOK(event) {
-	let nom = event.target[0].value; // On récupère la valeur du premier target (input : Nom)
-	let email = event.target[1].value; // On récupère la valeur du premier target (input : Prénom)
-
-	if (confirm("Bienvenue " + email + space + nom + ", souhaitez-vous envoyer ce formulaire ?")) {
-	} else {
-		event.preventDefault();
-	}
+// Fonctions qui remet le formulaire à zéro (avec un délai)
+function effacer() {
+	setTimeout(() => {
+		for (let i = 0; i < 3; i++) {
+			inputs[i].value = "";
+			spans[i].innerText = "";
+			spans[i].style.opacity = 0;
+		}
+	}, "10")
 }
 
 // Fonction qui affiche les messages d'erreurs (en fonctions du type d'erreur)
 function affichage(tab) {
 
 	const vide = [ // On créé les messages d'erreurs en cas de champs vide
-		"Veuillez entrer un nom de famille.",
-		"Veuillez entrer un prénom.",
-		"Veuillez entrer un âge.",
-		"Veuillez entrer une adresse e-mail."];
+		"Veuillez entrer un nom de contact.",
+		"Veuillez entrer une adresse e-mail.",
+		"Veuillez entrer un message."
+	];
 
 	const invalide = [ // On crée les messages d'erreurs en cas de saisie invalide
 		"Le nom saisi est invalide !",
-		"Le prénom saisi est invalide !",
-		"L'âge saisi est invalide !",
-		"L'adresse mail saisie est invalide !"];
+		"L'adresse mail saisie est invalide !",
+		"Le message saisi est invalide !"
+	];
 
 	const erreur = [0, invalide, vide]; // On synthétise les messages d'erreurs dans un seul tableau
 
@@ -111,38 +94,29 @@ function affichage(tab) {
 function verification(event) {
 
 	let tab = [];
-
 	let nom = event.target[0].value; // On récupère la valeur du premier target (input : nom)
 	let email = event.target[1].value; // Etc.
 	let message = event.target[2].value;
-	let mail = event.target[3].value;
 
 	let tabNom = verifNom(nom);
-	let tabPrenom = verifPrenom(email);
-	let tabAge = verifAge(message);
-	let tabMail = verifMail(mail);
+	let tabMail = verifMail(email);
+	let tabMsg = verifMessage(message);
 
 	if (tabNom[1]) { // On rentre dans un tableau le résultat des vérifications pour le Nom (et, le cas échéant, le code d'erreur : tabX[2])
 		tab.push(true);
 	} else {
 		tab.push(tabNom[2]);
 	}
-	if (tabPrenom[1]) { // On procède de la même façon pour le prénom
-		tab.push(true);
-	} else {
-		tab.push(tabPrenom[2]);
-	}
-	if (tabAge[1]) { // On procède de la même façon pour l'âge
-		tab.push(true);
-	} else {
-		tab.push(tabAge[2]);
-	}
-	if (tabMail[1]) { // On procède de la même façon pour l'e-mail
+	if (tabMail[1]) { // On procède de la même façon pour le prénom
 		tab.push(true);
 	} else {
 		tab.push(tabMail[2]);
 	}
-
+	if (tabMsg[1]) { // On procède de la même façon pour l'âge
+		tab.push(true);
+	} else {
+		tab.push(tabMsg[2]);
+	}
 	return tab; // On retourne le tableau récapitulatif 
 }
 
@@ -156,6 +130,45 @@ function verifNom(str) {
 		if (nomRegex.test(str)) { // On renvoie un tableau avec l'input utilisateur & le résultat de la vérification
 			spans[0].innerText = "";
 			spans[0].style.opacity = 0;
+			console.log('nom ok')
+			return [str, true]; // Le nom entré par l'utilisateur est valide
+		} else {
+			return [str, false, 1];
+		}
+
+	} else {
+		return [str, false, 2];
+	}
+}
+
+// Fonction qui vérifie la conformité du mail : premier bloc, suivi du @, second bloc, suivi du ".", complété par le troisième bloc (lettres uniquement)
+function verifMail(str) {
+
+	if (str !== "") {
+		const mailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+		// On compare les caractères autorisés à l'input utilisateur
+		if (mailRegex.test(str)) { // On renvoie un tableau avec l'input utilisateur & le résultat de la vérification
+			spans[1].innerText = "";
+			spans[1].style.opacity = 0;
+			return [str, true]; // Le mail entré par l'utilisateur est valide
+		} else {
+			return [str, false, 1];
+		}
+	} else {
+		return [str, false, 2];
+	}
+}
+
+// Fonction qui vérifie la conformité du message: De 1 à 3 caractères numériques (0 => 9) pour un nombre compris entre 0 et 125
+function verifMessage(str) {
+	if (str !== "") {
+		const msgRegex = /^[a-zA-ZÀ-ÿ0-9\'\-\s,.():;?!\n\r]+$/; // On défini les caractères "acceptables" pour un message
+
+		// On compare les caractères autorisés à l'input utilisateur
+		if (msgRegex.test(str)) { // On renvoie un tableau avec l'input utilisateur & le résultat de la vérification
+			spans[2].innerText = "";
+			spans[2].style.opacity = 0;
 
 			return [str, true]; // Le nom entré par l'utilisateur est valide
 		} else {
@@ -166,72 +179,42 @@ function verifNom(str) {
 	}
 }
 
-// Fonction qui vérifie la conformité du prénom : Toutes les lettres, accentuées ou non et les tirets (-)
-function verifPrenom(str) {
+// Fonction qui lance le formulaire
+function formOK(event) {
+	let nom = event.target[0].value; // On récupère la valeur du premier target (input : Nom)
+	console.log(event.target);
 
-	if (str !== "") {
-		const emailRegex = /^[a-zA-ZÀ-ÿ\-]+$/;
+	if (confirm("Merci " + nom + space + ", confirmez-vous cet envoi ?")) {
 
-		// On compare les caractères autorisés à l'input utilisateur
-		if (emailRegex.test(str)) { // On renvoie un tableau avec l'input utilisateur & le résultat de la vérification
-			spans[1].innerText = "";
-			spans[1].style.opacity = 0;
-			return [str, true]; // Le prénom entré par l'utilisateur est valide
-		} else {
-			return [str, false, 1];
-		}
-	} else {
-		return [str, false, 2];
-	}
-}
 
-// Fonction qui vérifie la conformité de l'âge: De 1 à 3 caractères numériques (0 => 9) pour un nombre compris entre 0 et 125
-function verifAge(str) {
+		// Récupère les données du formulaire
+		const formData = new FormData(form);
 
-	if (str !== "") {
-		let message = 0;
-		if (str.length > 0 && str.length < 4) { // On vérifie que l'input est composé de 1 a 3 caractères 
-			for (i = (str.length - 1); i >= 0; i--) { // On fait une boucle avec autant d'itérations que de caractères
-				if (str[i].charCodeAt() >= 48 && str[i].charCodeAt() <= 57) { // On vérifie que chacun des caractères est bien un chiffre (entre 0 et 9)
+		// Crée une requête AJAX
+		const xhr = new XMLHttpRequest();
+		xhr.open('POST', './utils/php/formulaire.php');
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-					let rang = parseInt("100".slice(0, str.length - i)); // On note le rang du chiffre actuel (Unités, dizaines ou centaines)
-					message += parseInt(str[i] * rang); // On multiplie le chiffre par le rang, on ajoute ça à l'message
-				} else {
-					return [str, false, 1]; // Un des caractères n'est pas un chiffre
-				}
+		// Envoie les données du formulaire
+		xhr.send(new URLSearchParams(formData).toString());
+
+		// Gère la réponse de la requête
+		xhr.onload = function () {
+			if (xhr.status === 200) {
+				// Traitement de la réponse
+				formConfirm(xhr.responseText);
+			} else {
+				console.log('Erreur lors de la requête.');
 			}
-		} else {
-			return [str, false, 1]; // Il n'y a pas entre 1 et 3 caractères
-		}
+		};
 
-		if (message >= 0 && message <= 125) {
-			spans[2].innerText = "";
-			spans[2].style.opacity = 0;
-			return [message, true]; // L'message entré par l'utilisateur est valide
-		} else {
-			return [str, false, 1]; // L'message n'est pas compris entre 0 et 125 ans
-		}
 	} else {
-		return [str, false, 2];
+		//code si non envoyé
 	}
 }
 
-// Fonction qui vérifie la conformité du mail : premier bloc, suivi du @, second bloc, suivi du ".", complété par le troisième bloc (lettres uniquement)
-function verifMail(str) {
-
-	if (str !== "") {
-		const mailRegex =
-			/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-		// On compare les caractères autorisés à l'input utilisateur
-		if (mailRegex.test(str)) { // On renvoie un tableau avec l'input utilisateur & le résultat de la vérification
-			spans[3].innerText = "";
-			spans[3].style.opacity = 0;
-			return [str, true]; // Le mail entré par l'utilisateur est valide
-		} else {
-			return [str, false, 1];
-		}
-	} else {
-		return [str, false, 2];
-	}
+function formConfirm(tab) {
+	console.log(tab);
+	effacer();
+	openModal(4);
 }

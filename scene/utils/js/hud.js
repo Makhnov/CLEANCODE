@@ -4,11 +4,10 @@ const racine = document.documentElement;
 const lorem = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam atque inventore rem fugiat doloremque. Neque eveniet voluptate sequi incidunt cupiditate fugit autem nihil, blanditiis optio veritatispraesentium quam dolorem officiis! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque impedit quibusdam vero veritatis distinctio dignissimos cupiditate nisi doloremque eum provident error atque porro, pariatur corporis. Numquam, unde expedita? Eius, laboriosam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores amet cumque minima, ipsum aut atque soluta harum facere nisi dicta odio eius doloribus quo obcaecati officia quia, voluptas exercitationem sequi!'
 const textInfosPortfolio = "Bienvenue sur mon portfolio, j'ai commencé la programmation web en septembre 2022 en rejoignant une formation de développeur web avec l'ADRAR de Lourdes.<br>Tous mes sites, quel que soit le(s) langage(s), sont 100% originaux, il m'arrive de chercher l'inspiration à droite à gauche bien évidemment mais je ne copie jamais la moindre ligne de code. En cliquant sur l'icone du bas dans la navigation de droite vous pouvez aller visiter les sites présentés ici et bien d'autres que j'ai pu faire tout au long de ma formation.<br>Je travaille principalement en HTML, SASS, Javascript, PHP et SQL, j'ai aussi commencé la pratique de divers frameworks (Vue, React, Laravel, Symfony, etc.).<br><br>Mon gitHub : <a href='https://github.com/Makhnov/' target='_blank'>Makhnov</a>"
 
-const startInput = document.getElementById('preInput');
 const startBG = document.getElementById('preHUD');
 
 const li = document.querySelectorAll('li.gauche');
-const navGauche = document.getElementsByTagName('nav')[0];
+const navGauche = document.getElementsByTagName('nav')[0].children[0];
 const navDroite = document.getElementsByTagName('nav')[1];
 const scene = document.getElementById('containerView').children;
 
@@ -19,9 +18,8 @@ let speedIn = parseFloat(vitesse1.replace('s', '')) * 1000;
 let speedOut = parseFloat(vitesse2.replace('s', '')) * 1000;
 let tempo = false;
 
-const vortex = document.getElementsByClassName('vortex')[0];
-const blurBG = document.getElementById('blurBackground');
-const urlGIF = "../../../divers/img/loading175s.gif?time=";
+const machine = document.getElementById('machine');
+const urlGIF = "../../../divers/img/loading2sGreen.gif?time=";
 
 const modal = document.getElementById('modal');
 const modalBackground = document.getElementById('backgroundModal');
@@ -41,18 +39,18 @@ let menuSpamm;
 let resizeSpamm;
 
 let angle = 0;
-let decal = 0;
 let depth = 50;
 let iDeg = 20;
-let iTemp = 0;
+let iTemp;
+let jTemp;
 
 let tabNav = [false, false, false, false, false];
 
 function refresh() {
 	clearScene('all');
 	resize();
-	startInput.value = "";
-	startInput.focus();
+	validerCheck();
+	startBG.classList.add('anim');
 }
 
 window.onresize = function () {
@@ -69,13 +67,10 @@ function resize() {
 	let width = racine.clientWidth; // On récupère la largeur de l'écran de l'utilisateur
 	let height = racine.clientHeight; // On récupère la hauteur de l'écran de l'utilisateur
 
-	let angle = 0;
-	let decal = 0;
-	let depth = 50;
 	let tpY = width * 0.3 * 8 / 7;
 
-	console.log('width :' + width);
-	console.log('height :' + height);
+	// console.log('width :' + width);
+	// console.log('height :' + height);
 
 	if ((height / tpY) < 1.44) {
 		let hMult = (8 * height / (width * 3)).toFixed(2);
@@ -84,26 +79,22 @@ function resize() {
 		racine.style.removeProperty("--hMult");
 	}
 
-	if (width < 800) {
-		angle = 80;
-		decal = 60;
-		depth = 50;
+	if (width < 1000) {
+		angle = 60;
+		depth = 60;
+		iDeg = 30;
+	} else if (width < 1400) {
+		angle = 70;
+		depth = 65;
 		iDeg = 20;
-	} else if (width < 1200) {
-		angle = 85;
-		decal = 60;
-		depth = 50;
-		iDeg = 15;
-	} else if (width < 1600) {
-		angle = 90;
-		decal = 60;
-		depth = 50;
+	} else if (width < 1800) {
+		angle = 80;
+		depth = 70;
 		iDeg = 10;
 	} else {
 		angle = 90;
-		decal = 60;
-		depth = 50;
-		iDeg = 8;
+		depth = 75;
+		iDeg = -10;
 	}
 
 	racine.style.setProperty('--menuAngle', iDeg + 'deg');
@@ -113,40 +104,52 @@ function resize() {
 	//let depthBar = getComputedStyle(racine).getPropertyValue('--menuPronfondeur');
 	//console.log(depthBar);
 
-	navGauche.style.transform = "rotateY(" + angle + "deg) translate3d(" + decal + "px, 0, 0)";
+	navGauche.style.transform = "translateX(2vw) rotateY(" + angle + "deg) translateZ(calc(var(--menuProfondeur)))";
 	//waitingMenu.style.width = depth + "px";
 	//waitingMenu.style.height = depth + "px";//En +
 	//waitingMenu.style.transform = "translate3d(0, 0, -" + depth + "px) rotateY(" + -angle + "deg)";
 }
 
-startInput.addEventListener('keypress', function (key) {
-	if (key.key === "Enter") {
-		console.log(startInput.value);
-		startInput.style.display = "none";
-		startBG.classList.add('anim');
-	}
-});
-
 for (let i = 0; i < li.length; i++) {
 	let iTemp = i;
 	li[i].addEventListener('click', function () {
 		clearTimeout(menuSpamm);
-		menuAsync(iTemp);
+		if (spamm(i)) {
+			menuAsync(iTemp);
+		}
 	});
+}
+
+function checkTranslateXValue(liIndex) {
+	// récupère l'élément li à partir de son index
+	const liElement = document.querySelectorAll('li')[liIndex];
+
+	// vérifie si l'élément a une valeur pour la propriété translateX
+	const translateXValue = getComputedStyle(liElement).getPropertyValue('transform');
+
+	// retourne la valeur de la propriété translateX si elle existe
+	if (translateXValue && translateXValue !== 'none') {
+		const translateXMatrix = new WebKitCSSMatrix(translateXValue);
+		return translateXMatrix.m41;
+	}
+
+	return null; // retourne null si la propriété translateX n'existe pas
+}
+
+function spamm(index) {
+	const XLi = new WebKitCSSMatrix(getComputedStyle(li[index]).getPropertyValue('transform'));
+	if (XLi.m41 < 1000) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 async function menuAsync(iTemp) {
 	// BEFORE
 	//console.log("BEFORE :" + iTemp);
-
 	li[iTemp].classList.add("clicked");
 	tabNav[iTemp] = true;
-
-	//let menuHeight = waitingMenu.clientWidth;
-	//let loadingPosY = (25 * iTemp) + (2 - iTemp) * 1.25;
-	//waitingMenu.style.backgroundPositionX = "center";
-	//waitingMenu.style.backgroundPositionY = loadingPosY + "%";
-	//waitingMenu.style.backgroundSize = menuHeight + "px " + menuHeight + "px";
 
 	for (j = 0; j < li.length; j++) {
 		if (li[j].classList.contains("clicked") && j !== iTemp) {
@@ -158,20 +161,22 @@ async function menuAsync(iTemp) {
 
 	// TEMPO
 	if (tempo) {
+		machine.style.display = "none";
 		loadingGIF();
 		await delayLi(speedOut);
 	} else {
 		await delayLi(0);
-	}// FIN TEMPO
+	}
+	// FIN TEMPO
 
 
 	// AFTER
+	machine.style.display = "block";
 	//console.log("AFTER :" + tabNav);
 }
 
-function delayLi(int) {
+function delayLi(ms) {
 	return new Promise((resolve, reject) => {
-		//here our function should be implemented 
 		menuSpamm = setTimeout(() => {
 			for (j = 0; j < tabNav.length; j++) {
 				if (!tabNav[j]) {
@@ -199,16 +204,17 @@ function delayLi(int) {
 			navDroite.style.display = "grid";
 			resolve();
 			;
-		}, int
+		}, ms
 		);
 	});
 }
 
-function closingScene(int) {
-	switch (int) {
+function closingScene(index) {
+	switch (index) {
 		case 0://A PROPOS
 			break;
 		case 1://PORTFOLIO
+			dezoomLivre();
 			openBook(false);
 			break;
 		case 2:
@@ -247,15 +253,15 @@ function openForm(bool) {
 	}, speedOut);
 }
 
-function clearScene(int) {
-	if (typeof int === 'number') {
-		const boxes = scene[int].querySelectorAll("input[type=checkbox]");
+function clearScene(index) {
+	if (typeof index === 'number') {
+		const boxes = scene[index].querySelectorAll("input[type=checkbox]");
 		for (let box of boxes) {
 			box.checked = false;
 			box.dispatchEvent(new Event("change"));
 		}
 
-		const navboxes = navDroite.children[0].children[int].children[int].querySelectorAll("input[type=checkbox]");
+		const navboxes = navDroite.children[0].children[index].children[index].querySelectorAll("input[type=checkbox]");
 		for (let navBox of navboxes) {
 			navBox.checked = false;
 			navBox.dispatchEvent(new Event("change"));
@@ -287,8 +293,8 @@ function checkWidth() {
 	}
 }
 
-function openModal(int) {
-	switch (int) {
+function openModal(index) {
+	switch (index) {
 		case 0://A PROPOS
 			break;
 		case 1://PORTFOLIO
@@ -321,13 +327,13 @@ function openModal(int) {
 		case 4://CONTACT
 			break;
 	}
-	modalBackground.value = int;
-	modalExit.value = int;
+	modalBackground.value = index;
+	modalExit.value = index;
 }
 
 function closeModal(e) {
-	let int = e.value;
-	switch (int) {
+	let index = e.value;
+	switch (index) {
 		case 0://A PROPOS
 			break;
 		case 1://PORTFOLIO

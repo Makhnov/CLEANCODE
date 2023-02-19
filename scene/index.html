@@ -24,13 +24,20 @@
 </head>
 
 <body onload="refresh()">
+
 	<div id="preHUD">
-		<label for="preInput" id="preLabel"></label>
-		<input type="text" id="preInput">
+		<div>
+			<!-- <span>...</span> -->
+			<span>><span><b>_</b></span></span>
+		</div>	
 	</div>
+
     <section id="containerHUD">
 
-        <div id="waitingMenu"></div>
+		<div id="multivac">
+			<div id="machine"></div>
+			<div id="waitingMenu"></div>
+		</div>
 
         <nav class="gauche">
             <ul>
@@ -291,27 +298,27 @@
 					</div>
                 </div>
             </div>
-            <form id="CONTACT" action="POST" class="hidden main">
+            <form id="CONTACT" action="./utils/php/formulaire.php" method="POST" class="hidden main">
                 <h2>Me contacter</h2>
 
                 <div class="inputs">
-                    <input id="nom" type="text" placeholder="Nom" oninput="validerCheck()">
+					<input id="nom" name="nom" type="text" placeholder="Nom" oninput="validerCheck()">
                     <label for="nom">Nom</label>
                     <span></span>
                 </div>
                 <div class="inputs">
-                    <input id="email" type="text" placeholder="E-Mail" oninput="validerCheck()">
+                    <input id="email" name="email" type="text" placeholder="E-Mail" oninput="validerCheck()">
                     <label for="email">E-Mail</label>
                     <span></span>
                 </div>
                 <div class="inputs">
-                    <input id="message" type="text" placeholder="Message" oninput="validerCheck()">
+                    <input id="message" name="message" type="text" placeholder="Message" oninput="validerCheck()">
                     <label for="message">Message</label>
                     <span></span>
                 </div>
 
                 <div class="boutons">
-                    <button id="supprimer"><i class="fas fa-ban"></i></button>
+                    <button id="supprimer" type="submit"><i class="fas fa-ban"></i></button>
                     <button id="valider" type="submit"><i class="fas fa-check"></i></button>
                 </div>
             </form>
@@ -331,8 +338,8 @@
     </section>
 
     <script src="./utils/js/hud.js"></script>
-    <script src="./utils/js/curriculum.js"></script>
-    <script src="./utils/js/portfolio.js"></script>
+    <script src="./utils/js/cv.js"></script>
+    <script src="./utils/js/book.js"></script>
     <script src="./utils/js/contact.js"></script>
 </body>
 
