@@ -38,8 +38,8 @@
     justify-content:space-around;
     flex-direction: column;
 
-    clip-path: circle(0%);
-    
+    clip-path: circle(0%);   
+
     h2 {
         display: grid;
         place-content: center;
@@ -186,12 +186,12 @@
         &:not(:placeholder-shown) ~ label {
             left:-10px;
             top:-45px;
-            color:rgba(0, 0, 0, 0.75);
-        }
-
-        input:not(:placeholder-shown) + input:not(:placeholder-shown) + input:not(:placeholder-shown) ~ label {
-            color:greenyellow!important;
-            opacity: 1!important;
+            &.false {
+                color: #FFA500;
+            }
+            &.true {
+                color:#00ff00;
+            }
         }
     }
 

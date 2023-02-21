@@ -140,20 +140,22 @@
 .inputs input:not(:-moz-placeholder-shown) ~ label {
   left: -10px;
   top: -45px;
-  color: rgba(0, 0, 0, 0.75);
 }
 .inputs input:not(:placeholder-shown) ~ label {
   left: -10px;
   top: -45px;
-  color: rgba(0, 0, 0, 0.75);
 }
-.inputs input input:not(:-moz-placeholder-shown) + input:not(:-moz-placeholder-shown) + input:not(:-moz-placeholder-shown) ~ label {
-  color: greenyellow !important;
-  opacity: 1 !important;
+.inputs input:not(:-moz-placeholder-shown) ~ label.false {
+  color: #FFA500;
 }
-.inputs input input:not(:placeholder-shown) + input:not(:placeholder-shown) + input:not(:placeholder-shown) ~ label {
-  color: greenyellow !important;
-  opacity: 1 !important;
+.inputs input:not(:placeholder-shown) ~ label.false {
+  color: #FFA500;
+}
+.inputs input:not(:-moz-placeholder-shown) ~ label.true {
+  color: #00ff00;
+}
+.inputs input:not(:placeholder-shown) ~ label.true {
+  color: #00ff00;
 }
 .inputs span {
   position: relative;

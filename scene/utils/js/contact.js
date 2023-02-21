@@ -1,21 +1,33 @@
 const form = document.getElementById('CONTACT'); // On récupère le formulaire dans le DOM
 const spans = document.querySelectorAll('#CONTACT div span'); // On récupère tous les spans (collection) dans le DOM
 const inputs = document.querySelectorAll('#CONTACT input'); // On récupère tous les inputs (collection) dans le DOM
+const labels = document.querySelectorAll('#CONTACT label'); // On récupère tous les labels (collection) dans le DOM
 const valider = document.getElementById('valider');
+
 /* --------------------------------- FONCTION QUI CACHE LE BOUTON VALIDER TANT QUE NECESSAIRE --------------------------------- */
 
 /* ---- Bouton "Valider" ---- */
-function validerCheck() {
-	let nom = inputs[0].value;
-	let email = inputs[1].value;
-	let message = inputs[2].value;
+function validerCheck(e) {
+	let info = e.value;
 
-	if (nom !== "" && email !== "" && message !== "") {
-		valider.children[0].style.visibility = "visible";
-	} else {
-		valider.children[0].style.visibility = "hidden";
+	switch (e.id) {
+		case 'nom':
+			TabCheck = verifNom(info);
+			TabCheck[2] = 0;
+			break;
+		case 'email':
+			TabCheck = verifMail(info);
+			TabCheck[2] = 1;
+			break;
+		case 'message':
+			TabCheck = verifMessage(info);
+			TabCheck[2] = 2;
+			break;
 	}
+	labels[TabCheck[2]].classList.remove(!TabCheck[1]);
+	labels[TabCheck[2]].classList.add(TabCheck[1]);
 }
+
 
 /* ---- on crée un listener pour valider l'input quand l'admin clique sur "Entrée" depuis le dernier input (Age) ---- */
 document.getElementById('message').addEventListener("keypress", function (press) {
@@ -130,7 +142,6 @@ function verifNom(str) {
 		if (nomRegex.test(str)) { // On renvoie un tableau avec l'input utilisateur & le résultat de la vérification
 			spans[0].innerText = "";
 			spans[0].style.opacity = 0;
-			console.log('nom ok')
 			return [str, true]; // Le nom entré par l'utilisateur est valide
 		} else {
 			return [str, false, 1];
@@ -182,27 +193,24 @@ function verifMessage(str) {
 // Fonction qui lance le formulaire
 function formOK(event) {
 	let nom = event.target[0].value; // On récupère la valeur du premier target (input : Nom)
-	console.log(event.target);
-
 	if (confirm("Merci " + nom + space + ", confirmez-vous cet envoi ?")) {
-
 
 		// Récupère les données du formulaire
 		const formData = new FormData(form);
 
 		// Crée une requête AJAX
-		const xhr = new XMLHttpRequest();
-		xhr.open('POST', './utils/php/formulaire.php');
-		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		const req = new XMLHttpRequest();
+		req.open('POST', './utils/php/formulaire.php');
+		req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
 		// Envoie les données du formulaire
-		xhr.send(new URLSearchParams(formData).toString());
+		req.send(new URLSearchParams(formData).toString());
 
 		// Gère la réponse de la requête
-		xhr.onload = function () {
-			if (xhr.status === 200) {
+		req.onload = function () {
+			if (req.status === 200) {
 				// Traitement de la réponse
-				formConfirm(xhr.responseText);
+				formConfirm(req.responseText);
 			} else {
 				console.log('Erreur lors de la requête.');
 			}
@@ -212,6 +220,32 @@ function formOK(event) {
 		//code si non envoyé
 	}
 }
+
+function captcha() {
+	// URL du script PHP qui génère l'image du captcha
+	const url = '../../../utils/php/captcha.php';
+
+	// Options de la requête
+	const options = {
+		method: 'GET',
+		credentials: 'include', // Permet d'inclure les cookies dans la requête
+	};
+
+	// Envoie la requête fetch
+	fetch(url, options)
+		.then(response => response.blob()) // Convertit la réponse en un objet blob
+		.then(blob => {
+			// Crée une URL blob pour l'image du captcha
+			const url = URL.createObjectURL(blob);
+
+			// Affiche l'image du captcha dans une balise <img>
+			const img = document.getElementById('captchaImg');
+			img.src = url;
+		})
+		.catch(error => console.error(error));
+}
+
+captcha();
 
 function formConfirm(tab) {
 	console.log(tab);

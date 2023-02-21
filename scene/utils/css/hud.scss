@@ -94,104 +94,65 @@ nav, ul, li {
     list-style: none;
 }
 
-// #preHUD {//BG DEPART
-// 	position: absolute;
-// 	z-index: 1000;
-// 	height: 100vh;
-//     width: 100vw;
+#preHUD {//BG DEPART
+	position: absolute;
+	z-index: 1000;
+	height: 100vh;
+    width: 100vw;
 
-// 	display: grid;
-// 	align-content: start;
-// 	justify-content: start;
-
-// 	text-align: center;
-// 	color: #00ff00;
-// 	font-size: 5rem;
-
-//     background-image: 
-// 		radial-gradient(
-// 			ellipse closest-side at 49% 21.5%,
-// 			rgba(0, 0, 0, 0.01), 
-// 			rgba(0, 0, 0, 0.05) 20%, 
-// 			rgba(0, 0, 0, 0.1) 25%,
-// 			rgba(0, 0, 0, 0.3) 30%,
-// 			rgba(0, 0, 0, 0.8) 80%
-// 		),
-// 		radial-gradient(
-// 			ellipse closest-side at 51% 75%, 
-// 			rgba(0, 0, 0, 0.01), 
-// 			rgba(0, 0, 0, 0.05) 20%, 
-// 			rgba(0, 0, 0, 0.1) 25%,
-// 			rgba(0, 0, 0, 0.3) 10%,
-// 			rgba(0, 0, 0, 0.8) 80%
-// 		),
-// 		url('../../../divers/img/hudDark.jpg')
-// 	;
+    background-image: 
+		radial-gradient(
+			ellipse closest-side at 49% 21.5%,
+			rgba(0, 0, 0, 0.01), 
+			rgba(0, 0, 0, 0.05) 20%, 
+			rgba(0, 0, 0, 0.1) 25%,
+			rgba(0, 0, 0, 0.3) 30%,
+			rgba(0, 0, 0, 0.8) 80%
+		),
+		radial-gradient(
+			ellipse closest-side at 51% 75%, 
+			rgba(0, 0, 0, 0.01), 
+			rgba(0, 0, 0, 0.05) 20%, 
+			rgba(0, 0, 0, 0.1) 25%,
+			rgba(0, 0, 0, 0.3) 10%,
+			rgba(0, 0, 0, 0.8) 80%
+		),
+		url('../../../divers/img/hudDark.jpg')
+	;
 	
-//     background-position: center;    
-//     background-size: 100% 130%;
+    background-position: center;    
+    background-size: 100% 130%;
 
-// 	div {
-// 		margin:clamp(35px, calc(6vh + 20px), 85px) 0 0 clamp(55px, calc(6vh + 40px), 105px);
-// 		span {
-// 			span {
-// 				animation: departClink .5s linear 8;
-// 			}
-// 		}
-// 	}
+	&.anim {
+		animation: departHUD 4s linear forwards;
+	}
+}
 
-// 	&.anim {
-// 		animation: 
-// 			departHUD 4s linear forwards,
-// 			departTxt .5s linear 1s forwards
-// 		;
-// 	}
-// }
+@keyframes departHUD {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	99% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+		z-index: -1;
+		display: none;
+	}
+}
 
-// @keyframes departClink {
-// 	from {
-// 		opacity:1;
-// 	}
-
-// 	to {
-// 		opacity:0;
-// 	}
-// }
-
-// @keyframes departTxt {
-// 	from {
-// 		font-size: 5rem;	
-// 	}
-// 	to {
-// 		font-size: 0rem;	
-// 	}
-// }
-
-// @keyframes departHUD {
-// 	0% {
-// 		opacity: 1;
-// 	}
-// 	20% {
-// 		opacity: 1;
-// 	}
-// 	99% {
-// 		opacity: 0;
-// 	}
-// 	100% {
-// 		opacity: 0;
-// 		z-index: -1;
-// 		display: none;
-// 	}
-// }
-
-// @keyframes departMulti {
-// 	from {
-// 		clip-path: circle(0%);
-// 	}
-// 	to {
-// 		clip-path: circle(100%);
-// 	}
-// }
+@keyframes departMulti {
+	from {
+		clip-path: circle(0%);
+	}
+	to {
+		clip-path: circle(100%);
+	}
+}
 
 #containerHUD {//GRILLE PRINCIPALE DE LA PAGE
 	height: 100vh;
@@ -210,6 +171,15 @@ nav, ul, li {
     perspective-origin: center;
 }
 
+@keyframes pasContent {
+	from {
+		background-image:url('../../../divers/img/multivac.gif');
+	}	
+	to {
+		background-image:url('../../../divers/img/multivacRed.gif');
+	}
+}
+
 #multivac {//NAV GAUCHE
 	//background-color: rgba(255, 94, 0, 0.534);
 	position: absolute;
@@ -223,14 +193,14 @@ nav, ul, li {
 	aspect-ratio: 1/1;
 
 	clip-path: circle(0%);
-	animation: departMulti 1s linear 1.75s forwards;
+	animation: departMulti 1s linear 3s forwards;
 
 	#machine {
 		position: absolute;
 		display: block;
 		height: 100%;
 		width: 100%;
-		background-image:url('../../../divers/img/machine2.gif');
+		background-image:url('../../../divers/img/multivac.gif');
 		background-repeat: no-repeat;
 		background-size: contain;
 	}
@@ -729,6 +699,24 @@ html body #containerHUD nav.droite ul li {
 		}
 		p {
 			font-size:clamp(1rem, 2.2vw, 2rem);
+		}
+
+		#captcha {
+			//display: none;
+
+			#captchaImg {
+				max-width:100px;
+			}
+
+			input {
+				background-color: aqua;
+			}
+
+			button {
+				height: 50px;
+				width: 150px;
+				cursor: pointer;
+			}
 		}
 	}   
 }

@@ -160,6 +160,45 @@ nav, ul, li {
   list-style: none;
 }
 
+#preHUD {
+  position: absolute;
+  z-index: 1000;
+  height: 100vh;
+  width: 100vw;
+  background-image: radial-gradient(ellipse closest-side at 49% 21.5%, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.05) 20%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.3) 30%, rgba(0, 0, 0, 0.8) 80%), radial-gradient(ellipse closest-side at 51% 75%, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.05) 20%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.3) 10%, rgba(0, 0, 0, 0.8) 80%), url("../../../divers/img/hudDark.jpg");
+  background-position: center;
+  background-size: 100% 130%;
+}
+#preHUD.anim {
+  animation: departHUD 4s linear forwards;
+}
+
+@keyframes departHUD {
+  0% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1;
+    display: none;
+  }
+}
+@keyframes departMulti {
+  from {
+    -webkit-clip-path: circle(0%);
+            clip-path: circle(0%);
+  }
+  to {
+    -webkit-clip-path: circle(100%);
+            clip-path: circle(100%);
+  }
+}
 #containerHUD {
   height: 100vh;
   width: 100vw;
@@ -174,6 +213,14 @@ nav, ul, li {
   perspective-origin: center;
 }
 
+@keyframes pasContent {
+  from {
+    background-image: url("../../../divers/img/multivac.gif");
+  }
+  to {
+    background-image: url("../../../divers/img/multivacRed.gif");
+  }
+}
 #multivac {
   position: absolute;
   top: 20px;
@@ -186,14 +233,14 @@ nav, ul, li {
   aspect-ratio: 1/1;
   -webkit-clip-path: circle(0%);
           clip-path: circle(0%);
-  animation: departMulti 1s linear 1.75s forwards;
+  animation: departMulti 1s linear 3s forwards;
 }
 #multivac #machine {
   position: absolute;
   display: block;
   height: 100%;
   width: 100%;
-  background-image: url("../../../divers/img/machine2.gif");
+  background-image: url("../../../divers/img/multivac.gif");
   background-repeat: no-repeat;
   background-size: contain;
 }
