@@ -19,7 +19,7 @@ let speedOut = parseFloat(vitesse2.replace('s', '')) * 1000;
 let tempo = false;
 
 const machine = document.getElementById('machine');
-const urlGIF = "../../../divers/img/loading2sGreen.gif?time=";
+const urlGIF = "../../divers/img/loading2sGreen.gif?time=";
 
 const modal = document.getElementById('modal');
 const modalBackground = document.getElementById('backgroundModal');
@@ -28,6 +28,9 @@ const modalBox = document.getElementById('containerModal');
 const modalTitre = document.getElementById('containerModal').children[0];
 const modalResume = document.getElementById('containerModal').children[1];
 const modalTexte = document.getElementById('containerModal').children[2];
+const captchaButton = document.getElementById('captchaButton');
+const captchaInput = document.getElementById('captchaInput');
+const captchaImg = document.getElementById('captchaImg');
 
 const skills = document.getElementById('COMPETENCES').children;
 
@@ -297,13 +300,13 @@ function openModal(index) {
         case 0://A PROPOS
             break;
         case 1://PORTFOLIO
-            modal.style.display = "block";
+            modal.style.display = "grid";
             modalTitre.textContent = "PORTFOLIO";
             modalResume.textContent = "Mes créations depuis septembre 2022";
             modalTexte.innerHTML = textInfosPortfolio;
             break;
         case 2://CV
-            modal.style.display = "block";
+            modal.style.display = "grid";
             modalBox.style.height = "100vh";
             modalBox.style.width = "calc(7000vh / 99)";
             modalBox.style.top = "0";
@@ -317,13 +320,19 @@ function openModal(index) {
 
             modalTexte.style.margin = "0";
             modalTexte.style.height = "100vh";
-            modalTexte.style.background = "url('../../../divers/img/docFront.jpg')";
+            modalTexte.style.background = "url('../../divers/img/docFront.jpg')";
             modalTexte.style.backgroundSize = "contain";
             checkWidth();
             break;
         case 3://COMPETENCES
             break;
         case 4://CONTACT
+            modal.style.display = "grid";
+            modalTitre.style.fontSize = "clamp(1.5rem, 2.5vw, 2.5rem)";
+            modalTitre.textContent = "Merci pour votre message !";
+            modalResume.style.fontSize = "clamp(1.25rem, 2vw, 2rem)";
+            modalResume.style.fontWeight = "normal";
+            modalResume.textContent = "Pour confirmer votre envoi, veuillez saisir ci-dessous les 4 caractères qui s'affichent à l'écran";
             break;
     }
     modalBackground.value = index;
@@ -361,6 +370,12 @@ function closeModal(e) {
         case 3://COMPETENCES
             break;
         case 4://CONTACT
+            modal.style.display = "none";
+            modalTitre.textContent = '';
+            modalResume.textContent = '';
+            modalTitre.style.removeProperty("font-size");
+            modalResume.style.removeProperty("font-size");
+            modalResume.style.removeProperty("font-weight");
             break;
     }
     modal.style.display = "none";

@@ -117,14 +117,14 @@ nav, ul, li {
 			rgba(0, 0, 0, 0.3) 10%,
 			rgba(0, 0, 0, 0.8) 80%
 		),
-		url('../../../divers/img/hudDark.jpg')
+		url('../../divers/img/hudDark.jpg')
 	;
 	
     background-position: center;    
     background-size: 100% 130%;
 
 	&.anim {
-		animation: departHUD 4s linear forwards;
+		animation: departHUD .1s linear forwards;
 	}
 }
 
@@ -159,7 +159,7 @@ nav, ul, li {
     width: 100vw;
     overflow: hidden;
 
-    background-image: url('../../../divers/img/hudLight.jpg');
+    background-image: url('../../divers/img/hudLight.jpg');
     background-position: center;    
     background-size: 100% 130%;
 		
@@ -173,10 +173,10 @@ nav, ul, li {
 
 @keyframes pasContent {
 	from {
-		background-image:url('../../../divers/img/multivac.gif');
+		background-image:url('../../divers/img/multivac.gif');
 	}	
 	to {
-		background-image:url('../../../divers/img/multivacRed.gif');
+		background-image:url('../../divers/img/multivacRed.gif');
 	}
 }
 
@@ -200,7 +200,7 @@ nav, ul, li {
 		display: block;
 		height: 100%;
 		width: 100%;
-		background-image:url('../../../divers/img/multivac.gif');
+		background-image:url('../../divers/img/multivac.gif');
 		background-repeat: no-repeat;
 		background-size: contain;
 	}
@@ -680,12 +680,15 @@ html body #containerHUD nav.droite ul li {
 
 	#containerModal {
 		position: absolute;
+		display: flex;
+		flex-direction: column;
 		z-index: 600;
-		top:15vh;
-		left:15vw;
+		align-self: center;
+		justify-self: center;
 		padding:20px;
 		height:70vh;
 		width:calc(70vw - 20px);
+		min-width: 400px;
 		background-color:var(--mainColor3);
 		overflow: scroll;
 
@@ -702,21 +705,52 @@ html body #containerHUD nav.droite ul li {
 		}
 
 		#captcha {
-			//display: none;
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			width:100%;
+			height: 50vh;
+			row-gap: 20px;
+			align-content: center;
+			justify-content: space-around;
 
 			#captchaImg {
-				max-width:100px;
+				align-self: center;
+				min-width:400px;
+				max-width:400px;
+				min-height:160px;
+				max-height:160px;
+
+				border: 2px solid black;;
 			}
 
-			input {
-				background-color: aqua;
+			div {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				column-gap: 20px;
+				align-items: center;
+				height: 100%;
+				width: 100%;
+
+				input {
+					all:initial;
+					border:none;
+					border-bottom: 2px solid var(--mainColor3);
+					padding-left:3px;
+					background:var(--mainColor1)!important;
+					height:30px;
+					width:40%;
+					cursor: text!important;
+				}
+
+				button {
+					height: 50px;
+					width: 100px;
+					cursor: pointer;
+				}
 			}
 
-			button {
-				height: 50px;
-				width: 150px;
-				cursor: pointer;
-			}
 		}
 	}   
 }

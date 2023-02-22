@@ -36,12 +36,12 @@
 
     // LIVRE PORTFOLIO //
     --livreLargeur:clamp(300px, 50vh, 25vw);
-    --imageG1:url('../../../divers/img/pf-videos.jpg');
-    --imageG2:url('../../../divers/img/pf-videos-specs.jpg');
-    --imageM1:url('../../../divers/img/pf-rando.jpg');
-    --imageM2:url('../../../divers/img/pf-rando-specs.jpg');
-    --imageD1:url('../../../divers/img/pf-conseil.jpg');
-    --imageD2:url('../../../divers/img/pf-conseil-specs.jpg');
+    --imageG1:url('../../divers/img/pf-videos.jpg');
+    --imageG2:url('../../divers/img/pf-videos-specs.jpg');
+    --imageM1:url('../../divers/img/pf-rando.jpg');
+    --imageM2:url('../../divers/img/pf-rando-specs.jpg');
+    --imageD1:url('../../divers/img/pf-conseil.jpg');
+    --imageD2:url('../../divers/img/pf-conseil-specs.jpg');
     --bookFront:var(--bookBorder);
 
     --zoomLivre:-30vw;

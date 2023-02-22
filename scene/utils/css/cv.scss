@@ -75,7 +75,7 @@
 
     .face.top.down::before {  
         z-index: 2;  
-        background-image: url('../../../divers/img/bzzt.gif');
+        background-image: url('../../divers/img/bzzt.gif');
         background-position: center;
         background-size:cover;
     }
@@ -148,7 +148,7 @@
     align-self: center;
     justify-self: center;
     //width:calc(0.5656 * var(--standHauteur));
-    background-image:url('../../../divers/img/docFront.jpg');
+    background-image:url('../../divers/img/docFront.jpg');
     background-position:center ;
     background-size: contain;
     background-repeat: no-repeat;
@@ -172,7 +172,7 @@
     align-self: center;
     justify-self: center;
     //width:calc(0.5656 * var(--standHauteur));
-    background-image:url('../../../divers/img/docBack.gif');
+    background-image:url('../../divers/img/docBack.gif');
     background-position:center ;
     background-size: contain;
     background-repeat: no-repeat;
@@ -253,12 +253,12 @@
         background-image:none;
     }
     85% {    
-        background-image: url('../../../divers/img/bzzt.gif');
+        background-image: url('../../divers/img/bzzt.gif');
         background-position: top;
         background-size: cover;
     }
     100% {    
-        background-image: url('../../../divers/img/bzzt.gif');
+        background-image: url('../../divers/img/bzzt.gif');
         background-position: top;
         background-size: cover;
         height: var(--standLargeurInt);

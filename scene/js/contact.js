@@ -234,7 +234,6 @@ async function verifCaptcha() {
 			xhr.onreadystatechange = function () {
 				if (xhr.readyState === 4 && xhr.status === 200) {
 					confirmationUserForm();
-					console.log(xhr.responseText);
 				}
 			}
 		} else {
@@ -247,4 +246,13 @@ async function verifCaptcha() {
 
 function confirmationUserForm() {
 	console.log('Message envoyé !');
+	clodeModal(4);
+	effacer();
+	const confrimP = document.createElement('p');
+	confrimP.textContent = "Merci !";
+	confrimP.style.color = "#00ff00";
+	confrimP.style.fontSize = "1.8rem";
+
+	const h2 = document.getElementById('contactTitre');
+	h2.after(confrimP);
 }

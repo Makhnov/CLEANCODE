@@ -73,7 +73,7 @@
 .bloc.bottom .face.top.down::before,
 .bloc.top .face.top.down::before {
   z-index: 2;
-  background-image: url("../../../divers/img/bzzt.gif");
+  background-image: url("../../divers/img/bzzt.gif");
   background-position: center;
   background-size: cover;
 }
@@ -145,7 +145,7 @@
   position: absolute;
   align-self: center;
   justify-self: center;
-  background-image: url("../../../divers/img/docFront.jpg");
+  background-image: url("../../divers/img/docFront.jpg");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -166,7 +166,7 @@
   position: absolute;
   align-self: center;
   justify-self: center;
-  background-image: url("../../../divers/img/docBack.gif");
+  background-image: url("../../divers/img/docBack.gif");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -241,12 +241,12 @@
     background-image: none;
   }
   85% {
-    background-image: url("../../../divers/img/bzzt.gif");
+    background-image: url("../../divers/img/bzzt.gif");
     background-position: top;
     background-size: cover;
   }
   100% {
-    background-image: url("../../../divers/img/bzzt.gif");
+    background-image: url("../../divers/img/bzzt.gif");
     background-position: top;
     background-size: cover;
     height: var(--standLargeurInt);

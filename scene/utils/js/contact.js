@@ -58,7 +58,7 @@ if (form !== null) {
 			if (msgErreur) {
 				affichage(tab); // On lance la fonction qui va afficher les erreurs de saisies de l'utilisateur
 			} else {
-				formOK(event);
+				formConfirm(event);
 			}
 		}
 	});
@@ -190,67 +190,61 @@ function verifMessage(str) {
 }
 
 // Fonction qui lance le formulaire
-function formOK(event) {
+function formConfirm(event) {
 
 	console.log(event);
-	effacer();
 	openModal(4);
 	captcha();
-
-	// if (confirm("Merci " + nom + space + ", confirmez-vous cet envoi ?")) {
-
-	// 	// Récupère les données du formulaire
-	// 	const formData = new FormData(form);
-
-	// 	// Crée une requête AJAX
-	// 	const req = new XMLHttpRequest();
-	// 	req.open('POST', './utils/php/formulaire.php');
-	// 	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-	// 	// Envoie les données du formulaire
-	// 	req.send(new URLSearchParams(formData).toString());
-
-	// 	// Gère la réponse de la requête
-	// 	req.onload = function () {
-	// 		if (req.status === 200) {
-	// 			// Traitement de la réponse
-	// 			formConfirm(req.responseText);
-	// 		} else {
-	// 			console.log('Erreur lors de la requête.');
-	// 		}
-	// 	};
-
-	// } else {
-	// 	//code si non envoyé
-	// }
 }
 
 function captcha() {
-	// URL du script PHP qui génère l'image du captcha
-	const url = '../../../utils/php/captcha.php';
-
-	// Options de la requête
-	const options = {
-		method: 'GET',
-		credentials: 'include', // Permet d'inclure les cookies dans la requête
+	const xhr = new XMLHttpRequest();
+	xhr.open('GET', '../../utils/captcha.php');
+	xhr.responseType = 'blob';
+	xhr.onload = function () {
+		const imageUrl = URL.createObjectURL(this.response);
+		captchaImg.setAttribute('src', imageUrl);
 	};
-
-	// Envoie la requête fetch
-	fetch(url, options)
-		.then(response => response.blob()) // Convertit la réponse en un objet blob
-		.then(blob => {
-			// Crée une URL blob pour l'image du captcha
-			const url = URL.createObjectURL(blob);
-
-			// Affiche l'image du captcha dans une balise <img>
-			const img = document.getElementById('captchaImg');
-			img.src = url;
-		})
-		.catch(error => console.error(error));
+	xhr.onerror = function () {
+		console.error('Erreur lors de la récupération du captcha.');
+	};
+	xhr.send();
 }
 
+async function verifCaptcha() {
+	const captchaInput = document.getElementById("captchaInput").value;
 
-function formConfirm(tab) {
+	try {
+		const response = await fetch("../../utils/verif_captcha.php", {
+			method: "POST",
+			headers: {
+				"Content-type": "application/json",
+			},
+			body: JSON.stringify({ userInput: captchaInput }),
+		});
 
+		const result = await response.json();
 
+		if (result) {
+			const xhr = new XMLHttpRequest();
+			const url = '../../utils/formulaire.php';
+			const formData = new FormData(form);
+			xhr.open('POST', url, true);
+			xhr.send(formData);
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState === 4 && xhr.status === 200) {
+					confirmationUserForm();
+					console.log(xhr.responseText);
+				}
+			}
+		} else {
+			captcha();
+		}
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+function confirmationUserForm() {
+	console.log('Message envoyé !');
 }
