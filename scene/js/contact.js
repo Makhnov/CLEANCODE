@@ -246,7 +246,7 @@ async function verifCaptcha() {
 
 function confirmationUserForm() {
 	console.log('Message envoyé !');
-	clodeModal(4);
+	closeModal(4);
 	effacer();
 	const confrimP = document.createElement('p');
 	confrimP.textContent = "Merci !";
