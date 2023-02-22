@@ -57,6 +57,17 @@
         1px 27px 60px var(--blackLight);
     }
 
+    #confirmP {
+        display: none;
+        color:#00ff00;
+        font-size: 1.75rem;
+        font-weight: bold;
+
+        &.confirm {
+            display: block;
+        }
+    }
+
     .boutons {
         display: flex;
         justify-content: center;

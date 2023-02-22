@@ -45,6 +45,15 @@
   font-size: 3vw;
   text-shadow: 1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1.5px #919191, 1px 4px 2px #919191, 1px 18px 5px var(--blackLight), 1px 21px 10px var(--blackLight2), 1px 24px 30px var(--blackLight2), 1px 27px 60px var(--blackLight);
 }
+#CONTACT #confirmP {
+  display: none;
+  color: #00ff00;
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+#CONTACT #confirmP.confirm {
+  display: block;
+}
 #CONTACT .boutons {
   display: flex;
   justify-content: center;

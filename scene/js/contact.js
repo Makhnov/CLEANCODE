@@ -248,11 +248,9 @@ function confirmationUserForm() {
 	console.log('Message envoyé !');
 	closeModal(4);
 	effacer();
-	const confrimP = document.createElement('p');
-	confrimP.textContent = "Merci !";
-	confrimP.style.color = "#00ff00";
-	confrimP.style.fontSize = "1.8rem";
-
-	const h2 = document.getElementById('contactTitre');
-	h2.after(confrimP);
+	const confrimP = document.getElementById('confirmP');
+	confrimP.classList.add('confirm');
+	setTimeout(() => {
+		confrimP.classList.remove('confirm');
+	}, 5000)
 }
