@@ -170,14 +170,43 @@ nav, ul, li {
   background-size: 100% 130%;
 }
 #preHUD.anim {
-  animation: departHUD 0.1s linear forwards;
+  animation: departHUD 1.5s linear 1.75s forwards;
+}
+#preHUD h1 {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: calc(50% - 5vw);
+  right: 50vw;
+  height: 10vw;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: grid;
+  align-content: center;
+  justify-content: start;
+  font-size: 5vw;
+  background: linear-gradient(to right, #55c6ee, #fff 40%, #55c6ee);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-color: #0f172a;
+  animation: bienvenueTexte 1.75s linear 0.25s forwards;
+}
+#preHUD #startIcon {
+  position: absolute;
+  top: calc(50% - 5vw);
+  right: 45vw;
+  height: 10vw;
+  width: 55vw;
+  background-image: url(../../divers/img/startIcon.png);
+  background-position: right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: bienvenueIcon 1.75s linear 0.25s forwards;
 }
 
 @keyframes departHUD {
   0% {
-    opacity: 1;
-  }
-  40% {
     opacity: 1;
   }
   99% {
@@ -199,6 +228,33 @@ nav, ul, li {
             clip-path: circle(100%);
   }
 }
+@keyframes bienvenueTexte {
+  0% {
+    transform: translateX(0vw);
+  }
+  50% {
+    transform: translateX(17vw);
+  }
+  100% {
+    transform: translateX(17vw);
+    visibility: hidden;
+  }
+}
+@keyframes bienvenueIcon {
+  0% {
+    width: translateX(0vw);
+    width: 55vw;
+  }
+  50% {
+    transform: translateX(-18vw);
+    width: 37vw;
+  }
+  100% {
+    transform: translateX(-18vw);
+    width: 37vw;
+    visibility: hidden;
+  }
+}
 #containerHUD {
   height: 100vh;
   width: 100vw;
@@ -213,14 +269,6 @@ nav, ul, li {
   perspective-origin: center;
 }
 
-@keyframes pasContent {
-  from {
-    background-image: url("../../divers/img/multivac.gif");
-  }
-  to {
-    background-image: url("../../divers/img/multivacRed.gif");
-  }
-}
 #multivac {
   position: absolute;
   top: 20px;
@@ -233,7 +281,7 @@ nav, ul, li {
   aspect-ratio: 1/1;
   -webkit-clip-path: circle(0%);
           clip-path: circle(0%);
-  animation: departMulti 1s linear 3s forwards;
+  animation: departMulti 1s linear var(--vitesseEntree) forwards;
 }
 #multivac #machine {
   position: absolute;
@@ -278,7 +326,6 @@ nav, ul, li {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  row-gap: 2%;
   transform: translateX(2vw) rotateY(80deg) translateZ(calc(var(--menuProfondeur)));
 }
 #containerHUD nav.gauche ul li {
@@ -292,16 +339,23 @@ nav, ul, li {
   display: grid;
   align-content: center;
   padding-left: 20px;
+  margin-bottom: 10px;
   font-size: clamp(1.5rem, 3vw, 2rem);
   text-shadow: -0.06rem 0rem 0 rgb(148, 163, 184), -0.06rem 0.05rem 0 #0f172a, -0.12rem 0.025rem 0 #94a3b8, -0.12rem 0.075rem 0 #0f172a, -0.18rem 0.05rem 0 #94a3b8, -0.18rem 0.1rem 0 #0f172a, -0.24rem 0.075rem 0 #94a3b8, -0.24rem 0.125rem 0 #0f172a, -0.3rem 0.1rem 0 #94a3b8, -0.3rem 0.15rem 0 #0f172a;
+  transition: transform 3s !important;
+}
+#containerHUD nav.gauche ul li:nth-of-type(1) {
+  z-index: 10;
+}
+#containerHUD nav.gauche ul li:nth-of-type(1).anim {
+  background-color: var(--mainColor);
+}
+#containerHUD nav.gauche ul li:hover:not(.anim) {
+  transform: translateX(30px) !important;
   cursor: pointer;
-  transition: transform 3s;
 }
-#containerHUD nav.gauche ul li:hover {
-  transform: translateX(30px);
-}
-#containerHUD nav.gauche ul li.clicked {
-  transform: translate3d(0, 0, 0) rotateY(var(--menuAngle)) translateX(10000px) scale(0);
+#containerHUD nav.gauche ul li.clicked:not(.anim) {
+  transform: translate3d(0, 0, 0) rotateY(var(--menuAngle)) translateX(10000px) scale(0) !important;
 }
 #containerHUD nav.gauche ul li::before {
   position: absolute;
@@ -611,8 +665,8 @@ html body #containerHUD nav.droite ul li > * {
   font-size: clamp(1rem, 2.2vw, 2rem);
 }
 #modal #containerModal #captcha {
+  display: none;
   position: relative;
-  display: flex;
   flex-direction: column;
   width: 100%;
   height: 50vh;

@@ -28,9 +28,7 @@ const modalBox = document.getElementById('containerModal');
 const modalTitre = document.getElementById('containerModal').children[0];
 const modalResume = document.getElementById('containerModal').children[1];
 const modalTexte = document.getElementById('containerModal').children[2];
-const captchaButton = document.getElementById('captchaButton');
-const captchaInput = document.getElementById('captchaInput');
-const captchaImg = document.getElementById('captchaImg');
+const modalCaptcha = document.getElementById('captcha');
 
 const skills = document.getElementById('COMPETENCES').children;
 
@@ -371,6 +369,7 @@ function closeModal(e) {
             break;
         case 4://CONTACT
             modal.style.display = "none";
+            modalCaptcha.style.display = "none";
             modalTitre.textContent = '';
             modalResume.textContent = '';
             modalTitre.style.removeProperty("font-size");

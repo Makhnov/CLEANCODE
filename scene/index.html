@@ -25,7 +25,10 @@
 
 <body onload="refresh()">
 
-    <div id="preHUD"></div>
+    <div id="preHUD">
+        <h1>BIENVENUE</h1>
+        <div id="startIcon"></div>
+    </div>
 
     <section id="containerHUD">
 
@@ -329,7 +332,7 @@
             <h3>Résumé du titre</h3>
             <p></p>
             <div id="captcha">
-                <img id="captchaImg" src="../utils/captcha.php" alt="Captcha">
+                <img id="captchaImg" src="" alt="Captcha">
                 <div>
                     <input id="captchaInput" type="text">
                     <button id="captchaButton" type="submit" onclick="verifCaptcha()">Confirmer</button>
