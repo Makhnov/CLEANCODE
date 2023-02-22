@@ -29,12 +29,12 @@
   --standHauteur:calc(var(--hMult) * (var(--standLargeur)));
   --inclinaisonCV:90deg;
   --livreLargeur:clamp(300px, 50vh, 25vw);
-  --imageG1:url("../../../divers/img/pf-videos.jpg");
-  --imageG2:url("../../../divers/img/pf-videos-specs.jpg");
-  --imageM1:url("../../../divers/img/pf-rando.jpg");
-  --imageM2:url("../../../divers/img/pf-rando-specs.jpg");
-  --imageD1:url("../../../divers/img/pf-conseil.jpg");
-  --imageD2:url("../../../divers/img/pf-conseil-specs.jpg");
+  --imageG1:url("../../divers/img/pf-videos.jpg");
+  --imageG2:url("../../divers/img/pf-videos-specs.jpg");
+  --imageM1:url("../../divers/img/pf-rando.jpg");
+  --imageM2:url("../../divers/img/pf-rando-specs.jpg");
+  --imageD1:url("../../divers/img/pf-conseil.jpg");
+  --imageD2:url("../../divers/img/pf-conseil-specs.jpg");
   --bookFront:var(--bookBorder);
   --zoomLivre:-30vw;
   --inclinaisonLivre:-6deg;
@@ -165,12 +165,12 @@ nav, ul, li {
   z-index: 1000;
   height: 100vh;
   width: 100vw;
-  background-image: radial-gradient(ellipse closest-side at 49% 21.5%, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.05) 20%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.3) 30%, rgba(0, 0, 0, 0.8) 80%), radial-gradient(ellipse closest-side at 51% 75%, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.05) 20%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.3) 10%, rgba(0, 0, 0, 0.8) 80%), url("../../../divers/img/hudDark.jpg");
+  background-image: radial-gradient(ellipse closest-side at 49% 21.5%, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.05) 20%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.3) 30%, rgba(0, 0, 0, 0.8) 80%), radial-gradient(ellipse closest-side at 51% 75%, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.05) 20%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.3) 10%, rgba(0, 0, 0, 0.8) 80%), url("../../divers/img/hudDark.jpg");
   background-position: center;
   background-size: 100% 130%;
 }
 #preHUD.anim {
-  animation: departHUD 4s linear forwards;
+  animation: departHUD 0.1s linear forwards;
 }
 
 @keyframes departHUD {
@@ -203,7 +203,7 @@ nav, ul, li {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background-image: url("../../../divers/img/hudLight.jpg");
+  background-image: url("../../divers/img/hudLight.jpg");
   background-position: center;
   background-size: 100% 130%;
   display: grid;
@@ -215,10 +215,10 @@ nav, ul, li {
 
 @keyframes pasContent {
   from {
-    background-image: url("../../../divers/img/multivac.gif");
+    background-image: url("../../divers/img/multivac.gif");
   }
   to {
-    background-image: url("../../../divers/img/multivacRed.gif");
+    background-image: url("../../divers/img/multivacRed.gif");
   }
 }
 #multivac {
@@ -240,7 +240,7 @@ nav, ul, li {
   display: block;
   height: 100%;
   width: 100%;
-  background-image: url("../../../divers/img/multivac.gif");
+  background-image: url("../../divers/img/multivac.gif");
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -589,12 +589,15 @@ html body #containerHUD nav.droite ul li > * {
 }
 #modal #containerModal {
   position: absolute;
+  display: flex;
+  flex-direction: column;
   z-index: 600;
-  top: 15vh;
-  left: 15vw;
+  align-self: center;
+  justify-self: center;
   padding: 20px;
   height: 70vh;
   width: calc(70vw - 20px);
+  min-width: 400px;
   background-color: var(--mainColor3);
   overflow: scroll;
 }
@@ -607,14 +610,46 @@ html body #containerHUD nav.droite ul li > * {
 #modal #containerModal p {
   font-size: clamp(1rem, 2.2vw, 2rem);
 }
+#modal #containerModal #captcha {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 50vh;
+  row-gap: 20px;
+  align-content: center;
+  justify-content: space-around;
+}
 #modal #containerModal #captcha #captchaImg {
-  max-width: 100px;
+  align-self: center;
+  min-width: 400px;
+  max-width: 400px;
+  min-height: 160px;
+  max-height: 160px;
+  border: 2px solid black;
 }
-#modal #containerModal #captcha input {
-  background-color: aqua;
+#modal #containerModal #captcha div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
-#modal #containerModal #captcha button {
+#modal #containerModal #captcha div input {
+  all: initial;
+  border: none;
+  border-bottom: 2px solid var(--mainColor3);
+  padding-left: 3px;
+  background: var(--mainColor1) !important;
+  height: 30px;
+  width: 40%;
+  cursor: text !important;
+}
+#modal #containerModal #captcha div button {
   height: 50px;
-  width: 150px;
+  width: 100px;
   cursor: pointer;
 }/*# sourceMappingURL=hud.css.map */

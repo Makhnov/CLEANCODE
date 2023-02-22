@@ -1,0 +1,168 @@
+@keyframes enterContact {
+  from {
+    -webkit-clip-path: circle(0%);
+            clip-path: circle(0%);
+  }
+  to {
+    -webkit-clip-path: circle(100%);
+            clip-path: circle(100%);
+  }
+}
+@keyframes leaveContact {
+  from {
+    -webkit-clip-path: circle(100%);
+            clip-path: circle(100%);
+  }
+  to {
+    -webkit-clip-path: circle(0%);
+            clip-path: circle(0%);
+  }
+}
+#CONTACT.anim {
+  animation: enterContact calc(var(--vitesseEntree) / 4 * 3) linear forwards;
+}
+
+#CONTACT {
+  position: absolute;
+  z-index: 100;
+  visibility: visible !important;
+  pointer-events: auto;
+  border-radius: 10px;
+  background-image: radial-gradient(ellipse farthest-side at center, var(--mainColor4Light), rgba(245, 245, 245, 0));
+  background-clip: padding-box;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  -webkit-clip-path: circle(0%);
+          clip-path: circle(0%);
+}
+#CONTACT h2 {
+  display: grid;
+  place-content: center;
+  color: whitesmoke;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-size: 3vw;
+  text-shadow: 1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1.5px #919191, 1px 4px 2px #919191, 1px 18px 5px var(--blackLight), 1px 21px 10px var(--blackLight2), 1px 24px 30px var(--blackLight2), 1px 27px 60px var(--blackLight);
+}
+#CONTACT .boutons {
+  display: flex;
+  justify-content: center;
+}
+#CONTACT .boutons button {
+  all: initial !important;
+  display: flex !important;
+}
+#CONTACT .boutons button i {
+  margin: 0 10px;
+  justify-self: top;
+  font-size: clamp(1.75rem, 6vh, 3rem);
+  color: whitesmoke;
+  cursor: pointer;
+}
+#CONTACT button, #CONTACT .intitules span p {
+  -webkit-user-select: none !important;
+     -moz-user-select: none !important;
+          user-select: none !important;
+}
+
+#supprimer i,
+#valider i {
+  text-shadow: 1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1.5px #919191, 1px 18px 3px var(--blackLight), 1px 21px 5px var(--blackLight2), 1px 24px 8px var(--blackLight2), 1px 27px 20px var(--blackLight2), 1px 30px 40px var(--blackLight2);
+  transform: translate(0, 0);
+  transition: opacity 0.5s;
+}
+#supprimer i:hover,
+#valider i:hover {
+  text-shadow: 1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1.5px #919191, 1px 14px 3px var(--blackLight), 1px 17px 5px var(--blackLight2), 1px 20px 8px var(--blackLight2), 1px 23px 20px var(--blackLight2), 1px 26px 40px var(--blackLight2);
+  transform: translate(0px, 2px);
+}
+#supprimer i:active,
+#valider i:active {
+  text-shadow: 1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1.5px #919191, 1px 8px 3px var(--blackLight), 1px 11px 5px var(--blackLight2), 1px 14px 8px var(--blackLight2), 1px 17px 20px var(--blackLight2), 1px 20px 40px var(--blackLight2);
+  transform: translate(0px, 4px);
+}
+
+/* ---- LA LIGNE DES INPUTS ---- */
+.inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 100%;
+  height: 50px;
+}
+.inputs label {
+  position: relative;
+  z-index: 10;
+  height: 30px;
+  width: calc(40% - 10px);
+  top: -20px;
+  left: 0;
+  color: rgba(211, 211, 211, 0.7);
+  font-weight: bold;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transition: 0.33s;
+}
+.inputs input {
+  all: initial;
+  position: relative;
+  top: 0;
+  flex: 2 1 auto;
+  border: none;
+  border-bottom: 2px solid var(--mainColor3);
+  padding-left: 3px;
+  background: var(--mainColor1) !important;
+  height: 30px;
+  width: 40%;
+  transition: 0.33s;
+  cursor: text !important;
+}
+.inputs input::-moz-placeholder {
+  opacity: 0;
+}
+.inputs input::placeholder {
+  opacity: 0;
+}
+.inputs input:hover ~ label {
+  left: -5px;
+  top: -25px;
+}
+.inputs input:focus {
+  width: calc(40% + 10px);
+}
+.inputs input:focus ~ label {
+  left: -10px;
+  top: -45px;
+}
+.inputs input:not(:-moz-placeholder-shown) ~ label {
+  left: -10px;
+  top: -45px;
+}
+.inputs input:not(:placeholder-shown) ~ label {
+  left: -10px;
+  top: -45px;
+}
+.inputs input:not(:-moz-placeholder-shown) ~ label.false {
+  color: #FFA500;
+}
+.inputs input:not(:placeholder-shown) ~ label.false {
+  color: #FFA500;
+}
+.inputs input:not(:-moz-placeholder-shown) ~ label.true {
+  color: #00ff00;
+}
+.inputs input:not(:placeholder-shown) ~ label.true {
+  color: #00ff00;
+}
+.inputs span {
+  position: relative;
+  top: -25px;
+  height: 0px;
+  width: 40%;
+  color: red;
+  font-weight: bold;
+  font-size: 0.8rem;
+}/*# sourceMappingURL=contact.css.map */

@@ -11,11 +11,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="./utils/css/hud.css">
-    <link rel="stylesheet" href="./utils/css/book.css">
-    <link rel="stylesheet" href="./utils/css/cv.css">
-    <link rel="stylesheet" href="./utils/css/skills.css">
-    <link rel="stylesheet" href="./utils/css/contact.css">
+    <link rel="stylesheet" href="./css/hud.css">
+    <link rel="stylesheet" href="./css/book.css">
+    <link rel="stylesheet" href="./css/cv.css">
+    <link rel="stylesheet" href="./css/skills.css">
+    <link rel="stylesheet" href="./css/contact.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -293,27 +293,26 @@
                     </div>
                 </div>
             </div>
-            <form id="CONTACT" action="./utils/php/formulaire.php" method="POST" class="hidden main">
+            <form id="CONTACT" action="../utils/formulaire.php" method="POST" class="hidden main">
                 <h2>Me contacter</h2>
 
                 <div class="inputs">
-                    <input id="nom" name="nom" type="text" placeholder="Nom" oninput="validerCheck(this)">
+                    <input id="nom" name="nom" type="text" placeholder="Nom" oninput="validerCheck(this)" value="a">
                     <label for="nom">Nom</label>
                     <span></span>
                 </div>
                 <div class="inputs">
-                    <input id="email" name="email" type="text" placeholder="E-Mail" oninput="validerCheck(this)">
+                    <input id="email" name="email" type="text" placeholder="E-Mail" oninput="validerCheck(this)"
+                        value="aze@ar.fr">
                     <label for="email">E-Mail</label>
                     <span></span>
                 </div>
                 <div class="inputs">
-                    <input id="message" name="message" type="text" placeholder="Message" oninput="validerCheck(this)">
+                    <input id="message" name="message" type="text" placeholder="Message" oninput="validerCheck(this)"
+                        value="COUCOU">
                     <label for="message">Message</label>
                     <span></span>
                 </div>
-
-                <img id="captchaImg" src="" alt="Captcha Image">
-
                 <div class="boutons">
                     <button id="supprimer" type="submit"><i class="fas fa-ban"></i></button>
                     <button id="valider" type="submit"><i class="fas fa-check"></i></button>
@@ -328,16 +327,23 @@
             <i class="fa-solid fa-xmark"></i>
         </button>
         <div id="containerModal">
-            <h1>Titre</h2>
-                <h3>Résumé du titre</h3>
-                <p></p>
+            <h1>Titre</h1>
+            <h3>Résumé du titre</h3>
+            <p></p>
+            <div id="captcha">
+                <img id="captchaImg" src="../utils/captcha.php" alt="Captcha">
+                <div>
+                    <input id="captchaInput" type="text">
+                    <button id="captchaButton" type="submit" onclick="verifCaptcha()">Confirmer</button>
+                </div>
+            </div>
         </div>
     </section>
 
-    <script src="./utils/js/hud.js"></script>
-    <script src="./utils/js/cv.js"></script>
-    <script src="./utils/js/book.js"></script>
-    <script src="./utils/js/contact.js"></script>
+    <script src="./js/hud.js"></script>
+    <script src="./js/cv.js"></script>
+    <script src="./js/book.js"></script>
+    <script src="./js/contact.js"></script>
 </body>
 
 </html>

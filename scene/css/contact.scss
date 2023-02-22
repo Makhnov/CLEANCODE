@@ -1,0 +1,208 @@
+@keyframes enterContact {
+    from {
+        clip-path: circle(0%);
+    }
+
+    to {
+        clip-path: circle(100%);
+    }
+}
+
+@keyframes leaveContact {
+    from {
+        clip-path: circle(100%);
+    }
+
+    to {
+        clip-path: circle(0%);
+    }
+}
+
+#CONTACT.anim {
+    animation: enterContact calc(var(--vitesseEntree) / 4 * 3) linear forwards;
+}
+
+#CONTACT  {
+    position: absolute;
+    z-index: 100;
+    visibility: visible!important;
+    pointer-events: auto;
+    border-radius: 10px;
+
+    background-image: radial-gradient(ellipse farthest-side at center,
+    var(--mainColor4Light),
+    rgba(245, 245, 245, 0));
+    background-clip: padding-box;
+	
+    display: flex;
+    justify-content:space-around;
+    flex-direction: column;
+
+    clip-path: circle(0%);   
+
+    h2 {
+        display: grid;
+        place-content: center;
+        color: whitesmoke;
+        margin:0 0 10px 0;
+        padding:0;
+        font-size: 3vw;
+        text-shadow: 1px 1px 1px #919191,
+        1px 2px 1px #919191,
+        1px 3px 1.5px #919191,
+        1px 4px 2px #919191,
+        1px 18px 5px var(--blackLight),
+        1px 21px 10px var(--blackLight2),
+        1px 24px 30px var(--blackLight2),
+        1px 27px 60px var(--blackLight);
+    }
+
+    .boutons {
+        display: flex;
+        justify-content: center;
+
+        button {
+            all:initial!important;
+            display: flex!important;
+            
+            i {
+                margin:0 10px;
+                justify-self: top;
+                font-size:clamp(1.75rem, 6vh, 3rem);
+                color: whitesmoke;
+                cursor: pointer;
+            }
+        }
+    }
+
+    button, .intitules span p {
+        user-select: none!important;
+    }
+}
+
+#supprimer, 
+#valider {
+    // AJOUT DES OMBRES //
+    i {
+        text-shadow: 
+            1px 1px 1px #919191,
+            1px 2px 1px #919191,
+            1px 3px 1.5px #919191,
+            1px 18px 3px var(--blackLight),
+            1px 21px 5px var(--blackLight2),
+            1px 24px 8px var(--blackLight2),
+            1px 27px 20px var(--blackLight2),
+            1px 30px 40px var(--blackLight2)
+        ;        
+        transform:translate(0,0);
+        transition: opacity .5s;
+
+        &:hover {
+            text-shadow: 
+                1px 1px 1px #919191,
+                1px 2px 1px #919191,
+                1px 3px 1.5px #919191,
+                1px 14px 3px var(--blackLight),
+                1px 17px 5px var(--blackLight2),
+                1px 20px 8px var(--blackLight2),
+                1px 23px 20px var(--blackLight2),
+                1px 26px 40px var(--blackLight2)
+            ;   
+            transform: translate(0px, 2px);
+        }
+
+        &:active {
+            text-shadow: 
+                1px 1px 1px #919191,
+                1px 2px 1px #919191,
+                1px 3px 1.5px #919191,
+                1px 8px 3px var(--blackLight),
+                1px 11px 5px var(--blackLight2),
+                1px 14px 8px var(--blackLight2),
+                1px 17px 20px var(--blackLight2),
+                1px 20px 40px var(--blackLight2)
+            ;   
+            transform: translate(0px, 4px);
+        }
+
+    }
+}
+
+/* ---- LA LIGNE DES INPUTS ---- */
+.inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    height:50px;
+
+    label {
+        position: relative;
+        z-index: 10;
+        height:30px;
+        width:calc(40% - 10px);
+        top:-20px;
+        left:0;
+        color:rgba(211, 211, 211, 0.7);
+        font-weight: bold;
+        user-select: none;
+        transition: .33s;
+
+    }
+
+    input {
+		all:initial;
+        position: relative;
+        top:0;
+        flex: 2 1 auto;
+        border:none;
+        border-bottom: 2px solid var(--mainColor3);
+        padding-left:3px;
+        background:var(--mainColor1)!important;
+        height:30px;
+        width:40%;
+        transition: .33s;
+        cursor: text!important;
+
+        &::placeholder {
+            opacity:0;
+        }
+
+        &:hover ~ label {
+            left:-5px;
+            top:-25px;
+        }
+
+        &:focus {
+            width: calc(40% + 10px);
+        }
+
+        &:focus ~ label {
+            left:-10px;
+            top:-45px;
+        }
+
+        &:not(:placeholder-shown) ~ label {
+            left:-10px;
+            top:-45px;
+            &.false {
+                color: #FFA500;
+            }
+            &.true {
+                color:#00ff00;
+            }
+        }
+    }
+
+    span {
+        position: relative;
+        top:-25px;
+        height: 0px;
+        width:40%;
+		
+		color: red;
+		font-weight: bold;
+		font-size: .8rem;
+    }
+}

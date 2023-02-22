@@ -1,0 +1,437 @@
+#COMPETENCES {
+  position: absolute;
+  display: grid;
+  top: -2vh;
+  min-height: 78vh;
+  min-width: 60vw;
+  grid-template-rows: 4vh 20vh 2vh 20vh 2vh 20vh 10vh;
+  grid-template-columns: 1.5vw 28vw 1vw 28vw 1.5vw;
+}
+#COMPETENCES > .skills {
+  grid-row: 2;
+  grid-column: 2;
+}
+#COMPETENCES > .html {
+  grid-row: 2;
+  grid-column: 4;
+}
+#COMPETENCES > .css {
+  grid-row: 4;
+  grid-column: 2;
+}
+#COMPETENCES > .js {
+  grid-row: 4;
+  grid-column: 4;
+}
+#COMPETENCES > .php {
+  grid-row: 6;
+  grid-column: 2;
+}
+#COMPETENCES > .sql {
+  grid-row: 6;
+  grid-column: 4;
+}
+
+#COMPETENCES > div {
+  transform-style: preserve-3d;
+  height: 20vh;
+  width: 28vw;
+  background-color: rgba(17, 126, 181, 0.6);
+  box-sizing: border-box;
+  border: 2px solid whitesmoke;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  display: flex;
+  align-items: center;
+}
+#COMPETENCES > div:not(.skills) {
+  justify-content: space-between;
+}
+#COMPETENCES .skills .principal {
+  align-self: center !important;
+  margin: 0 !important;
+  visibility: visible !important;
+  text-transform: uppercase !important;
+}
+#COMPETENCES .skills .principal h1 {
+  width: 100% !important;
+  text-align: center !important;
+}
+
+#COMPETENCES div article {
+  position: relative;
+  align-self: flex-start;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  margin: calc(var(--progressSize) * 3 / 20) 0 0 calc(var(--progressSize) * 2 / 20);
+  color: whitesmoke;
+  visibility: hidden;
+}
+#COMPETENCES div article h1 {
+  margin: 0;
+  padding: 0;
+  font-size: clamp(1.5rem, var(--progressSize) * 6 / 20, 3rem);
+  text-shadow: 1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1.5px #919191, 1px 4px 2px #919191, 1px 18px 5px var(--blurColor3), 1px 21px 10px var(--blurColor2), 1px 24px 30px var(--blurColor2), 1px 27px 60px var(--blurColor3);
+  text-align: start;
+}
+#COMPETENCES div article h3 {
+  margin: 0;
+  padding: 0;
+  font-size: clamp(1rem, var(--progressSize) * 4 / 20, 2rem);
+  text-align: start !important;
+}
+#COMPETENCES div article:not(.principal) {
+  transform: translateZ(-3000px);
+}
+
+#COMPETENCES .progress .progress.box {
+  position: relative;
+  flex: none;
+  height: var(--progressSize);
+  width: var(--progressSize);
+  display: grid;
+  place-content: center;
+}
+#COMPETENCES .progress .progress.box .bordure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  height: var(--progressSize);
+  width: var(--progressSize);
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgb(17, 126, 181), rgb(17, 126, 181) calc(var(--progressSize) * 4 / 20), black calc(var(--progressSize) * 4 / 20), black calc(var(--progressSize) * 5 / 20), rgba(255, 255, 255, 0) calc(var(--progressSize) * 5 / 20), rgba(255, 255, 255, 0) calc(var(--progressSize) * 7 / 20), black calc(var(--progressSize) * 7 / 20), black calc(var(--progressSize) * 8 / 20), rgba(255, 255, 255, 0) calc(var(--progressSize) * 8 / 20));
+  display: grid;
+  place-content: center;
+}
+#COMPETENCES .progress .progress.box .bordure p {
+  font-size: calc(var(--progressSize) * 3 / 20);
+  font-weight: bold;
+  animation: progressText var(--vitesseEntree) linear forwards;
+}
+#COMPETENCES .progress .progress.box .barreD {
+  position: absolute;
+  align-self: center;
+  left: calc(var(--progressSize) * 10 / 20);
+  z-index: 8;
+  height: calc(var(--progressSize) * 16 / 20);
+  width: calc(var(--progressSize) * 8 / 20);
+  background: radial-gradient(circle at left center, rgba(255, 255, 255, 0) calc(var(--progressSize) * 5 / 20), #40E0D0 calc(var(--progressSize) * 5 / 20), #40E0D0 calc(var(--progressSize) * 7 / 20), rgba(255, 255, 255, 0) calc(var(--progressSize) * 7 / 20));
+}
+#COMPETENCES .progress .progress.box .barreG {
+  position: absolute;
+  align-self: center;
+  left: calc(var(--progressSize) * 2 / 20);
+  z-index: 5;
+  height: calc(var(--progressSize) * 16 / 20);
+  width: calc(var(--progressSize) * 8 / 20);
+  background: radial-gradient(circle at right center, rgba(255, 255, 255, 0) calc(var(--progressSize) * 5 / 20), #40E0D0 calc(var(--progressSize) * 5 / 20), #40E0D0 calc(var(--progressSize) * 7 / 20), rgba(255, 255, 255, 0) calc(var(--progressSize) * 7 / 20));
+}
+#COMPETENCES .progress .progress.box .barreG::after {
+  position: absolute;
+  top: calc(var(--progressSize) * 2 / 20);
+  left: calc(var(--progressSize) * 2 / 20);
+  z-index: 5;
+  content: "";
+  height: calc(var(--progressSize) * 12 / 20);
+  width: calc(var(--progressSize) * 12 / 20);
+  border-radius: 50%;
+  box-shadow: 0 0 2rem #40E0D0, 0 0 2.4rem #40E0D0, 0 0 2.8rem #40E0D0, inset 0 0 1.3rem #40E0D0;
+}
+#COMPETENCES .progress .progress.box .cacheD {
+  position: absolute;
+  align-self: center;
+  left: calc(var(--progressSize) * 10 / 20);
+  z-index: 9;
+  height: calc(var(--progressSize) * 16 / 20);
+  width: calc(var(--progressSize) * 7 / 20);
+  border-radius: 0 calc(var(--progressSize) * 8 / 20) calc(var(--progressSize) * 8 / 20) 0;
+  background: rgb(17, 126, 181);
+  border-left: 1px solid rgb(17, 126, 181);
+  transform-origin: left center;
+}
+#COMPETENCES .progress .progress.box .cacheG {
+  position: absolute;
+  align-self: center;
+  left: calc(var(--progressSize) * 10 / 20);
+  z-index: 7;
+  height: calc(var(--progressSize) * 16 / 20);
+  width: calc(var(--progressSize) * 7 / 20);
+  border-radius: 0 calc(var(--progressSize) * 8 / 20) calc(var(--progressSize) * 8 / 20) 0;
+  background: rgb(17, 126, 181);
+  transform-origin: left center;
+  transform: rotate(180deg);
+}
+
+#COMPETENCES .html .cacheD {
+  animation: progressHTML1 var(--vitesseEntree) linear forwards;
+}
+#COMPETENCES .html .cacheG {
+  animation: progressHTML2 var(--vitesseEntree) linear forwards;
+}
+#COMPETENCES .html article {
+  animation: progressTitre 0.6s linear 0.2s forwards;
+}
+#COMPETENCES .css .cacheD {
+  animation: progressCSS1 var(--vitesseEntree) linear forwards;
+}
+#COMPETENCES .css .cacheG {
+  animation: progressCSS2 var(--vitesseEntree) linear forwards;
+}
+#COMPETENCES .css article {
+  animation: progressTitre 0.6s linear 0.8s forwards;
+}
+#COMPETENCES .js .cacheD {
+  animation: progressJS1 var(--vitesseEntree) linear forwards;
+}
+#COMPETENCES .js .cacheG {
+  animation: progressJS2 var(--vitesseEntree) linear forwards;
+}
+#COMPETENCES .js article {
+  animation: progressTitre 0.6s linear 1.4s forwards;
+}
+#COMPETENCES .php .cacheD {
+  animation: progressPHP1 var(--vitesseEntree) linear forwards;
+}
+#COMPETENCES .php article {
+  animation: progressTitre 0.6s linear 2s forwards;
+}
+#COMPETENCES .sql .cacheD {
+  animation: progressSQL1 var(--vitesseEntree) linear forwards;
+}
+#COMPETENCES .sql .cacheG {
+  animation: progressSQL2 var(--vitesseEntree) linear forwards;
+}
+#COMPETENCES .sql article {
+  animation: progressTitre 0.6s linear 2.6s forwards;
+}
+
+@keyframes progressTitre {
+  0% {
+    transform: translateZ(-10000px);
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
+    transform: translateZ(-10000px);
+  }
+  50% {
+    visibility: visible;
+    transform: translateZ(-100px);
+  }
+  100% {
+    visibility: visible;
+    transform: translateZ(0px);
+  }
+}
+@keyframes progressHTML1 {
+  0% {
+    transform: rotate(0);
+    visibility: visible;
+  }
+  20% {
+    transform: rotate(0);
+    visibility: visible;
+  }
+  30% {
+    transform: rotate(180deg);
+    visibility: visible;
+  }
+  30% {
+    transform: rotate(180deg);
+    visibility: hidden;
+  }
+  100% {
+    transform: rotate(180deg);
+    visibility: hidden;
+  }
+}
+@keyframes progressHTML2 {
+  0% {
+    transform: rotate(180deg);
+    visibility: visible;
+  }
+  30% {
+    transform: rotate(180deg);
+    visibility: visible;
+  }
+  36% {
+    transform: rotate(288deg);
+    visibility: visible;
+  }
+  100% {
+    transform: rotate(288deg);
+    visibility: visible;
+  }
+}
+@keyframes progressCSS1 {
+  0% {
+    transform: rotate(0);
+    visibility: visible;
+  }
+  36% {
+    transform: rotate(0);
+    visibility: visible;
+  }
+  46% {
+    transform: rotate(180deg);
+    visibility: visible;
+  }
+  46% {
+    transform: rotate(180deg);
+    visibility: hidden;
+  }
+  100% {
+    transform: rotate(180deg);
+    visibility: hidden;
+  }
+}
+@keyframes progressCSS2 {
+  0% {
+    transform: rotate(180deg);
+    visibility: visible;
+  }
+  46% {
+    transform: rotate(180deg);
+    visibility: visible;
+  }
+  54% {
+    transform: rotate(342deg);
+    visibility: visible;
+  }
+  100% {
+    transform: rotate(342deg);
+    visibility: visible;
+  }
+}
+@keyframes progressJS1 {
+  0% {
+    transform: rotate(0);
+    visibility: visible;
+  }
+  54% {
+    transform: rotate(0);
+    visibility: visible;
+  }
+  64% {
+    transform: rotate(180deg);
+    visibility: visible;
+  }
+  64% {
+    transform: rotate(180deg);
+    visibility: hidden;
+  }
+  100% {
+    transform: rotate(180deg);
+    visibility: hidden;
+  }
+}
+@keyframes progressJS2 {
+  0% {
+    transform: rotate(180deg);
+    visibility: visible;
+  }
+  64% {
+    transform: rotate(180deg);
+    visibility: visible;
+  }
+  68% {
+    transform: rotate(252deg);
+    visibility: visible;
+  }
+  100% {
+    transform: rotate(252deg);
+    visibility: visible;
+  }
+}
+@keyframes progressPHP1 {
+  0% {
+    transform: rotate(0);
+    visibility: visible;
+  }
+  68% {
+    transform: rotate(0);
+    visibility: visible;
+  }
+  77% {
+    transform: rotate(162deg);
+    visibility: visible;
+  }
+  77% {
+    transform: rotate(162deg);
+    visibility: visible;
+  }
+  100% {
+    transform: rotate(162deg);
+    visibility: visible;
+  }
+}
+@keyframes progressSQL1 {
+  0% {
+    transform: rotate(0);
+    visibility: visible;
+  }
+  77% {
+    transform: rotate(0);
+    visibility: visible;
+  }
+  87% {
+    transform: rotate(180deg);
+    visibility: visible;
+  }
+  87% {
+    transform: rotate(180deg);
+    visibility: hidden;
+  }
+  100% {
+    transform: rotate(180deg);
+    visibility: hidden;
+  }
+}
+@keyframes progressSQL2 {
+  0% {
+    transform: rotate(180deg);
+    visibility: visible;
+  }
+  87% {
+    transform: rotate(180deg);
+    visibility: visible;
+  }
+  94% {
+    transform: rotate(288deg);
+    visibility: visible;
+  }
+  100% {
+    transform: rotate(288deg);
+    visibility: visible;
+  }
+}
+@keyframes progressText {
+  0% {
+    color: rgba(245, 245, 245, 0);
+  }
+  92% {
+    color: rgba(245, 245, 245, 0);
+  }
+  100% {
+    color: whitesmoke;
+  }
+}
+@keyframes leaveSkills {
+  0% {
+    transform: translateZ(0) scale(1);
+  }
+  50% {
+    transform: translateZ(-100px) scale(1);
+  }
+  100% {
+    transform: translateZ(-3000px) scale(0);
+  }
+}/*# sourceMappingURL=skills.css.map */

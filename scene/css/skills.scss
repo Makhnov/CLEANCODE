@@ -1,0 +1,549 @@
+#COMPETENCES {// GRID
+	position:absolute;
+	display: grid;
+	top:-2vh;
+	min-height:78vh;
+    min-width: 60vw;
+    grid-template-rows:4vh 20vh 2vh 20vh 2vh 20vh 10vh;
+    grid-template-columns: 1.5vw 28vw 1vw 28vw 1.5vw;
+
+    > .skills {
+        grid-row:2;
+        grid-column:2;
+    }
+    > .html {
+        grid-row:2;
+        grid-column:4;
+    }
+    > .css {
+        grid-row:4;
+        grid-column:2;
+    }
+    > .js {
+        grid-row:4;
+        grid-column:4;
+    }
+    > .php {
+        grid-row:6;
+        grid-column:2;
+    }
+    > .sql {
+        grid-row:6;
+        grid-column:4;
+    }
+}
+
+#COMPETENCES {//DIVS
+    & > div {
+        transform-style:preserve-3d;
+        height: 20vh;
+        width: 28vw;
+        background-color:rgba(17, 126, 181, 0.6);
+        box-sizing: border-box;
+        border: 2px solid whitesmoke;
+		user-select:none;
+        display: flex;
+        align-items: center;
+
+	}
+
+	& > div:not(.skills) {
+		justify-content:space-between;
+	}
+
+	& .skills {
+		.principal {
+			align-self: center!important;
+			margin:0!important;
+			visibility:visible!important;
+			text-transform: uppercase!important;
+
+			h1 {
+				width: 100%!important;
+				text-align: center!important;
+			}
+		}
+	}
+}
+
+#COMPETENCES div {//TITRES
+    
+    article {
+        position: relative;
+		align-self: flex-start;
+		flex: 1 1 auto;
+        display: flex;
+        flex-direction:column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        height: fit-content;
+        width: 100%;
+		margin:calc(var(--progressSize) * 3 / 20) 0 0 calc(var(--progressSize) * 2 / 20);
+        color: whitesmoke;
+		visibility: hidden;
+
+        h1 {
+            margin: 0;
+            padding: 0;
+            font-size: clamp(1.5rem, calc(var(--progressSize) * 6 / 20), 3rem);
+            text-shadow: 1px 1px 1px #919191,
+            1px 2px 1px #919191,
+            1px 3px 1.5px #919191,
+            1px 4px 2px #919191,
+            1px 18px 5px var(--blurColor3),
+            1px 21px 10px var(--blurColor2),
+            1px 24px 30px var(--blurColor2),
+            1px 27px 60px var(--blurColor3);
+            text-align: start;
+        }
+
+        h3 {
+            margin:0;
+            padding:0;
+            font-size: clamp(1rem, calc(var(--progressSize) * 4 / 20), 2rem);
+			text-align: start!important;
+        }
+    }
+
+    article:not(.principal) {//TITRES SECONDAIRES
+        transform: translateZ(-3000px);
+    }
+}
+
+#COMPETENCES .progress {//PROGRESS BARS
+	.progress.box {
+		position: relative;
+		flex:none;
+		height: var(--progressSize);
+		width: var(--progressSize);
+		display: grid;
+		place-content: center;
+
+		.bordure {
+			position: absolute;
+			top:0;
+			left:0;
+			z-index: 10;
+			height: var(--progressSize);
+			width: var(--progressSize);
+			border-radius: 50%;
+		
+			background:radial-gradient(circle at center,
+				rgb(17, 126, 181),
+				rgb(17, 126, 181) calc(var(--progressSize) * 4 / 20),
+				black calc(var(--progressSize) * 4 / 20),
+				black calc(var(--progressSize) * 5 / 20),
+				#ffffff00 calc(var(--progressSize) * 5 / 20),
+				#ffffff00 calc(var(--progressSize) * 7 / 20),
+				black calc(var(--progressSize) * 7 / 20),
+				black calc(var(--progressSize) * 8 / 20),
+				#ffffff00 calc(var(--progressSize) * 8 / 20)
+			);
+		
+			display: grid;
+			place-content: center;
+		
+			p {
+				font-size: calc(var(--progressSize) * 3 / 20);
+				font-weight: bold;
+				animation: progressText var(--vitesseEntree) linear forwards;
+			}
+		}
+		
+		.barreD {
+			position: absolute;
+			align-self: center;
+			left:calc(var(--progressSize) * 10 / 20);
+			z-index: 8;
+			height: calc(var(--progressSize) * 16 / 20);
+			width: calc(var(--progressSize) * 8 / 20);
+		
+			background:radial-gradient(circle at left center,
+				#ffffff00 calc(var(--progressSize) * 5 / 20),
+				#40E0D0 calc(var(--progressSize) * 5 / 20),
+				#40E0D0 calc(var(--progressSize) * 7 / 20),
+				#ffffff00 calc(var(--progressSize) * 7 / 20)
+			);					
+		}
+		
+		.barreG {
+			position: absolute;
+			align-self: center;
+			left:calc(var(--progressSize) * 2 / 20);
+
+			z-index: 5;
+			height: calc(var(--progressSize) * 16 / 20);
+			width: calc(var(--progressSize) * 8 / 20);
+			background:radial-gradient(circle at right center,
+				#ffffff00 calc(var(--progressSize) * 5 / 20),
+				#40E0D0 calc(var(--progressSize) * 5 / 20),
+				#40E0D0 calc(var(--progressSize) * 7 / 20),
+				#ffffff00 calc(var(--progressSize) * 7 / 20)
+			);
+
+			&::after {
+				position: absolute;
+				top: calc(var(--progressSize) * 2 / 20);
+				left: calc(var(--progressSize) * 2 / 20);
+				z-index: 5;
+				content:'';
+				height: calc(var(--progressSize) * 12 / 20);
+				width: calc(var(--progressSize) * 12 / 20);
+				border-radius: 50%;
+				box-shadow: 0 0 2rem #40E0D0, 0 0 2.4rem #40E0D0, 0 0 2.8rem #40E0D0, inset 0 0 1.3rem #40E0D0;
+		
+			}
+		}
+	
+		.cacheD {
+			position: absolute;
+			align-self: center;
+			left:calc(var(--progressSize) * 10 / 20);
+			z-index: 9;
+			height: calc(var(--progressSize) * 16 / 20);
+			width: calc(var(--progressSize) * 7 / 20);
+
+			border-radius: 0 calc(var(--progressSize) * 8 / 20) calc(var(--progressSize) * 8 / 20) 0;
+			background:rgb(17, 126, 181);
+			border-left:1px solid rgb(17, 126, 181);       
+			transform-origin: left center;
+		}
+	
+		.cacheG {
+			position: absolute;
+			align-self: center;
+			left:calc(var(--progressSize) * 10 / 20);
+			z-index: 7;
+			height: calc(var(--progressSize) * 16 / 20);
+			width: calc(var(--progressSize) * 7 / 20);
+	
+			border-radius: 0 calc(var(--progressSize) * 8 / 20) calc(var(--progressSize) * 8 / 20) 0;
+			background:rgb(17, 126, 181); 
+			transform-origin: left center;
+			transform: rotate(180deg);
+		}
+	}
+}
+
+#COMPETENCES {//ANIMATIONS
+    .html {
+        .cacheD {
+            animation:progressHTML1 var(--vitesseEntree) linear forwards;
+        }
+        .cacheG {
+            animation:progressHTML2 var(--vitesseEntree) linear forwards;
+        }
+        article {
+            animation: progressTitre .6s linear .2s forwards;
+        }
+    }
+    .css {
+        .cacheD {
+            animation:progressCSS1 var(--vitesseEntree) linear forwards;
+        }
+        .cacheG {
+            animation:progressCSS2 var(--vitesseEntree) linear forwards;
+        }
+        article {
+            animation: progressTitre .6s linear .8s forwards;
+        }
+    }
+    .js {
+        .cacheD {
+            animation:progressJS1 var(--vitesseEntree) linear forwards;
+        }
+        .cacheG {
+            animation:progressJS2 var(--vitesseEntree) linear forwards;
+        }
+        article {
+            animation: progressTitre .6s linear 1.4s forwards;
+        }
+    }
+    .php {
+        .cacheD {
+            animation:progressPHP1 var(--vitesseEntree) linear forwards;
+        }
+        article {
+            animation: progressTitre .6s linear 2s forwards;
+        }
+    }
+    .sql {
+        .cacheD {
+            animation:progressSQL1 var(--vitesseEntree) linear forwards;
+        }
+        .cacheG {
+            animation:progressSQL2 var(--vitesseEntree) linear forwards;
+        }
+        article {
+            animation: progressTitre .6s linear 2.6s forwards;
+        }
+    }
+}
+
+@keyframes progressTitre {//de 0 à 20%
+    0% {
+        transform: translateZ(-10000px);
+		visibility: hidden;
+    }
+    1% {
+		visibility: visible;
+        transform: translateZ(-10000px);
+    }
+    50% {
+		visibility: visible;
+        transform: translateZ(-100px);
+    }
+    100% {
+		visibility: visible;
+        transform: translateZ(0px);
+    }
+}
+
+@keyframes progressHTML1 {//HTML : de 20 à 36% 
+    0% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    20% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    30% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    30% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+
+    100% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+}
+
+@keyframes progressHTML2 {
+    0% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    30% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    36% {
+        transform: rotate(288deg);
+        visibility: visible;
+    }
+
+    100% {
+        transform: rotate(288deg);
+        visibility: visible;
+    }
+}
+
+@keyframes progressCSS1 {//CSS : de 36 à 54%
+    0% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    36% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    46% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    46% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+
+    100% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+}
+
+@keyframes progressCSS2 {
+    0% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    46% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    54% {
+        transform: rotate(342deg);
+        visibility: visible;
+    }
+
+    100% {
+        transform: rotate(342deg);
+        visibility: visible;
+    }
+}
+
+@keyframes progressJS1 {//JS : de 54 à 68%
+    0% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    54% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    64% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    64% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+
+    100% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+}
+
+@keyframes progressJS2 {
+    0% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    64% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    68% {
+        transform: rotate(252deg);
+        visibility: visible;
+    }
+
+    100% {
+        transform: rotate(252deg);
+        visibility: visible;
+    }
+}
+
+@keyframes progressPHP1 {//PHP : de 68 à 77%
+    0% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    68% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    77% {
+        transform: rotate(162deg);
+        visibility: visible;
+    }
+
+    77% {
+        transform: rotate(162deg);
+        visibility: visible;
+    }
+
+    100% {
+        transform: rotate(162deg);
+        visibility: visible;
+    }
+}
+
+@keyframes progressSQL1 {//SQL : de 77 à 94%
+    0% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    77% {
+        transform: rotate(0);
+        visibility: visible;
+    }
+
+    87% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    87% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+
+    100% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+}
+
+@keyframes progressSQL2 {
+    0% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    87% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    94% {
+        transform: rotate(288deg);
+        visibility: visible;
+    }
+
+    100% {
+        transform: rotate(288deg);
+        visibility: visible;
+    }
+}
+
+@keyframes progressText {// Textes : de 94 à 100%
+    0% {
+        color:rgba(245, 245, 245, 0);
+    }
+    92% {
+        color:rgba(245, 245, 245, 0);
+    }
+    100% {
+        color:whitesmoke;
+    }
+}
+
+@keyframes leaveSkills {
+    0% {
+        transform: translateZ(0) scale(1);
+    }
+
+    50% {
+        transform: translateZ(-100px) scale(1);
+    }
+
+    100% {
+        transform: translateZ(-3000px) scale(0);
+    }
+}
