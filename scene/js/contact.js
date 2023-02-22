@@ -248,9 +248,9 @@ function confirmationUserForm() {
 	console.log('Message envoyé !');
 	closeModal(4);
 	effacer();
-	const confrimP = document.getElementById('confirmP');
-	confrimP.classList.add('confirm');
+	const confirmP = document.getElementById('confirmP');
+	confirmP.classList.add('confirm');
 	setTimeout(() => {
-		confrimP.classList.remove('confirm');
+		confirmP.classList.remove('confirm');
 	}, 5000)
 }

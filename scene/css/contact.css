@@ -47,9 +47,13 @@
 }
 #CONTACT #confirmP {
   display: none;
+  position: relative;
+  margin: 0;
+  padding: 0;
   color: #00ff00;
-  font-size: 1.75rem;
+  font-size: clamp(1.2rem, 2vw, 2rem);
   font-weight: bold;
+  text-align: center;
 }
 #CONTACT #confirmP.confirm {
   display: block;
