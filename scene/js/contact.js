@@ -1,8 +1,9 @@
 const form = document.getElementById('CONTACT'); // On récupère le formulaire dans le DOM
 const spans = document.querySelectorAll('#CONTACT div span'); // On récupère tous les spans (collection) dans le DOM
-const inputs = document.querySelectorAll('#CONTACT input'); // On récupère tous les inputs (collection) dans le DOM
+const inputs = document.querySelectorAll('#CONTACT .inputs'); // On récupère tous les inputs (collection) dans le DOM
 const labels = document.querySelectorAll('#CONTACT label'); // On récupère tous les labels (collection) dans le DOM
 const valider = document.getElementById('valider');
+const captchaInput = document.getElementById("captchaInput")
 
 /* --------------------------------- FONCTION QUI CACHE LE BOUTON VALIDER TANT QUE NECESSAIRE --------------------------------- */
 
@@ -23,15 +24,34 @@ function validerCheck(e) {
 			TabCheck = verifMessage(info);
 			TabCheck[2] = 2;
 			break;
+		case 'CONTACT':
+			let infoNom = inputs[0].children[0].value;
+			let infoMail = inputs[1].children[0].value;
+			let infoMsg = inputs[2].children[0].value;
+			TabCheck1 = verifNom(infoNom);
+			TabCheck1[2] = 0;
+			TabCheck2 = verifMail(infoMail);
+			TabCheck2[2] = 1;
+			TabCheck3 = verifMessage(infoMsg);
+			TabCheck3[2] = 2;
+			labels[TabCheck1[2]].classList.remove(!TabCheck1[1]);
+			labels[TabCheck1[2]].classList.add(TabCheck1[1]);
+			labels[TabCheck2[2]].classList.remove(!TabCheck2[1]);
+			labels[TabCheck2[2]].classList.add(TabCheck2[1]);
+			labels[TabCheck3[2]].classList.remove(!TabCheck3[1]);
+			labels[TabCheck3[2]].classList.add(TabCheck3[1]);
+			break;
 	}
-	labels[TabCheck[2]].classList.remove(!TabCheck[1]);
-	labels[TabCheck[2]].classList.add(TabCheck[1]);
+	if (e.id !== 'CONTACT') {
+		labels[TabCheck[2]].classList.remove(!TabCheck[1]);
+		labels[TabCheck[2]].classList.add(TabCheck[1]);
+	}
 }
 
-/* ---- on crée un listener pour valider l'input quand l'admin clique sur "Entrée" depuis le dernier input (Age) ---- */
-document.getElementById('message').addEventListener("keypress", function (press) {
+/* ---- on crée un listener pour valider l'input quand l'utilisateur clique sur "Entrée" depuis l'input du captcha' ---- */
+captchaInput.addEventListener("keypress", function (press) {
 	if (press.key === "Enter") {
-		add();
+		verifCaptcha();
 	}
 });
 
@@ -41,6 +61,7 @@ if (form !== null) {
 		event.preventDefault();
 		const action = event.submitter.id;
 		if (action === 'supprimer') {
+			console.log('supprimer?');
 			effacer();
 		} else if (action === 'valider') {
 
@@ -48,7 +69,7 @@ if (form !== null) {
 			let msgErreur = false;
 
 			for (let i = 0; i < 3; i++) {
-				if (typeof (tab[i]) !== "boolean") { // On vérifie les quatre inputs un par un
+				if (typeof (tab[i]) !== "boolean") { // On vérifie les inputs un par un
 					msgErreur = true;
 				} else { // Si tous les inputs sont valides on ne lance pas la fonction affichage() et le formulaire est validé
 					tab[i] = 0;
@@ -58,7 +79,8 @@ if (form !== null) {
 			if (msgErreur) {
 				affichage(tab); // On lance la fonction qui va afficher les erreurs de saisies de l'utilisateur
 			} else {
-				formConfirm(event);
+				openModal(4);
+				captcha();
 			}
 		}
 	});
@@ -68,7 +90,7 @@ if (form !== null) {
 function effacer() {
 	setTimeout(() => {
 		for (let i = 0; i < 3; i++) {
-			inputs[i].value = "";
+			inputs[i].children[0].value = "";
 			spans[i].innerText = "";
 			spans[i].style.opacity = 0;
 		}
@@ -180,21 +202,13 @@ function verifMessage(str) {
 			spans[2].innerText = "";
 			spans[2].style.opacity = 0;
 
-			return [str, true]; // Le nom entré par l'utilisateur est valide
+			return [str, true]; // Le message entré par l'utilisateur est valide
 		} else {
 			return [str, false, 1];
 		}
 	} else {
 		return [str, false, 2];
 	}
-}
-
-// Fonction qui lance le formulaire
-function formConfirm(event) {
-
-	console.log(event);
-	openModal(4);
-	captcha();
 }
 
 function captcha() {
@@ -212,7 +226,6 @@ function captcha() {
 }
 
 async function verifCaptcha() {
-	const captchaInput = document.getElementById("captchaInput").value;
 
 	try {
 		const response = await fetch("../../utils/verif_captcha.php", {
@@ -220,7 +233,7 @@ async function verifCaptcha() {
 			headers: {
 				"Content-type": "application/json",
 			},
-			body: JSON.stringify({ userInput: captchaInput }),
+			body: JSON.stringify({ userInput: captchaInput.value }),
 		});
 
 		const result = await response.json();

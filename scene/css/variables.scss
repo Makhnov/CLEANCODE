@@ -3,8 +3,8 @@
     --menuLargeur:clamp(200px, 18vw, 1000px);
     --menuProfondeur:75px;
     --ignitionDegree: 20deg;
-    --vitesseEntree:2.5s;
-    --vitesseSortie:1.5s;
+    --vitesseEntree:3s;
+    --vitesseSortie:2s;
     --rightNavFontSize:clamp(2rem, 3vw, 3.25rem);
 	--multivac:100px;
 
@@ -35,7 +35,7 @@
 	--inclinaisonCV:90deg;
 
     // LIVRE PORTFOLIO //
-    --livreLargeur:clamp(300px, 50vh, 25vw);
+    --livreLargeur:clamp(300px, 60vh, 30vw);
     --imageG1:url('../../divers/img/pf-videos.jpg');
     --imageG2:url('../../divers/img/pf-videos-specs.jpg');
     --imageM1:url('../../divers/img/pf-rando.jpg');
@@ -44,7 +44,7 @@
     --imageD2:url('../../divers/img/pf-conseil-specs.jpg');
     --bookFront:var(--bookBorder);
 
-    --zoomLivre:-30vw;
+    --zoomLivre:-20vw;
     --inclinaisonLivre:-6deg;
     --rotationLivre:40deg;
     --justifyLivre:0vw;
@@ -54,27 +54,50 @@
 
 	// COMPETENCES //
 	--progressSize:clamp(75px, 10vw, 15vh);
-
 }
 
 /* ---- POLICES ---- */
 @media all {
     @font-face {
         font-family: "baskerville";
-        src: url(../../divers/fonts/baskervilleRegular.ttf) format("truetype");
+        src: url('../../divers/fonts/baskervilleRegular.ttf') format("truetype");
         font-weight: normal;
         font-style: normal;
     }
     @font-face {
         font-family: "baskerville";
-        src: url(../../divers/fonts/baskervilleBold.ttf) format("truetype");
+        src: url('../../divers/fonts/baskervilleBold.ttf') format("truetype");
         font-weight: bold;
         font-style: normal;
     }
     @font-face {
         font-family: 'baskerville';
-        src: url(../../divers/fonts/baskervilleItalic.ttf) format("truetype");
+        src: url('../../divers/fonts/baskervilleItalic.ttf') format("truetype");
         font-weight: normal;
+        font-style: italic;
+    }
+    @font-face {
+        font-family: "amaranth";
+        src: url('../../divers/fonts/amaranthRegular.ttf') format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "amaranth";
+        src: url('../../divers/fonts/amaranthBold.ttf') format("truetype");
+        font-weight: bold;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'amaranth';
+        src: url('../../divers/fonts/amaranthItalic.ttf') format("truetype");
+        font-weight: normal;
+        font-style: italic;
+    }
+    @font-face {
+        font-family: 'amaranth';
+        src: url('../../divers/fonts/amaranthBoldItalic.ttf') format("truetype");
+        font-weight: bold;
         font-style: italic;
     }
 }

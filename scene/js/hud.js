@@ -19,7 +19,7 @@ let speedOut = parseFloat(vitesse2.replace('s', '')) * 1000;
 let tempo = false;
 
 const machine = document.getElementById('machine');
-const urlGIF = "../../divers/img/loading2sGreen.gif?time=";
+const urlGIF = "../../divers/img/loading2s.gif?time=";
 
 const modal = document.getElementById('modal');
 const modalBackground = document.getElementById('backgroundModal');
@@ -50,7 +50,13 @@ let tabNav = [false, false, false, false, false];
 function refresh() {
     clearScene('all');
     resize();
-    startBG.classList.add('anim');
+    validerCheck(form);
+
+    startBG.style.display = "initial";
+    setTimeout(() => {
+        startBG.style.display = "none";
+    }, 2500)
+
 }
 
 window.onresize = function () {
@@ -326,6 +332,7 @@ function openModal(index) {
             break;
         case 4://CONTACT
             modal.style.display = "grid";
+            modalCaptcha.style.display = "flex";
             modalTitre.style.fontSize = "clamp(1.5rem, 2.5vw, 2.5rem)";
             modalTitre.textContent = "Merci pour votre message !";
             modalResume.style.fontSize = "clamp(1.25rem, 2vw, 2rem)";

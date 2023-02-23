@@ -26,6 +26,7 @@
 <body onload="refresh()">
 
     <div id="preHUD">
+        <div id="cache"></div>
         <h1>BIENVENUE</h1>
         <div id="startIcon"></div>
     </div>
@@ -309,14 +310,14 @@
                     <label for="email">E-Mail</label>
                     <span></span>
                 </div>
-                <div class="inputs">
-                    <input id="message" name="message" type="text" placeholder="Message" oninput="validerCheck(this)">
-                    <label for="message">Message</label>
+                <div class="inputs message">
+                    <textarea id="message" name="message" placeholder="" oninput="validerCheck(this)"></textarea>
+                    <label for="message" class="message">Message</label>
                     <span></span>
                 </div>
                 <div class="boutons">
-                    <button id="supprimer" type="submit"><i class="fas fa-ban"></i></button>
-                    <button id="valider" type="submit"><i class="fas fa-check"></i></button>
+                    <button id="valider" type="submit" value="Submit"><i class="fas fa-check"></i></button>
+                    <button id="supprimer" type="reset" value="Reset"><i class="fas fa-ban"></i></button>
                 </div>
             </form>
         </div>

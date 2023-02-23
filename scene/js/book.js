@@ -126,8 +126,8 @@ function zoomLivre() {
 }
 
 function dezoomLivre() {
-	racine.style.setProperty('--livreLargeur', 'clamp(300px, 50vh, 25vw)');
-	racine.style.setProperty('--zoomLivre', '-30vw');
+	racine.style.setProperty('--livreLargeur', 'clamp(300px, 60vh, 30vw)');
+	racine.style.setProperty('--zoomLivre', '-20vw');
 	racine.style.setProperty('--inclinaisonLivre', '-6deg');
 	racine.style.setProperty('--rotationLivre', '40deg');
 	racine.style.setProperty('--justifyLivre', '0vw');

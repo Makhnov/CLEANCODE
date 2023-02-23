@@ -234,7 +234,7 @@
             animation:progressHTML2 var(--vitesseEntree) linear forwards;
         }
         article {
-            animation: progressTitre .6s linear .2s forwards;
+            animation: progressTitre calc(var(--vitesseEntree) / 10) linear calc(var(--vitesseEntree) / 10) forwards;
         }
     }
     .css {
@@ -245,7 +245,7 @@
             animation:progressCSS2 var(--vitesseEntree) linear forwards;
         }
         article {
-            animation: progressTitre .6s linear .8s forwards;
+            animation: progressTitre calc(var(--vitesseEntree) / 10) linear calc(var(--vitesseEntree) / 10 * 2) forwards;
         }
     }
     .js {
@@ -256,7 +256,7 @@
             animation:progressJS2 var(--vitesseEntree) linear forwards;
         }
         article {
-            animation: progressTitre .6s linear 1.4s forwards;
+            animation: progressTitre calc(var(--vitesseEntree) / 10) linear calc(var(--vitesseEntree) / 10 * 3) forwards;
         }
     }
     .php {
@@ -264,7 +264,7 @@
             animation:progressPHP1 var(--vitesseEntree) linear forwards;
         }
         article {
-            animation: progressTitre .6s linear 2s forwards;
+            animation: progressTitre calc(var(--vitesseEntree) / 10) linear calc(var(--vitesseEntree) / 10 * 4) forwards;
         }
     }
     .sql {
@@ -275,7 +275,7 @@
             animation:progressSQL2 var(--vitesseEntree) linear forwards;
         }
         article {
-            animation: progressTitre .6s linear 2.6s forwards;
+            animation: progressTitre calc(var(--vitesseEntree) / 10) linear calc(var(--vitesseEntree) / 2) forwards;
         }
     }
 }
