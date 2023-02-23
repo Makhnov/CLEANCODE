@@ -78,7 +78,7 @@ html, body {
 	user-select: none;
 }
 
-#preHUD, #containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre {
+#containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre {
     pointer-events: none;
 
 	#preInput,
@@ -137,10 +137,24 @@ nav, ul, li {
 		width:35vw;
 		border-radius: 40% 0 0 40%;
 
-		background: url('../../divers/img/startIcon.png'), black;
+		background: 
+			url('../../divers/img/startIcon.png'), 
+			black
+		;
 		background-position: right;
 		background-size:contain;
 		background-repeat: no-repeat;
+
+		&::after {
+			position: absolute;
+			content: '';
+			right:0;
+			height: 10vw;
+			width: 10vw;
+			border-radius: 50%;
+			box-sizing: border-box;
+			border: 3px solid #55c6ee;
+		}
 
 		animation: bienvenueIcon 1.75s linear .5s forwards;
 	}
@@ -242,10 +256,11 @@ nav, ul, li {
 	max-height: 200px;
 	aspect-ratio: 1/1;
 	border-radius: 50%;
-	border:3px solid #55c6ee;
+	box-sizing: border-box;
+	border:4px solid #55c6ee;
 
 	clip-path: circle(0%);
-	animation: departMulti 1s linear 4s forwards;
+	animation: departMulti 1s linear 3s forwards;
 
 	#machine {
 		position: absolute;
@@ -304,9 +319,10 @@ nav, ul, li {
 	ul li {
 		position: relative;
 		transform-style: preserve-3d;
-		
+		cursor: pointer;
+
 		height: 15%;
-		width:75%;
+		width: 75%;
 		
 		text-transform: uppercase;
 		color:whitesmoke;
@@ -330,19 +346,18 @@ nav, ul, li {
 			-0.3rem 0.1rem 0 #94a3b8, 
 			-0.3rem 0.15rem 0 #0f172a
 		;
+		
 
 		transition: transform var(--vitesseSortie)!important;
 
-		&:nth-of-type(1) {
-			z-index: 10;
-			&.anim {
-				background-color: var(--mainColor);
-			}
-		}
-
 		&:hover:not(.anim) {
-			transform: translateX(20px)!important;
-			cursor: pointer;
+			transform: translateX(0px)!important;
+			background-color:var(--mainColor1);
+
+			&::before,
+			&::after {	
+			background-color: var(--subColor);
+			}
 		}
 
 		&.clicked:not(.anim) {

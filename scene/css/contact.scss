@@ -180,7 +180,6 @@
         transition: .33s;
 
         &.message {
-            color:rgb(200, 200, 200);
             top:calc(-30vh + 30px)!important;
         }
     }
@@ -225,7 +224,7 @@
             top:-47px;
 
             &.message {
-                top:calc(-30vh)!important;
+                top:calc(-30vh + 5px)!important;
             }
         }
 
@@ -235,7 +234,7 @@
                 left:-10px;
                 top:-47px;
                 &.message {
-                    top:calc(-30vh)!important;
+                    top:calc(-30vh + 5px)!important;
                 }
             }
             &.true {
@@ -243,7 +242,7 @@
                 left:-10px;
                 top:-47px;
                 &.message {
-                    top:calc(-30vh)!important;
+                    top:calc(-30vh + 5px)!important;
                 }
             }
         }
@@ -255,7 +254,10 @@
         height: 30vh;
         width:40%;
         resize: none;
-    }
+
+        &:focus {
+            outline: none;        }
+        }
 
     span {
         position: relative;

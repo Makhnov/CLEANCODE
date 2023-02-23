@@ -154,13 +154,10 @@ html, body {
           user-select: none;
 }
 
-#preHUD, #containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre {
+#containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre {
   pointer-events: none;
 }
-#preHUD #preInput,
-#preHUD #teleport,
-#preHUD nav.gauche ul,
-#preHUD nav.droite, #containerHUD #preInput,
+#containerHUD #preInput,
 #containerHUD #teleport,
 #containerHUD nav.gauche ul,
 #containerHUD nav.droite, #containerView #preInput,
@@ -231,6 +228,16 @@ nav, ul, li {
   background-size: contain;
   background-repeat: no-repeat;
   animation: bienvenueIcon 1.75s linear 0.5s forwards;
+}
+#preHUD #startIcon::after {
+  position: absolute;
+  content: "";
+  right: 0;
+  height: 10vw;
+  width: 10vw;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 3px solid #55c6ee;
 }
 
 @keyframes departMulti {
@@ -322,10 +329,11 @@ nav, ul, li {
   max-height: 200px;
   aspect-ratio: 1/1;
   border-radius: 50%;
-  border: 3px solid #55c6ee;
+  box-sizing: border-box;
+  border: 4px solid #55c6ee;
   -webkit-clip-path: circle(0%);
           clip-path: circle(0%);
-  animation: departMulti 1s linear 4s forwards;
+  animation: departMulti 1s linear 3s forwards;
 }
 #multivac #machine {
   position: absolute;
@@ -375,6 +383,7 @@ nav, ul, li {
 #containerHUD nav.gauche ul li {
   position: relative;
   transform-style: preserve-3d;
+  cursor: pointer;
   height: 15%;
   width: 75%;
   text-transform: uppercase;
@@ -388,15 +397,12 @@ nav, ul, li {
   text-shadow: -0.06rem 0rem 0 rgb(148, 163, 184), -0.06rem 0.05rem 0 #0f172a, -0.12rem 0.025rem 0 #94a3b8, -0.12rem 0.075rem 0 #0f172a, -0.18rem 0.05rem 0 #94a3b8, -0.18rem 0.1rem 0 #0f172a, -0.24rem 0.075rem 0 #94a3b8, -0.24rem 0.125rem 0 #0f172a, -0.3rem 0.1rem 0 #94a3b8, -0.3rem 0.15rem 0 #0f172a;
   transition: transform var(--vitesseSortie) !important;
 }
-#containerHUD nav.gauche ul li:nth-of-type(1) {
-  z-index: 10;
-}
-#containerHUD nav.gauche ul li:nth-of-type(1).anim {
-  background-color: var(--mainColor);
-}
 #containerHUD nav.gauche ul li:hover:not(.anim) {
-  transform: translateX(20px) !important;
-  cursor: pointer;
+  transform: translateX(0px) !important;
+  background-color: var(--mainColor1);
+}
+#containerHUD nav.gauche ul li:hover:not(.anim)::before, #containerHUD nav.gauche ul li:hover:not(.anim)::after {
+  background-color: var(--subColor);
 }
 #containerHUD nav.gauche ul li.clicked:not(.anim) {
   transform: translate3d(0, 0, 0) rotateY(var(--menuAngle)) translateX(10000px) scale(0) !important;

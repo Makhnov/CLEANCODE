@@ -127,7 +127,6 @@
   transition: 0.33s;
 }
 .inputs label.message {
-  color: rgb(200, 200, 200);
   top: calc(-30vh + 30px) !important;
 }
 .inputs input {
@@ -168,7 +167,7 @@
   top: -47px;
 }
 .inputs input:focus ~ label.message, .inputs textarea:focus ~ label.message {
-  top: -30vh !important;
+  top: calc(-30vh + 5px) !important;
 }
 .inputs input:not(:-moz-placeholder-shown) ~ label.false, .inputs textarea:not(:-moz-placeholder-shown) ~ label.false {
   color: #FFA500;
@@ -181,10 +180,10 @@
   top: -47px;
 }
 .inputs input:not(:-moz-placeholder-shown) ~ label.false.message, .inputs textarea:not(:-moz-placeholder-shown) ~ label.false.message {
-  top: -30vh !important;
+  top: calc(-30vh + 5px) !important;
 }
 .inputs input:not(:placeholder-shown) ~ label.false.message, .inputs textarea:not(:placeholder-shown) ~ label.false.message {
-  top: -30vh !important;
+  top: calc(-30vh + 5px) !important;
 }
 .inputs input:not(:-moz-placeholder-shown) ~ label.true, .inputs textarea:not(:-moz-placeholder-shown) ~ label.true {
   color: #00ff00;
@@ -197,10 +196,10 @@
   top: -47px;
 }
 .inputs input:not(:-moz-placeholder-shown) ~ label.true.message, .inputs textarea:not(:-moz-placeholder-shown) ~ label.true.message {
-  top: -30vh !important;
+  top: calc(-30vh + 5px) !important;
 }
 .inputs input:not(:placeholder-shown) ~ label.true.message, .inputs textarea:not(:placeholder-shown) ~ label.true.message {
-  top: -30vh !important;
+  top: calc(-30vh + 5px) !important;
 }
 .inputs #message {
   display: flex;
@@ -208,6 +207,9 @@
   height: 30vh;
   width: 40%;
   resize: none;
+}
+.inputs #message:focus {
+  outline: none;
 }
 .inputs span {
   position: relative;
