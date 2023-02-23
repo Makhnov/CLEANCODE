@@ -340,9 +340,7 @@ nav, ul, li {
   display: block;
   height: 100%;
   width: 100%;
-  background-image: url("../../divers/img/startIcon.png");
-  background-repeat: no-repeat;
-  background-size: contain;
+  background: center/contain no-repeat url("../../divers/img/startIcon.png");
 }
 #multivac #waitingMenu {
   position: absolute;
