@@ -53,9 +53,9 @@ function refresh() {
     validerCheck(form);
 
     startBG.style.display = "initial";
-    // setTimeout(() => {
-    //     startBG.style.display = "none";
-    // }, 2000)
+    setTimeout(() => {
+        startBG.style.display = "none";
+    }, 2000)
 
 }
 
