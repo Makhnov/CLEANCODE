@@ -23,7 +23,7 @@ let tempo = false;
 const machine = document.getElementById('machine');
 const urlGIF = "../../divers/img/loading2s.gif?time=";
 function loadingGIF() {
-    waitingMenu.style.backgroundImage = `url(${urlGIF + new Date().getTime()})`;
+	waitingMenu.style.backgroundImage = `url(${urlGIF + new Date().getTime()})`;
 }
 
 const modal = document.getElementById('modal');
@@ -48,349 +48,349 @@ let jTemp;
 let tabNav = [false, false, false, false, false];
 
 function refresh() {
-    clearScene('all');
-    resize();
-    validerCheck(form);
+	clearScene('all');
+	resize();
+	validerCheck(form);
 
-    startBG.style.display = "initial";
-    setTimeout(() => {
-        startBG.style.display = "none";
-    }, 2000)
+	startBG.style.display = "initial";
+	setTimeout(() => {
+		startBG.style.display = "none";
+	}, 2000)
 
 }
 
 window.onresize = function () {
-    clearTimeout(resizeSpamm);
-    resizeSpamm = setTimeout(function () {
-        resize();
-    }, 500);
+	clearTimeout(resizeSpamm);
+	resizeSpamm = setTimeout(function () {
+		resize();
+	}, 500);
 }
 
 function resize() {
 
-    checkWidth();
+	checkWidth();
 
-    let width = racine.clientWidth; // On récupère la largeur de l'écran de l'utilisateur
-    let height = racine.clientHeight; // On récupère la hauteur de l'écran de l'utilisateur
+	let width = racine.clientWidth; // On récupère la largeur de l'écran de l'utilisateur
+	let height = racine.clientHeight; // On récupère la hauteur de l'écran de l'utilisateur
 
-    let tpY = width * 0.3 * 8 / 7;
+	let tpY = width * 0.3 * 8 / 7;
 
-    // console.log('width :' + width);
-    // console.log('height :' + height);
+	// console.log('width :' + width);
+	// console.log('height :' + height);
 
-    if ((height / tpY) < 1.44) {
-        let hMult = (8 * height / (width * 3)).toFixed(2);
-        racine.style.setProperty('--hMult', hMult);
-    } else {
-        racine.style.removeProperty("--hMult");
-    }
+	if ((height / tpY) < 1.44) {
+		let hMult = (8 * height / (width * 3)).toFixed(2);
+		racine.style.setProperty('--hMult', hMult);
+	} else {
+		racine.style.removeProperty("--hMult");
+	}
 
-    if (width < 1000) {
-        angle = 60;
-        depth = 60;
-        iDeg = 30;
-    } else if (width < 1400) {
-        angle = 70;
-        depth = 65;
-        iDeg = 20;
-    } else if (width < 1800) {
-        angle = 80;
-        depth = 70;
-        iDeg = 10;
-    } else {
-        angle = 90;
-        depth = 75;
-        iDeg = -10;
-    }
+	if (width < 1000) {
+		angle = 60;
+		depth = 60;
+		iDeg = 30;
+	} else if (width < 1400) {
+		angle = 70;
+		depth = 65;
+		iDeg = 20;
+	} else if (width < 1800) {
+		angle = 80;
+		depth = 70;
+		iDeg = 10;
+	} else {
+		angle = 90;
+		depth = 75;
+		iDeg = -10;
+	}
 
-    racine.style.setProperty('--menuAngle', iDeg + 'deg');
-    //let iDegree = getComputedStyle(racine).getPropertyValue('--menuAngle');
-    //console.log(iDegree);
-    racine.style.setProperty('--menuProfondeur', depth + 'px');
-    //let depthBar = getComputedStyle(racine).getPropertyValue('--menuPronfondeur');
-    //console.log(depthBar);
+	racine.style.setProperty('--menuAngle', iDeg + 'deg');
+	//let iDegree = getComputedStyle(racine).getPropertyValue('--menuAngle');
+	//console.log(iDegree);
+	racine.style.setProperty('--menuProfondeur', depth + 'px');
+	//let depthBar = getComputedStyle(racine).getPropertyValue('--menuPronfondeur');
+	//console.log(depthBar);
 
-    navGauche.style.transform = "translateX(2vw) rotateY(" + angle + "deg) translateZ(calc(var(--menuProfondeur)))";
-    //waitingMenu.style.width = depth + "px";
-    //waitingMenu.style.height = depth + "px";//En +
-    //waitingMenu.style.transform = "translate3d(0, 0, -" + depth + "px) rotateY(" + -angle + "deg)";
+	navGauche.style.transform = "translateX(2vw) rotateY(" + angle + "deg) translateZ(calc(var(--menuProfondeur)))";
+	//waitingMenu.style.width = depth + "px";
+	//waitingMenu.style.height = depth + "px";//En +
+	//waitingMenu.style.transform = "translate3d(0, 0, -" + depth + "px) rotateY(" + -angle + "deg)";
 }
 
 for (let i = 0; i < li.length; i++) {
-    let iTemp = i;
-    li[i].addEventListener('click', function () {
-        clearTimeout(menuSpamm);
-        if (spamm(i)) {
-            menuAsync(iTemp);
-        }
-    });
+	let iTemp = i;
+	li[i].addEventListener('click', function () {
+		clearTimeout(menuSpamm);
+		if (spamm(i)) {
+			menuAsync(iTemp);
+		}
+	});
 }
 
 function spamm(index) {
-    const XLi = new WebKitCSSMatrix(getComputedStyle(li[index]).getPropertyValue('transform'));
-    if (XLi.m41 < 1000) {
-        return true;
-    } else {
-        return false;
-    }
+	const XLi = new WebKitCSSMatrix(getComputedStyle(li[index]).getPropertyValue('transform'));
+	if (XLi.m41 < 1000) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 async function menuAsync(iTemp) {
-    // BEFORE
-    //console.log("BEFORE :" + iTemp);
-    li[iTemp].classList.add("clicked");
-    tabNav[iTemp] = true;
+	// BEFORE
+	//console.log("BEFORE :" + iTemp);
+	li[iTemp].classList.add("clicked");
+	tabNav[iTemp] = true;
 
-    for (j = 0; j < li.length; j++) {
-        if (li[j].classList.contains("clicked") && j !== iTemp) {
-            li[j].classList.remove("clicked");
-            tabNav[j] = false;
-            closingScene(j);
-        }
-    }
+	for (j = 0; j < li.length; j++) {
+		if (li[j].classList.contains("clicked") && j !== iTemp) {
+			li[j].classList.remove("clicked");
+			tabNav[j] = false;
+			closingScene(j);
+		}
+	}
 
-    // TEMPO
-    if (tempo) {
-        machine.style.display = "none";
-        loadingGIF();
-        await delayLi(speedOut);
-    } else {
-        await delayLi(0);
-    }
-    // FIN TEMPO
+	// TEMPO
+	if (tempo) {
+		machine.style.display = "none";
+		loadingGIF();
+		await delayLi(speedOut);
+	} else {
+		await delayLi(0);
+	}
+	// FIN TEMPO
 
 
-    // AFTER
-    machineMenu();
-    //console.log("AFTER :" + tabNav);
+	// AFTER
+	machineMenu();
+	//console.log("AFTER :" + tabNav);
 }
 
 function delayLi(ms) {
-    return new Promise((resolve, reject) => {
-        menuSpamm = setTimeout(() => {
-            for (j = 0; j < tabNav.length; j++) {
-                if (!tabNav[j]) {
-                    scene[j].classList.add("hidden");
-                    scene[j].classList.remove("anim");
-                    clearScene(j);
-                } else {
-                    scene[j].classList.remove("hidden");
-                    scene[j].classList.add("anim");
-                    tempo = true;
-                }
+	return new Promise((resolve, reject) => {
+		menuSpamm = setTimeout(() => {
+			for (j = 0; j < tabNav.length; j++) {
+				if (!tabNav[j]) {
+					scene[j].classList.add("hidden");
+					scene[j].classList.remove("anim");
+					clearScene(j);
+				} else {
+					scene[j].classList.remove("hidden");
+					scene[j].classList.add("anim");
+					tempo = true;
+				}
 
-                for (k = 0; k < tabNav.length; k++) {
-                    if (!tabNav[k]) {
-                        navDroite.children[0].children[j].children[k].style.visibility = "hidden";
-                        navDroite.children[0].children[j].children[k].classList.remove('open');
-                    } else {
-                        navDroite.children[0].children[j].children[k].style.visibility = "visible";
-                        navDroite.children[0].children[j].children[k].classList.add('open');
-                    }
-                }
-            }
-            //blurBG.style.display = "none";
-            navDroite.style.display = "grid";
-            resolve();
-            ;
-        }, ms
-        );
-    });
+				for (k = 0; k < tabNav.length; k++) {
+					if (!tabNav[k]) {
+						navDroite.children[0].children[j].children[k].style.visibility = "hidden";
+						navDroite.children[0].children[j].children[k].classList.remove('open');
+					} else {
+						navDroite.children[0].children[j].children[k].style.visibility = "visible";
+						navDroite.children[0].children[j].children[k].classList.add('open');
+					}
+				}
+			}
+			//blurBG.style.display = "none";
+			navDroite.style.display = "grid";
+			resolve();
+			;
+		}, ms
+		);
+	});
 }
 
 function closingScene(index) {
-    switch (index) {
-        case 0://A PROPOS
-            break;
-        case 1://PORTFOLIO
-            dezoomLivre();
-            openBook(false);
-            break;
-        case 2:
-            openCV(false);
-            break;
-        case 3://COMPETENCES
-            openSkills(false);
-            break;
-        case 4://CONTACT
-            openForm(false);
-            break;
-    }
+	switch (index) {
+		case 0://A PROPOS
+			break;
+		case 1://PORTFOLIO
+			dezoomLivre();
+			openBook(false);
+			break;
+		case 2:
+			openCV(false);
+			break;
+		case 3://COMPETENCES
+			openSkills(false);
+			break;
+		case 4://CONTACT
+			openForm(false);
+			break;
+	}
 }
 
 function openSkills(bool) {
-    let i = 0;
-    let animSpeed = (speedOut / 6000).toFixed(1);
+	let i = 0;
+	let animSpeed = (speedOut / 6000).toFixed(1);
 
-    for (let skill of skills) {
-        skill.style.animation = "leaveSkills" + space + animSpeed + "s" + space + "linear" + space + animSpeed * i + "s forwards";
-        i++;
-    }
+	for (let skill of skills) {
+		skill.style.animation = "leaveSkills" + space + animSpeed + "s" + space + "linear" + space + animSpeed * i + "s forwards";
+		i++;
+	}
 
-    setTimeout(function () {
-        for (let skill of skills) {
-            skill.style.removeProperty("animation");
-        }
-    }, speedOut);
+	setTimeout(function () {
+		for (let skill of skills) {
+			skill.style.removeProperty("animation");
+		}
+	}, speedOut);
 }
 
 function openForm(bool) {
-    form.style.animation = "leaveContact" + space + (speedOut / 1000) + "s linear" + space + "forwards";
+	form.style.animation = "leaveContact" + space + (speedOut / 1000) + "s linear" + space + "forwards";
 
-    setTimeout(function () {
-        form.style.removeProperty("animation");
-    }, speedOut);
+	setTimeout(function () {
+		form.style.removeProperty("animation");
+	}, speedOut);
 }
 
 function clearScene(index) {
-    if (typeof index === 'number') {
-        const boxes = scene[index].querySelectorAll("input[type=checkbox]");
-        for (let box of boxes) {
-            box.checked = false;
-            box.dispatchEvent(new Event("change"));
-        }
+	if (typeof index === 'number') {
+		const boxes = scene[index].querySelectorAll("input[type=checkbox]");
+		for (let box of boxes) {
+			box.checked = false;
+			box.dispatchEvent(new Event("change"));
+		}
 
-        const navboxes = navDroite.children[0].children[index].children[index].querySelectorAll("input[type=checkbox]");
-        for (let navBox of navboxes) {
-            navBox.checked = false;
-            navBox.dispatchEvent(new Event("change"));
-        }
-    } else {
-        const boxes = document.querySelectorAll("input[type=checkbox]");
-        for (let box of boxes) {
-            box.checked = false;
-            box.dispatchEvent(new Event("change"));
-        }
-    }
+		const navboxes = navDroite.children[0].children[index].children[index].querySelectorAll("input[type=checkbox]");
+		for (let navBox of navboxes) {
+			navBox.checked = false;
+			navBox.dispatchEvent(new Event("change"));
+		}
+	} else {
+		const boxes = document.querySelectorAll("input[type=checkbox]");
+		for (let box of boxes) {
+			box.checked = false;
+			box.dispatchEvent(new Event("change"));
+		}
+	}
 }
 
 function machineMenu() {
-    let index = checkTabNav();
-    waitingMenu.style.backgroundImage = "none";
-    machine.style.display = "block";
-    let url;
-    switch (index) {
-        case 0://A PROPOS
-            url = "center / contain no-repeat url('../../divers/img/startIcon.png')";
-            break;
-        case 1://PORTFOLIO
-            url = "center / contain no-repeat url('../../divers/img/book.png')";
-            break;
-        case 2://CV
-            url = "center / contain no-repeat url('../../divers/img/favcv.png')";
-            break;
-        case 3://COMPETENCES
-            url = "center / contain no-repeat url('../../divers/img/skillsButton.png')";
-            break;
-        case 4://CONTACT
-            url = "center / contain no-repeat url('../../divers/img/favmail.png')";
-            break;
-    }
-    machine.style.background = url;
+	let index = checkTabNav();
+	waitingMenu.style.backgroundImage = "none";
+	machine.style.display = "block";
+	let url;
+	switch (index) {
+		case 0://A PROPOS
+			url = "center / contain no-repeat url('../../divers/img/startIcon.png')";
+			break;
+		case 1://PORTFOLIO
+			url = "center / contain no-repeat url('../../divers/img/book.png')";
+			break;
+		case 2://CV
+			url = "center / contain no-repeat url('../../divers/img/favcv.png')";
+			break;
+		case 3://COMPETENCES
+			url = "center / contain no-repeat url('../../divers/img/skillsButton.png')";
+			break;
+		case 4://CONTACT
+			url = "center / contain no-repeat url('../../divers/img/favmail.png')";
+			break;
+	}
+	machine.style.background = url;
 }
 
 function checkTabNav() {
-    for (let i = 0; i < 5; i++) {
-        if (tabNav[i]) {
-            return i;
-        }
-    }
+	for (let i = 0; i < 5; i++) {
+		if (tabNav[i]) {
+			return i;
+		}
+	}
 }
 
 function checkWidth() {
-    const windowWidth = window.innerWidth;
-    const textWidth = modalTexte.offsetWidth;
-    if (textWidth + 100 > windowWidth) {
-        modalExit.style.display = 'grid';
-    } else {
-        modalExit.style.display = 'none';
-    }
+	const windowWidth = window.innerWidth;
+	const textWidth = modalTexte.offsetWidth;
+	if (textWidth + 100 > windowWidth) {
+		modalExit.style.display = 'grid';
+	} else {
+		modalExit.style.display = 'none';
+	}
 }
 
 function openModal(index) {
-    switch (index) {
-        case 0://A PROPOS
-            break;
-        case 1://PORTFOLIO
-            modal.style.display = "grid";
-            modalTitre.textContent = "PORTFOLIO";
-            modalResume.textContent = "Mes créations depuis septembre 2022";
-            modalTexte.innerHTML = textInfosPortfolio;
-            break;
-        case 2://CV
-            modal.style.display = "grid";
-            modalBox.style.height = "100vh";
-            modalBox.style.width = "calc(7000vh / 99)";
-            modalBox.style.top = "0";
-            modalBox.style.left = "50%";
-            modalBox.style.transform = "translate(-50%, 0)";
-            modalBox.style.padding = "0";
-            modalBox.style.overflow = "hidden";
+	switch (index) {
+		case 0://A PROPOS
+			break;
+		case 1://PORTFOLIO
+			modal.style.display = "grid";
+			modalTitre.textContent = "PORTFOLIO";
+			modalResume.textContent = "Mes créations depuis septembre 2022";
+			modalTexte.innerHTML = textInfosPortfolio;
+			break;
+		case 2://CV
+			modal.style.display = "grid";
+			modalBox.style.height = "100vh";
+			modalBox.style.width = "calc(7000vh / 99)";
+			modalBox.style.top = "0";
+			modalBox.style.left = "50%";
+			modalBox.style.transform = "translate(-50%, 0)";
+			modalBox.style.padding = "0";
+			modalBox.style.overflow = "hidden";
 
-            modalTitre.style.display = "none";
-            modalResume.style.display = "none";
+			modalTitre.style.display = "none";
+			modalResume.style.display = "none";
 
-            modalTexte.style.margin = "0";
-            modalTexte.style.height = "100vh";
-            modalTexte.style.background = "url('../../divers/img/docFront.jpg')";
-            modalTexte.style.backgroundSize = "contain";
-            checkWidth();
-            break;
-        case 3://COMPETENCES
-            break;
-        case 4://CONTACT
-            modal.style.display = "grid";
-            modalCaptcha.style.display = "flex";
-            modalTitre.style.fontSize = "clamp(1.5rem, 2.5vw, 2.5rem)";
-            modalTitre.textContent = "Merci pour votre message !";
-            modalResume.style.fontSize = "clamp(1.25rem, 2vw, 2rem)";
-            modalResume.style.fontWeight = "normal";
-            modalResume.textContent = "Pour confirmer votre envoi, veuillez saisir ci-dessous les 4 caractères qui s'affichent à l'écran";
-            break;
-    }
-    modalBackground.value = index;
-    modalExit.value = index;
+			modalTexte.style.margin = "0";
+			modalTexte.style.height = "100vh";
+			modalTexte.style.background = "url('../../divers/img/docFront.jpg')";
+			modalTexte.style.backgroundSize = "contain";
+			checkWidth();
+			break;
+		case 3://COMPETENCES
+			break;
+		case 4://CONTACT
+			modal.style.display = "grid";
+			modalCaptcha.style.display = "flex";
+			modalTitre.style.fontSize = "clamp(1.5rem, 2.5vw, 2.5rem)";
+			modalTitre.textContent = "Merci pour votre message !";
+			modalResume.style.fontSize = "clamp(1.25rem, 2vw, 2rem)";
+			modalResume.style.fontWeight = "normal";
+			modalResume.textContent = "Pour confirmer votre envoi, veuillez saisir ci-dessous les 4 caractères qui s'affichent à l'écran";
+			break;
+	}
+	modalBackground.value = index;
+	modalExit.value = index;
 }
 
 function closeModal(e) {
-    let index = e.value;
-    switch (index) {
-        case 0://A PROPOS
-            break;
-        case 1://PORTFOLIO
-            modalTitre.textContent = '';
-            modalResume.textContent = '';
-            modalTexte.textContent = '';
-            break;
-        case 2:
-            modalBox.style.removeProperty("height");
-            modalBox.style.removeProperty("width");
-            modalBox.style.removeProperty("top");
-            modalBox.style.removeProperty("left");
-            modalBox.style.removeProperty("transform");
-            modalBox.style.removeProperty("padding");
-            modalBox.style.removeProperty("overflow");
+	let index = e.value;
+	switch (index) {
+		case 0://A PROPOS
+			break;
+		case 1://PORTFOLIO
+			modalTitre.textContent = '';
+			modalResume.textContent = '';
+			modalTexte.textContent = '';
+			break;
+		case 2:
+			modalBox.style.removeProperty("height");
+			modalBox.style.removeProperty("width");
+			modalBox.style.removeProperty("top");
+			modalBox.style.removeProperty("left");
+			modalBox.style.removeProperty("transform");
+			modalBox.style.removeProperty("padding");
+			modalBox.style.removeProperty("overflow");
 
-            modalTitre.style.removeProperty("display");
-            modalResume.style.removeProperty("display");
+			modalTitre.style.removeProperty("display");
+			modalResume.style.removeProperty("display");
 
-            modalTexte.style.removeProperty("margin");
-            modalTexte.style.removeProperty("height");
-            modalTexte.style.removeProperty("background");
-            modalTexte.style.removeProperty("background-size");
+			modalTexte.style.removeProperty("margin");
+			modalTexte.style.removeProperty("height");
+			modalTexte.style.removeProperty("background");
+			modalTexte.style.removeProperty("background-size");
 
-            break;
-        case 3://COMPETENCES
-            break;
-        case 4://CONTACT
-            modal.style.display = "none";
-            modalCaptcha.style.display = "none";
-            modalTitre.textContent = '';
-            modalResume.textContent = '';
-            modalTitre.style.removeProperty("font-size");
-            modalResume.style.removeProperty("font-size");
-            modalResume.style.removeProperty("font-weight");
-            break;
-    }
-    modal.style.display = "none";
+			break;
+		case 3://COMPETENCES
+			break;
+		case 4://CONTACT
+			modal.style.display = "none";
+			modalCaptcha.style.display = "none";
+			modalTitre.textContent = '';
+			modalResume.textContent = '';
+			modalTitre.style.removeProperty("font-size");
+			modalResume.style.removeProperty("font-size");
+			modalResume.style.removeProperty("font-weight");
+			break;
+	}
+	modal.style.display = "none";
 }
