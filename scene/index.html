@@ -11,11 +11,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="./utils/css/hud.css">
-    <link rel="stylesheet" href="./utils/css/book.css">
-    <link rel="stylesheet" href="./utils/css/cv.css">
-    <link rel="stylesheet" href="./utils/css/skills.css">
-    <link rel="stylesheet" href="./utils/css/contact.css">
+    <link rel="stylesheet" href="./css/hud.css">
+    <link rel="stylesheet" href="./css/book.css">
+    <link rel="stylesheet" href="./css/cv.css">
+    <link rel="stylesheet" href="./css/skills.css">
+    <link rel="stylesheet" href="./css/contact.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -25,19 +25,18 @@
 
 <body onload="refresh()">
 
-	<div id="preHUD">
-		<div>
-			<!-- <span>...</span> -->
-			<span>><span><b>_</b></span></span>
-		</div>	
-	</div>
+    <div id="preHUD">
+        <div id="cache"></div>
+        <h1>BIENVENUE</h1>
+        <div id="startIcon"></div>
+    </div>
 
     <section id="containerHUD">
 
-		<div id="multivac">
-			<div id="machine"></div>
-			<div id="waitingMenu"></div>
-		</div>
+        <div id="multivac">
+            <div id="machine"></div>
+            <div id="waitingMenu"></div>
+        </div>
 
         <nav class="gauche">
             <ul>
@@ -62,7 +61,6 @@
                     <div class="back"></div>
                 </li>
             </ul>
-            <!-- <div id="waitingMenu"></div> -->
         </nav>
 
         <nav class="droite">
@@ -108,7 +106,8 @@
                         </span>
                     </p>
                     <div>
-                        <a id="downloadCVLink" class="download bouton-texte" href="https://makh.fr/files/cv.pdf" download>
+                        <a id="downloadCVLink" class="download bouton-texte" href="https://makh.fr/files/cv.pdf"
+                            download>
                             <i class="fas fa-file-arrow-down"></i>
                         </a>
                     </div>
@@ -215,8 +214,8 @@
                 <div class="titre skills">
                     <article class="principal">
                         <h1>LANGAGES</h1>
-						<br>
-						<h1>Maîtrisés</h1>
+                        <br>
+                        <h1>Maîtrisés</h1>
                     </article>
                 </div>
                 <div class="progress html">
@@ -224,102 +223,101 @@
                         <h1>HTML</h1>
                         <h3>Bootstrap</h3>
                     </article>
-					<div class="progress box">
-						<div class="progress bordure">
-							<p>80%</p>
-						</div>
-						<div class="progress barreD"></div>
-						<div class="progress barreG"></div>
-						<div class="progress cacheD"></div>
-						<div class="progress cacheG"></div>
-					</div>
+                    <div class="progress box">
+                        <div class="progress bordure">
+                            <p>80%</p>
+                        </div>
+                        <div class="progress barreD"></div>
+                        <div class="progress barreG"></div>
+                        <div class="progress cacheD"></div>
+                        <div class="progress cacheG"></div>
+                    </div>
                 </div>
                 <div class="progress css">
                     <article>
                         <h1>CSS</h1>
                         <h3>Sass</h3>
                     </article>
-					<div class="progress box">
-						<div class="progress bordure">
-							<p>90%</p>
-						</div>
-						<div class="progress barreD"></div>
-						<div class="progress barreG"></div>
-						<div class="progress cacheD"></div>
-						<div class="progress cacheG"></div>
-					</div>
-				</div>
+                    <div class="progress box">
+                        <div class="progress bordure">
+                            <p>90%</p>
+                        </div>
+                        <div class="progress barreD"></div>
+                        <div class="progress barreG"></div>
+                        <div class="progress cacheD"></div>
+                        <div class="progress cacheG"></div>
+                    </div>
+                </div>
                 <div class="progress js">
                     <article>
                         <h1>Javascript</h1>
                         <h3>VueJS</h3>
                     </article>
-					<div class="progress box">
-						<div class="progress bordure">
-							<p>70%</p>
-						</div>
-						<div class="progress barreD"></div>
-						<div class="progress barreG"></div>
-						<div class="progress cacheD"></div>
-						<div class="progress cacheG"></div>
-					</div>
+                    <div class="progress box">
+                        <div class="progress bordure">
+                            <p>70%</p>
+                        </div>
+                        <div class="progress barreD"></div>
+                        <div class="progress barreG"></div>
+                        <div class="progress cacheD"></div>
+                        <div class="progress cacheG"></div>
+                    </div>
                 </div>
                 <div class="progress php">
                     <article>
                         <h1>PHP</h1>
-						<div>
-							<h3>Laravel</h3>
-                        	<h3>Symfony</h3>
-						</div>
+                        <div>
+                            <h3>Laravel</h3>
+                            <h3>Symfony</h3>
+                        </div>
                     </article>
-					<div class="progress box">
-						<div class="progress bordure">
-							<p>45%</p>
-						</div>
-						<div class="progress barreD"></div>
-						<div class="progress barreG"></div>
-						<div class="progress cacheD"></div>
-						<div class="progress cacheG"></div>
-					</div>
+                    <div class="progress box">
+                        <div class="progress bordure">
+                            <p>45%</p>
+                        </div>
+                        <div class="progress barreD"></div>
+                        <div class="progress barreG"></div>
+                        <div class="progress cacheD"></div>
+                        <div class="progress cacheG"></div>
+                    </div>
                 </div>
                 <div class="progress sql">
                     <article>
                         <h1>SQL</h1>
                         <h3>MySQL</h3>
                     </article>
-					<div class="progress box">
-						<div class="progress bordure">
-							<p>80%</p>
-						</div>
-						<div class="progress barreD"></div>
-						<div class="progress barreG"></div>
-						<div class="progress cacheD"></div>
-						<div class="progress cacheG"></div>
-					</div>
+                    <div class="progress box">
+                        <div class="progress bordure">
+                            <p>80%</p>
+                        </div>
+                        <div class="progress barreD"></div>
+                        <div class="progress barreG"></div>
+                        <div class="progress cacheD"></div>
+                        <div class="progress cacheG"></div>
+                    </div>
                 </div>
             </div>
-            <form id="CONTACT" action="./utils/php/formulaire.php" method="POST" class="hidden main">
-                <h2>Me contacter</h2>
-
+            <form id="CONTACT" action="../utils/formulaire.php" method="POST" class="hidden main">
+                <h2 id="contactTitre">Me contacter</h2>
+                <p id="confirmP">Votre message a bien été envoyé, merci !</p>
                 <div class="inputs">
-					<input id="nom" name="nom" type="text" placeholder="Nom" oninput="validerCheck()">
+                    <input id="nom" name="nom" type="text" placeholder="Nom" oninput="validerCheck(this)">
                     <label for="nom">Nom</label>
                     <span></span>
                 </div>
                 <div class="inputs">
-                    <input id="email" name="email" type="text" placeholder="E-Mail" oninput="validerCheck()">
+                    <input id="email" name="email" type="text" placeholder="E-Mail" oninput="validerCheck(this)">
                     <label for="email">E-Mail</label>
                     <span></span>
                 </div>
-                <div class="inputs">
-                    <input id="message" name="message" type="text" placeholder="Message" oninput="validerCheck()">
-                    <label for="message">Message</label>
+                <div class="inputs message">
+                    <textarea id="message" name="message" placeholder="" oninput="validerCheck(this)"></textarea>
+                    <label for="message" class="message">Message</label>
                     <span></span>
                 </div>
-
                 <div class="boutons">
-                    <button id="supprimer" type="submit"><i class="fas fa-ban"></i></button>
-                    <button id="valider" type="submit"><i class="fas fa-check"></i></button>
+                    <button id="valider" type="submit" value="Submit"><i class="fas fa-check"></i></button>
+                    <button id="supprimer" type="reset" value="Reset"><i class="fas fa-ban"></i></button>
                 </div>
             </form>
         </div>
@@ -327,20 +325,27 @@
 
     <section id="modal">
         <div id="backgroundModal" onclick="closeModal(this)"></div>
-		<button id="exitModal" onclick="closeModal(this)">
-			<i class="fa-solid fa-xmark"></i>
-		</button>
+        <button id="exitModal" onclick="closeModal(this)">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
         <div id="containerModal">
-            <h1>Titre</h2>
-			<h3>Résumé du titre</h3>
-			<p></p>
+            <h1>Titre</h1>
+            <h3>Résumé du titre</h3>
+            <p></p>
+            <div id="captcha">
+                <img id="captchaImg" src="" alt="Captcha">
+                <div>
+                    <input id="captchaInput" type="text">
+                    <button id="captchaButton" type="submit" onclick="verifCaptcha()">Confirmer</button>
+                </div>
+            </div>
         </div>
     </section>
 
-    <script src="./utils/js/hud.js"></script>
-    <script src="./utils/js/cv.js"></script>
-    <script src="./utils/js/book.js"></script>
-    <script src="./utils/js/contact.js"></script>
+    <script src="./js/hud.js"></script>
+    <script src="./js/cv.js"></script>
+    <script src="./js/book.js"></script>
+    <script src="./js/contact.js"></script>
 </body>
 
 </html>

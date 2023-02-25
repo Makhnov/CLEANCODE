@@ -6,6 +6,8 @@ const textInfosPortfolio = "Bienvenue sur mon portfolio, j'ai commencé la progr
 
 const startBG = document.getElementById('preHUD');
 
+const skills = document.getElementById('COMPETENCES').children;
+
 const li = document.querySelectorAll('li.gauche');
 const navGauche = document.getElementsByTagName('nav')[0].children[0];
 const navDroite = document.getElementsByTagName('nav')[1];
@@ -19,7 +21,10 @@ let speedOut = parseFloat(vitesse2.replace('s', '')) * 1000;
 let tempo = false;
 
 const machine = document.getElementById('machine');
-const urlGIF = "../../divers/img/loading2sGreen.gif?time=";
+const urlGIF = "../../divers/img/loading2s.gif?time=";
+function loadingGIF() {
+    waitingMenu.style.backgroundImage = `url(${urlGIF + new Date().getTime()})`;
+}
 
 const modal = document.getElementById('modal');
 const modalBackground = document.getElementById('backgroundModal');
@@ -28,15 +33,8 @@ const modalBox = document.getElementById('containerModal');
 const modalTitre = document.getElementById('containerModal').children[0];
 const modalResume = document.getElementById('containerModal').children[1];
 const modalTexte = document.getElementById('containerModal').children[2];
-const captchaButton = document.getElementById('captchaButton');
-const captchaInput = document.getElementById('captchaInput');
-const captchaImg = document.getElementById('captchaImg');
+const modalCaptcha = document.getElementById('captcha');
 
-const skills = document.getElementById('COMPETENCES').children;
-
-function loadingGIF() {
-    waitingMenu.style.backgroundImage = `url(${urlGIF + new Date().getTime()})`;
-}
 
 let menuSpamm;
 let resizeSpamm;
@@ -52,7 +50,13 @@ let tabNav = [false, false, false, false, false];
 function refresh() {
     clearScene('all');
     resize();
-    startBG.classList.add('anim');
+    validerCheck(form);
+
+    startBG.style.display = "initial";
+    setTimeout(() => {
+        startBG.style.display = "none";
+    }, 2000)
+
 }
 
 window.onresize = function () {
@@ -122,22 +126,6 @@ for (let i = 0; i < li.length; i++) {
     });
 }
 
-function checkTranslateXValue(liIndex) {
-    // récupère l'élément li à partir de son index
-    const liElement = document.querySelectorAll('li')[liIndex];
-
-    // vérifie si l'élément a une valeur pour la propriété translateX
-    const translateXValue = getComputedStyle(liElement).getPropertyValue('transform');
-
-    // retourne la valeur de la propriété translateX si elle existe
-    if (translateXValue && translateXValue !== 'none') {
-        const translateXMatrix = new WebKitCSSMatrix(translateXValue);
-        return translateXMatrix.m41;
-    }
-
-    return null; // retourne null si la propriété translateX n'existe pas
-}
-
 function spamm(index) {
     const XLi = new WebKitCSSMatrix(getComputedStyle(li[index]).getPropertyValue('transform'));
     if (XLi.m41 < 1000) {
@@ -173,7 +161,7 @@ async function menuAsync(iTemp) {
 
 
     // AFTER
-    machine.style.display = "block";
+    machineMenu();
     //console.log("AFTER :" + tabNav);
 }
 
@@ -201,7 +189,6 @@ function delayLi(ms) {
                     }
                 }
             }
-            waitingMenu.style.backgroundImage = "none";
             //blurBG.style.display = "none";
             navDroite.style.display = "grid";
             resolve();
@@ -277,6 +264,31 @@ function clearScene(index) {
     }
 }
 
+function machineMenu() {
+    let index = checkTabNav();
+    waitingMenu.style.backgroundImage = "none";
+    machine.style.display = "block";
+    let url;
+    switch (index) {
+        case 0://A PROPOS
+            url = "center / contain no-repeat url('../../divers/img/startIcon.png')";
+            break;
+        case 1://PORTFOLIO
+            url = "center / contain no-repeat url('../../divers/img/book.png')";
+            break;
+        case 2://CV
+            url = "center / contain no-repeat url('../../divers/img/favcv.png')";
+            break;
+        case 3://COMPETENCES
+            url = "center / contain no-repeat url('../../divers/img/skillsButton.png')";
+            break;
+        case 4://CONTACT
+            url = "center / contain no-repeat url('../../divers/img/favmail.png')";
+            break;
+    }
+    machine.style.background = url;
+}
+
 function checkTabNav() {
     for (let i = 0; i < 5; i++) {
         if (tabNav[i]) {
@@ -328,6 +340,7 @@ function openModal(index) {
             break;
         case 4://CONTACT
             modal.style.display = "grid";
+            modalCaptcha.style.display = "flex";
             modalTitre.style.fontSize = "clamp(1.5rem, 2.5vw, 2.5rem)";
             modalTitre.textContent = "Merci pour votre message !";
             modalResume.style.fontSize = "clamp(1.25rem, 2vw, 2rem)";
@@ -371,6 +384,7 @@ function closeModal(e) {
             break;
         case 4://CONTACT
             modal.style.display = "none";
+            modalCaptcha.style.display = "none";
             modalTitre.textContent = '';
             modalResume.textContent = '';
             modalTitre.style.removeProperty("font-size");

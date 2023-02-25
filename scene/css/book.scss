@@ -1,0 +1,532 @@
+// @media screen and (max-width: 800px) {
+//     :root {
+//         --bookSize:200px!important;
+//     }
+// }
+
+#book {
+    position: absolute;
+    transform-style:preserve-3d ;
+    height: 78vh;
+    width: 60vw;
+    display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#readBook {
+    display: none;
+}
+
+#PORTFOLIO.anim #book #readBook:not(:checked) ~ #livre {
+    animation: openBook var(--vitesseEntree) linear forwards;
+}
+#PORTFOLIO.anim #book #readBook:checked ~ #livre {
+    animation: closeBook var(--vitesseSortie) linear forwards;
+}
+#PORTFOLIO.anim #book #readBook:not(:checked) ~ #livre .blocLivre.droite {
+        animation: openBookRight var(--vitesseEntree) linear forwards;
+}
+#PORTFOLIO.anim #book #readBook:checked ~ #livre .blocLivre.droite {
+    animation: closeBookRight var(--vitesseSortie) linear forwards;
+}
+#PORTFOLIO.anim #book #readBook:not(:checked) ~ #livre .blocLivre.gauche {
+    animation: openBookLeft var(--vitesseEntree) linear forwards;
+}
+#PORTFOLIO.anim #book #readBook:checked ~ #livre .blocLivre.gauche {
+    animation: closeBookLeft var(--vitesseSortie) linear forwards;
+}
+
+#livre {
+    position: absolute;
+    z-index: 20;
+    transform-style: preserve-3d;
+    height:var(--livreLargeur);
+    width:calc(140 / 99 * var(--livreLargeur) + var(--gapLivre));
+    transform: translate3d(calc(-35 / 99 * var(--livreLargeur)), 0, var(--zoomLivre)) rotateY(90deg) rotateX(0deg) rotate(0deg);
+
+    display:grid;
+    grid-template-columns:calc(70 / 99 * var(--livreLargeur)) var(--gapLivre) calc(70 / 99 * var(--livreLargeur));
+}
+
+.blocLivre {
+    position: absolute;
+    transform-style: preserve-3d;
+	cursor:pointer;
+
+    height:var(--livreLargeur);
+    width:calc(70 / 99 * var(--livreLargeur));
+    height:var(--livreLargeur);
+
+    box-shadow:
+    0 0 30px 10px #fff,
+    0 0 50px 20px var(--mainColor3),
+    0 0 70px 30px var(--mainColor1);
+
+    .fpage {
+        position: absolute;
+        transform-style:preserve-3d;
+        transform-origin:inherit ;
+        height: var(--livreLargeur);
+        width:calc(70 / 99 * var(--livreLargeur) - 3px);
+        background-color: var(--bookPage);
+        box-sizing: border-box;
+        border: 1px dotted var(--bookBorder);
+
+        &::before {
+            content:'';
+            position: absolute;
+            transform-origin: inherit;
+
+            top:0;
+            left:0;
+            height: var(--livreLargeur);
+            width:calc(70 / 99 * var(--livreLargeur) - 3px);
+            box-sizing: border-box;
+            border: 1px dotted var(--bookBorder);
+            background-color: var(--bookPage);
+        }
+
+        &::after {
+            content:'';
+            position: absolute;
+            transform-origin: inherit;
+
+            top:0;
+            left:0;
+            height: var(--livreLargeur);
+            width:calc(70 / 99 * var(--livreLargeur) - 3px);
+            box-sizing: border-box;
+            border: 1px dotted var(--bookBorder);
+            background-color: var(--bookPage);
+        }
+    }
+
+    &.gauche {
+        grid-column: 1;
+        transform-origin: right;
+        transform: rotateY(88deg);
+
+        @for $i from 0 to 4 {
+            .fpage.gauche:nth-of-type(#{$i + 1}) {
+                transform: translateZ(calc(3px * $i + 2px)) rotateY(calc(.4deg + (.6deg * $i)));
+                &::before {
+                    transform: translateZ(-2px) rotateY(-.4deg);
+                }
+                &::after {
+                    transform: translateZ(2px) rotateY(.4deg);
+                }
+            }
+        }
+
+        .fpage.gauche:nth-of-type(1)::before {
+            background: var(--bookFront);
+        }
+
+        .fpage.gauche:nth-of-type(4)::after {
+            background: var(--imageG1);;
+            background-size: 100% 100%;
+            background-position: right;
+        }
+    }
+
+    &.droite {
+        grid-column: 3;
+        transform-origin: left;
+        transform: rotateY(-88deg);
+
+        @for $i from 0 to 4 {
+            .fpage.droite:nth-of-type(#{$i + 1}) {
+                transform: translateZ(calc(3px * $i + 2px)) rotateY(calc(-.4deg - (.6deg * $i)));
+                &::before {
+                    transform: translateZ(-2px) rotateY(.4deg);
+                }
+                &::after {
+                    transform: translateZ(2px) rotateY(-.4deg);
+                }
+            }
+        }
+
+        .fpage.droite:nth-of-type(1)::before {
+            background: var(--bookBorder);
+        }
+
+        .fpage.droite:nth-of-type(4)::after {
+            background: var(--imageD2);
+            background-size: 100% 100%;
+        }
+    }
+}
+
+@keyframes openBook {
+    0% {
+        transform: translate3d(calc(-35 / 99 * var(--livreLargeur)), 0, var(--zoomLivre)) rotateY(90deg) scale(0);
+	}
+
+	10% {
+        transform: translate3d(calc(-35 / 99 * var(--livreLargeur)), 0, var(--zoomLivre)) rotateY(90deg) scale(1);
+	}
+
+    50% {
+        transform: translate3d(0, 0, var(--zoomLivre)) rotateY(10deg) rotateX(calc(var(--rotationLivre) / 2)) rotate(0deg);
+		z-index: 20;
+	}
+
+    100% {
+        transform: translate3d(var(--justifyLivre), var(--alignLivre), calc(var(--zoomLivre) / 3)) rotateY(0deg) rotateX(var(--rotationLivre)) rotate(var(--inclinaisonLivre));
+		z-index: 25;
+	}
+}
+
+@keyframes closeBook {
+    0% {
+        transform: translate3d(var(--justifyLivre), var(--alignLivre), calc(var(--zoomLivre) / 3)) rotateY(0deg) rotateX(var(--rotationLivre)) rotate(var(--inclinaisonLivre));
+        z-index: 20;
+    }
+
+    40% {
+        transform: translate3d(0, 0, 0) rotateY(10deg) rotateX(10deg) rotate(0deg);
+        z-index: 20;
+    }
+
+    90% {
+        transform: translate3d(calc(-35 / 99 * var(--livreLargeur)), 0, var(--zoomLivre)) rotateY(90deg) scale(1);
+        z-index: 20;
+    }
+
+	100% {
+		transform: translate3d(calc(-35 / 99 * var(--livreLargeur)), 0, var(--zoomLivre)) rotateY(90deg) scale(0);
+        z-index: 20;
+    }
+
+}
+
+@keyframes openBookLeft {
+    from {
+        transform: rotateY(88deg);
+    }
+
+    to {
+        transform: rotateY(0deg);
+    }
+}
+
+@keyframes closeBookLeft {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(88deg);
+    }
+}
+
+@keyframes openBookRight {
+    from {
+        transform: rotateY(-88deg);
+    }
+
+    to {
+        transform: rotateY(-0deg);
+    }
+}
+
+@keyframes closeBookRight {
+    from {
+        transform: rotateY(-0deg);
+    }
+
+    to {
+        transform: rotateY(-88deg);
+    }
+}
+
+.pages {
+    position: absolute;
+    top:0;
+    left:0;
+    height: var(--livreLargeur);
+    width:calc(70 / 99 * var(--livreLargeur));
+    transform-style: preserve-3d;
+}
+
+#pageG {
+    transform-origin: right;
+    transform: translateX(-3px) translateZ(13.2px) rotateY(2.6deg);
+    pointer-events :auto;
+
+    &.anim {
+        animation: pageGauche var(--vitessePage) linear;
+    }
+
+    &.anim .bandeGauche {
+        animation: bandeGauche var(--vitessePage) linear;
+    }
+}
+
+#pageD {
+    transform-origin: left;
+    transform: translateX(2.5px) translateZ(13.2px) rotateY(-2.6deg);
+    pointer-events :auto;
+
+    &.anim {
+        animation: pageDroite var(--vitessePage) linear;
+    }
+
+    &.anim .bandeDroite {
+        animation: bandeDroite var(--vitessePage) linear;
+    }
+}
+
+.bandes {
+    position: absolute;
+    transform-style:preserve-3d;
+    backface-visibility: hidden;
+
+    height: var(--livreLargeur);
+    width: calc(10 / 99 * var(--livreLargeur));
+    background-size:calc(70 / 99 * var(--livreLargeur)) var(--livreLargeur);
+
+    &::after {
+        position: absolute;
+        content:'';
+        backface-visibility: hidden;
+        transform-origin: center;
+
+        top:0;
+        left:0;
+        height: var(--livreLargeur);
+        width: calc(10 / 99 * var(--livreLargeur));
+        transform: rotateY(180deg);
+        background-size:calc(70 / 99 * var(--livreLargeur)) var(--livreLargeur);
+    }
+}
+
+.bandeGauche {
+    transform-origin: right;
+    background:var(--imageM1);
+    right:0;
+
+    &::after {
+        background:var(--imageG2);
+    }
+}
+
+#pageG > .bandeGauche {
+    background-size:700% 100%;
+    background-position: calc(10 / 99 * var(--livreLargeur)) top;
+
+    .bandeGauche {
+        background-size:700% 100%;
+        right:calc(10 / 99 * var(--livreLargeur) - .5px);
+        &::after {
+            background-size:700% 100%;
+        }
+    }
+
+    &::after {
+        background-size:700% 100%;
+        background-position:calc(70 / 99 * var(--livreLargeur)) center;
+    }
+    
+    > .bandeGauche {
+        background-position: calc(20 / 99 * var(--livreLargeur)) center;
+        &::after {
+            background-position: calc(60 / 99 * var(--livreLargeur)) center;
+        }
+
+        > .bandeGauche {
+            background-position: calc(30 / 99 * var(--livreLargeur)) center;
+            &::after {
+                background-position: calc(50 / 99 * var(--livreLargeur)) center;
+            }
+
+            > .bandeGauche {
+                background-position: calc(40 / 99 * var(--livreLargeur)) center;
+                &::after {
+                    background-position: calc(40 / 99 * var(--livreLargeur)) center;
+                }
+
+                > .bandeGauche {
+                    background-position: calc(50 / 99 * var(--livreLargeur)) center;
+                    &::after {
+                        background-position: calc(30 / 99 * var(--livreLargeur)) center;
+                    }
+
+                    > .bandeGauche {
+                        background-position: calc(60 / 99 * var(--livreLargeur)) center;                
+                        &::after {
+                            background-position: calc(20 / 99 * var(--livreLargeur)) center;
+                        }
+
+                        > .bandeGauche {
+                            background-position: calc(70 / 99 * var(--livreLargeur)) center;
+                            &::after {
+                                background-position: calc(10 / 99 * var(--livreLargeur)) center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.bandeDroite {
+    transform-origin: left;
+    background:var(--imageM2);
+
+    &::after {
+        background:var(--imageD1);
+    }
+}
+
+#pageD > .bandeDroite {
+    background-position: 0% top;
+    background-size:700% 100%;
+
+    .bandeDroite {
+        background-size:700% 100%;
+        left:calc(10/99 * var(--livreLargeur) - .5px);
+        &::after {
+            background-size:700% 100%;
+        }
+    }
+
+    &::after {
+        background-size:700% 100%;
+        background-position:calc(10 / 99 * var(--livreLargeur)) center;
+    }
+    
+    > .bandeDroite {
+        background-position: calc(-10 / 99 * var(--livreLargeur)) top;
+        &::after {
+            background-position: calc(20 / 99 * var(--livreLargeur)) center;
+        }
+
+        > .bandeDroite {
+            background-position: calc(-20 / 99 * var(--livreLargeur)) top;
+            &::after {
+                background-position: calc(30 / 99 * var(--livreLargeur)) center;
+            }
+
+            > .bandeDroite {
+                background-position: calc(-30 / 99 * var(--livreLargeur)) top;
+                &::after {
+                    background-position: calc(40 / 99 * var(--livreLargeur)) center;
+                }
+
+                > .bandeDroite {
+                    background-position: calc(-40 / 99 * var(--livreLargeur)) top;
+                    &::after {
+                        background-position: calc(50 / 99 * var(--livreLargeur)) center;
+                    }
+
+                    > .bandeDroite {
+                        background-position: calc(-50 / 99 * var(--livreLargeur)) top;
+                        &::after {
+                            background-position: calc(60 / 99 * var(--livreLargeur)) center;
+                        }
+
+                        > .bandeDroite {
+                            background-position: calc(-60 / 99 * var(--livreLargeur)) top;
+                            &::after {
+                                background-position: calc(70 / 99 * var(--livreLargeur)) center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes pageGauche {
+    0% {
+        transform: translateX(0px) translateZ(13.2px) rotateY(2.6deg);
+        visibility: visible;
+    }
+    75% {
+        transform: translateX(var(--gapLivre)) translateZ(13.2px) rotateY(177.4deg);
+        visibility: visible;
+    }
+    100% {
+        transform: translateX(var(--gapLivre)) translateZ(13.2px) rotateY(177.4deg);
+        visibility: visible;
+    }
+}
+
+@keyframes pageDroite {
+    0% {
+        transform: translateX(0px) translateZ(13.2px) rotateY(-2.6deg);
+        visibility: visible;
+    }
+    75% {
+        transform: translateX(calc(-1 * var(--gapLivre))) translateZ(13.2px) rotateY(-177.4deg);
+        visibility: visible;
+    }
+    100% {
+        transform: translateX(calc(-1 * var(--gapLivre))) translateZ(13.2px) rotateY(-177.4deg);
+        visibility: visible;
+    }
+}
+
+@keyframes bandeGauche {
+    0% {
+        transform: rotateY(1deg);
+    }
+
+    25% {
+        transform: rotateY(-7deg);
+    }
+
+    50% {
+        transform: rotateY(-15deg);
+    }
+
+    75% {
+        transform: rotateY(-18deg);
+    }
+
+    98% {
+        transform: rotateY(-0deg);
+
+    }
+    99% {
+        transform: rotateY(-1deg);
+
+    }
+    100% {
+        transform: rotateY(1deg);
+    }
+}
+
+@keyframes bandeDroite {
+    0% {
+        transform: rotateY(-1deg);
+    }
+
+    25% {
+        transform: rotateY(7deg);
+    }
+
+    50% {
+        transform: rotateY(15deg);
+    }
+
+    75% {
+        transform: rotateY(18deg);
+    }
+
+    98% {
+        transform: rotateY(0deg);
+
+    }
+    99% {
+        transform: rotateY(1deg);
+
+    }
+    100% {
+        transform: rotateY(-1deg);
+    }
+}

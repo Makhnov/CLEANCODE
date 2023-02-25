@@ -2,8 +2,8 @@
   --menuLargeur:clamp(200px, 18vw, 1000px);
   --menuProfondeur:75px;
   --ignitionDegree: 20deg;
-  --vitesseEntree:2.5s;
-  --vitesseSortie:1.5s;
+  --vitesseEntree:3s;
+  --vitesseSortie:2s;
   --rightNavFontSize:clamp(2rem, 3vw, 3.25rem);
   --multivac:100px;
   --bookBorder:rgb(50, 50, 50);
@@ -28,7 +28,7 @@
   --hMult:8 / 7;
   --standHauteur:calc(var(--hMult) * (var(--standLargeur)));
   --inclinaisonCV:90deg;
-  --livreLargeur:clamp(300px, 50vh, 25vw);
+  --livreLargeur:clamp(300px, 60vh, 30vw);
   --imageG1:url("../../divers/img/pf-videos.jpg");
   --imageG2:url("../../divers/img/pf-videos-specs.jpg");
   --imageM1:url("../../divers/img/pf-rando.jpg");
@@ -36,7 +36,7 @@
   --imageD1:url("../../divers/img/pf-conseil.jpg");
   --imageD2:url("../../divers/img/pf-conseil-specs.jpg");
   --bookFront:var(--bookBorder);
-  --zoomLivre:-30vw;
+  --zoomLivre:-20vw;
   --inclinaisonLivre:-6deg;
   --rotationLivre:40deg;
   --justifyLivre:0vw;
@@ -50,20 +50,44 @@
 @media all {
   @font-face {
     font-family: "baskerville";
-    src: url(../../divers/fonts/baskervilleRegular.ttf) format("truetype");
+    src: url("../../divers/fonts/baskervilleRegular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
   }
   @font-face {
     font-family: "baskerville";
-    src: url(../../divers/fonts/baskervilleBold.ttf) format("truetype");
+    src: url("../../divers/fonts/baskervilleBold.ttf") format("truetype");
     font-weight: bold;
     font-style: normal;
   }
   @font-face {
     font-family: "baskerville";
-    src: url(../../divers/fonts/baskervilleItalic.ttf) format("truetype");
+    src: url("../../divers/fonts/baskervilleItalic.ttf") format("truetype");
     font-weight: normal;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: "amaranth";
+    src: url("../../divers/fonts/amaranthRegular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "amaranth";
+    src: url("../../divers/fonts/amaranthBold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "amaranth";
+    src: url("../../divers/fonts/amaranthItalic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: "amaranth";
+    src: url("../../divers/fonts/amaranthBoldItalic.ttf") format("truetype");
+    font-weight: bold;
     font-style: italic;
   }
 }
@@ -124,15 +148,16 @@ html, body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  font-family: "amaranth";
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
-#preHUD, #containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre {
+#containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre {
   pointer-events: none;
 }
-#preHUD #preInput,
-#preHUD #teleport,
-#preHUD nav.gauche ul,
-#preHUD nav.droite, #containerHUD #preInput,
+#containerHUD #preInput,
 #containerHUD #teleport,
 #containerHUD nav.gauche ul,
 #containerHUD nav.droite, #containerView #preInput,
@@ -162,33 +187,59 @@ nav, ul, li {
 
 #preHUD {
   position: absolute;
-  z-index: 1000;
+  z-index: 999;
   height: 100vh;
   width: 100vw;
-  background-image: radial-gradient(ellipse closest-side at 49% 21.5%, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.05) 20%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.3) 30%, rgba(0, 0, 0, 0.8) 80%), radial-gradient(ellipse closest-side at 51% 75%, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.05) 20%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.3) 10%, rgba(0, 0, 0, 0.8) 80%), url("../../divers/img/hudDark.jpg");
-  background-position: center;
-  background-size: 100% 130%;
 }
-#preHUD.anim {
-  animation: departHUD 0.1s linear forwards;
+#preHUD #cache {
+  background: black;
+  height: 100vh;
+  width: 100vw;
+  animation: bienvenueCache 0.75s linear 2.25s forwards;
+}
+#preHUD h1 {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: calc(50% - 5vw);
+  right: 50vw;
+  height: 10vw;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: grid;
+  align-content: center;
+  justify-content: start;
+  font-size: 5vw;
+  background: linear-gradient(to right, #55c6ee, #fff 25%, #55c6ee);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: bienvenueTexte 1.75s linear 0.5s forwards;
+}
+#preHUD #startIcon {
+  position: absolute;
+  top: calc(50% - 5vw);
+  right: 45vw;
+  height: 10vw;
+  width: 35vw;
+  border-radius: 40% 0 0 40%;
+  background: url("../../divers/img/startIcon.png"), black;
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: bienvenueIcon 1.75s linear 0.5s forwards;
+}
+#preHUD #startIcon::after {
+  position: absolute;
+  content: "";
+  right: 0;
+  height: 10vw;
+  width: 10vw;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 3px solid #55c6ee;
 }
 
-@keyframes departHUD {
-  0% {
-    opacity: 1;
-  }
-  40% {
-    opacity: 1;
-  }
-  99% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-    z-index: -1;
-    display: none;
-  }
-}
 @keyframes departMulti {
   from {
     -webkit-clip-path: circle(0%);
@@ -197,6 +248,58 @@ nav, ul, li {
   to {
     -webkit-clip-path: circle(100%);
             clip-path: circle(100%);
+  }
+}
+@keyframes bienvenueTexte {
+  0% {
+    transform: translateX(0vw);
+  }
+  50% {
+    transform: translateX(20vw);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(20vw);
+    opacity: 1;
+  }
+  90% {
+    transform: translateX(20vw);
+    visibility: visible;
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes bienvenueIcon {
+  0% {
+    width: translateX(0vw);
+  }
+  50% {
+    transform: translateX(-12vw);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(-12vw);
+    opacity: 1;
+  }
+  90% {
+    transform: translateX(-12vw);
+    visibility: visible;
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes bienvenueCache {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 #containerHUD {
@@ -213,24 +316,21 @@ nav, ul, li {
   perspective-origin: center;
 }
 
-@keyframes pasContent {
-  from {
-    background-image: url("../../divers/img/multivac.gif");
-  }
-  to {
-    background-image: url("../../divers/img/multivacRed.gif");
-  }
-}
 #multivac {
-  position: absolute;
-  top: 20px;
-  left: 40px;
+  position: relative;
+  grid-row: 1;
+  grid-column: 6;
+  justify-self: center;
+  top: 50%;
   display: grid;
   place-content: center;
-  height: 12vh;
-  min-height: 70px;
-  max-height: 130px;
+  height: 14vh;
+  min-height: 100px;
+  max-height: 200px;
   aspect-ratio: 1/1;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 4px solid #55c6ee;
   -webkit-clip-path: circle(0%);
           clip-path: circle(0%);
   animation: departMulti 1s linear 3s forwards;
@@ -240,9 +340,7 @@ nav, ul, li {
   display: block;
   height: 100%;
   width: 100%;
-  background-image: url("../../divers/img/multivac.gif");
-  background-repeat: no-repeat;
-  background-size: contain;
+  background: center/contain no-repeat url("../../divers/img/startIcon.png");
 }
 #multivac #waitingMenu {
   position: absolute;
@@ -278,12 +376,12 @@ nav, ul, li {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  row-gap: 2%;
   transform: translateX(2vw) rotateY(80deg) translateZ(calc(var(--menuProfondeur)));
 }
 #containerHUD nav.gauche ul li {
   position: relative;
   transform-style: preserve-3d;
+  cursor: pointer;
   height: 15%;
   width: 75%;
   text-transform: uppercase;
@@ -292,16 +390,20 @@ nav, ul, li {
   display: grid;
   align-content: center;
   padding-left: 20px;
+  margin-bottom: 10px;
   font-size: clamp(1.5rem, 3vw, 2rem);
   text-shadow: -0.06rem 0rem 0 rgb(148, 163, 184), -0.06rem 0.05rem 0 #0f172a, -0.12rem 0.025rem 0 #94a3b8, -0.12rem 0.075rem 0 #0f172a, -0.18rem 0.05rem 0 #94a3b8, -0.18rem 0.1rem 0 #0f172a, -0.24rem 0.075rem 0 #94a3b8, -0.24rem 0.125rem 0 #0f172a, -0.3rem 0.1rem 0 #94a3b8, -0.3rem 0.15rem 0 #0f172a;
-  cursor: pointer;
-  transition: transform 3s;
+  transition: transform var(--vitesseSortie) !important;
 }
-#containerHUD nav.gauche ul li:hover {
-  transform: translateX(30px);
+#containerHUD nav.gauche ul li:hover:not(.anim) {
+  transform: translateX(0px) !important;
+  background-color: var(--mainColor1);
 }
-#containerHUD nav.gauche ul li.clicked {
-  transform: translate3d(0, 0, 0) rotateY(var(--menuAngle)) translateX(10000px) scale(0);
+#containerHUD nav.gauche ul li:hover:not(.anim)::before, #containerHUD nav.gauche ul li:hover:not(.anim)::after {
+  background-color: var(--subColor);
+}
+#containerHUD nav.gauche ul li.clicked:not(.anim) {
+  transform: translate3d(0, 0, 0) rotateY(var(--menuAngle)) translateX(10000px) scale(0) !important;
 }
 #containerHUD nav.gauche ul li::before {
   position: absolute;
@@ -369,14 +471,14 @@ nav, ul, li {
   position: relative;
   z-index: 100;
   height: 78vh;
-  width: 15vw;
+  width: 18vw;
   display: none;
   grid-template-rows: repeat(5, 10vh) 30vh;
   grid-template-columns: 1fr;
 }
 #containerHUD nav.droite ul {
   height: 78vh;
-  width: 15vw;
+  width: 18vw;
   display: grid;
   align-content: center;
   grid-template-rows: 10vh repeat(5, 12vh) 10vh;
@@ -387,7 +489,7 @@ nav, ul, li {
   display: grid;
   align-content: center;
   min-height: 12vh;
-  min-width: 15vw;
+  min-width: 18vw;
 }
 #containerHUD nav.droite ul li:nth-of-type(1) {
   grid-column: 1;
@@ -561,6 +663,7 @@ html body #containerHUD nav.droite ul li > * {
   z-index: 1000;
   height: 100vh;
   width: 100vw;
+  font-family: "baskerville";
 }
 #modal #exitModal {
   all: initial;
@@ -602,17 +705,19 @@ html body #containerHUD nav.droite ul li > * {
   overflow: scroll;
 }
 #modal #containerModal h1 {
-  font-size: clamp(2rem, 3vw, 3rem);
+  font-size: clamp(2rem, 2.8vw, 2.75rem);
+  margin-bottom: 10px;
 }
 #modal #containerModal h3 {
-  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  font-size: clamp(1.5rem, 2.2vw, 2.25rem);
+  margin-bottom: 5px;
 }
 #modal #containerModal p {
-  font-size: clamp(1rem, 2.2vw, 2rem);
+  font-size: clamp(1rem, 2vw, 1.75rem);
 }
 #modal #containerModal #captcha {
+  display: none;
   position: relative;
-  display: flex;
   flex-direction: column;
   width: 100%;
   height: 50vh;
