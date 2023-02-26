@@ -1,81 +1,52 @@
 @keyframes enterContact {
   from {
-    -webkit-clip-path: circle(0%);
-            clip-path: circle(0%);
+    -webkit-clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+            clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
   }
   to {
-    -webkit-clip-path: circle(100%);
-            clip-path: circle(100%);
+    -webkit-clip-path: polygon(0% 100%, 0% 0%, 100% 0%, 100% 100%);
+            clip-path: polygon(0% 100%, 0% 0%, 100% 0%, 100% 100%);
   }
 }
 @keyframes leaveContact {
   from {
-    -webkit-clip-path: circle(100%);
-            clip-path: circle(100%);
+    -webkit-clip-path: polygon(0% 100%, 0% 0%, 100% 0%, 100% 100%);
+            clip-path: polygon(0% 100%, 0% 0%, 100% 0%, 100% 100%);
   }
   to {
-    -webkit-clip-path: circle(0%);
-            clip-path: circle(0%);
+    -webkit-clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+            clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
   }
 }
-#CONTACT.anim {
+#CONTACT.anim #screenContact,
+#CONTACT.anim #footerContact,
+#CONTACT.anim #headerContact {
   animation: enterContact calc(var(--vitesseEntree) / 4 * 3) linear forwards;
 }
 
+/* ---- GRILLE DU FORMULAIRE ---- */
 #CONTACT {
   position: absolute;
   z-index: 100;
-  visibility: visible !important;
-  border-radius: 10px;
-  background-image: radial-gradient(ellipse farthest-side at center, var(--mainColor4Light), rgba(245, 245, 245, 0));
-  background-clip: padding-box;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  -webkit-clip-path: circle(0%);
-          clip-path: circle(0%);
-}
-#CONTACT h2 {
-  display: grid;
-  place-content: center;
-  color: whitesmoke;
-  margin: 0 0 10px 0;
-  padding: 0;
-  font-size: 3vw;
-  text-shadow: 1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1.5px #919191, 1px 4px 2px #919191, 1px 18px 5px var(--blackLight), 1px 21px 10px var(--blackLight2), 1px 24px 30px var(--blackLight2), 1px 27px 60px var(--blackLight);
-}
-#CONTACT #confirmP {
-  display: none;
-  position: relative;
-  margin: 0;
-  padding: 0;
-  color: #00ff00;
-  font-size: clamp(1.2rem, 2vw, 2rem);
-  font-weight: bold;
-  text-align: center;
-}
-#CONTACT #confirmP.confirm {
-  display: block;
-}
-#CONTACT .boutons {
-  display: flex;
   justify-content: center;
+  border-radius: 10px;
+  grid-template-columns: 12.1vw 35.8vw 12.1vw;
+  grid-template-rows: 15.7vh 46.6vh 15.7vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+  border: 7.5px solid var(--mainColor1);
+  overflow: visible;
 }
-#CONTACT .boutons button {
-  all: initial !important;
-  display: flex !important;
-}
-#CONTACT .boutons button i {
-  margin: 0 10px;
-  justify-self: top;
-  font-size: clamp(1.75rem, 6vh, 3rem);
-  cursor: pointer;
-}
-#CONTACT .boutons #supprimer i {
-  color: #FFA500;
-}
-#CONTACT .boutons #valider i {
-  color: #00ff00;
+#CONTACT::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: url("../../divers/img/contact.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  filter: hue-rotate(10deg) contrast(1.5);
 }
 #CONTACT button, #CONTACT .intitules span p {
   -webkit-user-select: none !important;
@@ -83,140 +54,217 @@
           user-select: none !important;
 }
 
-#supprimer i,
-#valider i {
+/* ---- BOUTONS VALIDER ET ANNULER ---- */
+#footerContact {
+  position: relative;
+  grid-row: 3;
+  grid-column: 2;
+  justify-self: end;
+  align-self: center;
+  min-height: 70%;
+  min-width: 33%;
+  width: 20vh;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -moz-column-gap: 2vh;
+       column-gap: 2vh;
+  border-radius: 10%;
+  background-color: var(--mainColor4Light);
+  box-sizing: border-box;
+  border: 7.5px solid var(--mainColor1);
+  overflow: visible;
+}
+#footerContact button {
+  all: initial !important;
+  width: -moz-fit-content;
+  width: fit-content;
+  overflow: visible;
+}
+#footerContact button i {
+  position: relative;
+  justify-self: top;
+  font-size: clamp(1.75rem, 8vh, 4rem);
+  overflow: visible;
+  cursor: pointer;
+}
+#footerContact #supprimer i,
+#footerContact #valider i {
   text-shadow: 1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1.5px #919191, 1px 18px 3px var(--blackLight), 1px 21px 5px var(--blackLight2), 1px 24px 8px var(--blackLight2), 1px 27px 20px var(--blackLight2), 1px 30px 40px var(--blackLight2);
   transform: translate(0, 0);
   transition: opacity 0.5s;
 }
-#supprimer i:hover,
-#valider i:hover {
+#footerContact #supprimer i:hover,
+#footerContact #valider i:hover {
   text-shadow: 1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1.5px #919191, 1px 14px 3px var(--blackLight), 1px 17px 5px var(--blackLight2), 1px 20px 8px var(--blackLight2), 1px 23px 20px var(--blackLight2), 1px 26px 40px var(--blackLight2);
   transform: translate(0px, 2px);
 }
-#supprimer i:active,
-#valider i:active {
+#footerContact #supprimer i:active,
+#footerContact #valider i:active {
   text-shadow: 1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1.5px #919191, 1px 8px 3px var(--blackLight), 1px 11px 5px var(--blackLight2), 1px 14px 8px var(--blackLight2), 1px 17px 20px var(--blackLight2), 1px 20px 40px var(--blackLight2);
   transform: translate(0px, 4px);
 }
+#footerContact #supprimer i {
+  color: #FFA500;
+}
+#footerContact #valider i {
+  color: #00ff00;
+}
 
-/* ---- LA LIGNE DES INPUTS ---- */
-.inputs {
+/* ---- HEADER CONTACT (Titre et Msg) ---- */
+#headerContact {
+  position: relative;
+  grid-row: 1;
+  grid-column: 2;
+  align-self: center;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 3%;
+  box-sizing: border-box;
+  border: 7.5px solid var(--mainColor1);
+  background-color: var(--mainColor4Light);
+}
+#headerContact h2 {
+  position: relative;
+  display: grid;
+  place-content: center;
+  min-height: 75%;
+  color: var(--fontLight);
+  margin: 0;
+  padding: 0;
+  font-size: 3vw;
+  text-shadow: 1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1.5px #919191, 1px 4px 2px #919191, 1px 18px 5px var(--blackLight), 1px 21px 10px var(--blackLight2), 1px 24px 30px var(--blackLight2), 1px 27px 60px var(--blackLight);
+}
+#headerContact #confirmP {
+  display: none;
+  position: relative;
+  min-height: 25%;
+  margin: 0;
+  padding: 0;
+  color: #00ff00;
+  font-size: clamp(1.2rem, 1.5vw, 2rem);
+  font-weight: bold;
+  text-align: center;
+}
+#headerContact #confirmP.confirm {
+  display: block;
+}
+
+/* ---- SCREEN ORDI (LABELS, SPANS & INPUTS) ---- */
+#screenContact {
+  position: relative;
+  grid-row: 2;
+  grid-column: 2;
+  align-self: center;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-radius: 3%;
+  box-sizing: border-box;
+  border: 7.5px solid var(--mainColor1);
+  background-color: var(--mainColor4Light);
+}
+#screenContact .inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   min-width: 100%;
-  height: 50px;
+  height: 20%;
+  min-height: 50px;
 }
-.inputs.message {
-  height: 30vh;
+#screenContact .inputs.message {
+  height: 50% !important;
 }
-.inputs label {
+#screenContact .inputs label {
   position: relative;
   z-index: 10;
-  height: 30px;
-  width: calc(40% - 10px);
-  top: -22px;
-  left: 0;
+  min-height: 60%;
+  padding-left: 10px;
+  padding-top: 5px;
+  width: calc(55% - 10px);
   color: rgba(200, 200, 200, 0.7);
+  text-align: start;
   font-weight: bold;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
   transition: 0.33s;
+  top: calc(-60% - 4px);
 }
-.inputs label.message {
-  top: calc(-30vh + 30px) !important;
+#screenContact .inputs label.message {
+  top: calc(-95% - 4px) !important;
 }
-.inputs input {
+#screenContact .inputs input {
   all: initial;
 }
-.inputs input, .inputs textarea {
+#screenContact .inputs input, #screenContact .inputs textarea {
   position: relative;
   pointer-events: auto;
   top: 0;
-  flex: 2 1 auto;
   border: none;
-  border-bottom: 2px solid var(--mainColor3);
+  border-bottom: 4px solid rgb(0, 162, 255);
   padding-left: 3px;
   background: var(--mainColor1) !important;
-  height: 30px;
-  width: 40%;
+  min-height: 60%;
+  width: calc(55% - 3px);
   transition: 0.33s;
   cursor: text !important;
 }
-.inputs input::-moz-placeholder, .inputs textarea::-moz-placeholder {
+#screenContact .inputs input::-moz-placeholder, #screenContact .inputs textarea::-moz-placeholder {
   opacity: 0;
 }
-.inputs input::placeholder, .inputs textarea::placeholder {
+#screenContact .inputs input::placeholder, #screenContact .inputs textarea::placeholder {
   opacity: 0;
 }
-.inputs input:hover ~ label, .inputs textarea:hover ~ label {
-  left: -5px;
-  top: -27px;
+#screenContact .inputs input:hover ~ label, #screenContact .inputs textarea:hover ~ label {
+  transform: translate(-5px, -5px);
 }
-.inputs input:hover ~ label.message, .inputs textarea:hover ~ label.message {
-  top: calc(-30vh + 25px) !important;
+#screenContact .inputs input:focus, #screenContact .inputs textarea:focus {
+  filter: brightness(1.25);
 }
-.inputs input:focus, .inputs textarea:focus {
-  width: calc(40% + 10px);
+#screenContact .inputs input:focus ~ label, #screenContact .inputs textarea:focus ~ label {
+  transform: translate(-7px, -27px);
 }
-.inputs input:focus ~ label, .inputs textarea:focus ~ label {
-  left: -10px;
-  top: -47px;
-}
-.inputs input:focus ~ label.message, .inputs textarea:focus ~ label.message {
-  top: calc(-30vh + 5px) !important;
-}
-.inputs input:not(:-moz-placeholder-shown) ~ label.false, .inputs textarea:not(:-moz-placeholder-shown) ~ label.false {
+#screenContact .inputs input:not(:-moz-placeholder-shown) ~ label.false, #screenContact .inputs textarea:not(:-moz-placeholder-shown) ~ label.false {
   color: #FFA500;
-  left: -10px;
-  top: -47px;
+  transform: translate(-7px, -27px);
 }
-.inputs input:not(:placeholder-shown) ~ label.false, .inputs textarea:not(:placeholder-shown) ~ label.false {
+#screenContact .inputs input:not(:placeholder-shown) ~ label.false, #screenContact .inputs textarea:not(:placeholder-shown) ~ label.false {
   color: #FFA500;
-  left: -10px;
-  top: -47px;
+  transform: translate(-7px, -27px);
 }
-.inputs input:not(:-moz-placeholder-shown) ~ label.false.message, .inputs textarea:not(:-moz-placeholder-shown) ~ label.false.message {
-  top: calc(-30vh + 5px) !important;
-}
-.inputs input:not(:placeholder-shown) ~ label.false.message, .inputs textarea:not(:placeholder-shown) ~ label.false.message {
-  top: calc(-30vh + 5px) !important;
-}
-.inputs input:not(:-moz-placeholder-shown) ~ label.true, .inputs textarea:not(:-moz-placeholder-shown) ~ label.true {
+#screenContact .inputs input:not(:-moz-placeholder-shown) ~ label.true, #screenContact .inputs textarea:not(:-moz-placeholder-shown) ~ label.true {
   color: #00ff00;
-  left: -10px;
-  top: -47px;
+  transform: translate(-7px, -27px);
 }
-.inputs input:not(:placeholder-shown) ~ label.true, .inputs textarea:not(:placeholder-shown) ~ label.true {
+#screenContact .inputs input:not(:placeholder-shown) ~ label.true, #screenContact .inputs textarea:not(:placeholder-shown) ~ label.true {
   color: #00ff00;
-  left: -10px;
-  top: -47px;
+  transform: translate(-7px, -27px);
 }
-.inputs input:not(:-moz-placeholder-shown) ~ label.true.message, .inputs textarea:not(:-moz-placeholder-shown) ~ label.true.message {
-  top: calc(-30vh + 5px) !important;
-}
-.inputs input:not(:placeholder-shown) ~ label.true.message, .inputs textarea:not(:placeholder-shown) ~ label.true.message {
-  top: calc(-30vh + 5px) !important;
-}
-.inputs #message {
+#screenContact .inputs #message {
+  margin: 0;
+  padding: 0;
+  min-height: 95% !important;
   display: flex;
   align-items: flex-start;
-  height: 30vh;
-  width: 40%;
   resize: none;
 }
-.inputs #message:focus {
+#screenContact .inputs #message:focus {
   outline: none;
 }
-.inputs span {
+#screenContact .inputs span {
   position: relative;
+  top: calc(-60% - 4px);
+  min-height: 40%;
+  width: 55%;
+  text-align: end;
   font-family: "baskerville";
-  top: -22px;
-  height: 0px;
-  width: 40%;
   color: #FFA500;
   font-weight: bold;
   font-size: 0.9rem;

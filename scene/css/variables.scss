@@ -7,10 +7,11 @@
     --vitesseSortie:2s;
     --rightNavFontSize:clamp(2rem, 3vw, 3.25rem);
 	--multivac:100px;
+	--brightMachine:0.75;
 
     // COLORS //
     --bookBorder:rgb(50, 50, 50);
-    --bookPage:whitesmoke;    
+    --fontLight:whitesmoke;    
 	--mainColor:rgb(23, 80, 109);
     --mainColor1:rgb(17, 126, 181);
     --mainColor2:rgb(31, 162, 227);
@@ -24,7 +25,7 @@
     --blackLight2:rgba(10,10,10, 0.5);
     --subColorLight: rgba(39, 48, 52, 0.5);
     --mainColorLight:rgba(17, 126, 181, 0.4);
-    --mainColor4Light:rgba(108, 221, 255, 0.6);
+    --mainColor4Light:rgba(108, 221, 255, 0.2);
 
     // DISPLAY CV //
     --standLargeur:30vw; // Variable unique.
@@ -35,21 +36,23 @@
 	--inclinaisonCV:90deg;
 
     // LIVRE PORTFOLIO //
-    --livreLargeur:clamp(300px, 60vh, 30vw);
     --imageG1:url('../../divers/img/pf-videos.jpg');
     --imageG2:url('../../divers/img/pf-videos-specs.jpg');
     --imageM1:url('../../divers/img/pf-rando.jpg');
     --imageM2:url('../../divers/img/pf-rando-specs.jpg');
     --imageD1:url('../../divers/img/pf-conseil.jpg');
     --imageD2:url('../../divers/img/pf-conseil-specs.jpg');
-    --bookFront:var(--bookBorder);
 
+	--livreLargeur:clamp(300px, 60vh, 30vw);
     --zoomLivre:-20vw;
     --inclinaisonLivre:-6deg;
     --rotationLivre:40deg;
     --justifyLivre:0vw;
     --alignLivre:-6vh;
-    --gapLivre:15px;
+
+	--bookFront:var(--bookBorder);
+    --gapLivre:5px;
+	
     --vitessePage:1.6s;
 
 	// COMPETENCES //

@@ -38,7 +38,7 @@
   width: 28vw;
   background-color: rgba(17, 126, 181, 0.6);
   box-sizing: border-box;
-  border: 2px solid whitesmoke;
+  border: 2px solid var(--fontLight);
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -71,7 +71,7 @@
   height: fit-content;
   width: 100%;
   margin: calc(var(--progressSize) * 3 / 20) 0 0 calc(var(--progressSize) * 2 / 20);
-  color: whitesmoke;
+  color: var(--fontLight);
   visibility: hidden;
 }
 #COMPETENCES div article h1 {
@@ -421,7 +421,7 @@
     color: rgba(245, 245, 245, 0);
   }
   100% {
-    color: whitesmoke;
+    color: var(--fontLight);
   }
 }
 @keyframes leaveSkills {

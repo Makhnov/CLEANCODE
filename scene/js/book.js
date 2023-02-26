@@ -25,20 +25,26 @@ let tabPages = [
 
 function openBook(bool) {
 	if (pageSpamm) {
-		readBook.checked = !readBook.checked;
-		iconBook.classList.toggle('closed');
-		if (readBook.checked) {
+		if (bool) {// FROM USER CLICK
+			readBook.checked = !readBook.checked;
+			iconBook.classList.toggle('closed');
+		} else {// FROM HUD
+			readBook.checked = true;
+			iconBook.classList.remove('closed');
 			iconBook.children[0].style.zIndex = "110";
-			if (bool) {// CLIC FERMETURE
-				tempo = false;
-			} else {//FROM HUD
-				racine.style.setProperty('--zoomLivre', '-200px');
-			}
-		} else {
+		}
+		if (readBook.checked && bool) {// CLOSED FROM CLICK
 			iconBook.children[0].style.zIndex = "90";
-			if (bool) {// CLIC OUVERTURE
-				tempo = true;
-			}
+			tempo = false;
+		} else if (bool) {// OPENED FROM CLICK
+			iconBook.children[0].style.zIndex = "110";
+			tempo = true;
+		}
+	} else {
+		if (!bool) {
+			readBook.checked = true;
+			iconBook.classList.remove('closed');
+			iconBook.children[0].style.zIndex = "110";
 		}
 	}
 }

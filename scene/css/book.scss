@@ -25,7 +25,7 @@
     animation: closeBook var(--vitesseSortie) linear forwards;
 }
 #PORTFOLIO.anim #book #readBook:not(:checked) ~ #livre .blocLivre.droite {
-        animation: openBookRight var(--vitesseEntree) linear forwards;
+    animation: openBookRight var(--vitesseEntree) linear forwards;
 }
 #PORTFOLIO.anim #book #readBook:checked ~ #livre .blocLivre.droite {
     animation: closeBookRight var(--vitesseSortie) linear forwards;
@@ -69,7 +69,7 @@
         transform-origin:inherit ;
         height: var(--livreLargeur);
         width:calc(70 / 99 * var(--livreLargeur) - 3px);
-        background-color: var(--bookPage);
+        background-color: var(--fontLight);
         box-sizing: border-box;
         border: 1px dotted var(--bookBorder);
 
@@ -84,7 +84,7 @@
             width:calc(70 / 99 * var(--livreLargeur) - 3px);
             box-sizing: border-box;
             border: 1px dotted var(--bookBorder);
-            background-color: var(--bookPage);
+            background-color: var(--fontLight);
         }
 
         &::after {
@@ -98,7 +98,7 @@
             width:calc(70 / 99 * var(--livreLargeur) - 3px);
             box-sizing: border-box;
             border: 1px dotted var(--bookBorder);
-            background-color: var(--bookPage);
+            background-color: var(--fontLight);
         }
     }
 
@@ -203,41 +203,41 @@
 
 @keyframes openBookLeft {
     from {
-        transform: rotateY(88deg);
+        transform: translateX(-5px) rotateY(88deg);
     }
 
     to {
-        transform: rotateY(0deg);
+        transform: translateZ(0px) rotateY(0deg);
     }
 }
 
 @keyframes closeBookLeft {
     from {
-        transform: rotateY(0deg);
+        transform:translateZ(0px) rotateY(0deg);
     }
 
     to {
-        transform: rotateY(88deg);
+        transform:translateX(-5px) rotateY(88deg);
     }
 }
 
 @keyframes openBookRight {
     from {
-        transform: rotateY(-88deg);
+        transform: translateX(5px) rotateY(-88deg);
     }
 
     to {
-        transform: rotateY(-0deg);
+        transform: translateX(0px) rotateY(-0deg);
     }
 }
 
 @keyframes closeBookRight {
     from {
-        transform: rotateY(-0deg);
+        transform: translateX(0px) rotateY(-0deg);
     }
 
     to {
-        transform: rotateY(-88deg);
+        transform: translateX(5px) rotateY(-88deg);
     }
 }
 

@@ -62,7 +62,7 @@
   transform-origin: inherit;
   height: var(--livreLargeur);
   width: calc(0.7070707071 * var(--livreLargeur) - 3px);
-  background-color: var(--bookPage);
+  background-color: var(--fontLight);
   box-sizing: border-box;
   border: 1px dotted var(--bookBorder);
 }
@@ -76,7 +76,7 @@
   width: calc(0.7070707071 * var(--livreLargeur) - 3px);
   box-sizing: border-box;
   border: 1px dotted var(--bookBorder);
-  background-color: var(--bookPage);
+  background-color: var(--fontLight);
 }
 .blocLivre .fpage::after {
   content: "";
@@ -88,7 +88,7 @@
   width: calc(0.7070707071 * var(--livreLargeur) - 3px);
   box-sizing: border-box;
   border: 1px dotted var(--bookBorder);
-  background-color: var(--bookPage);
+  background-color: var(--fontLight);
 }
 .blocLivre.gauche {
   grid-column: 1;
@@ -224,34 +224,34 @@
 }
 @keyframes openBookLeft {
   from {
-    transform: rotateY(88deg);
+    transform: translateX(-5px) rotateY(88deg);
   }
   to {
-    transform: rotateY(0deg);
+    transform: translateZ(0px) rotateY(0deg);
   }
 }
 @keyframes closeBookLeft {
   from {
-    transform: rotateY(0deg);
+    transform: translateZ(0px) rotateY(0deg);
   }
   to {
-    transform: rotateY(88deg);
+    transform: translateX(-5px) rotateY(88deg);
   }
 }
 @keyframes openBookRight {
   from {
-    transform: rotateY(-88deg);
+    transform: translateX(5px) rotateY(-88deg);
   }
   to {
-    transform: rotateY(0deg);
+    transform: translateX(0px) rotateY(0deg);
   }
 }
 @keyframes closeBookRight {
   from {
-    transform: rotateY(0deg);
+    transform: translateX(0px) rotateY(0deg);
   }
   to {
-    transform: rotateY(-88deg);
+    transform: translateX(5px) rotateY(-88deg);
   }
 }
 .pages {

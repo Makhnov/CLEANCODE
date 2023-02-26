@@ -4,7 +4,8 @@ const racine = document.documentElement;
 const lorem = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam atque inventore rem fugiat doloremque. Neque eveniet voluptate sequi incidunt cupiditate fugit autem nihil, blanditiis optio veritatispraesentium quam dolorem officiis! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque impedit quibusdam vero veritatis distinctio dignissimos cupiditate nisi doloremque eum provident error atque porro, pariatur corporis. Numquam, unde expedita? Eius, laboriosam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores amet cumque minima, ipsum aut atque soluta harum facere nisi dicta odio eius doloribus quo obcaecati officia quia, voluptas exercitationem sequi!'
 const textInfosPortfolio = "Bienvenue sur mon portfolio, j'ai commencé la programmation web en septembre 2022 en rejoignant une formation de développeur web avec l'ADRAR de Lourdes.<br>Tous mes sites, quel que soit le(s) langage(s), sont 100% originaux, il m'arrive de chercher l'inspiration à droite à gauche bien évidemment mais je ne copie jamais la moindre ligne de code. En cliquant sur l'icone du bas dans la navigation de droite vous pouvez aller visiter les sites présentés ici et bien d'autres que j'ai pu faire tout au long de ma formation.<br>Je travaille principalement en HTML, SASS, Javascript, PHP et SQL, j'ai aussi commencé la pratique de divers frameworks (Vue, React, Laravel, Symfony, etc.).<br><br>Mon gitHub : <a href='https://github.com/Makhnov/' target='_blank'>Makhnov</a>"
 
-const startBG = document.getElementById('preHUD');
+const theme = document.getElementById('theme');
+const startBG = document.getElementById('animHUD');
 
 const skills = document.getElementById('COMPETENCES').children;
 
@@ -18,10 +19,9 @@ let vitesse1 = getComputedStyle(racine).getPropertyValue('--vitesseEntree');
 let vitesse2 = getComputedStyle(racine).getPropertyValue('--vitesseSortie');
 let speedIn = parseFloat(vitesse1.replace('s', '')) * 1000;
 let speedOut = parseFloat(vitesse2.replace('s', '')) * 1000;
-let tempo = false;
 
 const machine = document.getElementById('machine');
-const urlGIF = "../../divers/img/loading2s.gif?time=";
+const urlGIF = "../../divers/img/loading2.gif?time=";
 function loadingGIF() {
 	waitingMenu.style.backgroundImage = `url(${urlGIF + new Date().getTime()})`;
 }
@@ -35,7 +35,7 @@ const modalResume = document.getElementById('containerModal').children[1];
 const modalTexte = document.getElementById('containerModal').children[2];
 const modalCaptcha = document.getElementById('captcha');
 
-
+let tempo = false;
 let menuSpamm;
 let resizeSpamm;
 
@@ -51,6 +51,7 @@ function refresh() {
 	clearScene('all');
 	resize();
 	validerCheck(form);
+	waitingMenu.style.backgroundImage = "none";
 
 	startBG.style.display = "initial";
 	setTimeout(() => {
@@ -116,11 +117,29 @@ function resize() {
 	//waitingMenu.style.transform = "translate3d(0, 0, -" + depth + "px) rotateY(" + -angle + "deg)";
 }
 
+function swapTheme() {
+	if (waitingMenu.style.backgroundImage === 'none') {// GO !!!
+		theme.classList.remove('start');
+		theme.classList.toggle('dark');
+		theme.classList.toggle('light');
+
+		if (theme.classList.contains('dark')) {
+			racine.style.setProperty('--fontLight', '#fff');
+			racine.style.setProperty('--brightMachine', '1.25');
+		} else {
+			racine.style.setProperty('--fontLight', 'whitesmoke');
+			racine.style.setProperty('--brightMachine', '0.75');
+		}
+	} else {// WAIT...
+	}
+}
+
 for (let i = 0; i < li.length; i++) {
 	let iTemp = i;
 	li[i].addEventListener('click', function () {
 		clearTimeout(menuSpamm);
 		if (spamm(i)) {
+			//console.log(iTemp);
 			menuAsync(iTemp);
 		}
 	});
@@ -145,6 +164,7 @@ async function menuAsync(iTemp) {
 		if (li[j].classList.contains("clicked") && j !== iTemp) {
 			li[j].classList.remove("clicked");
 			tabNav[j] = false;
+			//console.log(j);
 			closingScene(j);
 		}
 	}
@@ -153,12 +173,12 @@ async function menuAsync(iTemp) {
 	if (tempo) {
 		machine.style.display = "none";
 		loadingGIF();
+		waitingMenu.style.pointerEvents = "auto";
 		await delayLi(speedOut);
 	} else {
 		await delayLi(0);
 	}
 	// FIN TEMPO
-
 
 	// AFTER
 	machineMenu();
@@ -206,7 +226,7 @@ function closingScene(index) {
 			dezoomLivre();
 			openBook(false);
 			break;
-		case 2:
+		case 2:// CV
 			openCV(false);
 			break;
 		case 3://COMPETENCES
@@ -235,11 +255,13 @@ function openSkills(bool) {
 }
 
 function openForm(bool) {
-	form.style.animation = "leaveContact" + space + (speedOut / 1000) + "s linear" + space + "forwards";
 
-	setTimeout(function () {
-		form.style.removeProperty("animation");
-	}, speedOut);
+	for (let child of form.children) {
+		child.style.animation = "leaveContact" + space + (speedOut / 1000) + "s linear" + space + "forwards";
+		setTimeout(function () {
+			child.style.removeProperty("animation");
+		}, speedOut);
+	}
 }
 
 function clearScene(index) {
@@ -267,23 +289,26 @@ function clearScene(index) {
 function machineMenu() {
 	let index = checkTabNav();
 	waitingMenu.style.backgroundImage = "none";
+	waitingMenu.style.removeProperty("pointer-events");
 	machine.style.display = "block";
+	machine.style.borderRadius = "0";
 	let url;
 	switch (index) {
 		case 0://A PROPOS
-			url = "center / contain no-repeat url('../../divers/img/startIcon.png')";
+			url = "center / contain no-repeat url('../../divers/img/favfolio.png')";
 			break;
 		case 1://PORTFOLIO
-			url = "center / contain no-repeat url('../../divers/img/book.png')";
+			url = "center / 110% no-repeat url('../../divers/img/favbook.png')";
 			break;
 		case 2://CV
-			url = "center / contain no-repeat url('../../divers/img/favcv.png')";
+			url = "center / 100% no-repeat url('../../divers/img/favcv.png')";
 			break;
 		case 3://COMPETENCES
-			url = "center / contain no-repeat url('../../divers/img/skillsButton.png')";
+			url = "left top / 115% no-repeat url('../../divers/img/favskills.png')";
+			machine.style.borderRadius = "50%";
 			break;
 		case 4://CONTACT
-			url = "center / contain no-repeat url('../../divers/img/favmail.png')";
+			url = "center / 100% no-repeat url('../../divers/img/favmail.png')";
 			break;
 	}
 	machine.style.background = url;
@@ -307,7 +332,7 @@ function checkWidth() {
 	}
 }
 
-function openModal(index) {
+function openModal(index, bool) {
 	switch (index) {
 		case 0://A PROPOS
 			break;
@@ -332,7 +357,13 @@ function openModal(index) {
 
 			modalTexte.style.margin = "0";
 			modalTexte.style.height = "100vh";
-			modalTexte.style.background = "url('../../divers/img/docFront.jpg')";
+
+			if (bool) {
+				modalTexte.style.background = "url('../../divers/img/cvFront.jpg')";
+			} else {
+				modalTexte.style.background = "url('../../divers/img/cvBack.jpg')";
+			}
+
 			modalTexte.style.backgroundSize = "contain";
 			checkWidth();
 			break;
