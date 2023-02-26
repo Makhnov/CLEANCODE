@@ -125,10 +125,9 @@ function zoomLivre() {
 	racine.style.setProperty('--zoomLivre', '0');
 	racine.style.setProperty('--inclinaisonLivre', '0deg');
 	racine.style.setProperty('--justifyLivre', '0vw');
-	racine.style.setProperty('--alignLivre', '-3vh');
+	racine.style.setProperty('--alignLivre', '0vh');
 	racine.style.setProperty('--rotationLivre', '0deg');
-	//livre.style.top = "-6vh";
-	// livre.style.left = "-5vw";
+	livre.style.marginBottom = "5vh";
 }
 
 function dezoomLivre() {

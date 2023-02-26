@@ -361,7 +361,7 @@ function openModal(index, bool) {
 			if (bool) {
 				modalTexte.style.background = "url('../../divers/img/cvFront.jpg')";
 			} else {
-				modalTexte.style.background = "url('../../divers/img/cvBack.jpg')";
+				modalTexte.style.background = "url('../../divers/img/cvBack2.jpg')";
 			}
 
 			modalTexte.style.backgroundSize = "contain";

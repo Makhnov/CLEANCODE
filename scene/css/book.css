@@ -61,10 +61,10 @@
   transform-style: preserve-3d;
   transform-origin: inherit;
   height: var(--livreLargeur);
-  width: calc(0.7070707071 * var(--livreLargeur) - 3px);
+  width: calc(0.7070707071 * var(--livreLargeur) - 6px);
   background-color: var(--fontLight);
   box-sizing: border-box;
-  border: 1px dotted var(--bookBorder);
+  border-bottom: 1px dotted var(--bookBorder);
 }
 .blocLivre .fpage::before {
   content: "";
@@ -73,7 +73,7 @@
   top: 0;
   left: 0;
   height: var(--livreLargeur);
-  width: calc(0.7070707071 * var(--livreLargeur) - 3px);
+  width: calc(0.7070707071 * var(--livreLargeur) - 6px);
   box-sizing: border-box;
   border: 1px dotted var(--bookBorder);
   background-color: var(--fontLight);
@@ -85,7 +85,7 @@
   top: 0;
   left: 0;
   height: var(--livreLargeur);
-  width: calc(0.7070707071 * var(--livreLargeur) - 3px);
+  width: calc(0.7070707071 * var(--livreLargeur) - 6px);
   box-sizing: border-box;
   border: 1px dotted var(--bookBorder);
   background-color: var(--fontLight);
@@ -259,13 +259,13 @@
   top: 0;
   left: 0;
   height: var(--livreLargeur);
-  width: calc(0.7070707071 * var(--livreLargeur));
+  width: calc(0.7070707071 * var(--livreLargeur) - 6px);
   transform-style: preserve-3d;
 }
 
 #pageG {
   transform-origin: right;
-  transform: translateX(-3px) translateZ(13.2px) rotateY(2.6deg);
+  transform: translateX(-1px) translateZ(13.2px) rotateY(2.6deg);
   pointer-events: auto;
 }
 #pageG.anim {
@@ -277,7 +277,7 @@
 
 #pageD {
   transform-origin: left;
-  transform: translateX(2.5px) translateZ(13.2px) rotateY(-2.6deg);
+  transform: translateX(1px) translateZ(13.2px) rotateY(-2.6deg);
   pointer-events: auto;
 }
 #pageD.anim {
@@ -325,7 +325,7 @@
 }
 #pageG > .bandeGauche .bandeGauche {
   background-size: 700% 100%;
-  right: calc(0.101010101 * var(--livreLargeur) - 0.5px);
+  right: calc(0.101010101 * var(--livreLargeur) - 1px);
 }
 #pageG > .bandeGauche .bandeGauche::after {
   background-size: 700% 100%;
@@ -385,7 +385,7 @@
 }
 #pageD > .bandeDroite .bandeDroite {
   background-size: 700% 100%;
-  left: calc(0.101010101 * var(--livreLargeur) - 0.5px);
+  left: calc(0.101010101 * var(--livreLargeur) - 1px);
 }
 #pageD > .bandeDroite .bandeDroite::after {
   background-size: 700% 100%;
@@ -433,29 +433,29 @@
 
 @keyframes pageGauche {
   0% {
-    transform: translateX(0px) translateZ(13.2px) rotateY(2.6deg);
+    transform: translateZ(13.2px) translateX(-1px) rotateY(2.6deg);
     visibility: visible;
   }
   75% {
-    transform: translateX(var(--gapLivre)) translateZ(13.2px) rotateY(177.4deg);
+    transform: translateZ(13.2px) translateX(calc(2 * var(--gapLivre))) rotateY(177.4deg);
     visibility: visible;
   }
   100% {
-    transform: translateX(var(--gapLivre)) translateZ(13.2px) rotateY(177.4deg);
+    transform: translateZ(13.2px) translateX(calc(2 * var(--gapLivre))) rotateY(177.4deg);
     visibility: visible;
   }
 }
 @keyframes pageDroite {
   0% {
-    transform: translateX(0px) translateZ(13.2px) rotateY(-2.6deg);
+    transform: translateZ(13.2px) translateX(1px) rotateY(-2.6deg);
     visibility: visible;
   }
   75% {
-    transform: translateX(calc(-1 * var(--gapLivre))) translateZ(13.2px) rotateY(-177.4deg);
+    transform: translateZ(13.2px) translateX(calc(-2 * var(--gapLivre))) rotateY(-177.4deg);
     visibility: visible;
   }
   100% {
-    transform: translateX(calc(-1 * var(--gapLivre))) translateZ(13.2px) rotateY(-177.4deg);
+    transform: translateZ(13.2px) translateX(calc(-2 * var(--gapLivre))) rotateY(-177.4deg);
     visibility: visible;
   }
 }
