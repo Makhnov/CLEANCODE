@@ -1,0 +1,11 @@
+#portrait {
+  position: absolute;
+  transform-style: preserve-3d;
+  pointer-events: auto;
+  align-self: center;
+  justify-self: center;
+  width: 400px;
+  height: 325px;
+  border-radius: 50%;
+  box-sizing: border-box;
+}/*# sourceMappingURL=about.css.map */

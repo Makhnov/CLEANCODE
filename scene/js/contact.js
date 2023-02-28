@@ -3,7 +3,8 @@ const spans = document.querySelectorAll('#CONTACT div span'); // On récupère t
 const inputs = document.querySelectorAll('#CONTACT .inputs'); // On récupère tous les inputs (collection) dans le DOM
 const labels = document.querySelectorAll('#CONTACT label'); // On récupère tous les labels (collection) dans le DOM
 const valider = document.getElementById('valider');
-const captchaInput = document.getElementById("captchaInput")
+const captchaInput = document.getElementById("captchaInput");
+const captchaImg = document.getElementById('captchaImg');
 
 /* --------------------------------- FONCTION QUI CACHE LE BOUTON VALIDER TANT QUE NECESSAIRE --------------------------------- */
 
@@ -226,7 +227,6 @@ function captcha() {
 }
 
 async function verifCaptcha() {
-
 	try {
 		const response = await fetch("../../utils/verif_captcha.php", {
 			method: "POST",

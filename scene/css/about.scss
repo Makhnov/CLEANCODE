@@ -1,0 +1,46 @@
+#APROPOS {
+	//background-color: rgba(0, 0, 0, 0.404);
+	&.anim #portrait {
+		//animation: nicoPixel linear calc(var(--vitesseEntree) / 2) forwards;
+	}
+}
+
+#portrait {
+	position: absolute;
+	transform-style: preserve-3d;
+	pointer-events: auto;
+	align-self: center;
+	justify-self: center;
+	width: 400px;
+	height:325px;
+	border-radius: 50%;
+	box-sizing: border-box;
+}
+
+// #blurCanvas {
+// 	position: absolute;
+// 	transform-style: preserve-3d;
+// 	pointer-events: auto;
+// 	align-self: center;
+// 	justify-self: center;
+// 	width: 400px;
+// 	height:325px;
+// 	border-radius: 50%;
+// 	border-radius: 50%;
+// 	background: radial-gradient(
+// 		rgba(255,255,255,0) 0%, 
+// 		var(--mainColor3) 75%, 
+// 		var(--mainColor4) 100%, 
+// 		rgba(255,255,255,0) 125%); 
+// 	filter: blur(10px); /* applique le flou */
+// }
+
+// @keyframes nicoPixel {
+// 	from {
+// 		transform: scale(0);// rotateY(0);
+// 	}
+
+// 	to {
+// 		transform: scale(1);// rotateY(360deg);
+// 	}
+// }

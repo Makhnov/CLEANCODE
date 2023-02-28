@@ -1,5 +1,16 @@
 const br = '\n';
 const space = ' ';
+
+function PoF() {
+	const random = Math.random();
+	if (random < 0.5) {
+		return -1;
+	} else {
+		return 1;
+	}
+}
+
+
 const racine = document.documentElement;
 const lorem = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam atque inventore rem fugiat doloremque. Neque eveniet voluptate sequi incidunt cupiditate fugit autem nihil, blanditiis optio veritatispraesentium quam dolorem officiis! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque impedit quibusdam vero veritatis distinctio dignissimos cupiditate nisi doloremque eum provident error atque porro, pariatur corporis. Numquam, unde expedita? Eius, laboriosam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores amet cumque minima, ipsum aut atque soluta harum facere nisi dicta odio eius doloribus quo obcaecati officia quia, voluptas exercitationem sequi!'
 const textInfosPortfolio = "Bienvenue sur mon portfolio, j'ai commencé la programmation web en septembre 2022 en rejoignant une formation de développeur web avec l'ADRAR de Lourdes.<br>Tous mes sites, quel que soit le(s) langage(s), sont 100% originaux, il m'arrive de chercher l'inspiration à droite à gauche bien évidemment mais je ne copie jamais la moindre ligne de code. En cliquant sur l'icone du bas dans la navigation de droite vous pouvez aller visiter les sites présentés ici et bien d'autres que j'ai pu faire tout au long de ma formation.<br>Je travaille principalement en HTML, SASS, Javascript, PHP et SQL, j'ai aussi commencé la pratique de divers frameworks (Vue, React, Laravel, Symfony, etc.).<br><br>Mon gitHub : <a href='https://github.com/Makhnov/' target='_blank'>Makhnov</a>"
@@ -8,6 +19,7 @@ const theme = document.getElementById('theme');
 const startBG = document.getElementById('animHUD');
 
 const skills = document.getElementById('COMPETENCES').children;
+const apropos = document.getElementById('APROPOS');
 
 const li = document.querySelectorAll('li.gauche');
 const navGauche = document.getElementsByTagName('nav')[0].children[0];
@@ -192,10 +204,12 @@ function delayLi(ms) {
 				if (!tabNav[j]) {
 					scene[j].classList.add("hidden");
 					scene[j].classList.remove("anim");
+					scene[j].dispatchEvent(new Event("change"));
 					clearScene(j);
 				} else {
 					scene[j].classList.remove("hidden");
 					scene[j].classList.add("anim");
+					scene[j].dispatchEvent(new Event("change"));
 					tempo = true;
 				}
 
