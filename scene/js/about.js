@@ -13,6 +13,8 @@ class Particule {
 	}
 }
 
+const iconPixel = document.getElementById('pixelize');
+const portrait = document.getElementById('portrait');
 const canvas = document.getElementById('portrait');
 const ctx = canvas.getContext('2d');
 canvas.width = 400;
@@ -23,6 +25,13 @@ let particulesFalse = null;
 const width = 80;
 const height = 65;
 const partSize = 5;
+
+let animationStarted;
+let completedAnimations;
+let isSwap = true;
+let firstCreate = true;
+let listener = true;
+let isZoomed = false;
 
 fetch('../../files/nicoPixel.csv')
 	.then(response => response.text())
@@ -40,47 +49,24 @@ fetch('../../files/nicoPixel.csv')
 		}
 
 		particulesTrue.sort((a, b) => a.index - b.index);
-		particulesFalse = [...particulesTrue];
-		console.log(particulesFalse);
-
-		apropos.addEventListener('change', event => {
-			const classIn = event.target.classList.contains('anim');
-			if (classIn) {
-				Nico();
-			}
-		});
+		//console.log(particulesFalse);
 	})
 	.catch(error => console.error(error));
 
-let animationStarted;
-let completedAnimations;
-let isSwap = true;
-let firstCreate = true;
-
-function Nico() {
-	if (firstCreate) {
-		console.log('create');
-		animationStarted = false;
-		completedAnimations = 0;
-		console.log(initialisationNico(particulesTrue));
-	} else {
-		if (isSwap && !animationStarted) {
-			console.log('destroy');
-			animationStarted = false;
-			completedAnimations = 0;
-			isSwap = !isSwap;
-			swapNico(particulesFalse);
-		} else if (!animationStarted) {
-			console.log('create');
-			animationStarted = false;
-			completedAnimations = 0;
-			isSwap = !isSwap;
-			swapNico(particulesTrue);
-		} else {
-			console.log('TOUDOUBIJOU!');
-		}
+apropos.addEventListener('change', event => {
+	const classIn = event.target.classList.contains('anim');
+	if (classIn) {
+		particulesFalse = [...particulesTrue];
+		tempo = false;
+		listener = true;
+		openPixel(false);
 	}
-	firstCreate = false;
+});
+
+function drawParticules(ctx, tabObj) {
+	tabObj.forEach(particule => {
+		particule.draw(ctx);
+	});
 }
 
 function initialisationNico(tabObj) {
@@ -101,7 +87,7 @@ function initialisationNico(tabObj) {
 	}
 
 	tabObj.forEach((particule) => {
-		const duration = Math.floor(Math.random() * (speedIn - 500)) + 500;
+		const duration = Math.floor(Math.random() * speedIn);
 		const targetX = particule.x;
 		const targetY = particule.y;
 		const signX = PoF();
@@ -160,7 +146,7 @@ function swapNico(tabObj) {
 	}
 
 	tabObj.forEach((particule) => {
-		const duration = Math.floor(Math.random() * (speedIn - 500)) + 500;
+		const duration = Math.floor(Math.random() * speedOut);
 		const targetX = particule.startX;
 		const targetY = particule.startY;
 		const startX = particule.x;
@@ -202,8 +188,98 @@ function swapNico(tabObj) {
 	drawFrame();
 }
 
-function drawParticules(ctx, tabObj) {
-	tabObj.forEach(particule => {
-		particule.draw(ctx);
-	});
+function openPixel(bool) {
+	if (!isZoomed) {
+		portrait.style.opacity = '1';
+		setTimeout(() => {
+			portrait.style.removeProperty("opacity");
+		}, speedIn)
+	}
+
+	if (bool) {// FROM USER CLICK
+		if (isSwap && !animationStarted) {// CLOSED FROM CLICK
+			//console.log('destroy');
+			animationStarted = false;
+			completedAnimations = 0;
+			isSwap = !isSwap;
+			iconPixel.classList.add('closed');
+			iconPixel.children[0].style.zIndex = "90";
+			tempo = false;
+			swapNico(particulesFalse);
+		} else if (!animationStarted) {// OPENED FROM CLICK
+			//console.log('create');
+			animationStarted = false;
+			completedAnimations = 0;
+			isSwap = !isSwap;
+			iconPixel.classList.remove('closed');
+			iconPixel.children[0].style.zIndex = "110";
+			tempo = true;
+			swapNico(particulesTrue);
+		} else {
+			//console.log('TOUDOUBIJOU!');
+		}
+	} else {//FROM HUD
+		if (firstCreate) {// FIRST TIME FROM HUD
+			//console.log('FIRST create');
+			tempo = true;
+			animationStarted = false;
+			completedAnimations = 0;
+			initialisationNico(particulesTrue);
+		} else if (tempo && !animationStarted) {// FROM HUD PORTRAIT IS OPEN
+			//console.log('HUD destroy');
+			iconPixel.classList.add('closed');
+			iconPixel.children[0].style.zIndex = "90";
+			animationStarted = false;
+			completedAnimations = 0;
+			isSwap = !isSwap;
+			swapNico(particulesFalse);
+		} else if (!animationStarted) {// FROM HUD PORTRAIT IS CLOSE
+			if (listener) {// PORTRAIT OPENED FROM LISTENER (HUD IN)
+				//console.log('LISTENER create');
+				animationStarted = false;
+				completedAnimations = 0;
+				isSwap = !isSwap;
+				if (iconPixel.classList.contains('closed')) {
+					swapNico(particulesTrue);
+				} else {
+					isSwap = !isSwap;
+				}
+				tempo = true;
+				iconPixel.classList.remove('closed');
+				iconPixel.children[0].style.zIndex = "110";
+			} else {// PORTRAIT CLOSE FROM HUD (HUD OUT)
+				//console.log('HUD LEAVE');
+				animationStarted = false;
+				completedAnimations = 0;
+			}
+		} else {
+			//console.log('TOUDOUBIJOU!');
+		}
+	}
+	firstCreate = false;
+}
+
+function aproposInfos() {
+	openModal(0, tempo);
+}
+
+function zoomPixel() {
+	racine.style.setProperty('--portraitBG', "#00000000");
+	apropos.style.display = "flex";
+	apropos.style.justifyContent = "center";
+	portrait.style.clipPath = "ellipse(100% 85% at 51% 15%)";
+	portrait.style.opacity = "1";
+	portrait.style.height = "78vh";
+	portrait.style.width = "40vw";
+	isZoomed = true;
+}
+
+function dezoomPixel() {
+	racine.style.setProperty('--portraitBG', "url('../../divers/img/buste.png')");
+	apropos.style.display = "grid";
+	portrait.style.clipPath = "ellipse(18% 33% at 51% 29%)";
+	portrait.style.removeProperty("opacity");
+	portrait.style.height = "35vh";
+	portrait.style.width = "19vw";
+	isZoomed = false;
 }

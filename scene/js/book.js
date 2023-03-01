@@ -138,7 +138,7 @@ function dezoomLivre() {
 	racine.style.setProperty('--justifyLivre', '0vw');
 	racine.style.setProperty('--alignLivre', '-6vh');
 	//livre.style.removeProperty("top");
-	// livre.style.removeProperty("left");
+	//livre.style.removeProperty("left");
 }
 
 function variables() {

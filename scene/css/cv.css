@@ -9,7 +9,7 @@
   display: none !important;
 }
 #CURRICULUM.anim #rotationStand:checked ~ #teleport {
-  animation: rotationStand linear 20s infinite;
+  animation: rotationStand linear 10s infinite;
 }
 
 #teleport {
@@ -313,6 +313,9 @@
   }
 }
 @keyframes blocTop {
+  0% {
+    transform: translateZ(var(--standEpaisseur)) rotate(0deg);
+  }
   50% {
     transform: translateZ(var(--standEpaisseur)) rotate(0deg);
   }

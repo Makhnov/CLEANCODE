@@ -10,7 +10,7 @@
 		display: none!important;
 	
 		&:checked ~ #teleport {
-			animation: rotationStand linear 20s infinite;
+			animation: rotationStand linear 10s infinite;
 		}
 	}
 }
@@ -329,6 +329,7 @@
 
 @keyframes blocTop {// 50% => 77% ; 84% => 100%
     0% {
+		transform: translateZ(var(--standEpaisseur)) rotate(0deg); // 0
     }
 
     50% {

@@ -14,6 +14,7 @@
   --mainColor2:rgb(31, 162, 227);
   --mainColor3:rgb(20, 172, 249);
   --mainColor4:rgb(108, 221, 255);
+  --mainColor5:rgba(13, 95, 160);
   --subColor:rgb(39, 48, 52);
   --blurColor1:rgba(1,1,1, 0.1);
   --blurColor2:rgba(10,10,10, 0.25);
@@ -21,7 +22,8 @@
   --blackLight:rgba(0,0,0, 0.75);
   --blackLight2:rgba(10,10,10, 0.5);
   --subColorLight: rgba(39, 48, 52, 0.5);
-  --mainColorLight:rgba(17, 126, 181, 0.4);
+  --mainColorLight:rgba(17, 106, 181, 0.4);
+  --mainColor5Light:rgba(13, 95, 160, 0.4);
   --mainColor4Light:rgba(108, 221, 255, 0.2);
   --standLargeur:30vw;
   --standLargeurInt:calc(12/21 * (var(--standLargeur)));
@@ -45,6 +47,9 @@
   --gapLivre:5px;
   --vitessePage:1.6s;
   --progressSize:clamp(75px, 10vw, 15vh);
+  --portraitBG:url("../../divers/img/buste.png");
+  --portraitSizeX:0.8;
+  --portraitSizeY:0.8;
 }
 
 /* ---- POLICES ---- */
@@ -155,14 +160,10 @@ html, body {
           user-select: none;
 }
 
-#animHUD, #containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre, #machine, ul {
+#containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre, #machine, ul {
   pointer-events: none;
 }
-#animHUD #containerAnim,
-#animHUD #teleport,
-#animHUD nav.gauche li,
-#animHUD nav.droite li,
-#animHUD #multivac, #containerHUD #containerAnim,
+#containerHUD #containerAnim,
 #containerHUD #teleport,
 #containerHUD nav.gauche li,
 #containerHUD nav.droite li,
@@ -286,15 +287,15 @@ nav, ul, li {
     width: translateX(0vw);
   }
   50% {
-    transform: translateX(-12vw);
+    transform: translateX(-11vw);
     opacity: 1;
   }
   80% {
-    transform: translateX(-12vw);
+    transform: translateX(-11vw);
     opacity: 1;
   }
   90% {
-    transform: translateX(-12vw);
+    transform: translateX(-11vw);
     visibility: visible;
     opacity: 0;
   }
@@ -646,8 +647,26 @@ nav, ul, li {
 #containerHUD nav.droite ul #infosBook,
 #containerHUD nav.droite ul #infosSkills,
 #containerHUD nav.droite ul #infosContact,
-#containerHUD nav.droite ul #copyEmail {
+#containerHUD nav.droite ul #infosAbout {
   cursor: help !important;
+}
+#containerHUD nav.droite ul #pixelize i {
+  align-self: center;
+  justify-self: center;
+  position: absolute;
+}
+#containerHUD nav.droite ul #pixelize .fa-skull-crossbones {
+  z-index: 110;
+}
+#containerHUD nav.droite ul #pixelize .fa-user {
+  opacity: 0;
+  z-index: 100;
+}
+#containerHUD nav.droite ul #pixelize.closed .fa-skull-crossbones {
+  opacity: 0;
+}
+#containerHUD nav.droite ul #pixelize.closed .fa-user {
+  opacity: 1;
 }
 #containerHUD nav.droite ul #openBook i {
   align-self: center;

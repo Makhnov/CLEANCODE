@@ -1,4 +1,5 @@
 const br = '\n';
+const brText = '<br>';
 const space = ' ';
 
 function PoF() {
@@ -12,8 +13,42 @@ function PoF() {
 
 
 const racine = document.documentElement;
-const lorem = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam atque inventore rem fugiat doloremque. Neque eveniet voluptate sequi incidunt cupiditate fugit autem nihil, blanditiis optio veritatispraesentium quam dolorem officiis! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque impedit quibusdam vero veritatis distinctio dignissimos cupiditate nisi doloremque eum provident error atque porro, pariatur corporis. Numquam, unde expedita? Eius, laboriosam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores amet cumque minima, ipsum aut atque soluta harum facere nisi dicta odio eius doloribus quo obcaecati officia quia, voluptas exercitationem sequi!'
-const textInfosPortfolio = "Bienvenue sur mon portfolio, j'ai commencé la programmation web en septembre 2022 en rejoignant une formation de développeur web avec l'ADRAR de Lourdes.<br>Tous mes sites, quel que soit le(s) langage(s), sont 100% originaux, il m'arrive de chercher l'inspiration à droite à gauche bien évidemment mais je ne copie jamais la moindre ligne de code. En cliquant sur l'icone du bas dans la navigation de droite vous pouvez aller visiter les sites présentés ici et bien d'autres que j'ai pu faire tout au long de ma formation.<br>Je travaille principalement en HTML, SASS, Javascript, PHP et SQL, j'ai aussi commencé la pratique de divers frameworks (Vue, React, Laravel, Symfony, etc.).<br><br>Mon gitHub : <a href='https://github.com/Makhnov/' target='_blank'>Makhnov</a>"
+
+const textes = [// Bloc de texte (index = ordre du menu)
+
+	"Bienvenue sur mon site perso. Ce site, créé en janvier/février 2023 a pour but de me présenter aux entreprises intéressées par un stagiaire en développement web." + space +
+	"J'ai essayé de présenter mes compétences acquises ces derniers mois de manière visuelle et agréable." + space +
+	"En plus de la barre de navigation a gauche, vous avez aussi une barre contextuelle à droite adaptée à la section que vous visitez, n'hésitez pas à l'utiliser pour voir les effets." + space +
+	"Le site a un rendu totalement différent selon si vous êtes sur PC (> 800 px) ou mobile. Et pour finir, voici un petit descriptif des techniques utilisées : " + brText + brText +
+	"<strong>1.</strong> La partie sur laquelle vous êtes (A Propos) est un canvas JS/HTML, l'image est un fichier csv, chaque carré de 5x5px est un objet 'Particule' qui s'anime pour finalement revenir à sa place dédiée." + brText +
+	"<strong>2.</strong>La deuxième partie (Portfolio) est un livre animé entièrement en CSS. Javascript s'adapte à la vitesse d'animation pour modifier les pages en conséquence." + space +
+	"Les pages qui tournent sont découpées en 7 bandes, chaque bande récupère la même background-image mais avec un positionnement différent afin de donner cet effet de page 'incurvée'." + brText +
+	"<strong>3.</strong>Dans la troisième partie (CV) j'ai créé une petite animation CSS pour représenter un présentoir 'futuriste' afin de mettre mon CV en valeur," + space +
+	"le CV tourne sur lui même avec un petit jeu de perspective qui fait que le 'dos' du CV est une image différente." + brText +
+	"<strong>4.</strong>Dans la partie 4 (Compétences) je présente mes avancées en programmation lors de ma formation. Toujours avec une animation CSS." + brText +
+	"<strong>5.</strong>Enfin la partie 5 (Contact) est un formulaire contrôlé doublement (en direct en JS avec informations aux utilisateurs et en backend en php pour éviter tout problème d'injection malveillante)." + space +
+	"J'ai aussi créé un captcha perso pour éviter le spamm, bien évidemment tout est fonctionnel et vous pouvez m'envoyer un message !" + brText + brText +
+	"Très bonne visite !<br><br> P.S. Mon CV est disponible au téléchargement dans la partie dédiée." + brText + brText +
+	"Mon gitHub : <a href='https://github.com/Makhnov/' target='_blank'>Makhnov</a>",
+
+	"Bienvenue sur mon portfolio, j'ai commencé la programmation web en septembre 2022 en rejoignant une formation de développeur web avec l'ADRAR de Lourdes." + brText +
+	"Tous mes sites, quel que soit le(s) langage(s), sont 100% originaux, il m'arrive de chercher l'inspiration à droite à gauche bien évidemment mais je ne copie jamais la moindre ligne de code." + space +
+	"En cliquant sur l'icone du bas dans la navigation de droite vous pouvez aller visiter les sites présentés ici et bien d'autres que j'ai pu faire tout au long de ma formation." + brText +
+	"Je travaille principalement en HTML, SASS, Javascript, PHP et SQL, j'ai aussi commencé la pratique de divers frameworks (Vue, React, Laravel, Symfony, etc.)." + brText + brText +
+	"Mon gitHub : <a href='https://github.com/Makhnov/' target='_blank'>Makhnov</a>",
+
+	"TEXTE CV",
+
+	"TEXTE SKILLS",
+
+	"Pour confirmer votre envoi, veuillez saisir ci-dessous les 4 caractères qui s'affichent à l'écran",
+
+	"Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam atque inventore rem fugiat doloremque. " + brText +
+	"Neque eveniet voluptate sequi incidunt cupiditate fugit autem nihil, blanditiis optio veritatispraesentium quam dolorem officiis! Lorem ipsum dolor sit, amet consectetur adipisicing elit." + brText +
+	"Neque impedit quibusdam vero veritatis distinctio dignissimos cupiditate nisi doloremque eum provident error atque porro, pariatur corporis." + brText +
+	"Numquam, unde expedita? Eius, laboriosam. Lorem ipsum dolor sit amet, consectetur adipisicing elit." + brText +
+	"Dolores amet cumque minima, ipsum aut atque soluta harum facere nisi dicta odio eius doloribus quo obcaecati officia quia, voluptas exercitationem sequi!"
+]
 
 const theme = document.getElementById('theme');
 const startBG = document.getElementById('animHUD');
@@ -198,6 +233,7 @@ async function menuAsync(iTemp) {
 }
 
 function delayLi(ms) {
+	//console.log(ms);
 	return new Promise((resolve, reject) => {
 		menuSpamm = setTimeout(() => {
 			for (j = 0; j < tabNav.length; j++) {
@@ -207,10 +243,10 @@ function delayLi(ms) {
 					scene[j].dispatchEvent(new Event("change"));
 					clearScene(j);
 				} else {
+					tempo = true;
 					scene[j].classList.remove("hidden");
 					scene[j].classList.add("anim");
 					scene[j].dispatchEvent(new Event("change"));
-					tempo = true;
 				}
 
 				for (k = 0; k < tabNav.length; k++) {
@@ -235,6 +271,8 @@ function delayLi(ms) {
 function closingScene(index) {
 	switch (index) {
 		case 0://A PROPOS
+			listener = false;
+			openPixel(false);
 			break;
 		case 1://PORTFOLIO
 			dezoomLivre();
@@ -349,12 +387,17 @@ function checkWidth() {
 function openModal(index, bool) {
 	switch (index) {
 		case 0://A PROPOS
+			//console.log(bool);
+			modal.style.display = "grid";
+			modalTitre.textContent = "A PROPOS";
+			modalResume.textContent = "Site de présentation";
+			modalTexte.innerHTML = textes[0];
 			break;
 		case 1://PORTFOLIO
 			modal.style.display = "grid";
 			modalTitre.textContent = "PORTFOLIO";
 			modalResume.textContent = "Mes créations depuis septembre 2022";
-			modalTexte.innerHTML = textInfosPortfolio;
+			modalTexte.innerHTML = textes[1];
 			break;
 		case 2://CV
 			modal.style.display = "grid";
@@ -390,7 +433,7 @@ function openModal(index, bool) {
 			modalTitre.textContent = "Merci pour votre message !";
 			modalResume.style.fontSize = "clamp(1.25rem, 2vw, 2rem)";
 			modalResume.style.fontWeight = "normal";
-			modalResume.textContent = "Pour confirmer votre envoi, veuillez saisir ci-dessous les 4 caractères qui s'affichent à l'écran";
+			modalResume.textContent = textes[4];
 			break;
 	}
 	modalBackground.value = index;
@@ -401,6 +444,9 @@ function closeModal(e) {
 	let index = e.value;
 	switch (index) {
 		case 0://A PROPOS
+			modalTitre.textContent = '';
+			modalResume.textContent = '';
+			modalTexte.textContent = '';
 			break;
 		case 1://PORTFOLIO
 			modalTitre.textContent = '';

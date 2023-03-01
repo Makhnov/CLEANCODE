@@ -14,6 +14,7 @@
   --mainColor2:rgb(31, 162, 227);
   --mainColor3:rgb(20, 172, 249);
   --mainColor4:rgb(108, 221, 255);
+  --mainColor5:rgba(13, 95, 160);
   --subColor:rgb(39, 48, 52);
   --blurColor1:rgba(1,1,1, 0.1);
   --blurColor2:rgba(10,10,10, 0.25);
@@ -21,7 +22,8 @@
   --blackLight:rgba(0,0,0, 0.75);
   --blackLight2:rgba(10,10,10, 0.5);
   --subColorLight: rgba(39, 48, 52, 0.5);
-  --mainColorLight:rgba(17, 126, 181, 0.4);
+  --mainColorLight:rgba(17, 106, 181, 0.4);
+  --mainColor5Light:rgba(13, 95, 160, 0.4);
   --mainColor4Light:rgba(108, 221, 255, 0.2);
   --standLargeur:30vw;
   --standLargeurInt:calc(12/21 * (var(--standLargeur)));
@@ -45,6 +47,9 @@
   --gapLivre:5px;
   --vitessePage:1.6s;
   --progressSize:clamp(75px, 10vw, 15vh);
+  --portraitBG:url("../../divers/img/buste.png");
+  --portraitSizeX:0.8;
+  --portraitSizeY:0.8;
 }
 
 /* ---- POLICES ---- */

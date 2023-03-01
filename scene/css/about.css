@@ -1,11 +1,25 @@
+#APROPOS {
+  background: var(--portraitBG);
+  background-size: 30% 80%;
+  background-repeat: no-repeat;
+  background-position: 37.85vw 9.5vh;
+  grid-template-rows: 9vh 35vh 25vh 9vh;
+  grid-template-columns: 2vw 16vw 20vw 19vw 3vw;
+}
+
 #portrait {
   position: absolute;
+  grid-row: 2;
+  grid-column: 4;
+  height: 35vh;
+  width: 19vw;
   transform-style: preserve-3d;
   pointer-events: auto;
-  align-self: center;
-  justify-self: center;
-  width: 400px;
-  height: 325px;
-  border-radius: 50%;
-  box-sizing: border-box;
+  -webkit-clip-path: ellipse(18% 33% at 51% 29%);
+          clip-path: ellipse(18% 33% at 51% 29%);
+  opacity: 0.7;
+  cursor: pointer;
+}
+#portrait:hover {
+  opacity: 1;
 }/*# sourceMappingURL=about.css.map */

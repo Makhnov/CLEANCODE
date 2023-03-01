@@ -1,46 +1,31 @@
+
 #APROPOS {
-	//background-color: rgba(0, 0, 0, 0.404);
-	&.anim #portrait {
-		//animation: nicoPixel linear calc(var(--vitesseEntree) / 2) forwards;
-	}
+	//background-color: red;
+	//background:url('../../divers/img/test.avif');
+	//background-size: 100% 100%;
+	//background-repeat: no-repeat;
+	//background-position: 39.5vw 8.5vh;
+	background:var(--portraitBG);
+	background-size: 30% 80%;
+	background-repeat: no-repeat;
+	background-position: 37.85vw 9.5vh;
+	grid-template-rows:9vh 35vh 25vh 9vh;
+	grid-template-columns: 2vw 16vw 20vw 19vw 3vw;
 }
 
 #portrait {
 	position: absolute;
+	grid-row: 2;
+	grid-column: 4;
+	height: 35vh;
+	width: 19vw;
 	transform-style: preserve-3d;
 	pointer-events: auto;
-	align-self: center;
-	justify-self: center;
-	width: 400px;
-	height:325px;
-	border-radius: 50%;
-	box-sizing: border-box;
+	clip-path: ellipse(18% 33% at 51% 29%);
+	opacity: .7;
+	cursor: pointer;
+
+	&:hover {
+		opacity: 1;
+	}
 }
-
-// #blurCanvas {
-// 	position: absolute;
-// 	transform-style: preserve-3d;
-// 	pointer-events: auto;
-// 	align-self: center;
-// 	justify-self: center;
-// 	width: 400px;
-// 	height:325px;
-// 	border-radius: 50%;
-// 	border-radius: 50%;
-// 	background: radial-gradient(
-// 		rgba(255,255,255,0) 0%, 
-// 		var(--mainColor3) 75%, 
-// 		var(--mainColor4) 100%, 
-// 		rgba(255,255,255,0) 125%); 
-// 	filter: blur(10px); /* applique le flou */
-// }
-
-// @keyframes nicoPixel {
-// 	from {
-// 		transform: scale(0);// rotateY(0);
-// 	}
-
-// 	to {
-// 		transform: scale(1);// rotateY(360deg);
-// 	}
-// }

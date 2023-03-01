@@ -78,7 +78,7 @@ html, body {
 	user-select: none;
 }
 
-#animHUD, #containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre, #machine, ul {
+#containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre, #machine, ul {
     pointer-events: none;
 
 	#containerAnim,
@@ -189,15 +189,15 @@ nav, ul, li {
 		width: translateX(0vw);
 	}
 	50% {
-		transform: translateX(-12vw);
+		transform: translateX(-11vw);
 		opacity: 1;
 	}
 	80% {
-		transform: translateX(-12vw);
+		transform: translateX(-11vw);
 		opacity: 1;
 	}
 	90% {
-		transform: translateX(-12vw);
+		transform: translateX(-11vw);
 		visibility: visible;
 		opacity: 0;
 	}
@@ -675,8 +675,33 @@ nav, ul, li {
 		#infosBook,
 		#infosSkills,
 		#infosContact,
-		#copyEmail {
+		#infosAbout {
 			cursor:help!important;
+		}
+		
+		#pixelize {
+			i {
+				align-self: center;
+				justify-self: center;
+				position: absolute;
+			}
+
+			.fa-skull-crossbones {//Icone tete de mort
+				z-index: 110;
+			}
+
+			.fa-user {//Icone utilisateur
+				opacity: 0;
+				z-index: 100;
+			}
+
+			&.closed .fa-skull-crossbones {
+				opacity: 0;
+			}
+			
+			&.closed .fa-user {
+				opacity: 1;
+			}
 		}
 
 		#openBook {

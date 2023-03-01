@@ -72,7 +72,7 @@
         <nav class="droite">
             <ul>
                 <li class="droite">
-                    <p class="bouton-texte"><i class="fas fa-skull-crossbones" onclick="Nico()"></i></p>
+					<div></div>
                     <p for="readBook" onclick="openBook(true)" id="openBook" class="bouton-texte">
                         <i class="fas fa-book"></i>
                         <i class="fas fa-book-open"></i>
@@ -82,8 +82,11 @@
                     <div></div>
                 </li>
                 <li class="droite">
-                    <p><!--<i class="fas fa-play"></i>--></p>
-                    <div class="changementPage bouton-texte">
+					<p for="portrait" onclick="openPixel(true)" id="pixelize" class="bouton-texte">
+						<i class="fas fa-skull-crossbones" ></i>
+						<i class="fas fa-user"></i>
+					</p>
+					<div class="changementPage bouton-texte">
                         <span class="container-button-texte pageSuivante">
                             <i onclick="pageSuivante(this)" id="pageSuivante" class="fas fa-share 1"></i>
                         </span>
@@ -104,7 +107,9 @@
 
                 </li>
                 <li class="droite">
-                    <div></div>
+					<p class="informations bouton-texte" title="Infos sup" >
+						<i onclick="aproposInfos()" id="infosAbout" class="fas fa-info"></i>
+					</p>
                     <p class="zoom bouton-texte">
                         <span class="container-button-texte zoom-moins">
                             <i onclick="dezoomLivre()" class="fas fa-compress"></i>
@@ -122,7 +127,14 @@
 					</p>
                 </li>
                 <li class="droite">
-                    <div></div>
+					<p class="zoom bouton-texte">
+                        <span class="container-button-texte zoom-moins">
+                            <i onclick="dezoomPixel()" class="fas fa-compress"></i>
+                        </span>
+                        <span class="container-button-texte zoom-plus">
+                            <i onclick="zoomPixel()" class="fas fa-expand"></i>
+                        </span>
+                    </p>
                     <p class="informations bouton-texte">
                         <i onclick="portfolioInfos()" id="infosBook" class="fas fa-info" title="Infos sup"></i>
                     </p>
@@ -150,7 +162,6 @@
         <div id="containerView">
             <div id="APROPOS" class="hidden main">
 				<canvas id="portrait"></canvas>
-				<div id="blurCanvas"></div>
             </div>
             <div id="PORTFOLIO" class="hidden main">
                 <section id="book">
