@@ -6,13 +6,15 @@
   --vitesseSortie:2s;
   --rightNavFontSize:clamp(2rem, 3vw, 3.25rem);
   --multivac:100px;
+  --brightMachine:0.75;
   --bookBorder:rgb(50, 50, 50);
-  --bookPage:whitesmoke;
+  --fontLight:whitesmoke;
   --mainColor:rgb(23, 80, 109);
   --mainColor1:rgb(17, 126, 181);
   --mainColor2:rgb(31, 162, 227);
   --mainColor3:rgb(20, 172, 249);
   --mainColor4:rgb(108, 221, 255);
+  --mainColor5:rgba(13, 95, 160);
   --subColor:rgb(39, 48, 52);
   --blurColor1:rgba(1,1,1, 0.1);
   --blurColor2:rgba(10,10,10, 0.25);
@@ -20,30 +22,34 @@
   --blackLight:rgba(0,0,0, 0.75);
   --blackLight2:rgba(10,10,10, 0.5);
   --subColorLight: rgba(39, 48, 52, 0.5);
-  --mainColorLight:rgba(17, 126, 181, 0.4);
-  --mainColor4Light:rgba(108, 221, 255, 0.6);
+  --mainColorLight:rgba(17, 106, 181, 0.4);
+  --mainColor5Light:rgba(13, 95, 160, 0.4);
+  --mainColor4Light:rgba(108, 221, 255, 0.2);
   --standLargeur:30vw;
   --standLargeurInt:calc(12/21 * (var(--standLargeur)));
   --standEpaisseur:calc(2/21 * (var(--standLargeur)));
   --hMult:8 / 7;
   --standHauteur:calc(var(--hMult) * (var(--standLargeur)));
   --inclinaisonCV:90deg;
-  --livreLargeur:clamp(300px, 60vh, 30vw);
   --imageG1:url("../../divers/img/pf-videos.jpg");
   --imageG2:url("../../divers/img/pf-videos-specs.jpg");
   --imageM1:url("../../divers/img/pf-rando.jpg");
   --imageM2:url("../../divers/img/pf-rando-specs.jpg");
   --imageD1:url("../../divers/img/pf-conseil.jpg");
   --imageD2:url("../../divers/img/pf-conseil-specs.jpg");
-  --bookFront:var(--bookBorder);
+  --livreLargeur:clamp(300px, 60vh, 30vw);
   --zoomLivre:-20vw;
   --inclinaisonLivre:-6deg;
   --rotationLivre:40deg;
   --justifyLivre:0vw;
   --alignLivre:-6vh;
-  --gapLivre:15px;
+  --bookFront:var(--bookBorder);
+  --gapLivre:5px;
   --vitessePage:1.6s;
   --progressSize:clamp(75px, 10vw, 15vh);
+  --portraitBG:url("../../divers/img/buste.png");
+  --portraitSizeX:0.8;
+  --portraitSizeY:0.8;
 }
 
 /* ---- POLICES ---- */
@@ -154,28 +160,42 @@ html, body {
           user-select: none;
 }
 
-#containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre {
+#containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre, #machine, ul {
   pointer-events: none;
 }
-#containerHUD #preInput,
+#containerHUD #containerAnim,
 #containerHUD #teleport,
-#containerHUD nav.gauche ul,
-#containerHUD nav.droite, #containerView #preInput,
+#containerHUD nav.gauche li,
+#containerHUD nav.droite li,
+#containerHUD #multivac, #containerView #containerAnim,
 #containerView #teleport,
-#containerView nav.gauche ul,
-#containerView nav.droite, #PORTFOLIO #preInput,
+#containerView nav.gauche li,
+#containerView nav.droite li,
+#containerView #multivac, #PORTFOLIO #containerAnim,
 #PORTFOLIO #teleport,
-#PORTFOLIO nav.gauche ul,
-#PORTFOLIO nav.droite, #CURRICULUM #preInput,
+#PORTFOLIO nav.gauche li,
+#PORTFOLIO nav.droite li,
+#PORTFOLIO #multivac, #CURRICULUM #containerAnim,
 #CURRICULUM #teleport,
-#CURRICULUM nav.gauche ul,
-#CURRICULUM nav.droite, #book #preInput,
+#CURRICULUM nav.gauche li,
+#CURRICULUM nav.droite li,
+#CURRICULUM #multivac, #book #containerAnim,
 #book #teleport,
-#book nav.gauche ul,
-#book nav.droite, #livre #preInput,
+#book nav.gauche li,
+#book nav.droite li,
+#book #multivac, #livre #containerAnim,
 #livre #teleport,
-#livre nav.gauche ul,
-#livre nav.droite {
+#livre nav.gauche li,
+#livre nav.droite li,
+#livre #multivac, #machine #containerAnim,
+#machine #teleport,
+#machine nav.gauche li,
+#machine nav.droite li,
+#machine #multivac, ul #containerAnim,
+ul #teleport,
+ul nav.gauche li,
+ul nav.droite li,
+ul #multivac {
   pointer-events: auto;
 }
 
@@ -185,19 +205,19 @@ nav, ul, li {
   list-style: none;
 }
 
-#preHUD {
+#animHUD {
   position: absolute;
   z-index: 999;
   height: 100vh;
   width: 100vw;
 }
-#preHUD #cache {
+#animHUD #cache {
   background: black;
   height: 100vh;
   width: 100vw;
   animation: bienvenueCache 0.75s linear 2.25s forwards;
 }
-#preHUD h1 {
+#animHUD h1 {
   position: absolute;
   margin: 0;
   padding: 0;
@@ -216,7 +236,7 @@ nav, ul, li {
   -webkit-text-fill-color: transparent;
   animation: bienvenueTexte 1.75s linear 0.5s forwards;
 }
-#preHUD #startIcon {
+#animHUD #startIcon {
   position: absolute;
   top: calc(50% - 5vw);
   right: 45vw;
@@ -229,7 +249,7 @@ nav, ul, li {
   background-repeat: no-repeat;
   animation: bienvenueIcon 1.75s linear 0.5s forwards;
 }
-#preHUD #startIcon::after {
+#animHUD #startIcon::after {
   position: absolute;
   content: "";
   right: 0;
@@ -240,16 +260,6 @@ nav, ul, li {
   border: 3px solid #55c6ee;
 }
 
-@keyframes departMulti {
-  from {
-    -webkit-clip-path: circle(0%);
-            clip-path: circle(0%);
-  }
-  to {
-    -webkit-clip-path: circle(100%);
-            clip-path: circle(100%);
-  }
-}
 @keyframes bienvenueTexte {
   0% {
     transform: translateX(0vw);
@@ -277,15 +287,15 @@ nav, ul, li {
     width: translateX(0vw);
   }
   50% {
-    transform: translateX(-12vw);
+    transform: translateX(-11vw);
     opacity: 1;
   }
   80% {
-    transform: translateX(-12vw);
+    transform: translateX(-11vw);
     opacity: 1;
   }
   90% {
-    transform: translateX(-12vw);
+    transform: translateX(-11vw);
     visibility: visible;
     opacity: 0;
   }
@@ -315,7 +325,45 @@ nav, ul, li {
   perspective: 1000px;
   perspective-origin: center;
 }
+#containerHUD #theme {
+  height: 100vh;
+  width: 100vw;
+}
+#containerHUD #theme.dark:not(.start) {
+  animation: darkTheme 1s linear forwards;
+}
+#containerHUD #theme.light:not(.start) {
+  animation: lightTheme 1s linear forwards;
+}
 
+@keyframes darkTheme {
+  from {
+    background: url("../../divers/img/hudDark.jpg");
+    background-position: center;
+    background-size: 100% 130%;
+    opacity: 0;
+  }
+  to {
+    background: url("../../divers/img/hudDark.jpg");
+    background-position: center;
+    background-size: 100% 130%;
+    opacity: 1;
+  }
+}
+@keyframes lightTheme {
+  from {
+    background: url("../../divers/img/hudDark.jpg");
+    background-position: center;
+    background-size: 100% 130%;
+    opacity: 1;
+  }
+  to {
+    background: url("../../divers/img/hudDark.jpg");
+    background-position: center;
+    background-size: 100% 130%;
+    opacity: 0;
+  }
+}
 #multivac {
   position: relative;
   grid-row: 1;
@@ -333,10 +381,15 @@ nav, ul, li {
   border: 4px solid #55c6ee;
   -webkit-clip-path: circle(0%);
           clip-path: circle(0%);
-  animation: departMulti 1s linear 3s forwards;
+  animation: departMulti 1s linear 2.5s forwards;
+  cursor: pointer;
+}
+#multivac:hover #machine {
+  filter: brightness(var(--brightMachine));
 }
 #multivac #machine {
   position: absolute;
+  z-index: 1000;
   display: block;
   height: 100%;
   width: 100%;
@@ -344,13 +397,27 @@ nav, ul, li {
 }
 #multivac #waitingMenu {
   position: absolute;
+  align-self: center;
+  justify-self: center;
+  pointer-events: none;
   display: block;
-  height: 100%;
-  width: 100%;
+  height: 95%;
+  width: 95%;
   background-repeat: no-repeat;
   background-size: contain;
+  cursor: initial;
 }
 
+@keyframes departMulti {
+  from {
+    -webkit-clip-path: circle(0%);
+            clip-path: circle(0%);
+  }
+  to {
+    -webkit-clip-path: circle(100%);
+            clip-path: circle(100%);
+  }
+}
 #containerHUD nav.gauche {
   position: absolute;
   top: 0;
@@ -382,15 +449,15 @@ nav, ul, li {
   position: relative;
   transform-style: preserve-3d;
   cursor: pointer;
-  height: 15%;
+  height: 18%;
   width: 75%;
   text-transform: uppercase;
-  color: whitesmoke;
+  color: var(--fontLight);
   background-color: var(--mainColorLight);
   display: grid;
   align-content: center;
   padding-left: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 2%;
   font-size: clamp(1.5rem, 3vw, 2rem);
   text-shadow: -0.06rem 0rem 0 rgb(148, 163, 184), -0.06rem 0.05rem 0 #0f172a, -0.12rem 0.025rem 0 #94a3b8, -0.12rem 0.075rem 0 #0f172a, -0.18rem 0.05rem 0 #94a3b8, -0.18rem 0.1rem 0 #0f172a, -0.24rem 0.075rem 0 #94a3b8, -0.24rem 0.125rem 0 #0f172a, -0.3rem 0.1rem 0 #94a3b8, -0.3rem 0.15rem 0 #0f172a;
   transition: transform var(--vitesseSortie) !important;
@@ -577,8 +644,29 @@ nav, ul, li {
 #containerHUD nav.droite ul .bouton-texte.zoom .container-button-texte.pagePrecedente {
   transform: rotateY(-180deg);
 }
-#containerHUD nav.droite ul #infosSup {
+#containerHUD nav.droite ul #infosBook,
+#containerHUD nav.droite ul #infosSkills,
+#containerHUD nav.droite ul #infosContact,
+#containerHUD nav.droite ul #infosAbout {
   cursor: help !important;
+}
+#containerHUD nav.droite ul #pixelize i {
+  align-self: center;
+  justify-self: center;
+  position: absolute;
+}
+#containerHUD nav.droite ul #pixelize .fa-skull-crossbones {
+  z-index: 110;
+}
+#containerHUD nav.droite ul #pixelize .fa-user {
+  opacity: 0;
+  z-index: 100;
+}
+#containerHUD nav.droite ul #pixelize.closed .fa-skull-crossbones {
+  opacity: 0;
+}
+#containerHUD nav.droite ul #pixelize.closed .fa-user {
+  opacity: 1;
 }
 #containerHUD nav.droite ul #openBook i {
   align-self: center;
@@ -648,7 +736,8 @@ html body #containerHUD nav.droite ul li > * {
 #containerView #APROPOS,
 #containerView #PORTFOLIO,
 #containerView #CURRICULUM,
-#containerView #COMPETENCES {
+#containerView #COMPETENCES,
+#containerView #CONTACT {
   visibility: visible !important;
   display: grid;
   align-content: center;

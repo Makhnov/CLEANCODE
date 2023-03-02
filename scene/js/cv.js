@@ -42,25 +42,25 @@ stand.addEventListener('change', function () {
 });
 
 function openCV(bool) {
-	stand.checked = !stand.checked;
-	stand.dispatchEvent(new Event("change"));
-	iconCV.classList.toggle('closed');
-	if (stand.checked) {
+	if (bool) {// FROM USER CLICK
+		stand.checked = !stand.checked;
+		stand.dispatchEvent(new Event("change"));
+		iconCV.classList.toggle('closed');
+	} else {// FROM HUD
+		stand.checked = true;
+		iconCV.classList.remove('closed');
 		iconCV.children[0].style.zIndex = "90";
-		if (bool) {// CLIC FERMETURE
-			tempo = false;
-		} else {//FROM HUD
-
-		}
-	} else {
+	}
+	if (stand.checked && bool) {// CLOSED FROM CLICK
+		iconCV.children[0].style.zIndex = "90";
+		tempo = false;
+	} else {// OPENED FROM CLICK
 		iconCV.children[0].style.zIndex = "110";
-		if (bool) {// CLIC OUVERTURE
-			tempo = true;
-		}
+		tempo = true;
 	}
 }
 
-function clicCV() {
+function clicCV(bool) {
 	clearScene(2);
-	openModal(2);
+	openModal(2, bool);
 }

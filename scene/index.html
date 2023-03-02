@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="./css/hud.css">
+	<link rel="stylesheet" href="./css/about.css">
     <link rel="stylesheet" href="./css/book.css">
     <link rel="stylesheet" href="./css/cv.css">
     <link rel="stylesheet" href="./css/skills.css">
@@ -21,19 +22,24 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/x-icon" href="../divers/img/favfolio.ico">
 
+	<!-- <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/gif" href="loading.gif" sizes="any" onload="if(media!='(prefers-reduced-motion: reduce)')this.rel='icon'"> -->
+
 </head>
 
 <body onload="refresh()">
 
-    <div id="preHUD">
-        <div id="cache"></div>
-        <h1>BIENVENUE</h1>
-        <div id="startIcon"></div>
-    </div>
+    <section id="animHUD">
+		<div id="cache"></div>
+		<h1>BIENVENUE</h1>
+		<div id="startIcon"></div>
+	</section>
 
     <section id="containerHUD">
-
-        <div id="multivac">
+		<div id="theme" class="light start"></div>
+        <div id="multivac" onclick="swapTheme()">
             <div id="machine"></div>
             <div id="waitingMenu"></div>
         </div>
@@ -66,21 +72,21 @@
         <nav class="droite">
             <ul>
                 <li class="droite">
-                    <div></div>
+					<div></div>
                     <p for="readBook" onclick="openBook(true)" id="openBook" class="bouton-texte">
                         <i class="fas fa-book"></i>
                         <i class="fas fa-book-open"></i>
                     </p>
-                    <p for="openStand" onclick="openCV(true)" id="openStandIcon" class="bouton-texte">
-                        <i class="fas fa-down-left-and-up-right-to-center"></i>
-                        <i class="fas fa-up-right-and-down-left-from-center"></i>
-                    </p>
+					<div></div>
                     <div></div>
                     <div></div>
                 </li>
                 <li class="droite">
-                    <div></div>
-                    <div class="changementPage bouton-texte">
+					<p for="portrait" onclick="openPixel(true)" id="pixelize" class="bouton-texte">
+						<i class="fas fa-skull-crossbones" ></i>
+						<i class="fas fa-user"></i>
+					</p>
+					<div class="changementPage bouton-texte">
                         <span class="container-button-texte pageSuivante">
                             <i onclick="pageSuivante(this)" id="pageSuivante" class="fas fa-share 1"></i>
                         </span>
@@ -88,15 +94,22 @@
                             <i onclick="pagePrecedente(this)" id="pagePrecedente" class="fas fa-share 7"></i>
                         </span>
                     </div>
-                    <label for="rotationStand" id="rotationStandIcon" class="rotation bouton-texte">
-                        <i class="fa-solid fa-arrow-rotate-right"></i>
-                    </label>
-                    <div></div>
-                    <div></div>
+					<p for="openStand" onclick="openCV(true)" id="openStandIcon" class="bouton-texte">
+                        <i class="fas fa-down-left-and-up-right-to-center"></i>
+                        <i class="fas fa-up-right-and-down-left-from-center"></i>
+                    </p>
+					<p class="informations bouton-texte" title="Infos sup" >
+						<i onclick="skillsInfos()" id="infosSkills" class="fas fa-info"></i>
+					</p>
+					<p  id="copyEmail" title="copier mon mail" class="informations bouton-texte">
+						<i onclick="copyEmail()"class="far fa-copy"></i>
+					</p>               
 
                 </li>
                 <li class="droite">
-                    <div></div>
+					<p class="informations bouton-texte" title="Infos sup" >
+						<i onclick="aproposInfos()" id="infosAbout" class="fas fa-info"></i>
+					</p>
                     <p class="zoom bouton-texte">
                         <span class="container-button-texte zoom-moins">
                             <i onclick="dezoomLivre()" class="fas fa-compress"></i>
@@ -105,21 +118,32 @@
                             <i onclick="zoomLivre()" class="fas fa-expand"></i>
                         </span>
                     </p>
-                    <div>
-                        <a id="downloadCVLink" class="download bouton-texte" href="https://makh.fr/files/cv.pdf"
-                            download>
-                            <i class="fas fa-file-arrow-down"></i>
-                        </a>
-                    </div>
+					<label for="rotationStand" id="rotationStandIcon" class="rotation bouton-texte">
+                        <i class="fa-solid fa-arrow-rotate-right"></i>
+                    </label>
                     <div></div>
-                    <div></div>
+					<p class="informations bouton-texte">
+						<i onclick="contactInfos()" id="infosContact" class="fas fa-info" title="Infos sup"></i>
+					</p>
                 </li>
                 <li class="droite">
-                    <div></div>
-                    <p class="informations bouton-texte">
-                        <i onclick="portfolioInfos()" id="infosSup" class="fas fa-info"></i>
+					<p class="zoom bouton-texte">
+                        <span class="container-button-texte zoom-moins">
+                            <i onclick="dezoomPixel()" class="fas fa-compress"></i>
+                        </span>
+                        <span class="container-button-texte zoom-plus">
+                            <i onclick="zoomPixel()" class="fas fa-expand"></i>
+                        </span>
                     </p>
-                    <div></div>
+                    <p class="informations bouton-texte">
+                        <i onclick="portfolioInfos()" id="infosBook" class="fas fa-info" title="Infos sup"></i>
+                    </p>
+					<div>
+						<a id="downloadCVLink" class="download bouton-texte" href="https://makh.fr/files/cv.pdf"
+							download>
+							<i class="fas fa-file-arrow-down"></i>
+						</a>
+					</div>
                     <div></div>
                     <div></div>
                 </li>
@@ -137,7 +161,7 @@
 
         <div id="containerView">
             <div id="APROPOS" class="hidden main">
-                <p>A PROPOS</p>
+				<canvas id="portrait"></canvas>
             </div>
             <div id="PORTFOLIO" class="hidden main">
                 <section id="book">
@@ -192,8 +216,9 @@
                 <input type="checkbox" id="openStand">
                 <input type="checkbox" id="rotationStand">
                 <div id="teleport">
-                    <label for="zoneCV" id="filtreCV"></label>
-                    <input type="button" onclick="clicCV()" id="zoneCV">
+                    <div id="filtreCV"></div>
+                    <div onclick="clicCV(true)" id="zoneCV"></div>
+					<div onclick="clicCV(false)" id="zoneCVBack"></div>
                     <div class="bloc top">
                         <div class="face top up"></div>
                         <div class="face top down">
@@ -298,26 +323,30 @@
                 </div>
             </div>
             <form id="CONTACT" action="../utils/formulaire.php" method="POST" class="hidden main">
-                <h2 id="contactTitre">Me contacter</h2>
-                <p id="confirmP">Votre message a bien été envoyé, merci !</p>
-                <div class="inputs">
-                    <input id="nom" name="nom" type="text" placeholder="Nom" oninput="validerCheck(this)">
-                    <label for="nom">Nom</label>
-                    <span></span>
-                </div>
-                <div class="inputs">
-                    <input id="email" name="email" type="text" placeholder="E-Mail" oninput="validerCheck(this)">
-                    <label for="email">E-Mail</label>
-                    <span></span>
-                </div>
-                <div class="inputs message">
-                    <textarea id="message" name="message" placeholder="" oninput="validerCheck(this)"></textarea>
-                    <label for="message" class="message">Message</label>
-                    <span></span>
-                </div>
-                <div class="boutons">
-                    <button id="valider" type="submit" value="Submit"><i class="fas fa-check"></i></button>
-                    <button id="supprimer" type="reset" value="Reset"><i class="fas fa-ban"></i></button>
+				<div id="headerContact">
+					<h2 id="contactTitre">Me contacter</h2>
+					<p id="confirmP">Votre message a bien été envoyé, merci !</p>	
+				</div>
+				<div id="screenContact">
+					<div class="inputs">
+						<input id="nom" name="nom" type="text" placeholder="Nom" oninput="validerCheck(this)">
+						<label for="nom" class="nom">Nom</label>
+						<span></span>
+					</div>
+					<div class="inputs">
+						<input id="email" name="email" type="text" placeholder="E-Mail" oninput="validerCheck(this)">
+						<label for="email" class="email">E-Mail</label>
+						<span></span>
+					</div>
+					<div class="inputs message">
+						<textarea id="message" name="message" placeholder="" oninput="validerCheck(this)"></textarea>
+						<label for="message" class="message">Message</label>
+						<span></span>
+					</div>
+				</div>
+                <div id="footerContact" class="boutons">
+                    <button id="valider" type="submit" value="Submit"><i class="fas fa-share-from-square"></i></button>
+                    <button id="supprimer" type="reset" value="Reset"><i class="far fa-rectangle-xmark"></i></button>
                 </div>
             </form>
         </div>
@@ -343,7 +372,8 @@
     </section>
 
     <script src="./js/hud.js"></script>
-    <script src="./js/cv.js"></script>
+	<script src="./js/about.js"></script>
+	<script src="./js/cv.js"></script>
     <script src="./js/book.js"></script>
     <script src="./js/contact.js"></script>
 </body>

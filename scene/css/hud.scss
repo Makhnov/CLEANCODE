@@ -78,13 +78,14 @@ html, body {
 	user-select: none;
 }
 
-#containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre {
+#containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre, #machine, ul {
     pointer-events: none;
 
-	#preInput,
+	#containerAnim,
 	#teleport,
-    nav.gauche ul, 
-    nav.droite {
+    nav.gauche li, 
+    nav.droite li,
+	#multivac {
         pointer-events: auto;
     }
 }
@@ -95,7 +96,7 @@ nav, ul, li {
     list-style: none;
 }
 
-#preHUD {//BG DEPART
+#animHUD {//BG DEPART
 	position: absolute;
 	z-index: 999;
 	height: 100vh;
@@ -158,16 +159,7 @@ nav, ul, li {
 
 		animation: bienvenueIcon 1.75s linear .5s forwards;
 	}
-}
-
-@keyframes departMulti {
-	from {
-		clip-path: circle(0%);
-	}
-	to {
-		clip-path: circle(100%);
-	}
-}
+}	
 
 @keyframes bienvenueTexte {
 	0% {
@@ -197,15 +189,15 @@ nav, ul, li {
 		width: translateX(0vw);
 	}
 	50% {
-		transform: translateX(-12vw);
+		transform: translateX(-11vw);
 		opacity: 1;
 	}
 	80% {
-		transform: translateX(-12vw);
+		transform: translateX(-11vw);
 		opacity: 1;
 	}
 	90% {
-		transform: translateX(-12vw);
+		transform: translateX(-11vw);
 		visibility: visible;
 		opacity: 0;
 	}
@@ -239,6 +231,50 @@ nav, ul, li {
 
     perspective: 1000px;
     perspective-origin: center;
+
+	#theme {
+		height: 100vh;
+		width: 100vw;
+
+		&.dark:not(.start) {
+			animation: darkTheme 1s linear forwards;
+		}
+		&.light:not(.start) {
+			animation: lightTheme 1s linear forwards;
+		}
+	}
+}
+
+@keyframes darkTheme {
+	from {
+		background: url('../../divers/img/hudDark.jpg');
+		background-position: center;    
+		background-size: 100% 130%;
+		opacity: 0;
+	}
+
+	to {
+		background: url('../../divers/img/hudDark.jpg');
+		background-position: center;    
+		background-size: 100% 130%;
+		opacity: 1;
+	}
+}
+
+@keyframes lightTheme {
+	from {
+		background: url('../../divers/img/hudDark.jpg');
+		background-position: center;    
+		background-size: 100% 130%;
+		opacity: 1;
+	}
+
+	to {
+		background: url('../../divers/img/hudDark.jpg');
+		background-position: center;    
+		background-size: 100% 130%;
+		opacity: 0;
+	}
 }
 
 #multivac {//HAUT DROITE
@@ -249,6 +285,7 @@ nav, ul, li {
 	justify-self: center;
 	top:50%;
 
+	//overflow: hidden;
 	display: grid;
 	place-content: center;
 	height: 14vh;
@@ -260,10 +297,16 @@ nav, ul, li {
 	border:4px solid #55c6ee;
 
 	clip-path: circle(0%);
-	animation: departMulti 1s linear 3s forwards;
+	animation: departMulti 1s linear 2.5s forwards;
+
+	cursor: pointer;
+	&:hover #machine {
+		filter:brightness(var(--brightMachine));
+	}
 
 	#machine {
 		position: absolute;
+		z-index: 1000;
 		display: block;
 		height: 100%;
 		width: 100%;
@@ -272,11 +315,24 @@ nav, ul, li {
 
 	#waitingMenu {
 		position: absolute;
+		align-self: center;
+		justify-self: center;
+		pointer-events: none;
 		display: block;
-		height: 100%;
-		width: 100%;
+		height: 95%;
+		width: 95%;
 		background-repeat: no-repeat;
 		background-size: contain;
+		cursor: initial;
+	}
+}
+
+@keyframes departMulti {
+	from {
+		clip-path: circle(0%);
+	}
+	to {
+		clip-path: circle(100%);
 	}
 }
 
@@ -319,18 +375,18 @@ nav, ul, li {
 		transform-style: preserve-3d;
 		cursor: pointer;
 
-		height: 15%;
+		height: 18%;
 		width: 75%;
 		
 		text-transform: uppercase;
-		color:whitesmoke;
+		color:var(--fontLight);
 		background-color:var(--mainColorLight);
 
 
 		display: grid;
 		align-content: center;
 		padding-left: 20px;
-		margin-bottom: 10px;
+		margin-bottom: 2%;
 		font-size:clamp(1.5rem, 3vw, 2rem);
 		text-shadow: 
 			-0.06rem 0rem 0 rgb(148, 163, 184), 
@@ -616,8 +672,36 @@ nav, ul, li {
 			}
 		}
 
-		#infosSup {
+		#infosBook,
+		#infosSkills,
+		#infosContact,
+		#infosAbout {
 			cursor:help!important;
+		}
+		
+		#pixelize {
+			i {
+				align-self: center;
+				justify-self: center;
+				position: absolute;
+			}
+
+			.fa-skull-crossbones {//Icone tete de mort
+				z-index: 110;
+			}
+
+			.fa-user {//Icone utilisateur
+				opacity: 0;
+				z-index: 100;
+			}
+
+			&.closed .fa-skull-crossbones {
+				opacity: 0;
+			}
+			
+			&.closed .fa-user {
+				opacity: 1;
+			}
 		}
 
 		#openBook {
@@ -707,7 +791,8 @@ html body #containerHUD nav.droite ul li {
 	#APROPOS,
 	#PORTFOLIO,
 	#CURRICULUM,
-	#COMPETENCES {
+	#COMPETENCES,
+	#CONTACT {
 		visibility: visible!important;
 		display: grid;
 		align-content: center;

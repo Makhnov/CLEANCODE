@@ -1,9 +1,3 @@
-// @media screen and (max-width: 800px) {
-//     :root {
-//         --bookSize:200px!important;
-//     }
-// }
-
 #book {
     position: absolute;
     transform-style:preserve-3d ;
@@ -25,7 +19,7 @@
     animation: closeBook var(--vitesseSortie) linear forwards;
 }
 #PORTFOLIO.anim #book #readBook:not(:checked) ~ #livre .blocLivre.droite {
-        animation: openBookRight var(--vitesseEntree) linear forwards;
+    animation: openBookRight var(--vitesseEntree) linear forwards;
 }
 #PORTFOLIO.anim #book #readBook:checked ~ #livre .blocLivre.droite {
     animation: closeBookRight var(--vitesseSortie) linear forwards;
@@ -49,7 +43,7 @@
     grid-template-columns:calc(70 / 99 * var(--livreLargeur)) var(--gapLivre) calc(70 / 99 * var(--livreLargeur));
 }
 
-.blocLivre {
+.blocLivre {//fausses pages et blocs (pour anim)
     position: absolute;
     transform-style: preserve-3d;
 	cursor:pointer;
@@ -68,10 +62,10 @@
         transform-style:preserve-3d;
         transform-origin:inherit ;
         height: var(--livreLargeur);
-        width:calc(70 / 99 * var(--livreLargeur) - 3px);
-        background-color: var(--bookPage);
+        width:calc(70 / 99 * var(--livreLargeur) - 6px);
+        background-color: var(--fontLight);
         box-sizing: border-box;
-        border: 1px dotted var(--bookBorder);
+        border-bottom: 1px dotted var(--bookBorder);
 
         &::before {
             content:'';
@@ -81,10 +75,10 @@
             top:0;
             left:0;
             height: var(--livreLargeur);
-            width:calc(70 / 99 * var(--livreLargeur) - 3px);
+            width:calc(70 / 99 * var(--livreLargeur) - 6px);
             box-sizing: border-box;
             border: 1px dotted var(--bookBorder);
-            background-color: var(--bookPage);
+            background-color: var(--fontLight);
         }
 
         &::after {
@@ -95,10 +89,10 @@
             top:0;
             left:0;
             height: var(--livreLargeur);
-            width:calc(70 / 99 * var(--livreLargeur) - 3px);
+            width:calc(70 / 99 * var(--livreLargeur) - 6px);
             box-sizing: border-box;
             border: 1px dotted var(--bookBorder);
-            background-color: var(--bookPage);
+            background-color: var(--fontLight);
         }
     }
 
@@ -203,41 +197,41 @@
 
 @keyframes openBookLeft {
     from {
-        transform: rotateY(88deg);
+        transform: translateX(-5px) rotateY(88deg);
     }
 
     to {
-        transform: rotateY(0deg);
+        transform: translateZ(0px) rotateY(0deg);
     }
 }
 
 @keyframes closeBookLeft {
     from {
-        transform: rotateY(0deg);
+        transform:translateZ(0px) rotateY(0deg);
     }
 
     to {
-        transform: rotateY(88deg);
+        transform:translateX(-5px) rotateY(88deg);
     }
 }
 
 @keyframes openBookRight {
     from {
-        transform: rotateY(-88deg);
+        transform: translateX(5px) rotateY(-88deg);
     }
 
     to {
-        transform: rotateY(-0deg);
+        transform: translateX(0px) rotateY(-0deg);
     }
 }
 
 @keyframes closeBookRight {
     from {
-        transform: rotateY(-0deg);
+        transform: translateX(0px) rotateY(-0deg);
     }
 
     to {
-        transform: rotateY(-88deg);
+        transform: translateX(5px) rotateY(-88deg);
     }
 }
 
@@ -246,13 +240,13 @@
     top:0;
     left:0;
     height: var(--livreLargeur);
-    width:calc(70 / 99 * var(--livreLargeur));
+	width:calc(70 / 99 * var(--livreLargeur) - 6px);
     transform-style: preserve-3d;
 }
 
 #pageG {
     transform-origin: right;
-    transform: translateX(-3px) translateZ(13.2px) rotateY(2.6deg);
+    transform: translateX(-1px) translateZ(13.2px) rotateY(2.6deg);
     pointer-events :auto;
 
     &.anim {
@@ -266,7 +260,7 @@
 
 #pageD {
     transform-origin: left;
-    transform: translateX(2.5px) translateZ(13.2px) rotateY(-2.6deg);
+    transform: translateX(1px) translateZ(13.2px) rotateY(-2.6deg);
     pointer-events :auto;
 
     &.anim {
@@ -318,7 +312,7 @@
 
     .bandeGauche {
         background-size:700% 100%;
-        right:calc(10 / 99 * var(--livreLargeur) - .5px);
+        right:calc(10 / 99 * var(--livreLargeur) - 1px);
         &::after {
             background-size:700% 100%;
         }
@@ -387,7 +381,7 @@
 
     .bandeDroite {
         background-size:700% 100%;
-        left:calc(10/99 * var(--livreLargeur) - .5px);
+        left:calc(10/99 * var(--livreLargeur) - 1px);
         &::after {
             background-size:700% 100%;
         }
@@ -443,30 +437,30 @@
 
 @keyframes pageGauche {
     0% {
-        transform: translateX(0px) translateZ(13.2px) rotateY(2.6deg);
+        transform: translateZ(13.2px) translateX(-1px) rotateY(2.6deg);
         visibility: visible;
     }
     75% {
-        transform: translateX(var(--gapLivre)) translateZ(13.2px) rotateY(177.4deg);
+        transform: translateZ(13.2px) translateX(calc(2 * var(--gapLivre))) rotateY(177.4deg);
         visibility: visible;
     }
     100% {
-        transform: translateX(var(--gapLivre)) translateZ(13.2px) rotateY(177.4deg);
+        transform: translateZ(13.2px) translateX(calc(2 * var(--gapLivre))) rotateY(177.4deg);
         visibility: visible;
     }
 }
 
 @keyframes pageDroite {
     0% {
-        transform: translateX(0px) translateZ(13.2px) rotateY(-2.6deg);
+        transform: translateZ(13.2px) translateX(1px) rotateY(-2.6deg);
         visibility: visible;
     }
     75% {
-        transform: translateX(calc(-1 * var(--gapLivre))) translateZ(13.2px) rotateY(-177.4deg);
+        transform: translateZ(13.2px)translateX(calc(-2 * var(--gapLivre)))  rotateY(-177.4deg);
         visibility: visible;
     }
     100% {
-        transform: translateX(calc(-1 * var(--gapLivre))) translateZ(13.2px) rotateY(-177.4deg);
+        transform: translateZ(13.2px) translateX(calc(-2 * var(--gapLivre))) rotateY(-177.4deg);
         visibility: visible;
     }
 }

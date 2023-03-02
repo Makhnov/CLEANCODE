@@ -25,20 +25,26 @@ let tabPages = [
 
 function openBook(bool) {
 	if (pageSpamm) {
-		readBook.checked = !readBook.checked;
-		iconBook.classList.toggle('closed');
-		if (readBook.checked) {
+		if (bool) {// FROM USER CLICK
+			readBook.checked = !readBook.checked;
+			iconBook.classList.toggle('closed');
+		} else {// FROM HUD
+			readBook.checked = true;
+			iconBook.classList.remove('closed');
 			iconBook.children[0].style.zIndex = "110";
-			if (bool) {// CLIC FERMETURE
-				tempo = false;
-			} else {//FROM HUD
-				racine.style.setProperty('--zoomLivre', '-200px');
-			}
-		} else {
+		}
+		if (readBook.checked && bool) {// CLOSED FROM CLICK
 			iconBook.children[0].style.zIndex = "90";
-			if (bool) {// CLIC OUVERTURE
-				tempo = true;
-			}
+			tempo = false;
+		} else if (bool) {// OPENED FROM CLICK
+			iconBook.children[0].style.zIndex = "110";
+			tempo = true;
+		}
+	} else {
+		if (!bool) {
+			readBook.checked = true;
+			iconBook.classList.remove('closed');
+			iconBook.children[0].style.zIndex = "110";
 		}
 	}
 }
@@ -119,10 +125,9 @@ function zoomLivre() {
 	racine.style.setProperty('--zoomLivre', '0');
 	racine.style.setProperty('--inclinaisonLivre', '0deg');
 	racine.style.setProperty('--justifyLivre', '0vw');
-	racine.style.setProperty('--alignLivre', '-3vh');
+	racine.style.setProperty('--alignLivre', '0vh');
 	racine.style.setProperty('--rotationLivre', '0deg');
-	//livre.style.top = "-6vh";
-	// livre.style.left = "-5vw";
+	livre.style.marginBottom = "5vh";
 }
 
 function dezoomLivre() {
@@ -133,7 +138,7 @@ function dezoomLivre() {
 	racine.style.setProperty('--justifyLivre', '0vw');
 	racine.style.setProperty('--alignLivre', '-6vh');
 	//livre.style.removeProperty("top");
-	// livre.style.removeProperty("left");
+	//livre.style.removeProperty("left");
 }
 
 function variables() {

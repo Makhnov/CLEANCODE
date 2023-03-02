@@ -40,7 +40,7 @@
         width: 28vw;
         background-color:rgba(17, 126, 181, 0.6);
         box-sizing: border-box;
-        border: 2px solid whitesmoke;
+        border: 2px solid var(--fontLight);
 		user-select:none;
         display: flex;
         align-items: center;
@@ -79,7 +79,7 @@
         height: fit-content;
         width: 100%;
 		margin:calc(var(--progressSize) * 3 / 20) 0 0 calc(var(--progressSize) * 2 / 20);
-        color: whitesmoke;
+        color: var(--fontLight);
 		visibility: hidden;
 
         h1 {
@@ -530,7 +530,7 @@
         color:rgba(245, 245, 245, 0);
     }
     100% {
-        color:whitesmoke;
+        color:var(--fontLight);
     }
 }
 

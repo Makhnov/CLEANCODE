@@ -9,7 +9,7 @@
   display: none !important;
 }
 #CURRICULUM.anim #rotationStand:checked ~ #teleport {
-  animation: rotationStand linear 20s infinite;
+  animation: rotationStand linear 10s infinite;
 }
 
 #teleport {
@@ -145,13 +145,15 @@
   position: absolute;
   align-self: center;
   justify-self: center;
-  background-image: url("../../divers/img/docFront.jpg");
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  background-image: url("../../divers/img/cvFront.jpg");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
-  opacity: 0.4;
-  transition: opacity 1.5s;
+  opacity: 0.6;
+  transition: opacity 1s;
   filter: blur(0.5px);
 }
 #zoneCV:hover {
@@ -159,8 +161,33 @@
   filter: blur(0px);
 }
 
+#zoneCVBack {
+  visibility: hidden;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  align-self: center;
+  justify-self: center;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  background-image: url("../../divers/img/cvBack2.jpg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 1s;
+  filter: blur(0.5px);
+}
+#zoneCVBack:hover {
+  opacity: 1;
+  filter: blur(0px);
+}
+
 #filtreCV {
   visibility: hidden;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   margin: 0;
   padding: 0;
   position: absolute;
@@ -286,6 +313,9 @@
   }
 }
 @keyframes blocTop {
+  0% {
+    transform: translateZ(var(--standEpaisseur)) rotate(0deg);
+  }
   50% {
     transform: translateZ(var(--standEpaisseur)) rotate(0deg);
   }
@@ -353,6 +383,31 @@
   100% {
     visibility: visible;
     transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.25 * var(--standEpaisseur)), 0);
+    height: calc(0.8 * var(--standHauteur));
+    width: calc(0.5656 * var(--standHauteur));
+  }
+}
+@keyframes documentBack {
+  0% {
+    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.25 * var(--standEpaisseur)), 0) rotateY(180deg);
+    height: 0px;
+    width: 0px;
+  }
+  84% {
+    visibility: visible;
+    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.25 * var(--standEpaisseur)), 0) rotateY(180deg);
+    height: 0px;
+    width: 0px;
+  }
+  98% {
+    visibility: visible;
+    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.25 * var(--standEpaisseur)), 0) rotateY(180deg);
+    height: calc(0.8 * var(--standHauteur));
+    width: calc(0.5656 * var(--standHauteur));
+  }
+  100% {
+    visibility: visible;
+    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.25 * var(--standEpaisseur)), 0) rotateY(180deg);
     height: calc(0.8 * var(--standHauteur));
     width: calc(0.5656 * var(--standHauteur));
   }
@@ -470,6 +525,9 @@
 #CURRICULUM.anim #openStand:not(:checked) ~ #teleport #filtreCV,
 #CURRICULUM.anim #openStand:not(:checked) ~ #teleport #zoneCV {
   animation: document linear var(--vitesseEntree) forwards;
+}
+#CURRICULUM.anim #openStand:not(:checked) ~ #teleport #zoneCVBack {
+  animation: documentBack linear var(--vitesseEntree) forwards;
 }
 
 #CURRICULUM.anim #openStand:checked ~ #teleport .bloc .face,
