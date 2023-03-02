@@ -1,12 +1,10 @@
 :root {
-  --menuLargeur:clamp(200px, 18vw, 1000px);
   --menuProfondeur:75px;
   --ignitionDegree: 20deg;
   --vitesseEntree:3s;
   --vitesseSortie:2s;
   --rightNavFontSize:clamp(2rem, 3vw, 3.25rem);
   --multivac:100px;
-  --brightMachine:0.75;
   --bookBorder:rgb(50, 50, 50);
   --fontLight:whitesmoke;
   --mainColor:rgb(23, 80, 109);
@@ -25,11 +23,11 @@
   --mainColorLight:rgba(17, 106, 181, 0.4);
   --mainColor5Light:rgba(13, 95, 160, 0.4);
   --mainColor4Light:rgba(108, 221, 255, 0.2);
-  --standLargeur:30vw;
+  --standLargeur:clamp(30vw, 78vh, 65vw);
   --standLargeurInt:calc(12/21 * (var(--standLargeur)));
   --standEpaisseur:calc(2/21 * (var(--standLargeur)));
   --hMult:8 / 7;
-  --standHauteur:calc(var(--hMult) * (var(--standLargeur)));
+  --standHauteur:78vh;
   --inclinaisonCV:90deg;
   --imageG1:url("../../divers/img/pf-videos.jpg");
   --imageG2:url("../../divers/img/pf-videos-specs.jpg");
@@ -96,4 +94,10 @@
     font-weight: bold;
     font-style: italic;
   }
+}
+code {
+  font-family: monospace;
+  color: black;
+  background-color: var(--mainColor1);
+  padding: 0.1em;
 }/*# sourceMappingURL=variables.css.map */

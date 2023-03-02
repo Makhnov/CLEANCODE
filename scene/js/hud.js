@@ -1,7 +1,6 @@
 const br = '\n';
 const brText = '<br>';
 const space = ' ';
-
 function PoF() {
 	const random = Math.random();
 	if (random < 0.5) {
@@ -11,9 +10,7 @@ function PoF() {
 	}
 }
 
-
-const racine = document.documentElement;
-
+const nicoMail = "09140@tuta.io"
 const textes = [// Bloc de texte (index = ordre du menu)
 
 	"Bienvenue sur mon site perso. Ce site, créé en janvier/février 2023 a pour but de me présenter aux entreprises intéressées par un stagiaire en développement web." + space +
@@ -50,6 +47,8 @@ const textes = [// Bloc de texte (index = ordre du menu)
 	"Dolores amet cumque minima, ipsum aut atque soluta harum facere nisi dicta odio eius doloribus quo obcaecati officia quia, voluptas exercitationem sequi!"
 ]
 
+const racine = document.documentElement;
+
 const theme = document.getElementById('theme');
 const startBG = document.getElementById('animHUD');
 
@@ -59,6 +58,20 @@ const apropos = document.getElementById('APROPOS');
 const li = document.querySelectorAll('li.gauche');
 const navGauche = document.getElementsByTagName('nav')[0].children[0];
 const navDroite = document.getElementsByTagName('nav')[1];
+
+const pp = document.getElementById('pagePrecedente');
+pp.addEventListener('mouseover', function () {
+	const tooltip = document.getElementById('pagePrecTooltip');
+	tooltip.style.opacity = "1";
+	if (!pp.listener) {
+		pp.listener = true;
+
+		pp.addEventListener("mouseout", function () {
+			tooltip.style.opacity = "0";
+			pp.listener = false;
+		});
+	}
+});
 const scene = document.getElementById('containerView').children;
 
 const waitingMenu = document.getElementById('waitingMenu');
@@ -67,6 +80,7 @@ let vitesse2 = getComputedStyle(racine).getPropertyValue('--vitesseSortie');
 let speedIn = parseFloat(vitesse1.replace('s', '')) * 1000;
 let speedOut = parseFloat(vitesse2.replace('s', '')) * 1000;
 
+const multivac = document.getElementById('multivac');
 const machine = document.getElementById('machine');
 const urlGIF = "../../divers/img/loading2.gif?time=";
 function loadingGIF() {
@@ -123,8 +137,8 @@ function resize() {
 
 	let tpY = width * 0.3 * 8 / 7;
 
-	// console.log('width :' + width);
-	// console.log('height :' + height);
+	console.log('width :' + width);
+	//console.log('height :' + height);
 
 	if ((height / tpY) < 1.44) {
 		let hMult = (8 * height / (width * 3)).toFixed(2);
@@ -133,22 +147,28 @@ function resize() {
 		racine.style.removeProperty("--hMult");
 	}
 
-	if (width < 1000) {
-		angle = 60;
-		depth = 60;
-		iDeg = 30;
+	if (width < 800) {
+		angle = 30;
+		depth = 100;
+		iDeg = 55;
+	} else if (width < 1000) {
+		angle = 40;
+		depth = 90;
+		iDeg = 45;
 	} else if (width < 1400) {
-		angle = 70;
-		depth = 65;
-		iDeg = 20;
-	} else if (width < 1800) {
-		angle = 80;
-		depth = 70;
-		iDeg = 10;
+		angle = 50;
+		depth = 80;
+		iDeg = 35;
 	} else {
-		angle = 90;
-		depth = 75;
-		iDeg = -10;
+		angle = 60;
+		depth = 70;
+		iDeg = 25;
+	}
+
+	if (height < 500) {
+		navDroite.style.alignItems = "flex-end";
+	} else {
+		navDroite.style.removeProperty('align-items');
 	}
 
 	racine.style.setProperty('--menuAngle', iDeg + 'deg');
@@ -158,7 +178,7 @@ function resize() {
 	//let depthBar = getComputedStyle(racine).getPropertyValue('--menuPronfondeur');
 	//console.log(depthBar);
 
-	navGauche.style.transform = "translateX(2vw) rotateY(" + angle + "deg) translateZ(calc(var(--menuProfondeur)))";
+	navGauche.style.transform = "translateX(1vw) rotateY(" + angle + "deg) translateZ(calc(var(--menuProfondeur)))";
 	//waitingMenu.style.width = depth + "px";
 	//waitingMenu.style.height = depth + "px";//En +
 	//waitingMenu.style.transform = "translate3d(0, 0, -" + depth + "px) rotateY(" + -angle + "deg)";
@@ -172,10 +192,14 @@ function swapTheme() {
 
 		if (theme.classList.contains('dark')) {
 			racine.style.setProperty('--fontLight', '#fff');
-			racine.style.setProperty('--brightMachine', '1.25');
+			racine.style.setProperty('--subColorLight', 'rgba(70, 70, 80, 0.5)');
+			racine.style.setProperty('--subColor', 'rgb(70, 70, 80)');
+			multivac.children[2].textContent = "Thème clair";
 		} else {
 			racine.style.setProperty('--fontLight', 'whitesmoke');
-			racine.style.setProperty('--brightMachine', '0.75');
+			racine.style.setProperty('--subColorLight', 'rgba(39, 48, 52, 0.5)');
+			racine.style.setProperty('--subColor', 'rgb(39, 48, 52)');
+			multivac.children[2].textContent = "Thème sombre";
 		}
 	} else {// WAIT...
 	}
@@ -260,7 +284,7 @@ function delayLi(ms) {
 				}
 			}
 			//blurBG.style.display = "none";
-			navDroite.style.display = "grid";
+			navDroite.style.display = "flex";
 			resolve();
 			;
 		}, ms

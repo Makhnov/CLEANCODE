@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="./css/hud.css">
-	<link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/about.css">
     <link rel="stylesheet" href="./css/book.css">
     <link rel="stylesheet" href="./css/cv.css">
     <link rel="stylesheet" href="./css/skills.css">
@@ -22,7 +22,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/x-icon" href="../divers/img/favfolio.ico">
 
-	<!-- <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="icon" type="image/gif" href="loading.gif" sizes="any" onload="if(media!='(prefers-reduced-motion: reduce)')this.rel='icon'"> -->
@@ -32,16 +32,17 @@
 <body onload="refresh()">
 
     <section id="animHUD">
-		<div id="cache"></div>
-		<h1>BIENVENUE</h1>
-		<div id="startIcon"></div>
-	</section>
+        <div id="cache"></div>
+        <h1>BIENVENUE</h1>
+        <div id="startIcon"></div>
+    </section>
 
     <section id="containerHUD">
-		<div id="theme" class="light start"></div>
+        <div id="theme" class="light start"></div>
         <div id="multivac" onclick="swapTheme()">
             <div id="machine"></div>
             <div id="waitingMenu"></div>
+            <span class="tooltip">Thème sombre</span>
         </div>
 
         <nav class="gauche">
@@ -72,86 +73,103 @@
         <nav class="droite">
             <ul>
                 <li class="droite">
-					<div></div>
-                    <p for="readBook" onclick="openBook(true)" id="openBook" class="bouton-texte">
+                    <div></div>
+                    <div for="readBook" onclick="openBook(true)" id="openBook" class="bouton-texte">
                         <i class="fas fa-book"></i>
                         <i class="fas fa-book-open"></i>
-                    </p>
-					<div></div>
+                        <span class="tooltip">Ouvrir / Fermer</span>
+                    </div>
+                    <div></div>
                     <div></div>
                     <div></div>
                 </li>
                 <li class="droite">
-					<p for="portrait" onclick="openPixel(true)" id="pixelize" class="bouton-texte">
-						<i class="fas fa-skull-crossbones" ></i>
-						<i class="fas fa-user"></i>
-					</p>
-					<div class="changementPage bouton-texte">
-                        <span class="container-button-texte pageSuivante">
-                            <i onclick="pageSuivante(this)" id="pageSuivante" class="fas fa-share 1"></i>
-                        </span>
-                        <span class="container-button-texte pagePrecedente">
-                            <i onclick="pagePrecedente(this)" id="pagePrecedente" class="fas fa-share 7"></i>
-                        </span>
+                    <div for="portrait" onclick="openPixel(true)" id="pixelize" class="bouton-texte">
+                        <i class="fas fa-skull-crossbones"></i>
+                        <i class="fas fa-user"></i>
+                        <span class="tooltip">Disperser / Assembler</span>
                     </div>
-					<p for="openStand" onclick="openCV(true)" id="openStandIcon" class="bouton-texte">
+                    <div class="changementPage bouton-texte">
+                        <div class="container-button-texte pageSuivante">
+                            <i onclick="pageSuivante(this)" id="pageSuivante" class="fas fa-share 1"></i>
+                            <span class="tooltip duo duo-left">Page suivante</span>
+                            <span id="pagePrecTooltip" class="tooltip duo duo-right">Page précédente</span>
+                        </div>
+                        <div class="container-button-texte pagePrecedente">
+                            <i onclick="pagePrecedente(this)" id="pagePrecedente" class="fas fa-share 7"></i>
+                        </div>
+                    </div>
+                    <div for="openStand" onclick="openCV(true)" id="openStandIcon" class="bouton-texte">
                         <i class="fas fa-down-left-and-up-right-to-center"></i>
                         <i class="fas fa-up-right-and-down-left-from-center"></i>
-                    </p>
-					<p class="informations bouton-texte" title="Infos sup" >
-						<i onclick="skillsInfos()" id="infosSkills" class="fas fa-info"></i>
-					</p>
-					<p  id="copyEmail" title="copier mon mail" class="informations bouton-texte">
-						<i onclick="copyEmail()"class="far fa-copy"></i>
-					</p>               
+                        <span class="tooltip">Ouvrir / Fermer</span>
+                    </div>
+                    <div class="informations bouton-texte">
+                        <i onclick="skillsInfos()" id="infosSkills" class="fas fa-info"></i>
+                        <span class="tooltip">En savoir plus</span>
+                    </div>
+                    <div class="informations bouton-texte">
+                        <i id="copyEmail" onclick="copyEmail(this)" class="far fa-copy"></i>
+                        <span class="tooltip">Copier mon e-mail</span>
+                    </div>
 
                 </li>
                 <li class="droite">
-					<p class="informations bouton-texte" title="Infos sup" >
-						<i onclick="aproposInfos()" id="infosAbout" class="fas fa-info"></i>
-					</p>
-                    <p class="zoom bouton-texte">
-                        <span class="container-button-texte zoom-moins">
+                    <div class="informations bouton-texte">
+                        <i onclick="aproposInfos()" id="infosAbout" class="fas fa-info"></i>
+                        <span class="tooltip">En savoir plus</span>
+                    </div>
+                    <div class="zoom bouton-texte">
+                        <div class="container-button-texte zoom-moins">
                             <i onclick="dezoomLivre()" class="fas fa-compress"></i>
-                        </span>
-                        <span class="container-button-texte zoom-plus">
+                            <span class="tooltip duo duo-left">Mode : Normal</span>
+                        </div>
+                        <div class="container-button-texte zoom-plus">
                             <i onclick="zoomLivre()" class="fas fa-expand"></i>
-                        </span>
-                    </p>
-					<label for="rotationStand" id="rotationStandIcon" class="rotation bouton-texte">
-                        <i class="fa-solid fa-arrow-rotate-right"></i>
+                            <span class="tooltip duo duo-right">Mode : Plein écran</span>
+                        </div>
+                    </div>
+                    <label for="rotationStand" id="rotationStandIcon" class="rotation bouton-texte">
+                        <i class="fas fa-arrow-rotate-right"></i>
+                        <span class="tooltip">Rotation du présentoir</span>
                     </label>
                     <div></div>
-					<p class="informations bouton-texte">
-						<i onclick="contactInfos()" id="infosContact" class="fas fa-info" title="Infos sup"></i>
-					</p>
+                    <div class="informations bouton-texte">
+                        <i onclick="contactInfos()" id="infosContact" class="fas fa-info"></i>
+                        <span class="tooltip">En savoir plus</span>
+                    </div>
                 </li>
                 <li class="droite">
-					<p class="zoom bouton-texte">
-                        <span class="container-button-texte zoom-moins">
+                    <div class="zoom bouton-texte">
+                        <div class="container-button-texte zoom-moins">
                             <i onclick="dezoomPixel()" class="fas fa-compress"></i>
-                        </span>
-                        <span class="container-button-texte zoom-plus">
+                            <span class="tooltip duo duo-left">Mode : Normal</span>
+                        </div>
+                        <div class="container-button-texte zoom-plus">
                             <i onclick="zoomPixel()" class="fas fa-expand"></i>
-                        </span>
-                    </p>
-                    <p class="informations bouton-texte">
-                        <i onclick="portfolioInfos()" id="infosBook" class="fas fa-info" title="Infos sup"></i>
-                    </p>
-					<div>
-						<a id="downloadCVLink" class="download bouton-texte" href="https://makh.fr/files/cv.pdf"
-							download>
-							<i class="fas fa-file-arrow-down"></i>
-						</a>
-					</div>
+                            <span class="tooltip duo duo-right">Mode : Plein écran</span>
+                        </div>
+                    </div>
+                    <div class="informations bouton-texte">
+                        <i onclick="portfolioInfos()" id="infosBook" class="fas fa-info"></i>
+                        <span class="tooltip">En savoir plus</span>
+                    </div>
+                    <div>
+                        <a id="downloadCVLink" class="download bouton-texte" href="https://makh.fr/files/cv.pdf"
+                            download>
+                            <i class="fas fa-file-arrow-down"></i>
+                            <span class="tooltip">Télécharger mon CV</span>
+                        </a>
+                    </div>
                     <div></div>
                     <div></div>
                 </li>
                 <li class="droite">
                     <div></div>
-                    <p class="voirPlus bouton-texte">
+                    <div class="voirPlus bouton-texte">
                         <i onclick="portfolioPlus()" id="portfolioPlus" class="fas fa-folder-plus"></i>
-                    </p>
+                        <span class="tooltip">Plus de projets</span>
+                    </div>
                     <div></div>
                     <div></div>
                     <div></div>
@@ -161,7 +179,7 @@
 
         <div id="containerView">
             <div id="APROPOS" class="hidden main">
-				<canvas id="portrait"></canvas>
+                <canvas id="portrait"></canvas>
             </div>
             <div id="PORTFOLIO" class="hidden main">
                 <section id="book">
@@ -218,7 +236,7 @@
                 <div id="teleport">
                     <div id="filtreCV"></div>
                     <div onclick="clicCV(true)" id="zoneCV"></div>
-					<div onclick="clicCV(false)" id="zoneCVBack"></div>
+                    <div onclick="clicCV(false)" id="zoneCVBack"></div>
                     <div class="bloc top">
                         <div class="face top up"></div>
                         <div class="face top down">
@@ -323,27 +341,27 @@
                 </div>
             </div>
             <form id="CONTACT" action="../utils/formulaire.php" method="POST" class="hidden main">
-				<div id="headerContact">
-					<h2 id="contactTitre">Me contacter</h2>
-					<p id="confirmP">Votre message a bien été envoyé, merci !</p>	
-				</div>
-				<div id="screenContact">
-					<div class="inputs">
-						<input id="nom" name="nom" type="text" placeholder="Nom" oninput="validerCheck(this)">
-						<label for="nom" class="nom">Nom</label>
-						<span></span>
-					</div>
-					<div class="inputs">
-						<input id="email" name="email" type="text" placeholder="E-Mail" oninput="validerCheck(this)">
-						<label for="email" class="email">E-Mail</label>
-						<span></span>
-					</div>
-					<div class="inputs message">
-						<textarea id="message" name="message" placeholder="" oninput="validerCheck(this)"></textarea>
-						<label for="message" class="message">Message</label>
-						<span></span>
-					</div>
-				</div>
+                <div id="headerContact">
+                    <h2 id="contactTitre">Me contacter</h2>
+                    <p id="confirmP">Votre message a bien été envoyé, merci !</p>
+                </div>
+                <div id="screenContact">
+                    <div class="inputs">
+                        <input id="nom" name="nom" type="text" placeholder="Nom" oninput="validerCheck(this)">
+                        <label for="nom" class="nom">Nom</label>
+                        <span></span>
+                    </div>
+                    <div class="inputs">
+                        <input id="email" name="email" type="text" placeholder="E-Mail" oninput="validerCheck(this)">
+                        <label for="email" class="email">E-Mail</label>
+                        <span></span>
+                    </div>
+                    <div class="inputs message">
+                        <textarea id="message" name="message" placeholder="" oninput="validerCheck(this)"></textarea>
+                        <label for="message" class="message">Message</label>
+                        <span></span>
+                    </div>
+                </div>
                 <div id="footerContact" class="boutons">
                     <button id="valider" type="submit" value="Submit"><i class="fas fa-share-from-square"></i></button>
                     <button id="supprimer" type="reset" value="Reset"><i class="far fa-rectangle-xmark"></i></button>
@@ -372,8 +390,8 @@
     </section>
 
     <script src="./js/hud.js"></script>
-	<script src="./js/about.js"></script>
-	<script src="./js/cv.js"></script>
+    <script src="./js/about.js"></script>
+    <script src="./js/cv.js"></script>
     <script src="./js/book.js"></script>
     <script src="./js/contact.js"></script>
 </body>

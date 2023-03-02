@@ -1,12 +1,10 @@
 :root {
-  --menuLargeur:clamp(200px, 18vw, 1000px);
   --menuProfondeur:75px;
   --ignitionDegree: 20deg;
   --vitesseEntree:3s;
   --vitesseSortie:2s;
   --rightNavFontSize:clamp(2rem, 3vw, 3.25rem);
   --multivac:100px;
-  --brightMachine:0.75;
   --bookBorder:rgb(50, 50, 50);
   --fontLight:whitesmoke;
   --mainColor:rgb(23, 80, 109);
@@ -25,11 +23,11 @@
   --mainColorLight:rgba(17, 106, 181, 0.4);
   --mainColor5Light:rgba(13, 95, 160, 0.4);
   --mainColor4Light:rgba(108, 221, 255, 0.2);
-  --standLargeur:30vw;
+  --standLargeur:clamp(30vw, 78vh, 65vw);
   --standLargeurInt:calc(12/21 * (var(--standLargeur)));
   --standEpaisseur:calc(2/21 * (var(--standLargeur)));
   --hMult:8 / 7;
-  --standHauteur:calc(var(--hMult) * (var(--standLargeur)));
+  --standHauteur:78vh;
   --inclinaisonCV:90deg;
   --imageG1:url("../../divers/img/pf-videos.jpg");
   --imageG2:url("../../divers/img/pf-videos-specs.jpg");
@@ -97,18 +95,14 @@
     font-style: italic;
   }
 }
-@media screen and (max-width: 1200px) and (min-width: 1000px) {
-  :root {
-    --standLargeur:40vw!important;
-  }
+code {
+  font-family: monospace;
+  color: black;
+  background-color: var(--mainColor1);
+  padding: 0.1em;
 }
+
 @media screen and (max-width: 1000px) and (min-width: 800px) {
-  :root {
-    --standLargeur:50vw!important;
-  }
-  #CURRICULUM #teleport {
-    align-self: center !important;
-  }
   #COMPETENCES > div:not(.skills) {
     flex-direction: column !important;
     justify-content: space-between !important;
@@ -126,12 +120,6 @@
   }
 }
 @media screen and (max-width: 800px) {
-  :root {
-    --standLargeur:60vw!important;
-  }
-  #CURRICULUM #teleport {
-    align-self: center !important;
-  }
   #COMPETENCES > div:not(.skills) {
     flex-direction: column !important;
     justify-content: space-between !important;
@@ -160,7 +148,7 @@ html, body {
           user-select: none;
 }
 
-#containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre, #machine, ul {
+#containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre, #machine, ul, .tooltip {
   pointer-events: none;
 }
 #containerHUD #containerAnim,
@@ -195,7 +183,11 @@ html, body {
 ul #teleport,
 ul nav.gauche li,
 ul nav.droite li,
-ul #multivac {
+ul #multivac, .tooltip #containerAnim,
+.tooltip #teleport,
+.tooltip nav.gauche li,
+.tooltip nav.droite li,
+.tooltip #multivac {
   pointer-events: auto;
 }
 
@@ -320,7 +312,7 @@ nav, ul, li {
   background-position: center;
   background-size: 100% 130%;
   display: grid;
-  grid-template-columns: 1vw 18vw 1vw 60vw 1vw 18vw 1vw;
+  grid-template-columns: 20vw 65vw 15vw;
   grid-template-rows: 14vh 78vh 8vh;
   perspective: 1000px;
   perspective-origin: center;
@@ -367,12 +359,13 @@ nav, ul, li {
 #multivac {
   position: relative;
   grid-row: 1;
-  grid-column: 6;
+  grid-column: 3;
   justify-self: center;
-  top: 50%;
+  margin-right: 1vw;
+  top: 1vw;
   display: grid;
   place-content: center;
-  height: 14vh;
+  height: 12vh;
   min-height: 100px;
   max-height: 200px;
   aspect-ratio: 1/1;
@@ -384,8 +377,8 @@ nav, ul, li {
   animation: departMulti 1s linear 2.5s forwards;
   cursor: pointer;
 }
-#multivac:hover #machine {
-  filter: brightness(var(--brightMachine));
+#multivac:hover .tooltip {
+  opacity: 1;
 }
 #multivac #machine {
   position: absolute;
@@ -407,6 +400,50 @@ nav, ul, li {
   background-size: contain;
   cursor: initial;
 }
+#multivac .tooltip {
+  opacity: 0;
+  z-index: 1000;
+  position: absolute;
+  background-color: var(--subColor);
+  display: grid;
+  place-content: center;
+  height: 25px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid var(--fontLight);
+  font-size: 0.8rem;
+  font-family: "amaranth";
+  color: var(--fontLight);
+  transition: opacity 0.3s;
+  top: -1vw;
+  right: 0;
+}
+#multivac .tooltip::before {
+  content: "";
+  position: absolute;
+  height: 12px;
+  width: 12px;
+  bottom: -4px;
+  left: calc(50% - 6px);
+  transform: rotate(45deg);
+  box-sizing: border-box;
+  border-bottom: 5px solid var(--subColor);
+  border-right: 5px solid var(--subColor);
+  transition: opacity 0.3s;
+}
+#multivac .tooltip::after {
+  content: "";
+  position: absolute;
+  height: 8px;
+  width: 8px;
+  bottom: -4px;
+  left: calc(50% - 4px);
+  transform: rotate(45deg);
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--fontLight);
+  border-right: 1px solid var(--fontLight);
+  transition: opacity 0.3s;
+}
 
 @keyframes departMulti {
   from {
@@ -424,11 +461,11 @@ nav, ul, li {
   left: 0;
   transform-style: preserve-3d;
   grid-row: 1/span 3;
-  grid-column: 2;
-  height: 100vh;
+  grid-column: 1;
+  height: 100%;
   width: 18vw;
   max-width: 400px;
-  min-width: 300px;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -458,7 +495,7 @@ nav, ul, li {
   align-content: center;
   padding-left: 20px;
   margin-bottom: 2%;
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1.4rem, 2vw, 2.25rem);
   text-shadow: -0.06rem 0rem 0 rgb(148, 163, 184), -0.06rem 0.05rem 0 #0f172a, -0.12rem 0.025rem 0 #94a3b8, -0.12rem 0.075rem 0 #0f172a, -0.18rem 0.05rem 0 #94a3b8, -0.18rem 0.1rem 0 #0f172a, -0.24rem 0.075rem 0 #94a3b8, -0.24rem 0.125rem 0 #0f172a, -0.3rem 0.1rem 0 #94a3b8, -0.3rem 0.15rem 0 #0f172a;
   transition: transform var(--vitesseSortie) !important;
 }
@@ -533,19 +570,23 @@ nav, ul, li {
 }
 
 #containerHUD nav.droite {
-  grid-row: 2;
-  grid-column: 6;
+  grid-row: 2/span 2;
+  grid-column: 3;
   position: relative;
   z-index: 100;
-  height: 78vh;
-  width: 18vw;
+  height: 86vh;
+  width: 15vw;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
   display: none;
-  grid-template-rows: repeat(5, 10vh) 30vh;
+  grid-template-rows: repeat(5, 12vh) 1fr;
   grid-template-columns: 1fr;
 }
 #containerHUD nav.droite ul {
+  justify-self: center;
   height: 78vh;
-  width: 18vw;
+  width: 14vw;
+  margin-right: 1vw;
   display: grid;
   align-content: center;
   grid-template-rows: 10vh repeat(5, 12vh) 10vh;
@@ -556,7 +597,7 @@ nav, ul, li {
   display: grid;
   align-content: center;
   min-height: 12vh;
-  min-width: 18vw;
+  min-width: 13vw;
 }
 #containerHUD nav.droite ul li:nth-of-type(1) {
   grid-column: 1;
@@ -581,11 +622,10 @@ nav, ul, li {
 #containerHUD nav.droite ul li .bouton-texte:not(.changementPage, .zoom),
 #containerHUD nav.droite ul li .bouton-texte .container-button-texte {
   align-self: center;
-  cursor: pointer;
   margin: 0;
   padding: 0;
   min-height: 10vh;
-  min-width: 12vh;
+  min-width: calc(2 * var(--rightNavFontSize)) !important;
   display: grid;
   place-content: center;
   font-size: var(--rightNavFontSize);
@@ -596,6 +636,9 @@ nav, ul, li {
   text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.5px 0.375px rgb(31, 162, 227), 1px 0.75px rgb(30.36, 156.44, 219.6), 1.5px 1.125px rgb(29.72, 150.88, 212.2), 2px 1.5px rgb(29.08, 145.32, 204.8), 2.5px 1.875px rgb(28.44, 139.76, 197.4), 3px 2.25px rgb(27.8, 134.2, 190), 3.5px 2.625px rgb(27.16, 128.64, 182.6), 4px 3px rgb(26.52, 123.08, 175.2), 4.5px 3.375px rgb(25.88, 117.52, 167.8), 5px 3.75px rgb(25.24, 111.96, 160.4), 5.5px 4.125px rgb(24.6, 106.4, 153), 6px 4.5px rgb(23.96, 100.84, 145.6), 6.5px 4.875px rgb(23.32, 95.28, 138.2), 7px 5.25px rgb(22.68, 89.72, 130.8), 7.5px 5.625px rgb(22.04, 84.16, 123.4), 8px 6px rgb(21.4, 78.6, 116), 8.5px 6.375px rgb(20.76, 73.04, 108.6), 9px 6.75px rgb(20.12, 67.48, 101.2), 9.5px 7.125px rgb(19.48, 61.92, 93.8), 10px 7.5px rgb(18.84, 56.36, 86.4), 10.5px 7.875px rgb(18.2, 50.8, 79), 11px 8.25px rgb(17.56, 45.24, 71.6), 11.5px 8.625px rgb(16.92, 39.68, 64.2), 12px 9px rgb(16.28, 34.12, 56.8), 12.5px 9.375px rgb(15.64, 28.56, 49.4), 13px 9.75px rgb(15, 23, 42);
   transform: translate(0, 0);
   transition: opacity 0.5s;
+  cursor: pointer;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 #containerHUD nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i:not(.fa-arrow-rotate-right):hover,
 #containerHUD nav.droite ul li .bouton-texte .container-button-texte i:not(.fa-arrow-rotate-right):hover {
@@ -606,6 +649,10 @@ nav, ul, li {
 #containerHUD nav.droite ul li .bouton-texte .container-button-texte i:not(.fa-arrow-rotate-right):active {
   text-shadow: 0px 0px rgb(185, 232, 255), -1px -1px rgb(185, 232, 255), 1px 1px rgb(185, 232, 255), 0.5px 0.375px rgb(31, 162, 227), 1px 0.75px rgb(30.0588235294, 153.8235294118, 216.1176470588), 1.5px 1.125px rgb(29.1176470588, 145.6470588235, 205.2352941176), 2px 1.5px rgb(28.1764705882, 137.4705882353, 194.3529411765), 2.5px 1.875px rgb(27.2352941176, 129.2941176471, 183.4705882353), 3px 2.25px rgb(26.2941176471, 121.1176470588, 172.5882352941), 3.5px 2.625px rgb(25.3529411765, 112.9411764706, 161.7058823529), 4px 3px rgb(24.4117647059, 104.7647058824, 150.8235294118), 4.5px 3.375px rgb(23.4705882353, 96.5882352941, 139.9411764706), 5px 3.75px rgb(22.5294117647, 88.4117647059, 129.0588235294), 5.5px 4.125px rgb(21.5882352941, 80.2352941176, 118.1764705882), 6px 4.5px rgb(20.6470588235, 72.0588235294, 107.2941176471), 6.5px 4.875px rgb(19.7058823529, 63.8823529412, 96.4117647059), 7px 5.25px rgb(18.7647058824, 55.7058823529, 85.5294117647), 7.5px 5.625px rgb(17.8235294118, 47.5294117647, 74.6470588235), 8px 6px rgb(16.8823529412, 39.3529411765, 63.7647058824), 8.5px 6.375px rgb(15.9411764706, 31.1764705882, 52.8823529412), 9px 6.75px rgb(15, 23, 42);
   transform: translate(4px, 3px);
+}
+#containerHUD nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i:hover ~ span:first-of-type,
+#containerHUD nav.droite ul li .bouton-texte .container-button-texte i:hover ~ span:first-of-type {
+  opacity: 1;
 }
 #containerHUD nav.droite ul li .bouton-texte:not(.changementPage, .zoom) i:hover:not(.fa-arrow-rotate-right),
 #containerHUD nav.droite ul li .bouton-texte .container-button-texte i:hover:not(.fa-arrow-rotate-right) {
@@ -625,7 +672,7 @@ nav, ul, li {
 #containerHUD nav.droite ul li .bouton-texte .container-button-texte.anim .fa-arrow-rotate-right:hover {
   cursor: not-allowed;
 }
-#containerHUD nav.droite ul #rotationStandIcon.open.anim {
+#containerHUD nav.droite ul #rotationStandIcon.open.anim i {
   animation: iconTurn 5s linear infinite;
 }
 #containerHUD nav.droite ul .bouton-texte.changementPage,
@@ -649,6 +696,58 @@ nav, ul, li {
 #containerHUD nav.droite ul #infosContact,
 #containerHUD nav.droite ul #infosAbout {
   cursor: help !important;
+}
+#containerHUD nav.droite ul .bouton-texte .tooltip {
+  opacity: 0;
+  z-index: 200;
+  position: absolute;
+  background-color: var(--subColor);
+  display: grid;
+  place-content: center;
+  height: 25px;
+  width: 150px;
+  border-radius: 5px;
+  border: 1px solid var(--fontLight);
+  font-size: 0.8rem;
+  font-family: "amaranth";
+  color: var(--fontLight);
+  top: calc(50% - var(--rightNavFontSize) / 2 - 42.5px);
+  transition: opacity 0.3s;
+}
+#containerHUD nav.droite ul .bouton-texte .tooltip:not(.duo) {
+  left: calc(50% - 75px);
+}
+#containerHUD nav.droite ul .bouton-texte .tooltip.duo-left {
+  left: calc(50% - 75px - var(--rightNavFontSize));
+}
+#containerHUD nav.droite ul .bouton-texte .tooltip.duo-right {
+  left: calc(50% - 75px + var(--rightNavFontSize));
+}
+#containerHUD nav.droite ul .bouton-texte .tooltip::before {
+  content: "";
+  position: absolute;
+  height: 12px;
+  width: 12px;
+  bottom: -4px;
+  left: calc(50% - 6px);
+  transform: rotate(45deg);
+  box-sizing: border-box;
+  border-bottom: 5px solid var(--subColor);
+  border-right: 5px solid var(--subColor);
+  transition: opacity 0.3s;
+}
+#containerHUD nav.droite ul .bouton-texte .tooltip::after {
+  content: "";
+  position: absolute;
+  height: 8px;
+  width: 8px;
+  bottom: -4px;
+  left: calc(50% - 4px);
+  transform: rotate(45deg);
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--fontLight);
+  border-right: 1px solid var(--fontLight);
+  transition: opacity 0.3s;
 }
 #containerHUD nav.droite ul #pixelize i {
   align-self: center;
@@ -689,6 +788,9 @@ nav, ul, li {
 #containerHUD nav.droite ul #openStandIcon {
   transform: rotate(-45deg);
 }
+#containerHUD nav.droite ul #openStandIcon span {
+  transform: translateX(var(--rightNavFontSize)) rotate(45deg) translateY(0.75rem);
+}
 #containerHUD nav.droite ul #openStandIcon i {
   align-self: center;
   justify-self: center;
@@ -719,9 +821,9 @@ html body #containerHUD nav.droite ul li > * {
   visibility: visible;
   transform-style: preserve-3d;
   grid-row: 2;
-  grid-column: 4;
+  grid-column: 2;
   height: 78vh;
-  width: 60vw;
+  width: 65vw;
 }
 #containerView .hidden {
   display: none !important;
@@ -731,7 +833,7 @@ html body #containerHUD nav.droite ul li > * {
   position: relative;
   z-index: 10;
   height: 78vh;
-  width: 60vw;
+  width: 65vw;
 }
 #containerView #APROPOS,
 #containerView #PORTFOLIO,

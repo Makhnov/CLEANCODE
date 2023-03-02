@@ -1,13 +1,11 @@
 :root {
     // HUD//
-    --menuLargeur:clamp(200px, 18vw, 1000px);
     --menuProfondeur:75px;
     --ignitionDegree: 20deg;
     --vitesseEntree:3s;
     --vitesseSortie:2s;
     --rightNavFontSize:clamp(2rem, 3vw, 3.25rem);
 	--multivac:100px;
-	--brightMachine:0.75;
 
     // COLORS //
     --bookBorder:rgb(50, 50, 50);
@@ -30,11 +28,11 @@
     --mainColor4Light:rgba(108, 221, 255, 0.2);
 
     // DISPLAY CV //
-    --standLargeur:30vw; // Variable unique.
+    --standLargeur:clamp(30vw, 78vh, 65vw); // Variable unique.
     --standLargeurInt:calc(12/21 * (var(--standLargeur)));
     --standEpaisseur:calc(2/21 * (var(--standLargeur)));
 	--hMult:8 / 7; 
-    --standHauteur:calc(var(--hMult) * (var(--standLargeur)));
+    --standHauteur:78vh;
 	--inclinaisonCV:90deg;
 
     // LIVRE PORTFOLIO //
@@ -111,3 +109,11 @@
         font-style: italic;
     }
 }
+
+code {
+    font-family: monospace;
+    color:black;
+    background-color: var(--mainColor1);
+    padding: 0.1em;
+}
+  

@@ -258,7 +258,7 @@
 			top: calc(-60% - 4px);
 
 			&.message {
-				top: calc(-95% - 4px)!important;
+				top: calc(-90% - 4px)!important;
 			}
 		}
 	
@@ -310,7 +310,7 @@
 		#message {
 			margin:0;
 			padding:0;
-			min-height: 95%!important;
+			min-height: 90%!important;
 			display: flex;
 			align-items: flex-start;
 			resize: none;
@@ -329,8 +329,12 @@
 			font-family: 'baskerville';
 			color:#FFA500;
 			font-weight: bold;
-			font-size: .9rem;
+			font-size: .75rem;
 			//background-color: blue;
+		}
+
+		&:last-of-type span {
+			text-align: center;
 		}
 	}
 }

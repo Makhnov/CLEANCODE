@@ -198,7 +198,7 @@
   top: calc(-60% - 4px);
 }
 #screenContact .inputs label.message {
-  top: calc(-95% - 4px) !important;
+  top: calc(-90% - 4px) !important;
 }
 #screenContact .inputs input {
   all: initial;
@@ -250,7 +250,7 @@
 #screenContact .inputs #message {
   margin: 0;
   padding: 0;
-  min-height: 95% !important;
+  min-height: 90% !important;
   display: flex;
   align-items: flex-start;
   resize: none;
@@ -267,5 +267,8 @@
   font-family: "baskerville";
   color: #FFA500;
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
+}
+#screenContact .inputs:last-of-type span {
+  text-align: center;
 }/*# sourceMappingURL=contact.css.map */

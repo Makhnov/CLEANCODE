@@ -102,15 +102,16 @@ function effacer() {
 function affichage(tab) {
 
 	const vide = [ // On créé les messages d'erreurs en cas de champs vide
-		"Veuillez entrer un nom de contact.",
-		"Veuillez entrer une adresse e-mail.",
+		"Veuillez entrer un nom.",
+		"Veuillez entrer un mail.",
 		"Veuillez entrer un message."
 	];
 
 	const invalide = [ // On crée les messages d'erreurs en cas de saisie invalide
-		"Le nom saisi est invalide !",
-		"L'adresse mail saisie est invalide !",
-		"Le message saisi est invalide !"
+		"Nom invalide !",
+		"Adresse invalide !",
+		"Pas de caractères spéciaux !" + brText +
+		"Sauf :" + space + "<code> : ; , . ? ! - ) ' </code>"
 	];
 
 	const erreur = [0, invalide, vide]; // On synthétise les messages d'erreurs dans un seul tableau
@@ -118,7 +119,7 @@ function affichage(tab) {
 	for (let i = 0; i < tab.length; i++) {
 		if (tab[i] !== 0) {
 			let texte = erreur[tab[i]][i];
-			spans[i].innerText = texte;
+			spans[i].innerHTML = texte;
 			spans[i].style.opacity = 1;
 		}
 	}
@@ -266,4 +267,19 @@ function confirmationUserForm() {
 	setTimeout(() => {
 		confirmP.classList.remove('confirm');
 	}, 5000)
+}
+
+function copyEmail(e) {
+	navigator.clipboard.writeText(nicoMail);
+	const span = e.parentNode.children[1];
+	span.textContent = "Adresse mail copiée !";
+
+	if (!e.listener) {
+		e.listener = true;
+
+		e.addEventListener("mouseout", function () {
+			span.textContent = "Copier mon e-mail";
+			e.listener = false;
+		});
+	}
 }

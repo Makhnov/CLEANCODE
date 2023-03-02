@@ -1,6 +1,7 @@
 #CURRICULUM.anim {
 	display: flex !important;
 	justify-content: center!important;
+    //background-color: rgba(255, 0, 0, 0.308);
 
 	#openStand {
 		display: none!important;
@@ -16,6 +17,7 @@
 }
 
 #teleport {
+    //background-color: aqua;
     position: relative;
     transform-style: preserve-3d;
 	align-self: flex-end;
