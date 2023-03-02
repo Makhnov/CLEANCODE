@@ -59,14 +59,15 @@ html, body {
 	user-select: none;
 }
 
-#containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre, #machine, ul, .tooltip {//Pointers
+#containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre, #machine, ul, .tooltip, #portrait {//Pointers
     pointer-events: none;
 
 	#containerAnim,
 	#teleport,
     nav.gauche li, 
     nav.droite li,
-	#multivac {
+	#multivac,
+	#portraitBG {
         pointer-events: auto;
     }
 }

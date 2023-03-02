@@ -46,8 +46,7 @@
   --vitessePage:1.6s;
   --progressSize:clamp(75px, 10vw, 15vh);
   --portraitBG:url("../../divers/img/buste.png");
-  --portraitSizeX:0.8;
-  --portraitSizeY:0.8;
+  --portraitScale:1;
 }
 
 /* ---- POLICES ---- */

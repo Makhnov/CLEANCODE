@@ -1,25 +1,41 @@
 #APROPOS {
-  background: var(--portraitBG);
-  background-size: 30% 80%;
+  display: grid;
+  place-content: center !important;
+}
+
+#containerPortrait {
+  position: relative;
+  align-self: center;
+  justify-self: center;
+  height: 600px;
+  width: 350px;
+  display: grid;
+  place-content: center;
+  transform: scale(var(--portraitScale));
+}
+
+#APROPOS #portraitBG {
+  position: absolute;
+  align-self: center;
+  justify-self: center;
+  height: 100%;
+  width: 100%;
+  background: url("../../divers/img/fullBody.png");
   background-repeat: no-repeat;
-  background-position: 37.85vw 9.5vh;
-  grid-template-rows: 9vh 35vh 25vh 9vh;
-  grid-template-columns: 2vw 16vw 20vw 19vw 3vw;
+  background-size: contain;
+  cursor: pointer;
+}
+#APROPOS #portraitBG:hover {
+  filter: brightness(2);
 }
 
 #portrait {
   position: absolute;
-  grid-row: 2;
-  grid-column: 4;
-  height: 35vh;
-  width: 19vw;
-  transform-style: preserve-3d;
-  pointer-events: auto;
-  -webkit-clip-path: ellipse(18% 33% at 51% 29%);
-          clip-path: ellipse(18% 33% at 51% 29%);
+  align-self: center;
+  justify-self: center;
+  z-index: 150;
   opacity: 0.7;
-  cursor: pointer;
-}
-#portrait:hover {
-  opacity: 1;
+  height: 100%;
+  width: 85.7142857143%;
+  transform-style: preserve-3d;
 }/*# sourceMappingURL=about.css.map */

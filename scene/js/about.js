@@ -17,8 +17,8 @@ const iconPixel = document.getElementById('pixelize');
 const portrait = document.getElementById('portrait');
 const canvas = document.getElementById('portrait');
 const ctx = canvas.getContext('2d');
-canvas.width = 400;
-canvas.height = 325;
+canvas.width = 700;
+canvas.height = 1400;
 
 const particulesTrue = [];
 let particulesFalse = null;
@@ -90,10 +90,8 @@ function initialisationNico(tabObj) {
 		const duration = Math.floor(Math.random() * speedIn);
 		const targetX = particule.x;
 		const targetY = particule.y;
-		const signX = PoF();
-		particule.startX = Math.floor((.5 + (Math.random() * 1 * signX)) * width) * partSize;
-		const signY = PoF();
-		particule.startY = Math.floor((.5 + (Math.random() * 1 * signY)) * height) * partSize;
+		particule.startX = Math.floor(Math.random() * 1 * width * partSize);
+		particule.startY = Math.floor(Math.random() * 6 * height * partSize);
 
 		let startTime = null;
 
@@ -189,13 +187,14 @@ function swapNico(tabObj) {
 }
 
 function openPixel(bool) {
+	/*
 	if (!isZoomed) {
 		portrait.style.opacity = '1';
 		setTimeout(() => {
 			portrait.style.removeProperty("opacity");
 		}, speedIn)
 	}
-
+	*/
 	if (bool) {// FROM USER CLICK
 		if (isSwap && !animationStarted) {// CLOSED FROM CLICK
 			//console.log('destroy');
@@ -268,7 +267,7 @@ function zoomPixel() {
 	apropos.style.display = "flex";
 	apropos.style.justifyContent = "center";
 	portrait.style.clipPath = "ellipse(100% 85% at 51% 15%)";
-	portrait.style.opacity = "1";
+	//portrait.style.opacity = "1";
 	portrait.style.height = "78vh";
 	portrait.style.width = "40vw";
 	isZoomed = true;
@@ -278,7 +277,7 @@ function dezoomPixel() {
 	racine.style.setProperty('--portraitBG', "url('../../divers/img/buste.png')");
 	apropos.style.display = "grid";
 	portrait.style.clipPath = "ellipse(18% 33% at 51% 29%)";
-	portrait.style.removeProperty("opacity");
+	//portrait.style.removeProperty("opacity");
 	portrait.style.height = "35vh";
 	portrait.style.width = "19vw";
 	isZoomed = false;
