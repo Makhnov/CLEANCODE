@@ -5,6 +5,36 @@
 }
 
 @media screen and (max-width: 1000px) and (min-width: 800px)  {
+	body #containerHUD nav.gauche {
+		grid-row: 1!important;
+		grid-column: 1 / span 2!important;
+		min-width:85vw!important;
+		max-height:14vh!important;
+
+		ul {
+			min-height: 50px!important;
+			height: 100%!important;	
+			max-height: 75px!important;
+			flex-direction: row!important;	
+			transform: none!important;
+			
+			li {
+				height:100%!important;
+				margin-right: 1%;
+				background-color: var(--mainColor)!important;
+
+				&::before, 
+				::after {
+					background-color:rgb(29, 38, 42)!important;
+				}
+
+				&.clicked:not(.anim) {
+					transform:translateZ(calc(-.5 * var(--menuProfondeur)))!important;
+				}
+			}
+		}
+	}
+
 	#COMPETENCES > div:not(.skills .divers) {
 
 		flex-direction: column!important;
@@ -444,11 +474,11 @@ nav, ul, li {
 
 		&:hover:not(.anim) {
 			transform: translateX(0px)!important;
-			background-color:var(--mainColor1);
+			background-color:var(--mainColor1)!important;
 
 			&::before,
 			&::after {	
-			background-color: var(--subColor);
+			background-color: var(--subColor)!important;
 			}
 		}
 

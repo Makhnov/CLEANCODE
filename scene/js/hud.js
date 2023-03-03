@@ -194,11 +194,15 @@ function swapTheme() {
 			racine.style.setProperty('--fontLight', '#fff');
 			racine.style.setProperty('--subColorLight', 'rgba(70, 70, 80, 0.5)');
 			racine.style.setProperty('--subColor', 'rgb(70, 70, 80)');
+			racine.style.setProperty('--mainColor', 'rgb(17, 126, 181)');
+			racine.style.setProperty('--mainColor1', 'rgb(31, 162, 227)');
 			multivac.children[2].textContent = "Thème clair";
 		} else {
 			racine.style.setProperty('--fontLight', 'whitesmoke');
 			racine.style.setProperty('--subColorLight', 'rgba(39, 48, 52, 0.5)');
 			racine.style.setProperty('--subColor', 'rgb(39, 48, 52)');
+			racine.style.setProperty('--mainColor', 'rgb(23, 80, 109)');
+			racine.style.setProperty('--mainColor1', 'rgb(17, 126, 181)');
 			multivac.children[2].textContent = "Thème sombre";
 		}
 	} else {// WAIT...

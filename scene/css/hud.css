@@ -102,6 +102,31 @@ code {
 }
 
 @media screen and (max-width: 1000px) and (min-width: 800px) {
+  body #containerHUD nav.gauche {
+    grid-row: 1 !important;
+    grid-column: 1/span 2 !important;
+    min-width: 85vw !important;
+    max-height: 14vh !important;
+  }
+  body #containerHUD nav.gauche ul {
+    min-height: 50px !important;
+    height: 100% !important;
+    max-height: 75px !important;
+    flex-direction: row !important;
+    transform: none !important;
+  }
+  body #containerHUD nav.gauche ul li {
+    height: 100% !important;
+    margin-right: 1%;
+    background-color: var(--mainColor) !important;
+  }
+  body #containerHUD nav.gauche ul li::before,
+  body #containerHUD nav.gauche ul li ::after {
+    background-color: rgb(29, 38, 42) !important;
+  }
+  body #containerHUD nav.gauche ul li.clicked:not(.anim) {
+    transform: translateZ(calc(-0.5 * var(--menuProfondeur))) !important;
+  }
   #COMPETENCES > div:not(.skills .divers) {
     flex-direction: column !important;
     justify-content: space-between !important;
@@ -519,10 +544,10 @@ nav, ul, li {
 }
 #containerHUD nav.gauche ul li:hover:not(.anim) {
   transform: translateX(0px) !important;
-  background-color: var(--mainColor1);
+  background-color: var(--mainColor1) !important;
 }
 #containerHUD nav.gauche ul li:hover:not(.anim)::before, #containerHUD nav.gauche ul li:hover:not(.anim)::after {
-  background-color: var(--subColor);
+  background-color: var(--subColor) !important;
 }
 #containerHUD nav.gauche ul li.clicked:not(.anim) {
   transform: translate3d(0, 0, 0) rotateY(var(--menuAngle)) translateX(10000px) scale(0) !important;
