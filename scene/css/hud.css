@@ -39,15 +39,14 @@
   --zoomLivre:-20vw;
   --inclinaisonLivre:-6deg;
   --rotationLivre:40deg;
-  --justifyLivre:0vw;
+  --justifyLivre:-2.5vw;
   --alignLivre:-6vh;
   --bookFront:var(--bookBorder);
   --gapLivre:5px;
   --vitessePage:1.6s;
-  --progressSize:clamp(75px, 10vw, 15vh);
+  --progressSize:clamp(60px, 10vw, 15vh);
   --portraitBG:url("../../divers/img/buste.png");
-  --portraitSizeX:0.8;
-  --portraitSizeY:0.8;
+  --portraitScale:1;
 }
 
 /* ---- POLICES ---- */
@@ -103,37 +102,42 @@ code {
 }
 
 @media screen and (max-width: 1000px) and (min-width: 800px) {
-  #COMPETENCES > div:not(.skills) {
+  #COMPETENCES > div:not(.skills .divers) {
     flex-direction: column !important;
     justify-content: space-between !important;
   }
-  #COMPETENCES > div:not(.skills) article {
+  #COMPETENCES > div:not(.skills .divers) article:not(.divers) {
     margin: 0 !important;
     align-items: center !important;
     justify-content: center !important;
   }
-  #COMPETENCES > div:not(.skills).php article div {
+  #COMPETENCES > div:not(.skills .divers).php article div {
     display: flex;
   }
-  #COMPETENCES > div:not(.skills).php article div > h3 {
+  #COMPETENCES > div:not(.skills .divers).php article div > h3 {
     margin-right: 10px;
   }
 }
 @media screen and (max-width: 800px) {
-  #COMPETENCES > div:not(.skills) {
+  #COMPETENCES > div:not(.skills .divers) {
     flex-direction: column !important;
     justify-content: space-between !important;
   }
-  #COMPETENCES > div:not(.skills) article {
+  #COMPETENCES > div:not(.skills .divers) article:not(.divers) {
     margin: 0 !important;
-    align-items: center !important;
     justify-content: center !important;
   }
-  #COMPETENCES > div:not(.skills).php article div {
+  #COMPETENCES > div:not(.skills .divers) article {
+    align-items: center !important;
+  }
+  #COMPETENCES > div:not(.skills .divers).php article div {
     display: flex;
   }
-  #COMPETENCES > div:not(.skills).php article div > h3 {
+  #COMPETENCES > div:not(.skills .divers).php article div > h3 {
     margin-right: 10px;
+  }
+  #COMPETENCES > div.divers {
+    height: 16vh !important;
   }
 }
 html, body {

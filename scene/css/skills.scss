@@ -1,57 +1,61 @@
 #COMPETENCES {// GRID
-	position:absolute;
 	display: grid;
-	top:-2vh;
 	min-height:78vh;
-    min-width: 65vw;
-    grid-template-rows:4vh 20vh 2vh 20vh 2vh 20vh 10vh;
+    min-width: 60vw;
+    grid-template-rows: 20vh 2vh 20vh 2vh 20vh 2vh 12vh;
     grid-template-columns: 1.5vw 28vw 1vw 28vw 1.5vw;
 
     > .skills {
-        grid-row:2;
+        grid-row:1;
         grid-column:2;
     }
     > .html {
-        grid-row:2;
+        grid-row:1;
         grid-column:4;
     }
     > .css {
-        grid-row:4;
+        grid-row:3;
         grid-column:2;
     }
     > .js {
-        grid-row:4;
+        grid-row:3;
         grid-column:4;
     }
     > .php {
-        grid-row:6;
+        grid-row:5;
         grid-column:2;
     }
     > .sql {
-        grid-row:6;
+        grid-row:5;
         grid-column:4;
+    }
+    > .divers {
+        grid-row:7;
+        grid-column: 2 / span 3;
     }
 }
 
 #COMPETENCES {//DIVS
-    & > div {
+    > div {
         transform-style:preserve-3d;
-        height: 20vh;
-        width: 28vw;
         background-color:rgba(17, 126, 181, 0.6);
         box-sizing: border-box;
         border: 2px solid var(--fontLight);
 		user-select:none;
         display: flex;
-        align-items: center;
+    }
 
+    > div:not(.divers) {
+        height: 20vh;
+        width: 28vw;
+        align-items: center;
 	}
 
-	& > div:not(.skills) {
+	> div:not(.skills .divers) {
 		justify-content:space-between;
 	}
 
-	& .skills {
+	.skills {
 		.principal {
 			align-self: center!important;
 			margin:0!important;
@@ -64,6 +68,22 @@
 			}
 		}
 	}
+
+    > .divers {
+        height: 12vh;
+        width:57vw;
+
+        article {
+            justify-content: space-around;
+            height: 100%;
+        }
+        h1 {
+            text-transform: uppercase;
+        }
+        h3 {
+            width:100%;
+        }
+    }
 }
 
 #COMPETENCES div {//TITRES
@@ -74,18 +94,19 @@
 		flex: 1 1 auto;
         display: flex;
         flex-direction:column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        height: fit-content;
         width: 100%;
-		margin:calc(var(--progressSize) * 3 / 20) 0 0 calc(var(--progressSize) * 2 / 20);
         color: var(--fontLight);
-		visibility: hidden;
+
+        &:not(.divers) {
+            margin:calc(var(--progressSize) * 3 / 20) 0 0 calc(var(--progressSize) * 2 / 20);    
+            height: fit-content;    
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
 
         h1 {
             margin: 0;
             padding: 0;
-            font-size: clamp(1.5rem, calc(var(--progressSize) * 6 / 20), 3rem);
             text-shadow: 1px 1px 1px #919191,
             1px 2px 1px #919191,
             1px 3px 1.5px #919191,
@@ -100,12 +121,37 @@
         h3 {
             margin:0;
             padding:0;
-            font-size: clamp(1rem, calc(var(--progressSize) * 4 / 20), 2rem);
 			text-align: start!important;
         }
+
+        &:not(.titre .divers) {
+            h1 {
+                font-size: clamp(1rem, calc(var(--progressSize) * 5 / 20), 2.5rem);
+            }
+            h3 {
+                font-size: clamp(.85rem, calc(var(--progressSize) * 4 / 20), 1.8rem);
+            }
+        }
+
+        &.titre {
+            h1 {
+                font-size: clamp(1rem, calc(var(--progressSize) * 6 / 20), 3rem);
+            }
+        }
+
+        &.divers {
+            h1 {
+                font-size: clamp(.9rem, calc(var(--progressSize) * 4 / 20), 2rem);
+            }
+            h3 {
+                font-size: clamp(.7rem, calc(var(--progressSize) * 3 / 20), 1.5rem);
+            }
+        }
+
     }
 
     article:not(.principal) {//TITRES SECONDAIRES
+        visibility: hidden;
         transform: translateZ(-3000px);
     }
 }
@@ -228,10 +274,10 @@
 #COMPETENCES {//ANIMATIONS
     .html {
         .cacheD {
-            animation:progressHTML1 var(--vitesseEntree) linear forwards;
+            animation: progressHTML1 var(--vitesseEntree) linear forwards;
         }
         .cacheG {
-            animation:progressHTML2 var(--vitesseEntree) linear forwards;
+            animation: progressHTML2 var(--vitesseEntree) linear forwards;
         }
         article {
             animation: progressTitre calc(var(--vitesseEntree) / 10) linear calc(var(--vitesseEntree) / 10) forwards;
@@ -239,10 +285,10 @@
     }
     .css {
         .cacheD {
-            animation:progressCSS1 var(--vitesseEntree) linear forwards;
+            animation: progressCSS1 var(--vitesseEntree) linear forwards;
         }
         .cacheG {
-            animation:progressCSS2 var(--vitesseEntree) linear forwards;
+            animation: progressCSS2 var(--vitesseEntree) linear forwards;
         }
         article {
             animation: progressTitre calc(var(--vitesseEntree) / 10) linear calc(var(--vitesseEntree) / 10 * 2) forwards;
@@ -250,10 +296,10 @@
     }
     .js {
         .cacheD {
-            animation:progressJS1 var(--vitesseEntree) linear forwards;
+            animation: progressJS1 var(--vitesseEntree) linear forwards;
         }
         .cacheG {
-            animation:progressJS2 var(--vitesseEntree) linear forwards;
+            animation: progressJS2 var(--vitesseEntree) linear forwards;
         }
         article {
             animation: progressTitre calc(var(--vitesseEntree) / 10) linear calc(var(--vitesseEntree) / 10 * 3) forwards;
@@ -261,7 +307,10 @@
     }
     .php {
         .cacheD {
-            animation:progressPHP1 var(--vitesseEntree) linear forwards;
+            animation: progressPHP1 var(--vitesseEntree) linear forwards;
+        }
+        .cacheG {
+            animation: progressPHP2 var(--vitesseEntree) linear forwards;
         }
         article {
             animation: progressTitre calc(var(--vitesseEntree) / 10) linear calc(var(--vitesseEntree) / 10 * 4) forwards;
@@ -269,10 +318,10 @@
     }
     .sql {
         .cacheD {
-            animation:progressSQL1 var(--vitesseEntree) linear forwards;
+            animation: progressSQL1 var(--vitesseEntree) linear forwards;
         }
         .cacheG {
-            animation:progressSQL2 var(--vitesseEntree) linear forwards;
+            animation: progressSQL2 var(--vitesseEntree) linear forwards;
         }
         article {
             animation: progressTitre calc(var(--vitesseEntree) / 10) linear calc(var(--vitesseEntree) / 2) forwards;
@@ -446,7 +495,7 @@
     }
 }
 
-@keyframes progressPHP1 {//PHP : de 68 à 77%
+@keyframes progressPHP1 {//PHP : de 68 à 81%
     0% {
         transform: rotate(0);
         visibility: visible;
@@ -457,39 +506,61 @@
         visibility: visible;
     }
 
-    77% {
-        transform: rotate(162deg);
+    78% {
+        transform: rotate(180deg);
         visibility: visible;
     }
 
-    77% {
-        transform: rotate(162deg);
+    78% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+
+    100% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+}
+
+@keyframes progressPHP2 {
+    0% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    78% {
+        transform: rotate(180deg);
+        visibility: visible;
+    }
+
+    81% {
+        transform: rotate(234deg);
         visibility: visible;
     }
 
     100% {
-        transform: rotate(162deg);
+        transform: rotate(234deg);
         visibility: visible;
     }
 }
 
-@keyframes progressSQL1 {//SQL : de 77 à 94%
+@keyframes progressSQL1 {//SQL : de 81 à 98%
     0% {
         transform: rotate(0);
         visibility: visible;
     }
 
-    77% {
+    81% {
         transform: rotate(0);
         visibility: visible;
     }
 
-    87% {
+    91% {
         transform: rotate(180deg);
         visibility: visible;
     }
 
-    87% {
+    91% {
         transform: rotate(180deg);
         visibility: hidden;
     }
@@ -506,12 +577,12 @@
         visibility: visible;
     }
 
-    87% {
+    91% {
         transform: rotate(180deg);
         visibility: visible;
     }
 
-    94% {
+    98% {
         transform: rotate(288deg);
         visibility: visible;
     }
@@ -522,7 +593,7 @@
     }
 }
 
-@keyframes progressText {// Textes : de 94 à 100%
+@keyframes progressText {// Textes : de 92 à 100%
     0% {
         color:rgba(245, 245, 245, 0);
     }

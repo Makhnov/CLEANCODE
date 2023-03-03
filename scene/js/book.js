@@ -121,7 +121,7 @@ function delayPage(e) {
 }
 
 function zoomLivre() {
-	racine.style.setProperty('--livreLargeur', 'clamp(200px, 90vh, 45vw)')
+	racine.style.setProperty('--livreLargeur', 'clamp(200px, 95vh, 48vw)')
 	racine.style.setProperty('--zoomLivre', '0');
 	racine.style.setProperty('--inclinaisonLivre', '0deg');
 	racine.style.setProperty('--justifyLivre', '0vw');

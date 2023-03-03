@@ -42,7 +42,7 @@
   transform-style: preserve-3d;
   height: var(--livreLargeur);
   width: calc(1.4141414141 * var(--livreLargeur) + var(--gapLivre));
-  transform: translate3d(calc(-0.3535353535 * var(--livreLargeur)), 0, var(--zoomLivre)) rotateY(90deg) rotateX(0deg) rotate(0deg);
+  transform: translate3d(calc(-0.3535353535 * var(--livreLargeur) - 2.5vw), 0, var(--zoomLivre)) rotateY(90deg) rotateX(0deg) rotate(0deg);
   display: grid;
   grid-template-columns: calc(0.7070707071 * var(--livreLargeur)) var(--gapLivre) calc(0.7070707071 * var(--livreLargeur));
 }
@@ -190,13 +190,13 @@
 
 @keyframes openBook {
   0% {
-    transform: translate3d(calc(-0.3535353535 * var(--livreLargeur)), 0, var(--zoomLivre)) rotateY(90deg) scale(0);
+    transform: translate3d(calc(-0.3535353535 * var(--livreLargeur) + var(--justifyLivre)), 0, var(--zoomLivre)) rotateY(90deg) scale(0);
   }
   10% {
-    transform: translate3d(calc(-0.3535353535 * var(--livreLargeur)), 0, var(--zoomLivre)) rotateY(90deg) scale(1);
+    transform: translate3d(calc(-0.3535353535 * var(--livreLargeur) + var(--justifyLivre)), 0, var(--zoomLivre)) rotateY(90deg) scale(1);
   }
   50% {
-    transform: translate3d(0, 0, var(--zoomLivre)) rotateY(10deg) rotateX(calc(var(--rotationLivre) / 2)) rotate(0deg);
+    transform: translate3d(0, 0, var(--zoomLivre)var(--justifyLivre)) rotateY(10deg) rotateX(calc(var(--rotationLivre) / 2)) rotate(0deg);
     z-index: 20;
   }
   100% {
@@ -210,15 +210,15 @@
     z-index: 20;
   }
   40% {
-    transform: translate3d(0, 0, 0) rotateY(10deg) rotateX(10deg) rotate(0deg);
+    transform: translate3d(var(--justifyLivre), 0, 0) rotateY(10deg) rotateX(10deg) rotate(0deg);
     z-index: 20;
   }
   90% {
-    transform: translate3d(calc(-0.3535353535 * var(--livreLargeur)), 0, var(--zoomLivre)) rotateY(90deg) scale(1);
+    transform: translate3d(calc(-0.3535353535 * var(--livreLargeur) + var(--justifyLivre)), 0, var(--zoomLivre)) rotateY(90deg) scale(1);
     z-index: 20;
   }
   100% {
-    transform: translate3d(calc(-0.3535353535 * var(--livreLargeur)), 0, var(--zoomLivre)) rotateY(90deg) scale(0);
+    transform: translate3d(calc(-0.3535353535 * var(--livreLargeur) + var(--justifyLivre)), 0, var(--zoomLivre)) rotateY(90deg) scale(0);
     z-index: 20;
   }
 }

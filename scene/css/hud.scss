@@ -1,15 +1,16 @@
 @import 'variables';
 
 @media screen and (max-width: 1400px) and (min-width: 1000px) {
+	//VIDE
 }
 
 @media screen and (max-width: 1000px) and (min-width: 800px)  {
-	#COMPETENCES > div:not(.skills) {
+	#COMPETENCES > div:not(.skills .divers) {
 
 		flex-direction: column!important;
 		justify-content: space-between!important;
 
-		article {
+		article:not(.divers) {
 			//background-color: red;
 			margin:0!important;
 			align-items: center!important;
@@ -18,7 +19,6 @@
 
 		&.php article div {
 			display: flex;
-
 			> h3 {
 				margin-right:10px;
 			}
@@ -27,24 +27,32 @@
 }
 
 @media screen and (max-width: 800px)  {
-	#COMPETENCES > div:not(.skills) {
+	#COMPETENCES {
+		> div:not(.skills .divers) {
+			flex-direction: column!important;
+			justify-content: space-between!important;
 
-		flex-direction: column!important;
-		justify-content: space-between!important;
+			article:not(.divers) {
+				//background-color: red;
+				margin:0!important;
+				justify-content: center!important;
+			}
 
-		article {
-			//background-color: red;
-			margin:0!important;
-			align-items: center!important;
-			justify-content: center!important;
+			article {
+				align-items: center!important;
+			}
+
+			&.php article div {
+				display: flex;
+
+				> h3 {
+					margin-right:10px;
+				}
+			}
 		}
 
-		&.php article div {
-			display: flex;
-
-			> h3 {
-				margin-right:10px;
-			}
+		> div.divers {
+			height:16vh!important;
 		}
 	}
 }
@@ -879,6 +887,7 @@ html body #containerHUD nav.droite ul li {
 }
 
 #containerView {// ROW:2 COL:2 (Hublot central)
+	//border:2px solid black;
     visibility: visible;
     transform-style: preserve-3d;
     grid-row:2;

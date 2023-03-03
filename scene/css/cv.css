@@ -489,7 +489,7 @@
   }
 }
 #CURRICULUM.anim #teleport {
-  transform: translateY(calc(0.575 * var(--standLargeur))) rotateX(90deg) translateY(calc(-0.575 * var(--standLargeur)));
+  transform: translateX(-2.5vw) translateY(calc(0.575 * var(--standLargeur))) rotateX(90deg) translateY(calc(-0.575 * var(--standLargeur)));
 }
 
 #CURRICULUM.anim #openStand:not(:checked) ~ #teleport .bloc.bottom .down::before,

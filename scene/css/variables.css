@@ -39,12 +39,12 @@
   --zoomLivre:-20vw;
   --inclinaisonLivre:-6deg;
   --rotationLivre:40deg;
-  --justifyLivre:0vw;
+  --justifyLivre:-2.5vw;
   --alignLivre:-6vh;
   --bookFront:var(--bookBorder);
   --gapLivre:5px;
   --vitessePage:1.6s;
-  --progressSize:clamp(75px, 10vw, 15vh);
+  --progressSize:clamp(60px, 10vw, 15vh);
   --portraitBG:url("../../divers/img/buste.png");
   --portraitScale:1;
 }

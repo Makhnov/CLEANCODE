@@ -47,7 +47,7 @@
     --zoomLivre:-20vw;
     --inclinaisonLivre:-6deg;
     --rotationLivre:40deg;
-    --justifyLivre:0vw;
+    --justifyLivre:-2.5vw;
     --alignLivre:-6vh;
 
 	--bookFront:var(--bookBorder);
@@ -56,7 +56,7 @@
     --vitessePage:1.6s;
 
 	// COMPETENCES //
-	--progressSize:clamp(75px, 10vw, 15vh);
+	--progressSize:clamp(60px, 10vw, 15vh);
 
 	// A PROPOS //
 	--portraitBG:url('../../divers/img/buste.png');
