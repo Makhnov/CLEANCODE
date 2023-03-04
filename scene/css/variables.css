@@ -35,16 +35,16 @@
   --imageM2:url("../../divers/img/pf-rando-specs.jpg");
   --imageD1:url("../../divers/img/pf-conseil.jpg");
   --imageD2:url("../../divers/img/pf-conseil-specs.jpg");
-  --livreLargeur:clamp(300px, 60vh, 30vw);
+  --livreLargeur:clamp(400px, 60vh, 30vw);
   --zoomLivre:-20vw;
   --inclinaisonLivre:-6deg;
   --rotationLivre:40deg;
-  --justifyLivre:-2.5vw;
+  --justifyLivre:0vw;
   --alignLivre:-6vh;
   --bookFront:var(--bookBorder);
   --gapLivre:5px;
   --vitessePage:1.6s;
-  --progressSize:clamp(60px, 10vw, 15vh);
+  --progressSize:clamp(70px, 15vw, 13vh);
   --portraitBG:url("../../divers/img/buste.png");
   --portraitScale:1;
 }

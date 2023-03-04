@@ -4,11 +4,12 @@
 	//VIDE
 }
 
-@media screen and (max-width: 1000px) and (min-width: 800px)  {
+@media screen and (max-width: 1000px) {
 	body #containerHUD nav.gauche {
 		grid-row: 1!important;
 		grid-column: 1 / span 2!important;
-		min-width:85vw!important;
+		margin-left: 1vw;
+		min-width:84vw!important;
 		max-height:14vh!important;
 
 		ul {
@@ -16,12 +17,15 @@
 			height: 100%!important;	
 			max-height: 75px!important;
 			flex-direction: row!important;	
+			justify-content: flex-start!important;
 			transform: none!important;
 			
 			li {
 				height:100%!important;
-				margin-right: 1%;
+				margin-right: 1vw;
 				background-color: var(--mainColor)!important;
+				width:12vw;
+				flex:none;
 
 				&::before, 
 				::after {
@@ -29,9 +33,21 @@
 				}
 
 				&.clicked:not(.anim) {
-					transform:translateZ(calc(-.5 * var(--menuProfondeur)))!important;
+					transform:translateZ(calc(-.33 * var(--menuProfondeur)))!important;
 				}
 			}
+		}
+	}
+
+	body #containerHUD #containerView {
+		grid-column: 1 / span 2;
+		height: 78vh;
+		margin-left: 1vw;
+		width: 84vw;
+		background-color: rgba(255, 0, 0, 0.479)!important;
+
+		#APROPOS, #PORTFOLIO, #CURRICULUM, #COMPETENCES, #CONTACT {
+			width: 84vw;
 		}
 	}
 
@@ -43,8 +59,11 @@
 		article:not(.divers) {
 			//background-color: red;
 			margin:0!important;
-			align-items: center!important;
 			justify-content: center!important;
+		}
+
+		article {
+			align-items: center!important;
 		}
 
 		&.php article div {
@@ -56,33 +75,25 @@
 	}
 }
 
-@media screen and (max-width: 800px)  {
-	#COMPETENCES {
-		> div:not(.skills .divers) {
-			flex-direction: column!important;
-			justify-content: space-between!important;
+@media screen and (max-width: 1000px) and (min-width: 800px)  {
+	body #containerHUD nav.gauche {
+		ul {
+			li {
 
-			article:not(.divers) {
-				//background-color: red;
-				margin:0!important;
-				justify-content: center!important;
-			}
-
-			article {
-				align-items: center!important;
-			}
-
-			&.php article div {
-				display: flex;
-
-				> h3 {
-					margin-right:10px;
-				}
+				font-size:1rem;
 			}
 		}
+	}
+}
 
-		> div.divers {
-			height:16vh!important;
+@media screen and (max-width: 800px)  {
+	body #containerHUD nav.gauche {
+		ul {
+			li {
+				width:13vw;
+				flex:none;
+				font-size:1rem;
+			}
 		}
 	}
 }
@@ -100,12 +111,7 @@ html, body {
 #containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre, #machine, ul, .tooltip, #portrait {//Pointers
     pointer-events: none;
 
-	#containerAnim,
-	#teleport,
-    nav.gauche li, 
-    nav.droite li,
-	#multivac,
-	#portraitBG {
+	#containerAnim, #teleport, nav.gauche li, nav.droite li, #multivac, #portraitBG {
         pointer-events: auto;
     }
 }

@@ -35,16 +35,16 @@
   --imageM2:url("../../divers/img/pf-rando-specs.jpg");
   --imageD1:url("../../divers/img/pf-conseil.jpg");
   --imageD2:url("../../divers/img/pf-conseil-specs.jpg");
-  --livreLargeur:clamp(300px, 60vh, 30vw);
+  --livreLargeur:clamp(400px, 60vh, 30vw);
   --zoomLivre:-20vw;
   --inclinaisonLivre:-6deg;
   --rotationLivre:40deg;
-  --justifyLivre:-2.5vw;
+  --justifyLivre:0vw;
   --alignLivre:-6vh;
   --bookFront:var(--bookBorder);
   --gapLivre:5px;
   --vitessePage:1.6s;
-  --progressSize:clamp(60px, 10vw, 15vh);
+  --progressSize:clamp(70px, 15vw, 13vh);
   --portraitBG:url("../../divers/img/buste.png");
   --portraitScale:1;
 }
@@ -101,11 +101,12 @@ code {
   padding: 0.1em;
 }
 
-@media screen and (max-width: 1000px) and (min-width: 800px) {
+@media screen and (max-width: 1000px) {
   body #containerHUD nav.gauche {
     grid-row: 1 !important;
     grid-column: 1/span 2 !important;
-    min-width: 85vw !important;
+    margin-left: 1vw;
+    min-width: 84vw !important;
     max-height: 14vh !important;
   }
   body #containerHUD nav.gauche ul {
@@ -113,37 +114,33 @@ code {
     height: 100% !important;
     max-height: 75px !important;
     flex-direction: row !important;
+    justify-content: flex-start !important;
     transform: none !important;
   }
   body #containerHUD nav.gauche ul li {
     height: 100% !important;
-    margin-right: 1%;
+    margin-right: 1vw;
     background-color: var(--mainColor) !important;
+    width: 12vw;
+    flex: none;
   }
   body #containerHUD nav.gauche ul li::before,
   body #containerHUD nav.gauche ul li ::after {
     background-color: rgb(29, 38, 42) !important;
   }
   body #containerHUD nav.gauche ul li.clicked:not(.anim) {
-    transform: translateZ(calc(-0.5 * var(--menuProfondeur))) !important;
+    transform: translateZ(calc(-0.33 * var(--menuProfondeur))) !important;
   }
-  #COMPETENCES > div:not(.skills .divers) {
-    flex-direction: column !important;
-    justify-content: space-between !important;
+  body #containerHUD #containerView {
+    grid-column: 1/span 2;
+    height: 78vh;
+    margin-left: 1vw;
+    width: 84vw;
+    background-color: rgba(255, 0, 0, 0.479) !important;
   }
-  #COMPETENCES > div:not(.skills .divers) article:not(.divers) {
-    margin: 0 !important;
-    align-items: center !important;
-    justify-content: center !important;
+  body #containerHUD #containerView #APROPOS, body #containerHUD #containerView #PORTFOLIO, body #containerHUD #containerView #CURRICULUM, body #containerHUD #containerView #COMPETENCES, body #containerHUD #containerView #CONTACT {
+    width: 84vw;
   }
-  #COMPETENCES > div:not(.skills .divers).php article div {
-    display: flex;
-  }
-  #COMPETENCES > div:not(.skills .divers).php article div > h3 {
-    margin-right: 10px;
-  }
-}
-@media screen and (max-width: 800px) {
   #COMPETENCES > div:not(.skills .divers) {
     flex-direction: column !important;
     justify-content: space-between !important;
@@ -161,8 +158,17 @@ code {
   #COMPETENCES > div:not(.skills .divers).php article div > h3 {
     margin-right: 10px;
   }
-  #COMPETENCES > div.divers {
-    height: 16vh !important;
+}
+@media screen and (max-width: 1000px) and (min-width: 800px) {
+  body #containerHUD nav.gauche ul li {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 800px) {
+  body #containerHUD nav.gauche ul li {
+    width: 13vw;
+    flex: none;
+    font-size: 1rem;
   }
 }
 html, body {
@@ -180,57 +186,7 @@ html, body {
 #containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre, #machine, ul, .tooltip, #portrait {
   pointer-events: none;
 }
-#containerHUD #containerAnim,
-#containerHUD #teleport,
-#containerHUD nav.gauche li,
-#containerHUD nav.droite li,
-#containerHUD #multivac,
-#containerHUD #portraitBG, #containerView #containerAnim,
-#containerView #teleport,
-#containerView nav.gauche li,
-#containerView nav.droite li,
-#containerView #multivac,
-#containerView #portraitBG, #PORTFOLIO #containerAnim,
-#PORTFOLIO #teleport,
-#PORTFOLIO nav.gauche li,
-#PORTFOLIO nav.droite li,
-#PORTFOLIO #multivac,
-#PORTFOLIO #portraitBG, #CURRICULUM #containerAnim,
-#CURRICULUM #teleport,
-#CURRICULUM nav.gauche li,
-#CURRICULUM nav.droite li,
-#CURRICULUM #multivac,
-#CURRICULUM #portraitBG, #book #containerAnim,
-#book #teleport,
-#book nav.gauche li,
-#book nav.droite li,
-#book #multivac,
-#book #portraitBG, #livre #containerAnim,
-#livre #teleport,
-#livre nav.gauche li,
-#livre nav.droite li,
-#livre #multivac,
-#livre #portraitBG, #machine #containerAnim,
-#machine #teleport,
-#machine nav.gauche li,
-#machine nav.droite li,
-#machine #multivac,
-#machine #portraitBG, ul #containerAnim,
-ul #teleport,
-ul nav.gauche li,
-ul nav.droite li,
-ul #multivac,
-ul #portraitBG, .tooltip #containerAnim,
-.tooltip #teleport,
-.tooltip nav.gauche li,
-.tooltip nav.droite li,
-.tooltip #multivac,
-.tooltip #portraitBG, #portrait #containerAnim,
-#portrait #teleport,
-#portrait nav.gauche li,
-#portrait nav.droite li,
-#portrait #multivac,
-#portrait #portraitBG {
+#containerHUD #containerAnim, #containerHUD #teleport, #containerHUD nav.gauche li, #containerHUD nav.droite li, #containerHUD #multivac, #containerHUD #portraitBG, #containerView #containerAnim, #containerView #teleport, #containerView nav.gauche li, #containerView nav.droite li, #containerView #multivac, #containerView #portraitBG, #PORTFOLIO #containerAnim, #PORTFOLIO #teleport, #PORTFOLIO nav.gauche li, #PORTFOLIO nav.droite li, #PORTFOLIO #multivac, #PORTFOLIO #portraitBG, #CURRICULUM #containerAnim, #CURRICULUM #teleport, #CURRICULUM nav.gauche li, #CURRICULUM nav.droite li, #CURRICULUM #multivac, #CURRICULUM #portraitBG, #book #containerAnim, #book #teleport, #book nav.gauche li, #book nav.droite li, #book #multivac, #book #portraitBG, #livre #containerAnim, #livre #teleport, #livre nav.gauche li, #livre nav.droite li, #livre #multivac, #livre #portraitBG, #machine #containerAnim, #machine #teleport, #machine nav.gauche li, #machine nav.droite li, #machine #multivac, #machine #portraitBG, ul #containerAnim, ul #teleport, ul nav.gauche li, ul nav.droite li, ul #multivac, ul #portraitBG, .tooltip #containerAnim, .tooltip #teleport, .tooltip nav.gauche li, .tooltip nav.droite li, .tooltip #multivac, .tooltip #portraitBG, #portrait #containerAnim, #portrait #teleport, #portrait nav.gauche li, #portrait nav.droite li, #portrait #multivac, #portrait #portraitBG {
   pointer-events: auto;
 }
 

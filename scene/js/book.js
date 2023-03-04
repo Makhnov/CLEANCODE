@@ -121,7 +121,7 @@ function delayPage(e) {
 }
 
 function zoomLivre() {
-	racine.style.setProperty('--livreLargeur', 'clamp(200px, 95vh, 48vw)')
+	racine.style.setProperty('--livreLargeur', 'clamp(400px, 95vh, 46vw)')
 	racine.style.setProperty('--zoomLivre', '0');
 	racine.style.setProperty('--inclinaisonLivre', '0deg');
 	racine.style.setProperty('--justifyLivre', '0vw');
@@ -131,7 +131,12 @@ function zoomLivre() {
 }
 
 function dezoomLivre() {
-	racine.style.setProperty('--livreLargeur', 'clamp(300px, 60vh, 30vw)');
+	if (racine.clientWidth < 1000) {
+		console.log(racine.clientWidth);
+		racine.style.setProperty('--livreLargeur', 'clamp(400px, 70vh, 40vw)');
+	} else {
+		racine.style.setProperty('--livreLargeur', 'clamp(400px, 60vh, 30vw)');
+	}
 	racine.style.setProperty('--zoomLivre', '-20vw');
 	racine.style.setProperty('--inclinaisonLivre', '-6deg');
 	racine.style.setProperty('--rotationLivre', '40deg');
