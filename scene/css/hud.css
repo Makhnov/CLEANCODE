@@ -1,4 +1,8 @@
 :root {
+  --bgX:100%;
+  --bgY:130%;
+  --bgPosX: right;
+  --bgPosY: center;
   --menuProfondeur:75px;
   --ignitionDegree: 20deg;
   --vitesseEntree:3s;
@@ -35,12 +39,12 @@
   --imageM2:url("../../divers/img/pf-rando-specs.jpg");
   --imageD1:url("../../divers/img/pf-conseil.jpg");
   --imageD2:url("../../divers/img/pf-conseil-specs.jpg");
-  --livreLargeur:clamp(400px, 60vh, 30vw);
-  --zoomLivre:-20vw;
+  --livreLargeur:clamp(0px, 60vh, 37vw);
+  --zoomLivre:-12vw;
   --inclinaisonLivre:-6deg;
   --rotationLivre:40deg;
-  --justifyLivre:0vw;
-  --alignLivre:-6vh;
+  --justifyLivre:-2vw;
+  --alignLivre:-8vh;
   --bookFront:var(--bookBorder);
   --gapLivre:5px;
   --vitessePage:1.6s;
@@ -102,6 +106,11 @@ code {
 }
 
 @media screen and (max-width: 1000px) {
+  :root {
+    --bgX:115%!important;
+    --bgY:120%!important;
+    --bgPosY:33%!important;
+  }
   body #containerHUD nav.gauche {
     grid-row: 1 !important;
     grid-column: 1/span 2 !important;
@@ -139,6 +148,9 @@ code {
     background-color: rgba(255, 0, 0, 0.479) !important;
   }
   body #containerHUD #containerView #APROPOS, body #containerHUD #containerView #PORTFOLIO, body #containerHUD #containerView #CURRICULUM, body #containerHUD #containerView #COMPETENCES, body #containerHUD #containerView #CONTACT {
+    width: 84vw;
+  }
+  body #containerHUD #containerView #APROPOS #book, body #containerHUD #containerView #PORTFOLIO #book, body #containerHUD #containerView #CURRICULUM #book, body #containerHUD #containerView #COMPETENCES #book, body #containerHUD #containerView #CONTACT #book {
     width: 84vw;
   }
   #COMPETENCES > div:not(.skills .divers) {
@@ -308,8 +320,8 @@ nav, ul, li {
   width: 100vw;
   overflow: hidden;
   background-image: url("../../divers/img/hudLight.jpg");
-  background-position: center;
-  background-size: 100% 130%;
+  background-position: var(--bgPosX) var(--bgPosY);
+  background-size: var(--bgX) var(--bgY);
   display: grid;
   grid-template-columns: 20vw 65vw 15vw;
   grid-template-rows: 14vh 78vh 8vh;
@@ -330,28 +342,28 @@ nav, ul, li {
 @keyframes darkTheme {
   from {
     background: url("../../divers/img/hudDark.jpg");
-    background-position: center;
-    background-size: 100% 130%;
+    background-position: var(--bgPosX) var(--bgPosY);
+    background-size: var(--bgX) var(--bgY);
     opacity: 0;
   }
   to {
     background: url("../../divers/img/hudDark.jpg");
-    background-position: center;
-    background-size: 100% 130%;
+    background-position: var(--bgPosX) var(--bgPosY);
+    background-size: var(--bgX) var(--bgY);
     opacity: 1;
   }
 }
 @keyframes lightTheme {
   from {
     background: url("../../divers/img/hudDark.jpg");
-    background-position: center;
-    background-size: 100% 130%;
+    background-position: var(--bgPosX) var(--bgPosY);
+    background-size: var(--bgX) var(--bgY);
     opacity: 1;
   }
   to {
     background: url("../../divers/img/hudDark.jpg");
-    background-position: center;
-    background-size: 100% 130%;
+    background-position: var(--bgPosX) var(--bgPosY);
+    background-size: var(--bgX) var(--bgY);
     opacity: 0;
   }
 }

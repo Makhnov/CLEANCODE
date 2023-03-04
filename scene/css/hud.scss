@@ -5,6 +5,13 @@
 }
 
 @media screen and (max-width: 1000px) {
+	:root {
+		--bgX:115%!important;
+		--bgY:120%!important;
+		--bgPosY:33%!important;
+	
+	}
+
 	body #containerHUD nav.gauche {
 		grid-row: 1!important;
 		grid-column: 1 / span 2!important;
@@ -48,6 +55,10 @@
 
 		#APROPOS, #PORTFOLIO, #CURRICULUM, #COMPETENCES, #CONTACT {
 			width: 84vw;
+
+			#book {
+				width:84vw;
+			}
 		}
 	}
 
@@ -248,8 +259,8 @@ nav, ul, li {
     overflow: hidden;
 
     background-image: url('../../divers/img/hudLight.jpg');
-    background-position: center;    
-    background-size: 100% 130%;
+    background-position: var(--bgPosX) var(--bgPosY);    
+    background-size: var(--bgX) var(--bgY);
 		
     display:grid;
     grid-template-columns: 20vw 65vw 15vw;
@@ -274,15 +285,15 @@ nav, ul, li {
 @keyframes darkTheme {
 	from {
 		background: url('../../divers/img/hudDark.jpg');
-		background-position: center;    
-		background-size: 100% 130%;
+		background-position: var(--bgPosX) var(--bgPosY);    
+		background-size: var(--bgX) var(--bgY);
 		opacity: 0;
 	}
 
 	to {
 		background: url('../../divers/img/hudDark.jpg');
-		background-position: center;    
-		background-size: 100% 130%;
+		background-position: var(--bgPosX) var(--bgPosY);    
+		background-size: var(--bgX) var(--bgY);
 		opacity: 1;
 	}
 }
@@ -290,15 +301,15 @@ nav, ul, li {
 @keyframes lightTheme {
 	from {
 		background: url('../../divers/img/hudDark.jpg');
-		background-position: center;    
-		background-size: 100% 130%;
+		background-position: var(--bgPosX) var(--bgPosY);    
+		background-size: var(--bgX) var(--bgY);
 		opacity: 1;
 	}
 
 	to {
 		background: url('../../divers/img/hudDark.jpg');
-		background-position: center;    
-		background-size: 100% 130%;
+		background-position: var(--bgPosX) var(--bgPosY);    
+		background-size: var(--bgX) var(--bgY);
 		opacity: 0;
 	}
 }

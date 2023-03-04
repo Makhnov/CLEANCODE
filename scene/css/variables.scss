@@ -1,5 +1,9 @@
 :root {
     // HUD//
+    --bgX:100%;
+    --bgY:130%;
+    --bgPosX: right;
+    --bgPosY: center;
     --menuProfondeur:75px;
     --ignitionDegree: 20deg;
     --vitesseEntree:3s;
@@ -43,12 +47,12 @@
     --imageD1:url('../../divers/img/pf-conseil.jpg');
     --imageD2:url('../../divers/img/pf-conseil-specs.jpg');
 
-	--livreLargeur:clamp(400px, 60vh, 30vw);
-    --zoomLivre:-20vw;
+	--livreLargeur:clamp(0px, 60vh, 37vw);
+    --zoomLivre:-12vw;
     --inclinaisonLivre:-6deg;
     --rotationLivre:40deg;
-    --justifyLivre:0vw;
-    --alignLivre:-6vh;
+    --justifyLivre:-2vw;
+    --alignLivre:-8vh;
 
 	--bookFront:var(--bookBorder);
     --gapLivre:5px;

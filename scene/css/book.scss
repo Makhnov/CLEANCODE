@@ -1,4 +1,5 @@
 #book {
+    //background-color: rgba(255, 0, 0, 0.315);
     position: absolute;
     transform-style:preserve-3d ;
     height: 78vh;
@@ -37,7 +38,14 @@
     transform-style: preserve-3d;
     height:var(--livreLargeur);
     width:calc(140 / 99 * var(--livreLargeur) + var(--gapLivre));
-    transform: translate3d(calc(-35 / 99 * var(--livreLargeur) - 2.5vw), 0, var(--zoomLivre)) rotateY(90deg) rotateX(0deg) rotate(0deg);
+    // transform: 
+    //     translateX(var(--justifyLivre))
+    //     translateY(var(--alignLivre))
+    //     translateZ(var(--zoomLivre))
+    //     rotateX(var(--rotationLivre))
+    //     rotateY(0deg)
+    //     rotate(var(--inclinaisonLivre))
+    // ;
 
     display:grid;
     grid-template-columns:calc(70 / 99 * var(--livreLargeur)) var(--gapLivre) calc(70 / 99 * var(--livreLargeur));
@@ -154,44 +162,31 @@
 
 @keyframes openBook {
     0% {
-        transform: 
-            translate3d(
-                calc(-35 / 99 * var(--livreLargeur) + var(--justifyLivre)), 
-                0, 
-                var(--zoomLivre)) 
+		transform: 
+            translate3d(calc(-35 / 99 * var(--livreLargeur) + var(--justifyLivre)), 0, var(--zoomLivre)) 
             rotateY(90deg) 
             scale(0);
-	}
+    }
 
 	10% {
         transform: 
-            translate3d(
-                calc(-35 / 99 * var(--livreLargeur) + var(--justifyLivre)), 
-                0, 
-                var(--zoomLivre)) 
+            translate3d(calc(-35 / 99 * var(--livreLargeur) + var(--justifyLivre)), 0, var(--zoomLivre)) 
             rotateY(90deg) 
-            scale(1);
-	}
+            scale(1);           
+    }
 
     50% {
         transform: 
-            translate3d(
-                0, 
-                0, 
-                var(--zoomLivre) + var(--justifyLivre)) 
+            translate3d(var(--justifyLivre), 0, 0) 
             rotateY(10deg) 
-            rotateX(calc(var(--rotationLivre) / 2)) 
+            rotateX(10deg) 
             rotate(0deg);
-
 		z-index: 20;
 	}
 
     100% {
         transform: 
-            translate3d(
-                var(--justifyLivre), 
-                var(--alignLivre), 
-                calc(var(--zoomLivre) / 3)) 
+            translate3d(var(--justifyLivre), var(--alignLivre), calc(var(--zoomLivre))) 
             rotateY(0deg) 
             rotateX(var(--rotationLivre)) 
             rotate(var(--inclinaisonLivre));
@@ -202,7 +197,7 @@
 @keyframes closeBook {
     0% {
         transform: 
-            translate3d(var(--justifyLivre), var(--alignLivre), calc(var(--zoomLivre) / 3)) 
+            translate3d(var(--justifyLivre), var(--alignLivre), calc(var(--zoomLivre))) 
             rotateY(0deg) 
             rotateX(var(--rotationLivre)) 
             rotate(var(--inclinaisonLivre));
@@ -321,6 +316,8 @@
     height: var(--livreLargeur);
     width: calc(10 / 99 * var(--livreLargeur));
     background-size:calc(70 / 99 * var(--livreLargeur)) var(--livreLargeur);
+    //box-sizing: border-box;
+    //border:2px solid aqua;
 
     &::after {
         position: absolute;
@@ -334,6 +331,7 @@
         width: calc(10 / 99 * var(--livreLargeur));
         transform: rotateY(180deg);
         background-size:calc(70 / 99 * var(--livreLargeur)) var(--livreLargeur);
+
     }
 }
 
@@ -410,7 +408,7 @@
 .bandeDroite {
     transform-origin: left;
     background:var(--imageM2);
-
+    
     &::after {
         background:var(--imageD1);
     }
@@ -423,6 +421,7 @@
     .bandeDroite {
         background-size:700% 100%;
         left:calc(10/99 * var(--livreLargeur) - 1px);
+
         &::after {
             background-size:700% 100%;
         }

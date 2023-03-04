@@ -147,12 +147,6 @@ function resize() {
 		racine.style.removeProperty("--hMult");
 	}
 
-	if (width < 1000) {
-		racine.style.setProperty('--livreLargeur', 'clamp(400px, 70vh, 40vw)');
-	} else {
-		racine.style.setProperty('--livreLargeur', 'clamp(400px, 60vh, 30vw)');
-	}
-
 	if (width < 800) {
 		angle = 30;
 		depth = 40;
