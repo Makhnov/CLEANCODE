@@ -1,0 +1,207 @@
+:root {
+  --mainColor: #100f0f;
+  --subColor: #c3a984;
+  --sideColor: #849ec3;
+  --fontColor:whitesmoke;
+}
+
+/* ---- POLICES ---- */
+@media all {
+  @font-face {
+    font-family: "baskerville";
+    src: url("../../divers/fonts/baskervilleRegular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "baskerville";
+    src: url("../../divers/fonts/baskervilleBold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "baskerville";
+    src: url("../../divers/fonts/baskervilleItalic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: "amaranth";
+    src: url("../../divers/fonts/amaranthRegular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "amaranth";
+    src: url("../../divers/fonts/amaranthBold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "amaranth";
+    src: url("../../divers/fonts/amaranthItalic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: "amaranth";
+    src: url("../../divers/fonts/amaranthBoldItalic.ttf") format("truetype");
+    font-weight: bold;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: "baskervilleLibre";
+    src: url("../../divers/fonts/LibreBaskerville-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "montserrat";
+    src: url("../../divers/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "raleway";
+    src: url("../../divers/fonts/Raleway-VariableFont_wght.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "lato";
+    src: url("../../divers/fonts/Lato-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "oswald";
+    src: url("../../divers/fonts/Oswald-VariableFont_wght.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "robotoSlab";
+    src: url("../../divers/fonts/RobotoSlab-VariableFont_wght.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "abrilFatface";
+    src: url("../../divers/fonts/AbrilFatface-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "sourceSansPro";
+    src: url("../../divers/fonts/SourceSansPro-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "playfairDisplay";
+    src: url("../../divers/fonts/PlayfairDisplay-VariableFont_wght.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+h1, p, h3 {
+  all: initial;
+  display: inline-block;
+}
+
+body {
+  background-color: var(--mainColor);
+  display: flex;
+  flex-direction: column;
+}
+
+#fonts {
+  margin: 20px 0;
+  height: calc(80vh - 40px);
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: scroll;
+}
+#fonts div {
+  margin-bottom: 25px;
+}
+#fonts div h3 {
+  font-size: 2.5rem;
+  border-bottom: 3px solid var(--sideColor);
+  margin: 0 20px 10px 20px;
+  color: var(--fontColor);
+}
+#fonts div p {
+  margin: 0 0 0 40px;
+  font-size: clamp(0.7rem, 1.8vw, 2rem);
+  color: var(--fontColor);
+}
+#fonts div:nth-of-type(1) p,
+#fonts div:nth-of-type(1) h3 {
+  font-family: "amaranth";
+}
+#fonts div:nth-of-type(2) p,
+#fonts div:nth-of-type(2) h3 {
+  font-family: "baskerville";
+}
+#fonts div:nth-of-type(3) p,
+#fonts div:nth-of-type(3) h3 {
+  font-family: "baskervilleLibre";
+}
+#fonts div:nth-of-type(4) p,
+#fonts div:nth-of-type(4) h3 {
+  font-family: "montserrat";
+}
+#fonts div:nth-of-type(5) p,
+#fonts div:nth-of-type(5) h3 {
+  font-family: "playfairDisplay";
+}
+#fonts div:nth-of-type(6) p,
+#fonts div:nth-of-type(6) h3 {
+  font-family: "raleway";
+}
+#fonts div:nth-of-type(7) p,
+#fonts div:nth-of-type(7) h3 {
+  font-family: "lato";
+}
+#fonts div:nth-of-type(8) p,
+#fonts div:nth-of-type(8) h3 {
+  font-family: "oswald";
+}
+#fonts div:nth-of-type(9) p,
+#fonts div:nth-of-type(9) h3 {
+  font-family: "oswald";
+}
+#fonts div:nth-of-type(10) p,
+#fonts div:nth-of-type(10) h3 {
+  font-family: "robotoSlab";
+}
+#fonts div:nth-of-type(11) p,
+#fonts div:nth-of-type(11) h3 {
+  font-family: "abrilFatface";
+}
+#fonts div:nth-of-type(12) p,
+#fonts div:nth-of-type(12) h3 {
+  font-family: "sourceSansPro";
+}
+
+header,
+footer {
+  color: var(--mainColor);
+  height: 10vh;
+  width: 100vw;
+  background-color: var(--subColor);
+  display: grid;
+  place-content: center;
+}
+header h1,
+footer h1 {
+  font-size: 3rem;
+}/*# sourceMappingURL=style.css.map */
