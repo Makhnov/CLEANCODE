@@ -143,43 +143,47 @@ function swapNico(tabObj) {
 		}
 	}
 
-	tabObj.forEach((particule) => {
-		const duration = Math.floor(Math.random() * speedOut);
-		const targetX = particule.startX;
-		const targetY = particule.startY;
-		const startX = particule.x;
-		const startY = particule.y;
+	if (tabObj !== null) {
+		tabObj.forEach((particule) => {
+			const duration = Math.floor(Math.random() * speedOut);
+			const targetX = particule.startX;
+			const targetY = particule.startY;
+			const startX = particule.x;
+			const startY = particule.y;
 
-		let startTime = null;
+			let startTime = null;
 
-		function moveParticule(timestamp) {
-			if (!startTime) startTime = timestamp;
-			const progress = timestamp - startTime;
+			function moveParticule(timestamp) {
+				if (!startTime) startTime = timestamp;
+				const progress = timestamp - startTime;
 
-			if (progress < duration) {
-				const deltaX = targetX - startX;
-				const deltaY = targetY - startY;
-				const easeProgress = 1 - Math.cos((progress / duration) * (Math.PI / 2));
-				particule.x = startX + deltaX * easeProgress;
-				particule.y = startY + deltaY * easeProgress;
-				requestAnimationFrame(moveParticule);
+				if (progress < duration) {
+					const deltaX = targetX - startX;
+					const deltaY = targetY - startY;
+					const easeProgress = 1 - Math.cos((progress / duration) * (Math.PI / 2));
+					particule.x = startX + deltaX * easeProgress;
+					particule.y = startY + deltaY * easeProgress;
+					requestAnimationFrame(moveParticule);
 
-			} else {
-				particule.x = targetX;
-				particule.y = targetY;
-				completedAnimations++;
+				} else {
+					particule.x = targetX;
+					particule.y = targetY;
+					completedAnimations++;
+				}
 			}
-		}
 
-		requestAnimationFrame(moveParticule);
-	});
+			requestAnimationFrame(moveParticule);
+		});
+	}
+
 
 	// Initialiser les positions initiales des particules dans particulesFalse
-	particulesFalse.forEach((particuleFalse, index) => {
-		particuleFalse.startX = particulesTrue[index].x;
-		particuleFalse.startY = particulesTrue[index].y;
-	});
-
+	if (particulesFalse !== null) {
+		particulesFalse.forEach((particuleFalse, index) => {
+			particuleFalse.startX = particulesTrue[index].x;
+			particuleFalse.startY = particulesTrue[index].y;
+		});
+	}
 	animationStarted = true;
 
 	// Démarrer l'animation en demandant la première frame

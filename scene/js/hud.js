@@ -212,20 +212,48 @@ function swapTheme() {
 for (let i = 0; i < li.length; i++) {
 	let iTemp = i;
 	li[i].addEventListener('click', function () {
-		clearTimeout(menuSpamm);
+		if (racine.clientWidth > 1000) {
+			clearTimeout(menuSpamm);
+		}
 		if (spamm(i)) {
-			//console.log(iTemp);
 			menuAsync(iTemp);
 		}
 	});
 }
 
 function spamm(index) {
+	if (scene[index].classList.contains('anim')) {
+		const element = scene[index];
+		element.classList.remove('anim');
+		let animElem = element;
+		switch (index) {
+			case 0://A PROPOS
+				break;
+			case 1://PORTFOLIO
+				animElem = element.children[0];
+				readBook.checked = false;
+				break;
+			case 2:// CV
+				animElem = element.children[2];
+				stand.checked = false;
+				break;
+			case 3://COMPETENCES
+				break;
+			case 4://CONTACT
+				break;
+		}
+		element.classList.add('anim');
+	}
 	const XLi = new WebKitCSSMatrix(getComputedStyle(li[index]).getPropertyValue('transform'));
-	if (XLi.m41 < 1000) {
-		return true;
-	} else {
+	const width = racine.clientWidth;
+	if (width < 1000 && XLi.m43 < -13.19) {
 		return false;
+	} else if (width < 1000) {
+		return true;
+	} else if (XLi.m41 > 300) {
+		return false;
+	} else {
+		return true;
 	}
 }
 
@@ -239,12 +267,14 @@ async function menuAsync(iTemp) {
 		if (li[j].classList.contains("clicked") && j !== iTemp) {
 			li[j].classList.remove("clicked");
 			tabNav[j] = false;
-			//console.log(j);
+			// console.log(j);
+			// console.log(tabNav);
 			closingScene(j);
 		}
 	}
 
 	// TEMPO
+	//console.log(tempo);
 	if (tempo) {
 		machine.style.display = "none";
 		loadingGIF();
@@ -261,7 +291,6 @@ async function menuAsync(iTemp) {
 }
 
 function delayLi(ms) {
-	//console.log(ms);
 	return new Promise((resolve, reject) => {
 		menuSpamm = setTimeout(() => {
 			for (j = 0; j < tabNav.length; j++) {
@@ -269,6 +298,7 @@ function delayLi(ms) {
 					scene[j].classList.add("hidden");
 					scene[j].classList.remove("anim");
 					scene[j].dispatchEvent(new Event("change"));
+					//console.log(j);
 					clearScene(j);
 				} else {
 					tempo = true;
@@ -444,11 +474,10 @@ function openModal(index, bool) {
 			modalTexte.style.height = "100vh";
 
 			if (bool) {
-				modalTexte.style.background = "url('../../divers/img/cvFront.jpg')";
+				modalTexte.style.background = "url('../../divers/img/cvFront.jpg') no-repeat center top";
 			} else {
-				modalTexte.style.background = "url('../../divers/img/cvBack2.jpg')";
+				modalTexte.style.background = "url('../../divers/img/cvBack2.jpg') no-repeat center top";
 			}
-
 			modalTexte.style.backgroundSize = "contain";
 			checkWidth();
 			break;

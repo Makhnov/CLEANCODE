@@ -138,6 +138,54 @@
   transform: translateY(100%) rotateX(60deg);
 }
 
+#zoneCV:hover .tooltip, #zoneCVBack:hover .tooltip {
+  opacity: 1;
+}
+#zoneCV .tooltip, #zoneCVBack .tooltip {
+  opacity: 0;
+  z-index: 1000;
+  position: absolute;
+  background-color: var(--subColor);
+  display: grid;
+  place-content: center;
+  height: 80px;
+  width: 200px;
+  border-radius: 10px;
+  border: 5px solid var(--mainColor4);
+  font-size: 1.5rem;
+  font-family: "amaranth";
+  color: var(--fontLight);
+  transition: opacity 0.3s;
+  top: 3vh;
+  left: calc(50% - 100px);
+}
+#zoneCV .tooltip::before, #zoneCVBack .tooltip::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  bottom: -10px;
+  left: calc(50% - 10px);
+  transform: rotate(45deg);
+  box-sizing: border-box;
+  border-bottom: 10px solid var(--subColor);
+  border-right: 10px solid var(--subColor);
+  transition: opacity 0.3s;
+}
+#zoneCV .tooltip::after, #zoneCVBack .tooltip::after {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  bottom: -13px;
+  left: calc(50% - 10px);
+  transform: rotate(45deg);
+  box-sizing: border-box;
+  border-bottom: 5px solid var(--mainColor4);
+  border-right: 5px solid var(--mainColor4);
+  transition: opacity 0.3s;
+}
+
 #zoneCV {
   visibility: hidden;
   margin: 0;
@@ -182,22 +230,6 @@
 #zoneCVBack:hover {
   opacity: 1;
   filter: blur(0px);
-}
-
-#filtreCV {
-  visibility: hidden;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  align-self: center;
-  justify-self: center;
-  background-image: url("../../divers/img/docBack.gif");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  cursor: pointer;
 }
 
 @keyframes faceBottomDown {
@@ -364,50 +396,50 @@
 }
 @keyframes document {
   0% {
-    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.25 * var(--standEpaisseur)), 0);
+    transform: rotateX(-90deg) translate3d(0, calc(-55% - 1.25 * var(--standEpaisseur)), 0);
     height: 0px;
     width: 0px;
   }
   84% {
     visibility: visible;
-    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.25 * var(--standEpaisseur)), 0);
+    transform: rotateX(-90deg) translate3d(0, calc(-55% - 1.25 * var(--standEpaisseur)), 0);
     height: 0px;
     width: 0px;
   }
   98% {
     visibility: visible;
-    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.25 * var(--standEpaisseur)), 0);
+    transform: rotateX(-90deg) translate3d(0, calc(-55% - 1.25 * var(--standEpaisseur)), 0);
     height: calc(0.8 * var(--standHauteur));
     width: calc(0.5656 * var(--standHauteur));
   }
   100% {
     visibility: visible;
-    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.25 * var(--standEpaisseur)), 0);
+    transform: rotateX(-90deg) translate3d(0, calc(-55% - 1.25 * var(--standEpaisseur)), 0);
     height: calc(0.8 * var(--standHauteur));
     width: calc(0.5656 * var(--standHauteur));
   }
 }
 @keyframes documentBack {
   0% {
-    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.25 * var(--standEpaisseur)), 0) rotateY(180deg);
+    transform: rotateX(-90deg) translate3d(0, calc(-55% - 1.25 * var(--standEpaisseur)), 0) rotateY(180deg);
     height: 0px;
     width: 0px;
   }
   84% {
     visibility: visible;
-    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.25 * var(--standEpaisseur)), 0) rotateY(180deg);
+    transform: rotateX(-90deg) translate3d(0, calc(-55% - 1.25 * var(--standEpaisseur)), 0) rotateY(180deg);
     height: 0px;
     width: 0px;
   }
   98% {
     visibility: visible;
-    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.25 * var(--standEpaisseur)), 0) rotateY(180deg);
+    transform: rotateX(-90deg) translate3d(0, calc(-55% - 1.25 * var(--standEpaisseur)), 0) rotateY(180deg);
     height: calc(0.8 * var(--standHauteur));
     width: calc(0.5656 * var(--standHauteur));
   }
   100% {
     visibility: visible;
-    transform: rotateX(-90deg) translate3d(0, calc(-50% - 1.25 * var(--standEpaisseur)), 0) rotateY(180deg);
+    transform: rotateX(-90deg) translate3d(0, calc(-55% - 1.25 * var(--standEpaisseur)), 0) rotateY(180deg);
     height: calc(0.8 * var(--standHauteur));
     width: calc(0.5656 * var(--standHauteur));
   }
@@ -522,7 +554,6 @@
 #CURRICULUM.anim #openStand:not(:checked) ~ #teleport .bloc.top {
   animation: blocTop linear var(--vitesseEntree) forwards;
 }
-#CURRICULUM.anim #openStand:not(:checked) ~ #teleport #filtreCV,
 #CURRICULUM.anim #openStand:not(:checked) ~ #teleport #zoneCV {
   animation: document linear var(--vitesseEntree) forwards;
 }
@@ -547,7 +578,6 @@
 #CURRICULUM.anim #openStand:checked ~ #teleport .bloc.bottom {
   animation: blocBottomOut var(--vitesseSortie) linear forwards !important;
 }
-#CURRICULUM.anim #openStand:checked ~ #teleport #filtreCV,
 #CURRICULUM.anim #openStand:checked ~ #teleport #zoneCV {
   animation: docOut var(--vitesseSortie) linear forwards;
 }/*# sourceMappingURL=cv.css.map */

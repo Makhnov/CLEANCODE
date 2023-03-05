@@ -1,38 +1,73 @@
 @import 'variables';
 
-@media screen and (max-width: 1400px) and (min-width: 1000px) {
-	//VIDE
-}
-
 @media screen and (max-width: 1000px) {
 	:root {
-		--bgX:115%!important;
-		--bgY:120%!important;
-		--bgPosY:33%!important;
-	
+		//--bgX:115%!important;
+		//--bgY:130%!important;
+		--bgPosY:50%!important;
+		--livreLargeur:clamp(0px, 55vw, 80vh);
+		--standLargeur:clamp(0px, 72vh, 70vw);
+		--standHauteur:60vh;
+		--progressSize:clamp(70px, 20vw, 10.5vh);
+	}
+
+	body #containerHUD {
+		grid-template-columns: 2.5vw 84vw 13.5vw;
+		grid-template-rows: 14vh 70vh 16vh;
+	}
+
+	body #containerHUD #containerView {
+		grid-column: 1 / span 2;
+		grid-row: 2;
+		height: 70vh;
+		margin-left:2.5vw;
+		width: 95vw;
+
+		#APROPOS, #PORTFOLIO, #CURRICULUM, #COMPETENCES, #CONTACT {
+			width: 95vw;
+			height: 70vh;
+
+			#book {
+				width:95vw;
+			}
+		}
+	}
+
+	body #containerHUD #multivac {
+		margin-right: 0vw;
+		top:calc(7vh - 40px);
+		min-height: 80px;
+		max-height: 80px;
 	}
 
 	body #containerHUD nav.gauche {
-		grid-row: 1!important;
-		grid-column: 1 / span 2!important;
+		grid-row: 1;
+		grid-column: 1 / span 2;
 		margin-left: 1vw;
-		min-width:84vw!important;
-		max-height:14vh!important;
+		min-width:84vw;
+		max-height:14vh;
 
 		ul {
-			min-height: 50px!important;
-			height: 100%!important;	
-			max-height: 75px!important;
-			flex-direction: row!important;	
-			justify-content: flex-start!important;
+			height: 100%;	
+			flex-direction: row;	
+			justify-content: flex-start;
+			align-items: center;
 			transform: none!important;
 			
 			li {
-				height:100%!important;
 				margin-right: 1vw;
+				height:60px!important;
+				width:16vw;
 				background-color: var(--mainColor)!important;
-				width:12vw;
 				flex:none;
+				
+				padding-left: 0;
+				text-align: center;
+				font-size:2.2vw;
+				font-weight: bold;
+				text-shadow: none;
+
+				transition: transform 0s!important;
 
 				&::before, 
 				::after {
@@ -46,68 +81,124 @@
 		}
 	}
 
-	body #containerHUD #containerView {
-		grid-column: 1 / span 2;
-		height: 78vh;
-		margin-left: 1vw;
-		width: 84vw;
-		background-color: rgba(255, 0, 0, 0.479)!important;
+	body #containerHUD nav.droite {
+		grid-row: 3;
+		grid-column: 1 / span 3;
+		width:100vw;
+		height:16vh;
 
-		#APROPOS, #PORTFOLIO, #CURRICULUM, #COMPETENCES, #CONTACT {
-			width: 84vw;
-
-			#book {
-				width:84vw;
-			}
-		}
-	}
-
-	#COMPETENCES > div:not(.skills .divers) {
-
-		flex-direction: column!important;
-		justify-content: space-between!important;
-
-		article:not(.divers) {
+		ul {
+			align-self: flex-start;
 			//background-color: red;
-			margin:0!important;
-			justify-content: center!important;
-		}
-
-		article {
-			align-items: center!important;
-		}
-
-		&.php article div {
+			padding:0 25px;
+			width:calc(100% - 50px);
+			height:10vh;
 			display: flex;
-			> h3 {
-				margin-right:10px;
-			}
-		}
-	}
-}
+			align-items: center;
+			justify-content: space-between;
 
-@media screen and (max-width: 1000px) and (min-width: 800px)  {
-	body #containerHUD nav.gauche {
-		ul {
 			li {
+				> div, label {
+					> div:nth-of-type(1){
+						//max-height: fit-content!important;						
+						min-height: 3.5rem!important;
+						span:nth-of-type(1) {
+							top:-1.75rem!important;	
+							left:calc(50% - 75px)!important;
+						}
+						span:nth-of-type(2) {
+							top:1.75rem!important;	
+							left:calc(50% - 75px)!important;
+						}
+					}
+					> div:nth-of-type(2){
+						//max-height: fit-content!important;						
+						min-height: 3.5rem!important;
+						span {
+							top:1.75rem!important;	
+							left:calc(50% - 75px)!important;
+						}
 
-				font-size:1rem;
+					}
+					flex-direction: column!important;
+				}
+
 			}
+		}
+	}
+
+	body #containerHUD #COMPETENCES {
+		grid-template-rows: 16vh 1vh 16vh 1vh 16vh 1vh 19vh;
+		grid-template-columns: 0vw 46vw 3vw 46vw 0vw;
+
+		> div {
+			height:16vh;
+			width: 46vw;
+		}
+
+		> div.divers {
+			min-width:95vw;
+			height: 19vh;
+			
+			article {
+				h1 {
+					font-size:clamp(1.5rem, 4vw, 3vh);
+				}
+				h3 {
+					font-size:clamp(.85rem, 3vw, 2.5vh);
+				}
+			}
+		}
+
+		> div:not(.divers) {
+			min-width:40vw;
+		}
+
+		> div:not(.skills .divers) {
+			flex-direction: column;
+			justify-content: space-between;
+
+			article:not(.divers) {
+				//background-color: red;
+				margin:0;
+				justify-content: center;
+			}
+
+			article {
+				align-items: center;
+			}
+
+			&.php article div {
+				display: flex;
+				> h3 {
+					margin-right:10px;
+				}
+			}
+		}
+	}
+
+	body #containerHUD #CONTACT {
+		// 78vh 84vw
+		grid-template-columns:17vw 50vw 17vw;
+		grid-template-rows: 15.7vh 46.6vh 15.7vh;
+
+		#headerContact {
+
+		}
+		#screenContact {
+			
+		}
+		#footerContact {
+			
 		}
 	}
 }
 
-@media screen and (max-width: 800px)  {
-	body #containerHUD nav.gauche {
-		ul {
-			li {
-				width:13vw;
-				flex:none;
-				font-size:1rem;
-			}
-		}
-	}
+/*
+@media screen and (max-width: 620px)  {
+	
 }
+*/
 
 html, body {
     margin:0;
@@ -320,15 +411,16 @@ nav, ul, li {
 	grid-row: 1;
 	grid-column: 3;
 	justify-self: center;
+
 	margin-right: 1vw;
 	top:1vw;
-	//overflow: hidden;
-	display: grid;
-	place-content: center;
 	height: 12vh;
 	min-height: 100px;
 	max-height: 200px;
 	aspect-ratio: 1/1;
+
+	display: grid;
+	place-content: center;
 	border-radius: 50%;
 	box-sizing: border-box;
 	border:4px solid #55c6ee;
@@ -636,8 +728,9 @@ nav, ul, li {
 			min-height: 10vh;
 			min-width:calc(2 * var(--rightNavFontSize))!important;
 
-			display: grid;
-			place-content: center;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 
 			font-size: var(--rightNavFontSize);
 			color: var(--mainColor3);
@@ -754,7 +847,7 @@ nav, ul, li {
 
 		.bouton-texte.changementPage,
 		.bouton-texte.zoom {
-			display:flex!important;
+			display:flex;
 			flex-direction: row;
 			flex-wrap: nowrap;
 			align-items: center;

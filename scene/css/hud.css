@@ -27,7 +27,7 @@
   --mainColorLight:rgba(17, 106, 181, 0.4);
   --mainColor5Light:rgba(13, 95, 160, 0.4);
   --mainColor4Light:rgba(108, 221, 255, 0.2);
-  --standLargeur:clamp(30vw, 78vh, 65vw);
+  --standLargeur:clamp(30vw, 70vh, 60vw);
   --standLargeurInt:calc(12/21 * (var(--standLargeur)));
   --standEpaisseur:calc(2/21 * (var(--standLargeur)));
   --hMult:8 / 7;
@@ -107,31 +107,62 @@ code {
 
 @media screen and (max-width: 1000px) {
   :root {
-    --bgX:115%!important;
-    --bgY:120%!important;
-    --bgPosY:33%!important;
+    --bgPosY:50%!important;
+    --livreLargeur:clamp(0px, 55vw, 80vh);
+    --standLargeur:clamp(0px, 72vh, 70vw);
+    --standHauteur:60vh;
+    --progressSize:clamp(70px, 20vw, 10.5vh);
+  }
+  body #containerHUD {
+    grid-template-columns: 2.5vw 84vw 13.5vw;
+    grid-template-rows: 14vh 70vh 16vh;
+  }
+  body #containerHUD #containerView {
+    grid-column: 1/span 2;
+    grid-row: 2;
+    height: 70vh;
+    margin-left: 2.5vw;
+    width: 95vw;
+  }
+  body #containerHUD #containerView #APROPOS, body #containerHUD #containerView #PORTFOLIO, body #containerHUD #containerView #CURRICULUM, body #containerHUD #containerView #COMPETENCES, body #containerHUD #containerView #CONTACT {
+    width: 95vw;
+    height: 70vh;
+  }
+  body #containerHUD #containerView #APROPOS #book, body #containerHUD #containerView #PORTFOLIO #book, body #containerHUD #containerView #CURRICULUM #book, body #containerHUD #containerView #COMPETENCES #book, body #containerHUD #containerView #CONTACT #book {
+    width: 95vw;
+  }
+  body #containerHUD #multivac {
+    margin-right: 0vw;
+    top: calc(7vh - 40px);
+    min-height: 80px;
+    max-height: 80px;
   }
   body #containerHUD nav.gauche {
-    grid-row: 1 !important;
-    grid-column: 1/span 2 !important;
+    grid-row: 1;
+    grid-column: 1/span 2;
     margin-left: 1vw;
-    min-width: 84vw !important;
-    max-height: 14vh !important;
+    min-width: 84vw;
+    max-height: 14vh;
   }
   body #containerHUD nav.gauche ul {
-    min-height: 50px !important;
-    height: 100% !important;
-    max-height: 75px !important;
-    flex-direction: row !important;
-    justify-content: flex-start !important;
+    height: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
     transform: none !important;
   }
   body #containerHUD nav.gauche ul li {
-    height: 100% !important;
     margin-right: 1vw;
+    height: 60px !important;
+    width: 16vw;
     background-color: var(--mainColor) !important;
-    width: 12vw;
     flex: none;
+    padding-left: 0;
+    text-align: center;
+    font-size: 2.2vw;
+    font-weight: bold;
+    text-shadow: none;
+    transition: transform 0s !important;
   }
   body #containerHUD nav.gauche ul li::before,
   body #containerHUD nav.gauche ul li ::after {
@@ -140,49 +171,90 @@ code {
   body #containerHUD nav.gauche ul li.clicked:not(.anim) {
     transform: translateZ(calc(-0.33 * var(--menuProfondeur))) !important;
   }
-  body #containerHUD #containerView {
-    grid-column: 1/span 2;
-    height: 78vh;
-    margin-left: 1vw;
-    width: 84vw;
-    background-color: rgba(255, 0, 0, 0.479) !important;
+  body #containerHUD nav.droite {
+    grid-row: 3;
+    grid-column: 1/span 3;
+    width: 100vw;
+    height: 16vh;
   }
-  body #containerHUD #containerView #APROPOS, body #containerHUD #containerView #PORTFOLIO, body #containerHUD #containerView #CURRICULUM, body #containerHUD #containerView #COMPETENCES, body #containerHUD #containerView #CONTACT {
-    width: 84vw;
+  body #containerHUD nav.droite ul {
+    align-self: flex-start;
+    padding: 0 25px;
+    width: calc(100% - 50px);
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
-  body #containerHUD #containerView #APROPOS #book, body #containerHUD #containerView #PORTFOLIO #book, body #containerHUD #containerView #CURRICULUM #book, body #containerHUD #containerView #COMPETENCES #book, body #containerHUD #containerView #CONTACT #book {
-    width: 84vw;
-  }
-  #COMPETENCES > div:not(.skills .divers) {
+  body #containerHUD nav.droite ul li > div, body #containerHUD nav.droite ul li label {
     flex-direction: column !important;
-    justify-content: space-between !important;
   }
-  #COMPETENCES > div:not(.skills .divers) article:not(.divers) {
-    margin: 0 !important;
-    justify-content: center !important;
+  body #containerHUD nav.droite ul li > div > div:nth-of-type(1), body #containerHUD nav.droite ul li label > div:nth-of-type(1) {
+    min-height: 3.5rem !important;
   }
-  #COMPETENCES > div:not(.skills .divers) article {
-    align-items: center !important;
+  body #containerHUD nav.droite ul li > div > div:nth-of-type(1) span:nth-of-type(1), body #containerHUD nav.droite ul li label > div:nth-of-type(1) span:nth-of-type(1) {
+    top: -1.75rem !important;
+    left: calc(50% - 75px) !important;
   }
-  #COMPETENCES > div:not(.skills .divers).php article div {
+  body #containerHUD nav.droite ul li > div > div:nth-of-type(1) span:nth-of-type(2), body #containerHUD nav.droite ul li label > div:nth-of-type(1) span:nth-of-type(2) {
+    top: 1.75rem !important;
+    left: calc(50% - 75px) !important;
+  }
+  body #containerHUD nav.droite ul li > div > div:nth-of-type(2), body #containerHUD nav.droite ul li label > div:nth-of-type(2) {
+    min-height: 3.5rem !important;
+  }
+  body #containerHUD nav.droite ul li > div > div:nth-of-type(2) span, body #containerHUD nav.droite ul li label > div:nth-of-type(2) span {
+    top: 1.75rem !important;
+    left: calc(50% - 75px) !important;
+  }
+  body #containerHUD #COMPETENCES {
+    grid-template-rows: 16vh 1vh 16vh 1vh 16vh 1vh 19vh;
+    grid-template-columns: 0vw 46vw 3vw 46vw 0vw;
+  }
+  body #containerHUD #COMPETENCES > div {
+    height: 16vh;
+    width: 46vw;
+  }
+  body #containerHUD #COMPETENCES > div.divers {
+    min-width: 95vw;
+    height: 19vh;
+  }
+  body #containerHUD #COMPETENCES > div.divers article h1 {
+    font-size: clamp(1.5rem, 4vw, 3vh);
+  }
+  body #containerHUD #COMPETENCES > div.divers article h3 {
+    font-size: clamp(0.85rem, 3vw, 2.5vh);
+  }
+  body #containerHUD #COMPETENCES > div:not(.divers) {
+    min-width: 40vw;
+  }
+  body #containerHUD #COMPETENCES > div:not(.skills .divers) {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  body #containerHUD #COMPETENCES > div:not(.skills .divers) article:not(.divers) {
+    margin: 0;
+    justify-content: center;
+  }
+  body #containerHUD #COMPETENCES > div:not(.skills .divers) article {
+    align-items: center;
+  }
+  body #containerHUD #COMPETENCES > div:not(.skills .divers).php article div {
     display: flex;
   }
-  #COMPETENCES > div:not(.skills .divers).php article div > h3 {
+  body #containerHUD #COMPETENCES > div:not(.skills .divers).php article div > h3 {
     margin-right: 10px;
   }
-}
-@media screen and (max-width: 1000px) and (min-width: 800px) {
-  body #containerHUD nav.gauche ul li {
-    font-size: 1rem;
+  body #containerHUD #CONTACT {
+    grid-template-columns: 17vw 50vw 17vw;
+    grid-template-rows: 15.7vh 46.6vh 15.7vh;
   }
 }
-@media screen and (max-width: 800px) {
-  body #containerHUD nav.gauche ul li {
-    width: 13vw;
-    flex: none;
-    font-size: 1rem;
-  }
+/*
+@media screen and (max-width: 620px)  {
+
 }
+*/
 html, body {
   margin: 0;
   padding: 0;
@@ -374,12 +446,12 @@ nav, ul, li {
   justify-self: center;
   margin-right: 1vw;
   top: 1vw;
-  display: grid;
-  place-content: center;
   height: 12vh;
   min-height: 100px;
   max-height: 200px;
   aspect-ratio: 1/1;
+  display: grid;
+  place-content: center;
   border-radius: 50%;
   box-sizing: border-box;
   border: 4px solid #55c6ee;
@@ -637,8 +709,9 @@ nav, ul, li {
   padding: 0;
   min-height: 10vh;
   min-width: calc(2 * var(--rightNavFontSize)) !important;
-  display: grid;
-  place-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: var(--rightNavFontSize);
   color: var(--mainColor3);
 }
@@ -688,7 +761,7 @@ nav, ul, li {
 }
 #containerHUD nav.droite ul .bouton-texte.changementPage,
 #containerHUD nav.droite ul .bouton-texte.zoom {
-  display: flex !important;
+  display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;

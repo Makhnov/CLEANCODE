@@ -237,9 +237,12 @@
                 <input type="checkbox" id="openStand">
                 <input type="checkbox" id="rotationStand">
                 <div id="teleport">
-                    <div id="filtreCV"></div>
-                    <div onclick="clicCV(true)" id="zoneCV"></div>
-                    <div onclick="clicCV(false)" id="zoneCVBack"></div>
+                    <div onclick="clicCV(true)" id="zoneCV">
+                        <span class="tooltip">Cliquer pour agrandir</span>
+                    </div>
+                    <div onclick="clicCV(false)" id="zoneCVBack">
+                        <span class="tooltip">Cliquer pour agrandir</span>
+                    </div>
                     <div class="bloc top">
                         <div class="face top up"></div>
                         <div class="face top down">

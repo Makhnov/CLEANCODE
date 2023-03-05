@@ -1,8 +1,8 @@
 #COMPETENCES {// GRID
 	display: grid;
-	min-height:78vh;
-    min-width: 60vw;
-    grid-template-rows: 20vh 2vh 20vh 2vh 20vh 2vh 12vh;
+	height:82vh;
+    width: 60vw;
+    grid-template-rows: 20vh 2vh 20vh 2vh 20vh 2vh 16vh;
     grid-template-columns: 1.5vw 28vw 1vw 28vw 1.5vw;
 
     > .skills {
@@ -70,7 +70,7 @@
 	}
 
     > .divers {
-        height: 12vh;
+        height: 16vh;
         width:57vw;
 
         article {
@@ -126,25 +126,25 @@
 
         &:not(.titre .divers) {
             h1 {
-                font-size: clamp(1rem, calc(var(--progressSize) * 5 / 20), 2.5rem);
+                font-size: clamp(1rem, calc(var(--progressSize) * 5.5 / 20), 3rem);
             }
             h3 {
-                font-size: clamp(.85rem, calc(var(--progressSize) * 4 / 20), 1.8rem);
+                font-size: clamp(.85rem, calc(var(--progressSize) * 4.5 / 20), 2rem);
             }
         }
 
         &.titre {
             h1 {
-                font-size: clamp(1rem, calc(var(--progressSize) * 6 / 20), 3rem);
+                font-size: clamp(1rem, calc(var(--progressSize) * 6.5 / 20), 3.25rem);
             }
         }
 
         &.divers {
             h1 {
-                font-size: clamp(.9rem, calc(var(--progressSize) * 4 / 20), 2rem);
+                font-size: clamp(.9rem, calc(var(--progressSize) * 4.5 / 20), 2.25rem);
             }
             h3 {
-                font-size: clamp(.7rem, calc(var(--progressSize) * 3 / 20), 1.5rem);
+                font-size: clamp(.7rem, calc(var(--progressSize) * 3.5 / 20), 1.75rem);
             }
         }
 

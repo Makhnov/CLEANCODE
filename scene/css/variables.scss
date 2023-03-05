@@ -32,7 +32,7 @@
     --mainColor4Light:rgba(108, 221, 255, 0.2);
 
     // DISPLAY CV //
-    --standLargeur:clamp(30vw, 78vh, 65vw); // Variable unique.
+    --standLargeur:clamp(30vw, 70vh, 60vw); // Variable unique.
     --standLargeurInt:calc(12/21 * (var(--standLargeur)));
     --standEpaisseur:calc(2/21 * (var(--standLargeur)));
 	--hMult:8 / 7; 

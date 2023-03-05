@@ -27,7 +27,7 @@
   --mainColorLight:rgba(17, 106, 181, 0.4);
   --mainColor5Light:rgba(13, 95, 160, 0.4);
   --mainColor4Light:rgba(108, 221, 255, 0.2);
-  --standLargeur:clamp(30vw, 78vh, 65vw);
+  --standLargeur:clamp(30vw, 70vh, 60vw);
   --standLargeurInt:calc(12/21 * (var(--standLargeur)));
   --standEpaisseur:calc(2/21 * (var(--standLargeur)));
   --hMult:8 / 7;

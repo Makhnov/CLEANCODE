@@ -1,8 +1,8 @@
 #COMPETENCES {
   display: grid;
-  min-height: 78vh;
-  min-width: 60vw;
-  grid-template-rows: 20vh 2vh 20vh 2vh 20vh 2vh 12vh;
+  height: 82vh;
+  width: 60vw;
+  grid-template-rows: 20vh 2vh 20vh 2vh 20vh 2vh 16vh;
   grid-template-columns: 1.5vw 28vw 1vw 28vw 1.5vw;
 }
 #COMPETENCES > .skills {
@@ -63,7 +63,7 @@
   text-align: center !important;
 }
 #COMPETENCES > .divers {
-  height: 12vh;
+  height: 16vh;
   width: 57vw;
 }
 #COMPETENCES > .divers article {
@@ -105,19 +105,19 @@
   text-align: start !important;
 }
 #COMPETENCES div article:not(.titre .divers) h1 {
-  font-size: clamp(1rem, var(--progressSize) * 5 / 20, 2.5rem);
+  font-size: clamp(1rem, var(--progressSize) * 5.5 / 20, 3rem);
 }
 #COMPETENCES div article:not(.titre .divers) h3 {
-  font-size: clamp(0.85rem, var(--progressSize) * 4 / 20, 1.8rem);
+  font-size: clamp(0.85rem, var(--progressSize) * 4.5 / 20, 2rem);
 }
 #COMPETENCES div article.titre h1 {
-  font-size: clamp(1rem, var(--progressSize) * 6 / 20, 3rem);
+  font-size: clamp(1rem, var(--progressSize) * 6.5 / 20, 3.25rem);
 }
 #COMPETENCES div article.divers h1 {
-  font-size: clamp(0.9rem, var(--progressSize) * 4 / 20, 2rem);
+  font-size: clamp(0.9rem, var(--progressSize) * 4.5 / 20, 2.25rem);
 }
 #COMPETENCES div article.divers h3 {
-  font-size: clamp(0.7rem, var(--progressSize) * 3 / 20, 1.5rem);
+  font-size: clamp(0.7rem, var(--progressSize) * 3.5 / 20, 1.75rem);
 }
 #COMPETENCES div article:not(.principal) {
   visibility: hidden;
