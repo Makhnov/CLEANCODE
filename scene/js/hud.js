@@ -190,12 +190,16 @@ function swapTheme() {
 		theme.classList.toggle('dark');
 		theme.classList.toggle('light');
 
+
+
 		if (theme.classList.contains('dark')) {
 			racine.style.setProperty('--fontLight', '#fff');
 			racine.style.setProperty('--subColorLight', 'rgba(70, 70, 80, 0.5)');
 			racine.style.setProperty('--subColor', 'rgb(70, 70, 80)');
 			racine.style.setProperty('--mainColor', 'rgb(17, 126, 181)');
 			racine.style.setProperty('--mainColor1', 'rgb(31, 162, 227)');
+			racine.style.setProperty('--mainColor5', 'rgb(20, 172, 249)');
+
 			multivac.children[2].textContent = "Thème clair";
 		} else {
 			racine.style.setProperty('--fontLight', 'whitesmoke');
@@ -203,6 +207,8 @@ function swapTheme() {
 			racine.style.setProperty('--subColor', 'rgb(39, 48, 52)');
 			racine.style.setProperty('--mainColor', 'rgb(23, 80, 109)');
 			racine.style.setProperty('--mainColor1', 'rgb(17, 126, 181)');
+			racine.style.setProperty('--mainColor5', 'rgba(13, 95, 160)');
+
 			multivac.children[2].textContent = "Thème sombre";
 		}
 	} else {// WAIT...

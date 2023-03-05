@@ -5,7 +5,7 @@
 		//--bgX:115%!important;
 		//--bgY:130%!important;
 		--bgPosY:50%!important;
-		--livreLargeur:clamp(0px, 55vw, 80vh);
+		--livreLargeur:clamp(0px, 60vw, 80vh);
 		--standLargeur:clamp(0px, 72vh, 70vw);
 		--standHauteur:60vh;
 		--progressSize:clamp(70px, 20vw, 10.5vh);
@@ -34,7 +34,7 @@
 	}
 
 	body #containerHUD #multivac {
-		margin-right: 0vw;
+		margin-right: 20px;
 		top:calc(7vh - 40px);
 		min-height: 80px;
 		max-height: 80px;
@@ -57,7 +57,7 @@
 			li {
 				margin-right: 1vw;
 				height:60px!important;
-				width:16vw;
+				width:15vw;
 				background-color: var(--mainColor)!important;
 				flex:none;
 				
@@ -96,6 +96,20 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+
+			li > div i, label i {
+				color:var(--mainColor5)!important;
+			}
+
+			li > div:nth-child(2), label:nth-child(2) {
+				//background-color: red;
+				top:-10vh;
+			}
+
+			li > div:nth-child(3), label:nth-child(3) {
+				background-color: red;
+				//top:-10vh;
+			}
 
 			li {
 				> div, label {

@@ -137,7 +137,7 @@ function zoomLivre() {
 
 function dezoomLivre() {
 	if (racine.clientWidth < 1000) {
-		racine.style.setProperty('--livreLargeur', 'clamp(0px, 45vw, 70vh)');
+		racine.style.setProperty('--livreLargeur', 'clamp(0px, 60vw, 80vh)');
 	} else {
 		racine.style.setProperty('--livreLargeur', 'clamp(0px, 60vh, 37vw)');
 	}
