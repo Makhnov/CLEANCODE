@@ -161,7 +161,7 @@ function resize() {
 		iDeg = 35;
 	} else {
 		angle = 60;
-		depth = 70;
+		depth = 90;
 		iDeg = 25;
 	}
 
@@ -189,8 +189,6 @@ function swapTheme() {
 		theme.classList.remove('start');
 		theme.classList.toggle('dark');
 		theme.classList.toggle('light');
-
-
 
 		if (theme.classList.contains('dark')) {
 			racine.style.setProperty('--fontLight', '#fff');

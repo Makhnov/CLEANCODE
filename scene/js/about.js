@@ -1,3 +1,8 @@
+const cadre = document.getElementById('aboutPortrait');
+const presentation = document.getElementById('aboutTexte');
+const portrait = document.getElementById('portrait');
+
+
 class Particule {
 	constructor(x, y, size, color, index) {
 		this.x = x;
@@ -14,11 +19,9 @@ class Particule {
 }
 
 const iconPixel = document.getElementById('pixelize');
-const portrait = document.getElementById('portrait');
-const canvas = document.getElementById('portrait');
-const ctx = canvas.getContext('2d');
-canvas.width = 700;
-canvas.height = 1400;
+const ctx = portrait.getContext('2d');
+portrait.width = 350;
+portrait.height = 318.75;
 
 const particulesTrue = [];
 let particulesFalse = null;
@@ -71,8 +74,8 @@ function drawParticules(ctx, tabObj) {
 
 function initialisationNico(tabObj) {
 	function drawFrame() {
-		// Effacer le canvas
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		// Effacer le portrait
+		ctx.clearRect(0, 0, portrait.width, portrait.height);
 
 		// Redessiner chaque particule à sa nouvelle position
 		drawParticules(ctx, tabObj);
@@ -90,8 +93,8 @@ function initialisationNico(tabObj) {
 		const duration = Math.floor(Math.random() * speedIn);
 		const targetX = particule.x;
 		const targetY = particule.y;
-		particule.startX = Math.floor(Math.random() * 1 * width * partSize);
-		particule.startY = Math.floor(Math.random() * 6 * height * partSize);
+		particule.startX = Math.floor(Math.random() * width * partSize);
+		particule.startY = Math.floor(Math.random() * height * partSize);
 
 		let startTime = null;
 
@@ -128,8 +131,8 @@ function initialisationNico(tabObj) {
 
 function swapNico(tabObj) {
 	function drawFrame() {
-		// Effacer le canvas
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		// Effacer le portrait
+		ctx.clearRect(0, 0, portrait.width, portrait.height);
 
 		// Redessiner chaque particule à sa nouvelle position
 		drawParticules(ctx, tabObj);
@@ -267,22 +270,27 @@ function aproposInfos() {
 }
 
 function zoomPixel() {
-	racine.style.setProperty('--portraitBG', "#00000000");
-	apropos.style.display = "flex";
-	apropos.style.justifyContent = "center";
-	portrait.style.clipPath = "ellipse(100% 85% at 51% 15%)";
-	//portrait.style.opacity = "1";
+	portrait.style.clipPath = "polygon(50% 0%,100% 0%,100% 100%,50% 100%,0% 100%,0% 0%)";
 	portrait.style.height = "78vh";
-	portrait.style.width = "40vw";
+	portrait.style.width = "65vw";
+	portrait.style.transform = "none";
+	portrait.style.top = "0";
+	portrait.style.left = "calc(-100% - 20vw)";
+	portrait.style.pointerEvents = "none";
+	cadre.style.pointerEvents = "none";
+	presentation.style.pointerEvents = "none";
 	isZoomed = true;
 }
 
 function dezoomPixel() {
-	racine.style.setProperty('--portraitBG', "url('../../divers/img/buste.png')");
-	apropos.style.display = "grid";
-	portrait.style.clipPath = "ellipse(18% 33% at 51% 29%)";
-	//portrait.style.removeProperty("opacity");
-	portrait.style.height = "35vh";
-	portrait.style.width = "19vw";
+	portrait.style.clipPath = "polygon(49.5% 0%,87% 25%,87% 75%,49.5% 100%,12% 75%,12% 25%)";
+	portrait.style.height = "100%";
+	portrait.style.width = "100%";
+	portrait.style.removeProperty('left');
+	portrait.style.removeProperty('top');
+	portrait.style.removeProperty('transform');
+	portrait.style.pointerEvents = "auto";
+	cadre.style.pointerEvents = "auto";
+	presentation.style.pointerEvents = "auto";
 	isZoomed = false;
 }

@@ -10,20 +10,20 @@
   --rightNavFontSize:clamp(2rem, 3vw, 3.25rem);
   --multivac:100px;
   --bookBorder:rgb(50, 50, 50);
-  --fontLight:whitesmoke;
-  --mainColor:rgb(23, 80, 109);
-  --mainColor1:rgb(17, 126, 181);
+  --fontLight:#fff;
+  --mainColor:rgb(17, 126, 181);
+  --mainColor1:rgb(31, 162, 227);
   --mainColor2:rgb(31, 162, 227);
   --mainColor3:rgb(20, 172, 249);
   --mainColor4:rgb(108, 221, 255);
-  --mainColor5:rgba(13, 95, 160);
-  --subColor:rgb(39, 48, 52);
+  --mainColor5:rgb(20, 172, 249);
+  --subColor:rgb(70, 70, 80);
   --blurColor1:rgba(1,1,1, 0.1);
   --blurColor2:rgba(10,10,10, 0.25);
   --blurColor3:rgba(15,15,15, 0.5);
   --blackLight:rgba(0,0,0, 0.75);
   --blackLight2:rgba(10,10,10, 0.5);
-  --subColorLight: rgba(39, 48, 52, 0.5);
+  --subColorLight: rgba(70, 70, 80, 0.5);
   --mainColorLight:rgba(17, 106, 181, 0.4);
   --mainColor5Light:rgba(13, 95, 160, 0.4);
   --mainColor4Light:rgba(108, 221, 255, 0.2);
@@ -190,10 +190,7 @@ code {
     color: var(--mainColor5) !important;
   }
   body #containerHUD nav.droite ul li > div:nth-child(2), body #containerHUD nav.droite ul label:nth-child(2) {
-    top: -10vh;
-  }
-  body #containerHUD nav.droite ul li > div:nth-child(3), body #containerHUD nav.droite ul label:nth-child(3) {
-    background-color: red;
+    top: -3.5rem;
   }
   body #containerHUD nav.droite ul li > div, body #containerHUD nav.droite ul li label {
     flex-direction: column !important;
@@ -259,11 +256,6 @@ code {
     grid-template-rows: 14vh 42vh 14vh;
   }
 }
-/*
-@media screen and (max-width: 620px)  {
-
-}
-*/
 html, body {
   margin: 0;
   padding: 0;
@@ -279,7 +271,7 @@ html, body {
 #containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre, #machine, ul, .tooltip, #portrait {
   pointer-events: none;
 }
-#containerHUD #containerAnim, #containerHUD #teleport, #containerHUD nav.gauche li, #containerHUD nav.droite li, #containerHUD #multivac, #containerHUD #portraitBG, #containerView #containerAnim, #containerView #teleport, #containerView nav.gauche li, #containerView nav.droite li, #containerView #multivac, #containerView #portraitBG, #PORTFOLIO #containerAnim, #PORTFOLIO #teleport, #PORTFOLIO nav.gauche li, #PORTFOLIO nav.droite li, #PORTFOLIO #multivac, #PORTFOLIO #portraitBG, #CURRICULUM #containerAnim, #CURRICULUM #teleport, #CURRICULUM nav.gauche li, #CURRICULUM nav.droite li, #CURRICULUM #multivac, #CURRICULUM #portraitBG, #book #containerAnim, #book #teleport, #book nav.gauche li, #book nav.droite li, #book #multivac, #book #portraitBG, #livre #containerAnim, #livre #teleport, #livre nav.gauche li, #livre nav.droite li, #livre #multivac, #livre #portraitBG, #machine #containerAnim, #machine #teleport, #machine nav.gauche li, #machine nav.droite li, #machine #multivac, #machine #portraitBG, ul #containerAnim, ul #teleport, ul nav.gauche li, ul nav.droite li, ul #multivac, ul #portraitBG, .tooltip #containerAnim, .tooltip #teleport, .tooltip nav.gauche li, .tooltip nav.droite li, .tooltip #multivac, .tooltip #portraitBG, #portrait #containerAnim, #portrait #teleport, #portrait nav.gauche li, #portrait nav.droite li, #portrait #multivac, #portrait #portraitBG {
+#containerHUD #containerAnim, #containerHUD #teleport, #containerHUD nav.gauche li, #containerHUD nav.droite li, #containerHUD #multivac, #containerHUD #aboutPortrait, #containerHUD #aboutTexte, #containerView #containerAnim, #containerView #teleport, #containerView nav.gauche li, #containerView nav.droite li, #containerView #multivac, #containerView #aboutPortrait, #containerView #aboutTexte, #PORTFOLIO #containerAnim, #PORTFOLIO #teleport, #PORTFOLIO nav.gauche li, #PORTFOLIO nav.droite li, #PORTFOLIO #multivac, #PORTFOLIO #aboutPortrait, #PORTFOLIO #aboutTexte, #CURRICULUM #containerAnim, #CURRICULUM #teleport, #CURRICULUM nav.gauche li, #CURRICULUM nav.droite li, #CURRICULUM #multivac, #CURRICULUM #aboutPortrait, #CURRICULUM #aboutTexte, #book #containerAnim, #book #teleport, #book nav.gauche li, #book nav.droite li, #book #multivac, #book #aboutPortrait, #book #aboutTexte, #livre #containerAnim, #livre #teleport, #livre nav.gauche li, #livre nav.droite li, #livre #multivac, #livre #aboutPortrait, #livre #aboutTexte, #machine #containerAnim, #machine #teleport, #machine nav.gauche li, #machine nav.droite li, #machine #multivac, #machine #aboutPortrait, #machine #aboutTexte, ul #containerAnim, ul #teleport, ul nav.gauche li, ul nav.droite li, ul #multivac, ul #aboutPortrait, ul #aboutTexte, .tooltip #containerAnim, .tooltip #teleport, .tooltip nav.gauche li, .tooltip nav.droite li, .tooltip #multivac, .tooltip #aboutPortrait, .tooltip #aboutTexte, #portrait #containerAnim, #portrait #teleport, #portrait nav.gauche li, #portrait nav.droite li, #portrait #multivac, #portrait #aboutPortrait, #portrait #aboutTexte {
   pointer-events: auto;
 }
 
@@ -325,8 +317,7 @@ nav, ul, li {
   top: calc(50% - 5vw);
   right: 45vw;
   height: 10vw;
-  width: 35vw;
-  border-radius: 40% 0 0 40%;
+  width: 45vw;
   background: url("../../divers/img/startIcon.png"), black;
   background-position: right;
   background-size: contain;
@@ -412,6 +403,10 @@ nav, ul, li {
 #containerHUD #theme {
   height: 100vh;
   width: 100vw;
+  background: url("../../divers/img/hudDark.jpg");
+  background-position: var(--bgPosX) var(--bgPosY);
+  background-size: var(--bgX) var(--bgY);
+  opacity: 1;
 }
 #containerHUD #theme.dark:not(.start) {
   animation: darkTheme 1s linear forwards;
@@ -587,7 +582,7 @@ nav, ul, li {
   align-content: center;
   padding-left: 20px;
   margin-bottom: 2%;
-  font-size: clamp(1.4rem, 2vw, 2.25rem);
+  font-size: clamp(1.4rem, 2vw, 2rem);
   text-shadow: -0.06rem 0rem 0 rgb(148, 163, 184), -0.06rem 0.05rem 0 #0f172a, -0.12rem 0.025rem 0 #94a3b8, -0.12rem 0.075rem 0 #0f172a, -0.18rem 0.05rem 0 #94a3b8, -0.18rem 0.1rem 0 #0f172a, -0.24rem 0.075rem 0 #94a3b8, -0.24rem 0.125rem 0 #0f172a, -0.3rem 0.1rem 0 #94a3b8, -0.3rem 0.15rem 0 #0f172a;
   transition: transform var(--vitesseSortie) !important;
 }

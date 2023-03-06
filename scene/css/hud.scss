@@ -103,11 +103,11 @@
 
 			li > div:nth-child(2), label:nth-child(2) {
 				//background-color: red;
-				top:-10vh;
+				top:-3.5rem;
 			}
 
 			li > div:nth-child(3), label:nth-child(3) {
-				background-color: red;
+				//background-color: red;
 				//top:-10vh;
 			}
 
@@ -208,12 +208,6 @@
 	}
 }
 
-/*
-@media screen and (max-width: 620px)  {
-	
-}
-*/
-
 html, body {
     margin:0;
     padding:0;
@@ -227,7 +221,7 @@ html, body {
 #containerHUD, #containerView, #PORTFOLIO, #CURRICULUM, #book, #livre, #machine, ul, .tooltip, #portrait {//Pointers
     pointer-events: none;
 
-	#containerAnim, #teleport, nav.gauche li, nav.droite li, #multivac, #portraitBG {
+	#containerAnim, #teleport, nav.gauche li, nav.droite li, #multivac, #aboutPortrait, #aboutTexte {
         pointer-events: auto;
     }
 }
@@ -277,9 +271,7 @@ nav, ul, li {
 		top:calc(50% - 5vw);
 		right:45vw;
 		height: 10vw;
-		width:35vw;
-		border-radius: 40% 0 0 40%;
-
+		width:45vw;
 		background: 
 			url('../../divers/img/startIcon.png'), 
 			black
@@ -373,10 +365,14 @@ nav, ul, li {
 
     perspective: 1000px;
     perspective-origin: center;
-
+	
 	#theme {
 		height: 100vh;
 		width: 100vw;
+		background: url('../../divers/img/hudDark.jpg');
+		background-position: var(--bgPosX) var(--bgPosY);    
+		background-size: var(--bgX) var(--bgY);
+		opacity: 1;
 
 		&.dark:not(.start) {
 			animation: darkTheme 1s linear forwards;
@@ -578,7 +574,7 @@ nav, ul, li {
 		align-content: center;
 		padding-left: 20px;
 		margin-bottom: 2%;
-		font-size:clamp(1.4rem, 2vw, 2.25rem);
+		font-size:clamp(1.4rem, 2vw, 2rem);
 		text-shadow: 
 			-0.06rem 0rem 0 rgb(148, 163, 184), 
 			-0.06rem 0.05rem 0 #0f172a, 

@@ -38,11 +38,11 @@
     </section>
 
     <section id="containerHUD">
-        <div id="theme" class="light start"></div>
+        <div id="theme" class="dark start"></div>
         <div id="multivac" onclick="swapTheme()">
             <div id="machine"></div>
             <div id="waitingMenu"></div>
-            <span class="tooltip">Thème sombre</span>
+            <span class="tooltip">Thème clair</span>
         </div>
 
         <nav class="gauche">
@@ -73,24 +73,34 @@
         <nav class="droite">
             <ul>
                 <li class="droite">
-                    <div></div>
+                    <div for="portrait" onclick="openPixel(true)" id="pixelize" class="bouton-texte">
+                        <i class="fas fa-skull-crossbones"></i>
+                        <i class="fas fa-user"></i>
+                        <span class="tooltip">Disperser / Assembler</span>
+                    </div>
                     <div for="readBook" onclick="openBook(true)" id="openBook" class="bouton-texte">
                         <i class="fas fa-book"></i>
                         <i class="fas fa-book-open"></i>
                         <span class="tooltip">Ouvrir / Fermer</span>
                     </div>
-                    <div></div>
+                    <div for="openStand" onclick="openCV(true)" id="openStandIcon" class="bouton-texte">
+                        <i class="fas fa-down-left-and-up-right-to-center"></i>
+                        <i class="fas fa-up-right-and-down-left-from-center"></i>
+                        <span class="tooltip">Ouvrir / Fermer</span>
+                    </div>
                     <div class="informations bouton-texte">
                         <i onclick="skillsInfos()" id="infosSkills" class="fas fa-info"></i>
-                        <span class="tooltip">En savoir plus</span>
+                        <span class="tooltip">En ligne bientôt...</span>
                     </div>
-                    <div></div>
+                    <div class="informations bouton-texte">
+                        <i id="copyEmail" onclick="copyEmail(this)" class="far fa-copy"></i>
+                        <span class="tooltip">Copier mon e-mail</span>
+                    </div>
                 </li>
                 <li class="droite">
-                    <div for="portrait" onclick="openPixel(true)" id="pixelize" class="bouton-texte">
-                        <i class="fas fa-skull-crossbones"></i>
-                        <i class="fas fa-user"></i>
-                        <span class="tooltip">Disperser / Assembler</span>
+                    <div class="informations bouton-texte">
+                        <i onclick="aproposInfos()" id="infosAbout" class="fas fa-info"></i>
+                        <span class="tooltip">En savoir plus</span>
                     </div>
                     <div class="changementPage bouton-texte">
                         <div class="container-button-texte pageSuivante">
@@ -102,42 +112,15 @@
                             <i onclick="pagePrecedente(this)" id="pagePrecedente" class="fas fa-share 7"></i>
                         </div>
                     </div>
-                    <div for="openStand" onclick="openCV(true)" id="openStandIcon" class="bouton-texte">
-                        <i class="fas fa-down-left-and-up-right-to-center"></i>
-                        <i class="fas fa-up-right-and-down-left-from-center"></i>
-                        <span class="tooltip">Ouvrir / Fermer</span>
-                    </div>
-                    <div class="informations bouton-texte">
-                    </div>
-                    <div class="informations bouton-texte">
-                        <i id="copyEmail" onclick="copyEmail(this)" class="far fa-copy"></i>
-                        <span class="tooltip">Copier mon e-mail</span>
-                    </div>
-
-                </li>
-                <li class="droite">
-                    <div class="informations bouton-texte">
-                        <i onclick="aproposInfos()" id="infosAbout" class="fas fa-info"></i>
-                        <span class="tooltip">En savoir plus</span>
-                    </div>
-                    <div class="zoom bouton-texte">
-                        <div class="container-button-texte zoom-moins">
-                            <i onclick="dezoomLivre()" class="fas fa-compress"></i>
-                            <span class="tooltip duo duo-left">Mode : Normal</span>
-                        </div>
-                        <div class="container-button-texte zoom-plus">
-                            <i onclick="zoomLivre()" class="fas fa-expand"></i>
-                            <span class="tooltip duo duo-right">Mode : Plein écran</span>
-                        </div>
-                    </div>
                     <label for="rotationStand" id="rotationStandIcon" class="rotation bouton-texte">
                         <i class="fas fa-arrow-rotate-right"></i>
                         <span class="tooltip">Rotation du présentoir</span>
                     </label>
-                    <div></div>
+                    <div class="informations bouton-texte">
+                    </div>
                     <div class="informations bouton-texte">
                         <i onclick="contactInfos()" id="infosContact" class="fas fa-info"></i>
-                        <span class="tooltip">En savoir plus</span>
+                        <span class="tooltip">En ligne bientôt...</span>
                     </div>
                 </li>
                 <li class="droite">
@@ -151,9 +134,15 @@
                             <span class="tooltip duo duo-right">Mode : Plein écran</span>
                         </div>
                     </div>
-                    <div class="informations bouton-texte">
-                        <i onclick="portfolioInfos()" id="infosBook" class="fas fa-info"></i>
-                        <span class="tooltip">En savoir plus</span>
+                    <div class="zoom bouton-texte">
+                        <div class="container-button-texte zoom-moins">
+                            <i onclick="dezoomLivre()" class="fas fa-compress"></i>
+                            <span class="tooltip duo duo-left">Mode : Normal</span>
+                        </div>
+                        <div class="container-button-texte zoom-plus">
+                            <i onclick="zoomLivre()" class="fas fa-expand"></i>
+                            <span class="tooltip duo duo-right">Mode : Plein écran</span>
+                        </div>
                     </div>
                     <div>
                         <a id="downloadCVLink" class="download bouton-texte" href="https://makh.fr/files/cv.pdf"
@@ -162,6 +151,16 @@
                             <span class="tooltip">Télécharger mon CV</span>
                         </a>
                     </div>
+                    <div></div>
+                    <div></div>
+                </li>
+                <li class="droite">
+                    <div></div>
+                    <div class="informations bouton-texte">
+                        <i onclick="portfolioInfos()" id="infosBook" class="fas fa-info"></i>
+                        <span class="tooltip">En savoir plus</span>
+                    </div>
+                    <div></div>
                     <div></div>
                     <div></div>
                 </li>
@@ -181,7 +180,17 @@
         <div id="containerView">
             <div id="APROPOS" class="hidden main">
                 <h1 id="aboutTitre">Développeur WEB</h1>
-                <div id="aboutTexte"></div>
+                <div id="aboutTexte">
+                    <i class="fa-regular fa-circle-question"></i>
+                    <span>Je suis Nicolas ...</span>
+                    <p>
+                        ... un développeur passionné, actuellement en formation à Lourdes. J'aime découvrir de
+                        nouvelles technologies et travailler en étroite collaboration avec mes collègues pour créer des
+                        solutions innovantes. J'ai créé ce site pour partager mes compétences et mes projets. J'espère
+                        que vous prendrez plaisir à l'explorer. Si vous avez des projets passionants en tête, je serais
+                        ravi d'en discuter avec vous.
+                    </p>
+                </div>
                 <div id="aboutPortrait">
                     <canvas id="portrait"></canvas>
                 </div>
