@@ -255,8 +255,8 @@ code {
     margin-right: 10px;
   }
   body #containerHUD #CONTACT {
-    grid-template-columns: 17vw 50vw 17vw;
-    grid-template-rows: 15.7vh 46.6vh 15.7vh;
+    grid-template-columns: 19vw 57vw 19vw;
+    grid-template-rows: 14vh 42vh 14vh;
   }
 }
 /*

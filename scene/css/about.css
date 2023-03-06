@@ -1,9 +1,11 @@
 #APROPOS {
   display: grid;
   place-content: center !important;
+  grid-template-columns: 1fr 425px;
+  grid-template-rows: 300px 1fr;
 }
 
-#containerPortrait {
+#aboutPortrait {
   position: relative;
   align-self: center;
   justify-self: center;
@@ -12,21 +14,6 @@
   display: grid;
   place-content: center;
   transform: scale(var(--portraitScale));
-}
-
-#APROPOS #portraitBG {
-  position: absolute;
-  align-self: center;
-  justify-self: center;
-  height: 100%;
-  width: 100%;
-  background: url("../../divers/img/fullBody.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  cursor: pointer;
-}
-#APROPOS #portraitBG:hover {
-  filter: brightness(2);
 }
 
 #portrait {

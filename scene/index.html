@@ -80,7 +80,10 @@
                         <span class="tooltip">Ouvrir / Fermer</span>
                     </div>
                     <div></div>
-                    <div></div>
+                    <div class="informations bouton-texte">
+                        <i onclick="skillsInfos()" id="infosSkills" class="fas fa-info"></i>
+                        <span class="tooltip">En savoir plus</span>
+                    </div>
                     <div></div>
                 </li>
                 <li class="droite">
@@ -105,8 +108,6 @@
                         <span class="tooltip">Ouvrir / Fermer</span>
                     </div>
                     <div class="informations bouton-texte">
-                        <i onclick="skillsInfos()" id="infosSkills" class="fas fa-info"></i>
-                        <span class="tooltip">En savoir plus</span>
                     </div>
                     <div class="informations bouton-texte">
                         <i id="copyEmail" onclick="copyEmail(this)" class="far fa-copy"></i>
@@ -179,8 +180,9 @@
 
         <div id="containerView">
             <div id="APROPOS" class="hidden main">
-                <div id="containerPortrait">
-                    <div id="portraitBG" onclick="openPixel(true)"></div>
+                <h1 id="aboutTitre">Développeur WEB</h1>
+                <div id="aboutTexte"></div>
+                <div id="aboutPortrait">
                     <canvas id="portrait"></canvas>
                 </div>
             </div>
