@@ -3,276 +3,421 @@
 <html lang="fr">
 
 <head>
-	<title>Makh</title>
+    <title>Portfolio</title>
 
-	<meta name="author" content="Nico M">
-	<meta name="description" content="Portfolio">
+    <meta name="author" content="Makh">
+    <meta name="description" content="Portofilo Nico">
 
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="./divers/img/favbibli.ico" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./scene/css/hud.css">
+    <link rel="stylesheet" href="./scene/css/about.css">
+    <link rel="stylesheet" href="./scene/css/book.css">
+    <link rel="stylesheet" href="./scene/css/cv.css">
+    <link rel="stylesheet" href="./scene/css/skills.css">
+    <link rel="stylesheet" href="./scene/css/contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/x-icon" href="./divers/img/favfolio.ico">
+
+    <!-- <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/gif" href="loading.gif" sizes="any" onload="if(media!='(prefers-reduced-motion: reduce)')this.rel='icon'"> -->
+
 </head>
 
-<body>
-	<style>
-		html,
-		body {
-			margin: 0;
-			padding: 0;
-			background: linear-gradient(to left,
-					rgb(228, 243, 243) 0%,
-					rgb(199, 227, 250) 100%);
-			overflow-x: hidden;
-		}
+<body onload="refresh()">
 
-		#scene {
-			margin: 0;
-			padding: 0;
-			padding-top: 20px;
-			width: 100vw;
-			display: flex;
-			flex-direction: column;
-			justify-content: flex-start;
-			align-items: justify;
-		}
+    <section id="animHUD">
+        <div id="cache"></div>
+        <h1>BIENVENUE</h1>
+        <div id="startIcon"></div>
+    </section>
 
-		@media all and (max-width: 800px) and (min-width: 630px) {
-			a {
-				width: 175px !important;
-				font-size: 1rem !important;
-			}
+    <section id="containerHUD">
+        <div id="theme" class="dark start"></div>
+        <div id="multivac" onclick="swapTheme()">
+            <div id="machine"></div>
+            <div id="waitingMenu"></div>
+            <span class="tooltip">Thème clair</span>
+        </div>
 
-			span {
-				font-size: 0.8rem !important;
-				line-height: 0.9rem !important;
-			}
-		}
+        <nav class="gauche">
+            <ul>
+                <li class="gauche">
+                    A propos
+                    <div class="back"></div>
+                </li>
+                <li class="gauche">
+                    Portfolio
+                    <div class="back"></div>
+                </li>
+                <li class="gauche">
+                    Curriculum vitae
+                    <div class="back"></div>
+                </li>
+                <li class="gauche">
+                    Compétences
+                    <div class="back"></div>
+                </li>
+                <li class="gauche">
+                    Contact
+                    <div class="back"></div>
+                </li>
+            </ul>
+        </nav>
 
-		@media all and (max-width: 630px) and (min-width: 500px) {
-			a {
-				width: 150px !important;
-				font-size: 0.85rem !important;
-			}
+        <nav class="droite">
+            <ul>
+                <li class="droite">
+                    <div for="portrait" onclick="openPixel(true)" id="pixelize" class="bouton-texte">
+                        <i class="fas fa-skull-crossbones"></i>
+                        <i class="fas fa-user"></i>
+                        <span class="tooltip">Disperser / Assembler</span>
+                    </div>
+                    <div for="readBook" onclick="openBook(true)" id="openBook" class="bouton-texte">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-book-open"></i>
+                        <span class="tooltip">Ouvrir / Fermer</span>
+                    </div>
+                    <div for="openStand" onclick="openCV(true)" id="openStandIcon" class="bouton-texte">
+                        <i class="fas fa-down-left-and-up-right-to-center"></i>
+                        <i class="fas fa-up-right-and-down-left-from-center"></i>
+                        <span class="tooltip">Ouvrir / Fermer</span>
+                    </div>
+                    <div class="informations bouton-texte">
+                        <i onclick="skillsInfos()" id="infosSkills" class="fas fa-info"></i>
+                        <span class="tooltip">En ligne bientôt...</span>
+                    </div>
+                    <div class="informations bouton-texte">
+                        <i id="copyEmail" onclick="copyEmail(this)" class="far fa-copy"></i>
+                        <span class="tooltip">Copier mon e-mail</span>
+                    </div>
+                </li>
+                <li class="droite">
+                    <div class="informations bouton-texte">
+                        <i onclick="aproposInfos()" id="infosAbout" class="fas fa-info"></i>
+                        <span class="tooltip">En savoir plus</span>
+                    </div>
+                    <div class="changementPage bouton-texte">
+                        <div class="container-button-texte pageSuivante">
+                            <i onclick="pageSuivante(this)" id="pageSuivante" class="fas fa-share 1"></i>
+                            <span class="tooltip duo duo-left">Page suivante</span>
+                            <span id="pagePrecTooltip" class="tooltip duo duo-right">Page précédente</span>
+                        </div>
+                        <div class="container-button-texte pagePrecedente">
+                            <i onclick="pagePrecedente(this)" id="pagePrecedente" class="fas fa-share 7"></i>
+                        </div>
+                    </div>
+                    <label for="rotationStand" id="rotationStandIcon" class="rotation bouton-texte">
+                        <i class="fas fa-arrow-rotate-right"></i>
+                        <span class="tooltip">Rotation du présentoir</span>
+                    </label>
+                    <div class="informations bouton-texte">
+                    </div>
+                    <div class="informations bouton-texte">
+                        <i onclick="contactInfos()" id="infosContact" class="fas fa-info"></i>
+                        <span class="tooltip">En ligne bientôt...</span>
+                    </div>
+                </li>
+                <li class="droite">
+                    <div class="zoom bouton-texte">
+                        <div class="container-button-texte zoom-moins">
+                            <i onclick="dezoomPixel()" class="fas fa-compress"></i>
+                            <span class="tooltip duo duo-left">Mode : Normal</span>
+                        </div>
+                        <div class="container-button-texte zoom-plus">
+                            <i onclick="zoomPixel()" class="fas fa-expand"></i>
+                            <span class="tooltip duo duo-right">Mode : Plein écran</span>
+                        </div>
+                    </div>
+                    <div class="zoom bouton-texte">
+                        <div class="container-button-texte zoom-moins">
+                            <i onclick="dezoomLivre()" class="fas fa-compress"></i>
+                            <span class="tooltip duo duo-left">Mode : Normal</span>
+                        </div>
+                        <div class="container-button-texte zoom-plus">
+                            <i onclick="zoomLivre()" class="fas fa-expand"></i>
+                            <span class="tooltip duo duo-right">Mode : Plein écran</span>
+                        </div>
+                    </div>
+                    <div>
+                        <a id="downloadCVLink" class="download bouton-texte" href="https://makh.fr/files/cv.pdf"
+                            download>
+                            <i class="fas fa-file-arrow-down"></i>
+                            <span class="tooltip">Télécharger mon CV</span>
+                        </a>
+                    </div>
+                    <div></div>
+                    <div></div>
+                </li>
+                <li class="droite">
+                    <div></div>
+                    <div class="informations bouton-texte">
+                        <i onclick="portfolioInfos()" id="infosBook" class="fas fa-info"></i>
+                        <span class="tooltip">En savoir plus</span>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </li>
+                <li class="droite">
+                    <div></div>
+                    <div class="voirPlus bouton-texte">
+                        <i onclick="portfolioPlus()" id="portfolioPlus" class="fas fa-folder-plus"></i>
+                        <span class="tooltip">Plus de projets</span>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </li>
+            </ul>
+        </nav>
 
-			span {
-				font-size: 0.75rem !important;
-				line-height: 0.75rem !important;
-				margin: 16.5px 10px !important;
-				height: 40px !important;
-			}
-		}
+        <div id="containerView">
+            <div id="APROPOS" class="hidden main">
+                <h1 id="aboutTitre">Développeur WEB</h1>
+                <div id="aboutTexte">
+                    <i class="fa-regular fa-circle-question"></i>
+                    <span>Je suis Nicolas ...</span>
+                    <p>
+                        ... un développeur passionné, actuellement en formation à Lourdes. J'aime découvrir de
+                        nouvelles technologies et travailler en étroite collaboration avec mes collègues pour créer des
+                        solutions innovantes. J'ai créé ce site pour partager mes compétences et mes projets. J'espère
+                        que vous prendrez plaisir à l'explorer. Si vous avez des projets passionants en tête, je serais
+                        ravi d'en discuter avec vous.
+                    </p>
+                </div>
+                <div id="aboutPortrait">
+                    <canvas id="portrait"></canvas>
+                </div>
+            </div>
+            <div id="PORTFOLIO" class="hidden main">
+                <section id="book">
+                    <input type="checkbox" id="readBook">
+                    <div id="livre">
+                        <div class="blocLivre gauche 7" onclick="pagePrecedente(this)">
+                            <div class="fpage gauche"></div>
+                            <div class="fpage gauche"></div>
+                            <div class="fpage gauche"></div>
+                            <div class="fpage gauche"></div>
+                            <div id="pageG" class="pages gauche">
+                                <div class="bandes bandeGauche">
+                                    <div class="bandes bandeGauche">
+                                        <div class="bandes bandeGauche">
+                                            <div class="bandes bandeGauche">
+                                                <div class="bandes bandeGauche">
+                                                    <div class="bandes bandeGauche">
+                                                        <div class="bandes bandeGauche"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="blocLivre droite 1" onclick="pageSuivante(this)">
+                            <div class="fpage droite"></div>
+                            <div class="fpage droite"></div>
+                            <div class="fpage droite"></div>
+                            <div class="fpage droite"></div>
+                            <div id="pageD" class="pages droite">
+                                <div class="bandes bandeDroite">
+                                    <div class="bandes bandeDroite">
+                                        <div class="bandes bandeDroite">
+                                            <div class="bandes bandeDroite">
+                                                <div class="bandes bandeDroite">
+                                                    <div class="bandes bandeDroite">
+                                                        <div class="bandes bandeDroite"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div id="CURRICULUM" class="hidden main">
+                <input type="checkbox" id="openStand">
+                <input type="checkbox" id="rotationStand">
+                <div id="teleport">
+                    <div onclick="clicCV(true)" id="zoneCV">
+                        <span class="tooltip">Cliquer pour agrandir</span>
+                    </div>
+                    <div onclick="clicCV(false)" id="zoneCVBack">
+                        <span class="tooltip">Cliquer pour agrandir</span>
+                    </div>
+                    <div class="bloc top">
+                        <div class="face top up"></div>
+                        <div class="face top down">
+                            <div class="side top left"></div>
+                            <div class="side top right"></div>
+                        </div>
+                    </div>
+                    <div class="bloc bottom">
+                        <div class="face bottom up"></div>
+                        <div class="face bottom down">
+                            <div class="side bottom left"></div>
+                            <div class="side bottom right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="COMPETENCES" class="hidden main">
+                <div class="titre skills">
+                    <article class="principal titre">
+                        <h1>LANGAGES</h1>
+                        <br>
+                        <h1>Maîtrisés</h1>
+                    </article>
+                </div>
+                <div class="progress html">
+                    <article>
+                        <h1>HTML</h1>
+                        <h3>Bootstrap</h3>
+                    </article>
+                    <div class="progress box">
+                        <div class="progress bordure">
+                            <p>80%</p>
+                        </div>
+                        <div class="progress barreD"></div>
+                        <div class="progress barreG"></div>
+                        <div class="progress cacheD"></div>
+                        <div class="progress cacheG"></div>
+                    </div>
+                </div>
+                <div class="progress css">
+                    <article>
+                        <h1>CSS</h1>
+                        <h3>Sass</h3>
+                    </article>
+                    <div class="progress box">
+                        <div class="progress bordure">
+                            <p>90%</p>
+                        </div>
+                        <div class="progress barreD"></div>
+                        <div class="progress barreG"></div>
+                        <div class="progress cacheD"></div>
+                        <div class="progress cacheG"></div>
+                    </div>
+                </div>
+                <div class="progress js">
+                    <article>
+                        <h1>Javascript</h1>
+                        <h3>VueJS</h3>
+                    </article>
+                    <div class="progress box">
+                        <div class="progress bordure">
+                            <p>70%</p>
+                        </div>
+                        <div class="progress barreD"></div>
+                        <div class="progress barreG"></div>
+                        <div class="progress cacheD"></div>
+                        <div class="progress cacheG"></div>
+                    </div>
+                </div>
+                <div class="progress php">
+                    <article>
+                        <h1>PHP</h1>
+                        <div>
+                            <h3>Laravel</h3>
+                            <h3>Symfony</h3>
+                        </div>
+                    </article>
+                    <div class="progress box">
+                        <div class="progress bordure">
+                            <p>65%</p>
+                        </div>
+                        <div class="progress barreD"></div>
+                        <div class="progress barreG"></div>
+                        <div class="progress cacheD"></div>
+                        <div class="progress cacheG"></div>
+                    </div>
+                </div>
+                <div class="progress sql">
+                    <article>
+                        <h1>SQL</h1>
+                        <h3>MySQL</h3>
+                    </article>
+                    <div class="progress box">
+                        <div class="progress bordure">
+                            <p>80%</p>
+                        </div>
+                        <div class="progress barreD"></div>
+                        <div class="progress barreG"></div>
+                        <div class="progress cacheD"></div>
+                        <div class="progress cacheG"></div>
+                    </div>
+                </div>
+                <div class="titre divers">
+                    <article class="principal divers">
+                        <h1>Compétences diverses</h1>
+                        <h3>Anglais courant (Niveau C1), algorithmie, Git, Wordpress (NicePage...), Photoshop, Sketchup,
+                            Blender, Pack Office (Excel VBA, Word...), JMerise, StarUML, Discord, Zoom, Team, etc. </h3>
+                    </article>
+                </div>
+            </div>
+            <form id="CONTACT" action="./utils/formulaire.php" method="POST" class="hidden main">
+                <div id="headerContact">
+                    <h2 id="contactTitre">Me contacter</h2>
+                    <p id="confirmP">Votre message a bien été envoyé, merci !</p>
+                </div>
+                <div id="screenContact">
+                    <div class="inputs">
+                        <input id="nom" name="nom" type="text" placeholder="Nom" oninput="validerCheck(this)">
+                        <label for="nom" class="nom">Nom</label>
+                        <span></span>
+                    </div>
+                    <div class="inputs">
+                        <input id="email" name="email" type="text" placeholder="E-Mail" oninput="validerCheck(this)">
+                        <label for="email" class="email">E-Mail</label>
+                        <span></span>
+                    </div>
+                    <div class="inputs message">
+                        <textarea id="message" name="message" placeholder="" oninput="validerCheck(this)"></textarea>
+                        <label for="message" class="message">Message</label>
+                        <span></span>
+                    </div>
+                </div>
+                <div id="footerContact" class="boutons">
+                    <button id="valider" type="submit" value="Submit"><i class="fas fa-share-from-square"></i></button>
+                    <button id="supprimer" type="reset" value="Reset"><i class="far fa-rectangle-xmark"></i></button>
+                </div>
+            </form>
+        </div>
+    </section>
 
-		@media all and (max-width: 500px) {
-			a {
-				width: 125px !important;
-				font-size: 0.75rem !important;
-			}
+    <section id="modal">
+        <div id="backgroundModal" onclick="closeModal(this)"></div>
+        <button id="exitModal" onclick="closeModal(this)">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div id="containerModal">
+            <h1>Titre</h1>
+            <h3>Résumé du titre</h3>
+            <p></p>
+            <div id="captcha">
+                <img id="captchaImg" src="" alt="Captcha">
+                <div>
+                    <input id="captchaInput" type="text">
+                    <button id="captchaButton" type="submit" onclick="verifCaptcha()">Confirmer</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-			span {
-				margin: 13.5px 10px !important;
-				height: 46px !important;
-				font-size: 0.66rem !important;
-				line-height: 0.75rem !important;
-			}
-		}
-
-		a {
-			all: initial;
-			display: inline-block;
-			width: 275px;
-			height: 60px;
-			margin-left: 75px;
-			padding: 3px;
-			cursor: pointer;
-			border: 3px solid black;
-			background-color: rgb(187, 220, 247);
-			border-radius: 10px;
-			font-size: 1.25rem;
-			margin-bottom: 5px;
-			display: grid;
-			justify-items: justify;
-			align-content: center;
-			flex: none;
-			user-select: none;
-			transform-origin: center;
-			transition: .25s;
-		}
-
-		a:hover {
-			background-color: rgb(114, 165, 206);
-			width: 285px;
-			height: 60px;
-		}
-
-		a::before {
-			content: '';
-			position: absolute;
-			left: 20px;
-			height: 30px;
-			width: 30px;
-			background-image: url('https://www.icone-png.com/png/54/54106.png');
-			background-size: contain;
-			background-repeat: no-repeat;
-			transition: .5s;
-		}
-
-		a:hover::before {
-			transform: scale(2);
-		}
-
-		a:hover+span {
-			background: linear-gradient(to right,
-					rgb(204, 236, 236) 0%,
-					rgb(100, 180, 180) 100%) !important;
-			font-size: 1rem;
-		}
-
-		#scene>div {
-			width: calc(100vw - 15px);
-			display: flex;
-			justify-content: start;
-			align-items: start;
-		}
-
-		span {
-			margin: 18.5px 15px;
-			height: 36px;
-			padding-left: 10px;
-			width: calc(100% - 10px);
-			flex: 2 1 1;
-			box-sizing: border-box;
-			border: 2px solid black;
-			border-radius: 12px;
-			display: grid;
-			align-content: center;
-			font-size: 0;
-			line-height: 1rem;
-			font-weight: bold;
-			color: black;
-			transition: .75s;
-		}
-	</style>
-
-	<div id="scene">
-		<div>
-			<a href="./conseil/"><strong>Salle du conseil</strong><br>
-				Projet fil rouge
-			</a>
-			<span class="45">Jeu de rôle, présentation de personnages (affichage dynamique)</span>
-		</div>
-		<div>
-			<a href="./ouverture/"><strong>Anim d'introduction</strong><br>
-				Full CSS !!!
-			</a>
-			<span class="95">V3.0 Terminée. Le site derrière n'est qu'un prétexte.</span>
-		</div>
-		<div>
-			<a href="./cofee/"><strong>Quelqu'un veut un café ?</strong><br>
-				Spécial stagiaire !
-			</a>
-			<span class="75">Tasse OK, Soucoupe OK, Animation OK || Manque : Anse, Liquide</span>
-		</div>
-		<div>
-			<a href="./pendu/"><strong>Pendu</strong><br>
-				Dictionnaire complet fr
-			</a>
-			<span class="90">Terminé (Petit bug à modifier : compte qd même un "échec" pour lettre déjà proposée)</span>
-		</div>
-		<div>
-			<a href="./utilisateurs/"><strong>Panneau administrateur</strong><br>
-				Placeholder en JS<br>
-				Spécial pour formulaires
-			</a>
-			<span class="35">Terminé. TP Javascript (Customisé). Jolie anim sur les inputs pour un formulaire de
-				contact, connexions, etc..</span>
-		</div>
-		<div>
-			<a href="./todolist/"><strong>TO-DO-LIST</strong><br>
-				Pour faire les courses !
-			</a>
-			<span class="85">V1.0 Terminée. Options en cours : Modifications, highlight, BDD</span>
-		</div>
-		<div>
-			<a href="./kasbrik/"><strong>Casse-briques</strong><br>
-				Sans Canvas !
-			</a>
-			<span class="30">En cours : Position OK, rebonds, OK, calculs OK || Next : Collision</span>
-		</div>
-		<div>
-			<a href="./chronometre/"><strong>Chronomètre</strong><br>
-				Petit challenge pour les ms
-			</a>
-			<span class="90">Terminé. Micro latence sur firefox, parfait sur edge/chrome/Android</span>
-		</div>
-		<div>
-			<a href="./logospherique/"><strong>Logo sphérique</strong><br>
-				Icone (Pharma) de menu
-			</a>
-			<span class="100">Terminé</span>
-		</div>
-		<div>
-			<a href="./mixeur/"><strong>Mixeur de couleurs</strong><br>
-				Test sur les conditions <br>
-				multiples (CSS Only)
-			</a>
-			<span class="60">Calculs terminé. Visuels en cours.</span>
-		</div>
-		<div>
-			<a href="./sphere/"><strong>Une sphère simple (CSS)</strong><br>
-				Petits tests et jeux de lumières
-			</a>
-			<span class="100">Terminé</span>
-		</div>
-		<div>
-			<a href="./ustou/"><strong>Bienvenue à Ustou !</strong><br>
-				Petits tests sur bg-image</a>
-			<span class="80">Terminé (PC Uniquement)</span>
-		</div>
-		<div>
-			<a href="./cookies/"><strong>Cookies</strong><br>
-				Incrémentation à chaque visite
-			</a>
-			<span class="100">Terminé</span>
-		</div>
-		<div>
-			<a href="./rangebars/"><strong>Range bars</strong><br>
-				Modifications de style en JS
-			</a>
-			<span class="100">Quasi terminé. Il faut que je rajoute la modif en temps réel.</span>
-		</div>
-		<div>
-			<a href="./canard/"><strong>Un canard pour Micael</strong><br>
-				Nostalgie
-			</a>
-			<span class="100">Terminé. Canard qui saute ! Ma première Keyframe</span>
-		</div>
-		<div>
-			<a href="./faerun/"><strong>Carte des Royaumes Oubliés</strong><br>
-				Carte interactive</a>
-			<span class="15">Début. Projet titanesque (nottament au niveau des données).</span>
-		</div>
-		<div>
-			<a href="./videos/"><strong>Site de prés° vidéos</strong><br>
-				Projet de groupe HTML CSS
-			</a>
-			<span class="50">Abandonné / Terminé (Projet de groupe). Carrousels 3D en pur CSS.</span>
-		</div>
-	</div>
-
-	<script>
-		const spans = document.getElementsByTagName('span');
-
-		for (let i = 0; i < spans.length; i++) {
-			let scaling = spans[i].classList[0];
-
-			spans[i].style.background = 'radial-gradient(circle at left center, rgb(204, 236, 236) 0%, rgb(89, 150, 150)' +
-				Math.trunc((scaling - 1) / 2) + '%, rgb(21, 80, 80) ' +
-				(scaling - 1) + '%, rgb(21, 78, 78)' +
-				scaling + '%,	rgb(204, 236, 236)' +
-				scaling + '%,	rgb(204, 236, 236) 100%)';
-		}
-	</script>
-
+    <script src="./scene/js/hud.js"></script>
+    <script src="./scene/js/about.js"></script>
+    <script src="./scene/js/cv.js"></script>
+    <script src="./scene/js/book.js"></script>
+    <script src="./scene/js/contact.js"></script>
 </body>
 
 </html>
