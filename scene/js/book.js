@@ -164,5 +164,5 @@ function portfolioInfos() {
 }
 
 function portfolioPlus() {
-	window.open("https://makh.fr/", "_blank");
+	window.open("https://makh.fr/portfolio", "_blank");
 }
