@@ -9,11 +9,15 @@ nav{
     height: calc(100vh - 240px);
     top: var(--navbar-height);
     justify-content: center;
-  }
-  #errorMessage{
-    color: red;
-    font-size: calc(0.75vw + 0.8vh);
-  }
+}
+#errorMessage{
+  color: red;
+  font-size: calc(0.75vw + 0.8vh);
+}
+#sucessMessage{
+  color: greenyellow;
+  font-size: calc(0.75vw + 0.8vh);
+}
 
 #contact-div1{
   display: flex;
