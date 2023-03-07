@@ -1129,13 +1129,13 @@ html body #containerHUD nav.droite ul li {
 
 	#exitModal {
 		all:initial;
-		display: none;
+		display: grid;
 		place-content: center;
-		font-size: 2rem;
+		font-size: 3rem;
 		position: fixed;
 		z-index: 700;
 		top: 10px;
-		right : 50px;
+		right : 10px;
 		height: 30px;
 		width: 30px;
 		border-radius: 50%;

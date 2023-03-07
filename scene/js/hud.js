@@ -129,14 +129,14 @@ window.onresize = function () {
 
 function resize() {
 
-	checkWidth();
+	//checkWidth();
 
 	let width = racine.clientWidth; // On récupère la largeur de l'écran de l'utilisateur
 	let height = racine.clientHeight; // On récupère la hauteur de l'écran de l'utilisateur
 
 	let tpY = width * 0.3 * 8 / 7;
 
-	console.log('width :' + width);
+	//console.log('width :' + width);
 	//console.log('height :' + height);
 
 	if ((height / tpY) < 1.44) {
@@ -435,6 +435,7 @@ function checkTabNav() {
 	}
 }
 
+/*
 function checkWidth() {
 	const windowWidth = window.innerWidth;
 	const textWidth = modalTexte.offsetWidth;
@@ -444,6 +445,7 @@ function checkWidth() {
 		modalExit.style.display = 'none';
 	}
 }
+*/
 
 function openModal(index, bool) {
 	switch (index) {
@@ -466,8 +468,7 @@ function openModal(index, bool) {
 			modalBox.style.height = "100vh";
 			modalBox.style.width = "calc(7000vh / 99)";
 			modalBox.style.maxWidth = "100vw";
-			modalBox.style.maxHeight = "100vh";
-			modalBox.style.top = "0";
+			modalBox.style.maxHeight = "calc(9900vw / 70";
 			modalBox.style.left = "50%";
 			modalBox.style.transform = "translate(-50%, 0)";
 			modalBox.style.padding = "0";
@@ -479,13 +480,14 @@ function openModal(index, bool) {
 			modalTexte.style.margin = "0";
 			modalTexte.style.height = "100vh";
 
+
 			if (bool) {
 				modalTexte.style.background = "url('../../divers/img/cvFront.jpg') no-repeat center";
 			} else {
 				modalTexte.style.background = "url('../../divers/img/cvBack2.jpg') no-repeat center";
 			}
 			modalTexte.style.backgroundSize = "contain";
-			checkWidth();
+			//checkWidth();
 			break;
 		case 3://COMPETENCES
 			break;
@@ -504,7 +506,8 @@ function openModal(index, bool) {
 }
 
 function closeModal(e) {
-	let index = e.value;
+	let index = parseInt(e.value);
+
 	switch (index) {
 		case 0://A PROPOS
 			modalTitre.textContent = '';
