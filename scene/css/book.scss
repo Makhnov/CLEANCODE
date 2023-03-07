@@ -16,18 +16,23 @@
 #PORTFOLIO.anim #book #readBook:not(:checked) ~ #livre {
     animation: openBook var(--vitesseEntree) linear forwards;
 }
+
 #PORTFOLIO.anim #book #readBook:checked ~ #livre {
     animation: closeBook var(--vitesseSortie) linear forwards;
 }
+
 #PORTFOLIO.anim #book #readBook:not(:checked) ~ #livre .blocLivre.droite {
     animation: openBookRight var(--vitesseEntree) linear forwards;
 }
+
 #PORTFOLIO.anim #book #readBook:checked ~ #livre .blocLivre.droite {
     animation: closeBookRight var(--vitesseSortie) linear forwards;
 }
+
 #PORTFOLIO.anim #book #readBook:not(:checked) ~ #livre .blocLivre.gauche {
     animation: openBookLeft var(--vitesseEntree) linear forwards;
 }
+
 #PORTFOLIO.anim #book #readBook:checked ~ #livre .blocLivre.gauche {
     animation: closeBookLeft var(--vitesseSortie) linear forwards;
 }

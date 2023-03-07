@@ -106,10 +106,12 @@
 				top:-3.5rem;
 			}
 
+			/*
 			li > div:nth-child(3), label:nth-child(3) {
 				//background-color: red;
 				//top:-10vh;
 			}
+			*/
 
 			li {
 				> div, label {
@@ -240,7 +242,7 @@
 		// 78vh 84vw
 		grid-template-columns:19vw 57vw 19vw;
 		grid-template-rows: 14vh 42vh 14vh;
-
+		/*
 		#headerContact {
 
 		}
@@ -250,6 +252,7 @@
 		#footerContact {
 			
 		}
+		*/
 	}
 }
 
