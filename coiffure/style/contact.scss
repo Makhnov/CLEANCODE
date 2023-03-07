@@ -1,0 +1,102 @@
+
+nav{
+  background: linear-gradient(to right, var(--main-color) 20%, var(--sub-color));
+}
+//-----------------Contact-------------------
+#contact {
+    padding: 60px 0 0 0;
+    display: flex;
+    height: calc(100vh - 240px);
+    top: var(--navbar-height);
+    justify-content: center;
+  }
+  #errorMessage{
+    color: red;
+    font-size: calc(0.75vw + 0.8vh);
+  }
+
+#contact-div1{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  box-shadow: 5px 5px 20px var(--main-color);
+  z-index: 0;
+  position: relative;
+  margin: 1vh 1vw;
+  border: none;
+  height: calc(50vh + 12.5vw);
+  width: 100vw;
+  background: none;
+  font-size:calc(0.90vw + 1vh);
+}
+
+  #contact-div1 form{
+    margin-left: 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+  }
+  #contact-div1 form button{
+    background-color: var(--sub-color);
+    border: none;
+    margin-top: 5px;
+    width: calc(5vw + 1.5vh) ;
+    height: calc(1vh + 1.5vw);
+    font-weight: 600;
+    font-size: calc(0.5vw + 0.5vh);
+  }
+  #contact-div1 h2{
+    padding: 5px 0;
+    text-align: center;
+  }
+  
+
+#barre-gauche {
+    background-color: var(--sub-color);
+    margin-left: -20px;
+    width: 65%;
+    height: 5px;
+  
+  }
+
+  #contact-div1 input, #contact-div1 textarea{
+    border-style: none;
+    border: solid 1px var(--sub-color);
+    height: calc(1vw + 2vh);
+    width: 60%;
+    font-size: calc(0.90vw + 1vh);
+}
+
+#contact-div1 textarea{
+  height: calc(5vw + 2.5vh);
+}
+
+#contact-div1 form{
+  justify-items: center;
+  margin-left: 0;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  color: var(--sub-color);
+}
+#contact-div1 form button{
+  background-color: var(--sub-color);
+  border: none;
+  margin-top: 5px;
+  width: 10vw;
+  height: 4vh;
+  font-weight: 600;
+  font-size: calc(1vw + 1vh);
+} 
+#contact-div1 h2{
+  padding: 5px 0;
+  text-align: center;
+  color: var(--sub-color);
+}
+#barre-gauche {
+  background-color: var(--sub-color);
+  margin-left: -20px;
+}
+
