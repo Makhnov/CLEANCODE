@@ -180,7 +180,7 @@ header nav {// NAV (DROITE)
             position: relative;
             font-size: 1.2em;
             font-weight: 800;
-            padding: 0 2%;
+            padding: 0 10px;
             //flex: 1 1 auto;
 
             a {
@@ -192,6 +192,7 @@ header nav {// NAV (DROITE)
                 content: "";
                 position: absolute;
                 bottom: -5px;
+                left:10px;
                 width: 50%;
                 height: 3px;
                 background-color: var(--main-color);
