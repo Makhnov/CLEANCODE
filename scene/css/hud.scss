@@ -141,6 +141,45 @@
 		}
 	}
 
+	body #containerHUD #APROPOS {
+		grid-template-rows:35vw 1fr;
+
+		#aboutPortrait {
+			grid-column:2 / span 2!important;
+		}
+
+		#aboutTexte {
+			margin-left:3vw;
+			width : 15px!important;
+
+			&:hover {
+				width:calc(92vw - 40px)!important;
+			}
+		}
+
+		i {
+			left:1.75rem;
+			font-size: 2rem;
+			height: 2rem;
+			width: 2rem;
+		}
+	
+		span {
+			left:17.5px;
+			font-size: clamp(0.9rem, 3vh, 1.75rem);
+		}
+	
+		p {
+			padding:0px;
+			padding-left: 40px;
+			
+			width:calc(85vw - 40px);
+			letter-spacing: .1rem;
+			font-size: clamp(.7rem, 2vh, 1.5rem);
+		}
+		
+	}
+
 	body #containerHUD #COMPETENCES {
 		grid-template-rows: 16vh 1vh 16vh 1vh 16vh 1vh 19vh;
 		grid-template-columns: 0vw 46vw 3vw 46vw 0vw;

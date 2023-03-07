@@ -213,6 +213,36 @@ code {
     top: 1.75rem !important;
     left: calc(50% - 75px) !important;
   }
+  body #containerHUD #APROPOS {
+    grid-template-rows: 35vw 1fr;
+  }
+  body #containerHUD #APROPOS #aboutPortrait {
+    grid-column: 2/span 2 !important;
+  }
+  body #containerHUD #APROPOS #aboutTexte {
+    margin-left: 3vw;
+    width: 15px !important;
+  }
+  body #containerHUD #APROPOS #aboutTexte:hover {
+    width: calc(92vw - 40px) !important;
+  }
+  body #containerHUD #APROPOS i {
+    left: 1.75rem;
+    font-size: 2rem;
+    height: 2rem;
+    width: 2rem;
+  }
+  body #containerHUD #APROPOS span {
+    left: 17.5px;
+    font-size: clamp(0.9rem, 3vh, 1.75rem);
+  }
+  body #containerHUD #APROPOS p {
+    padding: 0px;
+    padding-left: 40px;
+    width: calc(85vw - 40px);
+    letter-spacing: 0.1rem;
+    font-size: clamp(0.7rem, 2vh, 1.5rem);
+  }
   body #containerHUD #COMPETENCES {
     grid-template-rows: 16vh 1vh 16vh 1vh 16vh 1vh 19vh;
     grid-template-columns: 0vw 46vw 3vw 46vw 0vw;
