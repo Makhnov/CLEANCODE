@@ -21,6 +21,8 @@ body {
     background-color: var(--main-color);
     overflow-x: hidden;
     font-family: "Montserrat", sans-serif;
+    width: 100vw;
+    overflow-x: hidden;
 }
 
 @media screen and (max-width: 1000px) {
