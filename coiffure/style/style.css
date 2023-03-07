@@ -25,6 +25,15 @@ body {
 }
 
 @media screen and (max-width: 1000px) {
+  #main section:nth-child(1) {
+    background-size: 100% 100%;
+  }
+  #main section:nth-child(2) {
+    background-size: 100% 100%;
+  }
+  #main section:nth-child(3) {
+    background-size: 100% 100%;
+  }
   body #main section {
     width: 100vw;
     padding-top: 80px;
@@ -49,6 +58,16 @@ body {
     -webkit-clip-path: polygon(0% 0%, 45px 0%, 45px 100%, 0% 100%);
             clip-path: polygon(0% 0%, 45px 0%, 45px 100%, 0% 100%);
     min-height: 12rem;
+  }
+  body #main section:nth-child(1) article:active {
+    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  body #main section:nth-child(1) article:active h3 {
+    transform: rotate(0deg);
+  }
+  body #main section:nth-child(1) article:active i {
+    transform: scale(0);
   }
   body #main section:nth-child(1) article i {
     top: 5px;

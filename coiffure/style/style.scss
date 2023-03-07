@@ -26,6 +26,20 @@ body {
 }
 
 @media screen and (max-width: 1000px) {
+    #main {// IMAGES DE FOND
+        section:nth-child(1) {
+        background-size: 100% 100%;
+        }
+    
+        section:nth-child(2) {
+            background-size: 100% 100%;
+        }
+    
+        section:nth-child(3) {
+            background-size: 100% 100%;
+        }
+    }
+
     body #main {// FORMAT DES SECTIONS SMARTPHONES    
         section {
             width: 100vw;
@@ -55,6 +69,18 @@ body {
                 align-self: center;
                 clip-path: polygon(0% 0%,45px 0%,45px 100%,0% 100%);
                 min-height: 12rem;
+
+                &:active {
+                    clip-path: polygon(0% 0%,100% 0%,100% 100%,0% 100%);
+    
+                    h3 {
+                        transform: rotate(0deg);
+                    }
+    
+                    i {
+                        transform: scale(0);
+                    }
+                }
 
                 i {
                     top:5px;
@@ -217,24 +243,11 @@ header nav {// NAV (DROITE)
     background-repeat: no-repeat;
     background-position: center top;
     background-attachment: fixed;
-
-    // &::after {
-    //     content: "";
-    //     z-index: 5;
-    //     position: absolute;
-    //     bottom: 0;
-    //     left: 0;
-    //     background: linear-gradient(to bottom, var(--main-color-3), var(--main-color-2));
-    //     width: 100vw;
-    //     height: 30vh;
-    //     }
     }
 
     section:nth-child(2) {
         height: 100vh;
-        background-image:
-            // linear-gradient(var(--main-color-2), var(--main-color-2)), 
-            url("../../divers/img/pexels-cottonbro-studio-3993293.jpg");
+        background-image:url("../../divers/img/pexels-cottonbro-studio-3993293.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center top;
@@ -248,17 +261,6 @@ header nav {// NAV (DROITE)
         background-repeat: no-repeat;
         background-position: center top;
         background-attachment: fixed;
-
-    // &::after {
-    //     content: "";
-    //     position: absolute;
-    //     z-index: 5;
-    //     top: calc(200vh + 80px);
-    //     left: 0;
-    //     background: linear-gradient(to top, var(--main-color-3), var(--main-color-2));
-    //     width: 100vw;
-    //     height: 30vh;
-    //     }
     }
 }
 
