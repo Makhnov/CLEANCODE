@@ -214,31 +214,38 @@ code {
     left: calc(50% - 75px) !important;
   }
   body #containerHUD #APROPOS {
-    grid-template-rows: 35vw 1fr;
+    grid-template-rows: 35vw calc(100% - 35vw);
   }
   body #containerHUD #APROPOS #aboutPortrait {
     grid-column: 2/span 2 !important;
+    top: 0;
   }
   body #containerHUD #APROPOS #aboutTexte {
-    margin-left: 3vw;
+    position: relative;
+    margin-left: 30px;
     width: 15px !important;
+    max-height: calc(75vh - 35vw - 40px);
+    min-height: 80px;
+    top: -5vh;
   }
   body #containerHUD #APROPOS #aboutTexte:hover {
-    width: calc(92vw - 40px) !important;
+    width: calc(88vw - 40px) !important;
   }
   body #containerHUD #APROPOS i {
-    left: 1.75rem;
+    left: 0.75rem;
     font-size: 2rem;
     height: 2rem;
     width: 2rem;
   }
   body #containerHUD #APROPOS span {
-    left: 17.5px;
+    left: 0.25rem;
     font-size: clamp(0.9rem, 3vh, 1.75rem);
   }
   body #containerHUD #APROPOS p {
     padding: 0px;
     padding-left: 40px;
+    max-height: calc(75vh - 35vw - 40px);
+    min-height: 80px;
     width: calc(85vw - 40px);
     letter-spacing: 0.1rem;
     font-size: clamp(0.7rem, 2vh, 1.5rem);
