@@ -283,3 +283,9 @@ function copyEmail(e) {
 		});
 	}
 }
+
+//TO DO
+function contactInfos() {
+	//openModal(4, true); => Passer openModal(4) du captcha à openModal(4, false).
+	console.log('A venir !')
+}

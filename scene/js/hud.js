@@ -48,7 +48,6 @@ const textes = [// Bloc de texte (index = ordre du menu)
 ]
 
 const racine = document.documentElement;
-
 const theme = document.getElementById('theme');
 const startBG = document.getElementById('animHUD');
 
@@ -463,8 +462,11 @@ function openModal(index, bool) {
 			break;
 		case 2://CV
 			modal.style.display = "grid";
+
 			modalBox.style.height = "100vh";
 			modalBox.style.width = "calc(7000vh / 99)";
+			modalBox.style.maxWidth = "100vw";
+			modalBox.style.maxHeight = "100vh";
 			modalBox.style.top = "0";
 			modalBox.style.left = "50%";
 			modalBox.style.transform = "translate(-50%, 0)";
@@ -478,9 +480,9 @@ function openModal(index, bool) {
 			modalTexte.style.height = "100vh";
 
 			if (bool) {
-				modalTexte.style.background = "url('../../divers/img/cvFront.jpg') no-repeat center top";
+				modalTexte.style.background = "url('../../divers/img/cvFront.jpg') no-repeat center";
 			} else {
-				modalTexte.style.background = "url('../../divers/img/cvBack2.jpg') no-repeat center top";
+				modalTexte.style.background = "url('../../divers/img/cvBack2.jpg') no-repeat center";
 			}
 			modalTexte.style.backgroundSize = "contain";
 			checkWidth();
@@ -517,6 +519,8 @@ function closeModal(e) {
 		case 2:
 			modalBox.style.removeProperty("height");
 			modalBox.style.removeProperty("width");
+			modalBox.style.removeProperty("max-height");
+			modalBox.style.removeProperty("max-width");
 			modalBox.style.removeProperty("top");
 			modalBox.style.removeProperty("left");
 			modalBox.style.removeProperty("transform");
@@ -545,4 +549,10 @@ function closeModal(e) {
 			break;
 	}
 	modal.style.display = "none";
+}
+
+//TO DO
+function skillsInfos() {
+	//openModal(3);
+	console.log('A venir !')
 }
