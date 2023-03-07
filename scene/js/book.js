@@ -13,12 +13,14 @@ let pageSpamm = true;
 
 let pageNow = 0;
 let tabPages = [
-	'../../divers/img/pf-videos.jpg', '../../divers/img/pf-videos-specs.jpg',
+	'../../divers/img/pf-coiffure.jpg', '../../divers/img/pf-coiffure-specs.jpg',
 	'../../divers/img/pf-rando.jpg', '../../divers/img/pf-rando-specs.jpg',
+	'../../divers/img/pf-maison.jpg', '../../divers/img/pf-maison-specs.jpg',
 	'../../divers/img/pf-conseil.jpg', '../../divers/img/pf-conseil-specs.jpg',
 	'../../divers/img/pf-fuzzy.jpg', '../../divers/img/pf-fuzzy-specs.jpg',
+	'../../divers/img/pf-videos.jpg', '../../divers/img/pf-videos-specs.jpg',
 	'../../divers/img/pf-admin.jpg', '../../divers/img/pf-admin-specs.jpg',
-	'../../divers/img/pf-sphere.jpg', '../../divers/img/pf-sphere-specs.jpg',
+	'../../divers/img/pf-excel.jpg', '../../divers/img/pf-excel-specs.jpg',
 	'../../divers/img/pf-pendu.jpg', '../../divers/img/pf-pendu-specs.jpg',
 	'../../divers/img/pf-apps.jpg', '../../divers/img/pf-apps-specs.jpg',
 ];
@@ -104,7 +106,7 @@ async function pageAsync(e) {
 	pageNow += parseInt(e.classList[2]);
 	//console.log(2 * (pageNow % 8));
 	for (let i = 0; i < 6; i++) {
-		setImage(i, tabPages[(2 * (pageNow % 8) + i) % 16]);
+		setImage(i, tabPages[(2 * (pageNow % 10) + i) % 20]);
 	}
 	pageD.classList.remove('anim');
 	pageG.classList.remove('anim');
