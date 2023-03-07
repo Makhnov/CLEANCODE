@@ -33,12 +33,12 @@
   --hMult:8 / 7;
   --standHauteur:78vh;
   --inclinaisonCV:90deg;
-  --imageG1:url("../../divers/img/pf-videos.jpg");
-  --imageG2:url("../../divers/img/pf-videos-specs.jpg");
+  --imageG1:url("../../divers/img/pf-coiffure.jpg");
+  --imageG2:url("../../divers/img/pf-coiffure-specs.jpg");
   --imageM1:url("../../divers/img/pf-rando.jpg");
   --imageM2:url("../../divers/img/pf-rando-specs.jpg");
-  --imageD1:url("../../divers/img/pf-conseil.jpg");
-  --imageD2:url("../../divers/img/pf-conseil-specs.jpg");
+  --imageD1:url("../../divers/img/pf-maison.jpg");
+  --imageD2:url("../../divers/img/pf-maison-specs.jpg");
   --livreLargeur:clamp(0px, 60vh, 37vw);
   --zoomLivre:-12vw;
   --inclinaisonLivre:-6deg;
