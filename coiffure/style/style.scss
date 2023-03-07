@@ -52,6 +52,7 @@ body {
             article {
                 align-self: center;
                 clip-path: polygon(0% 0%,45px 0%,45px 100%,0% 100%);
+                min-height: 12rem;
 
                 i {
                     top:5px;
@@ -307,6 +308,7 @@ header nav {// NAV (DROITE)
             transition: clip-path .5s;
             cursor: pointer;
             overflow: hidden;
+            min-height: 15rem;
 
             &:hover {
                 clip-path: polygon(0% 0%,100% 0%,100% 100%,0% 100%);
