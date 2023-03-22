@@ -196,6 +196,7 @@ function swapTheme() {
 			racine.style.setProperty('--mainColor', 'rgb(17, 126, 181)');
 			racine.style.setProperty('--mainColor1', 'rgb(31, 162, 227)');
 			racine.style.setProperty('--mainColor5', 'rgb(20, 172, 249)');
+			racine.style.setProperty('--mainColorDark', 'rgb(35, 73, 107)');
 
 			multivac.children[2].textContent = "Thème clair";
 		} else {
@@ -205,6 +206,7 @@ function swapTheme() {
 			racine.style.setProperty('--mainColor', 'rgb(23, 80, 109)');
 			racine.style.setProperty('--mainColor1', 'rgb(17, 126, 181)');
 			racine.style.setProperty('--mainColor5', 'rgba(13, 95, 160)');
+			racine.style.setProperty('--mainColorDark', 'rgb(19, 71, 113)');
 
 			multivac.children[2].textContent = "Thème sombre";
 		}

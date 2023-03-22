@@ -63,9 +63,9 @@
 				
 				padding-left: 0;
 				text-align: center;
-				font-size:2.2vw;
+				font-size:2vw;
 				font-weight: bold;
-				text-shadow: none;
+				//text-shadow: none;
 
 				transition: transform 0s!important;
 
@@ -623,18 +623,31 @@ nav, ul, li {
 		padding-left: 20px;
 		margin-bottom: 2%;
 		font-size:clamp(1.4rem, 2vw, 2rem);
+
 		text-shadow: 
-			-0.06rem 0rem 0 rgb(148, 163, 184), 
-			-0.06rem 0.05rem 0 #0f172a, 
-			-0.12rem 0.025rem 0 #94a3b8, 
-			-0.12rem 0.075rem 0 #0f172a, 
-			-0.18rem 0.05rem 0 #94a3b8, 
-			-0.18rem 0.1rem 0 #0f172a, 
-			-0.24rem 0.075rem 0 #94a3b8, 
-			-0.24rem 0.125rem 0 #0f172a, 
-			-0.3rem 0.1rem 0 #94a3b8, 
-			-0.3rem 0.15rem 0 #0f172a
+			-1px 0 var(--mainColorDark), 
+			0 1px var(--mainColorDark), 
+			1px 0 var(--mainColorDark), 
+			0 -1px var(--mainColorDark), 
+			-6px 3.5px var(--mainColorDark), 
+			-5px 3px var(--mainColorDark), 
+			-4px 2.5px var(--mainColorDark), 
+			-3px 2px var(--mainColorDark), 
+			-2px 1.5px var(--mainColorDark), 
+			-1px 1px var(--mainColorDark)
 		;
+		// text-shadow: 
+		// 	-0.06rem 0rem 0 rgb(148, 163, 184), 
+		// 	-0.06rem 0.05rem 0 #0f172a, 
+		// 	-0.12rem 0.025rem 0 #94a3b8, 
+		// 	-0.12rem 0.075rem 0 #0f172a, 
+		// 	-0.18rem 0.05rem 0 #94a3b8, 
+		// 	-0.18rem 0.1rem 0 #0f172a, 
+		// 	-0.24rem 0.075rem 0 #94a3b8, 
+		// 	-0.24rem 0.125rem 0 #0f172a, 
+		// 	-0.3rem 0.1rem 0 #94a3b8, 
+		// 	-0.3rem 0.15rem 0 #0f172a
+		// ;
 		
 
 		transition: transform var(--vitesseSortie)!important;
