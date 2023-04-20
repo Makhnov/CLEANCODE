@@ -372,8 +372,7 @@ body {
     padding: 0 10px !important;
     background-color: antiquewhite;
     height: 100%;
-    -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
+    backface-visibility: hidden;
     transition: transform 1.5s;
     display: flex;
     -moz-column-gap: 10px;

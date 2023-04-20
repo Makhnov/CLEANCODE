@@ -301,8 +301,7 @@ html, body {
 .sliceL, .sliceR {
   position: absolute;
   transform-style: preserve-3d;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   height: var(--bookSize);
   width: calc(0.101010101 * var(--bookSize));
   top: 0;
@@ -421,8 +420,7 @@ html, body {
   left: 0;
   height: var(--bookSize);
   width: calc(0.101010101 * var(--bookSize));
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   transform-origin: center;
   background: url("../../divers/img/imgRFront.jpg");
   background-size: calc(0.7070707071 * var(--bookSize)) var(--bookSize);

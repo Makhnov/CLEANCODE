@@ -193,8 +193,7 @@
   position: absolute;
   align-self: center;
   justify-self: center;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   background-image: url("../../divers/img/cvFront.jpg");
   background-position: center;
   background-size: contain;
@@ -216,8 +215,7 @@
   position: absolute;
   align-self: center;
   justify-self: center;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   background-image: url("../../divers/img/cvBack2.jpg");
   background-position: center;
   background-size: contain;

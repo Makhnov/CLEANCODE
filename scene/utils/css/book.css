@@ -290,8 +290,7 @@
 .bandes {
   position: absolute;
   transform-style: preserve-3d;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   height: var(--livreLargeur);
   width: calc(0.101010101 * var(--livreLargeur));
   background-size: calc(0.7070707071 * var(--livreLargeur)) var(--livreLargeur);
@@ -299,8 +298,7 @@
 .bandes::after {
   position: absolute;
   content: "";
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   transform-origin: center;
   top: 0;
   left: 0;
