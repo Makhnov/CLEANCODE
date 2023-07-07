@@ -1,0 +1,1051 @@
+/*!********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./css/main.scss ***!
+  \********************************************************************************************************/
+@charset "UTF-8";
+:root {
+  --opacity: 0.88;
+}
+
+@font-face {
+  font-family: "vecna";
+  src: url(fonts/4eaf72efdf740ebbe253.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "vecna";
+  src: url(fonts/951e13fc05de176e15ef.ttf) format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "vecna";
+  src: url(fonts/8a6e97fe5d036ca4a641.ttf) format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "vecna";
+  src: url(fonts/c96fb855da5d503b40a5.ttf) format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "dalelands";
+  src: url(fonts/17092a0980071535822e.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "dalelands";
+  src: url(fonts/a38e1044202d1a0f90ae.ttf) format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "dalelands";
+  src: url(fonts/f8594c5d7701b0997b51.ttf) format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "dalelands";
+  src: url(fonts/cf79bd24f553a8989319.ttf) format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "quentincaps";
+  src: url(fonts/04606dc666b92d335a95.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scrollbar-width: none;
+}
+
+body:not(.accueil, .conseil, .personnage) {
+  height: 100%;
+  width: 100%;
+}
+body:not(.accueil, .conseil, .personnage) main {
+  padding-top: 100px;
+  min-height: 200vh;
+  height: fit-content;
+  width: 100vw;
+  background-color: aliceblue;
+  overflow: scroll;
+}
+
+body.localite header {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  height: 100px;
+  width: 100vw;
+  background-color: lightblue;
+  box-sizing: border-box;
+  border-bottom: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body.accueil header, body.emplacement header {
+  display: none;
+}
+
+html body.personnage {
+  background-color: black;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+html body.personnage header {
+  padding: 0;
+  height: 8vh;
+  width: 96vw;
+  margin: auto;
+  margin-bottom: auto;
+  margin-bottom: 2vh;
+  flex: none;
+}
+html body.personnage header nav {
+  position: relative;
+  width: calc(100% - 20px);
+  padding: 0 10px !important;
+  background-color: antiquewhite;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 1.5s;
+  display: flex;
+  column-gap: 10px;
+  box-shadow: 0 0 5px 5px black inset;
+}
+html body.personnage header nav:first-child {
+  top: 0;
+  z-index: 2;
+  transform: rotateX(0deg);
+}
+html body.personnage header nav:first-child #retour {
+  display: block;
+  justify-self: flex-start;
+  align-self: center;
+  background-image: url(images/8fc5cdb9553090af0c1e.png);
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  background-size: contain;
+  overflow: visible;
+  min-height: 80%;
+  width: 100%;
+}
+html body.personnage header nav:last-child {
+  position: relative;
+  top: -8vh;
+  transform: rotateX(180deg);
+}
+html body.personnage header nav:last-child button {
+  all: initial;
+  cursor: pointer;
+  height: 80%;
+  align-self: center;
+  width: clamp(70px, 15vw, 150px);
+  text-align: center;
+  font-size: clamp(0.9rem, 2vw, 2rem);
+  font-weight: bold;
+  border-radius: 5px;
+}
+html body.personnage header nav:last-child button:hover {
+  filter: brightness(1.5);
+  text-shadow: 0.5px 0.25px 0px black;
+}
+html body.personnage header nav:last-child #annulation {
+  background-color: rgba(175, 0, 0, 0.25);
+}
+html body.personnage header nav:last-child #validation {
+  background: rgba(0, 128, 0, 0.25);
+}
+
+@media all and (max-width: 1000px) {
+  body:not(.accueil, .conseil, .personnage) header {
+    padding: 0 !important;
+    height: 8vh !important;
+    width: 96vw !important;
+  }
+}
+@media all and (max-width: 1000px) and (orientation: landscape) {
+  body:not(.accueil, .conseil, .personnage) header {
+    padding: 0 !important;
+    height: 8vh !important;
+    width: 96vw !important;
+  }
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  height: 100px;
+  width: 100vw;
+  background-color: lightblue;
+  box-sizing: border-box;
+  border-top: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body.accueil footer, body.emplacement footer, body.personnage footer {
+  display: none;
+}
+
+/* Chrome, safari */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: none;
+}
+
+/* Opera */
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+body.accueil {
+  overflow: hidden;
+}
+
+main.content {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+html body main.content.max div.plein-ecran div.developper {
+  opacity: 0;
+}
+html body main.content.max div.plein-ecran div.reduire {
+  opacity: 1;
+}
+html body main.content.max section.informations {
+  transform: scaleX(1) scaleY(1) !important;
+}
+html body main.content.max section.utilitaires div.boussole {
+  top: 10%;
+}
+html body main.content.max section.utilitaires div.echelle {
+  top: 25%;
+}
+
+section.utilitaires {
+  position: absolute;
+  pointer-events: none;
+  transform-origin: top left;
+  width: 2550px;
+  aspect-ratio: 51/33;
+  z-index: 1;
+}
+section.utilitaires div.bordure,
+section.utilitaires div.boussole,
+section.utilitaires div.echelle {
+  position: absolute;
+}
+section.utilitaires div.bordure svg,
+section.utilitaires div.boussole svg,
+section.utilitaires div.echelle svg {
+  height: 100%;
+  width: 100%;
+}
+section.utilitaires div.boussole,
+section.utilitaires div.echelle {
+  pointer-events: auto;
+  cursor: pointer;
+  transition: top 0.75s;
+}
+section.utilitaires div.boussole::after,
+section.utilitaires div.echelle::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background-color: whitesmoke;
+  box-sizing: border-box;
+  border: 2px solid black;
+  box-shadow: 6px 10px 8px rgba(0, 0, 0, 0.3), 3px 5px 4px rgba(0, 0, 0, 0.5);
+}
+section.utilitaires div.plein-ecran {
+  display: none;
+  position: fixed;
+  pointer-events: auto;
+  cursor: pointer;
+  top: 10px;
+  right: 10px;
+  height: 100px;
+  aspect-ratio: 1/1;
+  background-color: whitesmoke;
+  box-sizing: border-box;
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: 6px 10px 8px rgba(0, 0, 0, 0.3), 3px 5px 4px rgba(0, 0, 0, 0.5);
+}
+section.utilitaires div.plein-ecran div.developper,
+section.utilitaires div.plein-ecran div.reduire {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: opacity 0.3s;
+}
+section.utilitaires div.plein-ecran div.developper {
+  background-image: url(images/a93bd05efd81480e8875.png);
+}
+section.utilitaires div.plein-ecran div.reduire {
+  background-image: url(images/a0e27481a6c5215bb0cf.png);
+  opacity: 0;
+  top: -100%;
+}
+section.utilitaires div.bordure {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+section.utilitaires div.bordure path.bordure.noire {
+  fill: #000;
+}
+section.utilitaires div.bordure path.bordure.beige {
+  fill: #c8ad7f;
+}
+section.utilitaires div.boussole {
+  top: 70%;
+  left: 5%;
+  height: 150px;
+  aspect-ratio: 1/1;
+  transform-origin: center;
+  transform: translateX(11.25px);
+}
+section.utilitaires div.boussole::after {
+  top: -12.5%;
+  left: -7.5%;
+  height: 125%;
+  width: 125%;
+  border-radius: 50%;
+}
+section.utilitaires div.boussole path {
+  fill-rule: evenodd;
+  fill: #000;
+  stroke: #000;
+  stroke-width: 5px;
+  stroke-opacity: 1;
+}
+section.utilitaires div.echelle {
+  top: 85%;
+  left: 5%;
+  width: 566.7px;
+  height: 35px;
+  transform-origin: left;
+  transform: translateX(100px);
+}
+section.utilitaires div.echelle::after {
+  top: -100%;
+  left: -100px;
+  height: 200%;
+  width: calc(100% + 150px);
+  border-radius: 10px;
+}
+section.utilitaires div.echelle path {
+  fill-rule: evenodd;
+  fill: #000;
+  stroke: #000;
+  stroke-width: 10px;
+  stroke-opacity: 1;
+}
+section.utilitaires div.echelle .graduations {
+  position: absolute;
+  height: 120%;
+  top: -100%;
+  left: calc(-20% - 70px);
+  width: 140%;
+  border-radius: 10px;
+  padding: 0px 30px 28px 70px;
+  display: flex;
+  flex-direction: row;
+}
+section.utilitaires div.echelle .graduations div {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+}
+section.utilitaires div.echelle .graduations div p {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: fit-content;
+}
+section.utilitaires div.echelle .graduations div:not(:first-child) {
+  align-content: flex-end;
+  justify-items: flex-start;
+  font-size: 200%;
+}
+section.utilitaires div.echelle .graduations div:not(:first-child) p {
+  height: fit-content;
+  transform: translateX(-50%);
+}
+section.utilitaires div.echelle .graduations div:first-child {
+  align-content: flex-start;
+  justify-items: flex-end;
+  font-size: 180%;
+}
+section.utilitaires div.echelle .graduations div:first-child p {
+  left: -35px;
+  height: 70px;
+  display: grid;
+  place-content: center;
+}
+
+section.informations {
+  position: absolute;
+  z-index: 2;
+  pointer-events: auto;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  bottom: 0;
+  right: 0;
+  box-sizing: border-box;
+  border: 10px solid #c8ad7f;
+  background-color: whitesmoke;
+  transform-origin: right bottom;
+  transition: transform 0.75s;
+  overflow: hidden;
+}
+section.informations div.bordure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: calc(100% - 10px);
+  width: calc(100% - 10px);
+  border: 5px solid black;
+}
+section.informations #infos {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+section.informations #infos > div {
+  flex: 1 1 150px;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  padding: 5px;
+  box-sizing: border-box;
+  border: 1px solid black;
+  container-type: inline-size;
+}
+section.informations #infos > div h1,
+section.informations #infos > div p,
+section.informations #infos > div a,
+section.informations #infos > div ul {
+  pointer-events: auto;
+  margin: 0;
+  padding: 0;
+}
+section.informations #infos > div li {
+  list-style: none;
+}
+section.informations #infos > div h1 {
+  font-size: clamp(1.25rem, 10cqi, 2rem);
+  margin-bottom: 5px;
+}
+section.informations #infos > div a,
+section.informations #infos > div p.lien {
+  font-size: clamp(1rem, 11cqi, 1.6rem);
+}
+section.informations #infos > div p:not(.description, .lien),
+section.informations #infos > div ul {
+  font-size: clamp(0.9rem, 10cqi, 1.5rem);
+}
+section.informations #infos > div p.description {
+  font-size: clamp(0.75rem, 8cqi, 1.5vh);
+  overflow: auto;
+}
+
+section.tooltip {
+  display: none;
+  /*
+  position: absolute;
+  z-index: 10;
+  background-color: orange;     
+  height:25px;
+  width: 100px;   
+  overflow: hidden;
+  */
+}
+
+section.container {
+  position: relative;
+  transform-origin: top left;
+  width: 2550px;
+  aspect-ratio: 51/33;
+  overflow: scroll;
+}
+section.container div.feerune {
+  position: absolute;
+  transform-origin: top left;
+  width: 100%;
+  height: 100%;
+}
+section.container div.feerune > #background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+section.container svg {
+  position: absolute;
+}
+section.container path {
+  fill-rule: evenodd;
+  fill: transparent;
+  transition: 0.5s;
+}
+section.container path.divers:not(.nom):hover {
+  cursor: pointer;
+}
+section.container path.bordure.beige {
+  fill: #c8ad7f;
+}
+section.container path.bordure.noire {
+  fill: #000;
+}
+section.container g:not(.divers).zoomed path.region.mer, section.container g:not(.divers).survol path.region.mer {
+  fill: rgb(50, 149, 182);
+}
+section.container g:not(.divers).zoomed path.region.zone:not(.nom, .mer), section.container g:not(.divers).survol path.region.zone:not(.nom, .mer) {
+  fill: green;
+  fill-opacity: var(--opacity);
+}
+section.container g:not(.divers).zoomed path.region.nom, section.container g:not(.divers).survol path.region.nom {
+  fill: red;
+  fill-opacity: 0.4;
+}
+section.container path.localite.survol {
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 10;
+}
+section.container path.localite.survol:hover {
+  fill: red;
+  fill-opacity: 0.4;
+}
+
+html body.emplacement header,
+html body.emplacement footer {
+  display: none;
+}
+html body.emplacement main {
+  padding-top: 0;
+  min-height: 100vh;
+  max-height: 100vh;
+}
+
+/* -------------------------------------------------------------------- SALLE DU CONSEIL -------------------------------------------------------------------- */
+body.emplacement main {
+  background-color: #0e0e0e;
+}
+
+#scene {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+#scene #salleDuConseil {
+  position: absolute;
+  height: 900px;
+  width: 1600px;
+  top: 50%;
+  left: 50%;
+  background-image: url(images/93d574ca6b269c2a1ed0.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  box-sizing: border-box;
+  border: 5px solid #0e0e0e;
+  border-radius: 20%;
+  box-shadow: 0 0 15px 15px #0e0e0e inset;
+}
+#scene a div {
+  position: absolute;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+#scene a div:hover {
+  filter: brightness(2);
+}
+
+/*
+    // Les personnages sont positionnés uniquement avec des % afin de permettre une adaptativité totale
+    .adhemar {
+        background-image: url("../../divers/img/personnages/conseil/adhemarMin.png");
+        top: 53%;
+        left: 60%;
+        width: calc(5 * 50px);
+        height: calc(5 * 80px);
+        z-index: 1;
+
+        &:hover {
+            background-image: url("../../divers/img/personnages/conseil/adhemar2.png");
+            transform: scale(1.05);
+            top: 52%;
+        }
+    }
+
+    .aleksia {
+        background-image: url("../../divers/img/personnages/conseil/aleksiaMin.png");
+        top: 45%;
+        left: 20%;
+        height: calc(3.8 * 80px);
+        width: calc(3.8 * 50px);
+        z-index: 5;
+
+        &:hover {
+            background-image: url("../../divers/img/personnages/conseil/aleksia2.png");
+            transform: scale(1.15);
+        }
+    }
+
+    .alexandra {
+        top: 5%;
+        left: 7%;
+        height: calc(5.5 * 80px);
+        width: calc(5.5 * 50px);
+        background-image: url("../../divers/img/personnages/conseil/dameAlexandraMin.png");
+
+        &:hover {
+            background-image: url("../../divers/img/personnages/conseil/dameAlexandra2.png");
+            transform: scale(1.2);
+        }
+    }
+
+    .ancelin {
+        top: 45%;
+        left: 30%;
+        height: calc(5.3 * 80px);
+        width: calc(5.3 * 50px);
+        background-image: url("../../divers/img/personnages/conseil/pereAncelinMin.png");
+
+        &:hover {
+            background-image: url("../../divers/img/personnages/conseil/pereAncelin2.png");
+            transform: scale(1.15);
+        }
+    }
+
+    .jalana {
+        top: 48%;
+        left: 59.5%;
+        height: calc(1.8 * 80px);
+        width: calc(1.8 * 50px);
+        background-image: url("../../divers/img/personnages/conseil/jalanaMin.png");
+        z-index: 5;
+
+        &:hover {
+            background-image: url("../../divers/img/personnages/conseil/jalana2.png");
+            transform: scale(1.2);
+        }
+    }
+
+    .jimmy {
+        top: 50%;
+        left: 46.25%;
+        height: calc(1.75 * 80px);
+        width: calc(1.75 * 50px);
+        background-image: url("../../divers/img/personnages/conseil/jimmyMin.png");
+        z-index: 5;
+
+        &:hover {
+            background-image: url("../../divers/img/personnages/conseil/jimmy2.png");
+            transform: scale(1.25);
+        }
+    }
+
+    .laurain {
+        top: 45%;
+        left: 2%;
+        height: calc(6 * 80px);
+        width: calc(6 * 50px);
+        background-image: url("../../divers/img/personnages/conseil/laurainSansreprocheMin.png");
+
+        &:hover {
+            background-image: url("../../divers/img/personnages/conseil/laurainSansreproche2.png");
+            transform: scale(1.05);
+        }
+    }
+
+    .precis {
+        top: 51.5%;
+        left: 92%;
+        height: calc(2 * 80px);
+        width: calc(2 * 50px);
+        background-image: url("../../divers/img/personnages/conseil/precisSansreprocheMin.png");
+        z-index: 5;
+        perspective-origin: bottom right;
+
+        &:hover {
+            background-image: url("../../divers/img/personnages/conseil/precisSansreproche2.png");
+            transform: scale(1.1);
+        }
+    }
+
+    .seleste {
+        position: absolute;
+        cursor: pointer;
+        top: 50%;
+        left: 51.25%;
+        height: calc(1.5 * 80px);
+        width: calc(1.5 * 50px);
+        background-image: url("../../divers/img/personnages/conseil/selesteMin.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: 5;
+
+        &:hover {
+            background-image: url("../../divers/img/personnages/conseil/seleste2.png");
+            transform: scale(1.2);
+            filter: brightness(2);
+        }
+    }
+
+    .tenebres {
+        top: 48%;
+        left: 85%;
+        height: calc(2 * 80px);
+        width: calc(2 * 50px);
+        background-image: url("../../divers/img/personnages/conseil/tenebresSansreprocheMin.png");
+        z-index: 10;
+
+        &:hover {
+            background-image: url("../../divers/img/personnages/conseil/tenebresSansreproche2.png");
+            transform: scale(1.2);
+        }
+    }
+
+    .tharion {
+        top: 45%;
+        left: 49%;
+        height: calc(5.5 * 80px);
+        width: calc(5.5 * 50px);
+        background-image: url("../../divers/img/personnages/conseil/tharionMin.png");
+        z-index: 3;
+
+        &:hover {
+            background-image: url("../../divers/img/personnages/conseil/tharion2.png");
+            transform: scale(1.1);
+        }
+    }
+
+    .vaillant {
+        top: 48%;
+        left: 75%;
+        height: calc(5 * 80px);
+        width: calc(5 * 50px);
+        background-image: url("../../divers/img/personnages/conseil/vaillantSansreprocheMin.png");
+
+        &:hover {
+            background-image: url("../../divers/img/personnages/conseil/vaillantSansreproche2.png");
+            transform: scale(1.1);
+        }
+    }
+*/
+html body.personnage {
+  background-color: black;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  /* Occultation de la barre de scrolling verticale */
+  -ms-overflow-style: none;
+}
+html body.personnage::-webkit-scrollbar {
+  display: none;
+}
+html body.personnage nav,
+html body.personnage input,
+html body.personnage button,
+html body.personnage textarea,
+html body.personnage p,
+html body.personnage h1,
+html body.personnage h2,
+html body.personnage h3 {
+  margin: 0;
+  padding: 0;
+}
+
+@media all and (max-width: 1000px) {
+  body.personnage {
+    height: 200vh !important;
+    width: 100vw !important;
+  }
+}
+@media all and (max-width: 1000px) and (orientation: landscape) {
+  body.personnage {
+    height: 200vh !important;
+    width: 100vw !important;
+  }
+}
+@media all {
+  #sceneProfil {
+    height: 88vh;
+    width: 96vw;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 48vw 48vw;
+    grid-template-rows: 14vh 29vh 44vh;
+    row-gap: 1vh;
+    column-gap: 1vw;
+    clip-path: inset(0 0 0 0);
+    transition: clip-path 1s;
+    overflow: hidden;
+  }
+  #sceneProfil h1 {
+    grid-row: 1;
+    grid-column: 1;
+    height: 100%;
+    padding: 0 10px;
+    width: calc(100% - 20px);
+    display: grid;
+    place-content: center;
+    background-color: antiquewhite;
+    font-family: dalelands, Georgia, sans-serif;
+    font-weight: bold;
+    font-size: clamp(1.75rem, 3.5vw, 3rem);
+    box-shadow: 0 0 5px 5px black inset;
+  }
+  #sceneProfil #fonctions {
+    grid-row: 2;
+    grid-column: 1;
+    height: 100%;
+    padding: 0 10px;
+    width: calc(100% - 20px);
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    box-shadow: 0 0 5px 5px black inset;
+  }
+  #sceneProfil #fonctions h2 {
+    text-align: flex-start;
+    font-family: dalelands, Georgia, sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.5rem;
+  }
+  #sceneProfil #fonctions h3 {
+    font-family: dalelands, Georgia, sans-serif;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    line-height: 1.5rem;
+    overflow: visible;
+  }
+  #sceneProfil p {
+    grid-row: 3;
+    grid-column: 1;
+    padding: 90px 10px 20px 10px;
+    height: calc(100% - 110px);
+    width: calc(100% - 20px);
+    background-color: antiquewhite;
+    display: grid;
+    align-content: top;
+    font-family: vecna, Georgia, sans-serif;
+    font-size: clamp(1rem, 1.7vw, 1.5rem);
+    box-shadow: 0 0 5px 5px black inset;
+    overflow-y: scroll;
+    /* Occultation de la barre de scrolling */
+    -ms-overflow-style: none;
+    /* Edge et IE */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+  #sceneProfil p::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari et Opera */
+  }
+  #sceneProfil #infosModif {
+    position: relative;
+    cursor: pointer;
+    z-index: 5;
+    grid-row: 3;
+    grid-column: 1;
+    top: calc(1.25vh + 10px);
+    left: calc(47vw - 25px);
+    transform: translate(-100%, 0);
+    width: 50px;
+    height: 50px;
+  }
+  #sceneProfil #modifier {
+    position: relative;
+    cursor: pointer;
+    z-index: 10;
+    grid-row: 3;
+    grid-column: 1;
+    top: 1.25vh;
+    left: 47vw;
+    width: 225px;
+    height: 70px;
+    transform: translate(-100%, 0);
+    border: none;
+    border-radius: 20px;
+    box-sizing: border-box;
+    box-shadow: 3px 3px 4px 1px black;
+    display: grid;
+    align-content: center;
+    grid-template-columns: 1fr 87.5px;
+    font-size: clamp(0.9rem, 1.25vw, 1.3rem);
+    font-weight: bold;
+    background: radial-gradient(circle 250px at 175px center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 25px, rgb(224, 203, 174) 25px, rgb(224, 203, 174) 100%);
+    clip-path: circle(25px at 175px center);
+    transition: clip-path 0.75s ease-in;
+  }
+  #sceneProfil #modifier:hover {
+    clip-path: circle(250px at 175px center);
+  }
+  #sceneProfil #imageConseil {
+    grid-row: 1/span 3;
+    grid-column: 2;
+    position: relative;
+    z-index: -1;
+    top: 38%;
+    left: 40%;
+    height: 60%;
+    width: 50%;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+  }
+  #sceneProfil #imageConseil:hover {
+    transform-origin: bottom;
+    transform: scale(1.02);
+    filter: brightness(1.75);
+  }
+  #sceneProfil #bgConseil {
+    position: relative;
+    z-index: -2;
+    grid-row: 1/span 3;
+    grid-column: 2;
+    height: 88vh;
+    width: 47vw;
+    background-image: url(images/4dd8f9e463525decb93b.jpg);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 0 10px 10px black inset;
+  }
+  section.formulaire {
+    position: absolute;
+    z-index: 20;
+    top: 10vh;
+    left: 2vw;
+    height: 88vh;
+    width: 96vw;
+    font-size: clamp(0.8rem, 1.75vw, 1.5rem);
+    clip-path: inset(50% 50% 50% 50%);
+    transition: clip-path 1s ease-in;
+  }
+  section.formulaire #inputText {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50%;
+    width: 50%;
+  }
+}
+@media all and (max-width: 1000px) {
+  #sceneProfil {
+    height: 190vh !important;
+    width: 96vw !important;
+    grid-template-columns: 96vw !important;
+    grid-template-rows: 14vh 19vh 54vh 100vh !important;
+  }
+  #sceneProfil #imageConseil {
+    grid-row: 4 !important;
+    grid-column: 1 !important;
+  }
+  #sceneProfil #bgConseil {
+    grid-row: 4 !important;
+    grid-column: 1 !important;
+    height: 100% !important;
+    width: 100% !important;
+  }
+  #sceneProfil #infosModif {
+    top: 25px !important;
+    left: calc(95vw - 15px) !important;
+    height: 35px !important;
+    width: 35px !important;
+  }
+  #sceneProfil #modifier {
+    top: 17.5px !important;
+    left: 95vw !important;
+    height: 50px !important;
+    width: 175px !important;
+    background: radial-gradient(circle 250px at 142.5px center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 17.5px, rgba(224, 203, 174, 0.33) 17.5px, rgba(224, 203, 174, 0.33) 100%) !important;
+    clip-path: circle(250px at 150px center) !important;
+  }
+  #sceneProfil #modifier:hover {
+    filter: brightness(1.25);
+  }
+  #sceneProfil #imageConseil {
+    top: 38% !important;
+    left: 40% !important;
+  }
+}
+@media all and (max-width: 1000px) and (orientation: landscape) {
+  #sceneProfil {
+    height: 190vh !important;
+    width: 96vw !important;
+    grid-template-columns: 30vw 66vw !important;
+    grid-template-rows: 14vh 19vh 54vh 100vh !important;
+  }
+  #sceneProfil h1 {
+    grid-row: 1 !important;
+    grid-column: 1/span 2 !important;
+  }
+  #sceneProfil #zoneFonctions {
+    grid-row: 2/span 2 !important;
+    grid-column: 1 !important;
+  }
+  #sceneProfil p {
+    grid-row: 2/span 2 !important;
+    grid-column: 2 !important;
+    padding: 75px 10px 20px 10px !important;
+    height: calc(100% - 95px) !important;
+    width: calc(100% - 20px) !important;
+    align-self: center !important;
+  }
+  #sceneProfil #imageConseil {
+    grid-column: 1/span 2 !important;
+  }
+  #sceneProfil #bgConseil {
+    grid-column: 1/span 2 !important;
+  }
+  #sceneProfil #infosModif {
+    top: calc(-19vh + 20px) !important;
+    left: calc(95vw - 15px) !important;
+  }
+  #sceneProfil #modifier {
+    top: calc(-19vh + 12.5px) !important;
+  }
+}
