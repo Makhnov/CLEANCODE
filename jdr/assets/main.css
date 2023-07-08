@@ -1,62 +1,61 @@
 /*!********************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./css/main.scss ***!
   \********************************************************************************************************/
-@charset "UTF-8";
 :root {
   --opacity: 0.88;
 }
 
 @font-face {
   font-family: "vecna";
-  src: url(fonts/4eaf72efdf740ebbe253.ttf) format("truetype");
+  src: url("https://makh.fr/divers/fonts/vecna.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "vecna";
-  src: url(fonts/951e13fc05de176e15ef.ttf) format("truetype");
+  src: url("https://makh.fr/divers/fonts/vecnaBold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
   font-family: "vecna";
-  src: url(fonts/8a6e97fe5d036ca4a641.ttf) format("truetype");
+  src: url("https://makh.fr/divers/fonts/vecnaItalic.ttf") format("truetype");
   font-weight: normal;
   font-style: italic;
 }
 @font-face {
   font-family: "vecna";
-  src: url(fonts/c96fb855da5d503b40a5.ttf) format("truetype");
+  src: url("https://makh.fr/divers/fonts/vecnaBoldItalic.ttf") format("truetype");
   font-weight: bold;
   font-style: italic;
 }
 @font-face {
   font-family: "dalelands";
-  src: url(fonts/17092a0980071535822e.ttf) format("truetype");
+  src: url("https://makh.fr/divers/fonts/dalelands.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "dalelands";
-  src: url(fonts/a38e1044202d1a0f90ae.ttf) format("truetype");
+  src: url("https://makh.fr/divers/fonts/dalelandsBold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
   font-family: "dalelands";
-  src: url(fonts/f8594c5d7701b0997b51.ttf) format("truetype");
+  src: url("https://makh.fr/divers/fonts/dalelandsItalic.ttf") format("truetype");
   font-weight: normal;
   font-style: italic;
 }
 @font-face {
   font-family: "dalelands";
-  src: url(fonts/cf79bd24f553a8989319.ttf) format("truetype");
+  src: url("https://makh.fr/divers/fonts/dalelandsBoldItalic.ttf") format("truetype");
   font-weight: bold;
   font-style: italic;
 }
 @font-face {
   font-family: "quentincaps";
-  src: url(fonts/04606dc666b92d335a95.ttf) format("truetype");
+  src: url("https://makh.fr/divers/fonts/quentincaps.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -137,7 +136,7 @@ html body.personnage header nav:first-child #retour {
   display: block;
   justify-self: flex-start;
   align-self: center;
-  background-image: url(images/8fc5cdb9553090af0c1e.png);
+  background-image: url("https://makh.fr/divers/img/logoDnd.png");
   background-repeat: no-repeat;
   background-position: 10px center;
   background-size: contain;
@@ -307,10 +306,10 @@ section.utilitaires div.plein-ecran div.reduire {
   transition: opacity 0.3s;
 }
 section.utilitaires div.plein-ecran div.developper {
-  background-image: url(images/a93bd05efd81480e8875.png);
+  background-image: url("https://makh.fr/divers/img/infos_in.png");
 }
 section.utilitaires div.plein-ecran div.reduire {
-  background-image: url(images/a0e27481a6c5215bb0cf.png);
+  background-image: url("https://makh.fr/divers/img/infos_out.png");
   opacity: 0;
   top: -100%;
 }
@@ -580,7 +579,7 @@ body.emplacement main {
   width: 1600px;
   top: 50%;
   left: 50%;
-  background-image: url(images/93d574ca6b269c2a1ed0.jpg);
+  background-image: url("https://makh.fr/divers/img/salleConseil.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -600,179 +599,6 @@ body.emplacement main {
   filter: brightness(2);
 }
 
-/*
-    // Les personnages sont positionnés uniquement avec des % afin de permettre une adaptativité totale
-    .adhemar {
-        background-image: url("../../divers/img/personnages/conseil/adhemarMin.png");
-        top: 53%;
-        left: 60%;
-        width: calc(5 * 50px);
-        height: calc(5 * 80px);
-        z-index: 1;
-
-        &:hover {
-            background-image: url("../../divers/img/personnages/conseil/adhemar2.png");
-            transform: scale(1.05);
-            top: 52%;
-        }
-    }
-
-    .aleksia {
-        background-image: url("../../divers/img/personnages/conseil/aleksiaMin.png");
-        top: 45%;
-        left: 20%;
-        height: calc(3.8 * 80px);
-        width: calc(3.8 * 50px);
-        z-index: 5;
-
-        &:hover {
-            background-image: url("../../divers/img/personnages/conseil/aleksia2.png");
-            transform: scale(1.15);
-        }
-    }
-
-    .alexandra {
-        top: 5%;
-        left: 7%;
-        height: calc(5.5 * 80px);
-        width: calc(5.5 * 50px);
-        background-image: url("../../divers/img/personnages/conseil/dameAlexandraMin.png");
-
-        &:hover {
-            background-image: url("../../divers/img/personnages/conseil/dameAlexandra2.png");
-            transform: scale(1.2);
-        }
-    }
-
-    .ancelin {
-        top: 45%;
-        left: 30%;
-        height: calc(5.3 * 80px);
-        width: calc(5.3 * 50px);
-        background-image: url("../../divers/img/personnages/conseil/pereAncelinMin.png");
-
-        &:hover {
-            background-image: url("../../divers/img/personnages/conseil/pereAncelin2.png");
-            transform: scale(1.15);
-        }
-    }
-
-    .jalana {
-        top: 48%;
-        left: 59.5%;
-        height: calc(1.8 * 80px);
-        width: calc(1.8 * 50px);
-        background-image: url("../../divers/img/personnages/conseil/jalanaMin.png");
-        z-index: 5;
-
-        &:hover {
-            background-image: url("../../divers/img/personnages/conseil/jalana2.png");
-            transform: scale(1.2);
-        }
-    }
-
-    .jimmy {
-        top: 50%;
-        left: 46.25%;
-        height: calc(1.75 * 80px);
-        width: calc(1.75 * 50px);
-        background-image: url("../../divers/img/personnages/conseil/jimmyMin.png");
-        z-index: 5;
-
-        &:hover {
-            background-image: url("../../divers/img/personnages/conseil/jimmy2.png");
-            transform: scale(1.25);
-        }
-    }
-
-    .laurain {
-        top: 45%;
-        left: 2%;
-        height: calc(6 * 80px);
-        width: calc(6 * 50px);
-        background-image: url("../../divers/img/personnages/conseil/laurainSansreprocheMin.png");
-
-        &:hover {
-            background-image: url("../../divers/img/personnages/conseil/laurainSansreproche2.png");
-            transform: scale(1.05);
-        }
-    }
-
-    .precis {
-        top: 51.5%;
-        left: 92%;
-        height: calc(2 * 80px);
-        width: calc(2 * 50px);
-        background-image: url("../../divers/img/personnages/conseil/precisSansreprocheMin.png");
-        z-index: 5;
-        perspective-origin: bottom right;
-
-        &:hover {
-            background-image: url("../../divers/img/personnages/conseil/precisSansreproche2.png");
-            transform: scale(1.1);
-        }
-    }
-
-    .seleste {
-        position: absolute;
-        cursor: pointer;
-        top: 50%;
-        left: 51.25%;
-        height: calc(1.5 * 80px);
-        width: calc(1.5 * 50px);
-        background-image: url("../../divers/img/personnages/conseil/selesteMin.png");
-        background-repeat: no-repeat;
-        background-size: cover;
-        z-index: 5;
-
-        &:hover {
-            background-image: url("../../divers/img/personnages/conseil/seleste2.png");
-            transform: scale(1.2);
-            filter: brightness(2);
-        }
-    }
-
-    .tenebres {
-        top: 48%;
-        left: 85%;
-        height: calc(2 * 80px);
-        width: calc(2 * 50px);
-        background-image: url("../../divers/img/personnages/conseil/tenebresSansreprocheMin.png");
-        z-index: 10;
-
-        &:hover {
-            background-image: url("../../divers/img/personnages/conseil/tenebresSansreproche2.png");
-            transform: scale(1.2);
-        }
-    }
-
-    .tharion {
-        top: 45%;
-        left: 49%;
-        height: calc(5.5 * 80px);
-        width: calc(5.5 * 50px);
-        background-image: url("../../divers/img/personnages/conseil/tharionMin.png");
-        z-index: 3;
-
-        &:hover {
-            background-image: url("../../divers/img/personnages/conseil/tharion2.png");
-            transform: scale(1.1);
-        }
-    }
-
-    .vaillant {
-        top: 48%;
-        left: 75%;
-        height: calc(5 * 80px);
-        width: calc(5 * 50px);
-        background-image: url("../../divers/img/personnages/conseil/vaillantSansreprocheMin.png");
-
-        &:hover {
-            background-image: url("../../divers/img/personnages/conseil/vaillantSansreproche2.png");
-            transform: scale(1.1);
-        }
-    }
-*/
 html body.personnage {
   background-color: black;
   overflow-x: hidden;
@@ -947,7 +773,7 @@ html body.personnage h3 {
     grid-column: 2;
     height: 88vh;
     width: 47vw;
-    background-image: url(images/4dd8f9e463525decb93b.jpg);
+    background-image: url("https://makh.fr/divers/img/valbalafreConseil.jpg");
     background-position: bottom right;
     background-repeat: no-repeat;
     background-size: cover;
