@@ -110,12 +110,16 @@
 			left: 20px;
 			height: 30px;
 			width: 30px;
-			background-image: url('https://www.icone-png.com/png/54/54106.png');
+			background-image: url('../divers/img/file.png');
 			background-size: contain;
 			background-repeat: no-repeat;
 			transition: .5s;
 		}
 
+		a.new::before {
+			background-image: url('../divers/img/file_new.png');
+		}
+		
 		a:hover::before {
 			transform: scale(2);
 		}
@@ -154,9 +158,30 @@
 	</style>
 
 	<div id="scene">
+        <div>
+			<a class="new" href="https://wagtail.org"><strong>Intranet (En cours)</strong><br>
+			    Django/Wagtail<br>
+				Pro : Intranet 
+			</a>
+			<span class="60">Intranet pour les agents de la communauté de communes du Cagire</span>
+		</div>
+	    <div>
+			<a class="new" href="https://cagiregaronnesalat.fr"><strong>Cagire Garonne Salat</strong><br>
+			    Wordpress/PHP/SCSS<br>
+				Pro : Site officiel
+			</a>
+			<span class="90">Wordpress de la communauté de communes du Cagire mis à jour quotidiennement</span>
+		</div>
+		<div>
+			<a class="new" href="../jdr/"><strong>Féérune</strong><br>
+			    JS/SVG/photoshop<br>
+				Carte interactive
+			</a>
+			<span class="50">Superbe carte interactive de la région de Féérune (D&D) qui utilise la magie des svg !</span>
+		</div>
 		<div>
 			<a href="../conseil/"><strong>Salle du conseil</strong><br>
-				Projet fil rouge
+				Projet fil rouge perso
 			</a>
 			<span class="45">Jeu de rôle, présentation de personnages (affichage dynamique)</span>
 		</div>
